@@ -1,0 +1,3 @@
+# Prompt 02 — Top-down movement
+
+Implement four-direction top-down movement in GML. Inspect the actual project and collision setup first; do not assume obj_solid exists. Normalize optional diagonal movement, track facing direction for interactions, and disable input during battle/menu/dialogue. Preserve the classic Final Fantasy I-like top-down viewpoint. Include IDE setup steps and manual tests for walls, room bounds, and input lock.
