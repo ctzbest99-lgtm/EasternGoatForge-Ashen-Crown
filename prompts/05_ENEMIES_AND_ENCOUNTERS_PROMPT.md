@@ -1,0 +1,3 @@
+# Prompt 05 — Enemies and encounters
+
+Create a data-driven encounter system for Zone 1. Confirmed standard enemies are Bandit and Fallen Knight. Keep rare encounter and boss names/lore unfinalized until approval. Prevent duplicate encounter triggers while a battle is active, return to a valid overworld state, and handle unknown enemy IDs safely. Add tests for repeat triggers, victory, defeat, rewards, and stat validity.

@@ -1,0 +1,3 @@
+# Prompt 01 — Project scaffold
+
+Inspect this repository and guide me through creating the actual GameMaker project in the IDE. Keep classic top-down JRPG exploration, not side-view. Propose room resolution and tile size as undecided recommendations. Use GameMaker-generated resource metadata rather than inventing .yy/.yyp files. Do not implement combat yet. Finish with a compile/smoke-test checklist.

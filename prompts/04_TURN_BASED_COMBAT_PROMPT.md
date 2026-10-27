@@ -1,0 +1,3 @@
+# Prompt 04 — Turn-based combat
+
+Implement a robust classic menu-driven battle loop. Start with one player and one enemy but structure actor data for a four-person party. Begin with Attack and Guard only. Use explicit states for command selection, action resolution, enemy turn, victory, and defeat. Prevent repeated actions from key repeat, clamp HP, and block defeated actors from acting. Recommend battle room versus overlay before implementing. Add manual tests and document unimplemented systems.

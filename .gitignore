@@ -1,0 +1,14 @@
+# GameMaker/local output
+cache/
+temp/
+build/
+dist/
+*.log
+*.yyp.bak
+*.yy.bak
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.env
+.env.*

@@ -1,0 +1,3 @@
+# Prompt 09 — Asset integration
+
+Inspect assets that actually exist; do not assume earlier chat images are present. Preserve the top-down JRPG viewpoint, consistent origins, collision masks, frame timing, and scale. Requested art includes a 32×48 player template/coordinate guide, Bandit, Fallen Knight, rare encounter, and Zone 1 boss. Do not claim placeholder files are final art. Update docs/ASSET_INVENTORY.md with dimensions, source, rights, import settings, and test status.

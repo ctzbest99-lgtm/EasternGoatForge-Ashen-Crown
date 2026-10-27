@@ -1,0 +1,3 @@
+# Prompt 06 — Classic RPG menus
+
+Implement readable keyboard-first classic RPG menus with visible selection and clear confirm/cancel behavior. Separate UI state from drawing logic. Build incrementally toward the planned menu: equipment, party order, items, save/load, character status, and Bestiary. Start with the smallest useful menu and battle command panel. Include GameMaker setup instructions and tests.
