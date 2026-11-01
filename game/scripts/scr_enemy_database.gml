@@ -1,4 +1,10 @@
 /// scr_enemy_database — prototype values; playtest and rebalance before release.
+
+/// @desc Every enemy id in the database, in menu order (used by the debug spawner and the planned Bestiary).
+function scr_get_enemy_ids() {
+    return ["bandit", "fallen_knight"];
+}
+
 function scr_get_enemy_data(_enemy_id) {
     switch (_enemy_id) {
         case "bandit":
@@ -8,3 +14,4 @@ function scr_get_enemy_data(_enemy_id) {
     }
     return undefined;
 }
+
