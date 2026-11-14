@@ -400,8 +400,8 @@ finish_stance = function() {
         _vis.phase = 2;
         scr_battle_vis_play(_vis, "idle");
     }
-    // System line only. Calder's bark (WF_CALDER_PHASE2_01) is wired with the Chapter 2 dialogue task.
-    var _line = _b.full_name + " takes a harder stance!";
+    // Calder's bark (WF_CALDER_PHASE2_01) replaces the system line; others keep the system line.
+    var _line = (_b.stance_line != "") ? _b.stance_line : (_b.full_name + " takes a harder stance!");
     queue_message((anim_message == "") ? _line : (anim_message + "\n" + _line), anim_next_state);
 };
 
@@ -551,6 +551,13 @@ run_skill = function(_side, _idx, _sk, _targets) {
         _text = _user.name + " " + _sk.verb;
     } else {
         _text = _user.name + " uses " + _sk.name + "!";
+    }
+
+    // WF_CALDER_SYS_04 (optional): the first time Taren uses Rallying Cry.
+    if (_side == "party" && _sk.id == "rallying_cry" && !scr_flag_get("flag_rally_sys_seen")) {
+        scr_flag_set("flag_rally_sys_seen");
+        var _sys4 = scr_ch2_node_text("WF_CALDER_SYS_04", false);
+        if (_sys4 != "") _text += "\n" + _sys4;
     }
 
     begin_anim(get_vis(_side, _idx), _vises, _hit, _text, _sk.anim);

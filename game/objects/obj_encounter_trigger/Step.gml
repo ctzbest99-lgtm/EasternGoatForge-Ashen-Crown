@@ -8,4 +8,9 @@ if (!_touching) {
 if (!armed || scr_input_locked()) exit; // no battle during dialogue, another battle, or a transition
 
 armed = false;
+if (passive) exit;
+if (is_array(pre_chain) && array_length(pre_chain) > 0) {
+    scr_ch2_encounter_prelude(id);
+    exit;
+}
 scr_encounter_start(enemy_id, encounter_id);

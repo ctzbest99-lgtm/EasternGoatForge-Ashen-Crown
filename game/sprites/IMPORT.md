@@ -994,3 +994,173 @@ Same rules as the other 48×48 portraits: origin (0, 0), full-image mask, one sp
 | `spr_portrait_hob_wry` | `portraits/hob/spr_portrait_hob_wry.png` | 1 | 48×48 | (0, 0) | full image | 0 |
 
 Preview sheets in those folders are not imported.
+
+## Chapter 2 (feature/chapter2)
+
+Rooms, tileset and NPCs for Millhaven Road and Wrenfield. Everything goes through `asset_get_index`, so the game still runs (with placeholders) before these are imported. Do not import `*_preview*` files.
+
+### Tileset
+`game/tilesets/ts_wrenfield.png` → Sprite `spr_ts_wrenfield` (one image, do not split) → Tile Set **`ts_wrenfield`** (16×16, offset 0, separation 0). See `game/tilesets/README.md`.
+
+### Chapter 2 NPC overworld
+All 16×24, origin (8, 23), mask 0, 8, 15, 23. Walk strips 4 frames at 8 fps. `left` is pre-mirrored. Two 2-frame strips play at 2 fps: `spr_bram_bound_ow16_noose_taut_strip2` (Bram on the gallows; the rope lines up with the `gallows_taut` tile) and `spr_bram_ow16_rub_neck_strip2` (freed Bram). `crown_sergeant_gate` is the checkpoint NPC and is separate from the battle enemy `crown_sergeant`.
+
+| Asset name | File | Frames | Frame size | Origin | Mask (L,T,R,B) | FPS |
+|---|---|---|---|---|---|---|
+| `spr_bram_bound_ow16_idle_down` | `npcs/bram/spr_bram_bound_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_bram_bound_ow16_idle_left` | `npcs/bram/spr_bram_bound_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_bram_bound_ow16_idle_right` | `npcs/bram/spr_bram_bound_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_bram_bound_ow16_idle_up` | `npcs/bram/spr_bram_bound_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_bram_bound_ow16_noose_taut_strip2` | `npcs/bram/spr_bram_bound_ow16_noose_taut_strip2.png` | 2 | 16×24 | (8, 23) | 0, 8, 15, 23 | 2 |
+| `spr_bram_bound_ow16_walk_down_strip4` | `npcs/bram/spr_bram_bound_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_bram_bound_ow16_walk_left_strip4` | `npcs/bram/spr_bram_bound_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_bram_bound_ow16_walk_right_strip4` | `npcs/bram/spr_bram_bound_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_bram_bound_ow16_walk_up_strip4` | `npcs/bram/spr_bram_bound_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_bram_ow16_idle_down` | `npcs/bram/spr_bram_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_bram_ow16_idle_left` | `npcs/bram/spr_bram_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_bram_ow16_idle_right` | `npcs/bram/spr_bram_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_bram_ow16_idle_up` | `npcs/bram/spr_bram_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_bram_ow16_rub_neck_strip2` | `npcs/bram/spr_bram_ow16_rub_neck_strip2.png` | 2 | 16×24 | (8, 23) | 0, 8, 15, 23 | 2 |
+| `spr_bram_ow16_walk_down_strip4` | `npcs/bram/spr_bram_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_bram_ow16_walk_left_strip4` | `npcs/bram/spr_bram_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_bram_ow16_walk_right_strip4` | `npcs/bram/spr_bram_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_bram_ow16_walk_up_strip4` | `npcs/bram/spr_bram_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_prisoner_a_ow16_idle_down` | `npcs/prisoner_a/spr_prisoner_a_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_prisoner_a_ow16_idle_left` | `npcs/prisoner_a/spr_prisoner_a_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_prisoner_a_ow16_idle_right` | `npcs/prisoner_a/spr_prisoner_a_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_prisoner_a_ow16_idle_up` | `npcs/prisoner_a/spr_prisoner_a_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_prisoner_a_ow16_walk_down_strip4` | `npcs/prisoner_a/spr_prisoner_a_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_prisoner_a_ow16_walk_left_strip4` | `npcs/prisoner_a/spr_prisoner_a_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_prisoner_a_ow16_walk_right_strip4` | `npcs/prisoner_a/spr_prisoner_a_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_prisoner_a_ow16_walk_up_strip4` | `npcs/prisoner_a/spr_prisoner_a_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_prisoner_b_ow16_idle_down` | `npcs/prisoner_b/spr_prisoner_b_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_prisoner_b_ow16_idle_left` | `npcs/prisoner_b/spr_prisoner_b_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_prisoner_b_ow16_idle_right` | `npcs/prisoner_b/spr_prisoner_b_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_prisoner_b_ow16_idle_up` | `npcs/prisoner_b/spr_prisoner_b_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_prisoner_b_ow16_walk_down_strip4` | `npcs/prisoner_b/spr_prisoner_b_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_prisoner_b_ow16_walk_left_strip4` | `npcs/prisoner_b/spr_prisoner_b_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_prisoner_b_ow16_walk_right_strip4` | `npcs/prisoner_b/spr_prisoner_b_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_prisoner_b_ow16_walk_up_strip4` | `npcs/prisoner_b/spr_prisoner_b_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_prisoner_c_ow16_idle_down` | `npcs/prisoner_c/spr_prisoner_c_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_prisoner_c_ow16_idle_left` | `npcs/prisoner_c/spr_prisoner_c_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_prisoner_c_ow16_idle_right` | `npcs/prisoner_c/spr_prisoner_c_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_prisoner_c_ow16_idle_up` | `npcs/prisoner_c/spr_prisoner_c_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_prisoner_c_ow16_walk_down_strip4` | `npcs/prisoner_c/spr_prisoner_c_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_prisoner_c_ow16_walk_left_strip4` | `npcs/prisoner_c/spr_prisoner_c_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_prisoner_c_ow16_walk_right_strip4` | `npcs/prisoner_c/spr_prisoner_c_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_prisoner_c_ow16_walk_up_strip4` | `npcs/prisoner_c/spr_prisoner_c_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_oda_ow16_idle_down` | `npcs/oda/spr_oda_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_oda_ow16_idle_left` | `npcs/oda/spr_oda_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_oda_ow16_idle_right` | `npcs/oda/spr_oda_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_oda_ow16_idle_up` | `npcs/oda/spr_oda_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_oda_ow16_walk_down_strip4` | `npcs/oda/spr_oda_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_oda_ow16_walk_left_strip4` | `npcs/oda/spr_oda_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_oda_ow16_walk_right_strip4` | `npcs/oda/spr_oda_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_oda_ow16_walk_up_strip4` | `npcs/oda/spr_oda_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_perrin_ow16_idle_down` | `npcs/perrin/spr_perrin_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_perrin_ow16_idle_left` | `npcs/perrin/spr_perrin_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_perrin_ow16_idle_right` | `npcs/perrin/spr_perrin_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_perrin_ow16_idle_up` | `npcs/perrin/spr_perrin_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_perrin_ow16_walk_down_strip4` | `npcs/perrin/spr_perrin_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_perrin_ow16_walk_left_strip4` | `npcs/perrin/spr_perrin_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_perrin_ow16_walk_right_strip4` | `npcs/perrin/spr_perrin_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_perrin_ow16_walk_up_strip4` | `npcs/perrin/spr_perrin_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_len_ow16_idle_down` | `npcs/len/spr_len_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_len_ow16_idle_left` | `npcs/len/spr_len_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_len_ow16_idle_right` | `npcs/len/spr_len_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_len_ow16_idle_up` | `npcs/len/spr_len_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_len_ow16_walk_down_strip4` | `npcs/len/spr_len_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_len_ow16_walk_left_strip4` | `npcs/len/spr_len_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_len_ow16_walk_right_strip4` | `npcs/len/spr_len_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_len_ow16_walk_up_strip4` | `npcs/len/spr_len_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_traveler_ow16_idle_down` | `npcs/traveler/spr_traveler_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_traveler_ow16_idle_left` | `npcs/traveler/spr_traveler_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_traveler_ow16_idle_right` | `npcs/traveler/spr_traveler_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_traveler_ow16_idle_up` | `npcs/traveler/spr_traveler_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_traveler_ow16_walk_down_strip4` | `npcs/traveler/spr_traveler_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_traveler_ow16_walk_left_strip4` | `npcs/traveler/spr_traveler_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_traveler_ow16_walk_right_strip4` | `npcs/traveler/spr_traveler_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_traveler_ow16_walk_up_strip4` | `npcs/traveler/spr_traveler_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_crown_sergeant_gate_ow16_idle_down` | `npcs/crown_sergeant_gate/spr_crown_sergeant_gate_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_sergeant_gate_ow16_idle_left` | `npcs/crown_sergeant_gate/spr_crown_sergeant_gate_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_sergeant_gate_ow16_idle_right` | `npcs/crown_sergeant_gate/spr_crown_sergeant_gate_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_sergeant_gate_ow16_idle_up` | `npcs/crown_sergeant_gate/spr_crown_sergeant_gate_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_sergeant_gate_ow16_walk_down_strip4` | `npcs/crown_sergeant_gate/spr_crown_sergeant_gate_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_crown_sergeant_gate_ow16_walk_left_strip4` | `npcs/crown_sergeant_gate/spr_crown_sergeant_gate_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_crown_sergeant_gate_ow16_walk_right_strip4` | `npcs/crown_sergeant_gate/spr_crown_sergeant_gate_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_crown_sergeant_gate_ow16_walk_up_strip4` | `npcs/crown_sergeant_gate/spr_crown_sergeant_gate_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_crown_soldier_firm_ow16_idle_down` | `npcs/crown_soldier_firm/spr_crown_soldier_firm_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_soldier_firm_ow16_idle_left` | `npcs/crown_soldier_firm/spr_crown_soldier_firm_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_soldier_firm_ow16_idle_right` | `npcs/crown_soldier_firm/spr_crown_soldier_firm_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_soldier_firm_ow16_idle_up` | `npcs/crown_soldier_firm/spr_crown_soldier_firm_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_soldier_firm_ow16_walk_down_strip4` | `npcs/crown_soldier_firm/spr_crown_soldier_firm_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_crown_soldier_firm_ow16_walk_left_strip4` | `npcs/crown_soldier_firm/spr_crown_soldier_firm_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_crown_soldier_firm_ow16_walk_right_strip4` | `npcs/crown_soldier_firm/spr_crown_soldier_firm_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_crown_soldier_firm_ow16_walk_up_strip4` | `npcs/crown_soldier_firm/spr_crown_soldier_firm_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_crown_soldier_unwilling_ow16_idle_down` | `npcs/crown_soldier_unwilling/spr_crown_soldier_unwilling_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_soldier_unwilling_ow16_idle_left` | `npcs/crown_soldier_unwilling/spr_crown_soldier_unwilling_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_soldier_unwilling_ow16_idle_right` | `npcs/crown_soldier_unwilling/spr_crown_soldier_unwilling_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_soldier_unwilling_ow16_idle_up` | `npcs/crown_soldier_unwilling/spr_crown_soldier_unwilling_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_soldier_unwilling_ow16_walk_down_strip4` | `npcs/crown_soldier_unwilling/spr_crown_soldier_unwilling_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_crown_soldier_unwilling_ow16_walk_left_strip4` | `npcs/crown_soldier_unwilling/spr_crown_soldier_unwilling_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_crown_soldier_unwilling_ow16_walk_right_strip4` | `npcs/crown_soldier_unwilling/spr_crown_soldier_unwilling_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_crown_soldier_unwilling_ow16_walk_up_strip4` | `npcs/crown_soldier_unwilling/spr_crown_soldier_unwilling_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_villager_a_ow16_idle_down` | `npcs/villager_a/spr_villager_a_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_villager_a_ow16_idle_left` | `npcs/villager_a/spr_villager_a_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_villager_a_ow16_idle_right` | `npcs/villager_a/spr_villager_a_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_villager_a_ow16_idle_up` | `npcs/villager_a/spr_villager_a_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_villager_a_ow16_walk_down_strip4` | `npcs/villager_a/spr_villager_a_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_villager_a_ow16_walk_left_strip4` | `npcs/villager_a/spr_villager_a_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_villager_a_ow16_walk_right_strip4` | `npcs/villager_a/spr_villager_a_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_villager_a_ow16_walk_up_strip4` | `npcs/villager_a/spr_villager_a_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_villager_b_ow16_idle_down` | `npcs/villager_b/spr_villager_b_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_villager_b_ow16_idle_left` | `npcs/villager_b/spr_villager_b_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_villager_b_ow16_idle_right` | `npcs/villager_b/spr_villager_b_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_villager_b_ow16_idle_up` | `npcs/villager_b/spr_villager_b_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_villager_b_ow16_walk_down_strip4` | `npcs/villager_b/spr_villager_b_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_villager_b_ow16_walk_left_strip4` | `npcs/villager_b/spr_villager_b_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_villager_b_ow16_walk_right_strip4` | `npcs/villager_b/spr_villager_b_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_villager_b_ow16_walk_up_strip4` | `npcs/villager_b/spr_villager_b_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_taren_ow16_idle_down` | `npcs/taren/spr_taren_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_taren_ow16_idle_left` | `npcs/taren/spr_taren_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_taren_ow16_idle_right` | `npcs/taren/spr_taren_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_taren_ow16_idle_up` | `npcs/taren/spr_taren_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_taren_ow16_walk_down_strip4` | `npcs/taren/spr_taren_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_taren_ow16_walk_left_strip4` | `npcs/taren/spr_taren_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_taren_ow16_walk_right_strip4` | `npcs/taren/spr_taren_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_taren_ow16_walk_up_strip4` | `npcs/taren/spr_taren_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+
+### Chapter 2 dialogue portraits
+48×48, origin (0, 0). The dialogue data picks an expression per line (`expr`); Bram and Oda have no `_neutral`, so their defaults are `_shaken` and `_worried`.
+
+| Asset name | File | Frames | Frame size | Origin | Mask (L,T,R,B) | FPS |
+|---|---|---|---|---|---|---|
+| `spr_portrait_bram_afraid` | `portraits/bram/spr_portrait_bram_afraid.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_bram_grateful` | `portraits/bram/spr_portrait_bram_grateful.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_bram_shaken` | `portraits/bram/spr_portrait_bram_shaken.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_oda_pleading` | `portraits/oda/spr_portrait_oda_pleading.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_oda_relieved` | `portraits/oda/spr_portrait_oda_relieved.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_oda_worried` | `portraits/oda/spr_portrait_oda_worried.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_perrin_grim` | `portraits/perrin/spr_portrait_perrin_grim.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_perrin_neutral` | `portraits/perrin/spr_portrait_perrin_neutral.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_perrin_warm` | `portraits/perrin/spr_portrait_perrin_warm.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_len_nervous` | `portraits/len/spr_portrait_len_nervous.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_len_neutral` | `portraits/len/spr_portrait_len_neutral.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_len_smile` | `portraits/len/spr_portrait_len_smile.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_taren_determined` | `portraits/taren/spr_portrait_taren_determined.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_taren_neutral` | `portraits/taren/spr_portrait_taren_neutral.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_taren_wry` | `portraits/taren/spr_portrait_taren_wry.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+
+### Taren Holt battle set
+Origin **(16, 47)** on every strip (feet; frames are 32 or 48 px wide, as drawn). Battle FPS as for Kael (idle / walk use `BATTLE_IDLE_FPS`, the rest `BATTLE_ANIM_FPS`). The code finds them by name (`scr_battle_auto_strip`): Guard holds `defend`, Rallying Cry plays `skill_rally`, Cleave plays `skill_cleave`. Mask: full image.
+
+| Asset name | File | Frames | Frame size | Origin | Mask (L,T,R,B) | FPS |
+|---|---|---|---|---|---|---|
+| `spr_taren_attack_strip6` | `party/taren/spr_taren_attack_strip6.png` | 6 | 48×48 | (16, 47) | full image | battle |
+| `spr_taren_death_strip6` | `party/taren/spr_taren_death_strip6.png` | 6 | 48×48 | (16, 47) | full image | battle |
+| `spr_taren_defend_strip3` | `party/taren/spr_taren_defend_strip3.png` | 3 | 32×48 | (16, 47) | full image | battle |
+| `spr_taren_hurt_strip3` | `party/taren/spr_taren_hurt_strip3.png` | 3 | 32×48 | (16, 47) | full image | battle |
+| `spr_taren_idle_strip4` | `party/taren/spr_taren_idle_strip4.png` | 4 | 32×48 | (16, 47) | full image | battle |
+| `spr_taren_skill_cleave_strip6` | `party/taren/spr_taren_skill_cleave_strip6.png` | 6 | 48×48 | (16, 47) | full image | battle |
+| `spr_taren_skill_rally_strip6` | `party/taren/spr_taren_skill_rally_strip6.png` | 6 | 32×48 | (16, 47) | full image | battle |
+| `spr_taren_walk_strip8` | `party/taren/spr_taren_walk_strip8.png` | 8 | 32×48 | (16, 47) | full image | battle |

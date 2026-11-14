@@ -12,6 +12,8 @@ if (is_struct(map_marker) && !scr_map_requirement_met(map_marker)) {
     scr_dialogue_open(_lines, "");
     exit;
 }
+// Exits with a scene (Chapter 2 west road: WF_HANDOFF, chapter end, save prompt) handle the move themselves.
+if (is_struct(map_marker) && variable_struct_exists(map_marker, "script_id") && scr_ch2_exit_script(id)) exit;
 if (sets_flag != "") scr_flag_set(sets_flag);
 if (target_room == -1) {
     scr_dialogue_open(["[" + target_room_name + " is not built yet.]"], "");

@@ -3,6 +3,7 @@
 global.game.frame += 1;
 scr_save_tick_playtime();
 scr_dialogue_try_advance_queue();
+scr_ch2_tick(); // Chapter 2 wake-up at the Crownveil door (CV_WAKE)
 
 
 // Inventory overlay (I or Tab). Opening is blocked while dialogue / battle / a menu is already up;

@@ -1,0 +1,44 @@
+[
+ {
+  "type": "player_spawn",
+  "name": "from_wrenfield",
+  "tile_x": 9,
+  "tile_y": 9,
+  "x": 152,
+  "y": 160,
+  "facing": "up",
+  "note": "Arrive from the Wrenfield door_len_store."
+ },
+ {
+  "type": "zone_exit",
+  "name": "to_wrenfield",
+  "tile_x": 9,
+  "tile_y": 10,
+  "x": 152,
+  "y": 176,
+  "target_room": "rm_wrenfield",
+  "target_spawn": "from_store",
+  "w": 2,
+  "h": 1
+ },
+ {
+  "type": "npc",
+  "name": "len",
+  "tile_x": 9,
+  "tile_y": 4,
+  "x": 152,
+  "y": 80,
+  "npc_id": "len",
+  "speaker": "Len",
+  "script_id": "WF_STORE_B1",
+  "sprite": "spr_len_ow16_idle_down",
+  "hostile": false,
+  "shop_id": "shop_wrenfield_store",
+  "shop_stock": [
+   "Minor Potion",
+   "Antidote",
+   "(mid-tier items for level 8-10: Design to pick)"
+  ],
+  "note": "Behind his counter with the shutters up. Shop opens after the rescue (the store door is barred before)."
+ }
+]

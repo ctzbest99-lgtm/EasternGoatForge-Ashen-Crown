@@ -113,7 +113,7 @@ function scr_battle_kind_from_id(_actor_id) {
     }
 }
 
-/// Enemy kinds whose strips are resolved generically by name (Design batches 7 and 8).
+/// Battle kinds whose strips are resolved generically by name (Design batches 7 and 8, and Taren).
 function scr_battle_kind_is_generic(_kind) {
     switch (_kind) {
         case "crown_sergeant": case "dock_thug": case "cutpurse": case "debt_collector": case "debtman":
@@ -121,6 +121,8 @@ function scr_battle_kind_is_generic(_kind) {
         case "garrison_pikeman": case "garrison_field_surgeon": case "garrison_knight": case "commander_hailen":
         case "shade_stalker": case "briar_hulk": case "lost_one": case "night_moth_swarm": case "door_warden":
         case "blackwood_matriarch":
+        // Party: Taren Holt (idle4 walk8 attack6 hurt3 defend3 death6, skill_rally6, skill_cleave6).
+        case "taren":
             return true;
     }
     return false;

@@ -123,6 +123,26 @@ Create each room below with the **same five Tile layers** (`ts_zone1`), Instance
 
 Paste every new `scr_build_*.gml` and `scr_map_markers_data.gml` as Script assets. Re-import `ts_zone1.png` (now **256×800**; ids in rows 0–37 are unchanged; rows 38–49 are interior/dungeon tiles).
 
+## 6c. Chapter 2 rooms (feature/chapter2)
+Data is embedded in the scripts. The source CSVs, marker JSON and renders are under `game/maps/chapter2/` (Design's pipeline lives in `/workspace/wrenfield`).
+1. **Tileset:** import `game/tilesets/ts_wrenfield.png` as Sprite `spr_ts_wrenfield` (one image), then make a Tile Set named exactly **`ts_wrenfield`** (16×16, offset 0, separation 0). Rows 0–49 are `ts_zone1`.
+2. **Scripts:** add one Script asset for each new file in `game/scripts/`:
+   - `scr_dialogue_data_ch2` (generated from the script by `tools/gen_ch2_dialogue.py`)
+   - `scr_ch2_story`
+   - `scr_wf_tilemaps`, `scr_wf_markers_data`, `scr_wf_overworld_patch`
+   - `scr_build_millhaven_road`, `scr_build_wrenfield`, `scr_build_wrenfield_bent_post`, `scr_build_wrenfield_store`
+3. **Rooms.** Create these four rooms. Leave Persistent off. Give each the **same five Tile layers** as the Zone 1 rooms (any tileset; the build script switches them to `ts_wrenfield`), Instances at depth 0 and Viewport 0, and place **1 × `obj_player`**:
+   | Room | Size (px) | Creation Code |
+   |---|---|---|
+   | `rm_millhaven_road` | 512×960 | `scr_build_millhaven_road();` |
+   | `rm_wrenfield` | 896×704 | `scr_build_wrenfield();` |
+   | `rm_wrenfield_bent_post` | 384×256 | `scr_build_wrenfield_bent_post();` |
+   | `rm_wrenfield_store` | 320×224 | `scr_build_wrenfield_store();` |
+   Each builder picks the before / after state from `flag_execution_stopped`.
+4. **Overworld:** nothing to add. `scr_build_overworld()` now paints the Millhaven Road branch and spawns its three markers. Ignore the `scr_wf_overworld_patch();` step in Design's README: in the repo that function only returns data. The entrance at tile (303,184) stays shut ("Crown checkpoint. No passage south without the Reeve's leave.") until `flag_act2_started`. That flag is set when Kael wakes at the Crownveil door after the Chapter 1 save prompt.
+5. **West road:** the exit `west_road_to_valemere` targets `rm_valemere_road`, which does not exist yet (Chapter 3). Until it does, the exit plays WF_HANDOFF and "To be continued.", sets `flag_chapter2_complete`, moves the party to the overworld spawn `from_wrenfield_west` (east of Valemere) and opens the save prompt. When `rm_valemere_road` exists, the same exit goes there instead.
+6. **Optional object:** `obj_story_npc` is used for the gallows scene (Calder, Taren, Bram and the prisoners). `obj_story_trigger` is used for walk-on beats. Both already exist from Zone 1.
+
 ## 7. rm_battle_test (placeholder 640×360)
 1. Create room `rm_battle_test`. Leave Persistent off.
 2. Place 1 × `obj_battle_controller`. Do **not** place `obj_player` or `obj_game_controller` here (the controller arrives from rm_overworld because it is persistent).
