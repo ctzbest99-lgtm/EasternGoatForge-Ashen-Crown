@@ -10,8 +10,11 @@
 - No automatic enemy level scaling by default.
 - Planned menu: equipment, party order, items, save/load, status, Bestiary.
 
+## Owner-decided (2026-11-14)
+- Defeat: when the party loses a battle, they wake up back in town with HP fully restored. Until a town room exists, the respawn target is `TOWN_RESPAWN_ROOM` (currently `rm_overworld`), at `obj_respawn_point` if one is placed, otherwise at `TOWN_RESPAWN_X` / `TOWN_RESPAWN_Y`. A short placeholder wake-up line is shown through the existing dialogue box. Earned XP and gold are kept for now (see open questions).
+
 ## Still undecided
-GameMaker version; room resolution and tile size; input mapping; battle room versus overlay; exact backstory; party members/classes; rare encounter and boss identity/mechanics; save schema; license/proprietary status. Treat these as open questions, not approved requirements.
+GameMaker version; room resolution and tile size; input mapping; battle room versus overlay; exact backstory; party members/classes; rare encounter and boss identity/mechanics; save schema; license/proprietary status; whether a defeat should deduct gold, XP, or items (currently none are deducted). Treat these as open questions, not approved requirements.
 
 ## Prototype assumptions (exploration + battle prototype; pending owner approval)
 These were chosen so roadmap steps 2–3 could be built. None is a locked design decision.
@@ -22,7 +25,6 @@ These were chosen so roadmap steps 2–3 could be built. None is a locked design
 - Party: Kael only, placeholder stats (30 HP, 6 ATK, 2 DEF); party stored as an array for the planned four.
 - Guard halves incoming damage (min 1) until the party's next command phase.
 - XP/gold are party-wide totals in `global.game` until per-actor progression (roadmap step 4).
-- Defeat: prototype restores HP and returns to the pre-battle position. Final rule (game over, return to town, etc.) undecided.
 - Encounters: one fixed trigger per encounter, removed after victory for the session. Random encounters, encounter tables, and whether cleared triggers persist in saves are undecided.
 - Enemy HP is visible in battle for debugging; whether players see enemy HP is undecided.
 - Sign text and battle messages are placeholders, not canon.

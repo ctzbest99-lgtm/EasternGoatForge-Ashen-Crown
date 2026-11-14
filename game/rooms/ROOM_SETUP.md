@@ -27,6 +27,7 @@ Create each object in the table in `game/README.md` with the listed sprite, flag
 - **obj_dialogue_box:** no sprite. Events: Create, Step, Draw ▸ Draw GUI, Clean Up.
 - **obj_encounter_trigger:** sprite `spr_encounter_trigger_placeholder`, no parent. Events: Create, Other ▸ Room Start, Step.
 - **obj_battle_controller:** no sprite. Events: Create, Step, Draw ▸ Draw GUI.
+- **obj_respawn_point:** optional sprite `spr_respawn_point_placeholder` (any small colour; only needed so you can see it while laying out the room). Event: Create. No parent, not solid.
 
 ## 4. rm_overworld (placeholder 640×360)
 1. Create room `rm_overworld`; set it **first** in the Room Order (open the Room Manager and drag it to the top; the home icon marks the start room). Leave Persistent **off**.
@@ -36,9 +37,11 @@ Create each object in the table in `game/README.md` with the listed sprite, flag
    - 1 × `obj_player` in open space.
    - 1 × `obj_interactable` next to open space (the sign).
    - 1 × `obj_encounter_trigger` on a path a few tiles from the player, **not** overlapping the player's start position.
+   - 1 × `obj_respawn_point` in open space, **not** on the encounter trigger. This is the stand-in town wake-up spot until a town room exists. If you omit it, defeat places the player at `TOWN_RESPAWN_X` / `TOWN_RESPAWN_Y` (320, 180 by default), which must also be walkable.
 3. Optional per-instance overrides (double-click instance → Creation Code):
    - Sign: `dialogue_lines = ["[Placeholder line]"]; speaker_name = "";`
    - Trigger: `enemy_id = "fallen_knight"; encounter_id = "zone01_test_knight";` (each trigger needs a unique `encounter_id`).
+   - Respawn marker: `facing_x = 0; facing_y = 1;` (defaults face down).
 4. Optional tile collision: add a Tile layer named exactly **`Collision`** with any tileset; every non-empty tile blocks the player. The layer may be hidden. If you use tiles for all walls you can drop the `obj_solid` walls, but keep the `obj_solid` object (the code references it).
 
 ## 5. rm_battle_test (placeholder 640×360)
@@ -47,7 +50,13 @@ Create each object in the table in `game/README.md` with the listed sprite, flag
 3. Running this room alone (Room Order first) works for UI testing: it fights a Bandit, but returning needs `rm_overworld`.
 
 ## 6. Compile and run
-Run (F5). Expected: player moves and collides, the sign opens dialogue, the trigger starts a Bandit battle, and victory/defeat returns to the same spot. Then run the "Exploration" and "Battle prototype" sections of docs/TEST_PLAN.md.
+Run (F5). Expected: player moves and collides, the sign opens dialogue, the trigger starts a Bandit battle, victory returns to the same spot, and defeat wakes the party up at the respawn marker (or 320, 180) with a short placeholder dialogue. Then run the "Exploration" and "Battle prototype" sections of docs/TEST_PLAN.md.
+
+## 7. When the town room is built
+1. Create the town room (e.g. `rm_town`). Leave Persistent off. Place `obj_player` in that room (required; the player object is not persistent). Do **not** place a second `obj_game_controller` (the existing one is persistent and will arrive with the party).
+2. In `game/scripts/scr_game_constants.gml`, change `#macro TOWN_RESPAWN_ROOM` to the new room asset (e.g. `rm_town`).
+3. Place one `obj_respawn_point` in open space (inn, shrine, etc.), or set `TOWN_RESPAWN_X` / `TOWN_RESPAWN_Y` to a known open position in that room instead.
+4. Re-run the defeat cases in docs/TEST_PLAN.md.
 
 ## Why a battle room instead of an overlay?
 Chosen for this prototype (open question in DECISIONS_AND_OPEN_QUESTIONS.md): a separate room keeps overworld objects frozen, prevents overworld input during battle by construction, and makes the "save position → return" step explicit. Cost: the overworld room is rebuilt on return, so any overworld state that must survive a battle has to live in `global.game` (as `cleared_encounters` does).

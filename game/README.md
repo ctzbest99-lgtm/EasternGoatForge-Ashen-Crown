@@ -15,11 +15,11 @@ Snippets are prototypes, not verified production code. Compile in the selected G
 ### Scripts (Asset Browser → Create → Script; name must match exactly)
 | Script | Purpose |
 |---|---|
-| `scr_game_constants` | Macros (`OVERWORLD_ROOM`, `BATTLE_ROOM`, `DEBUG_SHOW_TRIGGERS`, `GUARD_DAMAGE_MULTIPLIER`) and `enum BATTLE_STATE` |
+| `scr_game_constants` | Macros (`OVERWORLD_ROOM`, `BATTLE_ROOM`, `TOWN_RESPAWN_ROOM` / `_X` / `_Y`, `DEBUG_SHOW_TRIGGERS`, `GUARD_DAMAGE_MULTIPLIER`) and `enum BATTLE_STATE` |
 | `scr_game_state` | `global.game` struct, `scr_input_locked()`, `scr_input_block()` |
 | `scr_input` | Prototype key mapping: confirm, cancel, menu up/down |
 | `scr_dialogue` | `scr_dialogue_open(lines, speaker)` |
-| `scr_encounter` | `scr_encounter_start()` and `scr_battle_finish()` (overworld ↔ battle hand-off) |
+| `scr_encounter` | `scr_encounter_start()`, `scr_battle_finish()`, `scr_apply_town_respawn()`, `scr_town_wake_up_dialogue()` (overworld ↔ battle hand-off) |
 | `scr_battle_actors` | Actor structs, placeholder party, party helpers |
 | `scr_battle_math` | Damage, HP clamp, Guard reduction (existing file, `scr_apply_guard` added) |
 | `scr_enemy_database` | Bandit / Fallen Knight data (existing, unchanged) |
@@ -34,6 +34,7 @@ Snippets are prototypes, not verified production code. Compile in the selected G
 | `obj_dialogue_box` | none | — | `Create.gml` → Create; `Step.gml` → Step ▸ Step; `Draw_GUI.gml` → Draw ▸ Draw GUI; `Clean_Up.gml` → Clean Up |
 | `obj_encounter_trigger` | `spr_encounter_trigger_placeholder` | No parent (must **not** be `obj_solid`) | `Create.gml` → Create; `Room_Start.gml` → Other ▸ Room Start; `Step.gml` → Step ▸ Step |
 | `obj_battle_controller` | none | — | `Create.gml` → Create; `Step.gml` → Step ▸ Step; `Draw_GUI.gml` → Draw ▸ Draw GUI |
+| `obj_respawn_point` | optional `spr_respawn_point_placeholder` | — | `Create.gml` → Create (see `obj_respawn_point/README.md`) |
 
 `obj_dialogue_box` and `obj_battle_controller` draw only in Draw GUI. Adding a Draw GUI event does not disable default sprite drawing, but neither object has a sprite, so nothing else is drawn.
 
@@ -47,8 +48,8 @@ Snippets are prototypes, not verified production code. Compile in the selected G
 3. Facing an `obj_interactable` and pressing confirm calls its `interact()` method → `scr_dialogue_open()` → `obj_dialogue_box`. Closing the box blocks overworld input for one extra frame so the same key press cannot reopen it.
 4. Walking onto an armed `obj_encounter_trigger` calls `scr_encounter_start()`: saves the return point, sets `battle_active`, goes to `rm_battle_test`.
 5. `obj_battle_controller` runs the `BATTLE_STATE` machine: INTRO → ROUND_START → COMMAND_SELECT → PLAYER_ACTION → ENEMY_TURN → (ROUND_START | VICTORY | DEFEAT) → EXIT. Every message waits for a confirm press.
-6. EXIT calls `scr_battle_finish()` once: remembers a victory by `encounter_id`, clears `battle_active`, sets `transition_active`, returns to the saved room. `obj_game_controller`'s Room Start restores the player's position/facing and releases the lock.
-7. A won trigger destroys itself on Room Start. A trigger you are standing on after a defeat stays disarmed until you step off it.
+6. EXIT calls `scr_battle_finish()` once: remembers a victory by `encounter_id`, clears `battle_active`, sets `transition_active`. Victory and error return to the saved room; defeat restores party HP, keeps earned XP/gold, and goes to `TOWN_RESPAWN_ROOM`. `obj_game_controller`'s Room Start then either restores the pre-battle position/facing, or (on defeat) places the player at `obj_respawn_point` / `TOWN_RESPAWN_X,Y` and opens the wake-up dialogue.
+7. A won trigger destroys itself on Room Start. A lost encounter is not cleared, so walking back onto that trigger starts the fight again.
 
 ## Default controls (prototype; final mapping is an open question)
 - Move: arrow keys (diagonal normalized, as before).

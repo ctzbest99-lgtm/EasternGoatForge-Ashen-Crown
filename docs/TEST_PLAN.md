@@ -13,7 +13,7 @@ Run tests in GameMaker after integration; static review is not a substitute for 
 - [ ] Encounter starts once only.
 - [ ] Attack resolves once per confirmation; Guard works and resets as documented.
 - [ ] HP stays between zero and max HP; defeated actors cannot act.
-- [ ] Rewards are granted once; victory and defeat return to valid states.
+- [ ] Rewards are granted once; victory returns to the pre-battle position; defeat wakes the party up in town with HP restored.
 - [ ] Unknown enemy ID is handled safely.
 
 ## Exploration prototype (roadmap step 2)
@@ -40,11 +40,12 @@ Setup per game/rooms/ROOM_SETUP.md. Controls: arrows move, Z/Enter/Space confirm
 - [ ] B7 HP never shows below 0 or above max for enemy or party.
 - [ ] B8 Victory: message shows XP/gold; `global.game.xp`/`gold` increase once (check in debugger); return to the exact pre-battle position and facing.
 - [ ] B9 After victory the trigger is gone, and stays gone after a second battle elsewhere (cleared_encounters).
-- [ ] B10 Defeat (e.g. set Kael's attack to 0 in scr_party_create_default, or fight Fallen Knight while guarding only): defeat message, HP restored, return to the pre-battle position; the trigger does not fire again until you step off and back on.
-- [ ] B11 No input works in the overworld during the frame of return (holding Z does not open dialogue instantly).
+- [ ] B10 Defeat (e.g. set Kael's attack to 0 in scr_party_create_default, or fight Fallen Knight while guarding only): battle shows "The party has fallen..."; after confirm, the party appears in `TOWN_RESPAWN_ROOM` (`rm_overworld` until a town room exists) at `obj_respawn_point` if one is placed, otherwise at `TOWN_RESPAWN_X` / `TOWN_RESPAWN_Y` (320, 180) — not at the pre-battle position. Party HP is full. A placeholder wake-up dialogue opens; closing it returns overworld control. The same confirm that dismissed the defeat message must not also close the wake-up line.
+- [ ] B11 No input works in the overworld during the frame of return from a victory (holding Z does not open dialogue instantly). After a defeat, the wake-up box is already open; holding Z must not skip or instantly close it if that press was the battle confirm (see B10).
 - [ ] B12 Unknown enemy: set a trigger's `enemy_id = "nope"` → error message, safe return, game keeps running, no crash.
 - [ ] B13 Running rm_battle_test directly (no pending battle) fights a Bandit and logs "[battle] No pending battle".
 - [ ] B14 X/Backspace in the command menu does nothing harmful with a one-member party.
+- [ ] B15 After a defeat, previously earned XP/gold are unchanged (no new rewards and no deduction; check in the debugger). The encounter trigger is not cleared: walking back onto it starts the fight again.
 
 ## Menus and saves
 - [ ] Selection and cancel/back work.

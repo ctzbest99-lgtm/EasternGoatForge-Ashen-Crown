@@ -87,8 +87,8 @@ switch (state) {
 
     case BATTLE_STATE.DEFEAT:
         battle_result = "defeat";
-        scr_party_restore_all(party); // prototype rule only; real defeat handling is an open question
-        queue_message("The party has fallen... [Prototype: HP restored, returning to the map.]", BATTLE_STATE.EXIT);
+        // HP restore and town respawn happen in scr_battle_finish(); keep 0 HP on this message.
+        queue_message("The party has fallen...", BATTLE_STATE.EXIT);
         break;
 
     case BATTLE_STATE.ERROR:

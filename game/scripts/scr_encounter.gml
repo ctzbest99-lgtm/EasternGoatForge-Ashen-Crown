@@ -23,8 +23,11 @@ function scr_encounter_start(_enemy_id, _encounter_id = "") {
     return true;
 }
 
-/// End the battle and return to the saved overworld position. Called once by obj_battle_controller.
+/// End the battle and leave the battle room. Called once by obj_battle_controller.
 /// _result: "victory" | "defeat" | "error"
+/// Victory and error return to the saved overworld position. Defeat restores party
+/// HP, keeps earned XP/gold, and sends the party to the town respawn point
+/// (TOWN_RESPAWN_ROOM, currently rm_overworld until a town room exists).
 function scr_battle_finish(_result) {
     scr_game_state_init();
     var _g = global.game;
@@ -35,14 +38,53 @@ function scr_battle_finish(_result) {
     }
     scr_party_clear_guard(_g.party);
 
+    if (_result == "defeat") {
+        scr_party_restore_all(_g.party);
+    }
+
     _g.last_battle_result = _result;
     _g.pending_battle = undefined;
     _g.battle_active = false;
     _g.transition_active = true; // cleared by obj_game_controller : Room Start after restoring the player
 
     var _target_room = OVERWORLD_ROOM;
-    if (is_struct(_g.return_point) && room_exists(_g.return_point.room_id)) {
+    if (_result == "defeat") {
+        _g.return_point = undefined; // do not snap back to the encounter
+        if (room_exists(TOWN_RESPAWN_ROOM)) _target_room = TOWN_RESPAWN_ROOM;
+    } else if (is_struct(_g.return_point) && room_exists(_g.return_point.room_id)) {
         _target_room = _g.return_point.room_id;
     }
     room_goto(_target_room);
+}
+
+/// Place the player at obj_respawn_point if one exists in the current room,
+/// otherwise at TOWN_RESPAWN_X / TOWN_RESPAWN_Y. Facing defaults to down
+/// (0, 1) unless the marker sets facing_x / facing_y.
+function scr_apply_town_respawn() {
+    if (!instance_exists(obj_player)) return;
+
+    var _px = TOWN_RESPAWN_X;
+    var _py = TOWN_RESPAWN_Y;
+    var _fx = 0;
+    var _fy = 1;
+
+    if (instance_exists(obj_respawn_point)) {
+        var _marker = instance_find(obj_respawn_point, 0);
+        _px = _marker.x;
+        _py = _marker.y;
+        if (variable_instance_exists(_marker, "facing_x")) _fx = _marker.facing_x;
+        if (variable_instance_exists(_marker, "facing_y")) _fy = _marker.facing_y;
+    }
+
+    with (obj_player) {
+        x = _px;
+        y = _py;
+        facing_x = _fx;
+        facing_y = _fy;
+    }
+}
+
+/// Short placeholder line shown after a defeat respawn. Final wording is not approved.
+function scr_town_wake_up_dialogue() {
+    scr_dialogue_open("[Placeholder] You wake up back in town.");
 }

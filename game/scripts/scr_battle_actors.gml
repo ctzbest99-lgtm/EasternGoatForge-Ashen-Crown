@@ -57,7 +57,7 @@ function scr_party_clear_guard(_party) {
     for (var _i = 0; _i < array_length(_party); _i++) _party[_i].is_guarding = false;
 }
 
-/// Prototype defeat rule: restore everyone to full HP (see open questions).
+/// Restore everyone to full HP and clear Guard. Used after a defeat (owner decision 2026-11-14).
 function scr_party_restore_all(_party) {
     for (var _i = 0; _i < array_length(_party); _i++) {
         _party[_i].hp = _party[_i].max_hp;
