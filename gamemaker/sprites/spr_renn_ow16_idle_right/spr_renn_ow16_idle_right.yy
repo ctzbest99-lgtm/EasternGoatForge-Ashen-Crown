@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"767313b9-71c9-419a-b5c4-218c0a8c9ba2",
-      "name":"767313b9-71c9-419a-b5c4-218c0a8c9ba2",
+      "%Name":"850185c6-60f0-40f5-9b1e-a59ce8c0d26e",
+      "name":"850185c6-60f0-40f5-9b1e-a59ce8c0d26e",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"d314ad7e-3849-42db-9801-f76f3b5e89d4",
+      "%Name":"acb0278d-9b2f-450e-959c-14a032a776f5",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"d314ad7e-3849-42db-9801-f76f3b5e89d4",
+      "name":"acb0278d-9b2f-450e-959c-14a032a776f5",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"767313b9-71c9-419a-b5c4-218c0a8c9ba2",
+                    "name":"850185c6-60f0-40f5-9b1e-a59ce8c0d26e",
                     "path":"sprites/spr_renn_ow16_idle_right/spr_renn_ow16_idle_right.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"4e9dfca8-911a-420c-ae08-d5339200d4f2",
+              "id":"8c65cdfe-dd32-4aa6-aa24-3da7e37a4af6",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

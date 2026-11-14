@@ -14,22 +14,22 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"ad374525-0c11-45b5-972f-8d2b518c996b",
-      "name":"ad374525-0c11-45b5-972f-8d2b518c996b",
+      "%Name":"c91e48e7-caf1-4175-807f-fee3c1a96b6f",
+      "name":"c91e48e7-caf1-4175-807f-fee3c1a96b6f",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"0824e77d-c756-406c-ade9-44eb3becadb1",
-      "name":"0824e77d-c756-406c-ade9-44eb3becadb1",
+      "%Name":"4be9871f-3e75-4091-bc58-eaf0af9d8b98",
+      "name":"4be9871f-3e75-4091-bc58-eaf0af9d8b98",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"25f4413f-713e-4a84-9643-3a4a1c14764b",
-      "name":"25f4413f-713e-4a84-9643-3a4a1c14764b",
+      "%Name":"5425f39a-c3e7-4dfc-8795-2838a9df99fa",
+      "name":"5425f39a-c3e7-4dfc-8795-2838a9df99fa",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -41,11 +41,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"44fc8325-9123-4b8a-84b9-b0f1ec7f2fe6",
+      "%Name":"95008132-14b0-4035-bf45-a74f4e83f0a8",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"44fc8325-9123-4b8a-84b9-b0f1ec7f2fe6",
+      "name":"95008132-14b0-4035-bf45-a74f4e83f0a8",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -118,7 +118,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ad374525-0c11-45b5-972f-8d2b518c996b",
+                    "name":"c91e48e7-caf1-4175-807f-fee3c1a96b6f",
                     "path":"sprites/spr_crown_crossbowman_bolt_strip3/spr_crown_crossbowman_bolt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -126,7 +126,7 @@
                 },
               },
               "Disabled":false,
-              "id":"e8704600-fdbf-471f-abb8-8ae4b97d16bd",
+              "id":"a5fd08c7-b53e-4a19-9ab2-2dda0c78d693",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -140,7 +140,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0824e77d-c756-406c-ade9-44eb3becadb1",
+                    "name":"4be9871f-3e75-4091-bc58-eaf0af9d8b98",
                     "path":"sprites/spr_crown_crossbowman_bolt_strip3/spr_crown_crossbowman_bolt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -148,7 +148,7 @@
                 },
               },
               "Disabled":false,
-              "id":"8de08ce9-086c-44d7-b34f-f6cb5802941d",
+              "id":"a563e8bd-3ccb-4112-850c-36c01681a6ab",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -162,7 +162,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"25f4413f-713e-4a84-9643-3a4a1c14764b",
+                    "name":"5425f39a-c3e7-4dfc-8795-2838a9df99fa",
                     "path":"sprites/spr_crown_crossbowman_bolt_strip3/spr_crown_crossbowman_bolt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -170,7 +170,7 @@
                 },
               },
               "Disabled":false,
-              "id":"3efd28a8-0f60-4de6-866e-f01b3d605dfb",
+              "id":"51110afe-57bf-40d2-b10e-9a31ddd9ced7",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,

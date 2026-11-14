@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"24e3d18b-0019-4114-8030-203b38aaca8e",
-      "name":"24e3d18b-0019-4114-8030-203b38aaca8e",
+      "%Name":"314ad9fa-9f6d-46b5-8d84-46282350a649",
+      "name":"314ad9fa-9f6d-46b5-8d84-46282350a649",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"e337aa90-a281-4cef-a4f9-aa37b9355048",
+      "%Name":"bc88bd2d-b223-4fea-a0ea-48f3e3ef0dcd",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"e337aa90-a281-4cef-a4f9-aa37b9355048",
+      "name":"bc88bd2d-b223-4fea-a0ea-48f3e3ef0dcd",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"24e3d18b-0019-4114-8030-203b38aaca8e",
+                    "name":"314ad9fa-9f6d-46b5-8d84-46282350a649",
                     "path":"sprites/spr_crown_sergeant_ow16_idle_left/spr_crown_sergeant_ow16_idle_left.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"0e0172dc-fccc-4e71-94de-65736ba1fd22",
+              "id":"b3dc3678-4f29-4119-b9cf-598b8be4f71a",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"d24127ef-0e0e-4cb2-a043-64a0a54c711d",
-      "name":"d24127ef-0e0e-4cb2-a043-64a0a54c711d",
+      "%Name":"82235996-9480-4a62-8fea-64dd6d903f67",
+      "name":"82235996-9480-4a62-8fea-64dd6d903f67",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"d58abc19-b416-4e5b-b94b-f808df372e4a",
+      "%Name":"b8462c1e-b8a9-45d9-9424-55bfc9190d3e",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"d58abc19-b416-4e5b-b94b-f808df372e4a",
+      "name":"b8462c1e-b8a9-45d9-9424-55bfc9190d3e",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"d24127ef-0e0e-4cb2-a043-64a0a54c711d",
+                    "name":"82235996-9480-4a62-8fea-64dd6d903f67",
                     "path":"sprites/spr_item_mira_pendant_disabled/spr_item_mira_pendant_disabled.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"6593c08e-aaaf-4d5e-b02b-58ad64f83e78",
+              "id":"9ded4855-29a8-4466-8091-7fa94f23fbc6",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

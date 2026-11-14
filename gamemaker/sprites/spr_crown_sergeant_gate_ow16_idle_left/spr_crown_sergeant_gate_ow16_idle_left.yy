@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"0dc3a0d3-3d15-4b13-b675-7be9bf8b98ba",
-      "name":"0dc3a0d3-3d15-4b13-b675-7be9bf8b98ba",
+      "%Name":"8b4008a8-9f98-4046-8cc0-e307c28bedda",
+      "name":"8b4008a8-9f98-4046-8cc0-e307c28bedda",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"79741512-bd2a-4c18-a572-f8e63a3446b3",
+      "%Name":"9e98d62c-ea90-4aeb-b2f1-5c97debd4314",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"79741512-bd2a-4c18-a572-f8e63a3446b3",
+      "name":"9e98d62c-ea90-4aeb-b2f1-5c97debd4314",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0dc3a0d3-3d15-4b13-b675-7be9bf8b98ba",
+                    "name":"8b4008a8-9f98-4046-8cc0-e307c28bedda",
                     "path":"sprites/spr_crown_sergeant_gate_ow16_idle_left/spr_crown_sergeant_gate_ow16_idle_left.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"e4e924a9-9322-4d41-8aca-1ee36a08a088",
+              "id":"cbe20c82-837d-491b-93f9-e6999b3f6980",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

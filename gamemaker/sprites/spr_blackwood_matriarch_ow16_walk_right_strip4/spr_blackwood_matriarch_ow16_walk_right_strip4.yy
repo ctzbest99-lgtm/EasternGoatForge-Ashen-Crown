@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"2a0ef81b-b084-412e-8b72-f13220a1ff82",
-      "name":"2a0ef81b-b084-412e-8b72-f13220a1ff82",
+      "%Name":"e6660863-ca11-492c-8172-5dd3b4be64cd",
+      "name":"e6660863-ca11-492c-8172-5dd3b4be64cd",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"bac677ca-9293-4b4a-97b9-e393d67199d5",
-      "name":"bac677ca-9293-4b4a-97b9-e393d67199d5",
+      "%Name":"45633867-7ea0-4ba8-b552-40c30ea93d29",
+      "name":"45633867-7ea0-4ba8-b552-40c30ea93d29",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"c39121f6-3794-44b5-93aa-e051f1be1772",
-      "name":"c39121f6-3794-44b5-93aa-e051f1be1772",
+      "%Name":"6edc235c-c54e-4f52-a364-559693e0d132",
+      "name":"6edc235c-c54e-4f52-a364-559693e0d132",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"d948a472-041d-4d60-857d-d93bfd5a9cc5",
-      "name":"d948a472-041d-4d60-857d-d93bfd5a9cc5",
+      "%Name":"4cdaabdc-c75b-4753-bf9c-6d8e6cd56f17",
+      "name":"4cdaabdc-c75b-4753-bf9c-6d8e6cd56f17",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"3d34e95f-d1c7-493f-b12e-8268827b96a6",
+      "%Name":"2d2650d1-cf08-43da-a878-4e41b577fba5",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"3d34e95f-d1c7-493f-b12e-8268827b96a6",
+      "name":"2d2650d1-cf08-43da-a878-4e41b577fba5",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"2a0ef81b-b084-412e-8b72-f13220a1ff82",
+                    "name":"e6660863-ca11-492c-8172-5dd3b4be64cd",
                     "path":"sprites/spr_blackwood_matriarch_ow16_walk_right_strip4/spr_blackwood_matriarch_ow16_walk_right_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"898a4959-adbe-46d5-a36c-2007db15bb89",
+              "id":"e704815e-6dd6-451d-a03b-168d4ae0eb6f",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"bac677ca-9293-4b4a-97b9-e393d67199d5",
+                    "name":"45633867-7ea0-4ba8-b552-40c30ea93d29",
                     "path":"sprites/spr_blackwood_matriarch_ow16_walk_right_strip4/spr_blackwood_matriarch_ow16_walk_right_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"00e7fd3f-8d55-4ccc-b6fe-55b3a1c1526a",
+              "id":"6aface7b-4c01-4794-996a-7bc3e21ea755",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"c39121f6-3794-44b5-93aa-e051f1be1772",
+                    "name":"6edc235c-c54e-4f52-a364-559693e0d132",
                     "path":"sprites/spr_blackwood_matriarch_ow16_walk_right_strip4/spr_blackwood_matriarch_ow16_walk_right_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"ede7d1f9-9f5d-43c1-8c5a-ef99715ec291",
+              "id":"23c6da8f-3f47-4c7a-8414-2ab5526ef1a2",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"d948a472-041d-4d60-857d-d93bfd5a9cc5",
+                    "name":"4cdaabdc-c75b-4753-bf9c-6d8e6cd56f17",
                     "path":"sprites/spr_blackwood_matriarch_ow16_walk_right_strip4/spr_blackwood_matriarch_ow16_walk_right_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"96ff73fd-682b-4d8e-92fc-ae0fcc20194e",
+              "id":"e48df105-eb90-4216-a30b-0364e2ca014e",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

@@ -14,15 +14,15 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"bf5931e8-ed7e-42ac-ac37-a447e155b020",
-      "name":"bf5931e8-ed7e-42ac-ac37-a447e155b020",
+      "%Name":"91dee6e1-2e9e-45ac-a576-a45eba39df2d",
+      "name":"91dee6e1-2e9e-45ac-a576-a45eba39df2d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"1e0d4d17-0542-4e14-a6d7-5dc60a6f90ba",
-      "name":"1e0d4d17-0542-4e14-a6d7-5dc60a6f90ba",
+      "%Name":"969cf686-933c-4c1e-b314-3112f520151b",
+      "name":"969cf686-933c-4c1e-b314-3112f520151b",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -34,11 +34,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"f0e8cd21-d481-4abc-b590-b9836c132832",
+      "%Name":"739caafe-d9e0-4dc1-81b9-df2bd91437dd",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"f0e8cd21-d481-4abc-b590-b9836c132832",
+      "name":"739caafe-d9e0-4dc1-81b9-df2bd91437dd",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -111,7 +111,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"bf5931e8-ed7e-42ac-ac37-a447e155b020",
+                    "name":"91dee6e1-2e9e-45ac-a576-a45eba39df2d",
                     "path":"sprites/spr_ui_toggle_strip2/spr_ui_toggle_strip2.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -119,7 +119,7 @@
                 },
               },
               "Disabled":false,
-              "id":"ff6d8285-3706-4a21-b579-1a569e568246",
+              "id":"458506ef-c3f5-485b-908e-a2725448cdfc",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -133,7 +133,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"1e0d4d17-0542-4e14-a6d7-5dc60a6f90ba",
+                    "name":"969cf686-933c-4c1e-b314-3112f520151b",
                     "path":"sprites/spr_ui_toggle_strip2/spr_ui_toggle_strip2.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -141,7 +141,7 @@
                 },
               },
               "Disabled":false,
-              "id":"304dc143-0261-4cbe-aabe-1ca0b4663fb9",
+              "id":"3266573b-44d1-4b9f-975c-41bab6b32791",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,

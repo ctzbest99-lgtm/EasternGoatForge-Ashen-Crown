@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"94aa1904-7666-464d-993c-7770bd0882b5",
-      "name":"94aa1904-7666-464d-993c-7770bd0882b5",
+      "%Name":"ac1bcad0-d5e0-440b-988c-dab67a78d2bf",
+      "name":"ac1bcad0-d5e0-440b-988c-dab67a78d2bf",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"7c54ff54-f823-463c-b638-7334df2d568c",
-      "name":"7c54ff54-f823-463c-b638-7334df2d568c",
+      "%Name":"555ec618-4467-4f9a-8d33-34876d26ad0f",
+      "name":"555ec618-4467-4f9a-8d33-34876d26ad0f",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"99c06193-a793-4efd-a70a-0076d359b8d9",
-      "name":"99c06193-a793-4efd-a70a-0076d359b8d9",
+      "%Name":"a497368e-4538-4123-a184-9c93cdae76cf",
+      "name":"a497368e-4538-4123-a184-9c93cdae76cf",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"c47f3359-4144-45f9-bb72-dd7bddfa2fa5",
-      "name":"c47f3359-4144-45f9-bb72-dd7bddfa2fa5",
+      "%Name":"64b2a157-7cfe-4574-ab16-44f641697dc0",
+      "name":"64b2a157-7cfe-4574-ab16-44f641697dc0",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"d9380ab7-4ded-406e-a348-2254ff81d898",
-      "name":"d9380ab7-4ded-406e-a348-2254ff81d898",
+      "%Name":"b0c80e71-8a89-47f6-8385-a1e5c0ca7f12",
+      "name":"b0c80e71-8a89-47f6-8385-a1e5c0ca7f12",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"01ed8001-3056-4392-abaf-b7e55632f9a3",
-      "name":"01ed8001-3056-4392-abaf-b7e55632f9a3",
+      "%Name":"c2973401-af74-4b5f-8b78-5cf49525238d",
+      "name":"c2973401-af74-4b5f-8b78-5cf49525238d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"7cb330de-e7ec-4cc3-9822-f5fef658dec9",
+      "%Name":"437a1d38-1a01-446f-83f3-75092b10a1c2",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"7cb330de-e7ec-4cc3-9822-f5fef658dec9",
+      "name":"437a1d38-1a01-446f-83f3-75092b10a1c2",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"94aa1904-7666-464d-993c-7770bd0882b5",
+                    "name":"ac1bcad0-d5e0-440b-988c-dab67a78d2bf",
                     "path":"sprites/spr_ward_sentinel_death_strip6/spr_ward_sentinel_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"e46d1b3c-87d0-4372-8e1f-a6130926bd24",
+              "id":"9890f86e-28e0-453e-ae4b-b9caf6526cb8",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"7c54ff54-f823-463c-b638-7334df2d568c",
+                    "name":"555ec618-4467-4f9a-8d33-34876d26ad0f",
                     "path":"sprites/spr_ward_sentinel_death_strip6/spr_ward_sentinel_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"655c78e8-a48b-467c-9b5d-751251af279d",
+              "id":"b46b483d-44e3-46a9-9609-3feb94ea23ea",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"99c06193-a793-4efd-a70a-0076d359b8d9",
+                    "name":"a497368e-4538-4123-a184-9c93cdae76cf",
                     "path":"sprites/spr_ward_sentinel_death_strip6/spr_ward_sentinel_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"fbe09302-ffee-420d-a9e2-5b1a5fe45394",
+              "id":"e6c02270-2b79-454f-8e0c-556372e54990",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"c47f3359-4144-45f9-bb72-dd7bddfa2fa5",
+                    "name":"64b2a157-7cfe-4574-ab16-44f641697dc0",
                     "path":"sprites/spr_ward_sentinel_death_strip6/spr_ward_sentinel_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"3296e536-0e7e-4997-9c03-ab36f29e9e62",
+              "id":"2c3a8bde-5728-4b38-bc0c-8115d9da7170",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"d9380ab7-4ded-406e-a348-2254ff81d898",
+                    "name":"b0c80e71-8a89-47f6-8385-a1e5c0ca7f12",
                     "path":"sprites/spr_ward_sentinel_death_strip6/spr_ward_sentinel_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f282fb92-49e0-46c6-94d0-822246e3e518",
+              "id":"1fbdab74-1d6a-4c4b-8db7-0d69d43d6afa",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"01ed8001-3056-4392-abaf-b7e55632f9a3",
+                    "name":"c2973401-af74-4b5f-8b78-5cf49525238d",
                     "path":"sprites/spr_ward_sentinel_death_strip6/spr_ward_sentinel_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"cd82b767-6873-43a5-ab55-7420d30f8531",
+              "id":"8363c2b5-e4e3-437d-8cc9-8398111239aa",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

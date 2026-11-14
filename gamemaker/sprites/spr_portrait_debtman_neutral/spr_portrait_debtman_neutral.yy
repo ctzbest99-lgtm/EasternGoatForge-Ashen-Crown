@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"00ddfa35-c52f-4bf1-8932-2d1e57e33c57",
-      "name":"00ddfa35-c52f-4bf1-8932-2d1e57e33c57",
+      "%Name":"49f004a3-31a2-44d6-bd29-14dd2329cc57",
+      "name":"49f004a3-31a2-44d6-bd29-14dd2329cc57",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"5a695bdf-1218-40e5-b48f-16f3aa8d4233",
+      "%Name":"8f8ef9d5-9b14-4143-8722-9b82e8771d3b",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"5a695bdf-1218-40e5-b48f-16f3aa8d4233",
+      "name":"8f8ef9d5-9b14-4143-8722-9b82e8771d3b",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"00ddfa35-c52f-4bf1-8932-2d1e57e33c57",
+                    "name":"49f004a3-31a2-44d6-bd29-14dd2329cc57",
                     "path":"sprites/spr_portrait_debtman_neutral/spr_portrait_debtman_neutral.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"ee086cf7-e1b8-49c5-9429-a4e313d4c274",
+              "id":"a28f7749-3256-4c72-b0be-2d76f7206d86",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

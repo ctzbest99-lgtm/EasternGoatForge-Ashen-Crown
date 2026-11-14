@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"0d3a49ad-9cd4-46e8-ade2-ddd072678313",
-      "name":"0d3a49ad-9cd4-46e8-ade2-ddd072678313",
+      "%Name":"1d150917-bdf8-478c-bda7-54e814049063",
+      "name":"1d150917-bdf8-478c-bda7-54e814049063",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"bb47c611-5ce9-43f3-906c-adbd4ce98adb",
-      "name":"bb47c611-5ce9-43f3-906c-adbd4ce98adb",
+      "%Name":"c2b0b798-85a9-4f86-9e7a-fca9b654c578",
+      "name":"c2b0b798-85a9-4f86-9e7a-fca9b654c578",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"b742af08-4ce5-4f33-9b14-741e9f60471e",
-      "name":"b742af08-4ce5-4f33-9b14-741e9f60471e",
+      "%Name":"e4ff148b-2295-4b36-9d00-0a598020bcd7",
+      "name":"e4ff148b-2295-4b36-9d00-0a598020bcd7",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"46ca5b83-8d85-425a-893a-039867aec025",
-      "name":"46ca5b83-8d85-425a-893a-039867aec025",
+      "%Name":"39eea98c-d5ec-4782-ad80-f350caecd85b",
+      "name":"39eea98c-d5ec-4782-ad80-f350caecd85b",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"96a3a8df-336a-4619-8f6f-002bb7eb5123",
-      "name":"96a3a8df-336a-4619-8f6f-002bb7eb5123",
+      "%Name":"16bfad63-34db-4e09-a7e9-73fdf1033b82",
+      "name":"16bfad63-34db-4e09-a7e9-73fdf1033b82",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"ced810ce-3104-402b-86ff-b5b40ac30aa5",
-      "name":"ced810ce-3104-402b-86ff-b5b40ac30aa5",
+      "%Name":"8509e835-c943-42f5-8a5d-68b69b2d4d18",
+      "name":"8509e835-c943-42f5-8a5d-68b69b2d4d18",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"13991d6b-ca1f-48bf-9b81-bb341f1d9cb2",
+      "%Name":"5a1c4e5d-96fe-4d36-a1db-0c5dd5b622a2",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"13991d6b-ca1f-48bf-9b81-bb341f1d9cb2",
+      "name":"5a1c4e5d-96fe-4d36-a1db-0c5dd5b622a2",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0d3a49ad-9cd4-46e8-ade2-ddd072678313",
+                    "name":"1d150917-bdf8-478c-bda7-54e814049063",
                     "path":"sprites/spr_lyra_attack_strip6/spr_lyra_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"43b19e01-3d6f-42e4-98fb-90b9f150aad2",
+              "id":"6ca38187-51c2-402b-b39d-5efc29642e46",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"bb47c611-5ce9-43f3-906c-adbd4ce98adb",
+                    "name":"c2b0b798-85a9-4f86-9e7a-fca9b654c578",
                     "path":"sprites/spr_lyra_attack_strip6/spr_lyra_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"2a7b6a54-8a28-4470-ae00-0bdd7c294d03",
+              "id":"0a71bfb7-c795-47a9-9a2a-b855205ab43a",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"b742af08-4ce5-4f33-9b14-741e9f60471e",
+                    "name":"e4ff148b-2295-4b36-9d00-0a598020bcd7",
                     "path":"sprites/spr_lyra_attack_strip6/spr_lyra_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d988dae9-c455-43cc-a11d-9bcf1f1d75b4",
+              "id":"4f34d28e-dafb-410d-90f9-5ca0bca5f631",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"46ca5b83-8d85-425a-893a-039867aec025",
+                    "name":"39eea98c-d5ec-4782-ad80-f350caecd85b",
                     "path":"sprites/spr_lyra_attack_strip6/spr_lyra_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"ba686819-1fa5-4b23-a3a4-dd10e50c8481",
+              "id":"650507c3-f99c-47f9-91cd-86df44b9c052",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"96a3a8df-336a-4619-8f6f-002bb7eb5123",
+                    "name":"16bfad63-34db-4e09-a7e9-73fdf1033b82",
                     "path":"sprites/spr_lyra_attack_strip6/spr_lyra_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"42563b92-1413-451a-90b6-24ab379513eb",
+              "id":"d613329c-e8d9-4ea0-96be-e1c8d1060d51",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ced810ce-3104-402b-86ff-b5b40ac30aa5",
+                    "name":"8509e835-c943-42f5-8a5d-68b69b2d4d18",
                     "path":"sprites/spr_lyra_attack_strip6/spr_lyra_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"b1d12bd3-259a-4585-a467-0dbf2eead222",
+              "id":"c1755bc7-de4d-43b8-8605-b06833f58c83",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

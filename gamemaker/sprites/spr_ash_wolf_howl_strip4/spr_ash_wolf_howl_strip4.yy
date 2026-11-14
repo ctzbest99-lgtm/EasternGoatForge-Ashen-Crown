@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"12c05614-7583-4bc0-8504-08b3a2842251",
-      "name":"12c05614-7583-4bc0-8504-08b3a2842251",
+      "%Name":"7eca4dd9-9cc3-44e5-b54b-bfe2eaf91777",
+      "name":"7eca4dd9-9cc3-44e5-b54b-bfe2eaf91777",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"cea4561b-fd20-4e8d-b3ae-e30c078ccb59",
-      "name":"cea4561b-fd20-4e8d-b3ae-e30c078ccb59",
+      "%Name":"b108616b-b34d-422f-9f58-bd963e5beb46",
+      "name":"b108616b-b34d-422f-9f58-bd963e5beb46",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"f1b3c316-9112-420f-afc4-9f105dc2236a",
-      "name":"f1b3c316-9112-420f-afc4-9f105dc2236a",
+      "%Name":"4c32303a-e7dd-42da-8770-503bacb3afb3",
+      "name":"4c32303a-e7dd-42da-8770-503bacb3afb3",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"660caf51-6f2b-4f6e-86a6-0f5a45bd8e94",
-      "name":"660caf51-6f2b-4f6e-86a6-0f5a45bd8e94",
+      "%Name":"eeec15c2-f8e5-41ca-9dca-dcc543507741",
+      "name":"eeec15c2-f8e5-41ca-9dca-dcc543507741",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"e2b5d367-a03e-4ca5-ad86-16df39822b25",
+      "%Name":"b31fb6b5-3fda-45a6-a8c8-d7ef5f427f0c",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"e2b5d367-a03e-4ca5-ad86-16df39822b25",
+      "name":"b31fb6b5-3fda-45a6-a8c8-d7ef5f427f0c",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"12c05614-7583-4bc0-8504-08b3a2842251",
+                    "name":"7eca4dd9-9cc3-44e5-b54b-bfe2eaf91777",
                     "path":"sprites/spr_ash_wolf_howl_strip4/spr_ash_wolf_howl_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d24441a6-3ced-4600-9b19-5a24c4074263",
+              "id":"d4d1c96f-18f4-4f19-a9a7-b55fb96dc876",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"cea4561b-fd20-4e8d-b3ae-e30c078ccb59",
+                    "name":"b108616b-b34d-422f-9f58-bd963e5beb46",
                     "path":"sprites/spr_ash_wolf_howl_strip4/spr_ash_wolf_howl_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f3462eb1-53b2-460c-9674-c1dac9bba43d",
+              "id":"fb7847eb-e73a-4318-81e4-b4710004435b",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"f1b3c316-9112-420f-afc4-9f105dc2236a",
+                    "name":"4c32303a-e7dd-42da-8770-503bacb3afb3",
                     "path":"sprites/spr_ash_wolf_howl_strip4/spr_ash_wolf_howl_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"453bebfe-461f-47d6-a1b0-9b0ecf2a8a2c",
+              "id":"4da52475-2f16-40b0-b129-1e1fa8f77ecf",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"660caf51-6f2b-4f6e-86a6-0f5a45bd8e94",
+                    "name":"eeec15c2-f8e5-41ca-9dca-dcc543507741",
                     "path":"sprites/spr_ash_wolf_howl_strip4/spr_ash_wolf_howl_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"b14baa6c-c061-46ac-8d2e-5e78372207f1",
+              "id":"b920fb7e-e3ad-4a52-b5c6-e23e1c5a316c",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

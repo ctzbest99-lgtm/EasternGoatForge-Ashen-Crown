@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"3c7bc4d7-eb9b-47ac-8335-3d07cdc514bf",
-      "name":"3c7bc4d7-eb9b-47ac-8335-3d07cdc514bf",
+      "%Name":"57ce4c6e-be88-4bd2-a6e8-3d0d6751006b",
+      "name":"57ce4c6e-be88-4bd2-a6e8-3d0d6751006b",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"2a163559-2b57-4486-b4b2-d62241f86a14",
+      "%Name":"d9a511e2-aae0-4f93-a896-5c4a50791258",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"2a163559-2b57-4486-b4b2-d62241f86a14",
+      "name":"d9a511e2-aae0-4f93-a896-5c4a50791258",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"3c7bc4d7-eb9b-47ac-8335-3d07cdc514bf",
+                    "name":"57ce4c6e-be88-4bd2-a6e8-3d0d6751006b",
                     "path":"sprites/spr_portrait_kael_determined/spr_portrait_kael_determined.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"7d0147d1-e432-4b9f-921c-85d226696bc8",
+              "id":"a725af25-857d-4412-ae28-0fe8a6daac9f",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

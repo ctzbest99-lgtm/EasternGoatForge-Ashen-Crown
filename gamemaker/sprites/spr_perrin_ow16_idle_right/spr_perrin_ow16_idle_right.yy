@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"37652efb-6091-44c2-8c3f-3aca1b6950c1",
-      "name":"37652efb-6091-44c2-8c3f-3aca1b6950c1",
+      "%Name":"3b88c4f3-0c12-4f00-a0fe-78a7cd4e1bbc",
+      "name":"3b88c4f3-0c12-4f00-a0fe-78a7cd4e1bbc",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"1c7594e0-575d-4f90-99a4-ef378cf881f9",
+      "%Name":"f1b12c05-1bcb-4f36-90d6-4f20c7861678",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"1c7594e0-575d-4f90-99a4-ef378cf881f9",
+      "name":"f1b12c05-1bcb-4f36-90d6-4f20c7861678",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"37652efb-6091-44c2-8c3f-3aca1b6950c1",
+                    "name":"3b88c4f3-0c12-4f00-a0fe-78a7cd4e1bbc",
                     "path":"sprites/spr_perrin_ow16_idle_right/spr_perrin_ow16_idle_right.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"01374e29-2459-4751-a98f-d067edf79f3e",
+              "id":"4ea233e3-1e17-4042-9053-2e04003b0309",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

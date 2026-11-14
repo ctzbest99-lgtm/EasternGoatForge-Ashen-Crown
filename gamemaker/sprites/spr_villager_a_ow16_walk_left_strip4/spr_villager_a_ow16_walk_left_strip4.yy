@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"6c4897e6-db28-4293-9ee3-481ac2918ca5",
-      "name":"6c4897e6-db28-4293-9ee3-481ac2918ca5",
+      "%Name":"536b3524-f2c9-43f3-9068-022a1e8249cd",
+      "name":"536b3524-f2c9-43f3-9068-022a1e8249cd",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"6aca9ae5-ae13-4d03-83fc-5bd319a0b224",
-      "name":"6aca9ae5-ae13-4d03-83fc-5bd319a0b224",
+      "%Name":"0411566f-50cc-402c-931d-57d8d3be659d",
+      "name":"0411566f-50cc-402c-931d-57d8d3be659d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"4a1f1962-33b0-4201-bfa9-967a3637edae",
-      "name":"4a1f1962-33b0-4201-bfa9-967a3637edae",
+      "%Name":"3073d6e0-e0cd-434d-9c2c-3b4095d71edb",
+      "name":"3073d6e0-e0cd-434d-9c2c-3b4095d71edb",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"cddf657e-12b4-4946-8185-1c39986ce6b4",
-      "name":"cddf657e-12b4-4946-8185-1c39986ce6b4",
+      "%Name":"2813c578-9ab3-40fa-b082-75a91e455d55",
+      "name":"2813c578-9ab3-40fa-b082-75a91e455d55",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"af7e2c45-a91a-4187-a0af-cad038223c8e",
+      "%Name":"927f0b03-8918-4076-a527-9f11e2cc9a38",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"af7e2c45-a91a-4187-a0af-cad038223c8e",
+      "name":"927f0b03-8918-4076-a527-9f11e2cc9a38",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"6c4897e6-db28-4293-9ee3-481ac2918ca5",
+                    "name":"536b3524-f2c9-43f3-9068-022a1e8249cd",
                     "path":"sprites/spr_villager_a_ow16_walk_left_strip4/spr_villager_a_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"e55902db-829f-4af8-b35e-43d8be744317",
+              "id":"b23579aa-9cba-4fee-8f74-f46f953fd8d3",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"6aca9ae5-ae13-4d03-83fc-5bd319a0b224",
+                    "name":"0411566f-50cc-402c-931d-57d8d3be659d",
                     "path":"sprites/spr_villager_a_ow16_walk_left_strip4/spr_villager_a_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"b5e615fc-1f86-4ebc-aba4-26fb82508045",
+              "id":"110df077-1d3a-4051-839e-7f6e1f1eb582",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"4a1f1962-33b0-4201-bfa9-967a3637edae",
+                    "name":"3073d6e0-e0cd-434d-9c2c-3b4095d71edb",
                     "path":"sprites/spr_villager_a_ow16_walk_left_strip4/spr_villager_a_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"0513b202-f6bf-4d30-aa63-bab43046a08d",
+              "id":"650549a6-5fe9-454a-aab7-62717443c7aa",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"cddf657e-12b4-4946-8185-1c39986ce6b4",
+                    "name":"2813c578-9ab3-40fa-b082-75a91e455d55",
                     "path":"sprites/spr_villager_a_ow16_walk_left_strip4/spr_villager_a_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"e79f5896-9ca7-4d3f-9bbc-38a47648a35f",
+              "id":"912c3f44-75a5-4ed7-9c7c-d6e9281a7674",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

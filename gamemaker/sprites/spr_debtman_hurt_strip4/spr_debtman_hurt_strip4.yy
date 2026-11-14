@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"83760bbc-01c7-421a-817f-aba9b60b59ff",
-      "name":"83760bbc-01c7-421a-817f-aba9b60b59ff",
+      "%Name":"43bfc3c0-89ce-412c-96c9-157ef2ae4563",
+      "name":"43bfc3c0-89ce-412c-96c9-157ef2ae4563",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"858b2e83-fa8e-41f9-8420-314c32696c37",
-      "name":"858b2e83-fa8e-41f9-8420-314c32696c37",
+      "%Name":"2e4bfb8e-3e64-4c64-b24e-e71adcfb22a1",
+      "name":"2e4bfb8e-3e64-4c64-b24e-e71adcfb22a1",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"926dc109-b8ff-4990-a21c-2cb665812c4f",
-      "name":"926dc109-b8ff-4990-a21c-2cb665812c4f",
+      "%Name":"f66bd236-37c0-48e8-ab5b-4e37bb9fda95",
+      "name":"f66bd236-37c0-48e8-ab5b-4e37bb9fda95",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"b8086a1b-c7fc-4036-87ec-6018b5735350",
-      "name":"b8086a1b-c7fc-4036-87ec-6018b5735350",
+      "%Name":"3fca533e-b312-4180-85f3-ceb7f95204bb",
+      "name":"3fca533e-b312-4180-85f3-ceb7f95204bb",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"dfcdcf62-96e4-44ba-8874-a94d050d8267",
+      "%Name":"6f8c01a8-c9f9-4e84-b677-5fa5cbc01f87",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"dfcdcf62-96e4-44ba-8874-a94d050d8267",
+      "name":"6f8c01a8-c9f9-4e84-b677-5fa5cbc01f87",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"83760bbc-01c7-421a-817f-aba9b60b59ff",
+                    "name":"43bfc3c0-89ce-412c-96c9-157ef2ae4563",
                     "path":"sprites/spr_debtman_hurt_strip4/spr_debtman_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"1eb325f9-6e1d-4567-8fb0-6b3358f4d516",
+              "id":"0824a95a-9af5-4128-ae39-b47664ac801e",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"858b2e83-fa8e-41f9-8420-314c32696c37",
+                    "name":"2e4bfb8e-3e64-4c64-b24e-e71adcfb22a1",
                     "path":"sprites/spr_debtman_hurt_strip4/spr_debtman_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"811239a8-43b3-4c8a-b4fe-f2de8921e4a4",
+              "id":"e0c6fe86-2234-420b-972a-e9f720145f47",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"926dc109-b8ff-4990-a21c-2cb665812c4f",
+                    "name":"f66bd236-37c0-48e8-ab5b-4e37bb9fda95",
                     "path":"sprites/spr_debtman_hurt_strip4/spr_debtman_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"4950b843-17ec-4685-8971-2323bb73fb15",
+              "id":"198679a9-f6e0-4fd7-a5ea-61eb64349f64",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"b8086a1b-c7fc-4036-87ec-6018b5735350",
+                    "name":"3fca533e-b312-4180-85f3-ceb7f95204bb",
                     "path":"sprites/spr_debtman_hurt_strip4/spr_debtman_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"2dbd0994-f0b0-4761-829d-498cbbd30940",
+              "id":"3957bf6f-f8bc-46fd-8f43-683045a3fe49",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"008c87ab-d4d8-4bc9-b5da-3e6e0d9d6a64",
-      "name":"008c87ab-d4d8-4bc9-b5da-3e6e0d9d6a64",
+      "%Name":"4e8a3b67-dc77-47ac-b8e0-46ff8b089aba",
+      "name":"4e8a3b67-dc77-47ac-b8e0-46ff8b089aba",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"76076c43-282e-4e46-a51f-7711fbc1e664",
+      "%Name":"71c421bc-cf14-4534-86a8-c81b7b465b2f",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"76076c43-282e-4e46-a51f-7711fbc1e664",
+      "name":"71c421bc-cf14-4534-86a8-c81b7b465b2f",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"008c87ab-d4d8-4bc9-b5da-3e6e0d9d6a64",
+                    "name":"4e8a3b67-dc77-47ac-b8e0-46ff8b089aba",
                     "path":"sprites/spr_dov_ow16_idle_up/spr_dov_ow16_idle_up.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"7a2bd967-9306-437d-a375-04bca3112bd9",
+              "id":"031581a3-14c7-4f00-bc82-58d262280f36",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

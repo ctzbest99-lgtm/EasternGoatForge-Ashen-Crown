@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"b6dbac89-a7d8-4cb9-b050-38793a2d7c04",
-      "name":"b6dbac89-a7d8-4cb9-b050-38793a2d7c04",
+      "%Name":"92bb8768-3c9e-4001-a038-a30c79543b19",
+      "name":"92bb8768-3c9e-4001-a038-a30c79543b19",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"34140079-94bb-4968-823f-1d7bef422ba8",
+      "%Name":"27dc8ef0-b767-4f47-9581-39288fe8ba5a",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"34140079-94bb-4968-823f-1d7bef422ba8",
+      "name":"27dc8ef0-b767-4f47-9581-39288fe8ba5a",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"b6dbac89-a7d8-4cb9-b050-38793a2d7c04",
+                    "name":"92bb8768-3c9e-4001-a038-a30c79543b19",
                     "path":"sprites/spr_garrison_knight_ow16_idle_left/spr_garrison_knight_ow16_idle_left.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"19aad428-a7b7-4b8c-b808-620586fac9fc",
+              "id":"e1bfb10d-b89d-46fb-b3f9-ca573702cfe7",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"9f995428-7353-4569-bafe-f12caed613fe",
-      "name":"9f995428-7353-4569-bafe-f12caed613fe",
+      "%Name":"1cc3fcee-c61d-4486-8c5b-b25e22b76984",
+      "name":"1cc3fcee-c61d-4486-8c5b-b25e22b76984",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"460f0b3d-b8b5-4d44-9cdc-22e6f53ec981",
+      "%Name":"16bd65ab-6116-42ca-a37c-b4722dbbb703",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"460f0b3d-b8b5-4d44-9cdc-22e6f53ec981",
+      "name":"16bd65ab-6116-42ca-a37c-b4722dbbb703",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"9f995428-7353-4569-bafe-f12caed613fe",
+                    "name":"1cc3fcee-c61d-4486-8c5b-b25e22b76984",
                     "path":"sprites/spr_kael_ow_idle_down/spr_kael_ow_idle_down.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f779c9b7-13e9-40fb-9d78-54a7f3b4f56f",
+              "id":"539722e9-817c-42e9-bd72-2f820bda6ea9",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

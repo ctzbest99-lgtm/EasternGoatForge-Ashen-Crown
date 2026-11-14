@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"3531f83d-ebc1-4e8a-922f-70e89be001fe",
-      "name":"3531f83d-ebc1-4e8a-922f-70e89be001fe",
+      "%Name":"89637a0e-bf97-4897-8327-31404f5f4a48",
+      "name":"89637a0e-bf97-4897-8327-31404f5f4a48",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"813e63f1-2f20-45d6-a524-650ee2aa7715",
+      "%Name":"fcf46de5-307c-4835-a12d-8d06527d6c8c",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"813e63f1-2f20-45d6-a524-650ee2aa7715",
+      "name":"fcf46de5-307c-4835-a12d-8d06527d6c8c",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"3531f83d-ebc1-4e8a-922f-70e89be001fe",
+                    "name":"89637a0e-bf97-4897-8327-31404f5f4a48",
                     "path":"sprites/spr_blackguard_ow16_idle_up/spr_blackguard_ow16_idle_up.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"b5934c42-5105-4f68-9e3c-64faa6c4c2d1",
+              "id":"2f955bd5-8090-45f1-96e6-d12275dbb6c1",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

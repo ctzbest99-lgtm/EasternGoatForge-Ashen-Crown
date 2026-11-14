@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"dd8afbdd-369b-468b-97bd-795f9fd3af93",
-      "name":"dd8afbdd-369b-468b-97bd-795f9fd3af93",
+      "%Name":"b7a83d2c-65d9-4e62-9d5f-81f38f9f7951",
+      "name":"b7a83d2c-65d9-4e62-9d5f-81f38f9f7951",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"4124ed8f-1aae-4041-8d62-9fa26992342f",
-      "name":"4124ed8f-1aae-4041-8d62-9fa26992342f",
+      "%Name":"d00de816-d77a-4c64-ad77-a828703f48bb",
+      "name":"d00de816-d77a-4c64-ad77-a828703f48bb",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"3c412e95-6850-444d-a080-701a690d7f9c",
-      "name":"3c412e95-6850-444d-a080-701a690d7f9c",
+      "%Name":"011b504b-16eb-49fa-aa99-32bb2226f518",
+      "name":"011b504b-16eb-49fa-aa99-32bb2226f518",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"83148c59-e1bc-4497-8fef-6bacb38d3bd7",
-      "name":"83148c59-e1bc-4497-8fef-6bacb38d3bd7",
+      "%Name":"7bf5f3fe-9138-45db-a2bc-78a600ee3508",
+      "name":"7bf5f3fe-9138-45db-a2bc-78a600ee3508",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"3baa6c28-e070-4e30-a096-8e5be005bb46",
-      "name":"3baa6c28-e070-4e30-a096-8e5be005bb46",
+      "%Name":"9cb1c163-8198-4dac-b705-e1268b3db26b",
+      "name":"9cb1c163-8198-4dac-b705-e1268b3db26b",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"0bb7cb67-a546-459d-9d55-bc1044384f02",
-      "name":"0bb7cb67-a546-459d-9d55-bc1044384f02",
+      "%Name":"6afb10be-221c-4668-93b8-68630eb9bd34",
+      "name":"6afb10be-221c-4668-93b8-68630eb9bd34",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"78927d08-4fe0-4c2c-a508-b2c92a5a0a40",
+      "%Name":"b433a9cf-562e-47bf-bb86-59363317db20",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"78927d08-4fe0-4c2c-a508-b2c92a5a0a40",
+      "name":"b433a9cf-562e-47bf-bb86-59363317db20",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"dd8afbdd-369b-468b-97bd-795f9fd3af93",
+                    "name":"b7a83d2c-65d9-4e62-9d5f-81f38f9f7951",
                     "path":"sprites/spr_briar_hulk_death_strip6/spr_briar_hulk_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"4e2875f2-aba7-410d-b856-c5153806ce9b",
+              "id":"9b605a93-6d5c-42d8-a24e-9fdaa2c069d0",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"4124ed8f-1aae-4041-8d62-9fa26992342f",
+                    "name":"d00de816-d77a-4c64-ad77-a828703f48bb",
                     "path":"sprites/spr_briar_hulk_death_strip6/spr_briar_hulk_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"19f75ee5-d93f-47ef-89b8-60dc649404e4",
+              "id":"65c35c89-d139-4c43-88ed-4107c87c31b6",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"3c412e95-6850-444d-a080-701a690d7f9c",
+                    "name":"011b504b-16eb-49fa-aa99-32bb2226f518",
                     "path":"sprites/spr_briar_hulk_death_strip6/spr_briar_hulk_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"619c7ca1-34f4-4935-82a6-8581a5b5a2ec",
+              "id":"ade432e2-3e37-4780-85b5-25f9f401d063",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"83148c59-e1bc-4497-8fef-6bacb38d3bd7",
+                    "name":"7bf5f3fe-9138-45db-a2bc-78a600ee3508",
                     "path":"sprites/spr_briar_hulk_death_strip6/spr_briar_hulk_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"8017db81-a797-487b-84fc-595fcb4e3a05",
+              "id":"7c5fd976-6c9e-495b-af61-adf1d9d4fc63",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"3baa6c28-e070-4e30-a096-8e5be005bb46",
+                    "name":"9cb1c163-8198-4dac-b705-e1268b3db26b",
                     "path":"sprites/spr_briar_hulk_death_strip6/spr_briar_hulk_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"41059540-03b6-43cd-9123-d67211fa20a0",
+              "id":"b4051961-c441-413e-8c6b-b1cc7febc314",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0bb7cb67-a546-459d-9d55-bc1044384f02",
+                    "name":"6afb10be-221c-4668-93b8-68630eb9bd34",
                     "path":"sprites/spr_briar_hulk_death_strip6/spr_briar_hulk_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"1fbb02a4-811c-45c0-a480-92946059ae14",
+              "id":"adf19a53-fe15-4860-9bad-3a9f68c609fd",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

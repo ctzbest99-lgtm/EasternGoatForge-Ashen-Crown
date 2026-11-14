@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"ab76bad1-378f-4204-b8a9-1b45a61af51d",
-      "name":"ab76bad1-378f-4204-b8a9-1b45a61af51d",
+      "%Name":"2358c67e-c606-4e5f-adcc-fc01d9ccc0f5",
+      "name":"2358c67e-c606-4e5f-adcc-fc01d9ccc0f5",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"ff7295a6-0ca3-47b1-9cfc-3afea5eef088",
+      "%Name":"20a14f49-a383-493c-a2a3-5067d21a36d1",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"ff7295a6-0ca3-47b1-9cfc-3afea5eef088",
+      "name":"20a14f49-a383-493c-a2a3-5067d21a36d1",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ab76bad1-378f-4204-b8a9-1b45a61af51d",
+                    "name":"2358c67e-c606-4e5f-adcc-fc01d9ccc0f5",
                     "path":"sprites/spr_portrait_perrin_neutral/spr_portrait_perrin_neutral.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"934004e1-506c-404f-b4b1-12a0c44cecc9",
+              "id":"5f428f37-7a88-4616-9fa7-1d978811d5bc",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"d846907b-3554-444e-b211-526e999a6276",
-      "name":"d846907b-3554-444e-b211-526e999a6276",
+      "%Name":"366484a9-b0c3-438d-9897-9728977943b7",
+      "name":"366484a9-b0c3-438d-9897-9728977943b7",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"38eb698e-3d22-47df-8878-4df0b4f6da0b",
+      "%Name":"83218e29-1e14-48f2-a997-baa34684e758",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"38eb698e-3d22-47df-8878-4df0b4f6da0b",
+      "name":"83218e29-1e14-48f2-a997-baa34684e758",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"d846907b-3554-444e-b211-526e999a6276",
+                    "name":"366484a9-b0c3-438d-9897-9728977943b7",
                     "path":"sprites/spr_ui_slot_helm/spr_ui_slot_helm.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"e2462020-601e-4351-9e29-57dd10e4a340",
+              "id":"15c0fa9c-5e69-4e2b-b131-114a456e0f64",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

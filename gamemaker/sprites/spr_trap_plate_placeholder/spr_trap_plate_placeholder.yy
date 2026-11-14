@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"fd6ab6ec-5a12-4261-b1d6-97163c071fb8",
-      "name":"fd6ab6ec-5a12-4261-b1d6-97163c071fb8",
+      "%Name":"bd0a3d1a-dd04-4a34-b4d1-2c432e5530cb",
+      "name":"bd0a3d1a-dd04-4a34-b4d1-2c432e5530cb",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"1fe97057-48b7-4e22-bd73-1b649714bcbc",
+      "%Name":"ea666727-d471-4009-b53c-f9aaf6dc7cff",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"1fe97057-48b7-4e22-bd73-1b649714bcbc",
+      "name":"ea666727-d471-4009-b53c-f9aaf6dc7cff",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"fd6ab6ec-5a12-4261-b1d6-97163c071fb8",
+                    "name":"bd0a3d1a-dd04-4a34-b4d1-2c432e5530cb",
                     "path":"sprites/spr_trap_plate_placeholder/spr_trap_plate_placeholder.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"cc9428e3-aa16-4eed-a83f-f4899afaab4b",
+              "id":"3ad98235-e6bc-45a1-8eae-3c40ea751ce0",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

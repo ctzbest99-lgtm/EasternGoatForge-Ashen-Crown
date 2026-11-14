@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"6d5bcc9d-90c5-4bcd-b28b-e952972d04ce",
-      "name":"6d5bcc9d-90c5-4bcd-b28b-e952972d04ce",
+      "%Name":"36b26b96-5f77-4f1e-95c0-206da4395c18",
+      "name":"36b26b96-5f77-4f1e-95c0-206da4395c18",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"66f8c893-db10-4320-adef-a7965612104c",
+      "%Name":"45cac3d7-15b4-4d42-b520-5913858ea077",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"66f8c893-db10-4320-adef-a7965612104c",
+      "name":"45cac3d7-15b4-4d42-b520-5913858ea077",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"6d5bcc9d-90c5-4bcd-b28b-e952972d04ce",
+                    "name":"36b26b96-5f77-4f1e-95c0-206da4395c18",
                     "path":"sprites/spr_prisoner_a_ow16_idle_left/spr_prisoner_a_ow16_idle_left.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"1b28746c-26c5-4898-bb9f-0f4245b25cad",
+              "id":"8cce4cf7-2761-4b49-80d7-d8cbfa24bcbc",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

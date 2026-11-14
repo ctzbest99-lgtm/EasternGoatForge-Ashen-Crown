@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"259cf8e6-2bb1-4695-8d2c-21f7fb5ca980",
-      "name":"259cf8e6-2bb1-4695-8d2c-21f7fb5ca980",
+      "%Name":"547ee866-201b-41b4-bc1a-e22c21d64604",
+      "name":"547ee866-201b-41b4-bc1a-e22c21d64604",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"0af682c8-640b-4728-bf01-1ad8f345916d",
-      "name":"0af682c8-640b-4728-bf01-1ad8f345916d",
+      "%Name":"c17a7ac9-9d07-4736-849d-5ebf1e05260a",
+      "name":"c17a7ac9-9d07-4736-849d-5ebf1e05260a",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"2f7a93e2-2136-4b41-af1f-74a8f202a95e",
-      "name":"2f7a93e2-2136-4b41-af1f-74a8f202a95e",
+      "%Name":"5abfd68c-829d-4075-8a58-17e972ab40d9",
+      "name":"5abfd68c-829d-4075-8a58-17e972ab40d9",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"4be35bc4-4d58-4888-8dca-f25bc62baf0d",
-      "name":"4be35bc4-4d58-4888-8dca-f25bc62baf0d",
+      "%Name":"19639c8b-d24c-498f-9d28-a5285182b418",
+      "name":"19639c8b-d24c-498f-9d28-a5285182b418",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"60ceeb61-7fbe-4c6d-8c7f-1f74440f4e8e",
+      "%Name":"9be1f227-bccb-42c5-b59b-a5ce953d002d",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"60ceeb61-7fbe-4c6d-8c7f-1f74440f4e8e",
+      "name":"9be1f227-bccb-42c5-b59b-a5ce953d002d",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"259cf8e6-2bb1-4695-8d2c-21f7fb5ca980",
+                    "name":"547ee866-201b-41b4-bc1a-e22c21d64604",
                     "path":"sprites/spr_ward_sentinel_idle_strip4/spr_ward_sentinel_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"a417abab-b6b0-472f-8dde-f4c968ff1703",
+              "id":"4d7d11e7-281a-467a-bef5-90f9eac7eddb",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0af682c8-640b-4728-bf01-1ad8f345916d",
+                    "name":"c17a7ac9-9d07-4736-849d-5ebf1e05260a",
                     "path":"sprites/spr_ward_sentinel_idle_strip4/spr_ward_sentinel_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f2520c65-7fab-4c00-8731-75f556abd687",
+              "id":"6459f05b-16df-4884-bbbe-3d403074a80d",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"2f7a93e2-2136-4b41-af1f-74a8f202a95e",
+                    "name":"5abfd68c-829d-4075-8a58-17e972ab40d9",
                     "path":"sprites/spr_ward_sentinel_idle_strip4/spr_ward_sentinel_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"6b9dbe27-b5d6-4adf-a914-15517d4a4821",
+              "id":"10a9dd51-433e-4672-b1ae-b1210e6a3aee",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"4be35bc4-4d58-4888-8dca-f25bc62baf0d",
+                    "name":"19639c8b-d24c-498f-9d28-a5285182b418",
                     "path":"sprites/spr_ward_sentinel_idle_strip4/spr_ward_sentinel_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"42e1145e-2600-4924-8966-f873d2570616",
+              "id":"40671db1-619e-415b-83ed-022b76a75b67",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

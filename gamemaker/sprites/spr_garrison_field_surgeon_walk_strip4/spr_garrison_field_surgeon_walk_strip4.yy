@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"98fc76de-e8f7-464c-8437-7c2780a80125",
-      "name":"98fc76de-e8f7-464c-8437-7c2780a80125",
+      "%Name":"fda46c96-3e47-40d0-949e-f3cbc6dce8f8",
+      "name":"fda46c96-3e47-40d0-949e-f3cbc6dce8f8",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"0f7b3fc2-6ded-418b-b2b8-301bdcd0814e",
-      "name":"0f7b3fc2-6ded-418b-b2b8-301bdcd0814e",
+      "%Name":"88a07f5b-c1be-4fc5-9816-903459c94588",
+      "name":"88a07f5b-c1be-4fc5-9816-903459c94588",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"cd24f63a-928d-42ce-a23e-8298cb5b4fc8",
-      "name":"cd24f63a-928d-42ce-a23e-8298cb5b4fc8",
+      "%Name":"6b6397ed-2bee-449a-874f-23b0dc316052",
+      "name":"6b6397ed-2bee-449a-874f-23b0dc316052",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"fe89073e-73a6-478b-8c01-26bc67b01818",
-      "name":"fe89073e-73a6-478b-8c01-26bc67b01818",
+      "%Name":"acf2a3b0-1474-41b6-b30f-1f279785382b",
+      "name":"acf2a3b0-1474-41b6-b30f-1f279785382b",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"0ae4eef7-5737-4352-b155-11ae5fe554c5",
+      "%Name":"08e933fe-c07c-4e28-b2c7-dc06b447e586",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"0ae4eef7-5737-4352-b155-11ae5fe554c5",
+      "name":"08e933fe-c07c-4e28-b2c7-dc06b447e586",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"98fc76de-e8f7-464c-8437-7c2780a80125",
+                    "name":"fda46c96-3e47-40d0-949e-f3cbc6dce8f8",
                     "path":"sprites/spr_garrison_field_surgeon_walk_strip4/spr_garrison_field_surgeon_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"41630017-5db9-486a-98be-4ea5ee6d7a9b",
+              "id":"e2c6682b-1c57-4be5-81cf-4e72f962cb23",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0f7b3fc2-6ded-418b-b2b8-301bdcd0814e",
+                    "name":"88a07f5b-c1be-4fc5-9816-903459c94588",
                     "path":"sprites/spr_garrison_field_surgeon_walk_strip4/spr_garrison_field_surgeon_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"8ca3aec8-4739-4068-add9-d159ea94c279",
+              "id":"99bb3776-d819-43df-90b4-87f84b377978",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"cd24f63a-928d-42ce-a23e-8298cb5b4fc8",
+                    "name":"6b6397ed-2bee-449a-874f-23b0dc316052",
                     "path":"sprites/spr_garrison_field_surgeon_walk_strip4/spr_garrison_field_surgeon_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"26be14f4-0063-4a32-998e-ea8ff2e9d902",
+              "id":"6f49b263-f4ae-4cf2-9ffd-0e097a2ea8ff",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"fe89073e-73a6-478b-8c01-26bc67b01818",
+                    "name":"acf2a3b0-1474-41b6-b30f-1f279785382b",
                     "path":"sprites/spr_garrison_field_surgeon_walk_strip4/spr_garrison_field_surgeon_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"0913924f-5da7-4723-84f3-d562471ac3b0",
+              "id":"6ba5d984-94b3-40ea-9687-a115ab9256c0",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

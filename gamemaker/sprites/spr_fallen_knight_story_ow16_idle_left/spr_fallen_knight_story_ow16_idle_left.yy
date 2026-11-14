@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"67933daf-3b23-4226-8bd8-b3feda04f3c9",
-      "name":"67933daf-3b23-4226-8bd8-b3feda04f3c9",
+      "%Name":"e3c799b9-5d47-4d1a-8f57-a8dd9583d200",
+      "name":"e3c799b9-5d47-4d1a-8f57-a8dd9583d200",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"4a23e7b1-e068-4bc4-841e-3a218253c4cc",
+      "%Name":"93593b8a-e495-47dc-aaa6-dda223e039f3",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"4a23e7b1-e068-4bc4-841e-3a218253c4cc",
+      "name":"93593b8a-e495-47dc-aaa6-dda223e039f3",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"67933daf-3b23-4226-8bd8-b3feda04f3c9",
+                    "name":"e3c799b9-5d47-4d1a-8f57-a8dd9583d200",
                     "path":"sprites/spr_fallen_knight_story_ow16_idle_left/spr_fallen_knight_story_ow16_idle_left.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"9b7925a1-ba2e-4082-8418-a3184a21c445",
+              "id":"f140eac0-1505-4f93-831f-7812fbccfa47",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

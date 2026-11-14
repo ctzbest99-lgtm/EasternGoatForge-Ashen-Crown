@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"8440b498-141c-4b29-8389-5ba683a221d5",
-      "name":"8440b498-141c-4b29-8389-5ba683a221d5",
+      "%Name":"bda4e589-7e3e-44ef-8d6e-6eb07ff47bd6",
+      "name":"bda4e589-7e3e-44ef-8d6e-6eb07ff47bd6",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"1bc54a62-b5dd-4641-b279-ffc9d97eb065",
+      "%Name":"4b86b555-37f1-4b77-8fc3-8b8c47047119",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"1bc54a62-b5dd-4641-b279-ffc9d97eb065",
+      "name":"4b86b555-37f1-4b77-8fc3-8b8c47047119",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"8440b498-141c-4b29-8389-5ba683a221d5",
+                    "name":"bda4e589-7e3e-44ef-8d6e-6eb07ff47bd6",
                     "path":"sprites/spr_traveler_ow16_idle_right/spr_traveler_ow16_idle_right.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"a03a97cb-733b-45cf-9f4f-12807e6e3b1c",
+              "id":"dc13eff4-503f-4ea5-bd2d-d7b5e3b5f69c",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

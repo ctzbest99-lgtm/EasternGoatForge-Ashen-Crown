@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"93a3abbd-6d21-48e1-ac71-1015f88b08ab",
-      "name":"93a3abbd-6d21-48e1-ac71-1015f88b08ab",
+      "%Name":"1137d90f-3def-41b0-bf79-05bc30773c20",
+      "name":"1137d90f-3def-41b0-bf79-05bc30773c20",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"da4f8eb8-18b4-4654-9dcf-2fb11a6a3a99",
-      "name":"da4f8eb8-18b4-4654-9dcf-2fb11a6a3a99",
+      "%Name":"0f48db7b-eeeb-42fa-b9b6-1ead1c4b691f",
+      "name":"0f48db7b-eeeb-42fa-b9b6-1ead1c4b691f",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"a795fd16-e032-45e7-8725-e06e9e8b4380",
-      "name":"a795fd16-e032-45e7-8725-e06e9e8b4380",
+      "%Name":"75a813d4-d65e-4470-ae99-f2905310c655",
+      "name":"75a813d4-d65e-4470-ae99-f2905310c655",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"74d98402-90e1-44cd-9d91-18a6641a3977",
-      "name":"74d98402-90e1-44cd-9d91-18a6641a3977",
+      "%Name":"bad5d459-c60b-4ce5-a167-9affe058f171",
+      "name":"bad5d459-c60b-4ce5-a167-9affe058f171",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"828759d4-7209-4ede-9b34-6f7333a910a0",
+      "%Name":"29a84d34-d7d4-439c-a16b-74e1ad08ab8a",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"828759d4-7209-4ede-9b34-6f7333a910a0",
+      "name":"29a84d34-d7d4-439c-a16b-74e1ad08ab8a",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"93a3abbd-6d21-48e1-ac71-1015f88b08ab",
+                    "name":"1137d90f-3def-41b0-bf79-05bc30773c20",
                     "path":"sprites/spr_crown_crossbowman_idle_strip4/spr_crown_crossbowman_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"ff8a11fe-33ed-4bbd-bdad-11d5527e41ec",
+              "id":"d9f4fa74-8b2e-463d-bdf1-92295f0b84db",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"da4f8eb8-18b4-4654-9dcf-2fb11a6a3a99",
+                    "name":"0f48db7b-eeeb-42fa-b9b6-1ead1c4b691f",
                     "path":"sprites/spr_crown_crossbowman_idle_strip4/spr_crown_crossbowman_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"a62ef492-7381-47e6-887f-83617cf7c523",
+              "id":"836b5c14-0ab5-49fd-8ee9-bab3d2ded22c",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a795fd16-e032-45e7-8725-e06e9e8b4380",
+                    "name":"75a813d4-d65e-4470-ae99-f2905310c655",
                     "path":"sprites/spr_crown_crossbowman_idle_strip4/spr_crown_crossbowman_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"19892354-a63b-4136-b366-2e80bab90567",
+              "id":"d19d59ca-ed24-49fe-b833-5a61a902c3dd",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"74d98402-90e1-44cd-9d91-18a6641a3977",
+                    "name":"bad5d459-c60b-4ce5-a167-9affe058f171",
                     "path":"sprites/spr_crown_crossbowman_idle_strip4/spr_crown_crossbowman_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f99e7d79-3e3b-44ff-89b2-c8e6598a9284",
+              "id":"5c149864-8768-41cb-95fb-095a91ac9e2e",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

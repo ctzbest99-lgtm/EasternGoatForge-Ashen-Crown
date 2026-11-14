@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"5afbb958-cee8-4c09-a98c-7d2b85e4c883",
-      "name":"5afbb958-cee8-4c09-a98c-7d2b85e4c883",
+      "%Name":"d22e4f12-a567-41fc-9866-93b3aad322ce",
+      "name":"d22e4f12-a567-41fc-9866-93b3aad322ce",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"99607b3b-6151-4952-83f8-cddd7e09753b",
+      "%Name":"e7781a3c-14cd-4754-aec1-22280c88757a",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"99607b3b-6151-4952-83f8-cddd7e09753b",
+      "name":"e7781a3c-14cd-4754-aec1-22280c88757a",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"5afbb958-cee8-4c09-a98c-7d2b85e4c883",
+                    "name":"d22e4f12-a567-41fc-9866-93b3aad322ce",
                     "path":"sprites/spr_bram_ow16_idle_right/spr_bram_ow16_idle_right.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"b6413fad-80b3-4244-b8d5-116020f77292",
+              "id":"eac853a0-cde3-4065-9a96-0d84a9120cb5",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

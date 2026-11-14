@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"2491ab49-05ae-47ce-912c-06de02431442",
-      "name":"2491ab49-05ae-47ce-912c-06de02431442",
+      "%Name":"de3e7e1e-fbcb-4698-bf3a-61e6c5b88605",
+      "name":"de3e7e1e-fbcb-4698-bf3a-61e6c5b88605",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"797e1008-9f5f-45bf-9629-57bcca5213a5",
-      "name":"797e1008-9f5f-45bf-9629-57bcca5213a5",
+      "%Name":"a86d8697-68bf-4969-b382-efc2c82aeeb1",
+      "name":"a86d8697-68bf-4969-b382-efc2c82aeeb1",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"2e668e38-3f5f-4c15-bc23-d0e62368a23f",
-      "name":"2e668e38-3f5f-4c15-bc23-d0e62368a23f",
+      "%Name":"707aeaf2-3d76-4661-9918-52061b3fc93f",
+      "name":"707aeaf2-3d76-4661-9918-52061b3fc93f",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"74a5cfba-8523-402a-8361-958f506f7633",
-      "name":"74a5cfba-8523-402a-8361-958f506f7633",
+      "%Name":"7dee1467-b59e-4d06-80f9-37700adec0d7",
+      "name":"7dee1467-b59e-4d06-80f9-37700adec0d7",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"8a936758-df35-4150-9ca5-17285a53def9",
+      "%Name":"e6fce1e3-a315-41f9-ae11-dffac1009d21",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"8a936758-df35-4150-9ca5-17285a53def9",
+      "name":"e6fce1e3-a315-41f9-ae11-dffac1009d21",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"2491ab49-05ae-47ce-912c-06de02431442",
+                    "name":"de3e7e1e-fbcb-4698-bf3a-61e6c5b88605",
                     "path":"sprites/spr_debt_collector_walk_strip4/spr_debt_collector_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"4fa306d2-5e0c-4963-9464-a462a3c5013a",
+              "id":"be90004b-29af-4147-9af6-634ff4f874cf",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"797e1008-9f5f-45bf-9629-57bcca5213a5",
+                    "name":"a86d8697-68bf-4969-b382-efc2c82aeeb1",
                     "path":"sprites/spr_debt_collector_walk_strip4/spr_debt_collector_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"14452ace-65ff-4d3f-9ab2-f74322c56869",
+              "id":"74d13c9d-7221-4a11-ba3c-c04c63baa6ec",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"2e668e38-3f5f-4c15-bc23-d0e62368a23f",
+                    "name":"707aeaf2-3d76-4661-9918-52061b3fc93f",
                     "path":"sprites/spr_debt_collector_walk_strip4/spr_debt_collector_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"ebe3ee90-c9bf-4b3f-996a-45e7a8f7436d",
+              "id":"b5439c23-241b-4643-a8fd-406d2b8a5a89",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"74a5cfba-8523-402a-8361-958f506f7633",
+                    "name":"7dee1467-b59e-4d06-80f9-37700adec0d7",
                     "path":"sprites/spr_debt_collector_walk_strip4/spr_debt_collector_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"001bc5e5-f1c5-44c5-9f1d-f3fcc68ece2d",
+              "id":"4a51512c-e9ea-4fe7-8675-a9907d941d1e",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

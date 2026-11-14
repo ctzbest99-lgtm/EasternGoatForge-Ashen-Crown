@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"ada7582c-6b44-4360-8ca0-779234a69ddb",
-      "name":"ada7582c-6b44-4360-8ca0-779234a69ddb",
+      "%Name":"86ddeb4d-3018-4dab-8e6c-d230e1634abe",
+      "name":"86ddeb4d-3018-4dab-8e6c-d230e1634abe",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"b3c88e37-de39-4cc3-8749-0c69672627ef",
+      "%Name":"7e5c19c3-bdde-47c5-9d8d-5947c9779950",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"b3c88e37-de39-4cc3-8749-0c69672627ef",
+      "name":"7e5c19c3-bdde-47c5-9d8d-5947c9779950",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ada7582c-6b44-4360-8ca0-779234a69ddb",
+                    "name":"86ddeb4d-3018-4dab-8e6c-d230e1634abe",
                     "path":"sprites/spr_item_ashbound_parchment/spr_item_ashbound_parchment.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"923c25b4-54aa-4822-a285-9356b20011e1",
+              "id":"66b3d164-e755-4186-960a-700707342a92",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

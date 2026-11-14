@@ -14,22 +14,22 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"7f7ece60-fbb0-45cf-870f-46f94b228dd8",
-      "name":"7f7ece60-fbb0-45cf-870f-46f94b228dd8",
+      "%Name":"423e46dd-be0f-415f-98e4-64a83b1eb401",
+      "name":"423e46dd-be0f-415f-98e4-64a83b1eb401",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"cb6d5c44-568f-48db-a0ec-2c0bd746e7b8",
-      "name":"cb6d5c44-568f-48db-a0ec-2c0bd746e7b8",
+      "%Name":"58c1b69a-1f86-49ab-8247-80e64174f643",
+      "name":"58c1b69a-1f86-49ab-8247-80e64174f643",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"a1406285-587a-4397-9e02-2e95b34458ed",
-      "name":"a1406285-587a-4397-9e02-2e95b34458ed",
+      "%Name":"b1e4c5e1-7b7d-43ce-8ce6-429134e5851a",
+      "name":"b1e4c5e1-7b7d-43ce-8ce6-429134e5851a",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -41,11 +41,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"a68fe675-39d9-4e85-b954-ca7b15f91c47",
+      "%Name":"63a87341-d682-450e-bae6-0feb6638e614",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"a68fe675-39d9-4e85-b954-ca7b15f91c47",
+      "name":"63a87341-d682-450e-bae6-0feb6638e614",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -118,7 +118,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"7f7ece60-fbb0-45cf-870f-46f94b228dd8",
+                    "name":"423e46dd-be0f-415f-98e4-64a83b1eb401",
                     "path":"sprites/spr_briar_hulk_hurt_strip3/spr_briar_hulk_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -126,7 +126,7 @@
                 },
               },
               "Disabled":false,
-              "id":"bf0a78a2-1831-47db-ac85-c4686d4c4388",
+              "id":"46d6d3e6-a194-49b4-9160-df211872c8c3",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -140,7 +140,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"cb6d5c44-568f-48db-a0ec-2c0bd746e7b8",
+                    "name":"58c1b69a-1f86-49ab-8247-80e64174f643",
                     "path":"sprites/spr_briar_hulk_hurt_strip3/spr_briar_hulk_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -148,7 +148,7 @@
                 },
               },
               "Disabled":false,
-              "id":"50bd5c3a-f1a1-41eb-9651-7ab674396ac2",
+              "id":"592b07ee-1f9d-4fa1-8724-8efafa9da891",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -162,7 +162,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a1406285-587a-4397-9e02-2e95b34458ed",
+                    "name":"b1e4c5e1-7b7d-43ce-8ce6-429134e5851a",
                     "path":"sprites/spr_briar_hulk_hurt_strip3/spr_briar_hulk_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -170,7 +170,7 @@
                 },
               },
               "Disabled":false,
-              "id":"82ab919f-c9f7-4114-b5f4-3b4860d54574",
+              "id":"9b716e21-8e9a-44b4-9b07-70379bc86869",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,

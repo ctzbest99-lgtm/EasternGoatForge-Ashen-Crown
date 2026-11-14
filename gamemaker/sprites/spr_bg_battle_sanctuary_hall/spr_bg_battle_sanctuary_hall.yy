@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"62923fba-2afd-4e55-87d0-82113ef41d45",
-      "name":"62923fba-2afd-4e55-87d0-82113ef41d45",
+      "%Name":"62ef8e77-2b58-493c-96af-85b72c8cd7f4",
+      "name":"62ef8e77-2b58-493c-96af-85b72c8cd7f4",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"909aebaa-fc68-4576-8b55-858f3ed6ab11",
+      "%Name":"e684567d-f711-400d-b9c5-c1d42f4c8899",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"909aebaa-fc68-4576-8b55-858f3ed6ab11",
+      "name":"e684567d-f711-400d-b9c5-c1d42f4c8899",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"62923fba-2afd-4e55-87d0-82113ef41d45",
+                    "name":"62ef8e77-2b58-493c-96af-85b72c8cd7f4",
                     "path":"sprites/spr_bg_battle_sanctuary_hall/spr_bg_battle_sanctuary_hall.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"920d65ae-a875-4119-972b-ed2fba7bec1b",
+              "id":"dbabfabb-a8b1-4a26-9cd3-ece8df84bb51",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

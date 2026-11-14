@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"9380eb92-e2bb-46a3-86d0-015062a21a9b",
-      "name":"9380eb92-e2bb-46a3-86d0-015062a21a9b",
+      "%Name":"d31b4427-1acd-44ac-9f9c-e4d26455d5aa",
+      "name":"d31b4427-1acd-44ac-9f9c-e4d26455d5aa",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"331b524d-78b5-4249-b693-ede0660b01c6",
+      "%Name":"56d78c5a-2ad1-43cf-ba22-d0aece9afc96",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"331b524d-78b5-4249-b693-ede0660b01c6",
+      "name":"56d78c5a-2ad1-43cf-ba22-d0aece9afc96",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"9380eb92-e2bb-46a3-86d0-015062a21a9b",
+                    "name":"d31b4427-1acd-44ac-9f9c-e4d26455d5aa",
                     "path":"sprites/spr_marda_ow16_idle_up/spr_marda_ow16_idle_up.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"12f6f314-1bb2-4879-bae5-85f8cbc386d6",
+              "id":"44452473-2f6c-4e0c-b0d9-91e25f254da3",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

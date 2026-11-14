@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"7899784b-1f34-444a-87a6-69d6f54051d9",
-      "name":"7899784b-1f34-444a-87a6-69d6f54051d9",
+      "%Name":"672f17d1-f087-4054-85b2-d65bb8f912c7",
+      "name":"672f17d1-f087-4054-85b2-d65bb8f912c7",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"76460a43-eea5-47bc-a972-be2ded7993b8",
+      "%Name":"2c676566-8171-4536-9eff-8e35844c2481",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"76460a43-eea5-47bc-a972-be2ded7993b8",
+      "name":"2c676566-8171-4536-9eff-8e35844c2481",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"7899784b-1f34-444a-87a6-69d6f54051d9",
+                    "name":"672f17d1-f087-4054-85b2-d65bb8f912c7",
                     "path":"sprites/spr_crown_soldier_firm_ow16_idle_up/spr_crown_soldier_firm_ow16_idle_up.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"7a2b7181-a794-47ef-9e3a-38185d804ef3",
+              "id":"cc107f1c-a646-4b7c-ba84-1cef06ddab79",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

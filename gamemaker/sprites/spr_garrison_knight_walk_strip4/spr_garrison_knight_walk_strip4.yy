@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"73531aa3-cfc5-48a2-bcfa-44ad03f7db83",
-      "name":"73531aa3-cfc5-48a2-bcfa-44ad03f7db83",
+      "%Name":"61bdbc29-a9ba-4191-b5b0-0bb15bf898dd",
+      "name":"61bdbc29-a9ba-4191-b5b0-0bb15bf898dd",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"0f2e8c99-e2c2-465e-a9f8-348f1a56be51",
-      "name":"0f2e8c99-e2c2-465e-a9f8-348f1a56be51",
+      "%Name":"ee404c89-001b-42b8-a5fc-89e0842ab8aa",
+      "name":"ee404c89-001b-42b8-a5fc-89e0842ab8aa",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"0626af69-7877-4bee-bb4f-74346ea4030c",
-      "name":"0626af69-7877-4bee-bb4f-74346ea4030c",
+      "%Name":"b5d43e2f-14be-4cf2-86cd-8bcb98eb0d62",
+      "name":"b5d43e2f-14be-4cf2-86cd-8bcb98eb0d62",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"556f0965-2f16-47f5-bbaf-7552d4bcc606",
-      "name":"556f0965-2f16-47f5-bbaf-7552d4bcc606",
+      "%Name":"6fe06477-f139-4d0a-af12-e6291d4c0ce2",
+      "name":"6fe06477-f139-4d0a-af12-e6291d4c0ce2",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"37a7104d-25bc-47fe-90b3-b0bde4f428b5",
+      "%Name":"658bcb8f-af11-4468-bcdf-0fa5ae5e7a17",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"37a7104d-25bc-47fe-90b3-b0bde4f428b5",
+      "name":"658bcb8f-af11-4468-bcdf-0fa5ae5e7a17",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"73531aa3-cfc5-48a2-bcfa-44ad03f7db83",
+                    "name":"61bdbc29-a9ba-4191-b5b0-0bb15bf898dd",
                     "path":"sprites/spr_garrison_knight_walk_strip4/spr_garrison_knight_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"c35ac056-8706-48e8-9afa-60f03bc2b763",
+              "id":"2d78fdb1-fea0-4ce3-afa4-37fecfad231a",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0f2e8c99-e2c2-465e-a9f8-348f1a56be51",
+                    "name":"ee404c89-001b-42b8-a5fc-89e0842ab8aa",
                     "path":"sprites/spr_garrison_knight_walk_strip4/spr_garrison_knight_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"7a915539-76b4-4ac6-a955-20517a51e7e5",
+              "id":"eb8bbeda-b388-452d-a935-2dcb51b00a0c",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0626af69-7877-4bee-bb4f-74346ea4030c",
+                    "name":"b5d43e2f-14be-4cf2-86cd-8bcb98eb0d62",
                     "path":"sprites/spr_garrison_knight_walk_strip4/spr_garrison_knight_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"1de711db-434a-4837-8288-84631a9acb1b",
+              "id":"cfb6b272-995d-4202-a3f1-73f935e82c34",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"556f0965-2f16-47f5-bbaf-7552d4bcc606",
+                    "name":"6fe06477-f139-4d0a-af12-e6291d4c0ce2",
                     "path":"sprites/spr_garrison_knight_walk_strip4/spr_garrison_knight_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"dac433e4-1380-4496-a9f2-a58a27544330",
+              "id":"6a498fb8-5def-4fbb-9397-a050ecd46e8e",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

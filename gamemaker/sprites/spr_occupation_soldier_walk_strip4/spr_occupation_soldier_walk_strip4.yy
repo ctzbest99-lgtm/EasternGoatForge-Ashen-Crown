@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"e1e3784e-0ebe-468b-9035-1ea25015049a",
-      "name":"e1e3784e-0ebe-468b-9035-1ea25015049a",
+      "%Name":"753c5917-a09f-4fa3-95ad-8c57fad3eb59",
+      "name":"753c5917-a09f-4fa3-95ad-8c57fad3eb59",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"887b1694-e4af-4a0c-bf60-d8214a35ecaf",
-      "name":"887b1694-e4af-4a0c-bf60-d8214a35ecaf",
+      "%Name":"700c216f-0709-4895-819b-26b87b93850c",
+      "name":"700c216f-0709-4895-819b-26b87b93850c",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"a0a25af8-c170-4adf-9f6a-c4ecbe9baf5d",
-      "name":"a0a25af8-c170-4adf-9f6a-c4ecbe9baf5d",
+      "%Name":"6f207548-d515-4306-857e-271149ba9f5d",
+      "name":"6f207548-d515-4306-857e-271149ba9f5d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"4853e329-75ef-4f60-94f9-1750260b9f8f",
-      "name":"4853e329-75ef-4f60-94f9-1750260b9f8f",
+      "%Name":"b26fa0ea-408e-4999-a8bf-3b26244a5214",
+      "name":"b26fa0ea-408e-4999-a8bf-3b26244a5214",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"477b95ec-2deb-4f8c-aba3-46b616a78086",
+      "%Name":"9b081bfd-352b-4e4d-bd5f-0520363a4f59",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"477b95ec-2deb-4f8c-aba3-46b616a78086",
+      "name":"9b081bfd-352b-4e4d-bd5f-0520363a4f59",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"e1e3784e-0ebe-468b-9035-1ea25015049a",
+                    "name":"753c5917-a09f-4fa3-95ad-8c57fad3eb59",
                     "path":"sprites/spr_occupation_soldier_walk_strip4/spr_occupation_soldier_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"0cce193f-d0dd-46d8-aa10-983231e50330",
+              "id":"e3a25ec1-0791-409f-b1c0-e58218b5f219",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"887b1694-e4af-4a0c-bf60-d8214a35ecaf",
+                    "name":"700c216f-0709-4895-819b-26b87b93850c",
                     "path":"sprites/spr_occupation_soldier_walk_strip4/spr_occupation_soldier_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"544609f1-3e3c-49e8-8ded-a4e3bd97e354",
+              "id":"6794ec61-0b36-4c20-a7bd-9b8545570c3f",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a0a25af8-c170-4adf-9f6a-c4ecbe9baf5d",
+                    "name":"6f207548-d515-4306-857e-271149ba9f5d",
                     "path":"sprites/spr_occupation_soldier_walk_strip4/spr_occupation_soldier_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"4160bf16-80f6-4e44-bef9-78cf7d786156",
+              "id":"f715ec23-6ae5-4ed7-aa34-784855234a4a",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"4853e329-75ef-4f60-94f9-1750260b9f8f",
+                    "name":"b26fa0ea-408e-4999-a8bf-3b26244a5214",
                     "path":"sprites/spr_occupation_soldier_walk_strip4/spr_occupation_soldier_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"8e9c3289-be02-4f7a-87ef-0698fd6c13f5",
+              "id":"1ce92883-9d5b-4829-a2a8-95892b873b6c",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

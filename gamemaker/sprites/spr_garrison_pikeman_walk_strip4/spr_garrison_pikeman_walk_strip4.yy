@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"c8d1a5cb-7edf-4fb7-80a3-0db41c749167",
-      "name":"c8d1a5cb-7edf-4fb7-80a3-0db41c749167",
+      "%Name":"10032d68-82c0-402b-8931-fe12ac8e8461",
+      "name":"10032d68-82c0-402b-8931-fe12ac8e8461",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"055478b6-472b-4c11-9dae-b335e6bc6484",
-      "name":"055478b6-472b-4c11-9dae-b335e6bc6484",
+      "%Name":"362fd7e8-f2e2-4168-918b-4b215f6db6d2",
+      "name":"362fd7e8-f2e2-4168-918b-4b215f6db6d2",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"2db06705-6344-4d08-bfe3-fc4b2ee221a0",
-      "name":"2db06705-6344-4d08-bfe3-fc4b2ee221a0",
+      "%Name":"34375c98-10bb-4ef1-a20f-8fadcd442b90",
+      "name":"34375c98-10bb-4ef1-a20f-8fadcd442b90",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"6212b840-50b0-4e46-8426-24dd13e32593",
-      "name":"6212b840-50b0-4e46-8426-24dd13e32593",
+      "%Name":"891f0fad-50a0-4df8-8f3d-817266886f58",
+      "name":"891f0fad-50a0-4df8-8f3d-817266886f58",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"c5a0bcec-6b49-4277-ba57-414bdf9a9c2a",
+      "%Name":"4520337a-4cb8-4251-8f3f-dd81e7b759ca",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"c5a0bcec-6b49-4277-ba57-414bdf9a9c2a",
+      "name":"4520337a-4cb8-4251-8f3f-dd81e7b759ca",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"c8d1a5cb-7edf-4fb7-80a3-0db41c749167",
+                    "name":"10032d68-82c0-402b-8931-fe12ac8e8461",
                     "path":"sprites/spr_garrison_pikeman_walk_strip4/spr_garrison_pikeman_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"264fe515-9b97-4461-a0ba-7de5596dea54",
+              "id":"28c0e6d7-605e-4ed0-b67f-ae330b3a754c",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"055478b6-472b-4c11-9dae-b335e6bc6484",
+                    "name":"362fd7e8-f2e2-4168-918b-4b215f6db6d2",
                     "path":"sprites/spr_garrison_pikeman_walk_strip4/spr_garrison_pikeman_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d8a41d50-7284-4228-9754-92a0f8ab6712",
+              "id":"857da08a-21f8-425a-9e14-a9e72b40ad0d",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"2db06705-6344-4d08-bfe3-fc4b2ee221a0",
+                    "name":"34375c98-10bb-4ef1-a20f-8fadcd442b90",
                     "path":"sprites/spr_garrison_pikeman_walk_strip4/spr_garrison_pikeman_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"789336ea-1a7e-4fa5-86e5-e33875fbf9f9",
+              "id":"ffcc58df-dda3-4a35-899d-868392623729",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"6212b840-50b0-4e46-8426-24dd13e32593",
+                    "name":"891f0fad-50a0-4df8-8f3d-817266886f58",
                     "path":"sprites/spr_garrison_pikeman_walk_strip4/spr_garrison_pikeman_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"31a3345b-d8f6-41cb-b035-d06f92a48166",
+              "id":"79a23c7c-f515-451e-9511-9bb1a08b7f82",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
