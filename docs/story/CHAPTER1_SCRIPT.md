@@ -1,6 +1,8 @@
 # ASHEN CROWN — Chapter 1 Script: "The Night of Ash" (Zone 1: The Ashen Road)
 
 Vertical slice route: Greyhaven ruins → Farmlands → Hunter's Camp (optional) → Old Road → Abandoned Bandit Camp → Old Watchtower → Watchtower Basement → Blackguard → Crownveil Door.
+> **Status: APPROVED.** Kevin approved every proposed item in this script as canon on Nov 14 2026. Items marked **[C-confirmed]** were invented for this script and then approved. **[CANON]** items come from the design doc.
+
 Source of truth: `STORY_BIBLE.md`. Presentation: FF1-style top-down exploration (confirmed). Battles are presumed to be FF1-style menu battles (still open).
 
 ## How to read this file (for Coder)
@@ -8,7 +10,7 @@ Source of truth: `STORY_BIBLE.md`. Presentation: FF1-style top-down exploration 
 - Every dialogue node has a stable ID: `ZONE_PLACE_NN`. Coder can key a dialogue database on these IDs.
 - Format: `**ID** · Speaker` followed by the dialogue-box text. Each `>` line is one box line: at most 2 lines per box, each under 90 characters. A node with more than 2 lines is several boxes in sequence (each pair of lines is one box).
 - `NARRATION` = text with no speaker. `SYSTEM` = tutorial or UI text. `[STAGE]` = direction for Coder and Design, not shown in game.
-- Tags: **[CANON]** = exact text or event from the design doc or Kevin's decisions. **[PROPOSED]** = connective content I invented, which Kevin needs to approve. Untagged nodes inside a scene take that scene's tag.
+- Tags: **[CANON]** = exact text or event from the design doc or Kevin's decisions. **[C-confirmed]** = connective content written for this script, approved by Kevin (Nov 14 2026). Untagged nodes inside a scene take that scene's tag.
 - Suggested story flags are in `code` font (e.g. `flag_met_tomas`). They are only suggestions, and Coder should match them to the real project.
 - Nothing here names the Fallen Knight, explains the Ash, says what destroyed Greyhaven, or settles Elira's or Tomas's fate. All of those are still open in the bible.
 
@@ -16,7 +18,7 @@ Source of truth: `STORY_BIBLE.md`. Presentation: FF1-style top-down exploration 
 
 ## 0. Quest text
 
-### Main quest: Find Mira — `Q_MAIN_FIND_MIRA` [CANON title / PROPOSED text]
+### Main quest: Find Mira — `Q_MAIN_FIND_MIRA` [CANON title / C-confirmed text]
 **Description:** Greyhaven is in ruins and Mira is missing. Father said she went into the woods.
 
 | Stage | ID | Objective text | Completes when |
@@ -33,13 +35,13 @@ Source of truth: `STORY_BIBLE.md`. Presentation: FF1-style top-down exploration 
 
 On completion the quest is replaced by **Beyond the Veil** [CANON].
 
-### Main quest: Beyond the Veil — `Q_MAIN_BEYOND_VEIL` [CANON title / PROPOSED text]
+### Main quest: Beyond the Veil — `Q_MAIN_BEYOND_VEIL` [CANON title / C-confirmed text]
 **Description:** "She crossed the Crownveil." The pendant answered the sealed door. Mira is somewhere beyond.
 | Stage | ID | Objective text |
 |---|---|---|
 | 1 | `Q_BV_S1` | Find a way beyond the Veil. *(Chapter 2 picks this up.)* |
 
-### Side quest: Thinning the Pack — `Q_SIDE_RENN` [PROPOSED title / task; CANON giver and reward]
+### Side quest: Thinning the Pack — `Q_SIDE_RENN` [C-confirmed title / task; CANON giver and reward]
 **Giver:** Old Hunter Renn, Hunter's Camp. **Reward:** Hunter's Charm (+2% critical hit) [CANON].
 **Description:** Ash Wolves have been running the Farmlands and the Old Road. Renn wants them thinned.
 | Stage | ID | Objective text |
@@ -51,7 +53,7 @@ On completion the quest is replaced by **Beyond the Veil** [CANON].
 
 ## 1. Greyhaven ruins (level 1, safe area, no random battles)
 
-### 1.1 Arrival — `GH_ARRIVAL` [CANON event / PROPOSED lines]
+### 1.1 Arrival — `GH_ARRIVAL` [CANON event / C-confirmed lines]
 [STAGE] Fade in at the south road outside Greyhaven. Burned roofs, collapsed walls, smoke. The destruction is already over. Do not show or flash back to it [CANON]. Kael walks in alone.
 
 **GH_ARRIVAL_01** · NARRATION
@@ -66,10 +68,10 @@ On completion the quest is replaced by **Beyond the Veil** [CANON].
 
 [STAGE] Start `Q_MAIN_FIND_MIRA` at stage 1 (`Q_FM_S1`). Set `flag_arrived_greyhaven`.
 
-### 1.2 Tomas, dying — `GH_TOMAS` [CANON line / PROPOSED framing]
-[STAGE] [PROPOSED] Tomas lies on a pallet in the ruined Blacksmith (his own forge), tended by Pell, a young survivor. Talking to Pell or Tomas starts the scene. Tomas does not die on screen here, because whether he dies on screen is still an open question.
+### 1.2 Tomas, dying — `GH_TOMAS` [CANON line / C-confirmed framing]
+[STAGE] [C-confirmed] Tomas lies on a pallet in the ruined Blacksmith (his own forge), tended by Pell, a young survivor. Talking to Pell or Tomas starts the scene. Tomas does not die on screen here, because whether he dies on screen is still an open question.
 
-**GH_TOMAS_01** · Pell [PROPOSED]
+**GH_TOMAS_01** · Pell [C-confirmed]
 > Kael? Gods. He kept saying you'd come. Over here. Careful.
 
 **GH_TOMAS_02** · Kael
@@ -89,19 +91,19 @@ On completion the quest is replaced by **Beyond the Veil** [CANON].
 
 [STAGE] Tomas slips out of consciousness. He does not die.
 
-**GH_TOMAS_07** · Pell [PROPOSED]
+**GH_TOMAS_07** · Pell [C-confirmed]
 > He's been like that since. In and out. I'll stay with him. Go.
 
 **GH_TOMAS_08** · Kael
 > Keep him breathing. I'll be back.
 
 [STAGE] Advance to `Q_FM_S2`. Set `flag_met_tomas`.
-Repeat talk with Tomas, **GH_TOMAS_R1** · NARRATION [PROPOSED]:
+Repeat talk with Tomas, **GH_TOMAS_R1** · NARRATION [C-confirmed]:
 > He's breathing. Barely.
-Repeat talk with Pell, **GH_TOMAS_R2** · Pell [PROPOSED]:
+Repeat talk with Pell, **GH_TOMAS_R2** · Pell [C-confirmed]:
 > I've got him. Find her, Kael.
 
-### 1.3 Pendant in the Varyn House ruins — `GH_HOUSE` [CANON event / PROPOSED lines]
+### 1.3 Pendant in the Varyn House ruins — `GH_HOUSE` [CANON event / C-confirmed lines]
 [STAGE] Varyn House is a burned shell. Interactable debris points (beams, a toppled chest, a scorched bed). The pendant sits under the rubble where Mira's bed was.
 
 **GH_HOUSE_01** · NARRATION *(toppled table)*
@@ -123,10 +125,10 @@ Repeat talk with Pell, **GH_TOMAS_R2** · Pell [PROPOSED]:
 
 [STAGE] Add the permanent key item `item_mira_pendant` (it can't be sold or dropped) [CANON]. Advance to `Q_FM_S3`. Set `flag_pendant_found`. The North Gate unlocks.
 
-### 1.4 Survivor dialogue [PROPOSED: all names and lines]
+### 1.4 Survivor dialogue [C-confirmed: all names and lines]
 Survivors don't know what destroyed the town, and they don't explain it. Lines with `_A` are spoken before the pendant is found, lines with `_B` after.
 
-**Rusted Boar Tavern: Hob, the tavern keeper** [PROPOSED]
+**Rusted Boar Tavern: Hob, the tavern keeper** [C-confirmed]
 **GH_TAVERN_01** · Hob
 > Kael Varyn. Wish you'd picked a better week to come home.
 > Bar's still standing. That's about all.
@@ -137,7 +139,7 @@ Survivors don't know what destroyed the town, and they don't explain it. Lines w
 **GH_TAVERN_04** · Hob
 > You were going to. Your old man's at the forge, if he's still with us.
 
-**Greyhaven Chapel: Sister Ilse, the chapel keeper** [PROPOSED; faith/order left unnamed, because whether the Chapel belongs to the Radiant Flame is open]
+**Greyhaven Chapel: Sister Ilse, the chapel keeper** [C-confirmed; faith/order left unnamed, because whether the Chapel belongs to the Radiant Flame is open]
 **GH_CHAPEL_01** · Sister Ilse
 > We've counted the dead twice. Your sister wasn't among them.
 > I don't know if that's a mercy.
@@ -146,15 +148,15 @@ Survivors don't know what destroyed the town, and they don't explain it. Lines w
 **GH_CHAPEL_03** · Sister Ilse
 > I told her to throw it away. She smiled at me the way children do
 > when they've already decided not to.
-*(GH_CHAPEL_02–03 fit the canon "she was told to throw it away but kept it". Who told her is not stated in the doc, so this attribution is [PROPOSED].)*
+*(GH_CHAPEL_02–03 fit the canon "she was told to throw it away but kept it". Who told her is not stated in the doc, so this attribution is [C-confirmed].)*
 
-**Blacksmith (Tomas's forge): Pell** [PROPOSED]
+**Blacksmith (Tomas's forge): Pell** [C-confirmed]
 **GH_SMITH_01_B** · Pell
 > His tools are mostly fine. Iron's tougher than people.
 > Take what you need for the road.
 [STAGE] Optional: the Blacksmith works as a basic equipment shop run by Pell. Stock should come from the item DB.
 
-**General Store: Marda, the shopkeeper** [PROPOSED]
+**General Store: Marda, the shopkeeper** [C-confirmed]
 **GH_STORE_01** · Marda
 > Shelves are half ash, but potions don't burn easy.
 > Coin's still coin, Kael. Even now.
@@ -164,7 +166,7 @@ Survivors don't know what destroyed the town, and they don't explain it. Lines w
 > Everything went up. Including the roof. Buying or not?
 [STAGE] Shop: Minor Potion, Antidote (canon item names). Prices come from the item DB.
 
-**Town Square: survivors** [PROPOSED]
+**Town Square: survivors** [C-confirmed]
 **GH_SQUARE_01** · Old Wenna
 > The well still runs. Strange, what's left standing.
 **GH_SQUARE_02** · Dov (a boy, about Mira's age)
@@ -176,7 +178,7 @@ Survivors don't know what destroyed the town, and they don't explain it. Lines w
 > She wouldn't tell. Said it was hers.
 *(Canon: Mira found a passage beneath Greyhaven. The scene does not reveal where it is or whether it is the Crownveil Door.)*
 
-**North Gate: Corwin, the militia watchman** [PROPOSED]
+**North Gate: Corwin, the militia watchman** [C-confirmed]
 **GH_GATE_01_A** · Corwin
 > Gate stays shut till you've seen your father. He asked for you. Every hour.
 **GH_GATE_01_B** · Corwin
@@ -191,7 +193,7 @@ Survivors don't know what destroyed the town, and they don't explain it. Lines w
 
 ## 2. Greyhaven Farmlands (level 1–2) — Bandits, Ash Wolves
 
-### 2.1 First guaranteed Bandit encounter (tutorial) — `FL_TUTORIAL` [CANON encounter / PROPOSED text]
+### 2.1 First guaranteed Bandit encounter (tutorial) — `FL_TUTORIAL` [CANON encounter / C-confirmed text]
 [STAGE] A scripted trigger on the farm path. One Bandit. Combat can't be skipped, and there are no random battles before it.
 
 **FL_TUTORIAL_01** · Bandit
@@ -223,15 +225,15 @@ Survivors don't know what destroyed the town, and they don't explain it. Lines w
 
 [STAGE] Random encounters (Bandits, Ash Wolves) switch on. Set `flag_tutorial_done`.
 
-**FL_SIGN_01** · NARRATION *(signpost)* [PROPOSED]
+**FL_SIGN_01** · NARRATION *(signpost)* [C-confirmed]
 > East: Hunter's Camp. North: the Old Road.
 
 ---
 
 ## 3. Hunter's Camp (optional, level 2) — Old Hunter Renn
 
-[STAGE] A small camp with a tent, drying racks and a fire. No random battles here [PROPOSED].
-Renn's personality is not in the doc. Everything below is **[PROPOSED]**: a gruff, dry old woodsman.
+[STAGE] A small camp with a tent, drying racks and a fire. No random battles here [C-confirmed].
+Renn's personality is not in the doc. Everything below is **[C-confirmed]**: a gruff, dry old woodsman.
 
 **HC_RENN_01** · Old Hunter Renn
 > Varyn's boy. Heard the town went up. Heard you were off playing soldier.
@@ -268,40 +270,40 @@ Renn's personality is not in the doc. Everything below is **[PROPOSED]**: a gruf
 
 ## 4. Old Road (level 2–3) — Bandits, Ash Wolves, Ashen Wretches, rare Ashbound Hunter
 
-**OR_ENTER_01** · Kael [PROPOSED]
+**OR_ENTER_01** · Kael [C-confirmed]
 > Small boots. Heading north. Keep going, Mira. I'm right behind you.
-*(Uses the "small tracks" hint from GH_GATE_02_B. It is [PROPOSED] connective motivation for following the route.)*
+*(Uses the "small tracks" hint from GH_GATE_02_B. It is [C-confirmed] connective motivation for following the route.)*
 
-### 4.1 Ashbound Hunter special encounter — `ENC_ASHBOUND_HUNTER` [CANON event + parchment / PROPOSED framing]
+### 4.1 Ashbound Hunter special encounter — `ENC_ASHBOUND_HUNTER` [CANON event + parchment / C-confirmed framing]
 [STAGE] A rare random encounter (3–5%) on the Old Road, at the Bandit Camp and in the Watchtower. Before the battle starts, an arrow thuds into the ground beside Kael [CANON]. Recommended level 3–5. The parchment drops only the first time the Hunter is defeated.
-Note for Kevin: this clue can be missed because the encounter is rare. Whether that's intended is an open question in the bible. Coder could make the first Watchtower Hunter encounter a guaranteed fight if Kevin wants the clue guaranteed.
+**[C-confirmed] The parchment can't be missed.** The first Ashbound Hunter fight in the Old Watchtower is a **guaranteed scripted encounter** (`enc_ashbound_hunter_wt`, triggered once on a set tile in the Watchtower; Design picks which). If the player already has the parchment from a rare encounter, the guaranteed fight still happens, but ENC_AH_03–05 are skipped. Check `flag_parchment_found`.
 
 **ENC_AH_01** · NARRATION [CANON event]
 > An arrow slams into the dirt beside Kael's boot.
-**ENC_AH_02** · Kael [PROPOSED]
+**ENC_AH_02** · Kael [C-confirmed]
 > That was a warning. Or a bad shot. Let's find out which.
-[STAGE] Battle: 1× Ashbound Hunter.
+[STAGE] Battle: 1× Ashbound Hunter. ENC_AH_01–02 play at both the rare encounter and the guaranteed Watchtower encounter.
 
 **ENC_AH_03** · NARRATION *(after victory, first time)* [CANON object]
 > A folded parchment is tucked inside the hunter's coat.
 **ENC_AH_04** · Parchment [CANON text, verbatim]
 > “Find the girl. The Varyn girl is still alive.”
-**ENC_AH_05** · Kael [PROPOSED]
+**ENC_AH_05** · Kael [C-confirmed]
 > Alive.
 > ...Then who else is looking for her?
-[STAGE] Add the key item `item_ashbound_parchment` [PROPOSED as an item]. Set `flag_parchment_found`. If Kevin wants an Ice hint (Ashbound Hunter is weak to Ice [CANON]), add it later through the bestiary, not through dialogue.
+[STAGE] Add the key item `item_ashbound_parchment` [C-confirmed as an item]. Set `flag_parchment_found`. If Kevin wants an Ice hint (Ashbound Hunter is weak to Ice [CANON]), add it later through the bestiary, not through dialogue.
 
 ---
 
 ## 5. Abandoned Bandit Camp (level 3–4) — Bandits, Fallen Knights, Ashen Wretches, rare Ashbound Hunter
 
-**BC_ENTER_01** · Kael [PROPOSED]
+**BC_ENTER_01** · Kael [C-confirmed]
 > Abandoned. Fires cold for days. Whatever ran them off, I'm walking toward it.
 
 Chests (canon pool): Minor Potion x3, Antidote x2, 50 Gold, Iron Sword. Which chest holds which is up to Design.
 
-### 5.1 The Fallen Knight, first line — `FK_01` [CANON line / PROPOSED placement and staging]
-[STAGE] [PROPOSED] At the camp's north exit, an armored Fallen Knight stands motionless in Kael's path. It does not attack. Do not name him; his identity is open. After the line, he turns and walks into the trees toward the Watchtower. This gives the player a [PROPOSED] reason to go there.
+### 5.1 The Fallen Knight, first line — `FK_01` [CANON line / C-confirmed placement and staging]
+[STAGE] [C-confirmed] At the camp's north exit, an armored Fallen Knight stands motionless in Kael's path. It does not attack. Do not name him; his identity is open. After the line, he turns and walks into the trees toward the Watchtower. This gives the player a [C-confirmed] reason to go there.
 
 **FK_01_01** · Fallen Knight
 > ...Varyn.
@@ -318,12 +320,13 @@ Chests (canon pool): Minor Potion x3, Antidote x2, 50 Gold, Iron Sword. Which ch
 ## 6. Old Watchtower (level 4–7) — Fallen Knights, Grave Spiders, Hollow Soldiers, Ashbound Hunter
 
 [STAGE] A dungeon with locked doors, keys, chests and traps [CANON]. Ancient symbols are carved in the stone [CANON].
+[STAGE] [C-confirmed] The guaranteed first Ashbound Hunter fight happens here (see 4.1), before the banner room.
 
-### 6.1 Interactables and lore notes [PROPOSED unless marked]
+### 6.1 Interactables and lore notes [C-confirmed unless marked]
 **WT_DOOR_LOCKED** · NARRATION
 > Locked. The keyhole is crusted with rust.
 **WT_KEY_01** · SYSTEM
-> Obtained: Watchtower Key. *(Key names and count: [PROPOSED]. Design decides the layout.)*
+> Obtained: Watchtower Key. *(Key names and count: [C-confirmed]. Design decides the layout.)*
 **WT_SYMBOL_01** · NARRATION *(ancient symbols on the walls)*
 > Carvings older than the tower itself. The stone around them is too smooth.
 **WT_NOTE_01** · Faded Note *(soldier's note)*
@@ -333,7 +336,7 @@ Chests (canon pool): Minor Potion x3, Antidote x2, 50 Gold, Iron Sword. Which ch
 **WT_TRAP_01** · NARRATION
 > A pressure plate clicks underfoot—
 
-### 6.2 Banner clue — `WT_BANNER` [CANON clue / PROPOSED lines]
+### 6.2 Banner clue — `WT_BANNER` [CANON clue / C-confirmed lines]
 **WT_BANNER_01** · NARRATION
 > An old royal banner hangs in tatters. The symbol stitched at its center...
 **WT_BANNER_02** · NARRATION [CANON]
@@ -341,10 +344,10 @@ Chests (canon pool): Minor Potion x3, Antidote x2, 50 Gold, Iron Sword. Which ch
 **WT_BANNER_03** · Kael
 > A royal banner. Mira's pendant. Same mark.
 > Why would the crown share anything with a girl from Greyhaven?
-[STAGE] Set `flag_banner_clue`. The pendant icon pulses briefly [PROPOSED]. Don't show the symbol's design until Kevin defines it; use a placeholder sprite. The doc says the same symbol is connected to the Crownveil. Kael doesn't know that yet, so he doesn't say it.
+[STAGE] Set `flag_banner_clue`. The pendant icon pulses briefly [C-confirmed]. Don't show the symbol's design until Kevin defines it; use a placeholder sprite. The doc says the same symbol is connected to the Crownveil. Kael doesn't know that yet, so he doesn't say it.
 
-### 6.3 The Fallen Knight, second line — `FK_02` [CANON line / PROPOSED placement]
-[STAGE] [PROPOSED] At the top of the stairs down to the Basement, the Fallen Knight is waiting again. He doesn't fight.
+### 6.3 The Fallen Knight, second line — `FK_02` [CANON line / C-confirmed placement]
+[STAGE] [C-confirmed] At the top of the stairs down to the Basement, the Fallen Knight is waiting again. He doesn't fight.
 
 **FK_02_01** · Kael
 > You. Talk. Where is my sister?
@@ -358,7 +361,7 @@ Chests (canon pool): Minor Potion x3, Antidote x2, 50 Gold, Iron Sword. Which ch
 
 ## 7. Watchtower Basement — Architect carvings
 
-### 7.1 Carvings — `WB_CARVING` [CANON imagery / PROPOSED lines]
+### 7.1 Carvings — `WB_CARVING` [CANON imagery / C-confirmed lines]
 [STAGE] A wall-sized relief. Design: a giant crown surrounding a black sun. Below it, a woman stands before a stone door. The woman resembles Mira, even though the carvings are thousands of years old [CANON].
 
 **WB_CARVING_01** · NARRATION
@@ -397,7 +400,7 @@ Chests (canon pool): Minor Potion x3, Antidote x2, 50 Gold, Iron Sword. Which ch
 - **Phase 2, The Corruption (60% HP):** the helmet cracks and Ash pours from the armor. Attack goes up and the shield is lost. Ash Slash, Dark Lunge, Blood Oath.
 - **Phase 3, Hollow Knight (20% HP):** the armor is engulfed in Ash. Attack +40%, Speed +30%, Defense −20%. New ability: Execution.
 
-Phase-change barks [PROPOSED; the boss says nothing else in canon, so these are optional]:
+Phase-change barks [C-confirmed; the boss says nothing else in canon, so these are optional]:
 **BG_PHASE2_01** · NARRATION
 > His helmet cracks. Ash pours from the seams of his armor.
 **BG_PHASE3_01** · NARRATION
@@ -415,15 +418,15 @@ Phase-change barks [PROPOSED; the boss says nothing else in canon, so these are 
 **BG_REWARD_01** · SYSTEM
 > Obtained: Blackguard's Longsword. Obtained: Crownveil Fragment.
 
-[STAGE] Whether the Blackguard dies, crumbles or lingers is unspecified. [PROPOSED] He collapses into ash and empty armor. Kevin may prefer otherwise.
+[STAGE] Whether the Blackguard dies, crumbles or lingers is unspecified. [C-confirmed] He collapses into ash and empty armor. Kevin may prefer otherwise.
 
 ---
 
-## 9. Crownveil Door — chapter ending — `CV_END` [CANON events / PROPOSED lines]
+## 9. Crownveil Door — chapter ending — `CV_END` [CANON events / C-confirmed lines]
 
 [STAGE] Beyond the arena is a sealed stone door. Whether it is the passage beneath Greyhaven is still open, so the script doesn't say.
 
-**CV_END_01** · Kael [PROPOSED]
+**CV_END_01** · Kael [C-confirmed]
 > The Crownveil. The thing that's supposed to keep us safe.
 > ...Mira. What did you do?
 **CV_END_02** · NARRATION [CANON event]
@@ -433,7 +436,7 @@ Phase-change barks [PROPOSED; the boss says nothing else in canon, so these are 
 **CV_END_04** · NARRATION [CANON event]
 > Then everything stops.
 
-[STAGE] Hard cut to black and silence [PROPOSED]. What "everything stops" means is open, so the presentation doesn't explain it.
+[STAGE] Hard cut to black and silence [C-confirmed]. What "everything stops" means is open, so the presentation doesn't explain it.
 Complete `Q_MAIN_FIND_MIRA`. Start `Q_MAIN_BEYOND_VEIL` (`Q_BV_S1`) [CANON quest change].
 
 **CV_END_05** · SYSTEM
@@ -441,11 +444,13 @@ Complete `Q_MAIN_FIND_MIRA`. Start `Q_MAIN_BEYOND_VEIL` (`Q_BV_S1`) [CANON quest
 **CV_END_06** · SYSTEM
 > Chapter 1 — The Night of Ash — Complete.
 
-[STAGE] Set `flag_chapter1_complete`. Offer a save [PROPOSED].
+[STAGE] Set `flag_chapter1_complete`. Offer a save [C-confirmed].
 
 ---
 
-## [PROPOSED] items for Kevin to review
+## Approved (Kevin, Nov 14 2026)
+
+Kevin approved all of the following as canon. Item 9 resolved to the guaranteed Watchtower Hunter option.
 
 1. Survivor names and roles: Pell (young helper tending Tomas, runs the forge shop), Hob (tavern keeper), Sister Ilse (chapel keeper, faith left unnamed), Marda (shopkeeper), Old Wenna and Dov (Town Square), Corwin (North Gate watchman).
 2. Tomas lies in his ruined forge (the Blacksmith) and lapses into unconsciousness without dying on screen.
@@ -455,7 +460,7 @@ Complete `Q_MAIN_FIND_MIRA`. Start `Q_MAIN_BEYOND_VEIL` (`Q_BV_S1`) [CANON quest
 6. The "small tracks heading north" and the Fallen Knight walking toward the Watchtower, which give the player a reason to follow the route.
 7. Tutorial text, including the Cheap Shot warning and the Last Stand popup.
 8. Renn's personality and his quest "Thinning the Pack": defeat 5 Ash Wolves, return to Renn, get the Hunter's Charm. Also his dialogue and the hint that wolves are weak to fire.
-9. The Ashbound parchment as a key item, and the note that the clue can be missed (option: guarantee the first Watchtower Hunter encounter).
+9. The Ashbound parchment is a key item. The first Ashbound Hunter fight in the Old Watchtower is guaranteed, so the parchment can't be missed.
 10. Fallen Knight placement and staging: line 1 at the Bandit Camp's north exit, line 2 at the top of the Watchtower Basement stairs. He never fights or gets named in these scenes.
 11. Watchtower lore notes (soldiers' notes about the post closing and scratching under the floor), the key name, and the trap and symbol text.
 12. The pendant pulsing at the banner and warming at the door. Warming is my wording for the canon "reacts."

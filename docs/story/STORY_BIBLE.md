@@ -186,26 +186,28 @@ Varyn House · Rusted Boar Tavern · Greyhaven Chapel · Blacksmith · General S
 
 ### 5.7 Tomas Varyn [C]
 - Kael's father. Former soldier turned blacksmith (Greyhaven has a Blacksmith location). Dying when Kael returns. Says *“Your sister… she went into the woods.”* According to the Fallen Knight, he "knew what was coming."
-- **[O]** Whether he dies on screen. What he knew, and how.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) In Chapter 1 he lies in his ruined forge (the Blacksmith), tended by Pell. After delivering his line he passes out. He does **not** die on screen in Chapter 1.
+- **[O]** His ultimate fate. What he knew, and how.
 
 ### 5.8 Elira Varyn [C]
 - Kael's mother, the village healer.
 - **[O]** Her fate. The doc doesn't say whether she survived Greyhaven's destruction.
 
 ### 5.9 Mira Varyn [C]
-- Kael's younger sister, twelve when the tragedy began. She kept a black stone with a Crownveil symbol after being told to throw it away. She found a passage beneath Greyhaven and accidentally opened something connected to the Crownveil, and something came looking for her.
+- Kael's younger sister, twelve when the tragedy began. She kept a black stone with a Crownveil symbol after being told to throw it away. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Sister Ilse, the Greyhaven chapel keeper, is the one who told her to throw it away. Mira had asked Ilse what the mark meant. She found a passage beneath Greyhaven and accidentally opened something connected to the Crownveil, and something came looking for her.
 - Her wooden pendant was found in the ruins, with no body.
 - The Ashbound parchment says she is still alive. The Watchtower carvings show a woman who looks like her. The Blackguard says she "crossed the Crownveil."
 - **[O]** Why she was involved, why the carvings resemble her, what happened to the stone, and where she is now.
 
 ### 5.10 Old Hunter Renn [C]
 - An NPC at the optional Hunter's Camp (Zone 1, recommended level 2). His optional quest rewards the **Hunter's Charm** (+2% critical hit).
-- **[O]** His personality, his dialogue, and what the quest is.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) A gruff, dry old woodsman who knew Kael's family. His quest is **Thinning the Pack** (`Q_SIDE_RENN`): defeat 5 Ash Wolves in the Farmlands or on the Old Road, then return to Renn for the Hunter's Charm. He hints that the wolves are weak to fire.
 
 ### 5.11 The Fallen Knight (story character) [C]
 - He recognizes Kael and says *“Your father knew what was coming.”* and later *“She opened the door.”*
 - **[C]** Separately, "Fallen Knight" is a common elite enemy type (Zone 1), and Act 5 is titled "The Fallen Knight."
-- **[O]** Who he is, whether he is one of the Fallen Knight enemies, whether he is the subject of Act 5, and where his scenes happen.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Chapter 1 placement:** line 1 at the Abandoned Bandit Camp's north exit, after which he walks off toward the Watchtower. Line 2 at the top of the Watchtower Basement stairs, after which he descends and vanishes. He never fights and is never named in Chapter 1.
+- **[O]** Who he is, whether he is one of the Fallen Knight enemies, and whether he is the subject of Act 5.
 
 ### 5.12 The Blackguard — Zone 1 boss [C]
 - A former Royal Knight corrupted by the Ash. Recommended player level 5–7, 450 HP total, weak to Holy.
@@ -214,10 +216,21 @@ Varyn House · Rusted Boar Tavern · Greyhaven Chapel · Blacksmith · General S
 - **Phase 3 — Hollow Knight (20% HP):** the armor is engulfed in Ash. Attack +40%, Speed +30%, Defense −20%. New ability: Execution.
 - **[O]** His name, and how he knows Mira and Kael.
 
-### 5.13 Taren [O]
+### 5.13 Greyhaven survivors **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
+| Name | Role | Location |
+|---|---|---|
+| Pell | Young survivor tending Tomas. Runs the forge as an equipment shop | Blacksmith |
+| Hob | Tavern keeper. Hid in the cellar and heard the destruction, but won't describe it | Rusted Boar Tavern |
+| Sister Ilse | Chapel keeper. Told Mira to throw away the black stone. Her faith or order is left unnamed (still open) | Greyhaven Chapel |
+| Marda | Shopkeeper. Sells Minor Potions and Antidotes | General Store |
+| Old Wenna | Elderly survivor | Town Square |
+| Dov | Boy about Mira's age. Says Mira claimed she found "a door in the ground" under the town and wouldn't say where | Town Square |
+| Corwin | Militia watchman. Keeps the gate shut until Kael has seen Tomas, and mentions small tracks heading north | North Gate |
+
+### 5.14 Taren [O]
 - Named only once: "Kael and Taren must stop him" (Alden). Not defined anywhere else in the doc. Do not build him until Kevin defines him.
 
-### 5.14 The Ash King [O]
+### 5.15 The Ash King [O]
 - Named twice: as one of the gradual Crownveil truths ("Why the Ash King is connected to it") and in Milestone 12 ("Ash King story"). Not defined anywhere else.
 
 ---
@@ -229,13 +242,13 @@ Varyn House · Rusted Boar Tavern · Greyhaven Chapel · Blacksmith · General S
 
 The beats below follow that route. **[O]** The doc doesn't say exactly where the Tomas, pendant and Fallen Knight beats happen. Their positions here are suggestions only.
 
-1. **Return to Greyhaven** (level 1, safe, no random battles). Kael comes home to an already destroyed village. **[C-confirmed]** The destruction is not played. His dying father says *“Your sister… she went into the woods.”* Kael searches the ruins of Varyn House and finds Mira's wooden pendant, with no body. **[C-confirmed]** **Opening quest: Find Mira.** *(Order within Greyhaven: [O].)*
+1. **Return to Greyhaven** (level 1, safe, no random battles). Kael comes home to an already destroyed village. **[C-confirmed]** The destruction is not played. His dying father says *“Your sister… she went into the woods.”* Kael searches the ruins of Varyn House and finds Mira's wooden pendant, with no body. **[C-confirmed]** **Opening quest: Find Mira.** **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) The order follows `CHAPTER1_SCRIPT.md`: arrival, then Tomas in the forge (he passes out, not dead), then the pendant in the Varyn House ruins, after which Corwin opens the North Gate.
 2. **Greyhaven Farmlands** (level 1–2). Bandits and Ash Wolves. The **first guaranteed Bandit encounter** teaches combat.
 3. **Hunter's Camp** (level 2, optional). Old Hunter Renn. Optional quest reward: Hunter's Charm.
 4. **Old Road** (level 2–3). Bandits, Ash Wolves, Ashen Wretches, and the rare Ashbound Hunter.
-5. **Ashbound Hunter special encounter** (rare, 3–5%, recommended level 3–5; can appear on the Old Road, at the Bandit Camp and in the Watchtower). "An arrow lands beside Kael before combat begins." **Story clue:** a parchment reads *“Find the girl. The Varyn girl is still alive.”* **[O]** As a rare encounter this clue can be missed. Is that intended?
+5. **Ashbound Hunter special encounter** (rare, 3–5%, recommended level 3–5; can appear on the Old Road, at the Bandit Camp and in the Watchtower). "An arrow lands beside Kael before combat begins." **Story clue:** a parchment reads *“Find the girl. The Varyn girl is still alive.”* **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **The parchment can't be missed:** the first Ashbound Hunter fight in the Old Watchtower is guaranteed and drops the parchment if the player hasn't already got it. The rare 3–5% encounter stays in place elsewhere.
 6. **Abandoned Bandit Camp** (level 3–4). Bandits, Fallen Knights, Ashen Wretches, rare Ashbound Hunter. Possible chest rewards: Minor Potion x3, Antidote x2, 50 Gold, Iron Sword.
-7. **Fallen Knight lines** (placement **[O]**): *“Your father knew what was coming.”* … later *“She opened the door.”*
+7. **Fallen Knight lines** (**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) line 1 at the Bandit Camp's north exit, line 2 at the top of the Basement stairs): *“Your father knew what was coming.”* … later *“She opened the door.”*
 8. **Old Watchtower** (level 4–7, main dungeon). Fallen Knights, Grave Spiders, Hollow Soldiers, Ashbound Hunter. Locked doors, keys, chests, traps, environmental lore, ancient symbols. **Banner clue:** an old royal banner bears the same symbol as Kael's pendant and the symbol connected to the Crownveil.
 9. **Watchtower Basement: Architect carvings.** A giant crown surrounds a black sun. A woman stands before a stone door. She resembles Mira, even though the carvings are thousands of years old.
 10. **Blackguard Arena: boss intro (verbatim)**
@@ -251,7 +264,8 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
     > **Blackguard:** “She crossed the Crownveil.”
 13. **Rewards:** 250 XP, 100 Gold, Blackguard's Longsword, Crownveil Fragment.
 14. **Chapter ending at the Crownveil Door.** The main quest changes from **Find Mira → Beyond the Veil**. The pendant reacts to the sealed stone door. "Something touches the other side. Then everything stops." **Chapter 1 completes.**
-    **[O]** What "everything stops" means on screen (cut to black, a time freeze, or something else). Whether this door is the same passage beneath Greyhaven that Mira opened.
+    **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Presentation:** hard cut to black and silence, then the quest-change and chapter-complete screens and a save prompt. The Blackguard collapses into ash and empty armor when defeated.
+    **[O]** What "everything stops" *means* in the story. Whether this door is the same passage beneath Greyhaven that Mira opened.
 
 ---
 
@@ -291,7 +305,7 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 ## 9. Canon at a glance
 
 - **Locked:** the Alden Marr Ending C concept.
-- **Confirmed by Kevin (Nov 14 2026):** FF1-style top-down exploration camera; Kael finds the pendant in the Varyn House ruins; Kael arrives after Greyhaven's destruction, which is not played.
+- **Confirmed by Kevin (Nov 14 2026):** FF1-style top-down exploration camera; Kael finds the pendant in the Varyn House ruins; Kael arrives after Greyhaven's destruction, which is not played; all of `CHAPTER1_SCRIPT.md` (every line and scene in it is canon).
 - **Canon:** everything tagged [C] above, including all verbatim dialogue.
 - **Unconfirmed:** Endings 1–3.
 - **Open:** everything in section 10.
@@ -301,43 +315,42 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 **People**
 1. Who is Taren? He is named only as Kael's partner against Alden.
 2. Who or what is the Ash King? How does it connect to the Crownveil, the Ash, and "the entity beyond it"?
-3. Who is the Fallen Knight who recognizes Kael? Is he one of the Fallen Knight enemies, and is he the subject of Act 5? Where do his two lines happen?
+3. Who is the Fallen Knight who recognizes Kael? Is he one of the Fallen Knight enemies, and is he the subject of Act 5?
 4. Who is the Blackguard (name, history)? How does he know Mira and Kael?
 5. What did Sera see inside the royal palace?
 6. What exactly does Caelan know about the Crownveil and why it broke?
 7. What are Lyra's Black Hand ties?
 8. When and where do Lyra, Caelan and Sera join the party?
 9. Elira's fate: alive, dead or missing after Greyhaven?
-10. Does Tomas die on screen, and what did he know "was coming"?
+10. What is Tomas's ultimate fate (he passes out in Chapter 1, not dead), and what did he know "was coming"?
 11. Who is the "Forgotten King" in Act 4?
-12. Old Hunter Renn's personality and optional quest content.
-13. Alden's backstory, his relationship with the rebellion, and who defeats King Aldric IV, and how.
-14. What are Aldric IV's motives for hiding the Crownveil's failure?
+12. Alden's backstory, his relationship with the rebellion, and who defeats King Aldric IV, and how.
+13. What are Aldric IV's motives for hiding the Crownveil's failure?
 
 **Events and world**
-15. What destroyed Greyhaven, and how? (Timing is settled: before Kael arrives, not played.)
-16. What is "the Night of Ash" as an event?
-17. Is the passage beneath Greyhaven that Mira opened the same as the Crownveil Door at the end of Zone 1? Where is the Old Watchtower relative to Greyhaven?
-18. What happened to Mira's black stone?
-19. Why do the Architect carvings resemble Mira?
-20. Who wrote the Ashbound parchment, and who sent the Ashbound Hunter? Should a story clue sit inside a 3–5% rare encounter that players can miss?
-21. What does "Then everything stops" mean at the end of Chapter 1?
-22. What does the pendant's shared symbol look like, and is it the crown around a black sun?
-23. Why does a royal banner carry the Crownveil symbol? What does the crown know?
-24. Where exactly does the Crownveil run? It is believed to protect Eldoria, but the Ashlands lie "beyond" it. What is it keeping in?
-25. What are the answers to the six gradual Crownveil truths, and in which acts are they revealed?
-26. Is the Frostwilds' "ancient northern civilization" the Architects or a separate people?
-27. Which acts map to which regions? Where do Valemere, the Drowned Coast and the Frostwilds fall in the eight acts?
-28. What is the rebellion called, and who leads it?
-29. Is Greyhaven Chapel part of the Radiant Flame?
-30. What is Mira's age now? The doc gives "twelve when the tragedy began." How much time has passed?
+14. What destroyed Greyhaven, and how? (Timing is settled: before Kael arrives, not played.)
+15. What is "the Night of Ash" as an event?
+16. Is the passage beneath Greyhaven that Mira opened the same as the Crownveil Door at the end of Zone 1? Where is the Old Watchtower relative to Greyhaven?
+17. What happened to Mira's black stone?
+18. Why do the Architect carvings resemble Mira?
+19. Who wrote the Ashbound parchment, and who sent the Ashbound Hunter?
+20. What does "Then everything stops" mean in the story? (The on-screen presentation is settled: a hard cut to black.)
+21. What does the pendant's shared symbol look like, and is it the crown around a black sun?
+22. Why does a royal banner carry the Crownveil symbol? What does the crown know?
+23. Where exactly does the Crownveil run? It is believed to protect Eldoria, but the Ashlands lie "beyond" it. What is it keeping in?
+24. What are the answers to the six gradual Crownveil truths, and in which acts are they revealed?
+25. Is the Frostwilds' "ancient northern civilization" the Architects or a separate people?
+26. Which acts map to which regions? Where do Valemere, the Drowned Coast and the Frostwilds fall in the eight acts?
+27. What is the rebellion called, and who leads it?
+28. Is Greyhaven Chapel part of the Radiant Flame?
+29. What is Mira's age now? The doc gives "twelve when the tragedy began." How much time has passed?
 
 **Endings and systems that touch lore**
-31. Which ending(s) are final, and what are the branching conditions (choices, relationships)?
-32. How does Alden's Ending C relate to the three Crownveil endings? Is it a separate branch, a step before the finale, or a fourth ending?
-33. What is "the entity" in Endings 2 and 3, and is it the Ash or the Ash King?
-34. Kael's Ashen Resolve says "Ash increases by 1." What is the Ash stat or meter?
-35. Battle presentation: are battles FF1-style menu battles (the current assumption)? The doc's "hybrid, varying by encounter" note still needs his final word. (The exploration camera is settled.)
+30. Which ending(s) are final, and what are the branching conditions (choices, relationships)?
+31. How does Alden's Ending C relate to the three Crownveil endings? Is it a separate branch, a step before the finale, or a fourth ending?
+32. What is "the entity" in Endings 2 and 3, and is it the Ash or the Ash King?
+33. Kael's Ashen Resolve says "Ash increases by 1." What is the Ash stat or meter?
+34. Battle presentation: are battles FF1-style menu battles (the current assumption)? The doc's "hybrid, varying by encounter" note still needs his final word. (The exploration camera is settled.)
 
 ## 11. Decision log
 
@@ -346,3 +359,5 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 | Nov 14 2026 | Exploration and overworld camera is FF1-style top-down. | Section 1 marked confirmed. The camera question is resolved. Battle presentation stays open, presumed to be FF1-style menu battles. |
 | Nov 14 2026 | Kael **finds** Mira's wooden pendant in the ruins of Varyn House. She did not give it to him. | Replaces the doc's line "The wooden pendant given by Mira." Sections 5.1 and 6 updated. The pendant question is resolved. |
 | Nov 14 2026 | Kael arrives home **after** Greyhaven is destroyed. The destruction is not played. | Sections 3, 5.1 and 6 updated. The timing question is resolved. *What* destroyed Greyhaven stays open. |
+| Nov 14 2026 | Approved everything proposed in `CHAPTER1_SCRIPT.md` as canon. | New section 5.13 (survivors), plus updates to 5.7, 5.9, 5.10, 5.11 and section 6. Ilse told Mira to discard the stone. Tomas passes out and doesn't die on screen (fate still open). Fallen Knight placement settled. Renn's personality and quest settled. Hard cut to black at the ending. Resolved questions removed: Renn's content, Fallen Knight placement, Tomas dying on screen, missable parchment, and the ending presentation. |
+| Nov 14 2026 | The parchment can't be missed: the first Ashbound Hunter fight in the Old Watchtower is guaranteed. | Section 6, beat 5 updated. The rare encounter is kept elsewhere. |
