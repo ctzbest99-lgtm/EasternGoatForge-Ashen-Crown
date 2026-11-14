@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"a81c10ac-095e-4c4f-b608-81b2cc3cf801",
-      "name":"a81c10ac-095e-4c4f-b608-81b2cc3cf801",
+      "%Name":"296517f9-99f0-497e-8c92-c932333d321d",
+      "name":"296517f9-99f0-497e-8c92-c932333d321d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"6acf1e9c-a9a0-4c9c-8b07-418182c6a38e",
+      "%Name":"d1ec2aad-e924-475e-afc7-c9e2cbcf31d0",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"6acf1e9c-a9a0-4c9c-8b07-418182c6a38e",
+      "name":"d1ec2aad-e924-475e-afc7-c9e2cbcf31d0",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a81c10ac-095e-4c4f-b608-81b2cc3cf801",
+                    "name":"296517f9-99f0-497e-8c92-c932333d321d",
                     "path":"sprites/spr_prisoner_b_ow16_idle_right/spr_prisoner_b_ow16_idle_right.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f223c88a-f1b1-4331-a8ae-8eb9fdb2d7be",
+              "id":"455f087a-d78e-4344-85ed-79057bd67307",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

@@ -17,6 +17,30 @@ function scr_dialogue_node(_id) {
         case "ENC_AH_05":
             return { id: "ENC_AH_05", speaker: "Kael", lines: ["Alive.", "...Then who else is looking for her?"] };
 
+        // FL_TUTORIAL (CHAPTER1_SCRIPT.md §2.1) — first guaranteed Bandit fight.
+        // 01–03 play before the battle, 04–05 after it; the SYS lines play in the
+        // battle itself (obj_battle_controller, tutorial encounter).
+        case "FL_TUTORIAL_01":
+            return { id: "FL_TUTORIAL_01", speaker: "Bandit", lines: ["Well, well. A soldier boy, picking through the ashes like the rest of us."] };
+        case "FL_TUTORIAL_02":
+            return { id: "FL_TUTORIAL_02", speaker: "Kael", lines: ["Move."] };
+        case "FL_TUTORIAL_03":
+            return { id: "FL_TUTORIAL_03", speaker: "Bandit", lines: ["Big talk. Let's see that sword, then."] };
+        case "FL_TUTORIAL_04":
+            return { id: "FL_TUTORIAL_04", speaker: "Bandit", lines: ["Should've... stayed in the army..."] };
+        case "FL_TUTORIAL_05":
+            return { id: "FL_TUTORIAL_05", speaker: "Kael", lines: ["Should've stayed out of my way."] };
+        case "FL_TUTORIAL_SYS_01":
+            return { id: "FL_TUTORIAL_SYS_01", speaker: "SYSTEM", lines: ["Choose a command for Kael: Attack, Skills, Defend, or Items.", "Turn order depends on Speed."] };
+        case "FL_TUTORIAL_SYS_02":
+            return { id: "FL_TUTORIAL_SYS_02", speaker: "SYSTEM", lines: ["Attack deals physical damage. Defend reduces damage taken until your next turn."] };
+        case "FL_TUTORIAL_SYS_03":
+            return { id: "FL_TUTORIAL_SYS_03", speaker: "SYSTEM", lines: ["Careful: some foes hit harder against a defending target. Bandits fight dirty."] };
+        case "FL_TUTORIAL_SYS_04":
+            return { id: "FL_TUTORIAL_SYS_04", speaker: "SYSTEM", lines: ["Items such as a Minor Potion restore HP. Using one takes Kael's turn."] };
+        case "FL_TUTORIAL_SYS_05":
+            return { id: "FL_TUTORIAL_SYS_05", speaker: "SYSTEM", lines: ["Last Stand: below 25% HP, Kael's Attack rises 15% and Defense 10%."] };
+
         // GH_ARRIVAL (§1.1)
         case "GH_ARRIVAL_01":
             return { id: "GH_ARRIVAL_01", speaker: "", lines: ["Four years in the Royal Army. Kael Varyn came home to Greyhaven.", "What was left of it."] };

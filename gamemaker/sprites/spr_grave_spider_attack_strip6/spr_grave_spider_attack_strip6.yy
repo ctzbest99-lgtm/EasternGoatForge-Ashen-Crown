@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"5876b81e-2328-4246-ba6f-e1364ccfa525",
-      "name":"5876b81e-2328-4246-ba6f-e1364ccfa525",
+      "%Name":"c81609ed-f2d7-4748-8583-a5caa0fa7a53",
+      "name":"c81609ed-f2d7-4748-8583-a5caa0fa7a53",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"e7460066-f95a-470a-924c-90a7da29629f",
-      "name":"e7460066-f95a-470a-924c-90a7da29629f",
+      "%Name":"611ab03b-a5fb-4501-a1da-4c24823049ee",
+      "name":"611ab03b-a5fb-4501-a1da-4c24823049ee",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"0ccce0b1-0a2a-4007-b49d-4853c11f2b5c",
-      "name":"0ccce0b1-0a2a-4007-b49d-4853c11f2b5c",
+      "%Name":"b984e466-d0ae-423f-913f-f6024809f40e",
+      "name":"b984e466-d0ae-423f-913f-f6024809f40e",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"8877e3f3-448c-4624-8c5e-773350db8db2",
-      "name":"8877e3f3-448c-4624-8c5e-773350db8db2",
+      "%Name":"6a3e7171-6133-4296-a057-aec720f4ce97",
+      "name":"6a3e7171-6133-4296-a057-aec720f4ce97",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"4f5e459d-2bbe-40bd-94d2-022f89550dab",
-      "name":"4f5e459d-2bbe-40bd-94d2-022f89550dab",
+      "%Name":"c35d08f1-7c2c-485e-bf62-9da54cd7cc7e",
+      "name":"c35d08f1-7c2c-485e-bf62-9da54cd7cc7e",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"5ef50426-86cb-437a-b075-52fff6c3bab2",
-      "name":"5ef50426-86cb-437a-b075-52fff6c3bab2",
+      "%Name":"ac1b6e72-1ab5-4ddc-8f9a-54f9bb5f5e28",
+      "name":"ac1b6e72-1ab5-4ddc-8f9a-54f9bb5f5e28",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"1e4a2114-ed11-4558-b2dc-6a29a4b64a8d",
+      "%Name":"c79f05e9-2f13-4cbb-a467-c4a1689112ad",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"1e4a2114-ed11-4558-b2dc-6a29a4b64a8d",
+      "name":"c79f05e9-2f13-4cbb-a467-c4a1689112ad",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"5876b81e-2328-4246-ba6f-e1364ccfa525",
+                    "name":"c81609ed-f2d7-4748-8583-a5caa0fa7a53",
                     "path":"sprites/spr_grave_spider_attack_strip6/spr_grave_spider_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"09953be4-f7cb-4d25-949d-abc94b601fea",
+              "id":"ea2a37af-d989-47db-92fb-20d58033d105",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"e7460066-f95a-470a-924c-90a7da29629f",
+                    "name":"611ab03b-a5fb-4501-a1da-4c24823049ee",
                     "path":"sprites/spr_grave_spider_attack_strip6/spr_grave_spider_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"4c09be81-1f74-44eb-812e-941016c5c77c",
+              "id":"009c7334-fe27-4c15-ad80-43b3a901374a",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0ccce0b1-0a2a-4007-b49d-4853c11f2b5c",
+                    "name":"b984e466-d0ae-423f-913f-f6024809f40e",
                     "path":"sprites/spr_grave_spider_attack_strip6/spr_grave_spider_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"2d6d44dd-ad5c-4477-b204-9a96f6cdeb94",
+              "id":"7b313bc8-8bc4-402f-81ae-d534eebd4387",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"8877e3f3-448c-4624-8c5e-773350db8db2",
+                    "name":"6a3e7171-6133-4296-a057-aec720f4ce97",
                     "path":"sprites/spr_grave_spider_attack_strip6/spr_grave_spider_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"9e691950-eaa1-4d8b-97b7-72f081aedc03",
+              "id":"ec4d0f27-74ff-46f3-a382-946e120022f9",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"4f5e459d-2bbe-40bd-94d2-022f89550dab",
+                    "name":"c35d08f1-7c2c-485e-bf62-9da54cd7cc7e",
                     "path":"sprites/spr_grave_spider_attack_strip6/spr_grave_spider_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"db543746-716d-4196-ac04-449119ca9160",
+              "id":"41a4ddf8-1674-480b-9eb8-514e7fa3db2f",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"5ef50426-86cb-437a-b075-52fff6c3bab2",
+                    "name":"ac1b6e72-1ab5-4ddc-8f9a-54f9bb5f5e28",
                     "path":"sprites/spr_grave_spider_attack_strip6/spr_grave_spider_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"052f6cf3-ecac-4bbe-ab74-9e113cce922e",
+              "id":"2a1c1fb4-f741-42c2-af78-58fb77a25484",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

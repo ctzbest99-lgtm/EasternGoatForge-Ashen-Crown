@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"cf4f52df-dc9f-44ab-8075-7b594e89b016",
-      "name":"cf4f52df-dc9f-44ab-8075-7b594e89b016",
+      "%Name":"65f375c6-fe92-4155-9fad-1ae7478ef175",
+      "name":"65f375c6-fe92-4155-9fad-1ae7478ef175",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"4480d42c-63f3-4953-ba7a-6f86d8b4b1e2",
+      "%Name":"6242cb7f-0f6e-4459-8396-866ec4600ca5",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"4480d42c-63f3-4953-ba7a-6f86d8b4b1e2",
+      "name":"6242cb7f-0f6e-4459-8396-866ec4600ca5",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"cf4f52df-dc9f-44ab-8075-7b594e89b016",
+                    "name":"65f375c6-fe92-4155-9fad-1ae7478ef175",
                     "path":"sprites/spr_crown_soldier_unwilling_ow16_idle_left/spr_crown_soldier_unwilling_ow16_idle_left.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d9849398-b493-488f-812c-e676e7bd21e6",
+              "id":"537d39f0-719b-4e65-a409-15e62a00e250",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

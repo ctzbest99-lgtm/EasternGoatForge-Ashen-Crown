@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"4394c01e-64c1-4b7b-943b-9243fdc3f42b",
-      "name":"4394c01e-64c1-4b7b-943b-9243fdc3f42b",
+      "%Name":"8bcdfaca-2206-4c44-85fe-ab4f58777480",
+      "name":"8bcdfaca-2206-4c44-85fe-ab4f58777480",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"e42a6d02-dcb5-48c6-9eeb-ec002f0a9861",
-      "name":"e42a6d02-dcb5-48c6-9eeb-ec002f0a9861",
+      "%Name":"44f4ff6a-4a4b-4a7d-9e0c-baac5606f959",
+      "name":"44f4ff6a-4a4b-4a7d-9e0c-baac5606f959",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"27fefddb-ef1e-4344-9848-d27087bb9a0a",
-      "name":"27fefddb-ef1e-4344-9848-d27087bb9a0a",
+      "%Name":"8f777e2c-ff23-4eb8-9ce4-13edae8e1dcd",
+      "name":"8f777e2c-ff23-4eb8-9ce4-13edae8e1dcd",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"66c2841d-cc53-4d69-8a39-684f16501ab2",
-      "name":"66c2841d-cc53-4d69-8a39-684f16501ab2",
+      "%Name":"a63ccc11-4bfe-4945-b3c7-0e39f5ff2918",
+      "name":"a63ccc11-4bfe-4945-b3c7-0e39f5ff2918",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"b1b4e32d-78cf-490a-9572-712d4285711e",
-      "name":"b1b4e32d-78cf-490a-9572-712d4285711e",
+      "%Name":"1ff5fdf3-a9c9-4430-868b-f0ce3af6a0f7",
+      "name":"1ff5fdf3-a9c9-4430-868b-f0ce3af6a0f7",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"3f3ff13d-ed0b-454c-a99f-2af9c68b7cd1",
-      "name":"3f3ff13d-ed0b-454c-a99f-2af9c68b7cd1",
+      "%Name":"15d1a7cb-1a12-44ef-8db6-fa796aa21b55",
+      "name":"15d1a7cb-1a12-44ef-8db6-fa796aa21b55",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"0a408901-2a20-490f-b73d-fc39b41d0b2d",
+      "%Name":"ea7f88c7-1e33-4e4b-ab0f-1005cafd045f",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"0a408901-2a20-490f-b73d-fc39b41d0b2d",
+      "name":"ea7f88c7-1e33-4e4b-ab0f-1005cafd045f",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"4394c01e-64c1-4b7b-943b-9243fdc3f42b",
+                    "name":"8bcdfaca-2206-4c44-85fe-ab4f58777480",
                     "path":"sprites/spr_sanctuary_warden_trans_strip6/spr_sanctuary_warden_trans_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"2926b7c5-ad13-42c7-82b7-60e2f65db746",
+              "id":"3ed9727a-8fd4-455e-947f-e4e43d3787df",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"e42a6d02-dcb5-48c6-9eeb-ec002f0a9861",
+                    "name":"44f4ff6a-4a4b-4a7d-9e0c-baac5606f959",
                     "path":"sprites/spr_sanctuary_warden_trans_strip6/spr_sanctuary_warden_trans_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f3995fdd-ddbd-414b-ab99-2fdd4cbfc965",
+              "id":"322957b3-93c4-49f2-a394-43436fcd3cbe",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"27fefddb-ef1e-4344-9848-d27087bb9a0a",
+                    "name":"8f777e2c-ff23-4eb8-9ce4-13edae8e1dcd",
                     "path":"sprites/spr_sanctuary_warden_trans_strip6/spr_sanctuary_warden_trans_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"875e21ef-339d-4f79-86c5-76d2117374a2",
+              "id":"41854bfb-49df-49c1-9a36-f3a6e86242d9",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"66c2841d-cc53-4d69-8a39-684f16501ab2",
+                    "name":"a63ccc11-4bfe-4945-b3c7-0e39f5ff2918",
                     "path":"sprites/spr_sanctuary_warden_trans_strip6/spr_sanctuary_warden_trans_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"c45476f5-8764-4bb0-91d0-e2cdf5549586",
+              "id":"6b43f40b-0433-4598-9734-bf4cf3a4e576",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"b1b4e32d-78cf-490a-9572-712d4285711e",
+                    "name":"1ff5fdf3-a9c9-4430-868b-f0ce3af6a0f7",
                     "path":"sprites/spr_sanctuary_warden_trans_strip6/spr_sanctuary_warden_trans_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"408be2a2-f1bb-43fc-8b34-227e5b0d55cc",
+              "id":"2209ff7c-d52a-4747-8cdc-30441f5fcb9e",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"3f3ff13d-ed0b-454c-a99f-2af9c68b7cd1",
+                    "name":"15d1a7cb-1a12-44ef-8db6-fa796aa21b55",
                     "path":"sprites/spr_sanctuary_warden_trans_strip6/spr_sanctuary_warden_trans_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"01a334ee-c1b1-4682-b2ea-176e5cd636d3",
+              "id":"b06c6c6f-cde2-4806-a5aa-0dbaf6f44a31",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

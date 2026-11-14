@@ -1,5 +1,16 @@
 /// scr_dialogue — open the single dialogue box. Overworld input stays locked until it closes.
 
+/// Plain text of dialogue node `_id` (joined lines; speaker-quoted unless SYSTEM /
+/// narration), for battle messages. Returns "" if the node does not exist.
+function scr_dialogue_node_text(_id, _with_speaker = true) {
+    var _n = scr_dialogue_node(_id);
+    if (!is_struct(_n)) return "";
+    var _t = "";
+    for (var _i = 0; _i < array_length(_n.lines); _i++) _t += ((_i > 0) ? " " : "") + _n.lines[_i];
+    if (_with_speaker && _n.speaker != "" && _n.speaker != "SYSTEM") _t = _n.speaker + ": \"" + _t + "\"";
+    return _t;
+}
+
 /// _lines: array of strings (or one string). _struck_lines: optional array of line
 /// indices (0-based) to draw with a strike-through (Bandit Camp sign, BC_SIGN_01).
 /// Returns the obj_dialogue_box instance, or noone if a box is already open or

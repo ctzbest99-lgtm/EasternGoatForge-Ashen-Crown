@@ -14,22 +14,22 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"26eea0f5-7847-4f0b-8acf-2baf148daa6e",
-      "name":"26eea0f5-7847-4f0b-8acf-2baf148daa6e",
+      "%Name":"a98cb295-fb20-47b1-9f4d-813cb6052a59",
+      "name":"a98cb295-fb20-47b1-9f4d-813cb6052a59",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"af2be07d-fd8f-4f8b-b32d-e271ca32410b",
-      "name":"af2be07d-fd8f-4f8b-b32d-e271ca32410b",
+      "%Name":"795d65ca-f4e5-4cfc-b649-b730d7ba9f39",
+      "name":"795d65ca-f4e5-4cfc-b649-b730d7ba9f39",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"80e3ef07-2f07-4931-bbb2-7312c14efed5",
-      "name":"80e3ef07-2f07-4931-bbb2-7312c14efed5",
+      "%Name":"f720ea74-97e5-4d97-a7e5-9bceeedc55d2",
+      "name":"f720ea74-97e5-4d97-a7e5-9bceeedc55d2",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -41,11 +41,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"0caa1ae4-7a5b-4ac5-8f1c-75eb6d9ac18f",
+      "%Name":"64038425-1888-4901-be78-5fe261ea9aec",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"0caa1ae4-7a5b-4ac5-8f1c-75eb6d9ac18f",
+      "name":"64038425-1888-4901-be78-5fe261ea9aec",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -118,7 +118,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"26eea0f5-7847-4f0b-8acf-2baf148daa6e",
+                    "name":"a98cb295-fb20-47b1-9f4d-813cb6052a59",
                     "path":"sprites/spr_taren_hurt_strip3/spr_taren_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -126,7 +126,7 @@
                 },
               },
               "Disabled":false,
-              "id":"86a6c186-bdb4-4cb0-9490-7eed2e1b6304",
+              "id":"03e5392d-dfb8-4b92-8b52-ef93bf55c1ab",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -140,7 +140,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"af2be07d-fd8f-4f8b-b32d-e271ca32410b",
+                    "name":"795d65ca-f4e5-4cfc-b649-b730d7ba9f39",
                     "path":"sprites/spr_taren_hurt_strip3/spr_taren_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -148,7 +148,7 @@
                 },
               },
               "Disabled":false,
-              "id":"a769528b-4880-41d0-8f81-3c8f7af38c29",
+              "id":"6ff27e51-3383-47c4-91b1-21d206b0d946",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -162,7 +162,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"80e3ef07-2f07-4931-bbb2-7312c14efed5",
+                    "name":"f720ea74-97e5-4d97-a7e5-9bceeedc55d2",
                     "path":"sprites/spr_taren_hurt_strip3/spr_taren_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -170,7 +170,7 @@
                 },
               },
               "Disabled":false,
-              "id":"1d60c768-9807-403f-9045-114981e7425e",
+              "id":"8f4aa2bd-a84e-46c6-9974-f5e444351e85",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,

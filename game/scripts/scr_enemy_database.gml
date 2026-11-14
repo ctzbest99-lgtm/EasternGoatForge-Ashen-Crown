@@ -15,8 +15,10 @@
 function scr_get_enemy_data(_enemy_id) {
     switch (_enemy_id) {
         case "bandit":
+            // Cheap Shot is the canon Bandit ability (CHAPTER1_SCRIPT.md §2.1 /
+            // FL_TUTORIAL_SYS_03): hits harder against a defending target. Weight PLACEHOLDER.
             return { id: "bandit", name: "Bandit", max_hp: 18, attack: 5, defense: 1, mdef: 1, spd: 8, max_mp: 0, xp_reward: 6, gold_reward: 4,
-                actions: [{ skill: "attack", weight: 1 }] };
+                actions: [{ skill: "attack", weight: 3 }, { skill: "cheap_shot", weight: 1 }] };
         case "fallen_knight":
             return { id: "fallen_knight", name: "Fallen Knight", short_name: "Fallen Kn.", max_hp: 30, attack: 7, defense: 4, mdef: 3, spd: 7, max_mp: 0, xp_reward: 12, gold_reward: 8,
                 actions: [{ skill: "attack", weight: 1 }] };
@@ -49,8 +51,9 @@ function scr_get_enemy_data(_enemy_id) {
                 actions: [{ skill: "attack", weight: 4 }, { skill: "wretch_scream", weight: 1 }] };
         case "grave_spider":
             // PLACEHOLDER. Design: Watchtower / Basement, Lv 4–7. Web stays visual only (1 in 4).
+            // Venom Bite is the PLACEHOLDER battle-poison inflictor (chance PLACEHOLDER).
             return { id: "grave_spider", name: "Grave Spider", max_hp: 24, attack: 8, defense: 2, mdef: 2, spd: 8, max_mp: 0, xp_reward: 11, gold_reward: 6, placeholder: true,
-                actions: [{ skill: "attack", weight: 3 }, { skill: "spider_web", weight: 1 }] };
+                actions: [{ skill: "attack", weight: 3 }, { skill: "spider_web", weight: 1 }, { skill: "venom_bite", weight: 1 }] };
         case "hollow_soldier":
             // PLACEHOLDER. Design: Watchtower / Basement, Lv 4–7. Shield Wall guards the next hit (1 in 4).
             return { id: "hollow_soldier", name: "Hollow Soldier", short_name: "Hollow Sol.", max_hp: 28, attack: 7, defense: 3, mdef: 1, spd: 5, max_mp: 0, xp_reward: 11, gold_reward: 7, placeholder: true,

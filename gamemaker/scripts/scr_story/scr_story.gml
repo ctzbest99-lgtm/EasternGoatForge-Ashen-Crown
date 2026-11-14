@@ -19,6 +19,16 @@ function scr_ashbound_begin_battle() {
     scr_encounter_start("ashbound_hunter", _id, "ENC_ASHBOUND_HUNTER");
 }
 
+/// Tutorial aftermath (CHAPTER1_SCRIPT.md §2.1). Victory in the guaranteed first
+/// Bandit fight switches random encounters on (flag_tutorial_done) and plays the
+/// post-battle lines FL_TUTORIAL_04-05 back on the map. Called from scr_battle_finish.
+function scr_ch1_on_battle_finish(_result, _pending) {
+    if (!is_struct(_pending) || _result != "victory") return;
+    if (!variable_struct_exists(_pending, "encounter_id") || _pending.encounter_id != "zone01_first_bandit") return;
+    scr_flag_set("flag_tutorial_done");
+    global.game.pending_post_dialogue = ["FL_TUTORIAL_04", "FL_TUTORIAL_05"];
+}
+
 /// Called from scr_battle_finish. On a Hunter victory, grant the parchment the
 /// first time (`flag_parchment_found` / item_ashbound_parchment) and queue ENC_AH_03–05.
 /// If the flag is already set, the post-fight lines are skipped.

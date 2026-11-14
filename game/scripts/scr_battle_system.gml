@@ -28,6 +28,20 @@ function scr_battle_stat(_actor, _stat) {
             if (scr_battle_status_has(_actor, "slow")) _base = _base * BATTLE_SLOW_SPD_PCT; // the Debtman's bind
             break;
     }
+    // Last Stand (Kael's canon passive, CHAPTER1_SCRIPT.md §2.1 / FL_TUTORIAL_SYS_05):
+    // below 25% HP, Attack +15% and Defense +10%.
+    if (_stat == "atk" || _stat == "def") {
+        if (variable_struct_exists(_actor, "passives") && is_array(_actor.passives)
+            && variable_struct_exists(_actor, "hp") && _actor.hp > 0
+            && _actor.hp < _actor.max_hp * 0.25) {
+            for (var _p = 0; _p < array_length(_actor.passives); _p++) {
+                if (_actor.passives[_p] == "last_stand") {
+                    _base = _base * ((_stat == "atk") ? BATTLE_LAST_STAND_ATK_PCT : BATTLE_LAST_STAND_DEF_PCT);
+                    break;
+                }
+            }
+        }
+    }
     var _val = round(_base * (1 + scr_battle_buff_total(_actor, _stat)));
     if (_stat == "atk" || _stat == "spd") return max(1, _val);
     return max(0, _val);
@@ -116,15 +130,37 @@ function scr_battle_tick_statuses(_actor) {
     for (var _i = array_length(_actor.statuses) - 1; _i >= 0; _i--) {
         var _st = _actor.statuses[_i];
         if (!is_struct(_st)) { array_delete(_actor.statuses, _i, 1); continue; }
-        // Bleed (Open Vein) ticks at ROUND_START: damage over time that never kills (PLACEHOLDER rule).
+        // Bleed (Open Vein) and poison tick at ROUND_START: damage over time that
+        // never kills (PLACEHOLDER rule, same as bleed).
         if (_st.id == "bleed" && _actor.hp > 1) {
             var _b = max(1, floor(_actor.max_hp * BATTLE_BLEED_PCT));
             _actor.hp = max(1, _actor.hp - _b);
             _actor.bleed_last = _b;
         }
+        if (_st.id == "poison" && _actor.hp > 1) {
+            var _p = max(1, floor(_actor.max_hp * BATTLE_POISON_PCT));
+            _actor.hp = max(1, _actor.hp - _p);
+            _actor.poison_last = _p;
+        }
         _st.turns -= 1;
         if (_st.turns <= 0) array_delete(_actor.statuses, _i, 1);
     }
+}
+
+/// One actor's damage-over-time report for the round-start message
+/// ("X bleeds for 3. Y is sickened for 2."), then clears the tick counters.
+function scr_battle_dot_report(_actor) {
+    if (!is_struct(_actor)) return "";
+    var _t = "";
+    if (variable_struct_exists(_actor, "bleed_last") && _actor.bleed_last > 0) {
+        _t += _actor.name + " bleeds for " + string(_actor.bleed_last) + ". ";
+        _actor.bleed_last = 0;
+    }
+    if (variable_struct_exists(_actor, "poison_last") && _actor.poison_last > 0) {
+        _t += _actor.name + " is sickened for " + string(_actor.poison_last) + ". ";
+        _actor.poison_last = 0;
+    }
+    return _t;
 }
 
 /// Critical hit chance for `_actor`: the base rate plus Cutthroat (Lyra's passive).
@@ -138,13 +174,14 @@ function scr_battle_crit_chance(_actor) {
     return _c;
 }
 
-/// Short tags for the HUD ("Bl", "Sl", "Vl", "Bd", "Sw").
+/// Short tags for the HUD ("Bl", "Sl", "Vl", "Bd", "Pn", "Sw").
 function scr_battle_status_tags(_actor) {
     var _t = "";
     if (scr_battle_status_has(_actor, "blind")) _t += "Bl";
     if (scr_battle_status_has(_actor, "sleep")) _t += (_t == "" ? "" : " ") + "Sl";
     if (scr_battle_status_has(_actor, "veiled")) _t += (_t == "" ? "" : " ") + "Vl";
     if (scr_battle_status_has(_actor, "bleed")) _t += (_t == "" ? "" : " ") + "Bd";
+    if (scr_battle_status_has(_actor, "poison")) _t += (_t == "" ? "" : " ") + "Pn";
     if (scr_battle_status_has(_actor, "slow")) _t += (_t == "" ? "" : " ") + "Sw";
     return _t;
 }

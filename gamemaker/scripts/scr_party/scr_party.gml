@@ -42,7 +42,9 @@ function scr_roster_create() {
 /// Rallying Cry and Cleave (active) and Unbowed (passive). Nobody else has a skill yet.
 function scr_actor_battle_defaults(_actor_id) {
     switch (_actor_id) {
-        case "kael":   return { spd: KAEL_BASE_SPD,   mdef: KAEL_BASE_MDEF,   mp: KAEL_BASE_MP,   skills: [], passives: [] };
+        // Kael: Last Stand (canon passive, CHAPTER1_SCRIPT.md §2.1): below 25% HP,
+        // ATK +15% / DEF +10% (implemented in scr_battle_stat).
+        case "kael":   return { spd: KAEL_BASE_SPD,   mdef: KAEL_BASE_MDEF,   mp: KAEL_BASE_MP,   skills: [], passives: ["last_stand"] };
         // Lyra's starting skills are canon (CHAPTER3_SCRIPT.md Decision 4): Twin Cut and
         // Open Vein (active) and Cutthroat (passive). She joins at the Debtman fight (§6).
         case "lyra":   return { spd: LYRA_BASE_SPD,   mdef: LYRA_BASE_MDEF,   mp: LYRA_BASE_MP,   skills: ["twin_cut", "open_vein"], passives: ["cutthroat"] };

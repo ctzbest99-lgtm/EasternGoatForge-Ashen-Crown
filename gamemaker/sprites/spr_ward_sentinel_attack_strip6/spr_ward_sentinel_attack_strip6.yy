@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"7a273e73-dc34-4188-878a-4ea587d747df",
-      "name":"7a273e73-dc34-4188-878a-4ea587d747df",
+      "%Name":"ed41c574-1b82-4e4b-8a2a-13548698a666",
+      "name":"ed41c574-1b82-4e4b-8a2a-13548698a666",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"cd784567-b766-47ee-9986-c2f50af1e2a7",
-      "name":"cd784567-b766-47ee-9986-c2f50af1e2a7",
+      "%Name":"cb39860d-7563-47d7-851c-50bf1d4e53b0",
+      "name":"cb39860d-7563-47d7-851c-50bf1d4e53b0",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"7275df30-0a05-4eb8-90ee-f13db56d6fd5",
-      "name":"7275df30-0a05-4eb8-90ee-f13db56d6fd5",
+      "%Name":"9fbbd2da-1090-4f42-859c-f936dd96026c",
+      "name":"9fbbd2da-1090-4f42-859c-f936dd96026c",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"77e9a5be-de6c-46aa-a771-35ab845bd422",
-      "name":"77e9a5be-de6c-46aa-a771-35ab845bd422",
+      "%Name":"e5c016bb-9a68-4e6c-b41c-d0ba39d1dca0",
+      "name":"e5c016bb-9a68-4e6c-b41c-d0ba39d1dca0",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"8bfc7a23-1c22-452f-a1e7-7b3621b21e95",
-      "name":"8bfc7a23-1c22-452f-a1e7-7b3621b21e95",
+      "%Name":"adaeed8b-7604-4763-aea2-1c82459b5ac2",
+      "name":"adaeed8b-7604-4763-aea2-1c82459b5ac2",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"144d895e-63d1-431c-8fc7-d942cc998d98",
-      "name":"144d895e-63d1-431c-8fc7-d942cc998d98",
+      "%Name":"3001b448-5f1a-47d4-affd-8353f21b8856",
+      "name":"3001b448-5f1a-47d4-affd-8353f21b8856",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"f3fd0f02-989a-4e19-a249-585407e9d900",
+      "%Name":"594d1031-2e6e-4cda-b0c5-870a6d27bd76",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"f3fd0f02-989a-4e19-a249-585407e9d900",
+      "name":"594d1031-2e6e-4cda-b0c5-870a6d27bd76",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"7a273e73-dc34-4188-878a-4ea587d747df",
+                    "name":"ed41c574-1b82-4e4b-8a2a-13548698a666",
                     "path":"sprites/spr_ward_sentinel_attack_strip6/spr_ward_sentinel_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"48678485-9ed4-4a69-bd42-1505419d5a9a",
+              "id":"dbdde75d-8765-404a-ba95-a5356a377c44",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"cd784567-b766-47ee-9986-c2f50af1e2a7",
+                    "name":"cb39860d-7563-47d7-851c-50bf1d4e53b0",
                     "path":"sprites/spr_ward_sentinel_attack_strip6/spr_ward_sentinel_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"c6a21471-572e-4d38-ba32-d971c6b2eba9",
+              "id":"2d68799c-10c5-42cc-b0a6-dee04e888157",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"7275df30-0a05-4eb8-90ee-f13db56d6fd5",
+                    "name":"9fbbd2da-1090-4f42-859c-f936dd96026c",
                     "path":"sprites/spr_ward_sentinel_attack_strip6/spr_ward_sentinel_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"27a8e7f6-8592-482b-85d2-6dd64dd36e64",
+              "id":"f6bb4355-41da-4661-b508-6e1aaa532260",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"77e9a5be-de6c-46aa-a771-35ab845bd422",
+                    "name":"e5c016bb-9a68-4e6c-b41c-d0ba39d1dca0",
                     "path":"sprites/spr_ward_sentinel_attack_strip6/spr_ward_sentinel_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"26f1d41f-bcd3-476a-a843-ebcb3be9f1ca",
+              "id":"59520097-5dd2-4929-b83a-4fe1d7d971af",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"8bfc7a23-1c22-452f-a1e7-7b3621b21e95",
+                    "name":"adaeed8b-7604-4763-aea2-1c82459b5ac2",
                     "path":"sprites/spr_ward_sentinel_attack_strip6/spr_ward_sentinel_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"65c7c6bc-95b3-4484-8cf9-4388865f3414",
+              "id":"ceadddea-5bbf-43e0-a3b3-1696a5c36966",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"144d895e-63d1-431c-8fc7-d942cc998d98",
+                    "name":"3001b448-5f1a-47d4-affd-8353f21b8856",
                     "path":"sprites/spr_ward_sentinel_attack_strip6/spr_ward_sentinel_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f8e789bf-ed5c-423a-b1cc-5e15d66b900a",
+              "id":"511a4c5b-3d16-43d3-bf3c-c8c98aba5338",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

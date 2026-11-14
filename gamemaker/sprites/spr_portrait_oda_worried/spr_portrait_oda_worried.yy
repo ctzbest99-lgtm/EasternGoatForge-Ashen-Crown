@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"9b88d7df-1eed-4e76-88dd-68a31364f5da",
-      "name":"9b88d7df-1eed-4e76-88dd-68a31364f5da",
+      "%Name":"cede8e5a-20b3-48f8-93cc-733805e07f8c",
+      "name":"cede8e5a-20b3-48f8-93cc-733805e07f8c",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"01623358-1737-4299-a0dd-0563bd93b8c5",
+      "%Name":"3585b628-5be9-4403-9497-36caa0b02eab",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"01623358-1737-4299-a0dd-0563bd93b8c5",
+      "name":"3585b628-5be9-4403-9497-36caa0b02eab",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"9b88d7df-1eed-4e76-88dd-68a31364f5da",
+                    "name":"cede8e5a-20b3-48f8-93cc-733805e07f8c",
                     "path":"sprites/spr_portrait_oda_worried/spr_portrait_oda_worried.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"af6ed2c3-16ee-473c-8eb4-ce579a4a7130",
+              "id":"34ae0f31-d8cf-485d-8a66-9e1b9046cdee",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

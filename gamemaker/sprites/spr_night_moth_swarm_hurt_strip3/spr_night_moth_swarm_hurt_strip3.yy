@@ -14,22 +14,22 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"61294be9-bebe-4e5f-9108-2ed3dd483e98",
-      "name":"61294be9-bebe-4e5f-9108-2ed3dd483e98",
+      "%Name":"cda420f6-2c65-4790-8701-afe5bbd10515",
+      "name":"cda420f6-2c65-4790-8701-afe5bbd10515",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"0ac49060-b947-4751-89d3-dcffa92206b1",
-      "name":"0ac49060-b947-4751-89d3-dcffa92206b1",
+      "%Name":"04e1bb5b-eece-4583-bab7-f0fa71ce6b2f",
+      "name":"04e1bb5b-eece-4583-bab7-f0fa71ce6b2f",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"42251aaf-61ad-44b9-a43c-647526af822b",
-      "name":"42251aaf-61ad-44b9-a43c-647526af822b",
+      "%Name":"059718db-b634-4bd8-8f12-52bc81448548",
+      "name":"059718db-b634-4bd8-8f12-52bc81448548",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -41,11 +41,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"806cf11b-ed0c-446c-9c1b-9875dc538496",
+      "%Name":"2c6651e7-8f17-46d6-99e5-ffe7bf50da5b",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"806cf11b-ed0c-446c-9c1b-9875dc538496",
+      "name":"2c6651e7-8f17-46d6-99e5-ffe7bf50da5b",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -118,7 +118,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"61294be9-bebe-4e5f-9108-2ed3dd483e98",
+                    "name":"cda420f6-2c65-4790-8701-afe5bbd10515",
                     "path":"sprites/spr_night_moth_swarm_hurt_strip3/spr_night_moth_swarm_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -126,7 +126,7 @@
                 },
               },
               "Disabled":false,
-              "id":"0e0fab8f-69e9-4999-a807-fb9968f4e8e5",
+              "id":"35ea2a63-816c-49f6-9c4d-0fe8c01fb103",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -140,7 +140,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0ac49060-b947-4751-89d3-dcffa92206b1",
+                    "name":"04e1bb5b-eece-4583-bab7-f0fa71ce6b2f",
                     "path":"sprites/spr_night_moth_swarm_hurt_strip3/spr_night_moth_swarm_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -148,7 +148,7 @@
                 },
               },
               "Disabled":false,
-              "id":"55c5da7b-cfed-4a96-81e9-d23cb50e1548",
+              "id":"eaa79328-b49b-4c9e-934e-0caafa3f8be8",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -162,7 +162,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"42251aaf-61ad-44b9-a43c-647526af822b",
+                    "name":"059718db-b634-4bd8-8f12-52bc81448548",
                     "path":"sprites/spr_night_moth_swarm_hurt_strip3/spr_night_moth_swarm_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -170,7 +170,7 @@
                 },
               },
               "Disabled":false,
-              "id":"412de3ce-de42-49fa-8100-34bc8ec47f92",
+              "id":"3e1d39f0-e127-45a5-9521-3f9965a28021",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,

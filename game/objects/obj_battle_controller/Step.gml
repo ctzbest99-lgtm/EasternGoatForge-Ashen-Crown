@@ -23,11 +23,32 @@ switch (state) {
 
     case BATTLE_STATE.INTRO:
         if (array_length(enemies) == 0) { state = BATTLE_STATE.ERROR; break; }
+        // Combat tutorial: the intro is followed by the FL_TUTORIAL_SYS_01-04
+        // command/battle hints (one confirm each).
+        if (tutorial_active) {
+            queue_messages([
+                scr_battle_intro_text(enemies, boss_index),
+                scr_dialogue_node_text("FL_TUTORIAL_SYS_01"),
+                scr_dialogue_node_text("FL_TUTORIAL_SYS_02"),
+                scr_dialogue_node_text("FL_TUTORIAL_SYS_03"),
+                scr_dialogue_node_text("FL_TUTORIAL_SYS_04")
+            ], BATTLE_STATE.ROUND_START);
+            break;
+        }
         queue_message(scr_battle_intro_text(enemies, boss_index), BATTLE_STATE.ROUND_START);
         break;
 
     case BATTLE_STATE.MESSAGE:
-        if (scr_input_confirm_pressed()) state = next_state;
+        if (scr_input_confirm_pressed()) {
+            if (array_length(message_lines) > 0) {
+                message_line_i++;
+                if (message_line_i < array_length(message_lines)) {
+                    message = message_lines[message_line_i];
+                    break;
+                }
+            }
+            state = next_state;
+        }
         break;
 
     case BATTLE_STATE.ROUND_START:
@@ -38,22 +59,24 @@ switch (state) {
         }
         for (_r = 0; _r < array_length(party); _r++) { scr_battle_tick_buffs(party[_r]); scr_battle_tick_statuses(party[_r]); }
         for (_r = 0; _r < array_length(enemies); _r++) { scr_battle_tick_buffs(enemies[_r]); scr_battle_tick_statuses(enemies[_r]); }
-        // Bleed (Open Vein) reports its tick before commands resume.
-        var _bleed_txt = "";
+        // Bleed (Open Vein) and poison report their ticks before commands resume.
+        var _dot_txt = "";
         for (_r = 0; _r < array_length(party); _r++) {
-            if (variable_struct_exists(party[_r], "bleed_last") && party[_r].bleed_last > 0) {
-                _bleed_txt += party[_r].name + " bleeds for " + string(party[_r].bleed_last) + ". ";
-                party[_r].bleed_last = 0;
-            }
+            _dot_txt += scr_battle_dot_report(party[_r]);
         }
         for (_r = 0; _r < array_length(enemies); _r++) {
-            if (variable_struct_exists(enemies[_r], "bleed_last") && enemies[_r].bleed_last > 0) {
-                _bleed_txt += enemies[_r].name + " bleeds for " + string(enemies[_r].bleed_last) + ". ";
-                enemies[_r].bleed_last = 0;
-            }
+            _dot_txt += scr_battle_dot_report(enemies[_r]);
         }
-        if (_bleed_txt != "") {
-            queue_message(_bleed_txt, BATTLE_STATE.COMMAND_SELECT);
+        // Combat tutorial: FL_TUTORIAL_SYS_05 the first time Kael drops below 25% HP.
+        var _kael = party[0];
+        if (tutorial_active && !tutorial_low_shown && is_struct(_kael) && _kael.hp > 0
+            && _kael.hp < _kael.max_hp * 0.25) {
+            tutorial_low_shown = true;
+            if (_dot_txt != "") _dot_txt += " ";
+            _dot_txt += scr_dialogue_node_text("FL_TUTORIAL_SYS_05");
+        }
+        if (_dot_txt != "") {
+            queue_message(_dot_txt, BATTLE_STATE.COMMAND_SELECT);
             break;
         }
         queued_actions = [];

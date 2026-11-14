@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"69f006fa-7d7c-47ce-88df-0f9bdbf5079b",
-      "name":"69f006fa-7d7c-47ce-88df-0f9bdbf5079b",
+      "%Name":"c921a439-663e-4366-9cae-b339ceb56f51",
+      "name":"c921a439-663e-4366-9cae-b339ceb56f51",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"e72c5efc-7ec4-4365-8f8a-5f9b36d77563",
+      "%Name":"b445e2cf-cef9-40e7-ae17-d440bf957dbc",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"e72c5efc-7ec4-4365-8f8a-5f9b36d77563",
+      "name":"b445e2cf-cef9-40e7-ae17-d440bf957dbc",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"69f006fa-7d7c-47ce-88df-0f9bdbf5079b",
+                    "name":"c921a439-663e-4366-9cae-b339ceb56f51",
                     "path":"sprites/spr_portrait_len_nervous/spr_portrait_len_nervous.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"31e16bab-4d02-4558-bf85-dbb9e4d4af8d",
+              "id":"63b923c7-5b8a-471f-8032-504cd7e1da8e",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

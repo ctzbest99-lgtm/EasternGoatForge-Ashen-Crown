@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"db0f2355-a8d2-45d1-94fa-394392f465bb",
-      "name":"db0f2355-a8d2-45d1-94fa-394392f465bb",
+      "%Name":"1d0434d7-5d3d-45d5-a1f6-f6087e72a8e8",
+      "name":"1d0434d7-5d3d-45d5-a1f6-f6087e72a8e8",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"9bac2922-77df-4b57-aee0-d505c79ff0bb",
+      "%Name":"0bf39f9c-517b-417d-9a9d-fd312a717036",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"9bac2922-77df-4b57-aee0-d505c79ff0bb",
+      "name":"0bf39f9c-517b-417d-9a9d-fd312a717036",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"db0f2355-a8d2-45d1-94fa-394392f465bb",
+                    "name":"1d0434d7-5d3d-45d5-a1f6-f6087e72a8e8",
                     "path":"sprites/spr_lyra_ow16_idle_up/spr_lyra_ow16_idle_up.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"3961f6f6-1401-4bce-b662-9f33b1173641",
+              "id":"5c859ba7-6edc-48c9-9cd5-2b82637abc8d",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

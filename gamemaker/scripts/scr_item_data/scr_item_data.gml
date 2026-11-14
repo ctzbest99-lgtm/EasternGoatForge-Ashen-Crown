@@ -57,7 +57,7 @@ function scr_item_database() {
     }));
     _add(_db, scr_item_make("item_antidote", "Antidote", "consumable", 20, {
         cures_poison: true,
-        desc: "Cures poison. Overworld status only until battle poison exists. (PLACEHOLDER.)"
+        desc: "Cures poison, in battle and out. (Price PLACEHOLDER.)"
     }));
 
     // Chapter 2 (balance pass). Ether: MP recovery, sold by Len in Wrenfield and found in a
@@ -354,9 +354,12 @@ function scr_item_use_on(_actor, _item_id) {
         return _actor.name + " recovered " + string(_mgain) + " MP.";
     }
     if (_it.cures_poison) {
+        // Cures the overworld `poisoned` flag and the battle "poison" status.
         var _poisoned = variable_struct_exists(_actor, "poisoned") && _actor.poisoned;
-        if (!_poisoned) return _actor.name + " is not poisoned. (Battle poison is not implemented yet.)";
-        _actor.poisoned = false;
+        var _bpoison = scr_battle_status_has(_actor, "poison");
+        if (!_poisoned && !_bpoison) return _actor.name + " is not poisoned.";
+        if (_poisoned) _actor.poisoned = false;
+        if (_bpoison) scr_battle_remove_status(_actor, "poison");
         scr_inventory_remove(_item_id, 1, true);
         return _actor.name + " is no longer poisoned.";
     }

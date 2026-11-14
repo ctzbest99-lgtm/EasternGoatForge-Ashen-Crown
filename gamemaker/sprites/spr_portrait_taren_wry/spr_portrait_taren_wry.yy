@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"9d950f52-efe1-4872-8895-10e243e2fa7d",
-      "name":"9d950f52-efe1-4872-8895-10e243e2fa7d",
+      "%Name":"b34d6452-eaea-4aa5-9141-8e43ef632581",
+      "name":"b34d6452-eaea-4aa5-9141-8e43ef632581",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"5dd2305c-10e1-4a78-a92c-2a7437ff9a1e",
+      "%Name":"a7880694-5250-47d1-937f-ca846ee72d47",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"5dd2305c-10e1-4a78-a92c-2a7437ff9a1e",
+      "name":"a7880694-5250-47d1-937f-ca846ee72d47",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"9d950f52-efe1-4872-8895-10e243e2fa7d",
+                    "name":"b34d6452-eaea-4aa5-9141-8e43ef632581",
                     "path":"sprites/spr_portrait_taren_wry/spr_portrait_taren_wry.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"c21460f1-a39a-4d3c-a96d-f815b20f5406",
+              "id":"7ad6d6f6-d7d5-4433-b3be-20d2801d5543",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

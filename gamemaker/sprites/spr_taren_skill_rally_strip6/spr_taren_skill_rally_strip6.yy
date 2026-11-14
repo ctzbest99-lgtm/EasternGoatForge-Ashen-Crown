@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"660111c8-36b2-4b9d-be2a-12f1aeca572f",
-      "name":"660111c8-36b2-4b9d-be2a-12f1aeca572f",
+      "%Name":"e572fc0a-d9ed-4b48-b962-1dc029163b9c",
+      "name":"e572fc0a-d9ed-4b48-b962-1dc029163b9c",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"9c71f5cb-b166-488e-8b5f-9fbafdcf084f",
-      "name":"9c71f5cb-b166-488e-8b5f-9fbafdcf084f",
+      "%Name":"fbb5657f-c527-4aca-84fd-86cee6b72d93",
+      "name":"fbb5657f-c527-4aca-84fd-86cee6b72d93",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"ff7caad3-cf2d-4de0-8116-1c788908b991",
-      "name":"ff7caad3-cf2d-4de0-8116-1c788908b991",
+      "%Name":"6d2f0c3b-9a85-4c2b-a6f9-bc3d4376b90b",
+      "name":"6d2f0c3b-9a85-4c2b-a6f9-bc3d4376b90b",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"6f8dfba1-5989-4a7d-a067-095498848793",
-      "name":"6f8dfba1-5989-4a7d-a067-095498848793",
+      "%Name":"8fb56684-6720-45cd-a43a-5dc3a0d1dbaf",
+      "name":"8fb56684-6720-45cd-a43a-5dc3a0d1dbaf",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"04f1221e-4523-4c99-b9dc-b5c80fbc7c78",
-      "name":"04f1221e-4523-4c99-b9dc-b5c80fbc7c78",
+      "%Name":"3dbdaf8d-d002-4f3f-9972-7df538f7ab55",
+      "name":"3dbdaf8d-d002-4f3f-9972-7df538f7ab55",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"d5605a0e-c021-42be-b5d2-02da1c6ca704",
-      "name":"d5605a0e-c021-42be-b5d2-02da1c6ca704",
+      "%Name":"0ba142f8-545b-4edb-bf5d-fa9a6f801e87",
+      "name":"0ba142f8-545b-4edb-bf5d-fa9a6f801e87",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"0aed4be0-0377-463d-a346-7ed99505c6a2",
+      "%Name":"261f25b2-6a33-43c6-9e1e-ab00fab6a62f",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"0aed4be0-0377-463d-a346-7ed99505c6a2",
+      "name":"261f25b2-6a33-43c6-9e1e-ab00fab6a62f",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"660111c8-36b2-4b9d-be2a-12f1aeca572f",
+                    "name":"e572fc0a-d9ed-4b48-b962-1dc029163b9c",
                     "path":"sprites/spr_taren_skill_rally_strip6/spr_taren_skill_rally_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"cf9e6887-bba8-4864-85dc-bb9b35005652",
+              "id":"c20def1d-ee08-4924-998c-f1ec4c95f973",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"9c71f5cb-b166-488e-8b5f-9fbafdcf084f",
+                    "name":"fbb5657f-c527-4aca-84fd-86cee6b72d93",
                     "path":"sprites/spr_taren_skill_rally_strip6/spr_taren_skill_rally_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"b0698995-e4a6-476b-8dee-570cddddf532",
+              "id":"ccfd375d-9605-440d-b5ed-d4f694f66d50",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ff7caad3-cf2d-4de0-8116-1c788908b991",
+                    "name":"6d2f0c3b-9a85-4c2b-a6f9-bc3d4376b90b",
                     "path":"sprites/spr_taren_skill_rally_strip6/spr_taren_skill_rally_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"33f874d9-fccb-4f7d-a825-65645a384107",
+              "id":"4a12bdef-e4fb-47ec-aba0-968d5239d13f",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"6f8dfba1-5989-4a7d-a067-095498848793",
+                    "name":"8fb56684-6720-45cd-a43a-5dc3a0d1dbaf",
                     "path":"sprites/spr_taren_skill_rally_strip6/spr_taren_skill_rally_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"3abc7be1-1b37-4527-8493-036edd187333",
+              "id":"becede59-06ee-419e-9dc4-113ba1f32424",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"04f1221e-4523-4c99-b9dc-b5c80fbc7c78",
+                    "name":"3dbdaf8d-d002-4f3f-9972-7df538f7ab55",
                     "path":"sprites/spr_taren_skill_rally_strip6/spr_taren_skill_rally_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"97569bbf-0895-444e-8b84-9593e76d3f29",
+              "id":"8979fa43-bf55-4eda-8d9a-5d3a15498000",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"d5605a0e-c021-42be-b5d2-02da1c6ca704",
+                    "name":"0ba142f8-545b-4edb-bf5d-fa9a6f801e87",
                     "path":"sprites/spr_taren_skill_rally_strip6/spr_taren_skill_rally_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"5d61387a-8459-4f79-8ea1-e72b9947eab9",
+              "id":"03a99b96-8a2d-4cd9-bc61-fc92d8413db4",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

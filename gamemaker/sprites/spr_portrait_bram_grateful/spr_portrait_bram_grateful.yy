@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"81ca5939-7f36-4d31-b916-18a65e765bdc",
-      "name":"81ca5939-7f36-4d31-b916-18a65e765bdc",
+      "%Name":"83b82a19-5db8-4adf-9768-697153f253dd",
+      "name":"83b82a19-5db8-4adf-9768-697153f253dd",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"824e5295-3a29-49e6-9ea4-af1c95217ea0",
+      "%Name":"4f5f5f54-6687-48a4-bab3-af23f5c622ff",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"824e5295-3a29-49e6-9ea4-af1c95217ea0",
+      "name":"4f5f5f54-6687-48a4-bab3-af23f5c622ff",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"81ca5939-7f36-4d31-b916-18a65e765bdc",
+                    "name":"83b82a19-5db8-4adf-9768-697153f253dd",
                     "path":"sprites/spr_portrait_bram_grateful/spr_portrait_bram_grateful.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"e4ed3e59-bec8-4aa3-ac28-ddb2ab304a54",
+              "id":"1a3b6ad3-d1ec-4432-84f1-ac98e21bfd03",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"58df88b8-cfb8-47ea-ac40-e8c1010914b1",
-      "name":"58df88b8-cfb8-47ea-ac40-e8c1010914b1",
+      "%Name":"4880406c-43cd-492c-9f14-82fda578a0ec",
+      "name":"4880406c-43cd-492c-9f14-82fda578a0ec",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"b111bd98-08a2-4308-9fa6-5e2aa7fef788",
+      "%Name":"8ffdb91e-a3a6-4f49-a215-ca5c6d719355",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"b111bd98-08a2-4308-9fa6-5e2aa7fef788",
+      "name":"8ffdb91e-a3a6-4f49-a215-ca5c6d719355",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"58df88b8-cfb8-47ea-ac40-e8c1010914b1",
+                    "name":"4880406c-43cd-492c-9f14-82fda578a0ec",
                     "path":"sprites/spr_door_warden_ow16_idle_up/spr_door_warden_ow16_idle_up.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d9950ad0-a061-49a0-bf4e-523bf9306cea",
+              "id":"0d899ea6-1735-4f78-be94-63abdef10628",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

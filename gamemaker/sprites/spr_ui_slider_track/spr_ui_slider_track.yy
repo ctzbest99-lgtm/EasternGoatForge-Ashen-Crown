@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"b474d24f-0868-4cfd-a9c5-c0a474ab907d",
-      "name":"b474d24f-0868-4cfd-a9c5-c0a474ab907d",
+      "%Name":"5420a8bb-379a-4900-b2d9-1bc5b90ca754",
+      "name":"5420a8bb-379a-4900-b2d9-1bc5b90ca754",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"01b9f43b-908c-48df-9482-98dd8c32abc4",
+      "%Name":"3878588e-732d-4cca-85c8-ca62f705e642",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"01b9f43b-908c-48df-9482-98dd8c32abc4",
+      "name":"3878588e-732d-4cca-85c8-ca62f705e642",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -128,7 +128,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"b474d24f-0868-4cfd-a9c5-c0a474ab907d",
+                    "name":"5420a8bb-379a-4900-b2d9-1bc5b90ca754",
                     "path":"sprites/spr_ui_slider_track/spr_ui_slider_track.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -136,7 +136,7 @@
                 },
               },
               "Disabled":false,
-              "id":"762e285e-f7a4-48a3-a6e3-3557cbeceb89",
+              "id":"4a3ef411-6cc5-4dae-850d-e5e226fac5dc",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

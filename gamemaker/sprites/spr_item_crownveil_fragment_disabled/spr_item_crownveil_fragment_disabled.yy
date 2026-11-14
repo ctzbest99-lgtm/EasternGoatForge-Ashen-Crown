@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"3bed2768-6507-4938-9b77-0dd2813a1181",
-      "name":"3bed2768-6507-4938-9b77-0dd2813a1181",
+      "%Name":"a762044e-32e4-4f6f-8235-7ac1b205342a",
+      "name":"a762044e-32e4-4f6f-8235-7ac1b205342a",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"c065d9b9-4669-48ea-b593-8d5613669cac",
+      "%Name":"95a38df5-a44c-4d35-af6d-7edc77e19dc7",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"c065d9b9-4669-48ea-b593-8d5613669cac",
+      "name":"95a38df5-a44c-4d35-af6d-7edc77e19dc7",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"3bed2768-6507-4938-9b77-0dd2813a1181",
+                    "name":"a762044e-32e4-4f6f-8235-7ac1b205342a",
                     "path":"sprites/spr_item_crownveil_fragment_disabled/spr_item_crownveil_fragment_disabled.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"27e29200-4846-47b4-86df-624673984f10",
+              "id":"32127ca3-5777-4fea-9714-dbfcc798330a",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

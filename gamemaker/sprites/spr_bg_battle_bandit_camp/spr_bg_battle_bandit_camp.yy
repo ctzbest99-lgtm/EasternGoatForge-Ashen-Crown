@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"e9f6ecaa-4ae6-45ee-bc73-9c23d2bfcaf4",
-      "name":"e9f6ecaa-4ae6-45ee-bc73-9c23d2bfcaf4",
+      "%Name":"210fbf16-e6cc-45c5-8fe1-1688ca1dcc97",
+      "name":"210fbf16-e6cc-45c5-8fe1-1688ca1dcc97",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"32d1fe9e-2e92-4a8a-b58b-90d2c9bb3f7d",
+      "%Name":"4aae5d63-ff20-4786-858a-5d1885f3d358",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"32d1fe9e-2e92-4a8a-b58b-90d2c9bb3f7d",
+      "name":"4aae5d63-ff20-4786-858a-5d1885f3d358",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"e9f6ecaa-4ae6-45ee-bc73-9c23d2bfcaf4",
+                    "name":"210fbf16-e6cc-45c5-8fe1-1688ca1dcc97",
                     "path":"sprites/spr_bg_battle_bandit_camp/spr_bg_battle_bandit_camp.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"40463293-0d6f-45a9-9fdf-46e2da21cd2b",
+              "id":"eabaf578-8cf8-47e7-abaa-6cc1fdad1b1e",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

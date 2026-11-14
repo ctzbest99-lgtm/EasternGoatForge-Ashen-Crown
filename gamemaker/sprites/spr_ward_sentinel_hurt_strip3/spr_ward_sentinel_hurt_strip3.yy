@@ -14,22 +14,22 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"be6bccb7-9076-4360-8d5f-d7b20dc4bcc8",
-      "name":"be6bccb7-9076-4360-8d5f-d7b20dc4bcc8",
+      "%Name":"998e3afb-b190-4395-b936-fc911fccbe6a",
+      "name":"998e3afb-b190-4395-b936-fc911fccbe6a",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"d8b144a8-4399-4066-85ae-850afd477d68",
-      "name":"d8b144a8-4399-4066-85ae-850afd477d68",
+      "%Name":"8c7367e2-22e1-4723-b99c-7154e721e550",
+      "name":"8c7367e2-22e1-4723-b99c-7154e721e550",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"07cc3ef5-cde9-4e48-99be-5059406099bf",
-      "name":"07cc3ef5-cde9-4e48-99be-5059406099bf",
+      "%Name":"b646ffd4-df2c-41ec-bcd7-51873425d0bc",
+      "name":"b646ffd4-df2c-41ec-bcd7-51873425d0bc",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -41,11 +41,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"70e7b269-ff31-45a6-bcdb-5b3e6197d656",
+      "%Name":"be246a53-61ff-44f5-a631-51011fbdd0eb",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"70e7b269-ff31-45a6-bcdb-5b3e6197d656",
+      "name":"be246a53-61ff-44f5-a631-51011fbdd0eb",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -118,7 +118,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"be6bccb7-9076-4360-8d5f-d7b20dc4bcc8",
+                    "name":"998e3afb-b190-4395-b936-fc911fccbe6a",
                     "path":"sprites/spr_ward_sentinel_hurt_strip3/spr_ward_sentinel_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -126,7 +126,7 @@
                 },
               },
               "Disabled":false,
-              "id":"c06b788e-c732-4591-b894-00fac95d087a",
+              "id":"cd624bd0-ac4a-4a14-8a20-baa0d4efd5c7",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -140,7 +140,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"d8b144a8-4399-4066-85ae-850afd477d68",
+                    "name":"8c7367e2-22e1-4723-b99c-7154e721e550",
                     "path":"sprites/spr_ward_sentinel_hurt_strip3/spr_ward_sentinel_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -148,7 +148,7 @@
                 },
               },
               "Disabled":false,
-              "id":"29e2a624-7813-460f-b5e7-5fce8fa5a4d3",
+              "id":"7d7aa04d-c53a-44c7-99de-9373cb8c6e38",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -162,7 +162,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"07cc3ef5-cde9-4e48-99be-5059406099bf",
+                    "name":"b646ffd4-df2c-41ec-bcd7-51873425d0bc",
                     "path":"sprites/spr_ward_sentinel_hurt_strip3/spr_ward_sentinel_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -170,7 +170,7 @@
                 },
               },
               "Disabled":false,
-              "id":"a5f45037-fc04-43c7-9c33-de34511749e4",
+              "id":"2782eda1-9841-4e81-8700-f8c41bc62e7e",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,

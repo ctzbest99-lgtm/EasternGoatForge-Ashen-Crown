@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"6d500bbc-29d3-43db-bbfa-962d43d6f245",
-      "name":"6d500bbc-29d3-43db-bbfa-962d43d6f245",
+      "%Name":"79f11b61-c9c1-428f-b7de-eb2852e300b5",
+      "name":"79f11b61-c9c1-428f-b7de-eb2852e300b5",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"725e909a-9642-4572-9b5b-07fb73bb24f9",
+      "%Name":"e6f39873-00ad-46fa-8cf4-d1827405854b",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"725e909a-9642-4572-9b5b-07fb73bb24f9",
+      "name":"e6f39873-00ad-46fa-8cf4-d1827405854b",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"6d500bbc-29d3-43db-bbfa-962d43d6f245",
+                    "name":"79f11b61-c9c1-428f-b7de-eb2852e300b5",
                     "path":"sprites/spr_ui_party_icon_kael/spr_ui_party_icon_kael.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"579c44cf-e65d-4437-bd63-0e970b77a442",
+              "id":"12369dd3-d199-443f-ab6f-52d56b15ec83",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

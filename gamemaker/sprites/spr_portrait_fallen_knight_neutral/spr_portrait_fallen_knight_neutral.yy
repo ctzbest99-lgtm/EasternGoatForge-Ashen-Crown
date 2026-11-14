@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"fb198c9b-f0ea-4095-a71b-c70493e9e140",
-      "name":"fb198c9b-f0ea-4095-a71b-c70493e9e140",
+      "%Name":"fa989259-cafc-4498-8e2a-401223ae8af1",
+      "name":"fa989259-cafc-4498-8e2a-401223ae8af1",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"2e1c49ca-9f4f-4883-a43b-aa076e9ed3aa",
+      "%Name":"4d3dfe0b-c35f-47c6-b0b5-3cbcfe255a03",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"2e1c49ca-9f4f-4883-a43b-aa076e9ed3aa",
+      "name":"4d3dfe0b-c35f-47c6-b0b5-3cbcfe255a03",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"fb198c9b-f0ea-4095-a71b-c70493e9e140",
+                    "name":"fa989259-cafc-4498-8e2a-401223ae8af1",
                     "path":"sprites/spr_portrait_fallen_knight_neutral/spr_portrait_fallen_knight_neutral.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"884704ae-fd3d-46e7-bc97-c57d0fcf109a",
+              "id":"7ccd660c-5b92-4c1e-83b2-d9b0429fdd51",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
