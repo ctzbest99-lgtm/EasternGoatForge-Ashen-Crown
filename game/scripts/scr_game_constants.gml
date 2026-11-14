@@ -43,12 +43,35 @@
 #macro ENCOUNTER_STEPS_MAX 24
 #macro ENCOUNTER_GRACE_STEPS 5
 
-// Party and progression (roadmap step 4). Placeholder numbers, pending owner approval.
-#macro PARTY_MAX_SIZE 4
+// Party and progression (roadmap step 4 / five-person roster). Placeholder numbers, pending owner approval.
+// Five permanent members (Kael, Lyra, Caelan, Sera, Taren Holt); four fight at a time, one reserve slot.
+#macro PARTY_ROSTER_SIZE 5
+#macro PARTY_ACTIVE_MAX 4
+#macro PARTY_RESERVE_MAX 1
+#macro PARTY_MAX_SIZE PARTY_ACTIVE_MAX // backward-compatible alias: cap of the active battle party
 #macro PARTY_MAX_LEVEL 20
 #macro KAEL_BASE_HP 30
 #macro KAEL_BASE_ATTACK 6
 #macro KAEL_BASE_DEFENSE 2
+// Placeholder base stats for the other four (not canon, pending owner approval).
+#macro LYRA_BASE_HP 24
+#macro LYRA_BASE_ATTACK 7
+#macro LYRA_BASE_DEFENSE 1
+#macro CAELAN_BASE_HP 22
+#macro CAELAN_BASE_ATTACK 8
+#macro CAELAN_BASE_DEFENSE 1
+#macro SERA_BASE_HP 28
+#macro SERA_BASE_ATTACK 4
+#macro SERA_BASE_DEFENSE 4
+// Taren Holt: warrior / frontline; slightly tougher than Kael's balanced line.
+#macro TAREN_BASE_HP 36
+#macro TAREN_BASE_ATTACK 8
+#macro TAREN_BASE_DEFENSE 3
+// Owner decision 2026-11-14: when an enemy dies, its XP is credited to each
+// member who has already taken a turn (Attack, Guard, or Swap) and is not KO'd
+// at that moment. Banked pending XP is applied at victory; a defeat grants none.
+// A reserve member who never took a turn receives none. Gold stays shared.
+#macro XP_REQUIRES_PARTICIPATION true
 // Total XP to reach level L (L>=2): XP_CURVE_QUAD*(L-1)^2 + XP_CURVE_LIN*(L-1).
 // L1=0, L2=30, L3=100, L4=210, L5=360, L10=1710, L20=7410.
 #macro XP_CURVE_QUAD 20
@@ -57,7 +80,10 @@
 #macro LEVEL_UP_ATTACK_GROWTH 1
 #macro LEVEL_UP_DEFENSE_GROWTH 1
 // Debug only: add a second placeholder ally so multi-member battle can be tested. Not canon.
+// Prefer DEBUG_ADD_FULL_ROSTER for canon members (4 active + 1 reserve).
 #macro DEBUG_ADD_PLACEHOLDER_ALLY false
+// Debug only: all five roster members join. Active: Kael, Lyra, Caelan, Sera. Reserve: Taren Holt.
+#macro DEBUG_ADD_FULL_ROSTER false
 
 // Optional camera: if Viewport 0 is enabled (or created by scr_map_enable_camera),
 // the controller follows obj_player. Recommended view is 320×180, displayed at 2×.

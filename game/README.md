@@ -64,6 +64,8 @@ Snippets are prototypes, not verified production code. Compile in the selected G
 8. Random encounters: while moving inside an `obj_encounter_zone` (or a room listed in `scr_get_room_encounter_table`), actual movement accumulates toward steps of `ENCOUNTER_STEP_PIXELS`. After `ENCOUNTER_GRACE_STEPS` following room entry or battle, a randomized counter in `[ENCOUNTER_STEPS_MIN, ENCOUNTER_STEPS_MAX]` counts down and starts a fight from the area's weighted table. Towns and rooms with no table are safe. Disable with `RANDOM_ENCOUNTERS_ENABLED` or `global.game.random_encounters_enabled`. Victory still returns to the exact spot; random fights are not stored in `cleared_encounters`.
 
 
+9. The permanent roster is five (Kael, Lyra, Caelan, Sera, Taren Holt). `global.game.party` is the active battle party (max 4); `global.game.reserve` is the one benched slot. Battle, the defeat check, and the defeat XP penalty use the active party only. When an enemy dies, its XP is credited to members who have already taken a turn and are still living; banked XP is applied at victory, and a defeat grants none. A reserve member must swap in and act before a kill to earn that enemy's XP. Gold stays shared. Mid-battle Swap costs the outgoing member's turn. Default run: Kael only has joined. `DEBUG_ADD_FULL_ROSTER` fills all five for testing (Taren in reserve).
+
 ## Default controls (prototype; final mapping is an open question)
 - Move: arrow keys (diagonal normalized, as before).
 - Confirm / interact / advance: **Z**, Enter, or Space.
