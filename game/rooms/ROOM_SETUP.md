@@ -4,26 +4,40 @@ Do not fabricate .yy/.yyp metadata. Let GameMaker create resources. This documen
 
 Room size, tile size, and resolution are still undecided in a final-design sense, but the Zone 1 overworld is built as a **16×16** tile map: `rm_overworld` is **6400×4800** (400×300 tiles) and `rm_old_watchtower` is **960×720** (60×45 tiles). A camera is required.
 
+The overworld player uses **16×24** Kael sprites on that 16×16 grid (`depth = -y`). See docs/DECISIONS_AND_OPEN_QUESTIONS.md.
+
+**Sprite import:** follow [`game/sprites/IMPORT.md`](../sprites/IMPORT.md) for every character PNG (asset name, frames, origin, mask, fps). Code uses `asset_get_index` and still compiles if a sprite is missing.
+
 ## 1. Project
 1. Create a new GameMaker project (GML, GameMaker 2023.1+).
 2. Create every Script listed in `game/README.md` first, pasting each `game/scripts/*.gml` file into the script of the same name. Scripts reference objects and rooms by name, so the project will not compile until steps 2–4 are done too.
 
-## 2. Placeholder sprites (Asset Browser → Create → Sprite; draw a flat colour in the Image Editor)
+## 2. Sprites
+
+### 2a. Character art (required for the new look; optional for a compile test)
+Import the PNGs in `game/sprites/` using the table in [`game/sprites/IMPORT.md`](../sprites/IMPORT.md). At minimum, import Kael's 16×24 overworld set and the battle idle/attack/hurt/death strips for `spr_hero_*`, `spr_bandit_*`, and `spr_fallen_knight_*`. Keep each asset name identical to the filename (including `_stripN`).
+
+Assign `spr_kael_ow16_idle_down` to `obj_player`. Set the manual feet mask (left 0, top 8, right 15, bottom 23) and origin (8, 23) on every Kael 16×24 sprite. The object code also pins `mask_index` to the idle-down sprite.
+
+### 2b. Placeholder room sprites (Asset Browser → Create → Sprite; draw a flat colour)
+Use these for walls, the sign, triggers, and zones. Existing 32×32 placeholders still work (collision uses `bbox_*`), but 16×16 matches the new grid.
+
 | Sprite | Size | Origin | Collision mask | Notes |
 |---|---|---|---|---|
-| `spr_player_placeholder` | 32×48 (matches the requested player reference) | Bottom Centre | Rectangle, manual, roughly the bottom 24×16 (feet), e.g. left 4, top 32, right 27, bottom 47 | Any colour |
-| `spr_solid_placeholder` | 32×32 | Top Left | Rectangle, full image | Dark grey |
-| `spr_interactable_placeholder` | 32×32 | Top Left | Rectangle, full image | e.g. brown "sign" |
-| `spr_encounter_trigger_placeholder` | 32×32 | Top Left | Rectangle, full image | Semi-transparent red; can be stretched in the room |
-| `spr_encounter_zone_placeholder` | 32×32 | Top Left | Rectangle, full image | Semi-transparent yellow; stretch over the wild area. Required so the zone mask matches the rectangle. |
-| `spr_story_encounter_placeholder` | 32×32 | Top Left | Rectangle, full image | Semi-transparent purple; one tile. Required so the story-trigger mask matches the tile. |
+| `spr_player_placeholder` | 16×24 | (8, 23) Bottom Centre | Rectangle, manual, 0, 8, 15, 23 (standing tile / feet) | Only if Kael's 16×24 set is not imported yet |
+| `spr_solid_placeholder` | 16×16 | Top Left | Rectangle, full image | Dark grey |
+| `spr_interactable_placeholder` | 16×16 | Top Left | Rectangle, full image | e.g. brown "sign" |
+| `spr_encounter_trigger_placeholder` | 16×16 | Top Left | Rectangle, full image | Semi-transparent red; can be stretched in the room |
+| `spr_encounter_zone_placeholder` | 16×16 | Top Left | Rectangle, full image | Semi-transparent yellow; stretch over the wild area. Required so the zone mask matches the rectangle. |
+| `spr_respawn_point_placeholder` | 16×16 | Top Left | Rectangle, full image | Optional layout marker |
+| `spr_story_encounter_placeholder` | 16×16 preferred (a larger 32×32 placeholder is scaled to one tile by the map spawner) | Top Left | Rectangle, full image | Semi-transparent purple. Required so the story-trigger mask matches the tile. |
 
-Code reads the collision box (`bbox_*`), not the origin, so other origins work too. No final art exists; record real assets in docs/ASSET_INVENTORY.md when added.
+Record imported assets in docs/ASSET_INVENTORY.md.
 
 ## 3. Objects
 Create each object in the table in `game/README.md` with the listed sprite, flags, and events, then paste the matching `.gml` file into each event:
 - **obj_game_controller:** no sprite, tick **Persistent**, untick Visible. Events: Create, Step ▸ Begin Step, Step ▸ End Step, Other ▸ Room Start.
-- **obj_player:** sprite `spr_player_placeholder`. Events: Create, Step. (Replaces the earlier Create/Step snippets; movement behaviour is unchanged.)
+- **obj_player:** sprite `spr_kael_ow16_idle_down` (or `spr_player_placeholder` if the sheet is not imported yet). Events: Create, Step. The Step event also picks idle/walk by facing, plays the walk at 8 fps, and sets `depth = -y`.
 - **obj_solid:** sprite `spr_solid_placeholder`. No events.
 - **obj_interactable:** sprite `spr_interactable_placeholder`, **Parent = obj_solid** (blocks movement). Event: Create.
 - **obj_dialogue_box:** no sprite. Events: Create, Step, Draw ▸ Draw GUI, Clean Up.
@@ -69,7 +83,7 @@ Create each object in the table in `game/README.md` with the listed sprite, flag
 3. Running this room alone (Room Order first) works for UI testing: it fights a Bandit, but returning needs `rm_overworld`.
 
 ## 8. Compile and run
-Run (F5). Expected: the overworld loads (watch the compile / first-room time; 120k tiles × 5 layers), the camera follows Kael, he starts at Varyn House in Greyhaven, collision tiles block movement, tree tops draw above him, walking a farmlands / Old Road / bandit-camp zone can start a random fight, signs and placeholder NPCs (Tomas, Renn) can be inspected, the Old Watchtower entrance goes to `rm_old_watchtower`, victory returns to the exact overworld spot, and defeat wakes the party up at Greyhaven (2984, 2752) with the gold/XP penalty dialogue. Then run docs/TEST_PLAN.md, including the new Zone 1 map cases.
+Run (F5). Expected: the overworld loads (watch the compile / first-room time; 120k tiles × 5 layers), Kael uses the 16×24 idle/walk sprites (or the placeholder if they are not imported) and is y-sorted with `depth = -y`, the camera follows him and stops at the room edges, he starts at Varyn House in Greyhaven, collision tiles block movement, tree tops on the Overhead layer (depth -10000) draw above him, walking a farmlands / Old Road / bandit-camp zone can start a random fight, signs and placeholder NPCs (Tomas, Renn) can be inspected, the Old Watchtower entrance goes to `rm_old_watchtower`, a Bandit or Fallen Knight battle plays idle/attack/hurt/death clips (or rectangles if those sprites are missing), victory returns to the exact overworld spot, and defeat wakes the party up at Greyhaven (2984, 2752) with the gold/XP penalty dialogue. Then run docs/TEST_PLAN.md, including the Sprites and Zone 1 map cases.
 
 If the Included Files are missing, the debug log will print `scr_build_overworld: missing overworld/chunks/...` and the ground will be empty. If `ts_zone1` is not a Tile Set asset, tile layers will be blank or the script will fail.
 
@@ -79,7 +93,7 @@ Rooms are safe until you opt in:
 2. **Whole room:** in `scr_get_room_encounter_table()` (in `scr_encounter_tables`), return `scr_get_encounter_table("zone01_path")` (or a custom table) for that room. Do not do this for `TOWN_RESPAWN_ROOM` or other safe rooms. A zone at the player's position overrides the room table.
 3. Keep `obj_encounter_trigger` for simple fixed fights, and `obj_story_encounter` for the guaranteed Watchtower Ashbound Hunter (and later scripted beats). Standing on either does not also roll a random encounter.
 4. To disable random encounters while testing: set `#macro RANDOM_ENCOUNTERS_ENABLED false` and recompile, or in the debugger set `global.game.random_encounters_enabled = false`.
-5. Default rates (pending tuning): 32 pixels = 1 step, a new fight after 8–24 steps in an area, 5 grace steps after room entry or after returning from battle.
+5. Default rates (pending tuning): 16 pixels = 1 step (one tile), a new fight after 8–24 steps in an area, 5 grace steps after room entry or after returning from battle.
 
 ## 10. Old Watchtower Ashbound Hunter (`enc_ashbound_hunter_wt`)
 1. Create `obj_story_encounter` and `spr_story_encounter_placeholder` as in the tables above. Paste the Create, Room Start, and Step snippets. A 16×16 sprite matches the tile grid; a larger placeholder is scaled to one tile when spawned from the map.

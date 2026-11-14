@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-14 — Character sprites and 16×16 overworld scale
+- Added Kael, Bandit, and Fallen Knight art under `game/sprites/` (battle strips plus 16×24 and 32×48 overworld walk/idle sets for Kael and the Bandit). IDE import table is `game/sprites/IMPORT.md`. Source generators (`src/*.py`) are included because they are small. The Zone 1 tileset and maps now live on `main` and are included in this branch after the merge.
+- `obj_player` uses the 16×24 Kael sheet: idle/walk by facing, walk at 8 fps, `depth = -y`, no `image_xscale` (left is pre-mirrored). `mask_index` is pinned to idle-down (16×16 standing-tile feet box). `asset_get_index` falls back to the IDE placeholder if the sheet is missing. The 32×48 overworld set is a code fallback only.
+- Overworld scale defaults (pending approval): `TILE_SIZE` 16, `PLAYER_MOVE_SPEED` 1 (same tiles-per-second as the old speed of 2 on 32 px tiles), `PLAYER_INTERACT_REACH` 4. Encounter steps are 16 pixels (one tile); the 8–24 step interval is unchanged in tile terms.
+- Town respawn after merging Zone 1 is Greyhaven `player_start` (2984, 2752), not the earlier 16 px-grid test point (320, 176).
+- Battle: `obj_battle_controller` draws Kael and the enemy with idle loops, plays attack then hurt (or death on a KO) in a new `BATTLE_STATE.ANIMATING` state, and holds the last death frame. Confirm skips the clip. Missing sprites draw the old placeholder rectangles and do not stall the state machine. Party faces left via `xscale = -1`; the Fallen Knight's 64×48 attack origin (32, 47) is honoured so the feet stay planted. Per-enemy XP credit runs in `apply_pending_hit()` at the hit frame (not when the Attack command is chosen).
+- Camera follow lives once in `scr_map_tilemaps` (`scr_camera_follow_player`), called from the existing `obj_game_controller` End Step. Overhead tiles stay at depth -10000 so they remain above a player using `depth = -y`.
+- Documented in `game/sprites/IMPORT.md`, `game/rooms/ROOM_SETUP.md`, docs/ASSET_INVENTORY.md, docs/DECISIONS_AND_OPEN_QUESTIONS.md; test plan S1–S9 added. Not compiled or playtested in GameMaker yet.
+
 ## 2026-11-14 — Old Watchtower Ashbound Hunter scripted encounter
 - Added a story-flag system (`global.game.flags`, `scr_flag_get` / `scr_flag_set`) and key-item helpers (`scr_inventory_add` / `scr_inventory_has`).
 - Added the Ashbound Hunter to `scr_enemy_database` (placeholder stats: 42 HP, 9 ATK, 5 DEF, 20 XP, 12 gold; Ice weakness stored for the bestiary, not used in combat). The Zone 1 **Blackguard** entry is kept as well (one of each).
@@ -8,7 +17,6 @@
 - Rare random Hunter (default 4% of random fights) in areas that opt in (`allow_ashbound_rare`, or table ids `zone01_old_road` / `zone01_bandit_camp` / `zone01_watchtower`, plus the older short ids `old_road` / `bandit_camp` / `watchtower`). Same pre/post lines; a rare victory does not consume the Watchtower trigger.
 - Dialogue nodes are keyed by the script's IDs in `scr_dialogue_data` and played through `scr_dialogue_play` / `scr_dialogue_open`.
 - Assumptions (open questions): a defeat does not consume the guaranteed trigger; the fight grants regular XP/gold; rare rate and Hunter stats are placeholders pending tuning.
-
 ## 2026-11-14 — Per-enemy XP credit for living participants
 - Owner decision: when an enemy dies, its XP is credited to each party member who has participated (taken at least one turn) and is not KO'd at that moment. Credit is stored as `pending_xp` and applied at victory (level-up messages unchanged). A defeat grants no XP. Gold stays shared.
 - A member KO'd before an enemy dies gets no XP for that enemy, but keeps credit for enemies that died before they fell. A reserve member who swapped in and has taken a turn counts from then on, but gets no credit for earlier kills.

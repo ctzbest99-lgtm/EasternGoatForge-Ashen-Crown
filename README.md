@@ -11,7 +11,8 @@ A dark medieval fantasy RPG by Eastern Goat Forge, built with GameMaker and GML.
 - Tone: dark, atmospheric, serious, with occasional lighthearted moments.
 - Zone 1 standard enemies: Bandit and Fallen Knight.
 - Planned menu: equipment, party order, items, save/load, character status, Bestiary.
-- Zone 1 overworld and Old Watchtower maps are in `game/tilesets/` and `game/datafiles/`; import per `game/rooms/ROOM_SETUP.md`. Character sprites and a Zone 1 boss sprite sheet are still outstanding on this branch (character art is in PR #6).
+- Character art for Kael, the Bandit, and the Fallen Knight is in `game/sprites/` (16×24 overworld recommended; 32×48 battle strips). Import with `game/sprites/IMPORT.md`. Rare-encounter and Zone 1 boss sprites are still outstanding.
+- Zone 1 overworld and Old Watchtower maps are in `game/tilesets/` and `game/datafiles/`; import per `game/rooms/ROOM_SETUP.md`.
 
 ## Start here
 1. Read docs/GAME_DESIGN_DOCUMENT.md and docs/DECISIONS_AND_OPEN_QUESTIONS.md.
@@ -22,6 +23,6 @@ A dark medieval fantasy RPG by Eastern Goat Forge, built with GameMaker and GML.
 ## Folders
 - docs/: design, story, combat, Zone 1, art, asset inventory, roadmap, tests.
 - prompts/: Codex implementation prompts.
-- game/: illustrative GML snippets, setup notes, tileset, and overworld Included Files.
+- game/: illustrative GML snippets, setup notes, `game/sprites/` art (imported into the IDE by hand), tileset, and overworld Included Files.
 
-Proprietary: all source code and all game assets are the property of Eastern Goat Forge, all rights reserved; see LICENSE. No original art/audio or complete GameMaker project is included.
+Proprietary: all source code and all game assets are the property of Eastern Goat Forge, all rights reserved; see LICENSE. This is still not a complete GameMaker project (no `.yyp`).

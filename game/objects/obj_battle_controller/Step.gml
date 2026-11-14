@@ -1,6 +1,12 @@
 /// obj_battle_controller : Step
 /// Exactly one state is handled per frame. All confirms use *_pressed, so holding a key
 /// cannot repeat an action.
+
+// Advance looping idles (and any clip already playing) every frame.
+if (is_struct(enemy_vis)) scr_battle_vis_update(enemy_vis);
+var _v;
+for (_v = 0; _v < array_length(party_vis); _v++) scr_battle_vis_update(party_vis[_v]);
+
 switch (state) {
 
     case BATTLE_STATE.INTRO:
@@ -46,7 +52,7 @@ switch (state) {
         break;
 
     case BATTLE_STATE.PLAYER_ACTION:
-        if (enemy.hp <= 0) { state = BATTLE_STATE.VICTORY; break; }
+        if (is_struct(enemy) && enemy.hp <= 0) { state = BATTLE_STATE.VICTORY; break; }
         if (action_index >= array_length(queued_actions)) { state = BATTLE_STATE.ENEMY_TURN; break; }
 
         var _action = queued_actions[action_index];
@@ -64,33 +70,51 @@ switch (state) {
             // Costs this member's turn. The incoming reserve member acts on later rounds, not this one.
             var _incoming_name = scr_party_has_reserve() ? global.game.reserve[0].name : "";
             if (scr_party_swap_active_reserve(_action.actor_index)) {
+                // Slot changed by reference; rebuild this slot's battle vis for the incoming member.
+                party_vis[_action.actor_index] = scr_battle_vis_create(party[_action.actor_index].actor_id, -1);
                 queue_message(_actor.name + " swaps out. " + _incoming_name + " joins the front line.", BATTLE_STATE.PLAYER_ACTION);
             } else {
                 queue_message(_actor.name + " has no one to swap with.", BATTLE_STATE.PLAYER_ACTION);
             }
         } else { // "Attack"
             var _damage = scr_calculate_damage(_actor.attack, enemy.defense);
-            enemy.hp = scr_apply_damage(enemy.hp, enemy.max_hp, _damage);
-            if (enemy.hp <= 0 && !enemy.xp_credited) {
-                // Credit now, while living participants are still standing. Applied at victory.
-                scr_party_credit_enemy_xp(enemy.xp_reward);
-                enemy.xp_credited = true;
+            var _text = _actor.name + " attacks! " + enemy.name + " takes " + string(_damage) + " damage.";
+            var _att_vis = party_vis[_action.actor_index];
+            // Damage and XP credit run in apply_pending_hit() at the attack's hit frame.
+            begin_attack_anim(_att_vis, enemy_vis, { kind: "player_attack", damage: _damage, party_index: _action.actor_index }, _text, BATTLE_STATE.PLAYER_ACTION);
+        }
+        break;
+
+    case BATTLE_STATE.ANIMATING:
+        if (!anim_hit_applied && scr_battle_vis_hit_ready(anim_attacker_vis)) {
+            apply_pending_hit();
+        }
+        var _skip = scr_input_confirm_pressed();
+        if (_skip) {
+            if (!anim_hit_applied) apply_pending_hit();
+            if (is_struct(anim_attacker_vis)) scr_battle_vis_snap_end(anim_attacker_vis);
+            if (is_struct(anim_target_vis) && (anim_target_vis.anim == "hurt" || anim_target_vis.anim == "death")) {
+                scr_battle_vis_snap_end(anim_target_vis);
             }
-            queue_message(_actor.name + " attacks! " + enemy.name + " takes " + string(_damage) + " damage.", BATTLE_STATE.PLAYER_ACTION);
+        }
+        var _att_done = !is_struct(anim_attacker_vis) || anim_attacker_vis.finished;
+        var _tgt_done = !is_struct(anim_target_vis) || anim_target_vis.finished || (anim_target_vis.anim == "idle");
+        if (anim_hit_applied && _att_done && _tgt_done) {
+            finish_animating();
         }
         break;
 
     case BATTLE_STATE.ENEMY_TURN:
-        if (enemy.hp <= 0) { state = BATTLE_STATE.VICTORY; break; }
+        if (is_struct(enemy) && enemy.hp <= 0) { state = BATTLE_STATE.VICTORY; break; }
         var _target_index = scr_party_random_living_index(party);
         if (_target_index == -1) { state = BATTLE_STATE.DEFEAT; break; }
 
         var _target = party[_target_index];
         var _enemy_damage = scr_apply_guard(scr_calculate_damage(enemy.attack, _target.defense), _target.is_guarding);
-        _target.hp = scr_apply_damage(_target.hp, _target.max_hp, _enemy_damage);
         var _guard_note = _target.is_guarding ? " (guarded)" : "";
-        var _after_enemy = scr_party_any_alive(party) ? BATTLE_STATE.ROUND_START : BATTLE_STATE.DEFEAT;
-        queue_message(enemy.name + " attacks " + _target.name + "! " + string(_enemy_damage) + " damage" + _guard_note + ".", _after_enemy);
+        var _etext = enemy.name + " attacks " + _target.name + "! " + string(_enemy_damage) + " damage" + _guard_note + ".";
+        // anim_next_state is corrected in apply_pending_hit after HP is applied (ROUND_START or DEFEAT).
+        begin_attack_anim(enemy_vis, party_vis[_target_index], { kind: "enemy_attack", damage: _enemy_damage, party_index: _target_index }, _etext, BATTLE_STATE.ROUND_START);
         break;
 
     case BATTLE_STATE.VICTORY:

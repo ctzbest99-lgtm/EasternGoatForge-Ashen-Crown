@@ -286,8 +286,8 @@ function scr_map_enable_camera(_view_w, _view_h) {
 
 /// Follow the player with viewport 0 if a camera is enabled; otherwise do nothing.
 /// Clamps to the room so the camera never shows past the edge. Skips the battle room.
-/// Note: PR #6 (feature/sprites) also adds a function of this name in scr_sprites.gml
-/// and the same End Step on obj_game_controller. After both merge, keep one definition.
+/// Shared with the sprites branch: keep this as the only definition. End Step on
+/// obj_game_controller calls it. Overhead layer depth (-10000) stays above depth = -y.
 function scr_camera_follow_player() {
     if (!CAMERA_FOLLOW_PLAYER) return;
     if (room == BATTLE_ROOM) return;
