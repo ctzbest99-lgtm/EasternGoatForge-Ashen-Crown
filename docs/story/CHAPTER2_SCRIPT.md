@@ -1,8 +1,8 @@
 # ASHEN CROWN — Chapter 2 Script: "The Weight of the Yoke" (Act II: The Broken Crown)
 
 Route: Crownveil Door → Old Watchtower (backtrack) → optional Greyhaven → Millhaven Road → Wrenfield → handoff toward Valemere.
-> **Status: DRAFT.** Kevin approved the six Chapter 2 decisions on Nov 14 2026, not this script as a whole. Those six choices, and only the facts they settle, are **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Every other new line and texture stays **[PROPOSED]**.
-> Chapter title: **The Weight of the Yoke** **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Suggested levels (8–10) stay **[PROPOSED]**. The act title is **The Broken Crown** **[CANON]**. **The Broken Yoke** is the rebellion's name only **[C-confirmed]**.
+> **Status: APPROVED.** Kevin approved every proposed item in this script as canon on Nov 14 2026 (3:00 PM ET). Items marked **[C-confirmed]** were invented for this script and then approved, or were confirmed earlier the same day. **[CANON]** items come from the design doc. Open questions remain **[O]**.
+> Chapter title: **The Weight of the Yoke** **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Suggested levels: 8–10 **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). The act title is **The Broken Crown** **[CANON]**. **The Broken Yoke** is the rebellion's name only **[C-confirmed]**.
 
 Source of truth: `STORY_BIBLE.md`. Presentation: FF1-style top-down exploration (confirmed). Battles are presumed to be FF1-style menu battles (still open).
 
@@ -11,7 +11,7 @@ Source of truth: `STORY_BIBLE.md`. Presentation: FF1-style top-down exploration 
 - Every dialogue node has a stable ID: `ZONE_PLACE_NN`. Coder can key a dialogue database on these IDs.
 - Format: `**ID** · Speaker` followed by the dialogue-box text. Each `>` line is one box line: at most 2 lines per box, each under 90 characters. A node with more than 2 lines is several boxes in sequence (each pair of lines is one box).
 - `NARRATION` = text with no speaker. `SYSTEM` = tutorial or UI text. `[STAGE]` = direction for Coder and Design, not shown in game.
-- Tags: **[CANON]** = exact text or event from the design doc. **[C-confirmed]** = already decided by Kevin (including the Act II decisions of Nov 14 2026, and the six Chapter 2 decisions of the same day). **[PROPOSED]** = new lines or texture in this draft, not approved with those six decisions. Untagged nodes inside a scene take that scene's tag.
+- Tags: **[CANON]** = exact text or event from the design doc. **[C-confirmed]** = connective content written for this script, approved by Kevin (Nov 14 2026), including earlier Act II and Chapter 2 decisions the same day. Untagged nodes inside a scene take that scene's tag. Open questions stay **[O]**.
 - Suggested story flags are in `code` font (e.g. `flag_taren_recruited`). They are only suggestions, and Coder should match them to the real project.
 - Ordinary people, soldiers, and early Kael say **Architects**, not Aethari (**[C-confirmed]** naming guide). The party has not learned the old name yet.
 - Nothing here names or reveals the Fallen Knight, explains the Ash, says what destroyed Greyhaven, settles Elira's or Tomas's fate, says where Kael, Taren and Alden grew up, defines the Broken Yoke's leadership, or explains the Crownveil, Lumen, or the Crown Engine. All of those stay open in the bible.
@@ -25,7 +25,7 @@ Source of truth: `STORY_BIBLE.md`. Presentation: FF1-style top-down exploration 
 
 **Description:** "She crossed the Crownveil." The pendant answered the sealed door. Mira is somewhere beyond. **[C-confirmed]** (carried from Chapter 1)
 
-Chapter 2 uses stages 1–3 of the Act II quest plan. Stage IDs and objective text are **[PROPOSED]**; the completion events for S1–S3 match confirmed Act II decisions.
+Chapter 2 uses stages 1–3 of the Act II quest plan. Stage IDs, objective text, and the completion events for S1–S3 are **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026).
 
 | Stage | ID | Objective text | Completes when |
 |---|---|---|---|
@@ -35,7 +35,7 @@ Chapter 2 uses stages 1–3 of the Act II quest plan. Stage IDs and objective te
 
 ### Side quest: The One on the List — `Q_SIDE_ODA` **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 
-**Giver:** Oda, Wrenfield square (before the hanging is stopped). **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) The close-call prisoner is her brother **Bram**. **Reward:** Minor Potion x2, 40 Gold **[PROPOSED]**.
+**Giver:** Oda, Wrenfield square (before the hanging is stopped). **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) The close-call prisoner is her brother **Bram**. **Reward:** Minor Potion x2, 40 Gold **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026).
 **Description:** Oda's brother Bram was seized as a Yoke sympathizer and is among the accused in the square.
 
 | Stage | ID | Objective text | Completes when |
@@ -43,7 +43,7 @@ Chapter 2 uses stages 1–3 of the Act II quest plan. Stage IDs and objective te
 | 1 | `Q_SO_S1` | Find Bram among the accused in Wrenfield square. | The hanging is stopped and Bram is alive |
 | 2 | `Q_SO_S2` | Speak to Oda in the square. | Turn-in played |
 
-If the player never speaks to Oda before the rescue, the quest can still start and complete on a single talk with her afterward **[PROPOSED]** staging.
+If the player never speaks to Oda before the rescue, the quest can still start and complete on a single talk with her afterward **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026).
 
 ---
 
@@ -53,26 +53,26 @@ If the player never speaks to Oda before the rescue, the quest can still start a
 
 [STAGE] Load the Chapter 1 ending room. No fade-from-black explanation. The save from the end of Chapter 1 resumes here. The door cannot be opened. The Fallen Knight is not here.
 
-**CV_WAKE_01** · NARRATION **[C-confirmed event / PROPOSED wording]**
+**CV_WAKE_01** · NARRATION **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Kael comes to on the stone. The sealed door is still in front of him.
 > The pendant at his chest is quiet.
 
-**CV_WAKE_02** · Kael **[PROPOSED]**
+**CV_WAKE_02** · Kael **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > ...Mira?
 
-**CV_WAKE_03** · NARRATION **[PROPOSED]**
+**CV_WAKE_03** · NARRATION **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > He puts a shoulder to the door. It does not move.
 > Nothing answers from the other side.
 
-**CV_WAKE_04** · Kael **[PROPOSED]**
+**CV_WAKE_04** · Kael **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > So I can't follow her this way.
 
-[STAGE] Interactable: the Blackguard's empty armor, still in a heap of ash where it fell **[C-confirmed]** Chapter 1 defeat; this revisit is **[PROPOSED]**.
+[STAGE] Interactable: the Blackguard's empty armor, still in a heap of ash where it fell **[C-confirmed]** (Chapter 1 defeat; this revisit confirmed Nov 14 2026).
 
-**CV_WAKE_05** · NARRATION *(empty armor)* **[PROPOSED]**
+**CV_WAKE_05** · NARRATION *(empty armor)* **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Empty armor in a heap of ash. Whoever wore it is gone.
 
-**CV_WAKE_06** · NARRATION *(the door, if examined again)* **[PROPOSED]**
+**CV_WAKE_06** · NARRATION *(the door, if examined again)* **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Sealed. The pendant does not warm this time.
 > She is on the other side of this. He is not.
 
@@ -80,23 +80,23 @@ If the player never speaks to Oda before the rescue, the quest can still start a
 
 ---
 
-## 2. Old Watchtower, backtrack — `WT2_BACK` **[PROPOSED]**
+## 2. Old Watchtower, backtrack — `WT2_BACK` **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 
 [STAGE] A clear path from the basement and arena back to the Watchtower entrance and the Old Road. Random encounters may be reused from Zone 1 at a slightly higher band, or kept light. Do not restage the Blackguard, the banner clue, or the Fallen Knight.
 
-**WT2_BACK_01** · Kael **[PROPOSED]**
+**WT2_BACK_01** · Kael **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Back the way I came, then. There has to be another path.
 
 **WT2_SIGN_01** · NARRATION *(entrance sign, same text as Chapter 1)* **[C-confirmed]**
 > Old Watchtower. Property of the Crown. Closed by order.
 
-**WT2_BANNER_R1** · NARRATION *(if the banner is examined again)* **[C-confirmed]** symbol / **[PROPOSED]** wording
+**WT2_BANNER_R1** · NARRATION *(if the banner is examined again)* **[C-confirmed]** symbol / **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) wording
 > The torn royal banner still hangs here. A crown ringing a black sun.
 > The same mark as Mira's pendant.
 
 ---
 
-## 3. Optional return to Greyhaven — `GH2` **[C-confirmed as optional / PROPOSED lines]**
+## 3. Optional return to Greyhaven — `GH2` **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 
 **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Kael may optionally stop in Greyhaven on his way. Tomas is still unconscious in the forge, tended by Pell. Elira is not resolved. Survivors still do not explain the destruction.
 
@@ -106,37 +106,37 @@ If the player never speaks to Oda before the rescue, the quest can still start a
 
 [STAGE] Tomas lies on the same pallet in the ruined Blacksmith. He does not wake, and he does not die. Talking to Pell or Tomas starts these lines.
 
-**GH2_TOMAS_01** · NARRATION **[PROPOSED]**
+**GH2_TOMAS_01** · NARRATION **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > He's breathing. Barely. No worse than when Kael left.
 > No better, either.
 
-**GH2_PELL_01** · Pell **[PROPOSED]**
+**GH2_PELL_01** · Pell **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > You're back. I thought you'd gone into those woods and stayed there.
 > He's been in and out. Mostly out.
 
-**GH2_PELL_02** · Kael **[PROPOSED]**
+**GH2_PELL_02** · Kael **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Keep doing what you're doing.
 
-**GH2_PELL_03** · Pell **[C-confirmed hook / PROPOSED wording]**
+**GH2_PELL_03** · Pell **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > If you're heading out again, listen. Crown's been hanging people
 > near Millhaven. Wrenfield, they said. Aiding the rebellion.
 
-**GH2_PELL_04** · Pell **[C-confirmed hook / PROPOSED wording]**
+**GH2_PELL_04** · Pell **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > And someone swore they saw Taren Holt with the Broken Yoke.
 > Your Taren. I thought you should hear it from a friend.
 
-**GH2_PELL_05** · Kael **[PROPOSED]**
+**GH2_PELL_05** · Kael **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Taren. Near Millhaven.
 > ...Then that's where I'm going.
 
 [STAGE] Set `flag_hook_taren`. If this is the first time the hook is heard, keep `Q_BV_S1` active until Kael takes the road toward Millhaven, then advance to `Q_BV_S2`.
 
-Repeat talk with Tomas, **GH2_TOMAS_R1** · NARRATION **[PROPOSED]**:
+Repeat talk with Tomas, **GH2_TOMAS_R1** · NARRATION **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026):
 > Still out. Still breathing.
-Repeat talk with Pell, **GH2_PELL_R1** · Pell **[PROPOSED]**:
+Repeat talk with Pell, **GH2_PELL_R1** · Pell **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026):
 > Wrenfield, near Millhaven. That's all I know. I'll stay with him.
 
-### 3.2 Other survivor barks **[PROPOSED]**
+### 3.2 Other survivor barks **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 
 These are optional. They do not explain the destruction, and they do not settle Elira.
 
@@ -179,7 +179,7 @@ These are optional. They do not explain the destruction, and they do not settle 
 > She said the door was hers. I should've believed her.
 
 **North Gate: Corwin**
-**GH2_CORWIN_01** · Corwin **[C-confirmed hook if not yet heard / PROPOSED wording]**
+**GH2_CORWIN_01** · Corwin **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > In and out again? Fine. You should know: Crown patrols have been
 > hanging "sympathizers" at Wrenfield, near Millhaven.
 **GH2_CORWIN_02** · Corwin
@@ -196,22 +196,22 @@ These are optional. They do not explain the destruction, and they do not settle 
 
 ---
 
-## 4. Millhaven Road — `MR` **[PROPOSED area / C-confirmed hook]**
+## 4. Millhaven Road — `MR` **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 
 [STAGE] A new overworld road leading toward the Millhaven area and Wrenfield. Suggested level 8–10. Encounters may include Crown Patrols (human soldiers, not Ash-corrupted) as well as Bandits and Ash Wolves from Zone 1. Do not describe or tour Millhaven **[O]**. A signpost may name it. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) The hook is unmissable on this road: a traveler, with a Crown notice as backup. If Greyhaven was visited, Pell and Corwin have already said the same thing; this road still carries the hook if that stop was skipped.
 
 ### 4.1 Unmissable hook — `MR_HOOK`
 
-[STAGE] **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) A traveler on the first stretch of the road delivers the hook. A Crown notice nailed to a post is the backup, so the hook cannot be missed. The traveler's and notice's exact wording stays **[PROPOSED]**. If `flag_hook_taren` is already set, the traveler can still talk, but the quest does not need to wait on this scene.
+[STAGE] **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) A traveler on the first stretch of the road delivers the hook. A Crown notice nailed to a post is the backup, so the hook cannot be missed. If `flag_hook_taren` is already set, the traveler can still talk, but the quest does not need to wait on this scene.
 
-**MR_SIGN_01** · NARRATION *(signpost)* **[PROPOSED]**
+**MR_SIGN_01** · NARRATION *(signpost)* **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Wrenfield. Millhaven beyond. Valemere by the west road.
 
-**MR_NOTICE_01** · NARRATION *(weathered Crown notice)* **[PROPOSED]**
+**MR_NOTICE_01** · NARRATION *(weathered Crown notice)* **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > By order of the Reeve at Wrenfield: those who aid the rebellion
 > will hang. Public judgment at midday.
 
-**MR_HOOK_01** · Traveler **[C-confirmed hook / PROPOSED wording]**
+**MR_HOOK_01** · Traveler **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > If you're headed south, don't go through Wrenfield today.
 > They're hanging folk for aiding the rebellion.
 **MR_HOOK_02** · Traveler
@@ -228,7 +228,7 @@ These are optional. They do not explain the destruction, and they do not settle 
 [STAGE] Set `flag_hook_taren`. Complete `Q_BV_S1` if it is still active and start `Q_BV_S2`. Repeat talk, **MR_HOOK_R1** · Traveler:
 > Wrenfield. Midday. I wouldn't be there.
 
-### 4.2 Road texture **[PROPOSED]**
+### 4.2 Road texture **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 
 **MR_ENTER_01** · Kael
 > Near Millhaven. Taren's country.
@@ -256,30 +256,30 @@ These are optional. They do not explain the destruction, and they do not settle 
 
 ---
 
-## 5. Wrenfield approach — `WF_APPROACH` **[C-confirmed setting / PROPOSED texture]**
+## 5. Wrenfield approach — `WF_APPROACH` **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 
 **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Wrenfield is the Crown-occupied village near Millhaven. The Crown has seized several villagers, accused of aiding the rebellion, and scheduled them for public execution.
 
 [STAGE] Set `flag_wrenfield_entered` on first entry. Suggested level 8–10. Checkpoints on the road in. Notices naming the accused as Yoke sympathizers. The square has been cleared for a hanging. Ordinary soldiers hold the line. Some look unwilling. The Crown is not a cartoon. No random battles inside the village.
 
-**WF_GATE_01** · Crown Sergeant **[PROPOSED]**
+**WF_GATE_01** · Crown Sergeant **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Square's open for judgment. In or out. Make it quiet.
 
-**WF_GATE_02** · Kael **[PROPOSED]**
+**WF_GATE_02** · Kael **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > I'm going in.
 
-**WF_GATE_03** · Crown Sergeant **[PROPOSED]**
+**WF_GATE_03** · Crown Sergeant **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Then keep your hands where I can see them. Reeve Calder
 > is already reading the names.
 
-**WF_NOTICE_01** · NARRATION *(posted list)* **[PROPOSED]**
+**WF_NOTICE_01** · NARRATION *(posted list)* **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > A list of the accused, nailed to the post. "Aiding the Broken Yoke."
 > Four names. One of them is Bram.
 
 Repeat talk with the sergeant, before the hanging is stopped — **WF_GATE_A1** · Crown Sergeant:
 > You heard me. In or out.
 
-### 5.1 Village barks, before the rescue (`_A`) **[PROPOSED]**
+### 5.1 Village barks, before the rescue (`_A`) **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 
 **WF_SOLDIER_A1** · Crown Soldier *(unwilling, on the edge of the square)*
 > Don't look at me. I don't tie the knots.
@@ -302,7 +302,7 @@ Repeat talk with the sergeant, before the hanging is stopped — **WF_GATE_A1** 
 > Shop's shut. You can stare at the shutters like everyone else.
 > I'm not selling while my neighbors are on a scaffold.
 
-**Oda, in the crowd** *(side quest giver)* **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) as Bram's sister and the giver of "The One on the List." Her lines stay **[PROPOSED]**.
+**Oda, in the crowd** *(side quest giver)* **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) as Bram's sister and the giver of "The One on the List."
 **WF_ODA_A1** · Oda
 > Please— they took my brother. Bram. He's on the list.
 > He mended a cart for a stranger. That's all he did.
@@ -316,49 +316,49 @@ Repeat talk with the sergeant, before the hanging is stopped — **WF_GATE_A1** 
 
 ---
 
-## 6. The gallows — `WF_GALLOWS` **[C-confirmed events / PROPOSED lines]**
+## 6. The gallows — `WF_GALLOWS` **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 
-[STAGE] Midday. Several villagers are bound at the gallows (four, if the posted list is used). **Reeve Calder** stands on the platform and is reading the sentence. He believes he is keeping order in an unstable kingdom **[C-confirmed]**. **Taren Holt** is already in the square, bastard sword in hand, working toward the scaffold without charging it yet — he is trying to stop the hanging without getting the prisoners killed in the rush **[PROPOSED]** timing. Kael enters from the road. There is no time for a reunion.
+[STAGE] Midday. Several villagers are bound at the gallows (four, if the posted list is used). **Reeve Calder** stands on the platform and is reading the sentence. He believes he is keeping order in an unstable kingdom **[C-confirmed]**. **Taren Holt** is already in the square, bastard sword in hand, working toward the scaffold without charging it yet — he is trying to stop the hanging without getting the prisoners killed in the rush **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) timing. Kael enters from the road. There is no time for a reunion.
 
 **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) A rope is already on a neck when they reach the gallows. All of the accused are cut down alive.
 
-**WF_GALLOWS_01** · Reeve Calder **[PROPOSED]**
+**WF_GALLOWS_01** · Reeve Calder **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > By order of the Crown, these four gave aid to the Broken Yoke.
 > The sentence is death. Let the village see it done.
 
-**WF_GALLOWS_02** · NARRATION **[C-confirmed event / PROPOSED wording]**
+**WF_GALLOWS_02** · NARRATION **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > On the right-hand gallows, a noose is already on a young man's neck.
 > The rope is taut. His feet have almost left the boards.
 
-**WF_GALLOWS_03** · Taren **[PROPOSED]**
+**WF_GALLOWS_03** · Taren **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Calder! Cut him down. You want a trial, you can have one.
 > You will not have a show.
 
-**WF_GALLOWS_04** · Reeve Calder **[PROPOSED]**
+**WF_GALLOWS_04** · Reeve Calder **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > The trial was held, Holt. You were not invited.
 
-**WF_GALLOWS_05** · Kael **[PROPOSED]**
+**WF_GALLOWS_05** · Kael **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Taren!
 
 **WF_GALLOWS_06** · Taren **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Kael—? Later. The rope.
 
-[STAGE] Kael and Taren reach the right-hand gallows together. Taren cuts the rope (or Kael does, if that plays cleaner). **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) The prisoner with the rope is **Bram**; he hits the boards, alive, gasping. How many other accused there are, and who cuts the rope, stay **[PROPOSED]**. Calder's soldiers close in. Set `flag_close_call`.
+[STAGE] Kael and Taren reach the right-hand gallows together. Taren cuts the rope (or Kael does, if that plays cleaner). **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) The prisoner with the rope is **Bram**; he hits the boards, alive, gasping. There are four accused if the posted list is used; Taren or Kael may cut the rope, whichever plays cleaner. Calder's soldiers close in. Set `flag_close_call`.
 
-**WF_GALLOWS_07** · NARRATION **[C-confirmed event / PROPOSED wording]**
+**WF_GALLOWS_07** · NARRATION **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > The rope parts. The young man slams into the boards and draws a breath.
 > The other three are still bound. Still alive.
 
-**WF_GALLOWS_08** · Taren **[PROPOSED]**
+**WF_GALLOWS_08** · Taren **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Stay down. All of you. Kael— with me.
 
 ---
 
 ## 7. Reeve Calder — boss intro, fight, and defeat — `WF_CALDER`
 
-**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Chapter 2 boss: **Reeve Calder**, a Crown occupation officer who believes he is keeping order. Human, not Ash-corrupted. He is fought with a small detachment of soldiers **[PROPOSED]** kit direction.
+**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Chapter 2 boss: **Reeve Calder**, a Crown occupation officer who believes he is keeping order. Human, not Ash-corrupted. He is fought with a small detachment of soldiers. Kit: Guard; a shout that buffs his soldiers; a heavy strike. When the detachment falls, he shifts to a harder stance.
 
-### 7.1 Intro — `WF_CALDER_INTRO` **[PROPOSED]**
+### 7.1 Intro — `WF_CALDER_INTRO` **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 
 **WF_CALDER_INTRO_01** · Reeve Calder
 > Stay where you are. This is Crown business.
@@ -379,35 +379,35 @@ Repeat talk with the sergeant, before the hanging is stopped — **WF_GATE_A1** 
 > I have my orders. I intend to keep this village standing.
 > Step aside.
 
-[STAGE] Battle start: `enc_reeve_calder`. Reeve Calder plus a small detachment of Crown Soldiers (2–3). Suggested player level 8–10. Not Ash-corrupted. Proposed kit: Guard; a shout that buffs his soldiers; a heavy strike. When the detachment falls, Calder shifts to a harder stance (Attack up, or a tighter guard) and continues alone. Exact stats are for Coder and Design to balance. HP is a placeholder until then.
+[STAGE] Battle start: `enc_reeve_calder`. Reeve Calder plus a small detachment of Crown Soldiers (2–3). Suggested player level 8–10. Not Ash-corrupted. Kit: Guard; a shout that buffs his soldiers; a heavy strike. When the detachment falls, Calder shifts to a harder stance (Attack up, or a tighter guard) and continues alone. Exact stats are for Coder and Design to balance. HP is a placeholder until then.
 
 [STAGE] **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Party join, at the start of this fight,** after the close call and the short recognition (`WF_GALLOWS_06`). The longer join conversation happens after the battle (section 8). Taren Holt enters the party. He takes the **2nd party slot**. Starting weapon: a **bastard sword** in the heavy-sword category **[C-confirmed]**. Starting skills: **Rallying Cry**, **Cleave**, and **Unbowed** (passive) **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Shield the Line, Breaking Blow, and Banner of the Yoke (a later ability) still have no confirmed unlock levels **[O]**. Formation should allow two frontliners (Kael and Taren). Set `flag_taren_in_battle`.
 
-**WF_CALDER_SYS_01** · SYSTEM **[PROPOSED]**
+**WF_CALDER_SYS_01** · SYSTEM **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Taren Holt has joined the party.
 > He takes the second party slot.
-**WF_CALDER_SYS_02** · SYSTEM **[C-confirmed facts / PROPOSED wording]**
+**WF_CALDER_SYS_02** · SYSTEM **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Weapon: bastard sword (heavy sword).
 > Starting skills: Rallying Cry, Cleave, and Unbowed (passive).
-**WF_CALDER_SYS_03** · SYSTEM **[C-confirmed kit text / PROPOSED wording]**
+**WF_CALDER_SYS_03** · SYSTEM **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Rallying Cry raises the party's Attack for 3 turns.
 > Cleave hits all enemies for reduced damage.
-**WF_CALDER_SYS_03B** · SYSTEM **[C-confirmed kit text / PROPOSED wording]**
+**WF_CALDER_SYS_03B** · SYSTEM **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Unbowed: Taren resists Fear and Stun.
 
 *(The 3-turn duration, Cleave's "all enemies, reduced damage," and Unbowed's Fear/Stun resist are **[C-confirmed]** kit text. Exact percentages and MP costs stay **[O]**. Do not invent numbers.)*
 
-**WF_CALDER_SYS_04** · SYSTEM *(optional, the first time Rallying Cry is used)* **[PROPOSED]**
+**WF_CALDER_SYS_04** · SYSTEM *(optional, the first time Rallying Cry is used)* **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Rallying Cry: Taren leads the line. Kael is the one who holds it.
 
-Phase-change bark **[PROPOSED]**, when the last Crown Soldier in the detachment falls:
+Phase-change bark **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026), when the last Crown Soldier in the detachment falls:
 
 **WF_CALDER_PHASE2_01** · Reeve Calder
 > Hold, then. I'll finish this myself.
 
 ### 7.2 Defeat — `WF_CALDER_DEFEAT`
 
-**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Calder is beaten and **yields**. He lives, and withdraws with his remaining men to the village checkpoints. Wrenfield stays occupied. Exact defeat lines stay **[PROPOSED]**. He should still read as a man who thought he was protecting the kingdom.
+**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Calder is beaten and **yields**. He lives, and withdraws with his remaining men to the village checkpoints. Wrenfield stays occupied. He should still read as a man who thought he was protecting the kingdom.
 
 **WF_CALDER_DEFEAT_01** · Reeve Calder
 > Enough. I'll not spend another man on this square.
@@ -424,58 +424,58 @@ Phase-change bark **[PROPOSED]**, when the last Crown Soldier in the detachment 
 
 [STAGE] Calder withdraws toward the far checkpoint with whatever soldiers can walk. The four accused are cut free. Bram is alive. The gallows still stand. Wrenfield remains occupied; the party does not liberate the region **[C-confirmed]**. Set `flag_execution_stopped`. Rewards are for Coder to set (placeholder: XP and gold appropriate to level 8–10). No Ash item, and no unique "corrupted" drop.
 
-**WF_CALDER_REWARD_01** · SYSTEM **[PROPOSED]**
+**WF_CALDER_REWARD_01** · SYSTEM **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > The accused are free. The Crown has pulled back to the checkpoints.
 > Wrenfield is still under occupation.
 
 ---
 
-## 8. Aftermath and Taren's join — `WF_JOIN` **[C-confirmed beats / PROPOSED lines]**
+## 8. Aftermath and Taren's join — `WF_JOIN` **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 
 [STAGE] Quiet in the square, not a celebration. Villagers cut the last ropes and take the accused down. Taren and Kael finally have a moment. Taren's personal stake is already confirmed: freedom is worth fighting for, and these are people the Crown would hang to keep its grip. He does not turn this into a recruitment speech for the Yoke. He joins Kael's search. They do not settle where the three of them grew up **[O]**.
 
-**WF_JOIN_01** · Taren **[PROPOSED]**
+**WF_JOIN_01** · Taren **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Kael Varyn. You pick your hours.
-**WF_JOIN_02** · Kael **[PROPOSED]**
+**WF_JOIN_02** · Kael **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > You're one to talk.
-**WF_JOIN_03** · Taren **[PROPOSED]**
+**WF_JOIN_03** · Taren **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > I heard about Greyhaven. I was coming, and then this
 > happened first. Tell me you found her.
-**WF_JOIN_04** · Kael **[PROPOSED]**
+**WF_JOIN_04** · Kael **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > No body. A pendant she left in the house.
 > And a parchment that said she's alive.
-**WF_JOIN_05** · Kael **[PROPOSED]**
+**WF_JOIN_05** · Kael **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > A thing at the end of the road said she crossed the Crownveil.
 > I found the door. It wouldn't open.
-**WF_JOIN_06** · Taren **[PROPOSED]**
+**WF_JOIN_06** · Taren **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Then we find another way. I'm with you.
 > You're not walking this one alone.
-**WF_JOIN_07** · Taren **[PROPOSED]**
+**WF_JOIN_07** · Taren **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > The Yoke's fight and yours are going to keep crossing.
 > I can live with that if you can.
-**WF_JOIN_08** · Kael **[PROPOSED]**
+**WF_JOIN_08** · Kael **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > I just need to find Mira.
-**WF_JOIN_09** · Taren **[C-confirmed Alden beat / PROPOSED wording]**
+**WF_JOIN_09** · Taren **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Then Valemere's the next step. Official doors won't open,
 > but people will talk, if you know where to stand.
-**WF_JOIN_10** · Taren **[C-confirmed Alden beat / PROPOSED wording]**
+**WF_JOIN_10** · Taren **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Alden's in the capital, talking to people who still think
 > the Crown will save them. He'll want to see you.
-**WF_JOIN_11** · Kael **[PROPOSED]**
+**WF_JOIN_11** · Kael **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Alden. It's been a while.
-**WF_JOIN_12** · Taren **[PROPOSED]**
+**WF_JOIN_12** · Taren **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > For all three of us. Come on. We shouldn't linger
 > while Calder's still got a checkpoint on the west road.
 
 [STAGE] Taren was already added to the party at the start of the boss **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Do not add him a second time here; this is the longer join conversation only. He is a permanent party member **[C-confirmed]**. Set `flag_taren_recruited`. Complete `Q_BV_S2`. Start `Q_BV_S3`: Travel to Valemere for answers. Party size is now 2.
 
-Repeat talk with Taren in Wrenfield, **WF_JOIN_R1** · Taren **[PROPOSED]**:
+Repeat talk with Taren in Wrenfield, **WF_JOIN_R1** · Taren **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026):
 > Valemere when you're ready. Alden's there. So are answers,
 > if the Crown hasn't locked them all in a drawer.
 
 ---
 
-## 9. Wrenfield after the rescue (`_B`) **[PROPOSED]**
+## 9. Wrenfield after the rescue (`_B`) **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 
 [STAGE] The village is relieved and still afraid. Soldiers have pulled back to the checkpoints, not left the area. Shops may open. The gallows remain.
 
@@ -518,26 +518,26 @@ Repeat talk with Taren in Wrenfield, **WF_JOIN_R1** · Taren **[PROPOSED]**:
 
 ---
 
-## 10. Handoff toward Valemere — `WF_HANDOFF` **[C-confirmed direction / PROPOSED lines]**
+## 10. Handoff toward Valemere — `WF_HANDOFF` **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 
 [STAGE] A west-road exit from Wrenfield, past Calder's remaining checkpoint, with a sign toward Valemere. Leaving this way ends Chapter 2. Do **not** play the Fallen Knight sighting here. That sighting is confirmed for the road to Valemere after Taren has joined, and the outline places it in Chapter 3.
 
-**WF_WEST_SIGN** · NARRATION **[PROPOSED]**
+**WF_WEST_SIGN** · NARRATION **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > West: Valemere. The capital road.
 
-**WF_HANDOFF_01** · Taren **[PROPOSED]**
+**WF_HANDOFF_01** · Taren **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > That's our road. Stay sharp. Calder meant it
 > when he said the Crown would be back.
-**WF_HANDOFF_02** · Kael **[PROPOSED]**
+**WF_HANDOFF_02** · Kael **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Let them come. I need answers, and Mira's still out there.
-**WF_HANDOFF_03** · Taren **[PROPOSED]**
+**WF_HANDOFF_03** · Taren **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Then we go get both. Together this time.
 
-[STAGE] **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Complete Chapter 2 when the party uses the west road toward Valemere. Show a chapter-complete screen and a save prompt, then hand off to the Valemere road (Chapter 3). `Q_BV_S3` is already active. Set `flag_chapter2_complete`. Exact SYSTEM wording stays **[PROPOSED]**.
+[STAGE] **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Complete Chapter 2 when the party uses the west road toward Valemere. Show a chapter-complete screen and a save prompt, then hand off to the Valemere road (Chapter 3). `Q_BV_S3` is already active. Set `flag_chapter2_complete`.
 
-**WF_HANDOFF_04** · SYSTEM **[PROPOSED]**
+**WF_HANDOFF_04** · SYSTEM **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Quest updated: Travel to Valemere for answers.
-**WF_HANDOFF_05** · SYSTEM **[C-confirmed title / PROPOSED wording]**
+**WF_HANDOFF_05** · SYSTEM **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 > Chapter 2 — The Weight of the Yoke — Complete.
 
 [STAGE] Offer a save, in the same spirit as Chapter 1's chapter-complete prompt, without another unexplained blackout. Chapter 3 begins on the road to Valemere, with the first Act II Fallen Knight sighting.
@@ -546,11 +546,11 @@ Repeat talk with Taren in Wrenfield, **WF_JOIN_R1** · Taren **[PROPOSED]**:
 
 ## 11. Decisions (Kevin, Nov 14 2026)
 
-Kevin approved all six recommendations on Nov 14 2026, **not** the rest of this script. Chosen options are **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Rejected options are kept for the record, struck through. All other new lines, names (except Bram and Oda), and texture in this file stay **[PROPOSED]**.
+Kevin first approved these six recommendations on Nov 14 2026, then approved the full script (every former proposed line and texture) later the same day, at 3:00 PM ET. Chosen options and the rest of this file are **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Rejected options are kept for the record, struck through. Open questions remain **[O]**.
 
 ### 1. Reeve Calder's fate after the fight
 
-**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Option A (chosen):** He is beaten and yields. He lives, and withdraws with his remaining men to the village checkpoints. Wrenfield stays occupied, in his own words. His kit and exact defeat lines stay **[PROPOSED]**.
+**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Option A (chosen):** He is beaten and yields. He lives, and withdraws with his remaining men to the village checkpoints. Wrenfield stays occupied, in his own words. His kit and defeat lines are confirmed in this script.
 
 - ~~**Option B:** He is killed in the fight. The remaining soldiers pull back without him.~~ *(Not chosen.)*
 - ~~**Option C:** He is beaten and held by the villagers. The occupation becomes a standoff.~~ *(Not chosen.)*
@@ -566,7 +566,7 @@ Kevin approved all six recommendations on Nov 14 2026, **not** the rest of this 
 
 Greyhaven remains optional.
 
-**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Option A (chosen):** Unmissable on the Millhaven Road (a traveler, with a Crown notice as backup). If Greyhaven is visited, Pell and Corwin say the same thing. Exact hook wording stays **[PROPOSED]**.
+**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Option A (chosen):** Unmissable on the Millhaven Road (a traveler, with a Crown notice as backup). If Greyhaven is visited, Pell and Corwin say the same thing. Hook wording is confirmed in this script.
 
 - ~~**Option B:** A Crown notice-board only, with no traveler.~~ *(Not chosen.)*
 - ~~**Option C:** Pell only, which would make the Greyhaven stop required.~~ *(Not chosen.)*
@@ -580,7 +580,7 @@ Greyhaven remains optional.
 
 ### 5. The close-call prisoner and the optional side quest
 
-**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Option A (chosen):** The prisoner with the rope is **Bram**. His sister **Oda** offers a small optional quest ("The One on the List") that turns in after the rescue. Quest stage text, rewards, and dialogue stay **[PROPOSED]**.
+**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Option A (chosen):** The prisoner with the rope is **Bram**. His sister **Oda** offers a small optional quest ("The One on the List") that turns in after the rescue. Quest stage text, rewards, and dialogue are confirmed in this script.
 
 - ~~**Option B:** The close-call prisoner is unnamed, and there is no side quest in Wrenfield.~~ *(Not chosen.)*
 - ~~**Option C:** The close-call prisoner is named, but there is no family side quest.~~ *(Not chosen.)*
@@ -594,4 +594,8 @@ Greyhaven remains optional.
 
 ---
 
-*Kevin confirmed the six decisions above, not the rest of this script. Remaining [PROPOSED] texture stays until he approves a full Chapter 2 pass. After bible updates, a confirmed excerpt can go to Coder for `docs/story/`.*
+## Approved (Kevin, Nov 14 2026, 3:00 PM ET)
+
+Kevin approved every proposed item in this script as canon, including Calder's kit and defeat lines, the join dialogue, the hook wording, Oda's quest and its rewards, all NPC names and barks, quest stage text, and the chapter-complete presentation. Open questions in the bible remain open (the meaning of "everything stops," Tomas's and Elira's fates, what destroyed Greyhaven, where the three friends grew up, the Broken Yoke's leadership, Alden's rank, Lumen, the Crown Engine, and the Fallen Knight's identity).
+
+Confirmed excerpt can go to Coder for `docs/story/`.
