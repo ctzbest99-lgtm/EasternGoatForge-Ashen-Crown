@@ -68,9 +68,10 @@
 #macro TAREN_BASE_HP 36
 #macro TAREN_BASE_ATTACK 8
 #macro TAREN_BASE_DEFENSE 3
-// Whether the benched member earns XP, and what fraction. Owner decision pending.
-#macro RESERVE_EARNS_XP true
-#macro RESERVE_XP_SHARE 1.0
+// Owner decision 2026-11-14: XP goes only to members who took at least one turn
+// (Attack, Guard, or Swap) in that battle. A reserve member who never swapped in
+// receives none. Kept as a named rule rather than a share percentage.
+#macro XP_REQUIRES_PARTICIPATION true
 // Total XP to reach level L (L>=2): XP_CURVE_QUAD*(L-1)^2 + XP_CURVE_LIN*(L-1).
 // L1=0, L2=30, L3=100, L4=210, L5=360, L10=1710, L20=7410.
 #macro XP_CURVE_QUAD 20

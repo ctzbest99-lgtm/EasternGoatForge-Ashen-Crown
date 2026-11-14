@@ -5,8 +5,9 @@ scr_game_state_init();
 
 party = global.game.party; // structs are shared by reference, so HP changes persist to the overworld
 scr_party_clear_guard(party);
+scr_party_clear_participation();
 
-command_options = ["Attack", "Guard"];
+command_options = scr_party_battle_commands();
 command_index = 0;
 actor_index = -1;       // party member currently choosing a command
 queued_actions = [];    // { actor_index, command } for this round

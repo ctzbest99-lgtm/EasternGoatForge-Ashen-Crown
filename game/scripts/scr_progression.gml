@@ -56,15 +56,12 @@ function scr_party_grant_xp_to(_list, _amount) {
     return _ups;
 }
 
-/// Grant `_amount` XP to the active party (the array passed in, usually global.game.party).
-/// If RESERVE_EARNS_XP, also grant floor(_amount * RESERVE_XP_SHARE) to the reserve slot.
-/// Returns level-up structs, active first, then reserve. Caps XP at the max-level floor.
-/// Whether the reserve earns XP, and the share, are pending owner approval (defaults: yes, 1.0).
+/// Grant `_amount` XP only to members who took at least one turn this battle
+/// (owner decision 2026-11-14). `_party` is accepted for call-site compatibility
+/// but recipients come from scr_party_participants() (active and reserve).
+/// A KO'd member who already acted still receives XP; one who never took a turn does not.
+/// A reserve member receives XP only if they swapped in and took a turn.
 function scr_party_grant_xp(_party, _amount) {
-    var _ups = scr_party_grant_xp_to(_party, _amount);
-    if (RESERVE_EARNS_XP) {
-        var _reserve_ups = scr_party_grant_xp_to(scr_party_list_reserve(), floor(_amount * RESERVE_XP_SHARE));
-        for (var _j = 0; _j < array_length(_reserve_ups); _j++) array_push(_ups, _reserve_ups[_j]);
-    }
-    return _ups;
+    if (!XP_REQUIRES_PARTICIPATION) return scr_party_grant_xp_to(_party, _amount);
+    return scr_party_grant_xp_to(scr_party_participants(), _amount);
 }

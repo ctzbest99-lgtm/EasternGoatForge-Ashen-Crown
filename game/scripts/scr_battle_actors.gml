@@ -12,6 +12,7 @@ function scr_actor_create(_actor_id, _name, _max_hp, _attack, _defense) {
         attack: _attack,
         defense: _defense,
         is_guarding: false,
+        participated: false, // set if they took a turn in the current battle
         level: 1,
         xp: 0,
         class_name: "",

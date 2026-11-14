@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-14 — Battle XP requires participation; mid-battle Swap
+- Owner decision: a bench/reserve member gets no XP unless they participate for at least one turn in that battle. Victory XP goes only to members who took a turn (Attack, Guard, or Swap).
+- A KO'd member who already acted still receives XP; a member KO'd before their first action does not. `RESERVE_EARNS_XP` / `RESERVE_XP_SHARE` were replaced by this rule (`XP_REQUIRES_PARTICIPATION`).
+- Mid-battle Swap command (shown only when a reserve member is waiting) costs the acting member's turn; the incoming member acts on later rounds.
+- Test plan P5/P10 updated; P11–P12 added.
+
 ## 2026-11-14 — Party reserve slot (five-person roster)
 - Permanent roster is five: Kael, Lyra, Caelan, Sera, and Taren Holt (Rebel Captain of the Broken Yoke, frontline warrior). Four active battle slots plus one reserve. Default run: only Kael has joined.
 - Helpers: `scr_party_list_active`, `scr_party_list_reserve`, `scr_party_swap_active_reserve`, `scr_party_join`. Battle still reads `global.game.party` (the active list) and was not rewritten.

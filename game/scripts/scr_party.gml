@@ -145,3 +145,54 @@ function scr_party_ids_of(_list) {
     }
     return _ids;
 }
+
+/// Clear per-battle participation on every known member (roster, active, and reserve).
+function scr_party_clear_participation() {
+    scr_game_state_init();
+    var _lists = [global.game.roster, global.game.party, global.game.reserve];
+    for (var _l = 0; _l < array_length(_lists); _l++) {
+        var _list = _lists[_l];
+        if (!is_array(_list)) continue;
+        for (var _i = 0; _i < array_length(_list); _i++) {
+            if (is_struct(_list[_i])) _list[_i].participated = false;
+        }
+    }
+}
+
+function scr_party_mark_participated(_actor) {
+    if (is_struct(_actor)) _actor.participated = true;
+}
+
+function scr_party_has_reserve() {
+    scr_game_state_init();
+    return is_array(global.game.reserve) && array_length(global.game.reserve) > 0;
+}
+
+/// Battle command menu: Attack and Guard, plus Swap when a reserve member is waiting.
+function scr_party_battle_commands() {
+    var _opts = ["Attack", "Guard"];
+    if (scr_party_has_reserve()) array_push(_opts, "Swap");
+    return _opts;
+}
+
+/// Unique members (active first, then reserve, then the rest of the roster) who took
+/// at least one turn this battle. Used for victory XP (owner decision 2026-11-14).
+function scr_party_participants() {
+    scr_game_state_init();
+    var _out = [];
+    var _lists = [global.game.party, global.game.reserve, global.game.roster];
+    for (var _l = 0; _l < array_length(_lists); _l++) {
+        var _list = _lists[_l];
+        if (!is_array(_list)) continue;
+        for (var _i = 0; _i < array_length(_list); _i++) {
+            var _actor = _list[_i];
+            if (!is_struct(_actor) || !_actor.participated) continue;
+            var _exists = false;
+            for (var _j = 0; _j < array_length(_out); _j++) {
+                if (_out[_j].actor_id == _actor.actor_id) { _exists = true; break; }
+            }
+            if (!_exists) array_push(_out, _actor);
+        }
+    }
+    return _out;
+}
