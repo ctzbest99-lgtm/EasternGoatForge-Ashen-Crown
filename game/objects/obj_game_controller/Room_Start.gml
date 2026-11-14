@@ -22,6 +22,9 @@ if (_g.transition_active) {
     _g.return_point = undefined;
     _g.transition_active = false;
     scr_input_block(1);
+    if (_g.last_battle_result == "victory") {
+        scr_story_try_pending_post_dialogue();
+    }
 }
 
 // Grace period + new steps-until counter after room entry and after returning from battle.

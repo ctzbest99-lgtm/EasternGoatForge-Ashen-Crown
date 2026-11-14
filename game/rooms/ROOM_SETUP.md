@@ -16,6 +16,7 @@ Room size, tile size, and resolution are still undecided. The numbers below are 
 | `spr_interactable_placeholder` | 32×32 | Top Left | Rectangle, full image | e.g. brown "sign" |
 | `spr_encounter_trigger_placeholder` | 32×32 | Top Left | Rectangle, full image | Semi-transparent red; can be stretched in the room |
 | `spr_encounter_zone_placeholder` | 32×32 | Top Left | Rectangle, full image | Semi-transparent yellow; stretch over the wild area. Required so the zone mask matches the rectangle. |
+| `spr_story_encounter_placeholder` | 32×32 | Top Left | Rectangle, full image | Semi-transparent purple; one tile. Required so the story-trigger mask matches the tile. |
 
 Code reads the collision box (`bbox_*`), not the origin, so other origins work too. No final art exists; record real assets in docs/ASSET_INVENTORY.md when added.
 
@@ -30,6 +31,7 @@ Create each object in the table in `game/README.md` with the listed sprite, flag
 - **obj_battle_controller:** no sprite. Events: Create, Step, Draw ▸ Draw GUI.
 - **obj_respawn_point:** optional sprite `spr_respawn_point_placeholder` (any small colour; only needed so you can see it while laying out the room). Event: Create. No parent, not solid.
 - **obj_encounter_zone:** sprite `spr_encounter_zone_placeholder`. Event: Create. No parent, not solid. Stretch over the wild path only.
+- **obj_story_encounter:** sprite `spr_story_encounter_placeholder`. Events: Create, Other ▸ Room Start, Step. No parent, not solid.
 
 ## 4. rm_overworld (placeholder 640×360)
 1. Create room `rm_overworld`; set it **first** in the Room Order (open the Room Manager and drag it to the top; the home icon marks the start room). Leave Persistent **off**.
@@ -60,11 +62,17 @@ Run (F5). Expected: player moves and collides, the sign opens dialogue, the trig
 Rooms are safe until you opt in:
 1. **Zone (recommended for `rm_overworld`):** create `obj_encounter_zone` with `spr_encounter_zone_placeholder`, stretch it over the wild area only, leave towns / the respawn pocket uncovered. Default table is `zone01_path`. See `game/objects/obj_encounter_zone/README.md`.
 2. **Whole room:** in `scr_get_room_encounter_table()` (in `scr_encounter_tables`), return `scr_get_encounter_table("zone01_path")` (or a custom table) for that room. Do not do this for `TOWN_RESPAWN_ROOM` or other safe rooms. A zone at the player's position overrides the room table.
-3. Keep `obj_encounter_trigger` for fixed boss/story fights. Standing on a trigger does not also roll a random encounter.
+3. Keep `obj_encounter_trigger` for simple fixed fights, and `obj_story_encounter` for the guaranteed Watchtower Ashbound Hunter (and later scripted beats). Standing on either does not also roll a random encounter.
 4. To disable random encounters while testing: set `#macro RANDOM_ENCOUNTERS_ENABLED false` and recompile, or in the debugger set `global.game.random_encounters_enabled = false`.
 5. Default rates (pending tuning): 32 pixels = 1 step, a new fight after 8–24 steps in an area, 5 grace steps after room entry or after returning from battle.
 
-## 8. When the town room is built
+## 8. Old Watchtower Ashbound Hunter (`enc_ashbound_hunter_wt`)
+1. Create `obj_story_encounter` and `spr_story_encounter_placeholder` as in the tables above. Paste the Create, Room Start, and Step snippets.
+2. When the Watchtower room exists (e.g. `rm_watchtower`), place **one** instance on a set tile **before the banner room** (Design picks the tile; CHAPTER1_SCRIPT.md §6). Leave `encounter_id` as `enc_ashbound_hunter_wt`.
+3. Until that room exists, a test instance may be placed in `rm_overworld` in open space, not overlapping the respawn pocket or a regular `obj_encounter_trigger`.
+4. To test the rare random source, on an `obj_encounter_zone` set `allow_ashbound_rare = true` or `table_id = "old_road"` (also `bandit_camp`, `watchtower`). In the debugger, `global.game.ashbound_rare_chance = 1` makes the next random fight in that zone the Hunter. Do not enable this on the default `zone01_path` overworld pocket unless you are specifically testing the rare roll.
+
+## 9. When the town room is built
 1. Create the town room (e.g. `rm_town`). Leave Persistent off. Place `obj_player` in that room (required; the player object is not persistent). Do **not** place a second `obj_game_controller` (the existing one is persistent and will arrive with the party).
 2. In `game/scripts/scr_game_constants.gml`, change `#macro TOWN_RESPAWN_ROOM` to the new room asset (e.g. `rm_town`).
 3. Place one `obj_respawn_point` in open space (inn, shrine, etc.), or set `TOWN_RESPAWN_X` / `TOWN_RESPAWN_Y` to a known open position in that room instead.

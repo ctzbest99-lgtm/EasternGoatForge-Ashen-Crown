@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-14 — Old Watchtower Ashbound Hunter scripted encounter
+- Added a story-flag system (`global.game.flags`, `scr_flag_get` / `scr_flag_set`) and key-item helpers (`scr_inventory_add` / `scr_inventory_has`).
+- Added the Ashbound Hunter to `scr_enemy_database` (placeholder stats: 42 HP, 9 ATK, 5 DEF, 20 XP, 12 gold; Ice weakness stored for the bestiary, not used in combat).
+- Guaranteed Watchtower fight (`enc_ashbound_hunter_wt` via `obj_story_encounter`): pre-fight `ENC_AH_01`–`02`, battle, then on first victory set `flag_parchment_found`, add `item_ashbound_parchment`, and play `ENC_AH_03`–`05`. If the flag is already set, the fight still happens once and the pickup is skipped.
+- Rare random Hunter (default 4% of random fights) in areas that opt in (`allow_ashbound_rare` or table ids `old_road` / `bandit_camp` / `watchtower`). Same pre/post lines; a rare victory does not consume the Watchtower trigger.
+- Dialogue nodes are keyed by the script's IDs in `scr_dialogue_data` and played through `scr_dialogue_play` / `scr_dialogue_open`.
+- Assumptions (open questions): a defeat does not consume the guaranteed trigger; the fight grants regular XP/gold; rare rate and Hunter stats are placeholders pending tuning.
+
 ## 2026-11-14 — Party and progression (roadmap step 4)
 - Each party member has `level` and `xp`. Shared gold is unchanged. Placeholder XP curve: `20*(L-1)^2 + 10*(L-1)` (L2=30, L3=100, cap 20). Level-up growth: +4 HP, +1 ATK, +1 DEF. All pending owner approval.
 - Victory grants XP to every current member, then shows a level-up message per threshold crossed before returning to the map. HUD shows `Lv`.

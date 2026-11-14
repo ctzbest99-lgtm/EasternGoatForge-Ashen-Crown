@@ -2,7 +2,7 @@
 /// Decision for this prototype: battles run in a dedicated room (BATTLE_ROOM), not an overlay.
 
 /// Start a battle. Returns false (and does nothing) if a battle or transition is already active.
-function scr_encounter_start(_enemy_id, _encounter_id = "") {
+function scr_encounter_start(_enemy_id, _encounter_id = "", _script_id = "") {
     scr_game_state_init();
     var _g = global.game;
     if (_g.battle_active || _g.transition_active) return false;
@@ -16,7 +16,7 @@ function scr_encounter_start(_enemy_id, _encounter_id = "") {
         facing_x: _player.facing_x,
         facing_y: _player.facing_y
     };
-    _g.pending_battle = { enemy_id: _enemy_id, encounter_id: _encounter_id };
+    _g.pending_battle = { enemy_id: _enemy_id, encounter_id: _encounter_id, script_id: _script_id };
     _g.last_battle_result = undefined;
     _g.last_defeat_penalty = undefined;
     _g.battle_active = true; // locks overworld input immediately, before the room change happens
@@ -37,6 +37,7 @@ function scr_battle_finish(_result) {
     if (_result == "victory" && is_struct(_pending) && _pending.encounter_id != "") {
         _g.cleared_encounters[$ _pending.encounter_id] = true;
     }
+    scr_ashbound_on_battle_finish(_result, _pending);
     scr_party_clear_guard(_g.party);
 
     if (_result == "defeat") {
@@ -174,7 +175,10 @@ function scr_random_encounter_tick(_pixels_moved) {
 
     // Fixed story/boss triggers win over a random roll on the same tile.
     var _on_trigger = false;
-    with (obj_player) _on_trigger = place_meeting(x, y, obj_encounter_trigger);
+    with (obj_player) {
+        _on_trigger = place_meeting(x, y, obj_encounter_trigger)
+            || place_meeting(x, y, obj_story_encounter);
+    }
     if (_on_trigger) return;
 
     var _table = scr_random_encounter_table_at(obj_player.x, obj_player.y);
@@ -198,8 +202,14 @@ function scr_random_encounter_tick(_pixels_moved) {
         _g.encounter_steps_until -= 1;
         if (_g.encounter_steps_until > 0) continue;
 
-        var _enemy_id = scr_encounter_table_pick(_table);
         _g.encounter_steps_until = scr_random_encounter_roll_steps();
+        // Rare Ashbound Hunter (3–5% of random fights in opted-in areas). Empty
+        // encounter_id so a rare victory does not consume the Watchtower guarantee.
+        if (scr_area_allows_ashbound_rare() && random(1) < _g.ashbound_rare_chance) {
+            scr_ashbound_hunter_start("");
+            return;
+        }
+        var _enemy_id = scr_encounter_table_pick(_table);
         if (is_undefined(_enemy_id)) continue;
         // Empty encounter_id: random fights are not recorded in cleared_encounters.
         scr_encounter_start(_enemy_id, "");

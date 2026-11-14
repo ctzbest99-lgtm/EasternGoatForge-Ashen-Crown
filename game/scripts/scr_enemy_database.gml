@@ -5,6 +5,10 @@ function scr_get_enemy_data(_enemy_id) {
             return { id: "bandit", name: "Bandit", max_hp: 18, attack: 5, defense: 1, xp_reward: 6, gold_reward: 4 };
         case "fallen_knight":
             return { id: "fallen_knight", name: "Fallen Knight", max_hp: 30, attack: 7, defense: 4, xp_reward: 12, gold_reward: 8 };
+        case "ashbound_hunter":
+            // Recommended level 3–5 (CHAPTER1_SCRIPT.md §4.1). Placeholder stats
+            // a step above Fallen Knight. Weakness is for the bestiary later, not combat.
+            return { id: "ashbound_hunter", name: "Ashbound Hunter", max_hp: 42, attack: 9, defense: 5, xp_reward: 20, gold_reward: 12, weakness: "ice" };
     }
     return undefined;
 }

@@ -12,6 +12,17 @@ function scr_get_encounter_table(_table_id) {
                 { enemy_id: "bandit", weight: 3 },
                 { enemy_id: "fallen_knight", weight: 1 }
             ];
+        // Old Road / Bandit Camp / Watchtower: these table ids also opt the area
+        // into the rare Ashbound Hunter roll (see scr_area_allows_ashbound_rare).
+        // Other Chapter 1 enemies are not in the database yet, so these are
+        // placeholders using Bandit / Fallen Knight plus the separate rare roll.
+        case "old_road":
+        case "bandit_camp":
+        case "watchtower":
+            return [
+                { enemy_id: "bandit", weight: 3 },
+                { enemy_id: "fallen_knight", weight: 1 }
+            ];
     }
     return undefined;
 }

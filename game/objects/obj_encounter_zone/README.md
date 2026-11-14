@@ -28,3 +28,7 @@ enemy_table = [
 
 ## Safe areas
 Do not cover towns, interiors, or the stand-in respawn/town pocket in `rm_overworld`. Rooms with no zone and no room table in `scr_get_room_encounter_table()` have no random encounters. Keep `obj_encounter_trigger` for fixed boss/story fights.
+
+## Rare Ashbound Hunter
+Set `allow_ashbound_rare = true` in Instance Creation Code, or use `table_id` `old_road`, `bandit_camp`, or `watchtower`, to allow the rare (default 4%) Ashbound Hunter random encounter from CHAPTER1_SCRIPT.md §4.1. The default `zone01_path` table does not opt in.
+

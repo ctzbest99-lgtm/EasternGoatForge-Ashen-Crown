@@ -69,6 +69,16 @@ XP curve: total XP to be level L is `20*(L-1)^2 + 10*(L-1)` (L2=30, L3=100, L4=2
 - [ ] P7 At `PARTY_MAX_LEVEL` (20), further XP does not raise the level or stats; XP stays at the level-20 floor (7410).
 - [ ] P8 `global.game.inventory` starts empty and equipment slots are empty strings; they do not affect combat yet.
 
+## Old Watchtower Ashbound Hunter (CHAPTER1_SCRIPT.md §4.1 / §6)
+Setup: create `obj_story_encounter` with `spr_story_encounter_placeholder` and place one instance (`encounter_id` = `enc_ashbound_hunter_wt`) on a set tile. Until `rm_watchtower` exists, place it in `rm_overworld` in open space, not on the random-encounter zone's only path if you need a safe approach. Dialogue IDs and speakers must match the script.
+- [ ] W1 Walking onto the story tile plays `ENC_AH_01` (NARRATION: "An arrow slams into the dirt beside Kael's boot.") then `ENC_AH_02` (Kael: "That was a warning. Or a bad shot. Let's find out which."), then a battle against the Ashbound Hunter starts. The sequence does not start mid-dialogue or twice on one touch.
+- [ ] W2 First victory (no parchment yet): after returning to the tile, `ENC_AH_03` (NARRATION), `ENC_AH_04` (Parchment, verbatim “Find the girl. The Varyn girl is still alive.”), and `ENC_AH_05` (Kael: "Alive." / "...Then who else is looking for her.") play. `flag_parchment_found` is true, `item_ashbound_parchment` is in `global.game.inventory` as a key item, and the story trigger is gone.
+- [ ] W3 If `flag_parchment_found` is already true (set it in the debugger, or obtain the parchment from a rare fight first), the guaranteed fight still plays pre-dialogue and the battle, but `ENC_AH_03`–`05` do not play and a second parchment is not added. After victory the trigger is gone.
+- [ ] W4 Defeat during the scripted fight uses the usual town wake-up and gold/XP penalty (B10/B15). The Watchtower trigger is **not** cleared; walking onto it again starts the fight (the parchment cannot be missed).
+- [ ] W5 In a zone with `allow_ashbound_rare = true` (or `table_id` `old_road` / `bandit_camp` / `watchtower`), a random encounter can be the Hunter. Suggested debug: set `global.game.ashbound_rare_chance = 1` so the next random fight is always the Hunter. Same pre-dialogue; first victory gives the parchment and post lines; a later rare victory does not. The guaranteed Watchtower fight still occurs afterwards (see W3). Default chance is 0.04 (4%).
+- [ ] W6 `zone01_path` and other areas without the rare flag never roll the Hunter from a random encounter (leave `ashbound_rare_chance` at 1 and walk only in `zone01_path` to confirm).
+- [ ] W7 Standing on the story tile (or a fixed `obj_encounter_trigger`) does not also start a random fight. Input stays locked during pre- and post-fight dialogue.
+
 ## Menus and saves
 - [ ] Selection and cancel/back work.
 - [ ] Save/load persists after restart; missing/corrupt save fails safely.
