@@ -13,6 +13,7 @@ function scr_actor_create(_actor_id, _name, _max_hp, _attack, _defense) {
         defense: _defense,
         is_guarding: false,
         participated: false, // set if they took a turn in the current battle
+        pending_xp: 0,       // per-enemy credit accumulated this battle; applied on victory only
         level: 1,
         xp: 0,
         class_name: "",
@@ -30,6 +31,7 @@ function scr_actor_from_enemy_data(_data) {
     var _actor = scr_actor_create(_data[$ "id"], _data.name, _data.max_hp, _data.attack, _data.defense);
     _actor.xp_reward = _data.xp_reward;
     _actor.gold_reward = _data.gold_reward;
+    _actor.xp_credited = false; // set when this enemy's XP is banked to living participants
     return _actor;
 }
 

@@ -154,7 +154,10 @@ function scr_party_clear_participation() {
         var _list = _lists[_l];
         if (!is_array(_list)) continue;
         for (var _i = 0; _i < array_length(_list); _i++) {
-            if (is_struct(_list[_i])) _list[_i].participated = false;
+            if (is_struct(_list[_i])) {
+                _list[_i].participated = false;
+                _list[_i].pending_xp = 0;
+            }
         }
     }
 }
@@ -176,7 +179,7 @@ function scr_party_battle_commands() {
 }
 
 /// Unique members (active first, then reserve, then the rest of the roster) who took
-/// at least one turn this battle. Used for victory XP (owner decision 2026-11-14).
+/// at least one turn this battle.
 function scr_party_participants() {
     scr_game_state_init();
     var _out = [];
@@ -195,4 +198,46 @@ function scr_party_participants() {
         }
     }
     return _out;
+}
+
+/// When an enemy dies, credit its XP to each member who has already taken a turn
+/// and is not KO'd at this moment (owner decision 2026-11-14). Banked in
+/// pending_xp and applied only if the party later wins.
+function scr_party_credit_enemy_xp(_amount) {
+    if (_amount <= 0) return;
+    var _list = scr_party_participants();
+    for (var _i = 0; _i < array_length(_list); _i++) {
+        var _actor = _list[_i];
+        if (!scr_actor_is_alive(_actor)) continue;
+        _actor.pending_xp += _amount;
+    }
+}
+
+/// Apply banked pending_xp (victory only). Returns level-up structs, same shape
+/// as scr_party_grant_xp_to. Pending is cleared. A defeat never calls this, so
+/// no XP is granted if the party loses.
+function scr_party_apply_pending_xp() {
+    scr_game_state_init();
+    var _ups = [];
+    var _lists = [global.game.party, global.game.reserve, global.game.roster];
+    var _seen = [];
+    for (var _l = 0; _l < array_length(_lists); _l++) {
+        var _list = _lists[_l];
+        if (!is_array(_list)) continue;
+        for (var _i = 0; _i < array_length(_list); _i++) {
+            var _actor = _list[_i];
+            if (!is_struct(_actor)) continue;
+            var _exists = false;
+            for (var _j = 0; _j < array_length(_seen); _j++) {
+                if (_seen[_j] == _actor.actor_id) { _exists = true; break; }
+            }
+            if (_exists) continue;
+            array_push(_seen, _actor.actor_id);
+            if (_actor.pending_xp <= 0) continue;
+            var _more = scr_party_grant_xp_to([_actor], _actor.pending_xp);
+            _actor.pending_xp = 0;
+            for (var _u = 0; _u < array_length(_more); _u++) array_push(_ups, _more[_u]);
+        }
+    }
+    return _ups;
 }

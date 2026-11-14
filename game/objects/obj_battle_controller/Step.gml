@@ -71,6 +71,11 @@ switch (state) {
         } else { // "Attack"
             var _damage = scr_calculate_damage(_actor.attack, enemy.defense);
             enemy.hp = scr_apply_damage(enemy.hp, enemy.max_hp, _damage);
+            if (enemy.hp <= 0 && !enemy.xp_credited) {
+                // Credit now, while living participants are still standing. Applied at victory.
+                scr_party_credit_enemy_xp(enemy.xp_reward);
+                enemy.xp_credited = true;
+            }
             queue_message(_actor.name + " attacks! " + enemy.name + " takes " + string(_damage) + " damage.", BATTLE_STATE.PLAYER_ACTION);
         }
         break;
@@ -93,7 +98,13 @@ switch (state) {
         if (!rewards_granted) {
             rewards_granted = true;
             global.game.gold += enemy.gold_reward;
-            level_ups = scr_party_grant_xp(party, enemy.xp_reward);
+            // Gold is shared. XP was banked per living participant when the enemy died.
+            // If the party had lost, pending_xp would be discarded (never applied).
+            if (!enemy.xp_credited) {
+                scr_party_credit_enemy_xp(enemy.xp_reward);
+                enemy.xp_credited = true;
+            }
+            level_ups = scr_party_apply_pending_xp();
             level_up_index = 0;
             if (array_length(party) > 0 && is_struct(party[0])) global.game.xp = party[0].xp;
         }

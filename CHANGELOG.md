@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-14 — Per-enemy XP credit for living participants
+- Owner decision: when an enemy dies, its XP is credited to each party member who has participated (taken at least one turn) and is not KO'd at that moment. Credit is stored as `pending_xp` and applied at victory (level-up messages unchanged). A defeat grants no XP. Gold stays shared.
+- A member KO'd before an enemy dies gets no XP for that enemy, but keeps credit for enemies that died before they fell. A reserve member who swapped in and has taken a turn counts from then on, but gets no credit for earlier kills.
+- Replaces the earlier "KO'd members who acted still get XP" behaviour. `XP_REQUIRES_PARTICIPATION` still names the rule. Test plan P5/P10/P12 updated.
+
 ## 2026-11-14 — Battle XP requires participation; mid-battle Swap
 - Owner decision: a bench/reserve member gets no XP unless they participate for at least one turn in that battle. Victory XP goes only to members who took a turn (Attack, Guard, or Swap).
 - A KO'd member who already acted still receives XP; a member KO'd before their first action does not. `RESERVE_EARNS_XP` / `RESERVE_XP_SHARE` were replaced by this rule (`XP_REQUIRES_PARTICIPATION`).

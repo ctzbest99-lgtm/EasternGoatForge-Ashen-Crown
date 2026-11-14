@@ -67,9 +67,10 @@
 #macro TAREN_BASE_HP 36
 #macro TAREN_BASE_ATTACK 8
 #macro TAREN_BASE_DEFENSE 3
-// Owner decision 2026-11-14: XP goes only to members who took at least one turn
-// (Attack, Guard, or Swap) in that battle. A reserve member who never swapped in
-// receives none. Kept as a named rule rather than a share percentage.
+// Owner decision 2026-11-14: when an enemy dies, its XP is credited to each
+// member who has already taken a turn (Attack, Guard, or Swap) and is not KO'd
+// at that moment. Banked pending XP is applied at victory; a defeat grants none.
+// A reserve member who never took a turn receives none. Gold stays shared.
 #macro XP_REQUIRES_PARTICIPATION true
 // Total XP to reach level L (L>=2): XP_CURVE_QUAD*(L-1)^2 + XP_CURVE_LIN*(L-1).
 // L1=0, L2=30, L3=100, L4=210, L5=360, L10=1710, L20=7410.

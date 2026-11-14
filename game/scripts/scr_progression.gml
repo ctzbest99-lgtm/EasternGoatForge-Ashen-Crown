@@ -56,11 +56,9 @@ function scr_party_grant_xp_to(_list, _amount) {
     return _ups;
 }
 
-/// Grant `_amount` XP only to members who took at least one turn this battle
-/// (owner decision 2026-11-14). `_party` is accepted for call-site compatibility
-/// but recipients come from scr_party_participants() (active and reserve).
-/// A KO'd member who already acted still receives XP; one who never took a turn does not.
-/// A reserve member receives XP only if they swapped in and took a turn.
+/// Legacy helper: grant `_amount` XP now. Battle victory uses
+/// scr_party_credit_enemy_xp / scr_party_apply_pending_xp instead (per-enemy
+/// credit to living participants, applied only if the party wins).
 function scr_party_grant_xp(_party, _amount) {
     if (!XP_REQUIRES_PARTICIPATION) return scr_party_grant_xp_to(_party, _amount);
     return scr_party_grant_xp_to(scr_party_participants(), _amount);
