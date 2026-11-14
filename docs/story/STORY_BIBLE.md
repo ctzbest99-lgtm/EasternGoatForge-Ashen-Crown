@@ -9,6 +9,7 @@
 |---|---|---|
 | **[C]** Canon | Stated in the master design doc | Build from it as written |
 | **[C-confirmed]** Confirmed canon | Decided by Kevin after the doc was written (see the [Decision log](#11-decision-log)) | Build from it. It overrides the doc |
+| **[PROPOSED]** Proposed | A suggestion from the lore agent that Kevin hasn't approved | Don't build it as final yet |
 | **[C-locked]** Locked canon | The doc explicitly says it is locked | Never change it without Kevin |
 | **[O]** Open | Undecided, ambiguous, or mentioned but not defined | Don't invent it. Use a placeholder and ask Kevin |
 | **[U]** Unconfirmed | A candidate the doc gives, explicitly not final | Can prototype it, but don't ship it as canon |
@@ -111,11 +112,17 @@ Varyn House · Rusted Boar Tavern · Greyhaven Chapel · Blacksmith · General S
 | **Silver Guard** | An elite military order serving the kingdom. Seraphine Thorn once served in its ranks. | Its leadership and its relationship to the Royal Army. |
 | **Black Hand** | A criminal organization operating across the kingdom. Controls smuggling, information, underground trade and criminal networks. Lyra has ties to it. | Leaders, and the nature of Lyra's ties. |
 | **Ashbound** | People who have become connected to the Ash. Some worship it, some study it, others believe they understand its true nature. Their beliefs are deliberately varied. In-game, the Ashbound Hunter enemy carries the parchment about Mira. | Who leads them, if anyone. Who sent the Hunter, and why. |
-| **The rebellion** | Mentioned only: the population is split partly toward "rebellion," and Alden Marr has a "relationship with the rebellion" that is still to be written. | Its name, leaders and goals. |
+| **The rebellion** | The population is split partly toward "rebellion," and Alden Marr has a "relationship with the rebellion" that is still to be written. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Its original purpose is freedom for the people, a system people govern themselves, and Taren embodies it. | Its name, leaders, structure, and Taren's and Alden's roles in it. |
 
 ---
 
 ## 5. Characters
+
+### Party roster **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
+- **Five playable party members:** Kael (Vanguard), Lyra (Rogue), Caelan (Arcanist), Sera (Warden), Taren (Scout/Thief). **Four fight at a time.** This overrides the doc's "The party contains four main characters."
+- **[C]** Classic ordered party: formation affects targeting, defense and damage, and the player rearranges the order through the Adventure menu.
+- **Note for Coder:** Party Order must support **4 active slots plus 1 reserve slot**, letting the player swap a reserve member in and out. Battle, the save system and XP rules need to handle a benched member (whether the reserve earns XP is **[O]**).
+- **[O]** Whether the story restricts swapping, e.g. forced or locked members in certain scenes, and when members join.
 
 ### 5.1 Kael Varyn — protagonist [C]
 - **Age** 24 · **Home** Greyhaven · **Class** Vanguard · **Weapon** Longsword · **Role** Balanced frontline physical fighter (frontline damage, balanced physical attacks, protection, consistent damage).
@@ -170,7 +177,22 @@ Varyn House · Rusted Boar Tavern · Greyhaven Chapel · Blacksmith · General S
 - **Background:** former Silver Guard knight. She left the kingdom after witnessing something inside the royal palace.
 - **[O]** What she saw. How and when she joins.
 
-### 5.5 Alden Marr — major tragic antagonist [C-locked concept]
+### 5.5 Taren — Scout/Thief, permanent party member **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
+- **[C]** In the design doc he appears only in Alden's entry: "Kael and Taren must stop him."
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Beliefs:** freedom is worth fighting for. He stands for the rebellion's **original purpose: freedom for the people.** He wants to dismantle the oppressive system so that people govern themselves.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Kael:** childhood friends who fight alongside one another.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Alden:** also Alden's childhood friend. Alden becomes Taren's greatest disappointment.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Ideological opposite of Alden:** both start with the same dream, but Alden decides he should rule Eldoria himself. That makes the betrayal especially painful for Taren.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Party:** a permanent party member, part of the five-person roster.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Story weight:** his friendship with Kael and his history with Alden should make the final Alden confrontation one of the most emotional moments in the game. He should be more than a warrior.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Class:** Scout/Thief. **Weapon:** a knife or small blade.
+- **[PROPOSED] Design note:** to avoid overlapping with Lyra (Rogue: twin daggers, crits, bleed, poison), Taren leans toward scouting and utility: Steal, revealing or scanning enemy weaknesses, help escaping battles, ambush or first strike, and high speed. Kevin hasn't approved this yet.
+- **[O]** His exact combat role and skills, his age, and when and how he joins the party.
+- **[O]** Where Taren and Alden grew up, and whether Taren is from Greyhaven. Kael is, but the friendship's setting isn't stated. How the three childhood friendships overlapped.
+- **[O]** The rebellion's name, and Taren's rank or role in it.
+- Not in Chapter 1. Canon doesn't place him there, so `CHAPTER1_SCRIPT.md` is unchanged.
+
+### 5.6 Alden Marr — major tragic antagonist [C-locked concept]
 - **[C-locked]** His ending concept is locked as **Ending C — The Last Usurper.**
 - **[C]** At first he genuinely wants to free the serfs and rebuild Eldoria. He believes the crown has failed the people, and his original goal is to dismantle it and build a better future.
 - **[C]** Ambition gradually corrupts him. After King Aldric IV is defeated, Alden takes the capital and claims the throne himself, becoming the thing he set out to destroy.
@@ -178,45 +200,46 @@ Varyn House · Rusted Boar Tavern · Greyhaven Chapel · Blacksmith · General S
 - **[C]** He must stay tragic, never evil without explanation. Players should understand his motivation even when his actions become unacceptable.
 - **[C]** He still needs backstory, a sprite, equipment, stats, abilities, dialogue, story appearances, his relationship with the rebellion, and the three-phase boss fight.
 - **[C]** "Preserve this ending concept as canon, but do not assume it is the only ending the player can receive."
-- **[O]** All of the above details. Who Taren is. Who defeats Aldric, and how.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Alden is a childhood friend of **Taren** and becomes Taren's greatest disappointment. They start with the same dream: Taren keeps faith with self-government, while Alden decides he should rule Eldoria himself. The final Alden confrontation should be one of the game's most emotional moments, driven by Taren's friendship with Kael and his history with Alden.
+- **[O]** All of the above details. Who defeats Aldric, and how. When and how Alden and Taren split.
 
-### 5.6 King Aldric IV [C]
+### 5.7 King Aldric IV [C]
 - Ruler of Eldoria and leader of the Crown. Knows the Crownveil is failing and has hidden the truth. He is defeated at some point before Alden seizes the capital (Ending C concept).
 - **[O]** His personality, his motives for the cover-up, and whether he connects to the royal banner symbol or to what Sera saw.
 
-### 5.7 Tomas Varyn [C]
+### 5.8 Tomas Varyn [C]
 - Kael's father. Former soldier turned blacksmith (Greyhaven has a Blacksmith location). Dying when Kael returns. Says *“Your sister… she went into the woods.”* According to the Fallen Knight, he "knew what was coming."
 - **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) In Chapter 1 he lies in his ruined forge (the Blacksmith), tended by Pell. After delivering his line he passes out. He does **not** die on screen in Chapter 1.
 - **[O]** His ultimate fate. What he knew, and how.
 
-### 5.8 Elira Varyn [C]
+### 5.9 Elira Varyn [C]
 - Kael's mother, the village healer.
 - **[O]** Her fate. The doc doesn't say whether she survived Greyhaven's destruction.
 
-### 5.9 Mira Varyn [C]
+### 5.10 Mira Varyn [C]
 - Kael's younger sister, twelve when the tragedy began. She kept a black stone with a Crownveil symbol after being told to throw it away. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Sister Ilse, the Greyhaven chapel keeper, is the one who told her to throw it away. Mira had asked Ilse what the mark meant. She found a passage beneath Greyhaven and accidentally opened something connected to the Crownveil, and something came looking for her.
 - Her wooden pendant was found in the ruins, with no body.
 - The Ashbound parchment says she is still alive. The Watchtower carvings show a woman who looks like her. The Blackguard says she "crossed the Crownveil."
 - **[O]** Why she was involved, why the carvings resemble her, what happened to the stone, and where she is now.
 
-### 5.10 Old Hunter Renn [C]
+### 5.11 Old Hunter Renn [C]
 - An NPC at the optional Hunter's Camp (Zone 1, recommended level 2). His optional quest rewards the **Hunter's Charm** (+2% critical hit).
 - **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) A gruff, dry old woodsman who knew Kael's family. His quest is **Thinning the Pack** (`Q_SIDE_RENN`): defeat 5 Ash Wolves in the Farmlands or on the Old Road, then return to Renn for the Hunter's Charm. He hints that the wolves are weak to fire.
 
-### 5.11 The Fallen Knight (story character) [C]
+### 5.12 The Fallen Knight (story character) [C]
 - He recognizes Kael and says *“Your father knew what was coming.”* and later *“She opened the door.”*
 - **[C]** Separately, "Fallen Knight" is a common elite enemy type (Zone 1), and Act 5 is titled "The Fallen Knight."
 - **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Chapter 1 placement:** line 1 at the Abandoned Bandit Camp's north exit, after which he walks off toward the Watchtower. Line 2 at the top of the Watchtower Basement stairs, after which he descends and vanishes. He never fights and is never named in Chapter 1.
 - **[O]** Who he is, whether he is one of the Fallen Knight enemies, and whether he is the subject of Act 5.
 
-### 5.12 The Blackguard — Zone 1 boss [C]
+### 5.13 The Blackguard — Zone 1 boss [C]
 - A former Royal Knight corrupted by the Ash. Recommended player level 5–7, 450 HP total, weak to Holy.
 - **Phase 1 — The Knight:** armor, sword, shield. Heavy Slash, Shield Bash, Guard, Counter.
 - **Phase 2 — The Corruption (60% HP):** his helmet cracks and Ash pours from the armor. Attack goes up and the shield is lost. Ash Slash, Dark Lunge, Blood Oath.
 - **Phase 3 — Hollow Knight (20% HP):** the armor is engulfed in Ash. Attack +40%, Speed +30%, Defense −20%. New ability: Execution.
 - **[O]** His name, and how he knows Mira and Kael.
 
-### 5.13 Greyhaven survivors **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
+### 5.14 Greyhaven survivors **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 | Name | Role | Location |
 |---|---|---|
 | Pell | Young survivor tending Tomas. Runs the forge as an equipment shop | Blacksmith |
@@ -226,9 +249,6 @@ Varyn House · Rusted Boar Tavern · Greyhaven Chapel · Blacksmith · General S
 | Old Wenna | Elderly survivor | Town Square |
 | Dov | Boy about Mira's age. Says Mira claimed she found "a door in the ground" under the town and wouldn't say where | Town Square |
 | Corwin | Militia watchman. Keeps the gate shut until Kael has seen Tomas, and mentions small tracks heading north | North Gate |
-
-### 5.14 Taren [O]
-- Named only once: "Kael and Taren must stop him" (Alden). Not defined anywhere else in the doc. Do not build him until Kevin defines him.
 
 ### 5.15 The Ash King [O]
 - Named twice: as one of the gradual Crownveil truths ("Why the Ash King is connected to it") and in Milestone 12 ("Ash King story"). Not defined anywhere else.
@@ -257,7 +277,7 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
     > **Blackguard:** “You still don’t know.”
     > **Kael:** “Know what?”
     > **Blackguard:** “What she opened.”
-11. **Blackguard fight** (three phases, see 5.12).
+11. **Blackguard fight** (three phases, see 5.13).
 12. **Blackguard defeat (verbatim)**
     > **Blackguard:** “The girl didn’t disappear, Kael.”
     > **Kael:** “What did you say?”
@@ -298,13 +318,14 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 | Ending 1 — Restore the Crownveil | Kael sacrifices himself to become its guardian. The world is protected, but Kael is lost. | **[U]** |
 | Ending 2 — Destroy the Crownveil | The barrier is destroyed, the entity beyond it is released, and the old order collapses. | **[U]** |
 | Ending 3 — Break the Cycle | The entity is destroyed without sacrificing Kael, but magic is permanently destroyed. | **[U]** |
-| Ending C — The Last Usurper | Alden Marr takes the capital after Aldric IV falls and claims the throne. Kael and Taren must stop him (three-phase battle). | **[C-locked]** as a concept. Placement and conditions **[O]**. Not necessarily the only ending. |
+| Ending C — The Last Usurper | Alden Marr takes the capital after Aldric IV falls and claims the throne. Kael and Taren (Kael's and Alden's childhood friend) must stop him (three-phase battle). | **[C-locked]** as a concept. Placement and conditions **[O]**. Not necessarily the only ending. |
 
 ---
 
 ## 9. Canon at a glance
 
 - **Locked:** the Alden Marr Ending C concept.
+- **Confirmed (Nov 14 2026):** Taren's definition, and a five-person roster with four active in battle.
 - **Confirmed by Kevin (Nov 14 2026):** FF1-style top-down exploration camera; Kael finds the pendant in the Varyn House ruins; Kael arrives after Greyhaven's destruction, which is not played; all of `CHAPTER1_SCRIPT.md` (every line and scene in it is canon).
 - **Canon:** everything tagged [C] above, including all verbatim dialogue.
 - **Unconfirmed:** Endings 1–3.
@@ -313,44 +334,47 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 ## 10. Open questions for Kevin
 
 **People**
-1. Who is Taren? He is named only as Kael's partner against Alden.
-2. Who or what is the Ash King? How does it connect to the Crownveil, the Ash, and "the entity beyond it"?
-3. Who is the Fallen Knight who recognizes Kael? Is he one of the Fallen Knight enemies, and is he the subject of Act 5?
-4. Who is the Blackguard (name, history)? How does he know Mira and Kael?
-5. What did Sera see inside the royal palace?
-6. What exactly does Caelan know about the Crownveil and why it broke?
-7. What are Lyra's Black Hand ties?
-8. When and where do Lyra, Caelan and Sera join the party?
-9. Elira's fate: alive, dead or missing after Greyhaven?
-10. What is Tomas's ultimate fate (he passes out in Chapter 1, not dead), and what did he know "was coming"?
-11. Who is the "Forgotten King" in Act 4?
-12. Alden's backstory, his relationship with the rebellion, and who defeats King Aldric IV, and how.
-13. What are Aldric IV's motives for hiding the Crownveil's failure?
+1. Who or what is the Ash King? How does it connect to the Crownveil, the Ash, and "the entity beyond it"?
+2. Who is the Fallen Knight who recognizes Kael? Is he one of the Fallen Knight enemies, and is he the subject of Act 5?
+3. Who is the Blackguard (name, history)? How does he know Mira and Kael?
+4. What did Sera see inside the royal palace?
+5. What exactly does Caelan know about the Crownveil and why it broke?
+6. What are Lyra's Black Hand ties?
+7. When and where do Lyra, Caelan, Sera and Taren join the party?
+8. Taren's specific skills and exact combat role, and his age. (Class and weapon are settled; a scouting and utility direction is proposed.)
+9. Where did Kael, Taren and Alden grow up as childhood friends? Is Taren from Greyhaven? When and how did Alden and Taren split?
+10. Elira's fate: alive, dead or missing after Greyhaven?
+11. What is Tomas's ultimate fate (he passes out in Chapter 1, not dead), and what did he know "was coming"?
+12. Who is the "Forgotten King" in Act 4?
+13. Alden's backstory, his relationship with the rebellion, and who defeats King Aldric IV, and how.
+14. What are Aldric IV's motives for hiding the Crownveil's failure?
 
 **Events and world**
-14. What destroyed Greyhaven, and how? (Timing is settled: before Kael arrives, not played.)
-15. What is "the Night of Ash" as an event?
-16. Is the passage beneath Greyhaven that Mira opened the same as the Crownveil Door at the end of Zone 1? Where is the Old Watchtower relative to Greyhaven?
-17. What happened to Mira's black stone?
-18. Why do the Architect carvings resemble Mira?
-19. Who wrote the Ashbound parchment, and who sent the Ashbound Hunter?
-20. What does "Then everything stops" mean in the story? (The on-screen presentation is settled: a hard cut to black.)
-21. What does the pendant's shared symbol look like, and is it the crown around a black sun?
-22. Why does a royal banner carry the Crownveil symbol? What does the crown know?
-23. Where exactly does the Crownveil run? It is believed to protect Eldoria, but the Ashlands lie "beyond" it. What is it keeping in?
-24. What are the answers to the six gradual Crownveil truths, and in which acts are they revealed?
-25. Is the Frostwilds' "ancient northern civilization" the Architects or a separate people?
-26. Which acts map to which regions? Where do Valemere, the Drowned Coast and the Frostwilds fall in the eight acts?
-27. What is the rebellion called, and who leads it?
-28. Is Greyhaven Chapel part of the Radiant Flame?
-29. What is Mira's age now? The doc gives "twelve when the tragedy began." How much time has passed?
+15. What destroyed Greyhaven, and how? (Timing is settled: before Kael arrives, not played.)
+16. What is "the Night of Ash" as an event?
+17. Is the passage beneath Greyhaven that Mira opened the same as the Crownveil Door at the end of Zone 1? Where is the Old Watchtower relative to Greyhaven?
+18. What happened to Mira's black stone?
+19. Why do the Architect carvings resemble Mira?
+20. Who wrote the Ashbound parchment, and who sent the Ashbound Hunter?
+21. What does "Then everything stops" mean in the story? (The on-screen presentation is settled: a hard cut to black.)
+22. What does the pendant's shared symbol look like, and is it the crown around a black sun?
+23. Why does a royal banner carry the Crownveil symbol? What does the crown know?
+24. Where exactly does the Crownveil run? It is believed to protect Eldoria, but the Ashlands lie "beyond" it. What is it keeping in?
+25. What are the answers to the six gradual Crownveil truths, and in which acts are they revealed?
+26. Is the Frostwilds' "ancient northern civilization" the Architects or a separate people?
+27. Which acts map to which regions? Where do Valemere, the Drowned Coast and the Frostwilds fall in the eight acts?
+28. What is the rebellion called, who leads it, and what are Taren's and Alden's roles in it?
+29. Is Greyhaven Chapel part of the Radiant Flame?
+30. What is Mira's age now? The doc gives "twelve when the tragedy began." How much time has passed?
 
 **Endings and systems that touch lore**
-30. Which ending(s) are final, and what are the branching conditions (choices, relationships)?
-31. How does Alden's Ending C relate to the three Crownveil endings? Is it a separate branch, a step before the finale, or a fourth ending?
-32. What is "the entity" in Endings 2 and 3, and is it the Ash or the Ash King?
-33. Kael's Ashen Resolve says "Ash increases by 1." What is the Ash stat or meter?
-34. Battle presentation: are battles FF1-style menu battles (the current assumption)? The doc's "hybrid, varying by encounter" note still needs his final word. (The exploration camera is settled.)
+> **Note for Coder:** the party is **5 members with 4 active** (Kael, Lyra, Caelan, Sera, Taren). The Adventure menu's Party Order needs a reserve slot. See "Party roster" in section 5.
+31. Which ending(s) are final, and what are the branching conditions (choices, relationships)?
+32. How does Alden's Ending C relate to the three Crownveil endings? Is it a separate branch, a step before the finale, or a fourth ending?
+33. What is "the entity" in Endings 2 and 3, and is it the Ash or the Ash King?
+34. Kael's Ashen Resolve says "Ash increases by 1." What is the Ash stat or meter?
+35. Party swapping: does the story restrict it (locked or forced members in certain scenes)? Does the reserve member earn XP?
+36. Battle presentation: are battles FF1-style menu battles (the current assumption)? The doc's "hybrid, varying by encounter" note still needs his final word. (The exploration camera is settled.)
 
 ## 11. Decision log
 
@@ -359,5 +383,8 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 | Nov 14 2026 | Exploration and overworld camera is FF1-style top-down. | Section 1 marked confirmed. The camera question is resolved. Battle presentation stays open, presumed to be FF1-style menu battles. |
 | Nov 14 2026 | Kael **finds** Mira's wooden pendant in the ruins of Varyn House. She did not give it to him. | Replaces the doc's line "The wooden pendant given by Mira." Sections 5.1 and 6 updated. The pendant question is resolved. |
 | Nov 14 2026 | Kael arrives home **after** Greyhaven is destroyed. The destruction is not played. | Sections 3, 5.1 and 6 updated. The timing question is resolved. *What* destroyed Greyhaven stays open. |
-| Nov 14 2026 | Approved everything proposed in `CHAPTER1_SCRIPT.md` as canon. | New section 5.13 (survivors), plus updates to 5.7, 5.9, 5.10, 5.11 and section 6. Ilse told Mira to discard the stone. Tomas passes out and doesn't die on screen (fate still open). Fallen Knight placement settled. Renn's personality and quest settled. Hard cut to black at the ending. Resolved questions removed: Renn's content, Fallen Knight placement, Tomas dying on screen, missable parchment, and the ending presentation. |
+| Nov 14 2026 | Approved everything proposed in `CHAPTER1_SCRIPT.md` as canon. | New Greyhaven survivors section (now 5.14), plus updates to Tomas, Mira, Renn, the Fallen Knight and section 6. Ilse told Mira to discard the stone. Tomas passes out and doesn't die on screen (fate still open). Fallen Knight placement settled. Renn's personality and quest settled. Hard cut to black at the ending. Resolved questions removed: Renn's content, Fallen Knight placement, Tomas dying on screen, missable parchment, and the ending presentation. |
 | Nov 14 2026 | The parchment can't be missed: the first Ashbound Hunter fight in the Old Watchtower is guaranteed. | Section 6, beat 5 updated. The rare encounter is kept elsewhere. |
+| Nov 14 2026 | Defined Taren: childhood friend of Kael (they fight side by side) and of Alden (Taren's greatest disappointment). Believes freedom is worth fighting for and embodies the rebellion's original purpose. Ideological opposite of Alden. Permanent party member, more than a warrior. The final Alden confrontation should be one of the most emotional moments. | New 5.5 Taren entry (later sections renumbered 5.6–5.14). Alden entry, Ending C row and rebellion faction row updated. "Who is Taren?" removed. New open items: his class, weapon, role, age and join point; the childhood setting. |
+| Nov 14 2026 | Party is a five-person roster (Kael, Lyra, Caelan, Sera, Taren), four in battle at a time. | New "Party roster" block in section 5 overrides the doc's four-member party. Coder note: Party Order needs a reserve slot. New open item: story restrictions on swapping, and reserve XP. |
+| Nov 14 2026 | Taren's class is Scout/Thief, and he uses a knife or small blade. | Taren entry and party roster updated. Open question trimmed to his skills, combat role and age. A [PROPOSED] scouting and utility direction was added so he doesn't overlap with Lyra. |
