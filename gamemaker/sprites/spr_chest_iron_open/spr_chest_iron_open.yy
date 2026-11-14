@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"78fef912-2b1d-46e0-9f23-7984d159327e",
-      "name":"78fef912-2b1d-46e0-9f23-7984d159327e",
+      "%Name":"fab88f58-1ba3-4961-84fe-ae6cea144573",
+      "name":"fab88f58-1ba3-4961-84fe-ae6cea144573",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"a97d8046-e8aa-4d65-bcf9-577cca0f1029",
+      "%Name":"35fa1066-7dc1-4a4d-9ab2-981f1ebdd107",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"a97d8046-e8aa-4d65-bcf9-577cca0f1029",
+      "name":"35fa1066-7dc1-4a4d-9ab2-981f1ebdd107",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"78fef912-2b1d-46e0-9f23-7984d159327e",
+                    "name":"fab88f58-1ba3-4961-84fe-ae6cea144573",
                     "path":"sprites/spr_chest_iron_open/spr_chest_iron_open.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"ad8259c5-f6dd-4acc-94ed-76e7d9483063",
+              "id":"64145c6c-610d-4eab-89b6-9cb6794aadec",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

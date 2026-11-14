@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"a2ee25d9-6448-4511-8a04-3956fc6cdace",
-      "name":"a2ee25d9-6448-4511-8a04-3956fc6cdace",
+      "%Name":"549a872b-3464-44c9-98ac-20ff908791da",
+      "name":"549a872b-3464-44c9-98ac-20ff908791da",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"26595326-072a-4be3-9a4f-908dbe867904",
+      "%Name":"1bb0689d-5fe5-46fe-9a38-8d6c55d554f6",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"26595326-072a-4be3-9a4f-908dbe867904",
+      "name":"1bb0689d-5fe5-46fe-9a38-8d6c55d554f6",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a2ee25d9-6448-4511-8a04-3956fc6cdace",
+                    "name":"549a872b-3464-44c9-98ac-20ff908791da",
                     "path":"sprites/spr_ui_dither/spr_ui_dither.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"0d23e5df-03c5-4d00-b4d3-ed38b469e764",
+              "id":"c020dd13-f61b-4d39-9d26-f01dd17d2db0",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

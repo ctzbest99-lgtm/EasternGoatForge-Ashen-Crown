@@ -30,7 +30,10 @@ function scr_roster_create() {
     var _kael = scr_roster_find(_roster, "kael");
     if (is_struct(_kael)) _kael.age = 24;
     var _taren = scr_roster_find(_roster, "taren");
-    if (is_struct(_taren)) _taren.age = 27;
+    if (is_struct(_taren)) {
+        _taren.age = 27;
+        _taren.equipment.armor = "item_travel_brigandine"; // PLACEHOLDER starting armour (balance pass)
+    }
     return _roster;
 }
 
@@ -54,11 +57,12 @@ function scr_actor_apply_battle_defaults(_actor) {
     if (!is_struct(_actor)) return;
     var _d = scr_actor_battle_defaults(_actor.actor_id);
     var _lv = variable_struct_exists(_actor, "level") ? max(1, _actor.level) : 1;
-    _actor.base_spd = _d.spd + (_lv - 1) * LEVEL_UP_SPD_GROWTH;
+    var _gt = scr_level_growth_total(_lv);
+    _actor.base_spd = _d.spd + _gt.spd;
     _actor.spd = _actor.base_spd;
-    _actor.base_mdef = _d.mdef + (_lv - 1) * LEVEL_UP_MDEF_GROWTH;
+    _actor.base_mdef = _d.mdef + _gt.mdef;
     _actor.mdef = _actor.base_mdef;
-    _actor.max_mp = _d.mp + (_lv - 1) * LEVEL_UP_MP_GROWTH;
+    _actor.max_mp = _d.mp + _gt.mp;
     _actor.mp = _actor.max_mp;
     _actor.skills = _d.skills;
     _actor.passives = _d.passives;

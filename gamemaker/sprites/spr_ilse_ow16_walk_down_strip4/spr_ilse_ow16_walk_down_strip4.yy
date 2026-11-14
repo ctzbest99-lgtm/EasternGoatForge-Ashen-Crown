@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"edb6ad3d-f835-4472-a56a-247356e4310d",
-      "name":"edb6ad3d-f835-4472-a56a-247356e4310d",
+      "%Name":"4c2cf9c4-2f91-41cd-9e29-274940bccf29",
+      "name":"4c2cf9c4-2f91-41cd-9e29-274940bccf29",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"0152abab-a50b-4dcc-8a32-e7f350db6ab2",
-      "name":"0152abab-a50b-4dcc-8a32-e7f350db6ab2",
+      "%Name":"a2282af8-f0d4-4c66-834a-c095418545e5",
+      "name":"a2282af8-f0d4-4c66-834a-c095418545e5",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"eb4cd8b5-8e65-42e8-a397-1dcd65f290bf",
-      "name":"eb4cd8b5-8e65-42e8-a397-1dcd65f290bf",
+      "%Name":"165ab31a-b44b-44ba-aede-7812c7029eb3",
+      "name":"165ab31a-b44b-44ba-aede-7812c7029eb3",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"01750a82-979e-40d6-8618-04a1caa3559b",
-      "name":"01750a82-979e-40d6-8618-04a1caa3559b",
+      "%Name":"30025009-bac4-4a6a-aa51-3cc610de3bb9",
+      "name":"30025009-bac4-4a6a-aa51-3cc610de3bb9",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"ca99bcea-0856-4200-8b20-c3eee3fda263",
+      "%Name":"4ec2e11e-d5d1-44c1-8985-81d58936013d",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"ca99bcea-0856-4200-8b20-c3eee3fda263",
+      "name":"4ec2e11e-d5d1-44c1-8985-81d58936013d",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"edb6ad3d-f835-4472-a56a-247356e4310d",
+                    "name":"4c2cf9c4-2f91-41cd-9e29-274940bccf29",
                     "path":"sprites/spr_ilse_ow16_walk_down_strip4/spr_ilse_ow16_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"9cc57cc3-b7fb-451b-a3eb-af8778c488a9",
+              "id":"379cdb21-c663-4423-878e-706aff423347",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0152abab-a50b-4dcc-8a32-e7f350db6ab2",
+                    "name":"a2282af8-f0d4-4c66-834a-c095418545e5",
                     "path":"sprites/spr_ilse_ow16_walk_down_strip4/spr_ilse_ow16_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"584e7427-b21c-4bfc-bff9-79e543ac8cd3",
+              "id":"e7d3a809-b9d4-496c-b7ab-d31577d18ccd",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"eb4cd8b5-8e65-42e8-a397-1dcd65f290bf",
+                    "name":"165ab31a-b44b-44ba-aede-7812c7029eb3",
                     "path":"sprites/spr_ilse_ow16_walk_down_strip4/spr_ilse_ow16_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"de040ee4-e7af-4b1b-9e81-73f654a5e65b",
+              "id":"83ac6b03-90d5-43ae-a4a7-c473d8e3aa4d",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"01750a82-979e-40d6-8618-04a1caa3559b",
+                    "name":"30025009-bac4-4a6a-aa51-3cc610de3bb9",
                     "path":"sprites/spr_ilse_ow16_walk_down_strip4/spr_ilse_ow16_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"7d1fe7df-1409-49f9-8f57-4a3b01f9037a",
+              "id":"d1ad7c66-10da-4713-8364-52665cd0748b",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

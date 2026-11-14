@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"409f2b83-5857-4d08-9416-a0b31034213a",
-      "name":"409f2b83-5857-4d08-9416-a0b31034213a",
+      "%Name":"013fa449-8f06-4678-b27e-f64c6148ce3d",
+      "name":"013fa449-8f06-4678-b27e-f64c6148ce3d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"d277a27b-85e3-4251-9156-856b3bd60435",
+      "%Name":"a9a1d4e7-5fe4-4f34-b481-de3686de9faa",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"d277a27b-85e3-4251-9156-856b3bd60435",
+      "name":"a9a1d4e7-5fe4-4f34-b481-de3686de9faa",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"409f2b83-5857-4d08-9416-a0b31034213a",
+                    "name":"013fa449-8f06-4678-b27e-f64c6148ce3d",
                     "path":"sprites/spr_portrait_reeve_calder_stern/spr_portrait_reeve_calder_stern.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"909171dd-65f3-4cc7-a380-da9f76bf0ee1",
+              "id":"673cbbc7-eee0-4133-9641-791be2a3d7db",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

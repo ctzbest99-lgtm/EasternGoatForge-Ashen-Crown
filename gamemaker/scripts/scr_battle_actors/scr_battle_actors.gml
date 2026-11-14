@@ -64,6 +64,7 @@ function scr_actor_from_enemy_data(_data) {
     _actor.yields = variable_struct_exists(_data, "yields") && _data.yields;      // yield replaces death (Reeve Calder)
     _actor.yield_flag = variable_struct_exists(_data, "yield_flag") ? _data.yield_flag : "";
     _actor.yielded = false;
+    _actor.withdrawn = false; // left the field when the boss yielded (still gives XP / gold)
     _actor.stance_on_adds_fall = variable_struct_exists(_data, "stance_on_adds_fall") && _data.stance_on_adds_fall;
     _actor.stance_used = false;
     _actor.stance_buffs = (variable_struct_exists(_data, "stance_buffs") && is_array(_data.stance_buffs)) ? _data.stance_buffs : [];

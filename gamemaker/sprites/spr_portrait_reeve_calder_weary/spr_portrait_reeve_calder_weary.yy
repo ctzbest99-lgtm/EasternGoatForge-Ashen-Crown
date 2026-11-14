@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"fa888c01-976c-4cd3-b5c3-ee27b04c206d",
-      "name":"fa888c01-976c-4cd3-b5c3-ee27b04c206d",
+      "%Name":"99cf7e1d-bafe-4bcf-9f22-6780f68a9f91",
+      "name":"99cf7e1d-bafe-4bcf-9f22-6780f68a9f91",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"61d7856d-4326-4aaf-8525-e6a8bcf58658",
+      "%Name":"dd45f7b4-3568-4b96-9889-96af76609626",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"61d7856d-4326-4aaf-8525-e6a8bcf58658",
+      "name":"dd45f7b4-3568-4b96-9889-96af76609626",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"fa888c01-976c-4cd3-b5c3-ee27b04c206d",
+                    "name":"99cf7e1d-bafe-4bcf-9f22-6780f68a9f91",
                     "path":"sprites/spr_portrait_reeve_calder_weary/spr_portrait_reeve_calder_weary.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"e3e9f750-adbc-4fc2-873d-245a6f0dbbb7",
+              "id":"14ccce43-eb5c-4cd5-be40-70c1e2ff7af7",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
