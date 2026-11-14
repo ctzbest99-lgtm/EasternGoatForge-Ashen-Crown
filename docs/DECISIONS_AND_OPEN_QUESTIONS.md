@@ -41,21 +41,19 @@ These were chosen so Design's map and art could be wired into the existing proto
 - Y-sort with `depth = -y`. Overworld `left` is a pre-mirrored sheet; `image_xscale` stays 1. Battle party members are flipped with `xscale = -1` because battle strips only face right.
 - Battle playback: idle 6 fps, attack/hurt/death 10 fps, drawn in Draw GUI at `BATTLE_SPRITE_SCALE` 2. Damage is applied at about 60% through the attack clip; a KO plays death instead of hurt and holds the last frame. Confirm skips the clip. There is no Guard pose in the art.
 - Camera view 320×180, optionally displayed at 2× (640×360 window). `CAMERA_FOLLOW_PLAYER` is on. `scr_camera_follow_player` is defined once in `scr_map_tilemaps.gml` and called from `obj_game_controller` End Step. Overhead tiles use depth -10000 so they stay above a player that y-sorts with `depth = -y`.
-- Greyhaven is safe (no encounter zone, no room-wide table). Other areas use the existing `obj_encounter_zone` API with tables `zone01_farmlands`, `zone01_old_road`, `zone01_bandit_camp`, `zone01_watchtower`, falling back to `zone01_path`.
+- Greyhaven is safe (no encounter zone, no room-wide table). Other areas use the existing `obj_encounter_zone` API with tables `zone01_farmlands`, `zone01_old_road`, `zone01_bandit_camp`, `zone01_watchtower`. Only Bandit Camp and Watchtower opt into the `zone01_path` fallback (which includes Fallen Knights). Farmlands and the Old Road do not.
 - Blackguard placeholder stats: 80 HP, 12 ATK, 8 DEF, 50 XP, 30 gold. Not balanced.
 - Entrances to rooms that are not built yet (`rm_valemere`, `rm_frostwilds_settlement`, `rm_coast_village`, `rm_watchtower_basement`, `rm_ashlands_breach`, and others) only show a placeholder dialogue line.
-- A story-flag system and key-item inventory helpers exist (`scr_flag_get` / `scr_inventory_add`). Tomas / pendant / Crownveil scenes are not implemented yet; inspecting those markers still shows placeholder text. The locked terrace stairs are a blocking `obj_interactable` (`watchtower_basement_cleared` is named but not yet enforced in code).
-- The guaranteed Ashbound Hunter fight (`enc_ashbound_hunter_wt`) is spawned in `rm_old_watchtower` on walkable tile (41, 24), immediately in front of `old_royal_banner` (41, 25). Rare Hunter rolls are allowed on `zone01_old_road`, `zone01_bandit_camp`, and `zone01_watchtower` (short ids `old_road` / `bandit_camp` / `watchtower` still work).
+- A story-flag system and key-item inventory helpers exist (`scr_flag_get` / `scr_inventory_add`). The Tomas scene (`GH_TOMAS`, Blacksmith, `flag_met_tomas`), Mira's pendant (`GH_HOUSE_03`–`05`, `item_mira_pendant`, `flag_pendant_found`), banner clue (`WT_BANNER`, `flag_banner_clue`), and Fallen Knight beats (`FK_01` / `FK_02` via `obj_story_npc`) are wired. The Crownveil door (`CV_END`) is still a stub. The locked terrace stairs are a blocking `obj_interactable` (`watchtower_basement_cleared` is named but not yet enforced in code).
+- The guaranteed Ashbound Hunter fight (`enc_ashbound_hunter_wt`) is spawned in `rm_old_watchtower` on walkable tile (41, 23), two tiles north of `old_royal_banner` (41, 25). Interactables are fitted to one 16×16 tile so a 32×32 placeholder cannot cover the trigger. Rare Hunter rolls are allowed on `zone01_old_road`, `zone01_bandit_camp`, and `zone01_watchtower` (short ids `old_road` / `bandit_camp` / `watchtower` still work).
 - Bandit overworld sheets are in the repo but not used by any object yet. There is no Fallen Knight overworld sheet. Battle assets are named `spr_hero_*`; overworld Kael is `spr_kael_ow*`.
 
 ### Placeholders still waiting on Kevin (story bible Open, or not implemented)
 - Names of the Frostwilds settlement and the Drowned Coast village.
-- The pendant / Crownveil symbol (banner and sealed door; no symbol is drawn).
-- Where the Tomas Varyn scene happens (his NPC marker beside Varyn House is only a suggestion) and the Fallen Knight story beat.
-- Sign text (`sign_greyhaven`, `sign_bridge`, `sign_watchtower`, `sign_grounds`).
+- Whether the new `royal_banner` / `carving_crown_sun` tiles and `spr_item_mira_pendant` match the confirmed crown-ringing-a-black-sun design (the tiles are in the Design drop; they have not been visually approved in GameMaker).
 - Several chest loots (`hidden_grove_chest`, `watchtower_chest_2`, `watchtower_chest_3`).
-- What lies past the Crownveil breach.
-- Stats for Blackguard and for missing bestiary entries (Ash Wolves, Ashen Wretches, Grave Spiders, Hollow Soldiers, Ashbound Hunter).
+- What lies past the Crownveil breach (`CV_END` is still a stub).
+- Stats for Blackguard, and bestiary entries not yet in `scr_get_enemy_data()`: **ash_wolf** (Ash Wolf), **ashen_wretch** (Ashen Wretch), **grave_spider** (Grave Spider), **hollow_soldier** (Hollow Soldier). Do not invent combat stats for these until approved. The Ashbound Hunter is already in the database (placeholder stats).
 
 ## Prototype assumptions (exploration + battle prototype; pending owner approval)
 These were chosen so roadmap steps 2–3 could be built. None is a locked design decision.
@@ -66,4 +64,4 @@ These were chosen so roadmap steps 2–3 could be built. None is a locked design
 - Party defaults and progression numbers: see "Prototype assumptions (party + progression)" above. Guard still halves incoming damage (min 1) until the party's next command phase.
 - Fixed `obj_encounter_trigger` encounters are removed after victory for the session. Whether cleared triggers persist in saves is undecided. Random walking encounters are owner-decided (see above); they are not cleared after victory.
 - Enemy HP is visible in battle for debugging; whether players see enemy HP is undecided.
-- Sign text and battle messages are placeholders, not canon.
+- Chapter 1 overworld / Watchtower sign wording is C-confirmed (see CHAPTER1_SCRIPT.md). Battle messages and remaining inspect text (chests, Renn, unbuilt rooms) are still placeholders.

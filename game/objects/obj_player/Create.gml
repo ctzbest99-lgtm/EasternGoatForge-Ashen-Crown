@@ -19,3 +19,8 @@ if (_collision_layer != -1) {
 // Prefer the imported 16×24 Kael sheet; if it is missing the IDE sprite (placeholder) is kept.
 scr_player_sprites_init();
 depth = -y;
+
+// Safety: if this instance was created overlapping an obj_solid (or a child
+// such as obj_interactable), nudge to the nearest free position. The map
+// builder also calls this after moving the player to player_start.
+scr_player_unstick();

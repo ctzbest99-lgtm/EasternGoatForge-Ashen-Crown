@@ -39,13 +39,14 @@ Create each object in the table in `game/README.md` with the listed sprite, flag
 - **obj_game_controller:** no sprite, tick **Persistent**, untick Visible. Events: Create, Step ▸ Begin Step, Step ▸ End Step, Other ▸ Room Start.
 - **obj_player:** sprite `spr_kael_ow16_idle_down` (or `spr_player_placeholder` if the sheet is not imported yet). Events: Create, Step. The Step event also picks idle/walk by facing, plays the walk at 8 fps, and sets `depth = -y`.
 - **obj_solid:** sprite `spr_solid_placeholder`. No events.
-- **obj_interactable:** sprite `spr_interactable_placeholder`, **Parent = obj_solid** (blocks movement). Event: Create.
+- **obj_interactable:** sprite `spr_interactable_placeholder` (16×16 Top Left preferred; a larger placeholder is scaled to one tile by the map spawner), **Parent = obj_solid** (blocks movement). Event: Create. The spawner also sets `script_id` / `struck_lines` / item fields from map data.
 - **obj_dialogue_box:** no sprite. Events: Create, Step, Draw ▸ Draw GUI, Clean Up.
 - **obj_encounter_trigger:** sprite `spr_encounter_trigger_placeholder`, no parent. Events: Create, Other ▸ Room Start, Step.
 - **obj_battle_controller:** no sprite. Events: Create, Step, Draw ▸ Draw GUI.
 - **obj_respawn_point:** optional sprite `spr_respawn_point_placeholder` (any small colour; only needed so you can see it while laying out the room). Event: Create. No parent, not solid.
 - **obj_encounter_zone:** sprite `spr_encounter_zone_placeholder`. Event: Create. No parent, not solid. The overworld builder stretches these from map markers; you do not have to place them by hand.
-- **obj_story_encounter:** sprite `spr_story_encounter_placeholder` (16×16 preferred; a larger placeholder is scaled to one tile). Events: Create, Other ▸ Room Start, Step. No parent, not solid. The Watchtower builder spawns the guaranteed Hunter trigger; do not also hand-place one on the same tile.
+- **obj_story_encounter:** sprite `spr_story_encounter_placeholder` (16×16 preferred; a larger placeholder is scaled to one tile). Events: Create, Other ▸ Room Start, Step. No parent, not solid. The Watchtower builder spawns the guaranteed Hunter trigger at **(41, 23)**; do not also hand-place one on the same tile.
+- **obj_story_npc:** sprite `spr_story_npc_placeholder` (or `spr_interactable_placeholder` if you have not made one). Events: Create, Other ▸ Room Start, Step. **No parent, not solid.** The map builder spawns the Fallen Knight beats (`FK_01`, `FK_02`); do not also hand-place them.
 - **obj_zone_entrance:** sprite any 16×16 (e.g. `spr_encounter_trigger_placeholder`). Events: Create, Step. No parent, not solid. See `game/objects/obj_zone_entrance/README.md`.
 
 ## 4. Tileset and Included Files (do this before the rooms)
@@ -69,13 +70,14 @@ Create each object in the table in `game/README.md` with the listed sprite, flag
 4. Room Creation Code: `scr_build_overworld();`
 5. **Camera:** enable Views, enable Viewport 0, camera / view size **320×180** (display the window at 2× to 640×360), or 256×240 for a closer FF1 feel. The build script also calls `scr_map_enable_camera(320, 180)` if no camera exists yet. `obj_game_controller` End Step follows the player and clamps to the room.
 6. Defeat respawn: `TOWN_RESPAWN_X/Y` are **2984, 2752** (Varyn House / `player_start`). The builder also drops `obj_respawn_point` there (facing down). Greyhaven has no encounter zone (safe).
+7. Spawn safety: Tomas and Pell are in the Blacksmith, and `item_mira_pendant` is at (186, 169) — two tiles north of `player_start` (186, 171) — so the 16×24 Kael mask does not start overlapping an `obj_solid`. `scr_player_unstick()` still runs on Create, after the map places the player, and on Room Start, and nudges to the nearest free pixel if a solid overlap remains.
 
 ## 6. rm_old_watchtower (960×720, 60×45 tiles)
 1. Create room `rm_old_watchtower`, size **960×720**. Leave Persistent off. Use the **same five Tile layers** and tileset `ts_zone1`, plus Instances at depth 0. Enable Viewport 0 the same way as the overworld (the build script will also enable a 320×180 camera if needed).
 2. Place **1 × `obj_player`**. Do **not** place a second `obj_game_controller` (the existing one is persistent). Do not hand-place markers; the script spawns them.
 3. Room Creation Code: `scr_build_old_watchtower();` (map data is embedded in that script; no Included Files needed).
 4. The south exit returns to `rm_overworld` at the `old_watchtower` entrance marker. The basement stairs (`rm_watchtower_basement`) and the Crownveil door are stubs (placeholder dialogue). The Blackguard boss uses `enemy_id = "blackguard"` (placeholder stats in `scr_enemy_database`).
-5. The guaranteed Ashbound Hunter fight (`enc_ashbound_hunter_wt`) is spawned by `scr_build_old_watchtower` as a `story_encounter` marker on walkable tile **(41, 24)**, immediately in front of `old_royal_banner` (41, 25). Do not also hand-place a second `obj_story_encounter` on that tile.
+5. The guaranteed Ashbound Hunter fight (`enc_ashbound_hunter_wt`) is spawned by `scr_build_old_watchtower` as a `story_encounter` marker on walkable tile **(41, 23)**, two tiles north of `old_royal_banner` (41, 25). The banner (and other interactables) is fitted to one 16×16 tile so a 32×32 placeholder cannot cover the trigger. Tile (41, 24) is walkable. Do not also hand-place a second `obj_story_encounter` on the trigger tile.
 
 ## 7. rm_battle_test (placeholder 640×360)
 1. Create room `rm_battle_test`. Leave Persistent off.
@@ -83,7 +85,7 @@ Create each object in the table in `game/README.md` with the listed sprite, flag
 3. Running this room alone (Room Order first) works for UI testing: it fights a Bandit, but returning needs `rm_overworld`.
 
 ## 8. Compile and run
-Run (F5). Expected: the overworld loads (watch the compile / first-room time; 120k tiles × 5 layers), Kael uses the 16×24 idle/walk sprites (or the placeholder if they are not imported) and is y-sorted with `depth = -y`, the camera follows him and stops at the room edges, he starts at Varyn House in Greyhaven, collision tiles block movement, tree tops on the Overhead layer (depth -10000) draw above him, walking a farmlands / Old Road / bandit-camp zone can start a random fight, signs and placeholder NPCs (Tomas, Renn) can be inspected, the Old Watchtower entrance goes to `rm_old_watchtower`, a Bandit or Fallen Knight battle plays idle/attack/hurt/death clips (or rectangles if those sprites are missing), victory returns to the exact overworld spot, and defeat wakes the party up at Greyhaven (2984, 2752) with the gold/XP penalty dialogue. Then run docs/TEST_PLAN.md, including the Sprites and Zone 1 map cases.
+Run (F5). Expected: the overworld loads (watch the compile / first-room time; 120k tiles × 5 layers), Kael uses the 16×24 idle/walk sprites (or the placeholder if they are not imported) and is y-sorted with `depth = -y`, the camera follows him and stops at the room edges, he starts at Varyn House in Greyhaven, collision tiles block movement, tree tops on the Overhead layer (depth -10000) draw above him, walking a farmlands / Old Road / bandit-camp zone can start a random fight, signs use the confirmed Chapter 1 wording, Tomas and Pell are in the Blacksmith (`GH_TOMAS`), Mira's pendant is two tiles north of the spawn (`GH_HOUSE_03`), the Fallen Knight story NPC can be met on the camp path, the Watchtower Hunter trigger at (41, 23) is walkable, Renn is still a placeholder, the Old Watchtower entrance goes to `rm_old_watchtower`, a Bandit or Fallen Knight battle plays idle/attack/hurt/death clips (or rectangles if those sprites are missing), victory returns to the exact overworld spot, and defeat wakes the party up at Greyhaven (2984, 2752) with the gold/XP penalty dialogue. Then run docs/TEST_PLAN.md, including the Sprites and Zone 1 map cases.
 
 If the Included Files are missing, the debug log will print `scr_build_overworld: missing overworld/chunks/...` and the ground will be empty. If `ts_zone1` is not a Tile Set asset, tile layers will be blank or the script will fail.
 
@@ -97,7 +99,7 @@ Rooms are safe until you opt in:
 
 ## 10. Old Watchtower Ashbound Hunter (`enc_ashbound_hunter_wt`)
 1. Create `obj_story_encounter` and `spr_story_encounter_placeholder` as in the tables above. Paste the Create, Room Start, and Step snippets. A 16×16 sprite matches the tile grid; a larger placeholder is scaled to one tile when spawned from the map.
-2. You do **not** have to place the instance by hand in `rm_old_watchtower`. `scr_build_old_watchtower` / `scr_map_spawn_markers` spawn one on walkable tile (41, 24), immediately in front of `old_royal_banner` (41, 25). Leave `encounter_id` as `enc_ashbound_hunter_wt`. Do not also hand-place a second trigger on that tile.
+2. You do **not** have to place the instance by hand in `rm_old_watchtower`. `scr_build_old_watchtower` / `scr_map_spawn_markers` spawn one on walkable tile (41, 23), two tiles north of `old_royal_banner` (41, 25). Leave `encounter_id` as `enc_ashbound_hunter_wt`. Do not also hand-place a second trigger on that tile.
 3. To test the rare random source, walk the Old Road, bandit-camp, or Watchtower encounter zones (`table_id` `zone01_old_road` / `zone01_bandit_camp` / `zone01_watchtower`; the older short ids still work). You can also set `allow_ashbound_rare = true` on a zone. In the debugger, `global.game.ashbound_rare_chance = 1` makes the next random fight in that zone the Hunter. Do not enable this on `zone01_farmlands` or the `zone01_path` fallback unless you are specifically testing the rare roll.
 
 ## 11. When the town room is built

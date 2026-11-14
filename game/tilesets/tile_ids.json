@@ -787,5 +787,27 @@
   [
    594
   ]
+ ],
+ "mk_story": 573,
+ "pallet": 574,
+ "mira_bed_rubble": 579,
+ "royal_banner": [
+  [
+   580
+  ],
+  [
+   596
+  ]
+ ],
+ "signpost_weathered": 581,
+ "carving_crown_sun": [
+  [
+   588,
+   589
+  ],
+  [
+   604,
+   605
+  ]
  ]
 }

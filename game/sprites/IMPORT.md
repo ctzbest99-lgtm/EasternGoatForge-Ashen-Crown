@@ -10,7 +10,7 @@ All battle strips face right. Overworld `left` frames are already mirrored; do *
 
 **Collision masks** are set in the Sprite Editor (Image → Collision Mask). Use a **manual rectangle**, **not** automatic per-frame, so wider attack and death strips cannot change the hitbox. The player code also pins `mask_index` to the idle-down sprite.
 
-The Zone 1 tileset / map under `/workspace/zone1/` is still being built and is **not** imported here.
+The Zone 1 tileset is `game/tilesets/ts_zone1.png` (see `game/tilesets/README.md`). Character sprites stay in this table; the Mira pendant icon is below.
 
 Source generators (`game/sprites/src/*.py`, Python + Pillow) are included because they are small. Run e.g. `python3 src/hero.py` from `game/sprites/` to regenerate a set. Do not import anything in `src/`.
 
@@ -152,3 +152,15 @@ Existing 32×32 / 32×48 placeholders still work (collision uses `bbox_*`), but 
 | `*/**_preview.png`, `*/**_walk_preview.gif` | Reference sheets and animated previews only |
 | `src/*.py` | Generators, not game assets |
 | Zone 1 `ts_zone1.png` / map CSVs | Still being built; not in this repo |
+
+---
+
+## Items
+
+Folder: `items/`. Preview PNGs are reference only; do not import them.
+
+| Asset name | File | Frames | Frame size | Origin | Mask (L,T,R,B) | FPS |
+|---|---|---|---|---|---|---|
+| `spr_item_mira_pendant` | `items/spr_item_mira_pendant.png` | 1 | (see image) | Top Left or centred on the tile | full image | 0 |
+
+Optional overworld icon for the pendant marker at Varyn House (186, 169). If it is not imported, the interactable placeholder is used. Key-item inventory still uses the `item_mira_pendant` id regardless.

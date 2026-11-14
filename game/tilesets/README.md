@@ -11,3 +11,6 @@
 2. Create a **Tile Set** named exactly `ts_zone1` from that sprite. Tile width and height 16, offset 0, separation 0.
 
 The overworld and Old Watchtower rooms both use this tileset. See `game/rooms/ROOM_SETUP.md`.
+
+## Added tiles (Design update 2026-11-14)
+`pallet`, `mira_bed_rubble`, `royal_banner`, `carving_crown_sun`, `signpost_weathered`, plus marker id `mk_story`. Re-import `ts_zone1.png` if an older tileset is already in the IDE.

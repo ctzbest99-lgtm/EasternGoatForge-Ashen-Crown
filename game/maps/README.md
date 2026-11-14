@@ -5,3 +5,5 @@
 - `renders/` — labelled overviews and minimaps for layout. The full 1× overworld render (6400×4800) is not in the repo (it is 2.6 MB and can be regenerated).
 
 Source generators are not committed (see Design's `/workspace/zone1/src/`).
+
+Updated 2026-11-14 with Design's Zone 1 dataset (Tomas/Pell in the Blacksmith, pendant at (186, 169), story NPCs, confirmed sign text, new tiles). The guaranteed Ashbound Hunter trigger is kept in `wt_markers.json` at (41, 23), which Design's drop did not include.

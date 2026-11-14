@@ -116,6 +116,65 @@ function scr_map_find_marker(_markers, _name) {
 
 /// Place an instance so the sprite's bottom-centre sits on the marker's feet point (x, y).
 /// Works for 16×16 (or 32×32) top-left placeholders and for a 16×24 / 32×48 bottom-centre origin.
+function scr_map_filter_known_enemy_table(_rows) {
+    var _out = [];
+    if (!is_array(_rows)) return _out;
+    for (var _i = 0; _i < array_length(_rows); _i++) {
+        var _row = _rows[_i];
+        if (is_struct(_row) && variable_struct_exists(_row, "enemy_id") && is_struct(scr_get_enemy_data(_row.enemy_id))) {
+            array_push(_out, _row);
+        }
+    }
+    return _out;
+}
+
+/// Scale an instance's sprite so it occupies one tile, then pin its feet to (_feet_x, _feet_y).
+/// Needed when a 32×32 (or larger) placeholder would otherwise cover neighbouring tiles
+/// (e.g. the royal banner covering the Ashbound Hunter trigger).
+function scr_map_fit_to_tile(_inst, _feet_x, _feet_y, _tw = 16, _th = 16) {
+    var _spr = _inst.sprite_index;
+    if (_spr == -1 || !sprite_exists(_spr)) return;
+    var _sw = sprite_get_width(_spr);
+    var _sh = sprite_get_height(_spr);
+    if (_sw <= 0 || _sh <= 0) return;
+    _inst.image_xscale = _tw / _sw;
+    _inst.image_yscale = _th / _sh;
+    var _ox = sprite_get_xoffset(_spr) * _inst.image_xscale;
+    var _oy = sprite_get_yoffset(_spr) * _inst.image_yscale;
+    _inst.x = _feet_x - (_tw * 0.5 - _ox);
+    _inst.y = _feet_y - (_th - _oy);
+}
+
+/// If the player is overlapping an obj_solid (or a child such as obj_interactable),
+/// nudge them to the nearest free pixel. Called after spawn and on room start so a
+/// marker sitting on player_start cannot soft-lock movement.
+function scr_player_unstick() {
+    if (!instance_exists(obj_player)) return false;
+    with (obj_player) {
+        if (!place_meeting(x, y, obj_solid)) return false;
+        var _ox = x;
+        var _oy = y;
+        var _max = 48;
+        for (var _r = 1; _r <= _max; _r++) {
+            for (var _dy = -_r; _dy <= _r; _dy++) {
+                for (var _dx = -_r; _dx <= _r; _dx++) {
+                    if (_dx != -_r && _dx != _r && _dy != -_r && _dy != _r) continue;
+                    var _nx = _ox + _dx;
+                    var _ny = _oy + _dy;
+                    if (_nx < 0 || _ny < 0 || _nx >= room_width || _ny >= room_height) continue;
+                    if (!place_meeting(_nx, _ny, obj_solid)) {
+                        x = _nx;
+                        y = _ny;
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    return false;
+}
+
 function scr_map_create_at_feet(_object, _layer, _feet_x, _feet_y) {
     var _spr = object_get_sprite(_object);
     var _ox = 0;
@@ -143,6 +202,7 @@ function scr_map_spawn_markers(_markers) {
     var _o_door = asset_get_index("obj_zone_entrance");
     var _o_resp = asset_get_index("obj_respawn_point");
     var _o_story = asset_get_index("obj_story_encounter");
+    var _o_snpc = asset_get_index("obj_story_npc");
     var _spawn = undefined;
     if (variable_global_exists("map_spawn_name") && is_string(global.map_spawn_name) && global.map_spawn_name != "") {
         _spawn = scr_map_find_marker(_markers, global.map_spawn_name);
@@ -170,6 +230,23 @@ function scr_map_spawn_markers(_markers) {
                     if (variable_struct_exists(_m, "script_id")) _st.script_id = _m.script_id;
                 }
                 break;
+            case "story_npc":
+                // Non-hostile talking character (Fallen Knight FK_01 / FK_02).
+                // Not solid. Skip if the object is not in the project yet, or if
+                // its story_flag is already set (the beat has played).
+                if (_o_snpc != -1) {
+                    if (variable_struct_exists(_m, "story_flag") && _m.story_flag != "" && scr_flag_get(_m.story_flag)) {
+                        break;
+                    }
+                    var _sn = scr_map_create_at_feet(_o_snpc, _lay, _m.x, _m.y);
+                    scr_map_fit_to_tile(_sn, _m.x, _m.y);
+                    if (variable_struct_exists(_m, "script_id")) _sn.script_id = _m.script_id;
+                    if (variable_struct_exists(_m, "story_flag")) _sn.story_flag = _m.story_flag;
+                    if (variable_struct_exists(_m, "npc_id")) _sn.npc_id = _m.npc_id;
+                    _sn.map_marker = _m;
+                    if (scr_flag_get(_sn.story_flag)) instance_destroy(_sn);
+                }
+                break;
             case "bandit_spawn": case "encounter": case "enemy_spawn": case "boss_spawn":
                 if (_o_trig != -1) {
                     var _eid = _m.enemy_id;
@@ -190,38 +267,65 @@ function scr_map_spawn_markers(_markers) {
                         _z.image_xscale = (_r[2] - _r[0]) / sprite_get_width(_z.sprite_index);
                         _z.image_yscale = (_r[3] - _r[1]) / sprite_get_height(_z.sprite_index);
                     }
-                    // Keep the existing table_id / enemy_table API. Prefer the marker's
-                    // table_id when scr_get_encounter_table knows it; otherwise the fallback
-                    // (usually zone01_path). Do not invent a second table system.
+                    // Prefer the marker's table_id when scr_get_encounter_table knows it.
+                    // Otherwise use fallback_table_id only if the marker opts in (Bandit
+                    // Camp and Watchtower). Do not silently fall back to zone01_path —
+                    // that table includes elite Fallen Knights, which Farmlands and the
+                    // Old Road must not roll.
                     var _tid = _m.table_id;
                     var _tbl = scr_get_encounter_table(_tid);
                     if (is_undefined(_tbl) && variable_struct_exists(_m, "fallback_table_id")) {
                         _tid = _m.fallback_table_id;
                         _tbl = scr_get_encounter_table(_tid);
                     }
-                    if (is_undefined(_tbl)) {
-                        _tid = "zone01_path";
-                        _tbl = scr_get_encounter_table("zone01_path");
+                    if (is_undefined(_tbl) && variable_struct_exists(_m, "enemy_table")) {
+                        _tbl = scr_map_filter_known_enemy_table(_m.enemy_table);
+                        if (array_length(_tbl) == 0) _tbl = undefined;
                     }
-                    _z.table_id = _tid;
-                    _z.enemy_table = _tbl;
+                    if (!is_undefined(_tbl)) {
+                        _z.table_id = _tid;
+                        _z.enemy_table = _tbl;
+                    }
                 }
                 break;
             case "sign": case "lore": case "npc": case "treasure": case "item": case "story": case "trap": case "location":
                 if (_o_int != -1) {
-                    var _s = scr_map_create_at_feet(_o_int, _lay, _m.x, _m.y);
-                    var _txt;
-                    if (variable_struct_exists(_m, "text") && is_string(_m.text) && _m.text != "") {
-                        _txt = _m.text;
-                    } else if (variable_struct_exists(_m, "loot")) {
-                        _txt = "[Placeholder chest: " + _m.name + ". Loot not granted yet.]";
-                    } else if (variable_struct_exists(_m, "note") && is_string(_m.note) && _m.note != "") {
-                        _txt = "[Placeholder: " + _m.note + "]";
-                    } else {
-                        _txt = "[Placeholder: " + _m.name + "]";
+                    // Skip already-collected unique items (Mira's pendant).
+                    if (_m.type == "item" && variable_struct_exists(_m, "story_flag") && _m.story_flag != "" && scr_flag_get(_m.story_flag)) {
+                        break;
                     }
-                    _s.dialogue_lines = [_txt];
+                    var _s = scr_map_create_at_feet(_o_int, _lay, _m.x, _m.y);
+                    // One-tile collision so a 32×32 placeholder cannot cover a neighbour
+                    // (the static-review banner / Hunter-trigger overlap).
+                    scr_map_fit_to_tile(_s, _m.x, _m.y);
+                    var _lines;
+                    if (variable_struct_exists(_m, "lines") && is_array(_m.lines) && array_length(_m.lines) > 0) {
+                        _lines = _m.lines;
+                    } else if (variable_struct_exists(_m, "text") && is_string(_m.text) && _m.text != "") {
+                        _lines = [_m.text];
+                    } else if (variable_struct_exists(_m, "loot")) {
+                        _lines = ["[Placeholder chest: " + _m.name + ". Loot not granted yet.]"];
+                    } else if (variable_struct_exists(_m, "note") && is_string(_m.note) && _m.note != "") {
+                        _lines = ["[Placeholder: " + _m.note + "]"];
+                    } else {
+                        _lines = ["[Placeholder: " + _m.name + "]"];
+                    }
+                    _s.dialogue_lines = _lines;
+                    if (variable_struct_exists(_m, "struck_lines") && is_array(_m.struck_lines)) {
+                        _s.struck_lines = _m.struck_lines;
+                    }
                     _s.speaker_name = (_m.type == "npc") ? _m.name : "";
+                    if (variable_struct_exists(_m, "script_id")) _s.script_id = _m.script_id;
+                    if (variable_struct_exists(_m, "story_flag")) _s.story_flag = _m.story_flag;
+                    if (variable_struct_exists(_m, "item_id")) _s.item_id = _m.item_id;
+                    if (variable_struct_exists(_m, "npc_id")) _s.npc_id = _m.npc_id;
+                    if (_m.type == "item" && variable_struct_exists(_m, "item_id")) {
+                        var _ispr = asset_get_index("spr_" + _m.item_id);
+                        if (_ispr != -1 && sprite_exists(_ispr)) {
+                            _s.sprite_index = _ispr;
+                            scr_map_fit_to_tile(_s, _m.x, _m.y);
+                        }
+                    }
                     _s.map_marker = _m;
                 }
                 break;
@@ -267,6 +371,7 @@ function scr_map_spawn_markers(_markers) {
                 else { facing_x = 0; facing_y = 1; }
             }
         }
+        scr_player_unstick();
     }
 }
 
