@@ -5,26 +5,28 @@ This folder is a complete, ready-to-open GameMaker project (`.yyp`), generated f
 ## How to open
 
 1. Open `AshenCrown.yyp` in GameMaker (IDE 2023.1 or newer; the project format is 2024.x).
-2. Press F5 (Run) to start in `rm_overworld`.
+2. Press F5 (Run). The game boots to `rm_title` (title screen → New Game → `rm_overworld`).
 
-No manual resource creation, sprite import, or event wiring is required — everything is already declared.
+No manual resource creation, sprite import, or event wiring is required.
 
 ## What is in it
 
-- **20 scripts** (`scripts/`) — pasted verbatim from `game/game/scripts/*.gml`.
-- **11 objects** (`objects/`) — pasted verbatim from `game/game/objects/<obj>/<Event>.gml`, with the documented event mapping: Create, Step, Begin/End Step (from `Begin_Step.gml` / `End_Step.gml`), Room Start (from `Room_Start.gml`), Draw GUI, and Clean Up.
-- **55 sprites** (`sprites/`) — every art strip in `game/sprites/` split into per-frame PNGs with the origins and collision boxes from `game/sprites/IMPORT.md` (Kael/bandit overworld feet boxes, battle bottom-center origins, 48×48 death frames, 64×48 Fallen Knight attack, and the 256×608 Zone 1 tileset as `spr_ts_zone1`). Seven flat-color placeholder sprites stand in for art that does not exist yet.
-- **1 tileset** — `ts_zone1` (16×16, 608 tiles), built on `spr_ts_zone1`.
-- **3 rooms** — `rm_overworld` (6400×4800), `rm_old_watchtower` (960×720), `rm_battle_test` (640×360), with Room Creation Code calling `scr_build_overworld()` / `scr_build_old_watchtower()`, the player and controllers placed, and the 320×180 camera view enabled.
-- **86 Included Files** (`datafiles/`) — byte-identical copies of `game/game/datafiles/` (the five 240,000-byte map `.bin` files, the Watchtower bins, and the 80 chunk CSVs). Loaded at runtime via the standard `working_directory` paths the scripts already use.
+- **34 scripts** — pasted verbatim from `game/scripts/*.gml` (battle system, skills, saves/shops, map builders, UI).
+- **20 objects** — pasted verbatim from `game/objects/<obj>/<Event>.gml`, with the documented event mapping (Create, Step, Begin/End Step, Room Start, Draw GUI, Clean Up).
+- **460 sprites** — every asset in the `game/sprites/IMPORT.md` import table, split into per-frame PNGs with the documented origins, collision masks, fps, and nine-slice settings (the UI windows use the real nine-slice data, not placeholders). Includes all Chapter 1 art: enemies, NPCs, portraits, items, chests, the full UI kit, sprite font, title screen (320 set), battle backgrounds, and the Act II enemy strips. Ten flat-color placeholder sprites stand in for art that does not exist yet.
+- **`ts_zone1` tileset** — 256×800 (800 tiles, 16×16), built on `spr_ts_zone1`.
+- **10 rooms** — `rm_title` (first in Room Order), `rm_overworld` (6400×4800, player at the Greyhaven south-road start), `rm_old_watchtower`, `rm_watchtower_basement`, the five Greyhaven interiors, and `rm_battle_test`. Every room has the five tile layers the map code expects (Ground/Decoration/Overhead/Collision/Markers at the exact depths in `scr_map_layer_defs`), an Instances layer, Room Creation Code calling the matching `scr_build_*()`, and the 320×180 camera view.
+- **86 Included Files** — byte-identical copies of `game/datafiles/` (the five map `.bin` layers, the chunk CSV fallbacks, and the README).
+- **Options** — "Interpolate colours between pixels" is unchecked on every platform, per the setup notes.
 
 ## Intentional stubs (not bugs)
 
-- The seven `*_placeholder` sprites are flat colors; swap them when real art lands.
-- Battle uses the test room `rm_battle_test`; the full battle UI is still unbuilt by design.
-- Zones 2+ do not exist yet; only Zone 1 content is included.
+- The ten `*_placeholder` sprites are flat colors; swap them when real art lands.
+- `spr_menu_embers_640_strip24` is intentionally not imported (it does not fit a default texture page; `obj_title` falls back to the 320 strip, as documented in IMPORT.md).
+- Future towns referenced in map marker data (`rm_saltreach`, `rm_valemere`, etc.) are string stubs — those rooms do not exist yet and the entrances are marked `status: "stub"`.
+- Act II enemy art is imported, but the Chapter 2 rooms and dialogue are not wired.
 - No audio has been authored, so no sound assets are referenced.
 
 ## Regenerating
 
-`gen_project.py` (repo root, not committed as part of the project) rebuilds this folder from `game/` at any time. The generator is deterministic in content but not in UUIDs — prefer editing resources in the IDE once you have opened the project.
+`gen_project.py` (in the workspace, not part of the repo) rebuilds this folder from `game/` at any time. The generator is deterministic in content but not in UUIDs — prefer editing resources in the IDE once you have opened the project.

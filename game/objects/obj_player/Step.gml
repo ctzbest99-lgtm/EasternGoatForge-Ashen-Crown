@@ -34,6 +34,12 @@ if (scr_input_confirm_pressed()) {
     var _probe_x = _cx + facing_x * ((bbox_right - bbox_left) * 0.5 + interact_reach);
     var _probe_y = _cy + facing_y * ((bbox_bottom - bbox_top) * 0.5 + interact_reach);
     var _target = collision_rectangle(_probe_x - 4, _probe_y - 4, _probe_x + 4, _probe_y + 4, obj_interactable, false, true);
+    if (_target == noone) {
+        var _o_snpc = asset_get_index("obj_story_npc");
+        if (_o_snpc != -1) {
+            _target = collision_rectangle(_probe_x - 4, _probe_y - 4, _probe_x + 4, _probe_y + 4, _o_snpc, false, true);
+        }
+    }
     if (_target != noone) _target.interact();
 }
 

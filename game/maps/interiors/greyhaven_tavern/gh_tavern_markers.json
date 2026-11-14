@@ -1,0 +1,52 @@
+[
+ {
+  "type": "player_spawn",
+  "name": "from_overworld",
+  "tile_x": 11,
+  "tile_y": 12,
+  "x": 184,
+  "y": 208,
+  "facing": "up",
+  "note": "Arrive here from overworld door marker door_rusted_boar_tavern."
+ },
+ {
+  "type": "zone_exit",
+  "name": "to_overworld",
+  "tile_x": 11,
+  "tile_y": 13,
+  "x": 184,
+  "y": 224,
+  "target_room": "rm_overworld",
+  "target_spawn": "door_rusted_boar_tavern",
+  "w": 2,
+  "h": 1
+ },
+ {
+  "type": "npc",
+  "name": "hob",
+  "tile_x": 12,
+  "tile_y": 5,
+  "x": 200,
+  "y": 96,
+  "npc_id": "hob",
+  "speaker": "Hob",
+  "script_id": "GH_TAVERN_01",
+  "script_chain": [
+   "GH_TAVERN_01",
+   "GH_TAVERN_02",
+   "GH_TAVERN_03",
+   "GH_TAVERN_04"
+  ],
+  "hostile": false,
+  "note": "Tavern keeper, at the end of the bar (still standing). Hid in the cellar (cellar_hatch tile behind the bar)."
+ },
+ {
+  "type": "location",
+  "name": "tavern_cellar_hatch",
+  "tile_x": 16,
+  "tile_y": 3,
+  "x": 264,
+  "y": 64,
+  "note": "Closed cellar hatch where Hob hid. Not enterable in Chapter 1."
+ }
+]

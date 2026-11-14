@@ -33,9 +33,27 @@ function scr_actor_apply_level_up(_actor) {
     _actor.level += 1;
     _actor.max_hp += _hp;
     if (_actor.hp > 0) _actor.hp = min(_actor.max_hp, _actor.hp + _hp);
+    if (!variable_struct_exists(_actor, "base_attack")) _actor.base_attack = _actor.attack;
+    if (!variable_struct_exists(_actor, "base_defense")) _actor.base_defense = _actor.defense;
+    _actor.base_attack += _atk;
+    _actor.base_defense += _def;
     _actor.attack += _atk;
     _actor.defense += _def;
-    return { name: _actor.name, level: _actor.level, hp: _hp, attack: _atk, defense: _def };
+    // Battle upgrade: PLACEHOLDER flat growth for MP / SPD / MDEF. KO'd members gain max MP only.
+    var _mp = LEVEL_UP_MP_GROWTH;
+    var _spd = LEVEL_UP_SPD_GROWTH;
+    var _mdef = LEVEL_UP_MDEF_GROWTH;
+    if (!variable_struct_exists(_actor, "max_mp")) { _actor.max_mp = 0; _actor.mp = 0; }
+    if (!variable_struct_exists(_actor, "base_spd")) _actor.base_spd = variable_struct_exists(_actor, "spd") ? _actor.spd : 8;
+    if (!variable_struct_exists(_actor, "base_mdef")) _actor.base_mdef = variable_struct_exists(_actor, "mdef") ? _actor.mdef : 0;
+    _actor.max_mp += _mp;
+    if (_actor.hp > 0) _actor.mp = min(_actor.max_mp, _actor.mp + _mp);
+    _actor.base_spd += _spd;
+    _actor.spd = _actor.base_spd;
+    _actor.base_mdef += _mdef;
+    _actor.mdef = _actor.base_mdef;
+    scr_actor_refresh_equipment(_actor);
+    return { name: _actor.name, level: _actor.level, hp: _hp, attack: _atk, defense: _def, mp: _mp, spd: _spd, mdef: _mdef };
 }
 
 /// Grant `_amount` XP to each actor in `_list` (including KO'd). Returns level-up structs.

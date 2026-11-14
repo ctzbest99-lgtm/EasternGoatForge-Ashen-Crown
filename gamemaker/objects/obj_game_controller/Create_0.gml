@@ -8,3 +8,4 @@ if (instance_number(obj_game_controller) > 1) {
 persistent = true;
 randomize();
 scr_game_state_init();
+scr_ui_init();

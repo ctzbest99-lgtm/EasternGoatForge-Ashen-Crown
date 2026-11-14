@@ -2,33 +2,150 @@
  {
   "type": "player_spawn",
   "name": "player_start",
-  "tile_x": 186,
-  "tile_y": 171,
-  "x": 2984,
-  "y": 2752,
-  "facing": "down",
-  "note": "Varyn House ruins, Greyhaven (opening)."
+  "tile_x": 199,
+  "tile_y": 186,
+  "x": 3192,
+  "y": 2992,
+  "facing": "up",
+  "script_id": "GH_ARRIVAL",
+  "story_flag": "flag_arrived_greyhaven",
+  "quest_start": "Q_MAIN_FIND_MIRA",
+  "note": "Opening (GH_ARRIVAL): the south road outside Greyhaven. Kael walks in alone."
  },
  {
-  "type": "item",
-  "name": "mira_pendant",
-  "tile_x": 185,
-  "tile_y": 171,
-  "x": 2968,
-  "y": 2752,
-  "item_id": "mira_wooden_pendant",
-  "permanent": true,
-  "story_flag": "found_pendant",
-  "note": "Mira's wooden pendant in the ruins of Varyn House (canon). Starts quest: Find Mira."
+  "type": "entrance",
+  "name": "door_varyn_house",
+  "tile_x": 184,
+  "tile_y": 169,
+  "x": 2952,
+  "y": 2720,
+  "target_room": "rm_greyhaven_varyn_house",
+  "target_spawn": "from_overworld",
+  "status": "built",
+  "area": "greyhaven",
+  "note": "Doorway into rm_greyhaven_varyn_house (interior, burnt). The interior exit returns here."
+ },
+ {
+  "type": "entrance",
+  "name": "door_rusted_boar_tavern",
+  "tile_x": 209,
+  "tile_y": 169,
+  "x": 3352,
+  "y": 2720,
+  "target_room": "rm_greyhaven_tavern",
+  "target_spawn": "from_overworld",
+  "status": "built",
+  "area": "greyhaven",
+  "note": "Doorway into rm_greyhaven_tavern (interior, burnt). The interior exit returns here."
+ },
+ {
+  "type": "entrance",
+  "name": "door_greyhaven_chapel",
+  "tile_x": 189,
+  "tile_y": 177,
+  "x": 3032,
+  "y": 2848,
+  "target_room": "rm_greyhaven_chapel",
+  "target_spawn": "from_overworld",
+  "status": "built",
+  "area": "greyhaven",
+  "note": "Doorway into rm_greyhaven_chapel (interior, burnt). The interior exit returns here."
+ },
+ {
+  "type": "entrance",
+  "name": "door_blacksmith",
+  "tile_x": 209,
+  "tile_y": 178,
+  "x": 3352,
+  "y": 2864,
+  "target_room": "rm_greyhaven_blacksmith",
+  "target_spawn": "from_overworld",
+  "status": "built",
+  "area": "greyhaven",
+  "note": "Doorway into rm_greyhaven_blacksmith (interior, burnt). The interior exit returns here."
+ },
+ {
+  "type": "entrance",
+  "name": "door_general_store",
+  "tile_x": 215,
+  "tile_y": 172,
+  "x": 3448,
+  "y": 2768,
+  "target_room": "rm_greyhaven_general_store",
+  "target_spawn": "from_overworld",
+  "status": "built",
+  "area": "greyhaven",
+  "note": "Doorway into rm_greyhaven_general_store (interior, burnt). The interior exit returns here."
  },
  {
   "type": "npc",
-  "name": "tomas_varyn",
-  "tile_x": 187,
-  "tile_y": 171,
-  "x": 3000,
-  "y": 2752,
-  "note": "Kael's dying father. Placement is a suggestion (Open in the story bible)."
+  "name": "old_wenna",
+  "tile_x": 197,
+  "tile_y": 177,
+  "x": 3160,
+  "y": 2848,
+  "npc_id": "old_wenna",
+  "speaker": "Old Wenna",
+  "script_id": "GH_SQUARE_01",
+  "script_chain": [
+   "GH_SQUARE_01"
+  ],
+  "hostile": false,
+  "area": "greyhaven",
+  "note": "Town Square survivor, by the well."
+ },
+ {
+  "type": "npc",
+  "name": "dov",
+  "tile_x": 201,
+  "tile_y": 177,
+  "x": 3224,
+  "y": 2848,
+  "npc_id": "dov",
+  "speaker": "Dov",
+  "script_id": "GH_SQUARE_02",
+  "script_chain": [
+   "GH_SQUARE_02",
+   "GH_SQUARE_03",
+   "GH_SQUARE_04"
+  ],
+  "hostile": false,
+  "area": "greyhaven",
+  "note": "A boy about Mira's age. Hints at the passage under the town (location stays open)."
+ },
+ {
+  "type": "npc",
+  "name": "corwin",
+  "tile_x": 197,
+  "tile_y": 166,
+  "x": 3160,
+  "y": 2672,
+  "npc_id": "corwin",
+  "speaker": "Corwin",
+  "script_id": "GH_GATE_01_A",
+  "script_after_flag": {
+   "flag_pendant_found": "GH_GATE_01_B"
+  },
+  "script_chain_b": [
+   "GH_GATE_01_B",
+   "GH_GATE_02_B",
+   "GH_GATE_03_B"
+  ],
+  "hostile": false,
+  "area": "greyhaven",
+  "note": "Militia watchman at the North Gate."
+ },
+ {
+  "type": "barrier",
+  "name": "north_gate_barrier",
+  "tile_x": 199,
+  "tile_y": 165,
+  "x": 3192,
+  "y": 2656,
+  "requires_flag": "flag_pendant_found",
+  "w": 1,
+  "h": 1,
+  "note": "North Gate stays shut until the pendant is found (GH_HOUSE_03 sets flag_pendant_found). Corwin explains (GH_GATE_01_A)."
  },
  {
   "type": "npc",
@@ -104,21 +221,64 @@
  },
  {
   "type": "sign",
-  "name": "sign_greyhaven",
+  "name": "sign_north_gate",
   "tile_x": 202,
   "tile_y": 167,
   "x": 3240,
   "y": 2688,
-  "text": "Greyhaven. North Gate to the Farmlands."
+  "sign_tile": "signpost",
+  "text": "North Gate. Keep it barred after dark.",
+  "lines": [
+   "North Gate. Keep it barred after dark."
+  ],
+  "struck_lines": []
  },
  {
   "type": "sign",
-  "name": "sign_bridge",
+  "name": "sign_hunters_camp",
+  "tile_x": 227,
+  "tile_y": 164,
+  "x": 3640,
+  "y": 2640,
+  "sign_tile": "signpost",
+  "text": "Hunter's Camp. Wolves thick this season \u2014 ask for Renn.",
+  "lines": [
+   "Hunter's Camp. Wolves thick this season \u2014 ask for Renn."
+  ],
+  "struck_lines": []
+ },
+ {
+  "type": "sign",
+  "name": "sign_old_road",
   "tile_x": 202,
   "tile_y": 159,
   "x": 3240,
   "y": 2560,
-  "text": "Old Road. The Watchtower lies north through the woods."
+  "sign_tile": "signpost_weathered",
+  "text": "Old Road. Travel in daylight. Crown Patrol",
+  "lines": [
+   "Old Road. Travel in daylight. Crown Patrol"
+  ],
+  "struck_lines": [],
+  "weathered": true
+ },
+ {
+  "type": "sign",
+  "name": "sign_bandit_camp",
+  "tile_x": 178,
+  "tile_y": 139,
+  "x": 2856,
+  "y": 2240,
+  "sign_tile": "signpost",
+  "text": "Turn back. This is our road now.",
+  "lines": [
+   "Turn back.",
+   "This is our road now."
+  ],
+  "struck_lines": [
+   1
+  ],
+  "note": "Line index 1 is crossed out (struck through) on the sign."
  },
  {
   "type": "sign",
@@ -127,7 +287,12 @@
   "tile_y": 131,
   "x": 3240,
   "y": 2112,
-  "text": "Old Watchtower. Royal property. Keep out."
+  "sign_tile": "signpost",
+  "text": "Old Watchtower. Property of the Crown. Closed by order.",
+  "lines": [
+   "Old Watchtower. Property of the Crown. Closed by order."
+  ],
+  "struck_lines": []
  },
  {
   "type": "encounter",
@@ -139,6 +304,8 @@
   "enemy_id": "bandit",
   "encounter_id": "zone01_first_bandit",
   "guaranteed": true,
+  "hostile": true,
+  "script_id": "FL_TUTORIAL",
   "note": "First guaranteed Bandit encounter (combat tutorial)."
  },
  {
@@ -151,7 +318,8 @@
   "enemy_id": "bandit",
   "encounter_id": "zone01_bandit_farm_road",
   "group_size": 2,
-  "patrol_radius_tiles": 4
+  "patrol_radius_tiles": 4,
+  "hostile": true
  },
  {
   "type": "bandit_spawn",
@@ -163,7 +331,8 @@
   "enemy_id": "bandit",
   "encounter_id": "zone01_bandit_bridge",
   "group_size": 2,
-  "patrol_radius_tiles": 4
+  "patrol_radius_tiles": 4,
+  "hostile": true
  },
  {
   "type": "bandit_spawn",
@@ -175,7 +344,8 @@
   "enemy_id": "bandit",
   "encounter_id": "zone01_bandit_old_road_1",
   "group_size": 2,
-  "patrol_radius_tiles": 5
+  "patrol_radius_tiles": 5,
+  "hostile": true
  },
  {
   "type": "bandit_spawn",
@@ -187,7 +357,8 @@
   "enemy_id": "bandit",
   "encounter_id": "zone01_bandit_old_road_2",
   "group_size": 3,
-  "patrol_radius_tiles": 4
+  "patrol_radius_tiles": 4,
+  "hostile": true
  },
  {
   "type": "bandit_spawn",
@@ -199,7 +370,8 @@
   "enemy_id": "bandit",
   "encounter_id": "zone01_bandit_camp_1",
   "group_size": 3,
-  "patrol_radius_tiles": 3
+  "patrol_radius_tiles": 3,
+  "hostile": true
  },
  {
   "type": "bandit_spawn",
@@ -211,7 +383,35 @@
   "enemy_id": "bandit",
   "encounter_id": "zone01_bandit_camp_2",
   "group_size": 2,
-  "patrol_radius_tiles": 3
+  "patrol_radius_tiles": 3,
+  "hostile": true
+ },
+ {
+  "type": "story_npc",
+  "name": "fallen_knight_story_1",
+  "tile_x": 173,
+  "tile_y": 136,
+  "x": 2776,
+  "y": 2192,
+  "npc_id": "fallen_knight_story",
+  "script_id": "FK_01",
+  "story_flag": "flag_fk_seen_1",
+  "hostile": false,
+  "note": "Unnamed Fallen Knight (never fights). Stands motionless at the Abandoned Bandit Camp's north exit, says FK_01, then walks into the trees toward the Watchtower. Not the hostile fallen_knight enemy."
+ },
+ {
+  "type": "enemy_spawn",
+  "name": "fallen_knight_elite_camp",
+  "tile_x": 176,
+  "tile_y": 144,
+  "x": 2824,
+  "y": 2320,
+  "enemy_id": "fallen_knight",
+  "encounter_id": "zone01_bandit_camp_fallen_knight",
+  "group_size": 1,
+  "hostile": true,
+  "elite": true,
+  "note": "Elite Fallen Knight (hostile). Belongs at the Bandit Camp and the Watchtower only."
  },
  {
   "type": "treasure",
@@ -323,15 +523,15 @@
  },
  {
   "type": "entrance",
-  "name": "frostwilds_settlement",
+  "name": "rimehold",
   "tile_x": 121,
   "tile_y": 28,
   "x": 1944,
   "y": 464,
-  "target_room": "rm_frostwilds_settlement",
+  "target_room": "rm_rimehold",
   "region": "Frostwilds",
   "status": "stub",
-  "note": "Snow-covered settlement (name Open)."
+  "note": "Rimehold, snow-covered settlement of the Frostwilds."
  },
  {
   "type": "entrance",
@@ -343,19 +543,19 @@
   "target_room": "rm_frozen_ruins",
   "region": "Frostwilds",
   "status": "stub",
-  "note": "Frozen ruins of the ancient northern civilization."
+  "note": "Frozen ruins of the ancient northern civilization (civilization unnamed)."
  },
  {
   "type": "entrance",
-  "name": "drowned_coast_village",
+  "name": "saltreach",
   "tile_x": 200,
   "tile_y": 243,
   "x": 3208,
   "y": 3904,
-  "target_room": "rm_coast_village",
+  "target_room": "rm_saltreach",
   "region": "Drowned Coast",
   "status": "stub",
-  "note": "Coastal village (name Open)."
+  "note": "Saltreach, coastal village of the Drowned Coast."
  },
  {
   "type": "entrance",
@@ -383,15 +583,15 @@
  },
  {
   "type": "entrance",
-  "name": "drowned_coast_pier",
+  "name": "saltreach_pier",
   "tile_x": 200,
   "tile_y": 276,
   "x": 3208,
   "y": 4432,
-  "target_room": "rm_coast_pier",
+  "target_room": "rm_saltreach_pier",
   "region": "Drowned Coast",
   "status": "stub",
-  "note": "Harbour pier (boat travel hook)."
+  "note": "Saltreach's harbour pier (boat travel hook)."
  },
  {
   "type": "entrance",
@@ -601,7 +801,16 @@
   "x": 2440,
   "y": 2416,
   "table_id": "zone01_farmlands",
-  "fallback_table_id": "zone01_path",
+  "enemy_table": [
+   {
+    "enemy_id": "bandit",
+    "weight": 3
+   },
+   {
+    "enemy_id": "ash_wolf",
+    "weight": 2
+   }
+  ],
   "rect_px": [
    2432,
    2400,
@@ -609,7 +818,8 @@
    2640
   ],
   "enemies": "Bandits, Ash Wolves",
-  "levels": "1-2"
+  "levels": "1-2",
+  "elite_fallen_knights": false
  },
  {
   "type": "encounter_zone",
@@ -619,7 +829,16 @@
   "x": 2440,
   "y": 2656,
   "table_id": "zone01_farmlands",
-  "fallback_table_id": "zone01_path",
+  "enemy_table": [
+   {
+    "enemy_id": "bandit",
+    "weight": 3
+   },
+   {
+    "enemy_id": "ash_wolf",
+    "weight": 2
+   }
+  ],
   "rect_px": [
    2432,
    2640,
@@ -627,7 +846,8 @@
    2960
   ],
   "enemies": "Bandits, Ash Wolves",
-  "levels": "1-2"
+  "levels": "1-2",
+  "elite_fallen_knights": false
  },
  {
   "type": "encounter_zone",
@@ -637,7 +857,16 @@
   "x": 3560,
   "y": 2656,
   "table_id": "zone01_farmlands",
-  "fallback_table_id": "zone01_path",
+  "enemy_table": [
+   {
+    "enemy_id": "bandit",
+    "weight": 3
+   },
+   {
+    "enemy_id": "ash_wolf",
+    "weight": 2
+   }
+  ],
   "rect_px": [
    3552,
    2640,
@@ -645,7 +874,8 @@
    2960
   ],
   "enemies": "Bandits, Ash Wolves",
-  "levels": "1-2"
+  "levels": "1-2",
+  "elite_fallen_knights": false
  },
  {
   "type": "encounter_zone",
@@ -655,7 +885,25 @@
   "x": 2440,
   "y": 1808,
   "table_id": "zone01_old_road",
-  "fallback_table_id": "zone01_path",
+  "enemy_table": [
+   {
+    "enemy_id": "bandit",
+    "weight": 3
+   },
+   {
+    "enemy_id": "ash_wolf",
+    "weight": 2
+   },
+   {
+    "enemy_id": "ashen_wretch",
+    "weight": 2
+   },
+   {
+    "enemy_id": "ashbound_hunter",
+    "weight": 0,
+    "rare_pct": 4
+   }
+  ],
   "rect_px": [
    2432,
    1792,
@@ -663,7 +911,8 @@
    2400
   ],
   "enemies": "Bandits, Ash Wolves, Ashen Wretches, rare Ashbound Hunter",
-  "levels": "2-3"
+  "levels": "2-3",
+  "elite_fallen_knights": false
  },
  {
   "type": "encounter_zone",
@@ -673,7 +922,26 @@
   "x": 2632,
   "y": 2160,
   "table_id": "zone01_bandit_camp",
-  "fallback_table_id": "zone01_path",
+  "enemy_table": [
+   {
+    "enemy_id": "bandit",
+    "weight": 3
+   },
+   {
+    "enemy_id": "fallen_knight",
+    "weight": 1,
+    "elite": true
+   },
+   {
+    "enemy_id": "ashen_wretch",
+    "weight": 2
+   },
+   {
+    "enemy_id": "ashbound_hunter",
+    "weight": 0,
+    "rare_pct": 4
+   }
+  ],
   "rect_px": [
    2624,
    2144,
@@ -681,6 +949,8 @@
    2368
   ],
   "enemies": "Bandits, Fallen Knights, Ashen Wretches, rare Ashbound Hunter",
-  "levels": "3-4"
+  "levels": "3-4",
+  "elite_fallen_knights": true,
+  "fallback_table_id": "zone01_path"
  }
 ]

@@ -29,30 +29,151 @@
   "x": 328,
   "y": 464,
   "target_room": "rm_watchtower_basement",
-  "status": "stub",
-  "note": "Stair down to the Watchtower Basement (Architect carvings). Room not built yet."
+  "target_spawn": "from_watchtower",
+  "status": "built",
+  "note": "Stair down to the Watchtower Basement (Architect carvings), inside the collapsed tower. Room built: rm_watchtower_basement (44x32)."
  },
  {
-  "type": "location",
+  "type": "entrance",
+  "name": "from_basement",
+  "tile_x": 22,
+  "tile_y": 17,
+  "x": 360,
+  "y": 288,
+  "target_room": "rm_watchtower_basement",
+  "target_spawn": "from_upper_level",
+  "status": "built",
+  "note": "Open hatch on the upper terrace. Arrival point from the Basement stairs (the Basement exit sets flag_wt_upper_unlocked); stepping back on it goes down again."
+ },
+ {
+  "type": "story_npc",
+  "name": "fallen_knight_story_2",
+  "tile_x": 20,
+  "tile_y": 29,
+  "x": 328,
+  "y": 480,
+  "npc_id": "fallen_knight_story",
+  "script_id": "FK_02",
+  "story_flag": "flag_fk_seen_2",
+  "hostile": false,
+  "note": "Unnamed Fallen Knight (never fights). Waits at the top of the stairs down to the Basement, says FK_02, then descends and is gone. Not the hostile fallen_knight enemy."
+ },
+ {
+  "type": "barrier",
   "name": "locked_terrace_stairs",
-  "tile_x": 29,
+  "tile_x": 28,
   "tile_y": 21,
-  "x": 472,
+  "x": 456,
   "y": 352,
-  "requires": "watchtower_basement_cleared",
-  "note": "Block these stairs (obj_solid or a locked door) until the Basement is done; route is Watchtower -> Basement -> Blackguard."
+  "requires_flag": "flag_wt_upper_unlocked",
+  "w": 4,
+  "h": 1,
+  "note": "Blocks the terrace stairs from below until the player has come up through the Basement (route: Watchtower -> Basement -> Blackguard). Spawns obj_solid while flag_wt_upper_unlocked is unset."
  },
  {
-  "type": "story_encounter",
+  "type": "barrier",
+  "name": "arena_gate",
+  "tile_x": 29,
+  "tile_y": 13,
+  "x": 472,
+  "y": 224,
+  "requires_item": "item_watchtower_key",
+  "w": 2,
+  "h": 1,
+  "script_id": "WT_DOOR_LOCKED",
+  "lines": [
+   "Locked. The keyhole is crusted with rust."
+  ],
+  "struck_lines": [],
+  "note": "Blackguard Arena gate. Opens with the Watchtower Key (chest in the Basement spider nest)."
+ },
+ {
+  "type": "story",
+  "name": "blackguard_arena_enter",
+  "tile_x": 29,
+  "tile_y": 12,
+  "x": 472,
+  "y": 208,
+  "trigger": "on_enter_once",
+  "script_id": "BG_INTRO",
+  "story_flag": "flag_bg_intro_seen",
+  "quest_advance": "Q_FM_S9",
+  "rect_px": [
+   448,
+   192,
+   512,
+   208
+  ],
+  "note": "Entering the arena completes Q_FM_S8 and plays BG_INTRO, then starts the boss battle (boss_spawn blackguard)."
+ },
+ {
+  "type": "encounter",
   "name": "enc_ashbound_hunter_wt",
-  "tile_x": 41,
-  "tile_y": 24,
-  "x": 664,
-  "y": 400,
-  "encounter_id": "enc_ashbound_hunter_wt",
+  "tile_x": 33,
+  "tile_y": 33,
+  "x": 536,
+  "y": 544,
   "enemy_id": "ashbound_hunter",
-  "script_id": "ENC_ASHBOUND_HUNTER",
-  "note": "Guaranteed first Ashbound Hunter fight, on the walkable tile immediately in front of old_royal_banner (41, 25)."
+  "fallback_enemy_id": "bandit",
+  "encounter_id": "enc_ashbound_hunter_wt",
+  "guaranteed": true,
+  "once": true,
+  "hostile": true,
+  "script_id": "ENC_AH_01",
+  "script_chain": [
+   "ENC_AH_01",
+   "ENC_AH_02"
+  ],
+  "after_victory_chain": [
+   "ENC_AH_03",
+   "ENC_AH_04",
+   "ENC_AH_05"
+  ],
+  "skip_after_if_flag": "flag_parchment_found",
+  "drop_item": "item_ashbound_parchment",
+  "note": "Guaranteed first Ashbound Hunter fight, before the banner room, so the parchment can not be missed. fallback_enemy_id is used until ashbound_hunter is in scr_get_enemy_data."
+ },
+ {
+  "type": "lore",
+  "name": "wt_note_1",
+  "tile_x": 39,
+  "tile_y": 29,
+  "x": 632,
+  "y": 480,
+  "script_id": "WT_NOTE_01",
+  "speaker": "Faded Note",
+  "lines": [
+   "Third week without relief. They say the post's being closed. Nobody says why."
+  ],
+  "struck_lines": []
+ },
+ {
+  "type": "lore",
+  "name": "wt_note_2",
+  "tile_x": 17,
+  "tile_y": 31,
+  "x": 280,
+  "y": 512,
+  "script_id": "WT_NOTE_02",
+  "speaker": "Faded Note",
+  "lines": [
+   "Scratching under the floor again last night. Rats, says the sergeant. Big rats."
+  ],
+  "struck_lines": []
+ },
+ {
+  "type": "lore",
+  "name": "wt_wall_symbol",
+  "tile_x": 43,
+  "tile_y": 27,
+  "x": 696,
+  "y": 448,
+  "script_id": "WT_SYMBOL_01",
+  "symbol": "crown_ringing_black_sun",
+  "lines": [
+   "Carvings older than the tower itself. The stone around them is too smooth."
+  ],
+  "struck_lines": []
  },
  {
   "type": "lore",
@@ -61,19 +182,22 @@
   "tile_y": 25,
   "x": 664,
   "y": 416,
-  "note": "Old royal banner bearing the same symbol as Kael's pendant (symbol design is still Open)."
+  "script_id": "WT_BANNER",
+  "story_flag": "flag_banner_clue",
+  "symbol": "crown_ringing_black_sun",
+  "note": "Old royal banner (royal_banner tile) bearing the pendant's symbol: a crown ringing a black sun."
  },
  {
   "type": "treasure",
-  "name": "watchtower_chest_key",
+  "name": "watchtower_chest_1",
   "tile_x": 46,
   "tile_y": 23,
   "x": 744,
   "y": 384,
   "loot": [
-   "Watchtower Key"
+   "placeholder"
   ],
-  "note": "Key for locked doors."
+  "note": "Was watchtower_chest_key; the Watchtower Key now lies in the Basement."
  },
  {
   "type": "treasure",
@@ -104,7 +228,13 @@
   "tile_y": 30,
   "x": 488,
   "y": 496,
-  "note": "Trap placeholder."
+  "script_id": "WT_TRAP_01",
+  "lines": [
+   "A pressure plate clicks underfoot\u2014"
+  ],
+  "struck_lines": [],
+  "damage_pct": 10,
+  "note": "Hidden pressure plate (no tile drawn)."
  },
  {
   "type": "trap",
@@ -113,7 +243,13 @@
   "tile_y": 37,
   "x": 600,
   "y": 608,
-  "note": "Trap placeholder."
+  "script_id": "WT_TRAP_01",
+  "lines": [
+   "A pressure plate clicks underfoot\u2014"
+  ],
+  "struck_lines": [],
+  "damage_pct": 10,
+  "note": "Hidden pressure plate (no tile drawn)."
  },
  {
   "type": "enemy_spawn",
@@ -124,7 +260,10 @@
   "y": 544,
   "enemy_id": "fallen_knight",
   "encounter_id": "zone01_watchtower_fallen_knight_1",
-  "group_size": 1
+  "group_size": 1,
+  "hostile": true,
+  "elite": true,
+  "note": "Elite Fallen Knight (hostile)."
  },
  {
   "type": "enemy_spawn",
@@ -135,7 +274,10 @@
   "y": 592,
   "enemy_id": "fallen_knight",
   "encounter_id": "zone01_watchtower_fallen_knight_2",
-  "group_size": 1
+  "group_size": 1,
+  "hostile": true,
+  "elite": true,
+  "note": "Elite Fallen Knight (hostile)."
  },
  {
   "type": "enemy_spawn",
@@ -146,7 +288,10 @@
   "y": 288,
   "enemy_id": "fallen_knight",
   "encounter_id": "zone01_watchtower_fallen_knight_terrace",
-  "group_size": 1
+  "group_size": 1,
+  "hostile": true,
+  "elite": true,
+  "note": "Elite Fallen Knight (hostile)."
  },
  {
   "type": "boss_spawn",
@@ -159,7 +304,15 @@
   "fallback_enemy_id": "fallen_knight",
   "encounter_id": "zone01_boss_blackguard",
   "facing": "down",
-  "note": "Zone 1 boss. Intro/defeat dialogue in the story bible."
+  "script_id": "BG_INTRO",
+  "defeat_script_id": "BG_DEFEAT",
+  "rewards": [
+   "250 XP",
+   "100 Gold",
+   "Blackguard's Longsword",
+   "Crownveil Fragment"
+  ],
+  "note": "Zone 1 boss (450 HP, weak to Holy, 3 phases). BG_INTRO plays via blackguard_arena_enter; BG_DEFEAT after the battle."
  },
  {
   "type": "story",
@@ -169,7 +322,9 @@
   "x": 472,
   "y": 48,
   "requires": "blackguard_defeated",
-  "note": "Sealed stone door; the pendant reacts. Chapter 1 ends here."
+  "script_id": "CV_END",
+  "symbol": "crown_ringing_black_sun",
+  "note": "Sealed stone door carved with a crown ringing a black sun; the pendant reacts. Chapter 1 ends here."
  },
  {
   "type": "encounter_zone",
@@ -180,6 +335,26 @@
   "y": 240,
   "table_id": "zone01_watchtower",
   "fallback_table_id": "zone01_path",
+  "elite_fallen_knights": true,
+  "enemy_table": [
+   {
+    "enemy_id": "fallen_knight",
+    "weight": 2,
+    "elite": true
+   },
+   {
+    "enemy_id": "grave_spider",
+    "weight": 2
+   },
+   {
+    "enemy_id": "hollow_soldier",
+    "weight": 2
+   },
+   {
+    "enemy_id": "ashbound_hunter",
+    "weight": 1
+   }
+  ],
   "rect_px": [
    128,
    352,
@@ -196,6 +371,11 @@
   "tile_y": 40,
   "x": 536,
   "y": 656,
-  "text": "By order of the Crown: no entry."
+  "sign_tile": "signpost",
+  "text": "Old Watchtower. Property of the Crown. Closed by order.",
+  "lines": [
+   "Old Watchtower. Property of the Crown. Closed by order."
+  ],
+  "struck_lines": []
  }
 ]

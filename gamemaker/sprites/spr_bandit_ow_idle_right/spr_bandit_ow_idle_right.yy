@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"24d36139-5941-4452-b1b2-12e7ed86004e",
-      "name":"24d36139-5941-4452-b1b2-12e7ed86004e",
+      "%Name":"029299b2-f6c2-448b-9ba2-ca19f2df16d7",
+      "name":"029299b2-f6c2-448b-9ba2-ca19f2df16d7",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"6659592a-cd4e-48bc-90d8-f3e9c7bc06b9",
+      "%Name":"fabb84aa-2f11-476c-a538-0c25dd299cbb",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"6659592a-cd4e-48bc-90d8-f3e9c7bc06b9",
+      "name":"fabb84aa-2f11-476c-a538-0c25dd299cbb",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -76,7 +76,7 @@
     },
     "name":"spr_bandit_ow_idle_right",
     "playback":1,
-    "playbackSpeed":8.0,
+    "playbackSpeed":0.0,
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"24d36139-5941-4452-b1b2-12e7ed86004e",
+                    "name":"029299b2-f6c2-448b-9ba2-ca19f2df16d7",
                     "path":"sprites/spr_bandit_ow_idle_right/spr_bandit_ow_idle_right.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"991d9266-9d8a-47a6-917d-325bea86c824",
+              "id":"f375130c-cdac-4e38-87ae-1b1e38c4e115",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
