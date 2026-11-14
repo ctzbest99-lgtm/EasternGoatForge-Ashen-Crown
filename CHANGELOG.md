@@ -2,11 +2,21 @@
 
 ## 2026-11-14 — Old Watchtower Ashbound Hunter scripted encounter
 - Added a story-flag system (`global.game.flags`, `scr_flag_get` / `scr_flag_set`) and key-item helpers (`scr_inventory_add` / `scr_inventory_has`).
-- Added the Ashbound Hunter to `scr_enemy_database` (placeholder stats: 42 HP, 9 ATK, 5 DEF, 20 XP, 12 gold; Ice weakness stored for the bestiary, not used in combat).
+- Added the Ashbound Hunter to `scr_enemy_database` (placeholder stats: 42 HP, 9 ATK, 5 DEF, 20 XP, 12 gold; Ice weakness stored for the bestiary, not used in combat). The Zone 1 **Blackguard** entry is kept as well (one of each).
 - Guaranteed Watchtower fight (`enc_ashbound_hunter_wt` via `obj_story_encounter`): pre-fight `ENC_AH_01`–`02`, battle, then on first victory set `flag_parchment_found`, add `item_ashbound_parchment`, and play `ENC_AH_03`–`05`. If the flag is already set, the fight still happens once and the pickup is skipped.
-- Rare random Hunter (default 4% of random fights) in areas that opt in (`allow_ashbound_rare` or table ids `old_road` / `bandit_camp` / `watchtower`). Same pre/post lines; a rare victory does not consume the Watchtower trigger.
+- The map builder spawns that trigger on walkable tile (41, 24) in `rm_old_watchtower`, immediately in front of `old_royal_banner` (41, 25). Do not also hand-place a second instance on the same tile.
+- Rare random Hunter (default 4% of random fights) in areas that opt in (`allow_ashbound_rare`, or table ids `zone01_old_road` / `zone01_bandit_camp` / `zone01_watchtower`, plus the older short ids `old_road` / `bandit_camp` / `watchtower`). Same pre/post lines; a rare victory does not consume the Watchtower trigger.
 - Dialogue nodes are keyed by the script's IDs in `scr_dialogue_data` and played through `scr_dialogue_play` / `scr_dialogue_open`.
 - Assumptions (open questions): a defeat does not consume the guaranteed trigger; the fight grants regular XP/gold; rare rate and Hunter stats are placeholders pending tuning.
+
+## 2026-11-14 — Zone 1 overworld and Old Watchtower maps
+- Added the 400×300-tile overworld (`rm_overworld`, 6400×4800) and 60×45 Old Watchtower (`rm_old_watchtower`, 960×720) at 16×16. Tileset `game/tilesets/ts_zone1.png` (256×608); layer data in Included Files `game/datafiles/overworld/*.bin` with 100×75 CSV chunk fallback. Watchtower layers are embedded in `scr_build_old_watchtower`.
+- Five Tile layers: Ground, Decoration, Overhead (depth -10000, so it stays above a player using `depth = -y`), Collision (hooks into the existing `obj_player` Collision-layer check), Markers.
+- `scr_map_spawn_markers` uses the existing `obj_encounter_trigger`, `obj_encounter_zone` (`table_id` / `enemy_table` API unchanged), and `obj_interactable`. New `obj_zone_entrance` handles room links; stub rooms show a placeholder line.
+- Town respawn is Greyhaven `player_start` (2984, 2752, facing down). The builder also spawns `obj_respawn_point` there. `CAMERA_FOLLOW_PLAYER` plus `scr_map_enable_camera(320, 180)` make the large map playable.
+- Encounter tables `zone01_farmlands`, `zone01_old_road`, `zone01_bandit_camp`, `zone01_watchtower` added beside the existing `zone01_path` fallback. Missing Design enemies (Ash Wolves, Ashen Wretches, Grave Spiders, Hollow Soldiers, Ashbound Hunter) are omitted for now. Placeholder **Blackguard** entry added to `scr_enemy_database` (80/12/8, 50 XP, 30 gold, pending approval) so the arena fight does not fall back to Fallen Knight.
+- Placeholder list (story bible still Open): Frostwilds settlement and coastal village names; pendant / Crownveil symbol (banner and door); Tomas Varyn placement and scene; sign text; several chest loots; Watchtower basement, locked terrace stairs, and Crownveil door.
+- Documented in `game/rooms/ROOM_SETUP.md` sections 4–6, `game/tilesets/README.md`, `game/datafiles/README.md`; test plan Z1–Z10; decisions updated. Source generators and the 2.6 MB full 1× overworld render are not in the repo. Not compiled or playtested in GameMaker yet.
 
 ## 2026-11-14 — Party and progression (roadmap step 4)
 - Each party member has `level` and `xp`. Shared gold is unchanged. Placeholder XP curve: `20*(L-1)^2 + 10*(L-1)` (L2=30, L3=100, cap 20). Level-up growth: +4 HP, +1 ATK, +1 DEF. All pending owner approval.

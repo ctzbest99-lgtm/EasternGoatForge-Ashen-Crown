@@ -1,10 +1,9 @@
 /// obj_story_encounter : Create
 /// Default: the guaranteed first Ashbound Hunter fight in the Old Watchtower
-/// (`enc_ashbound_hunter_wt`, CHAPTER1_SCRIPT.md §4.1 / §6). Place on a set tile
-/// before the banner room. Do NOT parent this to obj_solid.
-///
-/// Design picks the exact tile. Until rm_watchtower exists, a copy can be placed
-/// in rm_overworld for testing.
+/// (`enc_ashbound_hunter_wt`, CHAPTER1_SCRIPT.md §4.1 / §6). Do NOT parent this
+/// to obj_solid. scr_build_old_watchtower already spawns one instance on
+/// walkable tile (41, 24), immediately in front of old_royal_banner (41, 25).
+/// Do not also hand-place a second trigger on that tile.
 encounter_id = "enc_ashbound_hunter_wt";
 enemy_id = "ashbound_hunter";
 script_id = "ENC_ASHBOUND_HUNTER";

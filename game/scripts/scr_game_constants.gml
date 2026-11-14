@@ -6,17 +6,16 @@
 #macro BATTLE_ROOM rm_battle_test
 
 // Town wake-up after defeat (owner decision 2026-11-14).
-// There is no town room yet, so this defaults to the overworld test room.
-// When the town room is built:
+// No separate town room yet. Respawn is Greyhaven, at the Varyn House
+// player_start marker (tile 186, 171 → 2984, 2752, facing down).
+// scr_build_overworld also spawns obj_respawn_point there, which overrides
+// these constants if present. When a real town room is built:
 //   1. Change TOWN_RESPAWN_ROOM to that room's asset name (e.g. rm_town).
-//   2. Place one obj_respawn_point in open space (inn, shrine, etc.). Its x/y
-//      (and optional facing_x / facing_y in Instance Creation Code) override
-//      TOWN_RESPAWN_X / TOWN_RESPAWN_Y. The room must also contain obj_player.
-//   3. If you prefer not to use a marker, set TOWN_RESPAWN_X / TOWN_RESPAWN_Y
-//      to a known open position in the town room instead.
+//   2. Place one obj_respawn_point in open space (inn, shrine, etc.).
+//   3. Or set TOWN_RESPAWN_X / TOWN_RESPAWN_Y to a known open position.
 #macro TOWN_RESPAWN_ROOM rm_overworld
-#macro TOWN_RESPAWN_X 320
-#macro TOWN_RESPAWN_Y 180
+#macro TOWN_RESPAWN_X 2984
+#macro TOWN_RESPAWN_Y 2752
 
 // Show encounter trigger placeholders in-game while prototyping. Set to false to hide them.
 #macro DEBUG_SHOW_TRIGGERS true
@@ -64,6 +63,10 @@
 #macro LEVEL_UP_DEFENSE_GROWTH 1
 // Debug only: add a second placeholder ally so multi-member battle can be tested. Not canon.
 #macro DEBUG_ADD_PLACEHOLDER_ALLY false
+
+// Optional camera: if Viewport 0 is enabled (or created by scr_map_enable_camera),
+// the controller follows obj_player. Recommended view is 320×180, displayed at 2×.
+#macro CAMERA_FOLLOW_PLAYER true
 
 // Explicit battle states. The battle controller is only ever in exactly one of these.
 enum BATTLE_STATE {

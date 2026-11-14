@@ -55,8 +55,10 @@ function scr_story_try_pending_post_dialogue() {
 }
 
 /// True when this area can roll the rare Ashbound Hunter (Old Road, Bandit Camp,
-/// Watchtower). A zone's allow_ashbound_rare flag, or table ids old_road /
-/// bandit_camp / watchtower, opt in. zone01_path does not.
+/// Watchtower). A zone's allow_ashbound_rare flag, or the Zone 1 table ids
+/// zone01_old_road / zone01_bandit_camp / zone01_watchtower (and the older
+/// short ids old_road / bandit_camp / watchtower), opt in. zone01_path and
+/// zone01_farmlands do not.
 function scr_area_allows_ashbound_rare() {
     if (!instance_exists(obj_player)) return false;
     var _zone = noone;
@@ -65,6 +67,7 @@ function scr_area_allows_ashbound_rare() {
         if (variable_instance_exists(_zone, "allow_ashbound_rare") && _zone.allow_ashbound_rare) return true;
         if (variable_instance_exists(_zone, "table_id")) {
             var _tid = _zone.table_id;
+            if (_tid == "zone01_old_road" || _tid == "zone01_bandit_camp" || _tid == "zone01_watchtower") return true;
             if (_tid == "old_road" || _tid == "bandit_camp" || _tid == "watchtower") return true;
         }
     }

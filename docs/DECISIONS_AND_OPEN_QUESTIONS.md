@@ -11,7 +11,7 @@
 - Planned menu: equipment, party order, items, save/load, status, Bestiary.
 
 ## Owner-decided (2026-11-14)
-- Defeat: when the party loses a battle, they wake up back in town with HP fully restored. Until a town room exists, the respawn target is `TOWN_RESPAWN_ROOM` (currently `rm_overworld`), at `obj_respawn_point` if one is placed, otherwise at `TOWN_RESPAWN_X` / `TOWN_RESPAWN_Y`. A short placeholder wake-up dialogue is shown through the existing dialogue box and reports the gold and XP lost.
+- Defeat: when the party loses a battle, they wake up back in town with HP fully restored. Until a town room exists, the respawn target is `TOWN_RESPAWN_ROOM` (currently `rm_overworld`), at `obj_respawn_point` if one is placed (the overworld builder drops one at Greyhaven `player_start`), otherwise at `TOWN_RESPAWN_X` / `TOWN_RESPAWN_Y` (2984, 2752). A short placeholder wake-up dialogue is shown through the existing dialogue box and reports the gold and XP lost.
 - Defeat penalty: lose `DEFEAT_GOLD_LOSS_PCT` of current shared gold (floored) and `DEFEAT_XP_LOSS_PCT` of each member's XP progress toward the next level (`floor((xp - scr_xp_for_level(level)) * 0.1)`), never causing a level-down or a negative total. Defaults are 50% gold and 10% of progress; exact percentages are pending tuning.
 - Random encounters: classic JRPG walking encounters using a randomized steps-until-encounter counter (distance-based). Steps count only while the player is actually moving and input is not locked, after a grace period following battle or room entry. Per-area tables (an `obj_encounter_zone` and/or a room table in `scr_encounter_tables`) pick a weighted enemy from `scr_enemy_database`. Towns and other rooms with no table are safe. `obj_encounter_trigger` remains for fixed boss/story fights. Encounter rates are pending tuning (defaults: 32 pixels per step, 8–24 steps between fights, 5 grace steps).
 - Ashbound parchment (Chapter 1, approved 2026-11-14): the first Ashbound Hunter fight in the Old Watchtower is a guaranteed scripted encounter (`enc_ashbound_hunter_wt`), so the parchment cannot be missed. The rare 3–5% random Hunter stays on the Old Road, Bandit Camp, and Watchtower. If the parchment was already obtained from a rare fight (`flag_parchment_found`), the guaranteed fight still happens but the pickup and post-fight lines (`ENC_AH_03`–`05`) are skipped.
@@ -27,6 +27,26 @@ These were chosen so roadmap step 4 could be built. None is a locked design deci
 - On level-up: +4 max HP, +1 ATK, +1 DEF (placeholder). Living members also gain the HP increment as current HP; KO'd members stay at 0 HP.
 - Victory XP is granted to every current party member (including KO'd). Each member who crosses a threshold shows a level-up message after the victory line.
 - Equipment slots (`weapon`, `armor`, `accessory`) and `global.game.inventory` exist as empty placeholders; menus, items, and equipment bonuses are roadmap step 5.
+
+
+## Prototype assumptions (Zone 1 overworld; pending owner approval)
+These were chosen so Design's map could be wired into the existing prototype. None is a locked design decision.
+- `rm_overworld` is the 400×300-tile Eldara hub (6400×4800 px) including Zone 1 "The Ashen Road" and Greyhaven. `rm_old_watchtower` is 60×45 tiles (960×720). Tile size is 16×16. The old 640×360 test layout is retired.
+- Camera view 320×180, optionally displayed at 2× (640×360 window). `CAMERA_FOLLOW_PLAYER` is on. Overhead tiles use depth -10000 so they stay above a player that y-sorts with `depth = -y` (see also PR #6).
+- Greyhaven is safe (no encounter zone, no room-wide table). Other areas use the existing `obj_encounter_zone` API with tables `zone01_farmlands`, `zone01_old_road`, `zone01_bandit_camp`, `zone01_watchtower`, falling back to `zone01_path`.
+- Blackguard placeholder stats: 80 HP, 12 ATK, 8 DEF, 50 XP, 30 gold. Not balanced.
+- Entrances to rooms that are not built yet (`rm_valemere`, `rm_frostwilds_settlement`, `rm_coast_village`, `rm_watchtower_basement`, `rm_ashlands_breach`, and others) only show a placeholder dialogue line.
+- Items, story flags, and Tomas / pendant / Crownveil scenes are not implemented; inspecting those markers shows placeholder text. The locked terrace stairs are a blocking `obj_interactable` until a flag system exists (`watchtower_basement_cleared` is named but not enforced in code).
+- The guaranteed Ashbound Hunter fight (`enc_ashbound_hunter_wt`) is spawned in `rm_old_watchtower` on walkable tile (41, 24), immediately in front of `old_royal_banner` (41, 25). Rare Hunter rolls are allowed on `zone01_old_road`, `zone01_bandit_camp`, and `zone01_watchtower` (short ids `old_road` / `bandit_camp` / `watchtower` still work).
+
+### Placeholders still waiting on Kevin (story bible Open, or not implemented)
+- Names of the Frostwilds settlement and the Drowned Coast village.
+- The pendant / Crownveil symbol (banner and sealed door; no symbol is drawn).
+- Where the Tomas Varyn scene happens (his NPC marker beside Varyn House is only a suggestion) and the Fallen Knight story beat.
+- Sign text (`sign_greyhaven`, `sign_bridge`, `sign_watchtower`, `sign_grounds`).
+- Several chest loots (`hidden_grove_chest`, `watchtower_chest_2`, `watchtower_chest_3`).
+- What lies past the Crownveil breach.
+- Stats for Blackguard and for missing bestiary entries (Ash Wolves, Ashen Wretches, Grave Spiders, Hollow Soldiers, Ashbound Hunter).
 
 ## Prototype assumptions (exploration + battle prototype; pending owner approval)
 These were chosen so roadmap steps 2–3 could be built. None is a locked design decision.

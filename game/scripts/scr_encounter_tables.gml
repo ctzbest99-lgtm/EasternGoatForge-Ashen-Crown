@@ -8,19 +8,40 @@ function scr_get_encounter_table(_table_id) {
     switch (_table_id) {
         case "zone01_path":
             // 3:1 Bandit to Fallen Knight. Placeholder weights, not approved rates.
+            // Used as the fallback for any Zone 1 area whose named table is missing.
             return [
                 { enemy_id: "bandit", weight: 3 },
                 { enemy_id: "fallen_knight", weight: 1 }
+            ];
+        case "zone01_farmlands":
+            // Design: Bandits, Ash Wolves, Lv 1–2. Ash Wolves are not in the
+            // database yet, so this is Bandits only until that entry exists.
+            return [
+                { enemy_id: "bandit", weight: 1 }
             ];
         // Old Road / Bandit Camp / Watchtower: these table ids also opt the area
         // into the rare Ashbound Hunter roll (see scr_area_allows_ashbound_rare).
         // Other Chapter 1 enemies are not in the database yet, so these are
         // placeholders using Bandit / Fallen Knight plus the separate rare roll.
+        case "zone01_old_road":
         case "old_road":
-        case "bandit_camp":
-        case "watchtower":
+            // Design: Bandits, Ash Wolves, Ashen Wretches, rare Ashbound Hunter, Lv 2–3.
             return [
                 { enemy_id: "bandit", weight: 3 },
+                { enemy_id: "fallen_knight", weight: 1 }
+            ];
+        case "zone01_bandit_camp":
+        case "bandit_camp":
+            // Design: Bandits, Fallen Knights, Ashen Wretches, rare Ashbound Hunter, Lv 3–4.
+            return [
+                { enemy_id: "bandit", weight: 2 },
+                { enemy_id: "fallen_knight", weight: 2 }
+            ];
+        case "zone01_watchtower":
+        case "watchtower":
+            // Design: Fallen Knights, Grave Spiders, Hollow Soldiers, Ashbound Hunter, Lv 4–7.
+            // Missing enemies omitted. Greyhaven itself has no zone (safe).
+            return [
                 { enemy_id: "fallen_knight", weight: 1 }
             ];
     }
@@ -32,7 +53,8 @@ function scr_get_encounter_table(_table_id) {
 /// Example when a dedicated wild room exists:
 ///     if (_room == rm_wilds) return scr_get_encounter_table("zone01_path");
 function scr_get_room_encounter_table(_room) {
-    // rm_overworld is also the temporary town respawn, so it has no room-wide table.
-    // Place an obj_encounter_zone over the wild path instead.
+    // rm_overworld has no room-wide table: Greyhaven must stay safe. Encounter
+    // areas are obj_encounter_zone instances spawned from the map markers.
+    // rm_old_watchtower is the same (its grounds use the zone01_watchtower zone).
     return undefined;
 }

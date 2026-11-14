@@ -9,6 +9,11 @@ function scr_get_enemy_data(_enemy_id) {
             // Recommended level 3–5 (CHAPTER1_SCRIPT.md §4.1). Placeholder stats
             // a step above Fallen Knight. Weakness is for the bestiary later, not combat.
             return { id: "ashbound_hunter", name: "Ashbound Hunter", max_hp: 42, attack: 9, defense: 5, xp_reward: 20, gold_reward: 12, weakness: "ice" };
+        case "blackguard":
+            // Zone 1 boss (Old Watchtower arena). Placeholder stats, pending owner approval
+            // and art. Stronger than Fallen Knight; not balanced. The map marker also lists
+            // fallback_enemy_id "fallen_knight" if this entry is removed.
+            return { id: "blackguard", name: "Blackguard", max_hp: 80, attack: 12, defense: 8, xp_reward: 50, gold_reward: 30 };
     }
     return undefined;
 }

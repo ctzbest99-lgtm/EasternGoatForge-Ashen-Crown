@@ -12,3 +12,9 @@ Stats, descriptions, drops, and difficulty values are placeholders until playtes
 Small outdoor route with grass, road, blocking terrain, a ruined landmark, and one sign/NPC. A rare encounter and boss are planned, but final names, art, lore, and mechanics are not approved.
 
 Never start a second battle while one is active. Preserve the overworld return position and clear encounter locks on every exit.
+
+## Current map (2026-11-14)
+
+The playable overworld is now `rm_overworld` at 400×300 tiles (6400×4800 px, 16×16), with Greyhaven (safe) and The Ashen Road at the centre of a larger Eldara hub. The Old Watchtower is `rm_old_watchtower` (60×45 tiles). Import and layer setup are in `game/rooms/ROOM_SETUP.md`. Labelled overviews live in `game/maps/renders/`.
+
+Standard enemies on the map are still Bandit and Fallen Knight. The arena boss is a placeholder **Blackguard**. The guaranteed Ashbound Hunter fight is spawned in `rm_old_watchtower` on tile (41, 24), in front of `old_royal_banner`. Rare Hunter rolls can occur on the Old Road, bandit-camp, and Watchtower zones. Other named encounters from the design (Ash Wolves, Ashen Wretches, Grave Spiders, Hollow Soldiers) are not in the enemy database yet.

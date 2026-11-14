@@ -9,6 +9,8 @@ Snippets are prototypes, not verified production code. Compile in the selected G
 ## File layout
 - `game/scripts/<name>.gml` → one **Script** asset named `<name>`; paste the whole file in.
 - `game/objects/<obj>/<Event>.gml` → object `<obj>`, event `<Event>` (see the event table below).
+- `game/tilesets/ts_zone1.png` → Sprite `spr_ts_zone1`, then Tile Set `ts_zone1` (see `game/tilesets/README.md`).
+- `game/datafiles/overworld/` → Included Files (see `game/datafiles/README.md`).
 
 ## Resources (roadmap steps 2–3: exploration + battle prototype)
 
@@ -24,16 +26,20 @@ Snippets are prototypes, not verified production code. Compile in the selected G
 | `scr_inventory` | `scr_inventory_has` / `scr_inventory_add` (key items unique) |
 | `scr_story` | Ashbound Hunter pre/post-fight flow (`scr_ashbound_hunter_start`) |
 | `scr_encounter` | `scr_encounter_start()`, `scr_battle_finish()`, `scr_apply_defeat_penalty()`, `scr_apply_town_respawn()`, `scr_town_wake_up_dialogue()`, `scr_random_encounter_tick()` (overworld ↔ battle hand-off and walking encounters) |
-| `scr_encounter_tables` | Named / per-room random encounter tables (`zone01_path`, `old_road`, `bandit_camp`, `watchtower`) |
+| `scr_encounter_tables` | Named / per-room random encounter tables (`zone01_path`, `zone01_farmlands`, `zone01_old_road`, `zone01_bandit_camp`, `zone01_watchtower`, plus short-id aliases `old_road` / `bandit_camp` / `watchtower`) |
 | `scr_battle_actors` | Actor structs (level, xp, equipment stubs), party of up to four, party helpers |
 | `scr_progression` | XP curve (`scr_xp_for_level`), `scr_party_grant_xp()`, level-up growth |
 | `scr_battle_math` | Damage, HP clamp, Guard reduction (existing file, `scr_apply_guard` added) |
-| `scr_enemy_database` | Bandit, Fallen Knight, Ashbound Hunter (placeholder stats) |
+| `scr_enemy_database` | Bandit, Fallen Knight, Ashbound Hunter, and placeholder **Blackguard** (Zone 1 boss; stats pending) |
+| `scr_map_tilemaps` | Tile layer setup, `.bin`/CSV loaders, collision hook, marker spawner, camera helpers |
+| `scr_build_overworld` | `scr_build_overworld()`, `scr_overworld_load_chunk()` — fills `rm_overworld` from Included Files |
+| `scr_build_old_watchtower` | `scr_build_old_watchtower()` plus embedded 60×45 layer data |
+| `scr_map_markers_data` | `scr_overworld_markers()`, `scr_old_watchtower_markers()` |
 
 ### Objects
 | Object | Sprite | Flags | Events (file → IDE event) |
 |---|---|---|---|
-| `obj_game_controller` | none | **Persistent** ✔, Visible off | `Create.gml` → Create; `Begin_Step.gml` → Step ▸ Begin Step; `Room_Start.gml` → Other ▸ Room Start |
+| `obj_game_controller` | none | **Persistent** ✔, Visible off | `Create.gml` → Create; `Begin_Step.gml` → Step ▸ Begin Step; `End_Step.gml` → Step ▸ End Step; `Room_Start.gml` → Other ▸ Room Start |
 | `obj_player` | `spr_player_placeholder` | — | `Create.gml` → Create; `Step.gml` → Step ▸ Step |
 | `obj_solid` | `spr_solid_placeholder` | — | none (see `obj_solid/README.md`) |
 | `obj_interactable` | `spr_interactable_placeholder` | **Parent: `obj_solid`** | `Create.gml` → Create |
@@ -43,11 +49,13 @@ Snippets are prototypes, not verified production code. Compile in the selected G
 | `obj_respawn_point` | optional `spr_respawn_point_placeholder` | — | `Create.gml` → Create (see `obj_respawn_point/README.md`) |
 | `obj_encounter_zone` | `spr_encounter_zone_placeholder` | No parent (must **not** be `obj_solid`) | `Create.gml` → Create (see `obj_encounter_zone/README.md`) |
 | `obj_story_encounter` | `spr_story_encounter_placeholder` | No parent (must **not** be `obj_solid`) | `Create.gml` → Create; `Room_Start.gml` → Other ▸ Room Start; `Step.gml` → Step (see `obj_story_encounter/README.md`) |
+| `obj_zone_entrance` | 16×16 placeholder (e.g. `spr_encounter_trigger_placeholder`) | No parent (must **not** be `obj_solid`) | `Create.gml` → Create; `Step.gml` → Step ▸ Step (see `obj_zone_entrance/README.md`) |
 
 `obj_dialogue_box` and `obj_battle_controller` draw only in Draw GUI. Adding a Draw GUI event does not disable default sprite drawing, but neither object has a sprite, so nothing else is drawn.
 
 ### Rooms
-- `rm_overworld` (must be **first** in the Room Order) — see `game/rooms/ROOM_SETUP.md`.
+- `rm_overworld` (must be **first** in the Room Order) — 6400×4800 Zone 1 overworld; see `game/rooms/ROOM_SETUP.md`.
+- `rm_old_watchtower` — 960×720 Watchtower grounds and Blackguard arena.
 - `rm_battle_test` — dedicated battle room.
 
 ## How the pieces fit
