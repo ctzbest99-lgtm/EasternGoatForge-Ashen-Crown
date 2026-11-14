@@ -100,18 +100,61 @@ if (mode == "options" || mode == "saves") {
     draw_rectangle(0, 0, _gw, _gh, false);
     draw_set_alpha(1);
     var _panel = (mode == "options") ? spr_panel_options : spr_panel_saves;
+    // Prefer upcoming Design menu art, then the title save panel already wired in #9.
+    if (mode == "saves") {
+        var _alt = scr_menu_sprite_window(hires ? "save_hires" : "save");
+        if (scr_sprite_is_valid(_alt)) _panel = _alt;
+    }
+    var _px, _py, _pw, _ph;
     if (scr_sprite_is_valid(_panel)) {
-        var _pw = sprite_get_width(_panel);
-        var _ph = sprite_get_height(_panel);
-        draw_sprite(_panel, 0, (_gw - _pw) * 0.5, (_gh - _ph) * 0.5);
+        _pw = sprite_get_width(_panel);
+        _ph = sprite_get_height(_panel);
+        _px = (_gw - _pw) * 0.5;
+        _py = (_gh - _ph) * 0.5;
+        draw_sprite(_panel, 0, _px, _py);
     } else {
-        var _pw = (mode == "options") ? 200 * _s : 220 * _s;
-        var _ph = (mode == "options") ? 118 * _s : 132 * _s;
-        scr_ui_window((_gw - _pw) * 0.5, (_gh - _ph) * 0.5, _pw, _ph, "gold");
-        var _title = (mode == "options") ? "Options  (placeholder)" : "No save file";
+        _pw = (mode == "options") ? 200 * _s : 220 * _s;
+        _ph = (mode == "options") ? 118 * _s : 148 * _s;
+        _px = (_gw - _pw) * 0.5;
+        _py = (_gh - _ph) * 0.5;
+        scr_menu_draw_window(_px, _py, _pw, _ph, (mode == "saves") ? "save" : "gold");
+    }
+    if (mode == "options") {
         draw_set_halign(fa_center);
-        scr_ui_text(_gw * 0.5, (_gh - _ph) * 0.5 + 16, _title, c_white);
+        scr_ui_text(_gw * 0.5, _py + 16, "Options  (placeholder)", c_white);
         draw_set_halign(fa_left);
+    } else {
+        draw_set_halign(fa_left);
+        scr_ui_text(_px + 12 * _s, _py + 8 * _s, "Continue", MENU_GOLD_COL);
+        var _row0 = _py + 24 * _s;
+        var _rh = 32 * _s;
+        for (var _si = 0; _si < SAVE_SLOT_COUNT; _si++) {
+            var _info = (array_length(slots) > _si) ? slots[_si] : { exists: false, ok: false, empty: true, corrupt: false, location_name: "", lead_level: 1, playtime_seconds: 0, gold: 0 };
+            var _ry = _row0 + _si * _rh;
+            var _sel = (_si == save_index);
+            if (_sel) {
+                scr_menu_draw_select_bar(_px + 8 * _s, _ry - 1, _pw - 16 * _s, _rh - 2);
+                scr_menu_draw_cursor(_px + 16 * _s, _ry + 8 * _s);
+            }
+            var _col = _sel ? MENU_GOLD_COL : c_white;
+            var _label = "Slot " + string(_si + 1);
+            if (_info.empty) {
+                scr_ui_text(_px + 28 * _s, _ry, _label, _col);
+                scr_ui_text(_px + 28 * _s, _ry + 12 * _s, "Empty", MENU_DIM_COL);
+            } else if (_info.corrupt || !_info.ok) {
+                scr_ui_text(_px + 28 * _s, _ry, _label, _col);
+                scr_ui_text(_px + 28 * _s, _ry + 12 * _s, "Damaged save", make_color_rgb(200, 80, 80));
+            } else {
+                scr_ui_text(_px + 28 * _s, _ry, _label + "   Lv " + string(_info.lead_level), _col);
+                var _meta = string(_info.location_name) + "   " + scr_menu_format_playtime(_info.playtime_seconds) + "   " + string(_info.gold) + "g";
+                scr_ui_text(_px + 28 * _s, _ry + 12 * _s, _meta, MENU_DIM_COL);
+            }
+        }
+        if (save_message != "") {
+            scr_ui_text(_px + 12 * _s, _py + _ph - 16 * _s, save_message, MENU_GOLD_COL);
+        } else {
+            scr_ui_text(_px + 12 * _s, _py + _ph - 16 * _s, "[Z] Load   [X] Back", MENU_DIM_COL);
+        }
     }
 }
 

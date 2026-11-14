@@ -200,8 +200,11 @@ function scr_dialogue_play_script(_script_id, _source = noone) {
                     _npc = _source.npc_id;
                 }
                 if (_npc == "pell") {
-                    if (scr_flag_get("flag_pendant_found")) scr_dialogue_play(["GH_SMITH_01_B"]);
-                    else scr_dialogue_play(["GH_TOMAS_R2"]);
+                    if (scr_flag_get("flag_pendant_found")) {
+                        scr_dialogue_play(["GH_SMITH_01_B"], function() {
+                            scr_shop_open("shop_greyhaven_forge");
+                        });
+                    } else scr_dialogue_play(["GH_TOMAS_R2"]);
                 } else {
                     scr_dialogue_play(["GH_TOMAS_R1"]);
                 }
@@ -237,8 +240,9 @@ function scr_dialogue_play_script(_script_id, _source = noone) {
             return true;
         case "GH_STORE":
         case "GH_STORE_01":
-            // Talk-only: a buy UI is not implemented (open item).
-            scr_dialogue_play(["GH_STORE_01", "GH_STORE_02", "GH_STORE_03"]);
+            scr_dialogue_play(["GH_STORE_01", "GH_STORE_02", "GH_STORE_03"], function() {
+                scr_shop_open("shop_greyhaven_store");
+            });
             return true;
         case "GH_SQUARE_01":
             scr_dialogue_play(["GH_SQUARE_01"]);
@@ -340,6 +344,7 @@ function scr_dialogue_play_script(_script_id, _source = noone) {
             }
             scr_dialogue_play(["CV_END_01", "CV_END_02", "CV_END_03", "CV_END_04", "CV_END_05", "CV_END_06"], function() {
                 scr_flag_set("flag_chapter1_complete");
+                scr_save_menu_open("save", true);
             });
             return true;
     }

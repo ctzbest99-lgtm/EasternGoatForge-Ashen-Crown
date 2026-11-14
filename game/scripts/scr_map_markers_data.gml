@@ -141,6 +141,7 @@ function scr_greyhaven_tavern_markers() {
         { type: "player_spawn", name: "from_overworld", tile_x: 11, tile_y: 12, x: 184, y: 208, facing: "up", note: "Arrive here from overworld door marker door_rusted_boar_tavern." },
         { type: "zone_exit", name: "to_overworld", tile_x: 11, tile_y: 13, x: 184, y: 224, target_room: "rm_overworld", target_spawn: "door_rusted_boar_tavern", w: 2, h: 1 },
         { type: "npc", name: "hob", tile_x: 12, tile_y: 5, x: 200, y: 96, npc_id: "hob", speaker: "Hob", script_id: "GH_TAVERN_01", script_chain: ["GH_TAVERN_01", "GH_TAVERN_02", "GH_TAVERN_03", "GH_TAVERN_04"], hostile: false, note: "Tavern keeper, at the end of the bar (still standing). Hid in the cellar (cellar_hatch tile behind the bar)." },
+        { type: "save_point", name: "tavern_save", tile_x: 10, tile_y: 6, x: 168, y: 112, note: "OPEN: save-point location in the tavern is not a locked design decision. Temporary tile west of the bar aisle." },
         { type: "location", name: "tavern_cellar_hatch", tile_x: 16, tile_y: 3, x: 264, y: 64, note: "Closed cellar hatch where Hob hid. Not enterable in Chapter 1." }
     ];
 }
@@ -151,7 +152,8 @@ function scr_greyhaven_chapel_markers() {
     return [
         { type: "player_spawn", name: "from_overworld", tile_x: 9, tile_y: 15, x: 152, y: 256, facing: "up", note: "Arrive here from overworld door marker door_greyhaven_chapel." },
         { type: "zone_exit", name: "to_overworld", tile_x: 9, tile_y: 16, x: 152, y: 272, target_room: "rm_overworld", target_spawn: "door_greyhaven_chapel", w: 2, h: 1 },
-        { type: "npc", name: "sister_ilse", tile_x: 8, tile_y: 6, x: 136, y: 112, npc_id: "sister_ilse", speaker: "Sister Ilse", script_id: "GH_CHAPEL_01", script_chain: ["GH_CHAPEL_01", "GH_CHAPEL_02", "GH_CHAPEL_03"], hostile: false, note: "Chapel keeper, before the altar. Her faith/order is unnamed (open), so the chapel shows no faith symbol." }
+        { type: "npc", name: "sister_ilse", tile_x: 8, tile_y: 6, x: 136, y: 112, npc_id: "sister_ilse", speaker: "Sister Ilse", script_id: "GH_CHAPEL_01", script_chain: ["GH_CHAPEL_01", "GH_CHAPEL_02", "GH_CHAPEL_03"], hostile: false, note: "Chapel keeper, before the altar. Her faith/order is unnamed (open), so the chapel shows no faith symbol." },
+        { type: "save_point", name: "chapel_save", tile_x: 10, tile_y: 7, x: 168, y: 128, note: "OPEN: save-point location in the chapel is not a locked design decision. Temporary tile south-east of Sister Ilse, off the centre aisle." }
     ];
 }
 

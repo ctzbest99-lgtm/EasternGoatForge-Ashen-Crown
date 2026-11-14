@@ -627,3 +627,13 @@ Nine-slice **must** be turned on for `spr_ui_window`, `spr_ui_window_dim`, and `
 | `spr_ui_window_dim` | `ui/spr_ui_window_dim.png` | 1 | 24×24 | (0, 0) | full image | 0 |
 | `spr_ui_window_gold` | `ui/spr_ui_window_gold.png` | 1 | 24×24 | (0, 0) | full image | 0 |
 
+## Future menu art (`/workspace/sprites/ui/menus/`)
+
+Design is preparing dedicated shop, save/load, and inventory panels. When those PNGs land, import them with these reserved asset names (origins and nine-slice TBD with the drop):
+
+- `spr_menu_shop_window`, `spr_ui_menu_shop`
+- `spr_menu_inventory_window`, `spr_ui_menu_inventory`
+- `spr_menu_save_window`, `spr_ui_menu_saves` (and `_640` if a hires panel is provided)
+- `spr_menu_save_point` (or `spr_save_point`) for the world shrine
+
+Code looks these up with `scr_sprite_index` / `asset_get_index` and already falls back to `spr_ui_window*`, `spr_menu_panel_saves_*`, and `spr_ui_cursor_strip2`. Layout numbers are in `scr_menu_layout.gml` — retune that file to match the new panels; do not scatter magic numbers in the menu objects.

@@ -21,6 +21,15 @@
 // Show encounter trigger placeholders in-game while prototyping. Set to false to hide them.
 #macro DEBUG_SHOW_TRIGGERS true
 
+// Versioned JSON saves (save1.sav–save3.sav). DEBUG_SAVE_ANYWHERE (F5) is off by default.
+#macro SAVE_SCHEMA_VERSION 1
+#macro SAVE_SLOT_COUNT 3
+#macro DEBUG_SAVE_ANYWHERE false
+
+// Shop sell rate and item effects. All PLACEHOLDER (no prices in the story docs).
+#macro SHOP_SELL_RATE 0.5
+#macro ITEM_MINOR_POTION_HEAL 15
+
 // Guard multiplies incoming damage by this value (minimum 1 damage still applies).
 #macro GUARD_DAMAGE_MULTIPLIER 0.5
 

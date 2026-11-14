@@ -31,10 +31,13 @@ logo_y = 22 * layout_scale;
 logo_y_target = 22 * layout_scale;
 options_alpha = 0;
 
-// "press" = wait for a key; "menu" = option list; "options" / "saves" = placeholder panels.
+// "press" = wait for a key; "menu" = option list; "options" = placeholder; "saves" = load panel.
 mode = "press";
 options = ["new_game", "continue", "options", "quit"];
 index = 0;
 cursor_y = 95 * layout_scale;
-has_save = file_exists("save1.sav");
+has_save = scr_save_any_exists();
+slots = [];
+save_index = 0;
+save_message = "";
 blink = 0;

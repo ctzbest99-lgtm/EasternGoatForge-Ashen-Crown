@@ -11,6 +11,8 @@ function scr_actor_create(_actor_id, _name, _max_hp, _attack, _defense) {
         hp: _max_hp,
         attack: _attack,
         defense: _defense,
+        base_attack: _attack,
+        base_defense: _defense,
         is_guarding: false,
         participated: false, // set if they took a turn in the current battle
         pending_xp: 0,       // per-enemy credit accumulated this battle; applied on victory only
@@ -19,8 +21,8 @@ function scr_actor_create(_actor_id, _name, _max_hp, _attack, _defense) {
         class_name: "",
         role: "",
         joined: false,
+        poisoned: false,     // overworld status; battle poison is not implemented yet
         weapon_categories: [],
-        // Equipment slots are placeholders until menus (roadmap step 5) exist.
         equipment: { weapon: "", armor: "", accessory: "" }
     };
 }

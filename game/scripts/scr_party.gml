@@ -126,15 +126,9 @@ function scr_party_restore_active_and_reserve() {
     scr_party_restore_all(scr_party_list_reserve());
 }
 
-/// Placeholder snapshot of party order for a future save file.
-/// The versioned save schema itself is roadmap step 5 (menus/saves).
+/// Compatibility wrapper. The full versioned payload lives in scr_save_collect().
 function scr_save_state_collect() {
-    scr_game_state_init();
-    return {
-        save_schema_version: 0, // reserved; versioned schema comes with menus/saves
-        party_active: scr_party_ids_of(global.game.party),
-        party_reserve: scr_party_ids_of(global.game.reserve)
-    };
+    return scr_save_collect(1);
 }
 
 function scr_party_ids_of(_list) {
