@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"a1d6c165-80a1-4c77-933a-cea9834a580c",
-      "name":"a1d6c165-80a1-4c77-933a-cea9834a580c",
+      "%Name":"1eda345f-a76d-4285-a188-ce82f9a40617",
+      "name":"1eda345f-a76d-4285-a188-ce82f9a40617",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"bc4d151a-2394-4870-8c53-9d6f4403e760",
+      "%Name":"b597a99e-501f-4e32-a85a-7d26ec3b7da8",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"bc4d151a-2394-4870-8c53-9d6f4403e760",
+      "name":"b597a99e-501f-4e32-a85a-7d26ec3b7da8",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a1d6c165-80a1-4c77-933a-cea9834a580c",
+                    "name":"1eda345f-a76d-4285-a188-ce82f9a40617",
                     "path":"sprites/spr_menu_bg1_hills_640/spr_menu_bg1_hills_640.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"2db360bb-8084-4969-9030-40b97fffc422",
+              "id":"7e2f8aff-3041-4dd4-beab-646f0d03ba79",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -138,8 +138,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"tex_title_640",
+    "path":"texturegroups/tex_title_640",
   },
   "type":0,
   "VTile":false,

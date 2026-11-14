@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"5eb056f4-e781-4427-8b5c-cebc2daef74e",
-      "name":"5eb056f4-e781-4427-8b5c-cebc2daef74e",
+      "%Name":"f0e8c03b-c827-4ebd-8486-60c3b83002f2",
+      "name":"f0e8c03b-c827-4ebd-8486-60c3b83002f2",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"a0698ed2-ee57-43f1-8f36-7e364291880c",
+      "%Name":"64d61202-5edb-4d40-9e37-ecc190b15e94",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"a0698ed2-ee57-43f1-8f36-7e364291880c",
+      "name":"64d61202-5edb-4d40-9e37-ecc190b15e94",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"5eb056f4-e781-4427-8b5c-cebc2daef74e",
+                    "name":"f0e8c03b-c827-4ebd-8486-60c3b83002f2",
                     "path":"sprites/spr_menu_opt_quit_selected_640/spr_menu_opt_quit_selected_640.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"0eee9ae5-cbd8-433b-a4b9-732aca675cf1",
+              "id":"7d42d9f0-bb77-445a-880d-1c2e5c39af6d",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -138,8 +138,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"tex_title_640",
+    "path":"texturegroups/tex_title_640",
   },
   "type":0,
   "VTile":false,

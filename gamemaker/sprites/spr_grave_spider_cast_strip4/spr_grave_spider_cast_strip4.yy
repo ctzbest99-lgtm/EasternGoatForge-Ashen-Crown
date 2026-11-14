@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"0ea979bd-d127-43e3-8cc0-21de8177424f",
-      "name":"0ea979bd-d127-43e3-8cc0-21de8177424f",
+      "%Name":"75890c56-f4ee-42ee-a463-c048788cf06e",
+      "name":"75890c56-f4ee-42ee-a463-c048788cf06e",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"6a457134-68c9-413f-86a4-e242101c7bf8",
-      "name":"6a457134-68c9-413f-86a4-e242101c7bf8",
+      "%Name":"04a0bdc4-f7a3-4d56-8c81-8450b8208b14",
+      "name":"04a0bdc4-f7a3-4d56-8c81-8450b8208b14",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"09927882-c468-4334-bd48-999c77fd0c31",
-      "name":"09927882-c468-4334-bd48-999c77fd0c31",
+      "%Name":"677c3844-519e-4d02-8476-a848451a67cd",
+      "name":"677c3844-519e-4d02-8476-a848451a67cd",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"28de7153-ff19-4778-8ce5-f0cabae712db",
-      "name":"28de7153-ff19-4778-8ce5-f0cabae712db",
+      "%Name":"e67b4e88-8f26-48f4-9135-a5103c804f67",
+      "name":"e67b4e88-8f26-48f4-9135-a5103c804f67",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"6700bfc3-9e6c-48d3-bdca-033262d62959",
+      "%Name":"a759cdbe-4f7c-4b6d-bfea-cf3d52631feb",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"6700bfc3-9e6c-48d3-bdca-033262d62959",
+      "name":"a759cdbe-4f7c-4b6d-bfea-cf3d52631feb",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0ea979bd-d127-43e3-8cc0-21de8177424f",
+                    "name":"75890c56-f4ee-42ee-a463-c048788cf06e",
                     "path":"sprites/spr_grave_spider_cast_strip4/spr_grave_spider_cast_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"b67efae0-70f0-4bc6-98ac-b945e4b76674",
+              "id":"45af94be-4d93-4d2d-a26a-e9230144513c",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"6a457134-68c9-413f-86a4-e242101c7bf8",
+                    "name":"04a0bdc4-f7a3-4d56-8c81-8450b8208b14",
                     "path":"sprites/spr_grave_spider_cast_strip4/spr_grave_spider_cast_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"57d72efa-d00b-4592-ad94-84709e395c6e",
+              "id":"7c93e627-a331-4cc9-87fb-fe7246131cf7",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"09927882-c468-4334-bd48-999c77fd0c31",
+                    "name":"677c3844-519e-4d02-8476-a848451a67cd",
                     "path":"sprites/spr_grave_spider_cast_strip4/spr_grave_spider_cast_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"6a30f939-81d8-41e9-b41e-a3e166147ed9",
+              "id":"0ced6587-46c1-402d-98d6-99741b7f9b48",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"28de7153-ff19-4778-8ce5-f0cabae712db",
+                    "name":"e67b4e88-8f26-48f4-9135-a5103c804f67",
                     "path":"sprites/spr_grave_spider_cast_strip4/spr_grave_spider_cast_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"85221458-72d6-498b-ac78-4107dd85bb1d",
+              "id":"f819b9f8-1102-4b37-8a33-c72837419fb6",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
