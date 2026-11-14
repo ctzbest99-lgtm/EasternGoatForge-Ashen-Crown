@@ -24,4 +24,4 @@ A dark medieval fantasy RPG by Eastern Goat Forge, built with GameMaker and GML.
 - prompts/: Codex implementation prompts.
 - game/: illustrative GML snippets and setup notes.
 
-No license is selected; see LICENSE-PLACEHOLDER.md. No original art/audio or complete GameMaker project is included.
+Proprietary: all source code and all game assets are the property of Eastern Goat Forge, all rights reserved; see LICENSE. No original art/audio or complete GameMaker project is included.

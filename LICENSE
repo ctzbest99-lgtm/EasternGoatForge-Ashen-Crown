@@ -1,0 +1,91 @@
+# ASHEN CROWN — Proprietary License
+
+Copyright © 2026 Eastern Goat Forge. All rights reserved.
+
+ASHEN CROWN, including its source code and all other game assets, is the
+exclusive property of Eastern Goat Forge.
+
+## 1. Ownership
+
+Eastern Goat Forge owns all right, title and interest in and to the game known
+as ASHEN CROWN, including all intellectual property rights therein, worldwide
+and in perpetuity.
+
+## 2. Scope — what this covers
+
+This notice applies to everything in this repository and everything produced
+from it, including without limitation:
+
+- **Source code** — all GML, scripts, shaders, functions, data files and
+  configuration.
+- **Art assets** — sprites, sprite sheets, templates and coordinate guides,
+  tilesets, character and enemy art, backgrounds, UI panels, cursors, icons and
+  logos.
+- **Audio assets** — music, sound effects and voice.
+- **Typography** — fonts and font derivatives created for the game.
+- **Written content** — story, script, dialogue, lore, character names and
+  biographies, item and enemy descriptions, and the Bestiary.
+- **Design and documentation** — the game design document, art direction, zone
+  and content design, roadmaps, test plans, prompts, changelog and all other
+  written materials.
+- **Names and marks** — "ASHEN CROWN", "Eastern Goat Forge", "Kael Varyn" and
+  any related titles, logos and trade dress.
+- **Builds and derivatives** — compiled builds, ports, localizations, sequels,
+  prequels, remakes and any other derivative work.
+
+## 3. No license granted
+
+No permission or license of any kind is granted, whether by implication,
+estoppel or otherwise. In particular, you may not, without the prior written
+permission of Eastern Goat Forge:
+
+- copy, reproduce or redistribute the code or assets, in whole or in part;
+- modify, adapt, translate, reverse engineer or create derivative works;
+- publish, sell, sublicense, rent, lease or otherwise commercially exploit them;
+- distribute builds, forks, asset packs or extracted files;
+- use the names, marks or logos in any way that suggests affiliation,
+  sponsorship or endorsement;
+- remove or alter this notice or any copyright, trademark or attribution
+  notice.
+
+Viewing this repository does not transfer any rights. Access to the code or
+assets, including access under a separate agreement, does not by itself grant
+any right to use them beyond what that agreement expressly states.
+
+## 4. Third-party materials
+
+Third-party engines, runtimes, tools, libraries, fonts, music, sound effects,
+plugins and other materials used in connection with the game remain the
+property of their respective owners and are governed by their own licenses.
+Nothing in this notice grants any rights to those materials, and nothing in
+this notice overrides their terms. The GameMaker engine and runtime, for
+example, remain subject to YoYo Games' own license terms. All such materials
+must be verified for rights and license compatibility before publication.
+
+## 5. Contributions
+
+Any code, art, audio, text or other material intentionally submitted for
+inclusion in ASHEN CROWN becomes the property of Eastern Goat Forge, unless a
+separate written agreement states otherwise. Do not submit material you do not
+have the right to assign.
+
+## 6. No warranty
+
+The code and assets are provided "as is", without warranty of any kind, express
+or implied, including but not limited to the warranties of merchantability,
+fitness for a particular purpose and non-infringement. Eastern Goat Forge
+accepts no liability for any claim, damage or other liability arising from the
+code or assets or their use.
+
+## 7. Permission requests
+
+Requests for permission, licensing, press or commercial use should be directed
+to Eastern Goat Forge in writing. No permission is effective unless granted in
+writing by an authorized representative.
+
+---
+
+*Note: this document records the project's ownership and usage terms. It is not
+legal advice — have it reviewed by a qualified attorney, and confirm the
+copyright year and entity details, before publishing or relying on it
+commercially.*
