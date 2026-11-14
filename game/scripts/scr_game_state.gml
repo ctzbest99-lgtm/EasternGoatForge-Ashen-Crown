@@ -21,7 +21,13 @@ function scr_game_state_init() {
         reserve: _ps.reserve,         // 0–1 benched member
         xp: 0,                        // mirror of party[0].xp (Kael) for the debugger; each member has their own xp/level
         gold: 0,                      // shared party currency
-        inventory: [],                // placeholder item list [{ item_id, name, qty }]; menus are roadmap step 5
+        inventory: [],                // [{ item_id, name, qty, key_item }]; menus are roadmap step 5
+        flags: {},                    // story flags, e.g. flag_parchment_found (see scr_flag_get / scr_flag_set)
+        dialogue_queue: [],           // pending dialogue node IDs (ZONE_PLACE_NN) for scr_dialogue_play
+        dialogue_on_finish: undefined,// callback after the queue empties
+        pending_post_dialogue: undefined, // node IDs to play after returning from a victory
+        pending_ashbound_encounter_id: "",
+        ashbound_rare_chance: ASHBOUND_HUNTER_RARE_CHANCE, // debugger-tunable rare roll
         // Party order (party + reserve) will be part of the save; versioned schema is roadmap step 5.
         random_encounters_enabled: RANDOM_ENCOUNTERS_ENABLED, // debugger toggle; also requires the macro
         encounter_step_remainder: 0,  // leftover pixels toward the next encounter step

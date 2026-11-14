@@ -42,6 +42,11 @@
 #macro ENCOUNTER_STEPS_MAX 24
 #macro ENCOUNTER_GRACE_STEPS 5
 
+// Rare Ashbound Hunter random encounter (CHAPTER1_SCRIPT.md §4.1). 3–5% of
+// random fights in opted-in areas; 0.04 is the midpoint, pending tuning.
+// Also exposed at runtime as global.game.ashbound_rare_chance for debugging.
+#macro ASHBOUND_HUNTER_RARE_CHANCE 0.04
+
 // Party and progression (roadmap step 4 / five-person roster). Placeholder numbers, pending owner approval.
 // Five permanent members (Kael, Lyra, Caelan, Sera, Taren Holt); four fight at a time, one reserve slot.
 #macro PARTY_ROSTER_SIZE 5
