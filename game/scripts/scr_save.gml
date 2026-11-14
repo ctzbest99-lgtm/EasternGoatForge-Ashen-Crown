@@ -104,6 +104,13 @@ function scr_save_member_snapshot(_actor) {
         defense: _actor.defense,
         level: _actor.level,
         xp: _actor.xp,
+        // Schema v2 (battle upgrade): MP, SPD, MDEF, skills.
+        mp: variable_struct_exists(_actor, "mp") ? _actor.mp : 0,
+        max_mp: variable_struct_exists(_actor, "max_mp") ? _actor.max_mp : 0,
+        base_spd: variable_struct_exists(_actor, "base_spd") ? _actor.base_spd : 8,
+        base_mdef: variable_struct_exists(_actor, "base_mdef") ? _actor.base_mdef : 0,
+        skills: (variable_struct_exists(_actor, "skills") && is_array(_actor.skills)) ? scr_save_clone_via_json(_actor.skills) : [],
+        passives: (variable_struct_exists(_actor, "passives") && is_array(_actor.passives)) ? scr_save_clone_via_json(_actor.passives) : [],
         joined: variable_struct_exists(_actor, "joined") ? _actor.joined : false,
         poisoned: variable_struct_exists(_actor, "poisoned") && _actor.poisoned,
         age: variable_struct_exists(_actor, "age") ? _actor.age : -1,
@@ -225,6 +232,7 @@ function scr_save_is_compatible(_data) {
     var _v = _data.save_schema_version;
     if (!is_real(_v)) return false;
     // Older stub (version 0) has no room / roster payload. Newer versions are refused.
+    // Version 1 (pre battle upgrade) is accepted and upgraded by scr_save_migrate() on load.
     if (_v < 1 || _v > SAVE_SCHEMA_VERSION) return false;
     if (!variable_struct_exists(_data, "room_name")) return false;
     return true;
@@ -314,10 +322,50 @@ function scr_save_apply_member(_actor, _snap) {
         _actor.equipment.helm = variable_struct_exists(_snap.equipment, "helm") ? string(_snap.equipment.helm) : "";
         _actor.equipment.accessory = variable_struct_exists(_snap.equipment, "accessory") ? string(_snap.equipment.accessory) : "";
     }
+    // Schema v2 fields. scr_save_migrate() fills these in for v1 saves before we get here;
+    // the fallback below also covers a hand-edited file that lacks them.
+    if (variable_struct_exists(_snap, "max_mp")) {
+        _actor.max_mp = max(0, _snap.max_mp);
+        _actor.mp = variable_struct_exists(_snap, "mp") ? clamp(_snap.mp, 0, _actor.max_mp) : _actor.max_mp;
+        if (variable_struct_exists(_snap, "base_spd")) { _actor.base_spd = _snap.base_spd; _actor.spd = _snap.base_spd; }
+        if (variable_struct_exists(_snap, "base_mdef")) { _actor.base_mdef = _snap.base_mdef; _actor.mdef = _snap.base_mdef; }
+        if (variable_struct_exists(_snap, "skills") && is_array(_snap.skills)) _actor.skills = _snap.skills;
+        if (variable_struct_exists(_snap, "passives") && is_array(_snap.passives)) _actor.passives = _snap.passives;
+    } else {
+        scr_actor_apply_battle_defaults(_actor); // uses the level applied above
+    }
+    _actor.buffs = [];
+    _actor.statuses = [];
     _actor.is_guarding = false;
     _actor.participated = false;
     _actor.pending_xp = 0;
     scr_actor_refresh_equipment(_actor);
+}
+
+/// Upgrade an older save payload in place to SAVE_SCHEMA_VERSION. Returns the payload.
+/// v1 -> v2 (battle upgrade): each roster member gets level-scaled MP / SPD / MDEF (full MP)
+/// and their default skills, from scr_actor_battle_defaults + LEVEL_UP_*_GROWTH.
+function scr_save_migrate(_data) {
+    if (!is_struct(_data) || !variable_struct_exists(_data, "save_schema_version")) return _data;
+    if (_data.save_schema_version < 2) {
+        if (variable_struct_exists(_data, "roster") && is_array(_data.roster)) {
+            for (var _i = 0; _i < array_length(_data.roster); _i++) {
+                var _snap = _data.roster[_i];
+                if (!is_struct(_snap) || !variable_struct_exists(_snap, "actor_id")) continue;
+                var _d = scr_actor_battle_defaults(_snap.actor_id);
+                var _lv = variable_struct_exists(_snap, "level") ? max(1, _snap.level) : 1;
+                _snap.max_mp = _d.mp + (_lv - 1) * LEVEL_UP_MP_GROWTH;
+                _snap.mp = _snap.max_mp;
+                _snap.base_spd = _d.spd + (_lv - 1) * LEVEL_UP_SPD_GROWTH;
+                _snap.base_mdef = _d.mdef + (_lv - 1) * LEVEL_UP_MDEF_GROWTH;
+                _snap.skills = _d.skills;
+                _snap.passives = _d.passives;
+            }
+        }
+        _data.save_schema_version = 2;
+        show_debug_message("[save] migrated a v1 save to v2 (MP / SPD / MDEF / skills).");
+    }
+    return _data;
 }
 
 function scr_save_apply(_data) {
@@ -420,6 +468,7 @@ function scr_save_apply(_data) {
 function scr_save_load(_slot) {
     var _data = scr_save_read_raw(_slot);
     if (!is_struct(_data) || !scr_save_is_compatible(_data)) return false;
+    _data = scr_save_migrate(_data);
     return scr_save_apply(_data);
 }
 

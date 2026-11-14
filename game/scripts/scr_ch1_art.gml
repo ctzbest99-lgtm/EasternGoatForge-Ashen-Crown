@@ -201,6 +201,7 @@ function scr_ch1_portrait(_speaker, _expr = "neutral") {
     else if (_who == "hob") _stem = "hob";
     else if (_who == "renn" || _who == "old hunter renn" || _who == "old renn") _stem = "renn";
     else if (_who == "fallen knight") _stem = "fallen_knight_story";
+    else if (_who == "reeve calder" || _who == "calder") _stem = "reeve_calder"; // neutral / stern / weary (Design batch 6)
     if (_stem == "") return -1;
     var _spr = scr_sprite_index("spr_portrait_" + _stem + "_" + _expr);
     if (!scr_sprite_is_valid(_spr)) _spr = scr_sprite_index("spr_portrait_" + _stem + "_neutral");
@@ -217,6 +218,9 @@ function scr_ch1_portrait(_speaker, _expr = "neutral") {
 
 function scr_ch1_battle_area(_enemy_id, _encounter_id = "") {
     if (_enemy_id == "blackguard" || string_pos("blackguard", _encounter_id) > 0) return "blackguard_arena";
+    // Act II stand-ins until Design paints Millhaven Road / Wrenfield backgrounds:
+    // Wrenfield (and the Calder fight) use the Greyhaven village bg, as in Design's Calder mockup.
+    if (_enemy_id == "reeve_calder" || string_pos("calder", _encounter_id) > 0 || string_pos("wrenfield", _encounter_id) > 0) return "greyhaven";
     var _rn = room_get_name(room);
     if (string_pos("basement", _rn) > 0) return "watchtower";
     if (string_pos("watchtower", _rn) > 0) return "watchtower";
@@ -230,6 +234,8 @@ function scr_ch1_battle_area(_enemy_id, _encounter_id = "") {
             if (string_pos("old_road", _tid) > 0) return "forest";
             if (string_pos("bandit", _tid) > 0) return "bandit_camp";
             if (string_pos("watchtower", _tid) > 0) return "watchtower";
+            if (string_pos("wrenfield", _tid) > 0) return "greyhaven";
+            if (string_pos("millhaven", _tid) > 0) return "forest";
         }
     }
     if (string_pos("farm", _encounter_id) > 0 || string_pos("greyhaven", _encounter_id) > 0) return "greyhaven";
@@ -262,7 +268,7 @@ function scr_blackguard_apply_phase(_enemy, _phase) {
     if (!variable_struct_exists(_enemy, "base_defense")) _enemy.base_defense = _enemy.defense;
     _enemy.phase = _phase;
     // Phase 2: attack up, shield lost (defense down). Phase 3 canon: ATK +40%, DEF −20%.
-    // Speed +30% is stored but this prototype has no speed stat.
+    // Speed +30% (canon) is speed_mod, applied to SPD turn order by scr_battle_stat (battle upgrade).
     if (_phase <= 1) {
         _enemy.attack = _enemy.base_attack;
         _enemy.defense = _enemy.base_defense;
@@ -313,9 +319,22 @@ function scr_ch1_battle_spawn_special_fx(_hit) {
     if (_ctrl == noone) return;
     var _anim = variable_struct_exists(_hit, "anim") ? _hit.anim : "attack";
     var _kind = variable_struct_exists(_hit, "enemy_kind") ? _hit.enemy_kind : "";
-    var _ef = scr_battle_layout_enemy_feet();
+    // Multi-enemy battles pass the attacker's feet (fx_from) and the target's feet (fx_to).
+    var _ef = (variable_struct_exists(_hit, "fx_from") && is_struct(_hit.fx_from)) ? _hit.fx_from : scr_battle_layout_enemy_feet();
     var _pi = variable_struct_exists(_hit, "party_index") ? _hit.party_index : 0;
-    var _pf = scr_battle_layout_party_feet(_pi);
+    var _pf = (variable_struct_exists(_hit, "fx_to") && is_struct(_hit.fx_to)) ? _hit.fx_to : scr_battle_layout_party_feet(_pi);
+
+    if (_kind == "crown_crossbowman" && _anim == "attack") {
+        // Bolt: 16×8, origin (15, 4) at the tip, 12 fps loop in flight. Spawned on attack frame 3.
+        var _bolt = scr_sprite_index("spr_crown_crossbowman_bolt_strip3");
+        if (scr_sprite_is_valid(_bolt)) {
+            array_push(_ctrl.battle_fx, {
+                sprite: _bolt, frame: 0, frames: 3, fps: 12,
+                x: _ef.x + 14, y: _ef.y - 26, x0: _ef.x + 14, y0: _ef.y - 26,
+                tx: _pf.x - 6, ty: _pf.y - 20, t: 0, life: 12, xscale: 1
+            });
+        }
+    }
 
     if (_kind == "ashbound_hunter" && _anim == "attack") {
         var _spr = scr_sprite_index("spr_ashbound_hunter_arrow_strip3");

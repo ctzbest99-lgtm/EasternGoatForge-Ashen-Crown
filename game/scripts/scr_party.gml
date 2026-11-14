@@ -26,11 +26,44 @@ function scr_roster_create() {
         // Skills are placeholders; class is Rebel Captain of the Broken Yoke (STORY_BIBLE.md §5.5).
         scr_roster_member_create("taren", "Taren", "Taren Holt", "Rebel Captain", "Frontline warrior", TAREN_BASE_HP, TAREN_BASE_ATTACK, TAREN_BASE_DEFENSE, ["heavy_sword"], "bastard_sword")
     ];
+    for (var _r = 0; _r < array_length(_roster); _r++) scr_actor_apply_battle_defaults(_roster[_r]);
     var _kael = scr_roster_find(_roster, "kael");
     if (is_struct(_kael)) _kael.age = 24;
     var _taren = scr_roster_find(_roster, "taren");
     if (is_struct(_taren)) _taren.age = 27;
     return _roster;
+}
+
+/// Level-1 SPD / MDEF / MP and starting skills per roster member. All numbers PLACEHOLDER.
+/// Taren's starting skills are canon (CHAPTER2_SCRIPT.md WF_CALDER_SYS_02, STORY_BIBLE.md §5.5):
+/// Rallying Cry and Cleave (active) and Unbowed (passive). Nobody else has a skill yet.
+function scr_actor_battle_defaults(_actor_id) {
+    switch (_actor_id) {
+        case "kael":   return { spd: KAEL_BASE_SPD,   mdef: KAEL_BASE_MDEF,   mp: KAEL_BASE_MP,   skills: [], passives: [] };
+        case "lyra":   return { spd: LYRA_BASE_SPD,   mdef: LYRA_BASE_MDEF,   mp: LYRA_BASE_MP,   skills: [], passives: [] };
+        case "caelan": return { spd: CAELAN_BASE_SPD, mdef: CAELAN_BASE_MDEF, mp: CAELAN_BASE_MP, skills: [], passives: [] };
+        case "sera":   return { spd: SERA_BASE_SPD,   mdef: SERA_BASE_MDEF,   mp: SERA_BASE_MP,   skills: [], passives: [] };
+        case "taren":  return { spd: TAREN_BASE_SPD,  mdef: TAREN_BASE_MDEF,  mp: TAREN_BASE_MP,  skills: ["rallying_cry", "cleave"], passives: ["unbowed"] };
+    }
+    return { spd: 8, mdef: 0, mp: 0, skills: [], passives: [] };
+}
+
+/// Apply level-1 battle defaults, then placeholder growth for (level - 1) levels.
+/// Used when the roster is created and when an old (v1) save is migrated.
+function scr_actor_apply_battle_defaults(_actor) {
+    if (!is_struct(_actor)) return;
+    var _d = scr_actor_battle_defaults(_actor.actor_id);
+    var _lv = variable_struct_exists(_actor, "level") ? max(1, _actor.level) : 1;
+    _actor.base_spd = _d.spd + (_lv - 1) * LEVEL_UP_SPD_GROWTH;
+    _actor.spd = _actor.base_spd;
+    _actor.base_mdef = _d.mdef + (_lv - 1) * LEVEL_UP_MDEF_GROWTH;
+    _actor.mdef = _actor.base_mdef;
+    _actor.max_mp = _d.mp + (_lv - 1) * LEVEL_UP_MP_GROWTH;
+    _actor.mp = _actor.max_mp;
+    _actor.skills = _d.skills;
+    _actor.passives = _d.passives;
+    _actor.buffs = [];
+    _actor.statuses = [];
 }
 
 function scr_roster_find(_roster, _actor_id) {
@@ -165,9 +198,14 @@ function scr_party_has_reserve() {
     return is_array(global.game.reserve) && array_length(global.game.reserve) > 0;
 }
 
-/// Battle command menu: Attack and Guard, plus Swap when a reserve member is waiting.
-function scr_party_battle_commands() {
-    var _opts = ["Attack", "Guard"];
+/// Battle command menu: Attack, Skill (only if `_actor` knows an active skill), Guard,
+/// plus Swap when a reserve member is waiting.
+function scr_party_battle_commands(_actor = undefined) {
+    var _opts = ["Attack"];
+    if (is_struct(_actor) && variable_struct_exists(_actor, "skills") && is_array(_actor.skills) && array_length(_actor.skills) > 0) {
+        array_push(_opts, "Skill");
+    }
+    array_push(_opts, "Guard");
     if (scr_party_has_reserve()) array_push(_opts, "Swap");
     return _opts;
 }
