@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"7b4a0889-dcc1-4862-9a58-47f55d754440",
-      "name":"7b4a0889-dcc1-4862-9a58-47f55d754440",
+      "%Name":"e91e632c-e30d-4c1f-be29-cde4efcc0b62",
+      "name":"e91e632c-e30d-4c1f-be29-cde4efcc0b62",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"5203027b-5dcd-444d-84fe-5bad5035af3f",
+      "%Name":"337992be-5f04-4ee0-8b18-7d9df3dcbd19",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"5203027b-5dcd-444d-84fe-5bad5035af3f",
+      "name":"337992be-5f04-4ee0-8b18-7d9df3dcbd19",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"7b4a0889-dcc1-4862-9a58-47f55d754440",
+                    "name":"e91e632c-e30d-4c1f-be29-cde4efcc0b62",
                     "path":"sprites/spr_bg_battle_greyhaven/spr_bg_battle_greyhaven.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"12c645e9-62b1-481e-9e39-9f19adabc877",
+              "id":"372c4293-51a4-42c2-a6bd-b698da3378b6",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

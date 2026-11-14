@@ -16,3 +16,14 @@ The overworld and Old Watchtower rooms both use this tileset. See `game/rooms/RO
 `pallet`, `mira_bed_rubble`, `royal_banner`, `carving_crown_sun`, `signpost_weathered`, plus marker id `mk_story`. Re-import `ts_zone1.png` if an older tileset is already in the IDE.
 
 Rows 0–37 keep their previous tile ids. Rows 38–49 are interior / dungeon tiles (floors, walls, mural, sigil plates, etc.). Re-import `ts_zone1.png` if an older 256×608 tileset is already in the IDE.
+
+## Chapter 2 tileset: `ts_wrenfield`
+| File | Use |
+|---|---|
+| `ts_wrenfield.png` | 256×1040, 16 columns × 65 rows. **Rows 0–49 are `ts_zone1`, unchanged (same ids)**; rows 50–64 are the Wrenfield additions (gallows, scaffold, palisade, Crown banners, inn / store fronts). |
+| `ts_wrenfield_preview_4x.png` | Labelled preview of the new rows. Do not import. |
+
+IDE: Sprite `spr_ts_wrenfield` (one image) → Tile Set named exactly **`ts_wrenfield`**, 16×16, offset 0, separation 0.
+Used by rm_millhaven_road, rm_wrenfield, rm_wrenfield_bent_post and rm_wrenfield_store; their build scripts
+switch the five layers to it (`scr_wf_prepare_layers`). The overworld keeps `ts_zone1` (its Chapter 2 patch only uses
+ids < 800). Source data: `game/maps/chapter2/` (copied from Design's `/workspace/wrenfield`).

@@ -14,22 +14,22 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"ca9350f8-c729-4adb-a424-981a5c0b099e",
-      "name":"ca9350f8-c729-4adb-a424-981a5c0b099e",
+      "%Name":"deb57c4d-d0e1-401c-8b59-33d936a89e0f",
+      "name":"deb57c4d-d0e1-401c-8b59-33d936a89e0f",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"2bd5f8e1-e43d-450c-90f5-c34f9619cac8",
-      "name":"2bd5f8e1-e43d-450c-90f5-c34f9619cac8",
+      "%Name":"214cd515-7e48-4ed8-a51e-81446316b30c",
+      "name":"214cd515-7e48-4ed8-a51e-81446316b30c",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"300c4a16-feca-43b5-b1b0-21ac35606ba5",
-      "name":"300c4a16-feca-43b5-b1b0-21ac35606ba5",
+      "%Name":"376e6b34-a921-4545-9621-7fd08e2874ca",
+      "name":"376e6b34-a921-4545-9621-7fd08e2874ca",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -41,11 +41,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"b20079e0-378e-41f2-8faf-4c1be0d759e7",
+      "%Name":"7634afd3-933e-4b83-8426-d86b564f4327",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"b20079e0-378e-41f2-8faf-4c1be0d759e7",
+      "name":"7634afd3-933e-4b83-8426-d86b564f4327",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -118,7 +118,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ca9350f8-c729-4adb-a424-981a5c0b099e",
+                    "name":"deb57c4d-d0e1-401c-8b59-33d936a89e0f",
                     "path":"sprites/spr_cutpurse_hurt_strip3/spr_cutpurse_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -126,7 +126,7 @@
                 },
               },
               "Disabled":false,
-              "id":"79c34635-4e29-4f26-9488-7c7199a53be0",
+              "id":"6cf4804d-2854-47d1-9dfb-83cc0891c009",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -140,7 +140,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"2bd5f8e1-e43d-450c-90f5-c34f9619cac8",
+                    "name":"214cd515-7e48-4ed8-a51e-81446316b30c",
                     "path":"sprites/spr_cutpurse_hurt_strip3/spr_cutpurse_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -148,7 +148,7 @@
                 },
               },
               "Disabled":false,
-              "id":"dbfb0051-e4dd-4e7c-937c-d2419b8fb897",
+              "id":"17c50e8e-e52b-402c-a657-9369a4f90e06",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -162,7 +162,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"300c4a16-feca-43b5-b1b0-21ac35606ba5",
+                    "name":"376e6b34-a921-4545-9621-7fd08e2874ca",
                     "path":"sprites/spr_cutpurse_hurt_strip3/spr_cutpurse_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -170,7 +170,7 @@
                 },
               },
               "Disabled":false,
-              "id":"9347e82f-9b64-4d76-b01e-7b581ec45613",
+              "id":"4ade23c3-4e57-4bc1-9464-40c2d6455495",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,

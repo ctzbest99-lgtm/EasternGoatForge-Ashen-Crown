@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"964951a3-33b2-4b8f-b9b3-dd7c19644992",
-      "name":"964951a3-33b2-4b8f-b9b3-dd7c19644992",
+      "%Name":"37e7b073-8f66-4119-aafe-3cb92d607841",
+      "name":"37e7b073-8f66-4119-aafe-3cb92d607841",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"85c89f32-3d6a-4bec-843d-5ba74995f52f",
-      "name":"85c89f32-3d6a-4bec-843d-5ba74995f52f",
+      "%Name":"d8494ed6-9771-46d7-8257-710071c3d439",
+      "name":"d8494ed6-9771-46d7-8257-710071c3d439",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"687b12f6-f3ce-4825-afc2-1f7b0505dd1f",
-      "name":"687b12f6-f3ce-4825-afc2-1f7b0505dd1f",
+      "%Name":"5e1ec494-14fa-41a4-8cd5-27b92308e62e",
+      "name":"5e1ec494-14fa-41a4-8cd5-27b92308e62e",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"c4bf1a7a-3f00-4332-abfa-c69c599b3ea9",
-      "name":"c4bf1a7a-3f00-4332-abfa-c69c599b3ea9",
+      "%Name":"9abab0b0-57b5-40b9-946e-a3e1a02645cd",
+      "name":"9abab0b0-57b5-40b9-946e-a3e1a02645cd",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"8ac7386b-c88f-44b2-a3c0-4a446e08a52e",
+      "%Name":"71f96b99-32ed-4a5b-92f3-d7d0a8b517eb",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"8ac7386b-c88f-44b2-a3c0-4a446e08a52e",
+      "name":"71f96b99-32ed-4a5b-92f3-d7d0a8b517eb",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"964951a3-33b2-4b8f-b9b3-dd7c19644992",
+                    "name":"37e7b073-8f66-4119-aafe-3cb92d607841",
                     "path":"sprites/spr_bandit_ow16_walk_up_strip4/spr_bandit_ow16_walk_up_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"497e74f2-cf12-418a-8725-c77d2b131f1f",
+              "id":"a79e8be4-a78b-4aaa-b44b-2318574fbfd0",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"85c89f32-3d6a-4bec-843d-5ba74995f52f",
+                    "name":"d8494ed6-9771-46d7-8257-710071c3d439",
                     "path":"sprites/spr_bandit_ow16_walk_up_strip4/spr_bandit_ow16_walk_up_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"ac64c205-2dfb-45ee-b0ce-9274c15773cf",
+              "id":"477cfbfd-7bb3-466d-bf8a-0ff8474e9a16",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"687b12f6-f3ce-4825-afc2-1f7b0505dd1f",
+                    "name":"5e1ec494-14fa-41a4-8cd5-27b92308e62e",
                     "path":"sprites/spr_bandit_ow16_walk_up_strip4/spr_bandit_ow16_walk_up_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"8e08254c-f792-4449-bbdf-3b7c0a06ad5e",
+              "id":"304701dd-8467-46e1-812d-1131fca19f16",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"c4bf1a7a-3f00-4332-abfa-c69c599b3ea9",
+                    "name":"9abab0b0-57b5-40b9-946e-a3e1a02645cd",
                     "path":"sprites/spr_bandit_ow16_walk_up_strip4/spr_bandit_ow16_walk_up_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"79bc2480-2790-4011-a6e8-7355304e8ad8",
+              "id":"89a50577-201c-4eb6-8a16-53abfbda80c3",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

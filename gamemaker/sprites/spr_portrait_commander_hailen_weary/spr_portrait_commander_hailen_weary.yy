@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"3eae5ab4-e58e-4f80-97f6-842e64e5ec96",
-      "name":"3eae5ab4-e58e-4f80-97f6-842e64e5ec96",
+      "%Name":"b6d2932d-63b3-442c-88f9-126007711f18",
+      "name":"b6d2932d-63b3-442c-88f9-126007711f18",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"b266c377-0aad-459e-8acb-e257360b9a06",
+      "%Name":"ffb36b68-417d-4ef7-9f5e-3b674f3f4b02",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"b266c377-0aad-459e-8acb-e257360b9a06",
+      "name":"ffb36b68-417d-4ef7-9f5e-3b674f3f4b02",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"3eae5ab4-e58e-4f80-97f6-842e64e5ec96",
+                    "name":"b6d2932d-63b3-442c-88f9-126007711f18",
                     "path":"sprites/spr_portrait_commander_hailen_weary/spr_portrait_commander_hailen_weary.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"3ea9222a-6b0a-4f7b-a094-04e61363afbc",
+              "id":"086fde2d-c70c-4b12-8c20-a7932c29bf93",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

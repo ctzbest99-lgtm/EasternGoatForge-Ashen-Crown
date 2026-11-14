@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"63c54860-fc5c-4d65-b3cf-b474b7bf43ea",
-      "name":"63c54860-fc5c-4d65-b3cf-b474b7bf43ea",
+      "%Name":"156ba3b6-ece3-439f-afb0-e633f54775cc",
+      "name":"156ba3b6-ece3-439f-afb0-e633f54775cc",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"11d774b6-33eb-407c-a390-530700e3d27f",
+      "%Name":"caf844c9-a08c-4800-bcdd-87bbab7435af",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"11d774b6-33eb-407c-a390-530700e3d27f",
+      "name":"caf844c9-a08c-4800-bcdd-87bbab7435af",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"63c54860-fc5c-4d65-b3cf-b474b7bf43ea",
+                    "name":"156ba3b6-ece3-439f-afb0-e633f54775cc",
                     "path":"sprites/spr_chest_wood_open/spr_chest_wood_open.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"4cd9f278-e0ff-477e-ad6a-b6fb5f208748",
+              "id":"2ecec20c-fe05-439a-8ecc-8026b224087d",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

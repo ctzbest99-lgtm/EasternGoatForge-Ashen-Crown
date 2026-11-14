@@ -193,4 +193,49 @@ Create the new objects and scripts in `game/README.md`. Menu layout lives in `sc
 - [ ] S9 Quit to the desktop (or restart the game) and Continue: HP, levels, XP, gear, gold, inventory, flags, room, position, facing, and playtime all match the save. A loaded position is un-stuck if it slightly overlaps a solid.
 - [ ] S10 Status, party order, and the Bestiary are still not implemented.
 
+## Chapter 2 (feature/chapter2; untested in GameMaker)
+Set up the rooms with `game/rooms/ROOM_SETUP.md` §6c and import the art with `game/sprites/IMPORT.md` ("Chapter 2"). Every line must match `docs/story/CHAPTER2_SCRIPT.md` word for word.
+- [ ] C1 **Wake-up.** Finish Chapter 1 (`CV_END`), then save or cancel. `CV_WAKE_01`–`04` and `WT2_BACK_01` play once and `flag_act2_started` is set. Loading a save made at the Chapter 1 prompt plays them again on arrival. Examining the door now plays `CV_WAKE_06`. The arena centre (where the Blackguard fell) plays `CV_WAKE_05` (an invisible inspect spot for now). The banner plays `WT2_BANNER_R1`.
+- [ ] C2 **Greyhaven (optional).** Before Act II nothing changes. After it, the Act II lines play: Tomas `GH2_TOMAS_01` (repeat `_R1`); Pell `GH2_PELL_01`–`05` (repeat `GH2_PELL_R1`, then the forge shop); Hob, Ilse, Wenna, Dov and Corwin play their GH2 lines; Marda plays `GH2_MARDA_01`, then the shop. Pell or Corwin sets `flag_hook_taren`.
+- [ ] C3 **Overworld.** The south branch off the Veil Road and the fork sign are painted. The entrance at tile (303,184) shows "Crown checkpoint. No passage south without the Reeve's leave." before Act II and opens `rm_millhaven_road` after it. Walking back out of the road lands on the entrance tile and does not bounce.
+- [ ] C4 **Millhaven Road.**
+  - `MR_ENTER_01` plays once on entry and sets `flag_mr_entered`.
+  - The traveler plays `MR_HOOK_01`–`05`, then `MR_HOOK_R1`.
+  - Signpost, Crown notice (backup hook) and Architect stones (`MR_STONE_01`–`02`) all play.
+  - Random battles use `ch2_millhaven_road` (no groups larger than 2).
+  - The patrol plays `MR_PATROL_01`–`03`, then Fight / Move along. Move along waves you through, and the patrol is gone on re-entry. Fight starts 2 Crown Patrolmen, and they are gone after you win.
+  - The Ether chest in the east clearing (tile 25,24) gives 1 Ether once.
+- [ ] C5 **Wrenfield before.**
+  - Entry sets `flag_wrenfield_entered`. The sergeant stops you once (`WF_GATE_01`–`03`, `flag_wf_gate_seen`), then repeats `WF_GATE_A1`.
+  - The posted list, both soldiers, Perrin (`WF_TAVERN_A1`–`A3`, chairs up) and Len outside (`WF_STORE_A1`) all play.
+  - The store door says `WF_STORE_SHUT`. The west road says "Crown checkpoint. West road closed by order of the Reeve."
+  - No random battles in the village.
+- [ ] C6 **Oda.** `WF_ODA_A1`, then Accept? Yes / No. Yes plays `A3_YES` (and again on repeat talks). No plays `A4_NO`, and she offers again next time.
+- [ ] C7 **Gallows.**
+  - Walking into the square (or touching Taren) plays `WF_GALLOWS_01`–`07`.
+  - On `_07`, the right rope swaps to the cut tile and Bram drops to the bound idle pose. The inn and store stay shut.
+  - `WF_GALLOWS_08` and `WF_CALDER_INTRO_01`–`07` play, then `WF_CALDER_SYS_01`–`03B`.
+  - Taren is now in party slot 2 at Kael's level with full HP / MP and the Travel Brigandine. The fight starts with Calder and 2 Occupation Soldiers on the Greyhaven background.
+- [ ] C8 **Calder fight.**
+  - Taren's sprites: idle, attack and hurt; Guard holds `defend` until the next command phase; Rallying Cry plays `skill_rally`; Cleave plays `skill_cleave`.
+  - The first Rallying Cry adds `WF_CALDER_SYS_04` to the message (once per save).
+  - When both soldiers fall, the stance message is Calder's bark `Reeve Calder: "Hold, then. I'll finish this myself."` instead of the system line.
+  - At 0 HP he yields. The victory message starts with `Reeve Calder: "Enough. I'll not spend another man on this square."`, plus "The rest withdraw." if a soldier was still standing.
+- [ ] C9 **After the win.**
+  - Back in the square, now in the after state (inn lit, store open, rope cut, villagers, Oda and Bram), `WF_CALDER_DEFEAT_02`–`05`, `WF_CALDER_REWARD_01` and `WF_JOIN_01`–`12` play.
+  - `flag_execution_stopped` and `flag_taren_recruited` are set. Taren is not added a second time.
+  - Taren stands by Oda (`WF_JOIN_R1`).
+- [ ] C10 **Loss to Calder.** You wake in town as usual. Re-entering Wrenfield shows the cut rope, plays `WF_CALDER_INTRO_07` and restarts the fight. Taren is still in the party.
+- [ ] C11 **Wrenfield after.**
+  - Sergeant `WF_GATE_B1`, soldiers `WF_SOLDIER_B1` / `B2`.
+  - Perrin `WF_TAVERN_B1`, then Rest (30 g) / Leave. Rest restores HP and MP for both members. Not enough gold says so.
+  - Len's store: `WF_STORE_B1`, then the shop (Minor Potion, Antidote, Ether, Chain Mail).
+  - Oda: `WF_ODA_B1` + `B2` gives Minor Potion ×2 and 40 Gold once, whether or not she was spoken to before. Bram: `WF_ODA_B3`, then `WF_BRAM_B1`.
+- [ ] C12 **West road.**
+  - Before the fight the barrier blocks it. After the fight it opens.
+  - Walking out plays `WF_HANDOFF_01`–`05` and "To be continued.", sets `flag_chapter2_complete`, lands on the overworld `from_wrenfield_west` spawn east of Valemere and opens the save panel.
+  - A second exit just travels.
+- [ ] C13 Portraits: Taren, Perrin, Len, Oda (worried / pleading / relieved), Bram (shaken) and Calder (stern / weary) show the expression set in the dialogue data.
+- [ ] C14 Save in the Bent Post era (any save point / F5 debug), reload: flags, Taren in the party, room state (before / after) all match.
+
 Record GameMaker version, date, result, and reproducible failures.

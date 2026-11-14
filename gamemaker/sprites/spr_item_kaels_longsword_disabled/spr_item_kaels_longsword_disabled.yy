@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"4683d42c-65ca-4d56-8d85-f8c97da09fd1",
-      "name":"4683d42c-65ca-4d56-8d85-f8c97da09fd1",
+      "%Name":"7cb8b92e-96b6-4fd5-8b83-488ababf8705",
+      "name":"7cb8b92e-96b6-4fd5-8b83-488ababf8705",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"2415a6f6-cb90-4d94-8483-f5c25249f97c",
+      "%Name":"10a4573b-b8aa-40b8-ac8f-cfb445bfe090",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"2415a6f6-cb90-4d94-8483-f5c25249f97c",
+      "name":"10a4573b-b8aa-40b8-ac8f-cfb445bfe090",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"4683d42c-65ca-4d56-8d85-f8c97da09fd1",
+                    "name":"7cb8b92e-96b6-4fd5-8b83-488ababf8705",
                     "path":"sprites/spr_item_kaels_longsword_disabled/spr_item_kaels_longsword_disabled.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"63dad2fa-2873-45b4-b44b-64a5b3b64399",
+              "id":"1517b705-b8c7-483d-8487-5fe2c92af868",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

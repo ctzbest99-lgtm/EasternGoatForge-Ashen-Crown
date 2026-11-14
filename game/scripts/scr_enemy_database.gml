@@ -94,6 +94,8 @@ function scr_get_enemy_data(_enemy_id) {
                 xp_reward: 220, gold_min: 80, gold_max: 120, gold_reward: 100, placeholder: true,
                 is_boss: true, yields: true, yield_flag: "flag_reeve_calder_yielded",
                 stance_on_adds_fall: true,
+                // Chapter 2 barks replace the system lines: stance (§7.1) and yield (§7.2).
+                stance_line_node: "WF_CALDER_PHASE2_01", yield_line_node: "WF_CALDER_DEFEAT_01",
                 stance_buffs: [{ stat: "atk", pct: 0.25, turns: -1 }, { stat: "def", pct: 0.15, turns: -1 }],
                 actions: [{ skill: "heavy_strike", weight: 3 }, { skill: "calder_guard", weight: 1 }, { skill: "calder_shout", weight: 2 }],
                 actions_alone: [{ skill: "heavy_strike", weight: 3 }, { skill: "calder_guard", weight: 1 }] };

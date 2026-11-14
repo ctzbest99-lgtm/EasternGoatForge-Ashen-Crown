@@ -893,6 +893,12 @@
     },
     {
       "id":{
+        "name":"scr_build_millhaven_road",
+        "path":"scripts/scr_build_millhaven_road/scr_build_millhaven_road.yy",
+      },
+    },
+    {
+      "id":{
         "name":"scr_build_old_watchtower",
         "path":"scripts/scr_build_old_watchtower/scr_build_old_watchtower.yy",
       },
@@ -911,8 +917,32 @@
     },
     {
       "id":{
+        "name":"scr_build_wrenfield",
+        "path":"scripts/scr_build_wrenfield/scr_build_wrenfield.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_build_wrenfield_bent_post",
+        "path":"scripts/scr_build_wrenfield_bent_post/scr_build_wrenfield_bent_post.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_build_wrenfield_store",
+        "path":"scripts/scr_build_wrenfield_store/scr_build_wrenfield_store.yy",
+      },
+    },
+    {
+      "id":{
         "name":"scr_ch1_art",
         "path":"scripts/scr_ch1_art/scr_ch1_art.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_ch2_story",
+        "path":"scripts/scr_ch2_story/scr_ch2_story.yy",
       },
     },
     {
@@ -925,6 +955,12 @@
       "id":{
         "name":"scr_dialogue_data",
         "path":"scripts/scr_dialogue_data/scr_dialogue_data.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_dialogue_data_ch2",
+        "path":"scripts/scr_dialogue_data_ch2/scr_dialogue_data_ch2.yy",
       },
     },
     {
@@ -1045,6 +1081,24 @@
       "id":{
         "name":"scr_ui",
         "path":"scripts/scr_ui/scr_ui.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_wf_markers_data",
+        "path":"scripts/scr_wf_markers_data/scr_wf_markers_data.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_wf_overworld_patch",
+        "path":"scripts/scr_wf_overworld_patch/scr_wf_overworld_patch.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_wf_tilemaps",
+        "path":"scripts/scr_wf_tilemaps/scr_wf_tilemaps.yy",
       },
     },
     {
@@ -2015,6 +2069,114 @@
     },
     {
       "id":{
+        "name":"spr_bram_bound_ow16_idle_down",
+        "path":"sprites/spr_bram_bound_ow16_idle_down/spr_bram_bound_ow16_idle_down.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_bram_bound_ow16_idle_left",
+        "path":"sprites/spr_bram_bound_ow16_idle_left/spr_bram_bound_ow16_idle_left.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_bram_bound_ow16_idle_right",
+        "path":"sprites/spr_bram_bound_ow16_idle_right/spr_bram_bound_ow16_idle_right.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_bram_bound_ow16_idle_up",
+        "path":"sprites/spr_bram_bound_ow16_idle_up/spr_bram_bound_ow16_idle_up.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_bram_bound_ow16_noose_taut_strip2",
+        "path":"sprites/spr_bram_bound_ow16_noose_taut_strip2/spr_bram_bound_ow16_noose_taut_strip2.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_bram_bound_ow16_walk_down_strip4",
+        "path":"sprites/spr_bram_bound_ow16_walk_down_strip4/spr_bram_bound_ow16_walk_down_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_bram_bound_ow16_walk_left_strip4",
+        "path":"sprites/spr_bram_bound_ow16_walk_left_strip4/spr_bram_bound_ow16_walk_left_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_bram_bound_ow16_walk_right_strip4",
+        "path":"sprites/spr_bram_bound_ow16_walk_right_strip4/spr_bram_bound_ow16_walk_right_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_bram_bound_ow16_walk_up_strip4",
+        "path":"sprites/spr_bram_bound_ow16_walk_up_strip4/spr_bram_bound_ow16_walk_up_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_bram_ow16_idle_down",
+        "path":"sprites/spr_bram_ow16_idle_down/spr_bram_ow16_idle_down.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_bram_ow16_idle_left",
+        "path":"sprites/spr_bram_ow16_idle_left/spr_bram_ow16_idle_left.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_bram_ow16_idle_right",
+        "path":"sprites/spr_bram_ow16_idle_right/spr_bram_ow16_idle_right.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_bram_ow16_idle_up",
+        "path":"sprites/spr_bram_ow16_idle_up/spr_bram_ow16_idle_up.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_bram_ow16_rub_neck_strip2",
+        "path":"sprites/spr_bram_ow16_rub_neck_strip2/spr_bram_ow16_rub_neck_strip2.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_bram_ow16_walk_down_strip4",
+        "path":"sprites/spr_bram_ow16_walk_down_strip4/spr_bram_ow16_walk_down_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_bram_ow16_walk_left_strip4",
+        "path":"sprites/spr_bram_ow16_walk_left_strip4/spr_bram_ow16_walk_left_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_bram_ow16_walk_right_strip4",
+        "path":"sprites/spr_bram_ow16_walk_right_strip4/spr_bram_ow16_walk_right_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_bram_ow16_walk_up_strip4",
+        "path":"sprites/spr_bram_ow16_walk_up_strip4/spr_bram_ow16_walk_up_strip4.yy",
+      },
+    },
+    {
+      "id":{
         "name":"spr_briar_hulk_attack_strip6",
         "path":"sprites/spr_briar_hulk_attack_strip6/spr_briar_hulk_attack_strip6.yy",
       },
@@ -2309,6 +2471,54 @@
     },
     {
       "id":{
+        "name":"spr_crown_sergeant_gate_ow16_idle_down",
+        "path":"sprites/spr_crown_sergeant_gate_ow16_idle_down/spr_crown_sergeant_gate_ow16_idle_down.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_crown_sergeant_gate_ow16_idle_left",
+        "path":"sprites/spr_crown_sergeant_gate_ow16_idle_left/spr_crown_sergeant_gate_ow16_idle_left.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_crown_sergeant_gate_ow16_idle_right",
+        "path":"sprites/spr_crown_sergeant_gate_ow16_idle_right/spr_crown_sergeant_gate_ow16_idle_right.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_crown_sergeant_gate_ow16_idle_up",
+        "path":"sprites/spr_crown_sergeant_gate_ow16_idle_up/spr_crown_sergeant_gate_ow16_idle_up.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_crown_sergeant_gate_ow16_walk_down_strip4",
+        "path":"sprites/spr_crown_sergeant_gate_ow16_walk_down_strip4/spr_crown_sergeant_gate_ow16_walk_down_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_crown_sergeant_gate_ow16_walk_left_strip4",
+        "path":"sprites/spr_crown_sergeant_gate_ow16_walk_left_strip4/spr_crown_sergeant_gate_ow16_walk_left_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_crown_sergeant_gate_ow16_walk_right_strip4",
+        "path":"sprites/spr_crown_sergeant_gate_ow16_walk_right_strip4/spr_crown_sergeant_gate_ow16_walk_right_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_crown_sergeant_gate_ow16_walk_up_strip4",
+        "path":"sprites/spr_crown_sergeant_gate_ow16_walk_up_strip4/spr_crown_sergeant_gate_ow16_walk_up_strip4.yy",
+      },
+    },
+    {
+      "id":{
         "name":"spr_crown_sergeant_hurt_strip3",
         "path":"sprites/spr_crown_sergeant_hurt_strip3/spr_crown_sergeant_hurt_strip3.yy",
       },
@@ -2371,6 +2581,102 @@
       "id":{
         "name":"spr_crown_sergeant_walk_strip4",
         "path":"sprites/spr_crown_sergeant_walk_strip4/spr_crown_sergeant_walk_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_crown_soldier_firm_ow16_idle_down",
+        "path":"sprites/spr_crown_soldier_firm_ow16_idle_down/spr_crown_soldier_firm_ow16_idle_down.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_crown_soldier_firm_ow16_idle_left",
+        "path":"sprites/spr_crown_soldier_firm_ow16_idle_left/spr_crown_soldier_firm_ow16_idle_left.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_crown_soldier_firm_ow16_idle_right",
+        "path":"sprites/spr_crown_soldier_firm_ow16_idle_right/spr_crown_soldier_firm_ow16_idle_right.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_crown_soldier_firm_ow16_idle_up",
+        "path":"sprites/spr_crown_soldier_firm_ow16_idle_up/spr_crown_soldier_firm_ow16_idle_up.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_crown_soldier_firm_ow16_walk_down_strip4",
+        "path":"sprites/spr_crown_soldier_firm_ow16_walk_down_strip4/spr_crown_soldier_firm_ow16_walk_down_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_crown_soldier_firm_ow16_walk_left_strip4",
+        "path":"sprites/spr_crown_soldier_firm_ow16_walk_left_strip4/spr_crown_soldier_firm_ow16_walk_left_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_crown_soldier_firm_ow16_walk_right_strip4",
+        "path":"sprites/spr_crown_soldier_firm_ow16_walk_right_strip4/spr_crown_soldier_firm_ow16_walk_right_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_crown_soldier_firm_ow16_walk_up_strip4",
+        "path":"sprites/spr_crown_soldier_firm_ow16_walk_up_strip4/spr_crown_soldier_firm_ow16_walk_up_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_crown_soldier_unwilling_ow16_idle_down",
+        "path":"sprites/spr_crown_soldier_unwilling_ow16_idle_down/spr_crown_soldier_unwilling_ow16_idle_down.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_crown_soldier_unwilling_ow16_idle_left",
+        "path":"sprites/spr_crown_soldier_unwilling_ow16_idle_left/spr_crown_soldier_unwilling_ow16_idle_left.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_crown_soldier_unwilling_ow16_idle_right",
+        "path":"sprites/spr_crown_soldier_unwilling_ow16_idle_right/spr_crown_soldier_unwilling_ow16_idle_right.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_crown_soldier_unwilling_ow16_idle_up",
+        "path":"sprites/spr_crown_soldier_unwilling_ow16_idle_up/spr_crown_soldier_unwilling_ow16_idle_up.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_crown_soldier_unwilling_ow16_walk_down_strip4",
+        "path":"sprites/spr_crown_soldier_unwilling_ow16_walk_down_strip4/spr_crown_soldier_unwilling_ow16_walk_down_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_crown_soldier_unwilling_ow16_walk_left_strip4",
+        "path":"sprites/spr_crown_soldier_unwilling_ow16_walk_left_strip4/spr_crown_soldier_unwilling_ow16_walk_left_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_crown_soldier_unwilling_ow16_walk_right_strip4",
+        "path":"sprites/spr_crown_soldier_unwilling_ow16_walk_right_strip4/spr_crown_soldier_unwilling_ow16_walk_right_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_crown_soldier_unwilling_ow16_walk_up_strip4",
+        "path":"sprites/spr_crown_soldier_unwilling_ow16_walk_up_strip4/spr_crown_soldier_unwilling_ow16_walk_up_strip4.yy",
       },
     },
     {
@@ -3653,6 +3959,54 @@
     },
     {
       "id":{
+        "name":"spr_len_ow16_idle_down",
+        "path":"sprites/spr_len_ow16_idle_down/spr_len_ow16_idle_down.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_len_ow16_idle_left",
+        "path":"sprites/spr_len_ow16_idle_left/spr_len_ow16_idle_left.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_len_ow16_idle_right",
+        "path":"sprites/spr_len_ow16_idle_right/spr_len_ow16_idle_right.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_len_ow16_idle_up",
+        "path":"sprites/spr_len_ow16_idle_up/spr_len_ow16_idle_up.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_len_ow16_walk_down_strip4",
+        "path":"sprites/spr_len_ow16_walk_down_strip4/spr_len_ow16_walk_down_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_len_ow16_walk_left_strip4",
+        "path":"sprites/spr_len_ow16_walk_left_strip4/spr_len_ow16_walk_left_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_len_ow16_walk_right_strip4",
+        "path":"sprites/spr_len_ow16_walk_right_strip4/spr_len_ow16_walk_right_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_len_ow16_walk_up_strip4",
+        "path":"sprites/spr_len_ow16_walk_up_strip4/spr_len_ow16_walk_up_strip4.yy",
+      },
+    },
+    {
+      "id":{
         "name":"spr_logo_ashen_crown_320",
         "path":"sprites/spr_logo_ashen_crown_320/spr_logo_ashen_crown_320.yy",
       },
@@ -4019,6 +4373,54 @@
     },
     {
       "id":{
+        "name":"spr_oda_ow16_idle_down",
+        "path":"sprites/spr_oda_ow16_idle_down/spr_oda_ow16_idle_down.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_oda_ow16_idle_left",
+        "path":"sprites/spr_oda_ow16_idle_left/spr_oda_ow16_idle_left.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_oda_ow16_idle_right",
+        "path":"sprites/spr_oda_ow16_idle_right/spr_oda_ow16_idle_right.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_oda_ow16_idle_up",
+        "path":"sprites/spr_oda_ow16_idle_up/spr_oda_ow16_idle_up.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_oda_ow16_walk_down_strip4",
+        "path":"sprites/spr_oda_ow16_walk_down_strip4/spr_oda_ow16_walk_down_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_oda_ow16_walk_left_strip4",
+        "path":"sprites/spr_oda_ow16_walk_left_strip4/spr_oda_ow16_walk_left_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_oda_ow16_walk_right_strip4",
+        "path":"sprites/spr_oda_ow16_walk_right_strip4/spr_oda_ow16_walk_right_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_oda_ow16_walk_up_strip4",
+        "path":"sprites/spr_oda_ow16_walk_up_strip4/spr_oda_ow16_walk_up_strip4.yy",
+      },
+    },
+    {
+      "id":{
         "name":"spr_pell_ow16_idle_down",
         "path":"sprites/spr_pell_ow16_idle_down/spr_pell_ow16_idle_down.yy",
       },
@@ -4067,8 +4469,74 @@
     },
     {
       "id":{
+        "name":"spr_perrin_ow16_idle_down",
+        "path":"sprites/spr_perrin_ow16_idle_down/spr_perrin_ow16_idle_down.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_perrin_ow16_idle_left",
+        "path":"sprites/spr_perrin_ow16_idle_left/spr_perrin_ow16_idle_left.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_perrin_ow16_idle_right",
+        "path":"sprites/spr_perrin_ow16_idle_right/spr_perrin_ow16_idle_right.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_perrin_ow16_idle_up",
+        "path":"sprites/spr_perrin_ow16_idle_up/spr_perrin_ow16_idle_up.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_perrin_ow16_walk_down_strip4",
+        "path":"sprites/spr_perrin_ow16_walk_down_strip4/spr_perrin_ow16_walk_down_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_perrin_ow16_walk_left_strip4",
+        "path":"sprites/spr_perrin_ow16_walk_left_strip4/spr_perrin_ow16_walk_left_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_perrin_ow16_walk_right_strip4",
+        "path":"sprites/spr_perrin_ow16_walk_right_strip4/spr_perrin_ow16_walk_right_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_perrin_ow16_walk_up_strip4",
+        "path":"sprites/spr_perrin_ow16_walk_up_strip4/spr_perrin_ow16_walk_up_strip4.yy",
+      },
+    },
+    {
+      "id":{
         "name":"spr_player_placeholder",
         "path":"sprites/spr_player_placeholder/spr_player_placeholder.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_portrait_bram_afraid",
+        "path":"sprites/spr_portrait_bram_afraid/spr_portrait_bram_afraid.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_portrait_bram_grateful",
+        "path":"sprites/spr_portrait_bram_grateful/spr_portrait_bram_grateful.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_portrait_bram_shaken",
+        "path":"sprites/spr_portrait_bram_shaken/spr_portrait_bram_shaken.yy",
       },
     },
     {
@@ -4169,6 +4637,24 @@
     },
     {
       "id":{
+        "name":"spr_portrait_len_nervous",
+        "path":"sprites/spr_portrait_len_nervous/spr_portrait_len_nervous.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_portrait_len_neutral",
+        "path":"sprites/spr_portrait_len_neutral/spr_portrait_len_neutral.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_portrait_len_smile",
+        "path":"sprites/spr_portrait_len_smile/spr_portrait_len_smile.yy",
+      },
+    },
+    {
+      "id":{
         "name":"spr_portrait_marda_neutral",
         "path":"sprites/spr_portrait_marda_neutral/spr_portrait_marda_neutral.yy",
       },
@@ -4187,6 +4673,24 @@
     },
     {
       "id":{
+        "name":"spr_portrait_oda_pleading",
+        "path":"sprites/spr_portrait_oda_pleading/spr_portrait_oda_pleading.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_portrait_oda_relieved",
+        "path":"sprites/spr_portrait_oda_relieved/spr_portrait_oda_relieved.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_portrait_oda_worried",
+        "path":"sprites/spr_portrait_oda_worried/spr_portrait_oda_worried.yy",
+      },
+    },
+    {
+      "id":{
         "name":"spr_portrait_pell_neutral",
         "path":"sprites/spr_portrait_pell_neutral/spr_portrait_pell_neutral.yy",
       },
@@ -4201,6 +4705,24 @@
       "id":{
         "name":"spr_portrait_pell_worried",
         "path":"sprites/spr_portrait_pell_worried/spr_portrait_pell_worried.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_portrait_perrin_grim",
+        "path":"sprites/spr_portrait_perrin_grim/spr_portrait_perrin_grim.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_portrait_perrin_neutral",
+        "path":"sprites/spr_portrait_perrin_neutral/spr_portrait_perrin_neutral.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_portrait_perrin_warm",
+        "path":"sprites/spr_portrait_perrin_warm/spr_portrait_perrin_warm.yy",
       },
     },
     {
@@ -4241,6 +4763,24 @@
     },
     {
       "id":{
+        "name":"spr_portrait_taren_determined",
+        "path":"sprites/spr_portrait_taren_determined/spr_portrait_taren_determined.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_portrait_taren_neutral",
+        "path":"sprites/spr_portrait_taren_neutral/spr_portrait_taren_neutral.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_portrait_taren_wry",
+        "path":"sprites/spr_portrait_taren_wry/spr_portrait_taren_wry.yy",
+      },
+    },
+    {
+      "id":{
         "name":"spr_portrait_tomas_neutral",
         "path":"sprites/spr_portrait_tomas_neutral/spr_portrait_tomas_neutral.yy",
       },
@@ -4255,6 +4795,150 @@
       "id":{
         "name":"spr_portrait_tomas_smile",
         "path":"sprites/spr_portrait_tomas_smile/spr_portrait_tomas_smile.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_a_ow16_idle_down",
+        "path":"sprites/spr_prisoner_a_ow16_idle_down/spr_prisoner_a_ow16_idle_down.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_a_ow16_idle_left",
+        "path":"sprites/spr_prisoner_a_ow16_idle_left/spr_prisoner_a_ow16_idle_left.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_a_ow16_idle_right",
+        "path":"sprites/spr_prisoner_a_ow16_idle_right/spr_prisoner_a_ow16_idle_right.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_a_ow16_idle_up",
+        "path":"sprites/spr_prisoner_a_ow16_idle_up/spr_prisoner_a_ow16_idle_up.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_a_ow16_walk_down_strip4",
+        "path":"sprites/spr_prisoner_a_ow16_walk_down_strip4/spr_prisoner_a_ow16_walk_down_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_a_ow16_walk_left_strip4",
+        "path":"sprites/spr_prisoner_a_ow16_walk_left_strip4/spr_prisoner_a_ow16_walk_left_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_a_ow16_walk_right_strip4",
+        "path":"sprites/spr_prisoner_a_ow16_walk_right_strip4/spr_prisoner_a_ow16_walk_right_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_a_ow16_walk_up_strip4",
+        "path":"sprites/spr_prisoner_a_ow16_walk_up_strip4/spr_prisoner_a_ow16_walk_up_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_b_ow16_idle_down",
+        "path":"sprites/spr_prisoner_b_ow16_idle_down/spr_prisoner_b_ow16_idle_down.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_b_ow16_idle_left",
+        "path":"sprites/spr_prisoner_b_ow16_idle_left/spr_prisoner_b_ow16_idle_left.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_b_ow16_idle_right",
+        "path":"sprites/spr_prisoner_b_ow16_idle_right/spr_prisoner_b_ow16_idle_right.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_b_ow16_idle_up",
+        "path":"sprites/spr_prisoner_b_ow16_idle_up/spr_prisoner_b_ow16_idle_up.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_b_ow16_walk_down_strip4",
+        "path":"sprites/spr_prisoner_b_ow16_walk_down_strip4/spr_prisoner_b_ow16_walk_down_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_b_ow16_walk_left_strip4",
+        "path":"sprites/spr_prisoner_b_ow16_walk_left_strip4/spr_prisoner_b_ow16_walk_left_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_b_ow16_walk_right_strip4",
+        "path":"sprites/spr_prisoner_b_ow16_walk_right_strip4/spr_prisoner_b_ow16_walk_right_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_b_ow16_walk_up_strip4",
+        "path":"sprites/spr_prisoner_b_ow16_walk_up_strip4/spr_prisoner_b_ow16_walk_up_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_c_ow16_idle_down",
+        "path":"sprites/spr_prisoner_c_ow16_idle_down/spr_prisoner_c_ow16_idle_down.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_c_ow16_idle_left",
+        "path":"sprites/spr_prisoner_c_ow16_idle_left/spr_prisoner_c_ow16_idle_left.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_c_ow16_idle_right",
+        "path":"sprites/spr_prisoner_c_ow16_idle_right/spr_prisoner_c_ow16_idle_right.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_c_ow16_idle_up",
+        "path":"sprites/spr_prisoner_c_ow16_idle_up/spr_prisoner_c_ow16_idle_up.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_c_ow16_walk_down_strip4",
+        "path":"sprites/spr_prisoner_c_ow16_walk_down_strip4/spr_prisoner_c_ow16_walk_down_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_c_ow16_walk_left_strip4",
+        "path":"sprites/spr_prisoner_c_ow16_walk_left_strip4/spr_prisoner_c_ow16_walk_left_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_c_ow16_walk_right_strip4",
+        "path":"sprites/spr_prisoner_c_ow16_walk_right_strip4/spr_prisoner_c_ow16_walk_right_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_prisoner_c_ow16_walk_up_strip4",
+        "path":"sprites/spr_prisoner_c_ow16_walk_up_strip4/spr_prisoner_c_ow16_walk_up_strip4.yy",
       },
     },
     {
@@ -4565,6 +5249,102 @@
     },
     {
       "id":{
+        "name":"spr_taren_attack_strip6",
+        "path":"sprites/spr_taren_attack_strip6/spr_taren_attack_strip6.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_taren_death_strip6",
+        "path":"sprites/spr_taren_death_strip6/spr_taren_death_strip6.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_taren_defend_strip3",
+        "path":"sprites/spr_taren_defend_strip3/spr_taren_defend_strip3.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_taren_hurt_strip3",
+        "path":"sprites/spr_taren_hurt_strip3/spr_taren_hurt_strip3.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_taren_idle_strip4",
+        "path":"sprites/spr_taren_idle_strip4/spr_taren_idle_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_taren_ow16_idle_down",
+        "path":"sprites/spr_taren_ow16_idle_down/spr_taren_ow16_idle_down.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_taren_ow16_idle_left",
+        "path":"sprites/spr_taren_ow16_idle_left/spr_taren_ow16_idle_left.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_taren_ow16_idle_right",
+        "path":"sprites/spr_taren_ow16_idle_right/spr_taren_ow16_idle_right.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_taren_ow16_idle_up",
+        "path":"sprites/spr_taren_ow16_idle_up/spr_taren_ow16_idle_up.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_taren_ow16_walk_down_strip4",
+        "path":"sprites/spr_taren_ow16_walk_down_strip4/spr_taren_ow16_walk_down_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_taren_ow16_walk_left_strip4",
+        "path":"sprites/spr_taren_ow16_walk_left_strip4/spr_taren_ow16_walk_left_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_taren_ow16_walk_right_strip4",
+        "path":"sprites/spr_taren_ow16_walk_right_strip4/spr_taren_ow16_walk_right_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_taren_ow16_walk_up_strip4",
+        "path":"sprites/spr_taren_ow16_walk_up_strip4/spr_taren_ow16_walk_up_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_taren_skill_cleave_strip6",
+        "path":"sprites/spr_taren_skill_cleave_strip6/spr_taren_skill_cleave_strip6.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_taren_skill_rally_strip6",
+        "path":"sprites/spr_taren_skill_rally_strip6/spr_taren_skill_rally_strip6.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_taren_walk_strip8",
+        "path":"sprites/spr_taren_walk_strip8/spr_taren_walk_strip8.yy",
+      },
+    },
+    {
+      "id":{
         "name":"spr_title_screen_320",
         "path":"sprites/spr_title_screen_320/spr_title_screen_320.yy",
       },
@@ -4639,6 +5419,54 @@
       "id":{
         "name":"spr_trap_plate_placeholder",
         "path":"sprites/spr_trap_plate_placeholder/spr_trap_plate_placeholder.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_traveler_ow16_idle_down",
+        "path":"sprites/spr_traveler_ow16_idle_down/spr_traveler_ow16_idle_down.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_traveler_ow16_idle_left",
+        "path":"sprites/spr_traveler_ow16_idle_left/spr_traveler_ow16_idle_left.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_traveler_ow16_idle_right",
+        "path":"sprites/spr_traveler_ow16_idle_right/spr_traveler_ow16_idle_right.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_traveler_ow16_idle_up",
+        "path":"sprites/spr_traveler_ow16_idle_up/spr_traveler_ow16_idle_up.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_traveler_ow16_walk_down_strip4",
+        "path":"sprites/spr_traveler_ow16_walk_down_strip4/spr_traveler_ow16_walk_down_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_traveler_ow16_walk_left_strip4",
+        "path":"sprites/spr_traveler_ow16_walk_left_strip4/spr_traveler_ow16_walk_left_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_traveler_ow16_walk_right_strip4",
+        "path":"sprites/spr_traveler_ow16_walk_right_strip4/spr_traveler_ow16_walk_right_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_traveler_ow16_walk_up_strip4",
+        "path":"sprites/spr_traveler_ow16_walk_up_strip4/spr_traveler_ow16_walk_up_strip4.yy",
       },
     },
     {
@@ -4969,6 +5797,102 @@
       "id":{
         "name":"spr_ui_window_gold",
         "path":"sprites/spr_ui_window_gold/spr_ui_window_gold.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_villager_a_ow16_idle_down",
+        "path":"sprites/spr_villager_a_ow16_idle_down/spr_villager_a_ow16_idle_down.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_villager_a_ow16_idle_left",
+        "path":"sprites/spr_villager_a_ow16_idle_left/spr_villager_a_ow16_idle_left.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_villager_a_ow16_idle_right",
+        "path":"sprites/spr_villager_a_ow16_idle_right/spr_villager_a_ow16_idle_right.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_villager_a_ow16_idle_up",
+        "path":"sprites/spr_villager_a_ow16_idle_up/spr_villager_a_ow16_idle_up.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_villager_a_ow16_walk_down_strip4",
+        "path":"sprites/spr_villager_a_ow16_walk_down_strip4/spr_villager_a_ow16_walk_down_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_villager_a_ow16_walk_left_strip4",
+        "path":"sprites/spr_villager_a_ow16_walk_left_strip4/spr_villager_a_ow16_walk_left_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_villager_a_ow16_walk_right_strip4",
+        "path":"sprites/spr_villager_a_ow16_walk_right_strip4/spr_villager_a_ow16_walk_right_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_villager_a_ow16_walk_up_strip4",
+        "path":"sprites/spr_villager_a_ow16_walk_up_strip4/spr_villager_a_ow16_walk_up_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_villager_b_ow16_idle_down",
+        "path":"sprites/spr_villager_b_ow16_idle_down/spr_villager_b_ow16_idle_down.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_villager_b_ow16_idle_left",
+        "path":"sprites/spr_villager_b_ow16_idle_left/spr_villager_b_ow16_idle_left.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_villager_b_ow16_idle_right",
+        "path":"sprites/spr_villager_b_ow16_idle_right/spr_villager_b_ow16_idle_right.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_villager_b_ow16_idle_up",
+        "path":"sprites/spr_villager_b_ow16_idle_up/spr_villager_b_ow16_idle_up.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_villager_b_ow16_walk_down_strip4",
+        "path":"sprites/spr_villager_b_ow16_walk_down_strip4/spr_villager_b_ow16_walk_down_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_villager_b_ow16_walk_left_strip4",
+        "path":"sprites/spr_villager_b_ow16_walk_left_strip4/spr_villager_b_ow16_walk_left_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_villager_b_ow16_walk_right_strip4",
+        "path":"sprites/spr_villager_b_ow16_walk_right_strip4/spr_villager_b_ow16_walk_right_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_villager_b_ow16_walk_up_strip4",
+        "path":"sprites/spr_villager_b_ow16_walk_up_strip4/spr_villager_b_ow16_walk_up_strip4.yy",
       },
     },
     {

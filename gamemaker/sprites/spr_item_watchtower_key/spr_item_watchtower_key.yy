@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"95ae1133-9c14-40d2-951c-090c4ba84817",
-      "name":"95ae1133-9c14-40d2-951c-090c4ba84817",
+      "%Name":"0c9b4b0f-b2cf-4221-9098-18d0b86e3df7",
+      "name":"0c9b4b0f-b2cf-4221-9098-18d0b86e3df7",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"17076ac8-afce-4d43-a21e-8bdc43aca838",
+      "%Name":"b45c5cad-933c-4d85-aaa3-d61f119412cc",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"17076ac8-afce-4d43-a21e-8bdc43aca838",
+      "name":"b45c5cad-933c-4d85-aaa3-d61f119412cc",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"95ae1133-9c14-40d2-951c-090c4ba84817",
+                    "name":"0c9b4b0f-b2cf-4221-9098-18d0b86e3df7",
                     "path":"sprites/spr_item_watchtower_key/spr_item_watchtower_key.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"46875baf-db29-4605-9eec-d5beb386c768",
+              "id":"7781e444-a0ec-4568-bc14-154023d0b825",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

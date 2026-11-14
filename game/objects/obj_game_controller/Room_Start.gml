@@ -52,3 +52,6 @@ scr_random_encounter_on_room_start();
 // Safety: after spawn, after a return from battle, or after town wake-up,
 // nudge the player if they came up overlapping an obj_solid.
 scr_player_unstick();
+
+// Chapter 2 room hooks: chapter-end save prompt, Blackguard armor inspect spot, Calder fight resume.
+scr_ch2_on_room_start();

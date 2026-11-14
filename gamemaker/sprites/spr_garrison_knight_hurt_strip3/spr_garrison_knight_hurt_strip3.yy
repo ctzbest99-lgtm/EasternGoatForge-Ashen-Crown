@@ -14,22 +14,22 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"065a3d0e-c987-474d-bcb7-377a99139bf8",
-      "name":"065a3d0e-c987-474d-bcb7-377a99139bf8",
+      "%Name":"95b68ec0-b5bb-4cc4-afee-eb7e2c9c676a",
+      "name":"95b68ec0-b5bb-4cc4-afee-eb7e2c9c676a",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"a95d6d71-8d27-497a-a5dc-20784264b9ff",
-      "name":"a95d6d71-8d27-497a-a5dc-20784264b9ff",
+      "%Name":"5b1c949b-3eda-4e48-9f47-296635cc9dfa",
+      "name":"5b1c949b-3eda-4e48-9f47-296635cc9dfa",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"ad437972-7161-4832-b816-fd52f0cccb33",
-      "name":"ad437972-7161-4832-b816-fd52f0cccb33",
+      "%Name":"b7d0fb0e-caf2-4c20-bace-78c168ab1f12",
+      "name":"b7d0fb0e-caf2-4c20-bace-78c168ab1f12",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -41,11 +41,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"2f109de8-9bcc-42b1-852e-30825197eb90",
+      "%Name":"2ee0290d-e6f7-45a1-b59a-ada30fdfd47a",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"2f109de8-9bcc-42b1-852e-30825197eb90",
+      "name":"2ee0290d-e6f7-45a1-b59a-ada30fdfd47a",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -118,7 +118,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"065a3d0e-c987-474d-bcb7-377a99139bf8",
+                    "name":"95b68ec0-b5bb-4cc4-afee-eb7e2c9c676a",
                     "path":"sprites/spr_garrison_knight_hurt_strip3/spr_garrison_knight_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -126,7 +126,7 @@
                 },
               },
               "Disabled":false,
-              "id":"83f08ff8-ec59-40b5-8ec1-adaf6cec63d9",
+              "id":"a3cf3c2a-99d5-4841-bf84-d6d45fe264ca",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -140,7 +140,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a95d6d71-8d27-497a-a5dc-20784264b9ff",
+                    "name":"5b1c949b-3eda-4e48-9f47-296635cc9dfa",
                     "path":"sprites/spr_garrison_knight_hurt_strip3/spr_garrison_knight_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -148,7 +148,7 @@
                 },
               },
               "Disabled":false,
-              "id":"553c7b39-c3f5-494b-a655-429aa9a59f4b",
+              "id":"a44fbeea-e1a3-4ace-9f34-7723939316b6",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -162,7 +162,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ad437972-7161-4832-b816-fd52f0cccb33",
+                    "name":"b7d0fb0e-caf2-4c20-bace-78c168ab1f12",
                     "path":"sprites/spr_garrison_knight_hurt_strip3/spr_garrison_knight_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -170,7 +170,7 @@
                 },
               },
               "Disabled":false,
-              "id":"78ad6ab1-4c5a-4b99-8dbc-0c7b11fbd0da",
+              "id":"5dbd5fe3-4e78-4e42-bbf3-5562b73be567",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,

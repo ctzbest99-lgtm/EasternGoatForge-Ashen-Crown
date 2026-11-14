@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"d1accfe7-2cad-4c1b-84ee-6629a9ea52f2",
-      "name":"d1accfe7-2cad-4c1b-84ee-6629a9ea52f2",
+      "%Name":"72ead258-2654-4682-bfd3-9b165c4f307e",
+      "name":"72ead258-2654-4682-bfd3-9b165c4f307e",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"11735c6a-4b8c-404e-92c0-3b27d9762ea2",
-      "name":"11735c6a-4b8c-404e-92c0-3b27d9762ea2",
+      "%Name":"838a1a6a-2208-484b-b860-695aa9915e2d",
+      "name":"838a1a6a-2208-484b-b860-695aa9915e2d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"3f5f26cd-83ff-4e56-bf67-023f97c334d4",
-      "name":"3f5f26cd-83ff-4e56-bf67-023f97c334d4",
+      "%Name":"647cc644-72d0-4197-8f24-9b588a4613a1",
+      "name":"647cc644-72d0-4197-8f24-9b588a4613a1",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"ca4da114-652a-40e4-8206-abe4d8b93778",
-      "name":"ca4da114-652a-40e4-8206-abe4d8b93778",
+      "%Name":"3d09eb48-7cc3-4078-88d9-3215d883821f",
+      "name":"3d09eb48-7cc3-4078-88d9-3215d883821f",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"0f972880-b02c-49ab-b23b-6e428a2ee8e6",
+      "%Name":"c0b715ae-a0d4-4b1c-a963-75e903a40363",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"0f972880-b02c-49ab-b23b-6e428a2ee8e6",
+      "name":"c0b715ae-a0d4-4b1c-a963-75e903a40363",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"d1accfe7-2cad-4c1b-84ee-6629a9ea52f2",
+                    "name":"72ead258-2654-4682-bfd3-9b165c4f307e",
                     "path":"sprites/spr_crown_patrolman_walk_strip4/spr_crown_patrolman_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"5b4905b0-62bb-4b21-8671-8792f4608513",
+              "id":"dc7787e9-7280-4a36-be4e-43bc95105cc5",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"11735c6a-4b8c-404e-92c0-3b27d9762ea2",
+                    "name":"838a1a6a-2208-484b-b860-695aa9915e2d",
                     "path":"sprites/spr_crown_patrolman_walk_strip4/spr_crown_patrolman_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"dd50732d-2b5d-4bee-a31d-369aab6834d1",
+              "id":"421ea0e5-f3a8-478a-91b5-f2e2adeb3794",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"3f5f26cd-83ff-4e56-bf67-023f97c334d4",
+                    "name":"647cc644-72d0-4197-8f24-9b588a4613a1",
                     "path":"sprites/spr_crown_patrolman_walk_strip4/spr_crown_patrolman_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"a0e5b563-d592-468d-b4c6-77f122e78734",
+              "id":"1ac74d2d-4b64-4787-88ff-e5962fb127da",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ca4da114-652a-40e4-8206-abe4d8b93778",
+                    "name":"3d09eb48-7cc3-4078-88d9-3215d883821f",
                     "path":"sprites/spr_crown_patrolman_walk_strip4/spr_crown_patrolman_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"006a3318-6486-4802-9934-adf608620d9a",
+              "id":"d2c6be41-3120-4183-9510-94c5bcc6cb40",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

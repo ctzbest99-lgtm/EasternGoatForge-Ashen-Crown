@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"1ac002f8-efbb-4ba0-8031-f1f726dc33db",
-      "name":"1ac002f8-efbb-4ba0-8031-f1f726dc33db",
+      "%Name":"ee31a7c5-dcad-4332-9d92-71d27a45f87c",
+      "name":"ee31a7c5-dcad-4332-9d92-71d27a45f87c",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"6628d84b-807a-4b9e-bede-9df7ab0aa249",
-      "name":"6628d84b-807a-4b9e-bede-9df7ab0aa249",
+      "%Name":"0418fafd-2393-4b83-a8b3-3c089479d690",
+      "name":"0418fafd-2393-4b83-a8b3-3c089479d690",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"70a5a64c-15ef-44b1-9743-74dcaa323f02",
-      "name":"70a5a64c-15ef-44b1-9743-74dcaa323f02",
+      "%Name":"c8de308f-5e88-4077-a183-4076bbaff3a5",
+      "name":"c8de308f-5e88-4077-a183-4076bbaff3a5",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"b117cb55-3e3d-4ec2-ba65-2ab233a90419",
-      "name":"b117cb55-3e3d-4ec2-ba65-2ab233a90419",
+      "%Name":"44a08e8e-0b40-4f74-817f-a80671d173db",
+      "name":"44a08e8e-0b40-4f74-817f-a80671d173db",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"8046fa86-763e-44c1-b8ed-5b3d74e58190",
-      "name":"8046fa86-763e-44c1-b8ed-5b3d74e58190",
+      "%Name":"63fff9d0-2006-43f8-8e73-b3b5f5f726e6",
+      "name":"63fff9d0-2006-43f8-8e73-b3b5f5f726e6",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"5cd767c0-750d-481e-bae5-f064b5de7500",
-      "name":"5cd767c0-750d-481e-bae5-f064b5de7500",
+      "%Name":"8a44524d-8e4f-413c-aef8-04af68fbc5d3",
+      "name":"8a44524d-8e4f-413c-aef8-04af68fbc5d3",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"0c5cfc67-4a8c-44c1-a130-f3a10b73e582",
+      "%Name":"3c68f039-6a9b-4033-a924-10f5cda0adf7",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"0c5cfc67-4a8c-44c1-a130-f3a10b73e582",
+      "name":"3c68f039-6a9b-4033-a924-10f5cda0adf7",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"1ac002f8-efbb-4ba0-8031-f1f726dc33db",
+                    "name":"ee31a7c5-dcad-4332-9d92-71d27a45f87c",
                     "path":"sprites/spr_debtman_attack_strip6/spr_debtman_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"a5b1920b-fa4b-4ce0-85e8-656315882e24",
+              "id":"23e688ae-bd0a-4ecf-83b7-cafa359ec28e",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"6628d84b-807a-4b9e-bede-9df7ab0aa249",
+                    "name":"0418fafd-2393-4b83-a8b3-3c089479d690",
                     "path":"sprites/spr_debtman_attack_strip6/spr_debtman_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"b8be7d80-2d89-4cb8-97f0-80c387043ba0",
+              "id":"d3aad437-7241-4ba9-907a-ed19029d2e17",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"70a5a64c-15ef-44b1-9743-74dcaa323f02",
+                    "name":"c8de308f-5e88-4077-a183-4076bbaff3a5",
                     "path":"sprites/spr_debtman_attack_strip6/spr_debtman_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"91238e1b-2e3f-4342-8a6e-58039e8896c8",
+              "id":"bcdddae7-ef9a-4d25-9a50-e5d2546123c3",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"b117cb55-3e3d-4ec2-ba65-2ab233a90419",
+                    "name":"44a08e8e-0b40-4f74-817f-a80671d173db",
                     "path":"sprites/spr_debtman_attack_strip6/spr_debtman_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"6973d007-c71e-4ff1-90e0-054698af998b",
+              "id":"e69e2eef-8f19-4e0d-a1a1-e2997ba091f3",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"8046fa86-763e-44c1-b8ed-5b3d74e58190",
+                    "name":"63fff9d0-2006-43f8-8e73-b3b5f5f726e6",
                     "path":"sprites/spr_debtman_attack_strip6/spr_debtman_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"11f8824f-d206-48b0-bbf5-bdf5c2ca9705",
+              "id":"5ed24637-f2f8-4639-9936-49ed8f5f95ee",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"5cd767c0-750d-481e-bae5-f064b5de7500",
+                    "name":"8a44524d-8e4f-413c-aef8-04af68fbc5d3",
                     "path":"sprites/spr_debtman_attack_strip6/spr_debtman_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"1a4f8635-48bf-481a-b005-94f6dc64e8a1",
+              "id":"5eb9d5e3-e2f0-44fc-930f-8f61d8673e8e",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

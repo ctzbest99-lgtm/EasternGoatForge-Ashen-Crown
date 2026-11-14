@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"7306ef1a-488d-4bc7-9e73-27b9d76adaae",
-      "name":"7306ef1a-488d-4bc7-9e73-27b9d76adaae",
+      "%Name":"c2f6012d-5060-464a-ae91-ac3ea55da916",
+      "name":"c2f6012d-5060-464a-ae91-ac3ea55da916",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"9fd5511b-516a-42d6-beed-1b37ec819c76",
+      "%Name":"fed09f5d-eb71-4629-85e9-4e1b48065a42",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"9fd5511b-516a-42d6-beed-1b37ec819c76",
+      "name":"fed09f5d-eb71-4629-85e9-4e1b48065a42",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"7306ef1a-488d-4bc7-9e73-27b9d76adaae",
+                    "name":"c2f6012d-5060-464a-ae91-ac3ea55da916",
                     "path":"sprites/spr_portrait_renn_smirk/spr_portrait_renn_smirk.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"368e007b-8cc7-48d2-b051-8be5a991192c",
+              "id":"1405e14c-1f8a-44c8-9643-479f7539315e",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

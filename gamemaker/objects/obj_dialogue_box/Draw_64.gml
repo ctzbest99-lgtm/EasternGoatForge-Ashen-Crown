@@ -17,7 +17,7 @@ draw_set_valign(fa_top);
 
 scr_ui_window(_left, _top, _right - _left, _bottom - _top, "normal");
 
-var _portrait = scr_ch1_portrait(speaker_name, "neutral");
+var _portrait = scr_ch1_portrait(speaker_name, variable_instance_exists(id, "portrait_expr") ? portrait_expr : "neutral");
 var _px = 0;
 if (scr_sprite_is_valid(_portrait)) {
     // 48×48 in a 48×48 well on the left of the box.

@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"1919604e-3812-4cef-b635-bc08e3b50a05",
-      "name":"1919604e-3812-4cef-b635-bc08e3b50a05",
+      "%Name":"990b1606-3e23-4dd0-b9a9-6333c1014822",
+      "name":"990b1606-3e23-4dd0-b9a9-6333c1014822",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"89fdba94-20f5-45df-8dcf-11430ef44533",
-      "name":"89fdba94-20f5-45df-8dcf-11430ef44533",
+      "%Name":"84001787-46ee-4182-b25b-35868e444011",
+      "name":"84001787-46ee-4182-b25b-35868e444011",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"d599cf52-5e50-49df-8065-23a0d3ae61a7",
-      "name":"d599cf52-5e50-49df-8065-23a0d3ae61a7",
+      "%Name":"ecb1898f-adac-413f-b61c-994572d602bd",
+      "name":"ecb1898f-adac-413f-b61c-994572d602bd",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"9a9835bb-6d16-4087-a324-e76e294bdfb3",
-      "name":"9a9835bb-6d16-4087-a324-e76e294bdfb3",
+      "%Name":"03aaa237-5630-407e-82f6-e8007b0516f8",
+      "name":"03aaa237-5630-407e-82f6-e8007b0516f8",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"b66b6df8-ffdb-4019-9df4-1d9cf3380d2b",
+      "%Name":"6995ec19-1ff3-44fa-b2fa-34cd10e10a5b",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"b66b6df8-ffdb-4019-9df4-1d9cf3380d2b",
+      "name":"6995ec19-1ff3-44fa-b2fa-34cd10e10a5b",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"1919604e-3812-4cef-b635-bc08e3b50a05",
+                    "name":"990b1606-3e23-4dd0-b9a9-6333c1014822",
                     "path":"sprites/spr_dock_thug_idle_strip4/spr_dock_thug_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"329e2d45-fb56-4e33-bfc1-aadcb78bee44",
+              "id":"50058706-e39e-430e-b0ad-0b5e2671cd4d",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"89fdba94-20f5-45df-8dcf-11430ef44533",
+                    "name":"84001787-46ee-4182-b25b-35868e444011",
                     "path":"sprites/spr_dock_thug_idle_strip4/spr_dock_thug_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"0b69805e-ef00-4b4e-991d-7acf5ebc399f",
+              "id":"b76f504f-47f8-4c5a-8dc9-69760a54e35b",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"d599cf52-5e50-49df-8065-23a0d3ae61a7",
+                    "name":"ecb1898f-adac-413f-b61c-994572d602bd",
                     "path":"sprites/spr_dock_thug_idle_strip4/spr_dock_thug_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"91038199-291e-4dac-876b-aa079e615163",
+              "id":"17fa6bc7-bfa8-4363-94d4-40bb4984f702",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"9a9835bb-6d16-4087-a324-e76e294bdfb3",
+                    "name":"03aaa237-5630-407e-82f6-e8007b0516f8",
                     "path":"sprites/spr_dock_thug_idle_strip4/spr_dock_thug_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"77505e4c-e20d-4e0c-837b-0ea8db19f177",
+              "id":"67ef0708-2df4-4a39-881e-8e5f92341cee",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

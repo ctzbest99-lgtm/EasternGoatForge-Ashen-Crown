@@ -181,11 +181,13 @@ function scr_dialogue_node(_id) {
         case "CV_END_06":
             return { id: "CV_END_06", speaker: "SYSTEM", lines: ["Chapter 1 — The Night of Ash — Complete."] };
     }
-    return undefined;
+    return scr_ch2_dialogue_node(_id); // Chapter 2 (scr_dialogue_data_ch2, generated)
 }
 
 function scr_dialogue_play_script(_script_id, _source = noone) {
     scr_game_state_init();
+    // Chapter 2 first: its own ids, plus Act II versions of Chapter 1 scenes (Greyhaven return, CV door).
+    if (scr_ch2_play_script(_script_id, _source)) return true;
     switch (_script_id) {
         case "GH_ARRIVAL":
             if (scr_flag_get("flag_arrived_greyhaven")) return true;
@@ -383,7 +385,10 @@ function scr_dialogue_try_advance_queue() {
         var _node = scr_dialogue_node(_id);
         if (!is_struct(_node)) continue;
         var _box = scr_dialogue_open(_node.lines, _node.speaker);
-        if (_box != noone) return;
+        if (_box != noone) {
+            if (variable_struct_exists(_node, "expr")) _box.portrait_expr = _node.expr;
+            return;
+        }
     }
 
     if (!is_undefined(_g.dialogue_on_finish)) {

@@ -43,6 +43,62 @@ These were chosen so roadmap step 5 (menus/saves) could start. None is a locked 
 - PLACEHOLDER prices: Minor Potion 15g (heals 15 HP), Antidote 20g, Iron Sword 80g (ATK +3, longsword), Leather Armor 60g (DEF +2), Iron Helm 40g (accessory, DEF +1). No prices appear in CHAPTER1_SCRIPT.md or STORY_BIBLE.md.
 - Inventory (I / Tab): use Minor Potion; Antidote cures an overworld `poisoned` flag (battle poison does not exist yet, so it usually reports no effect). Equipment can be worn from this menu. Dedicated shop / save / inventory art will land later in `/workspace/sprites/ui/menus/`; menus look up those sprite names first and fall back to the nine-slice windows, font, cursor, and item icons. Layout constants are centralized in `scr_menu_layout.gml`.
 
+## Chapter 2 wiring (feature/chapter2; pending owner approval)
+All of `docs/story/CHAPTER2_SCRIPT.md` (approved at cc8faff) is wired. That is 116 line ids, generated verbatim into `scr_dialogue_data_ch2` by `tools/gen_ch2_dialogue.py`. The flow is in `scr_ch2_story`. The rooms are Design's `/workspace/wrenfield` pipeline, copied unchanged except for the repo edits listed below.
+
+**Placement and timing choices (mine; change freely):**
+- **Wake-up (§1).** `CV_WAKE_01`–`04` play right after the Chapter 1 save prompt closes, or on loading that save in `rm_old_watchtower`. They set `flag_act2_started`. `WT2_BACK_01` follows straight after, as Kael's first backtrack line. The Blackguard's empty armor (`CV_WAKE_05`) is an invisible inspect spot where he fell (tile 29,6): there is no ash-heap sprite yet. `WT2_SIGN_01` and `GH2_GATE_SIGN` are identical to the Chapter 1 sign text, so those signs are unchanged.
+- **Greyhaven return (§3).** After `flag_act2_started`, each survivor's Chapter 1 scene id plays the GH2 lines instead. Pell's repeat line is followed by the forge shop, and Marda's line by her shop. Any GH2 talk sets `flag_greyhaven_return`.
+- **Quests.** There is no quest system or UI. Stages are stored as flags (`quest_Q_MAIN_BEYOND_VEIL` = `Q_BV_S1`/`S2`/`S3`, `quest_Q_SIDE_ODA` = `Q_SO_S1`/`S2`/`complete`), and the script's SYSTEM lines carry the player-facing text. S1 moves to S2 when the hook is heard on the Millhaven Road, or on entering the road with the hook already heard.
+- **Crown patrol (§4.2).** It barks `MR_PATROL_01`–`03`, then offers Fight / Move along ("can be avoided or fought"). Move along waves Kael through, and the patrol is gone on later visits (`avoided_enc_crown_patrol`). Fight is **2 Crown Patrolmen** (PLACEHOLDER: it matches the two soldiers on the map and the balance pass's cap of 2 for solo Kael), not the 3-enemy `grp_crown_patrol`.
+- **Gallows → Calder (§6–7).**
+  - The square trigger (or touching Taren) plays `WF_GALLOWS_01`–`07`.
+  - The right rope is cut in place on `_07`. Only the gallows tiles change; the repo version of `scr_wf_cut_rope` no longer lights the inn or opens the store early. Bram swaps to his bound idle pose.
+  - Then `WF_GALLOWS_08` and `WF_CALDER_INTRO_01`–`07` play.
+  - **Taren joins here:** 2nd slot, raised to Kael's level with full HP/MP, `flag_taren_in_battle`. `WF_CALDER_SYS_01`–`03B` show before the battle room loads. `SYS_04` is appended to the first Rallying Cry message, once per save.
+  - Calder's stance message is his bark `WF_CALDER_PHASE2_01`, and his yield message is `WF_CALDER_DEFEAT_01`. Both replace the system lines. "The rest withdraw." from the balance pass stays when a soldier was still standing.
+  - After the win: `flag_execution_stopped`; the room reloads in the after state; then `WF_CALDER_DEFEAT_02`–`05`, `WF_CALDER_REWARD_01` and `WF_JOIN_01`–`12` play, and then `flag_taren_recruited` and `Q_BV_S3` are set.
+- **Loss to Calder.** The usual town wake-up. Re-entering Wrenfield keeps the rope cut, replays `WF_CALDER_INTRO_07` and restarts the fight (no softlock).
+- **Taren after the rescue.** He stands beside Oda and Bram (tile 24,24) for `WF_JOIN_R1`. The map pass had no marker for him.
+- **Oda.** `WF_ODA_A2` "[Yes] [No]" is a real choice box. Declining lets her ask again. The after-rescue talk gives the reward once, whether or not the quest was taken (the script allows a one-talk start and finish). Bram: `WF_ODA_B3` the first time, then `WF_BRAM_B1`.
+- **Inn (§9).** Perrin plays `WF_TAVERN_B1`, then Rest / Leave at **30 g (PLACEHOLDER, `INN_WRENFIELD_PRICE`)**. Design's marker said "first night free"; I did not do that, because the script's "first one's on the house" is about a drink.
+- **Len's store.** `WF_STORE_B1` → `shop_wrenfield_store`. Stock is Minor Potion, Antidote, Ether and **Chain Mail as the mid-tier item (PLACEHOLDER, DEF +4, 220 g)**.
+- **Ether chest** (balance pass): Millhaven Road east clearing, tile (25,24). PLACEHOLDER spot.
+- **West road (§10).** The barrier (`WF_WEST_LOCKED`, "Crown checkpoint. West road closed by order of the Reeve.") now clears on `flag_execution_stopped`, i.e. right after the Calder fight; Design had `flag_taren_recruited`. Leaving plays `WF_HANDOFF_01`–`05` and a stub line, "To be continued." (mine). It sets `flag_chapter2_complete`, lands on the overworld spawn `from_wrenfield_west` east of Valemere, and opens the chapter-end save prompt. Chapter 3 (`rm_valemere_road`) replaces the fallback automatically once it exists.
+- **Text written by the art pass, kept:**
+  - `WF_STORE_SHUT` (barrier only in the before state)
+  - `WF_WEST_LOCKED` and the overworld barrier "Crown checkpoint. No passage south without the Reeve's leave." (both as specified)
+  - `WF_TAVERN_NOTICE`
+  - the fork sign "South: Wrenfield and the Millhaven road."
+- **Flags added by the map pass:** `flag_mr_entered` (MR_ENTER one-shot) and `flag_wf_gate_seen` (sergeant one-shot).
+
+**Repo edits to Design's generated Wrenfield files** (regenerating from `/workspace/wrenfield` needs these re-applied):
+1. Each `scr_build_*` (four rooms) also enables the 320×180 camera, as the Zone 1 builders do.
+2. `scr_wf_filter_markers` ends with `scr_ch2_marker_fixups` (west barrier flag, inn price, Ether chest, Taren after, patrol escort).
+3. `scr_wf_cut_rope` patches only the gallows columns.
+4. `scr_wf_patch_overworld` was removed. `scr_build_overworld` applies the overworld patch and merges its markers into its single marker pass, so spawn names like `millhaven_road` still resolve.
+
+**Engine additions** (all generic):
+- marker `sprite` for NPCs, story NPCs, encounters and extras
+- type `extra` (silent blocking body)
+- `fallback_room` / `fallback_spawn` for exits
+- exits with a scene (`scr_ch2_exit_script`)
+- flag-only walk-on triggers
+- encounter barks with Fight / Move along
+- an optional callback after post-battle lines
+- per-line portrait expression (`expr`)
+- party Guard holds a `defend` strip when one exists
+- story barks for a boss's stance and yield (`stance_line_node`, `yield_line_node`)
+
+**Open / placeholders:**
+- Inn price 30 g. Len's mid-tier item (Chain Mail).
+- Calder rewards: 220 XP and 100 g, the Design number, kept.
+- Ether chest placement. The "To be continued." line.
+- No quest log.
+- No ash-heap sprite for the empty armor.
+- **Unbowed** (resists Fear / Stun) has no effect, because neither status exists yet.
+- Defeat sends the party to the Greyhaven respawn, which is a long walk back to Wrenfield.
+
 ## Enemy batches 7–8 (feature/enemy-batches-7-8; pending owner approval)
 Design batch 7 (Wrenfield elite, Lower City, Hollow Sanctuary, Blackwood Road Garrison) and batch 8 (Act III, the Blackwood) are in the enemy database with sprites and encounter tables. No rooms or story beats use them yet. **Everything below is a PLACEHOLDER.**
 - **Stats come from a template** (`scr_enemy_scaled(id, …, role, level, party, extra)`), calibrated so a level-9 common matches the balance-pass Chapter 2 regulars and grows like the tiered party growth. Elite: ×2 HP, +2 ATK / DEF, ×2.5 XP. Boss: HP × 1.5 × expected party size, +3 ATK / DEF, ×8 XP. Per-enemy tweaks: Cutpurse ×0.8 HP; Wisp ×0.75 HP; Surgeon ×0.8 HP; Briar Hulk ×1.4 HP; Moths ×0.7 HP; Ward Sentinel and Door Warden +3 DEF. SPD is set per enemy.

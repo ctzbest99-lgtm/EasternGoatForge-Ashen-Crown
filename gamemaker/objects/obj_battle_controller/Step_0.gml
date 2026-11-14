@@ -33,6 +33,9 @@ switch (state) {
     case BATTLE_STATE.ROUND_START:
         scr_party_clear_guard(party); // Guard lasts from when it resolves until the party's next command phase
         var _r;
+        for (_r = 0; _r < array_length(party_vis); _r++) {
+            if (is_struct(party_vis[_r]) && party_vis[_r].anim == "defend") scr_battle_vis_play(party_vis[_r], "idle");
+        }
         for (_r = 0; _r < array_length(party); _r++) { scr_battle_tick_buffs(party[_r]); scr_battle_tick_statuses(party[_r]); }
         for (_r = 0; _r < array_length(enemies); _r++) { scr_battle_tick_buffs(enemies[_r]); scr_battle_tick_statuses(enemies[_r]); }
         queued_actions = [];
@@ -135,6 +138,9 @@ switch (state) {
 
         if (_action.command == "Guard") {
             _actor.is_guarding = true;
+            // Hold a defend pose while guarding when the member has one (Taren: spr_taren_defend_strip3).
+            var _gv = get_vis("party", _action.actor_index);
+            if (is_struct(_gv) && scr_sprite_is_valid(scr_battle_sprite(_gv.kind, "defend", 1))) scr_battle_vis_play(_gv, "defend");
             queue_message(_actor.name + " guards.", BATTLE_STATE.TURN_NEXT);
         } else if (_action.command == "Swap") {
             // Costs this member's turn. The incoming reserve member acts on later rounds, not this one.
@@ -253,7 +259,7 @@ switch (state) {
         }
         for (var _ye = 0; _ye < array_length(enemies); _ye++) {
             if (!enemies[_ye].yielded) continue;
-            _yield_line = enemies[_ye].full_name + " yields.";
+            _yield_line = (enemies[_ye].yield_line != "") ? enemies[_ye].yield_line : (enemies[_ye].full_name + " yields.");
             var _any_wd = false;
             for (var _wq = 0; _wq < array_length(enemies); _wq++) {
                 if (variable_struct_exists(enemies[_wq], "withdrawn") && enemies[_wq].withdrawn) _any_wd = true;

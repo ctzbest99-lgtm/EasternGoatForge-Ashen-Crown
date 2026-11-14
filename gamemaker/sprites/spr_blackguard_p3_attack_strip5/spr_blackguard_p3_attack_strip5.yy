@@ -14,36 +14,36 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"e3b766bf-324d-4683-a38b-4a07f8bbdbb2",
-      "name":"e3b766bf-324d-4683-a38b-4a07f8bbdbb2",
+      "%Name":"97b1f91f-f9cc-4da4-9c9e-ea829b678c2e",
+      "name":"97b1f91f-f9cc-4da4-9c9e-ea829b678c2e",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"2910da7d-1f86-4a58-95bf-c4aede168b06",
-      "name":"2910da7d-1f86-4a58-95bf-c4aede168b06",
+      "%Name":"2855a58c-74de-4536-8768-ffefe28af5cf",
+      "name":"2855a58c-74de-4536-8768-ffefe28af5cf",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"c0ef4725-8200-4ffc-bd21-ba5404e42eea",
-      "name":"c0ef4725-8200-4ffc-bd21-ba5404e42eea",
+      "%Name":"d4a9f655-76d1-4960-ae5d-f7304dd2ede4",
+      "name":"d4a9f655-76d1-4960-ae5d-f7304dd2ede4",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"57128e74-5a19-45ce-8158-6b42eb91dc63",
-      "name":"57128e74-5a19-45ce-8158-6b42eb91dc63",
+      "%Name":"fcb9eaf8-7af6-406a-b223-4a52b030e820",
+      "name":"fcb9eaf8-7af6-406a-b223-4a52b030e820",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"cdf53cf4-5823-4bb3-ac49-e026b6dea09b",
-      "name":"cdf53cf4-5823-4bb3-ac49-e026b6dea09b",
+      "%Name":"08aa767c-c1dd-4aeb-a6f8-7b58a90532b4",
+      "name":"08aa767c-c1dd-4aeb-a6f8-7b58a90532b4",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -55,11 +55,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"820059a8-416a-40ae-ad47-4b44224303d4",
+      "%Name":"a8544908-7bd2-4643-98dd-77138929f7fa",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"820059a8-416a-40ae-ad47-4b44224303d4",
+      "name":"a8544908-7bd2-4643-98dd-77138929f7fa",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -132,7 +132,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"e3b766bf-324d-4683-a38b-4a07f8bbdbb2",
+                    "name":"97b1f91f-f9cc-4da4-9c9e-ea829b678c2e",
                     "path":"sprites/spr_blackguard_p3_attack_strip5/spr_blackguard_p3_attack_strip5.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -140,7 +140,7 @@
                 },
               },
               "Disabled":false,
-              "id":"c91bf8c0-8e4e-42af-b0cc-98e3451dda8d",
+              "id":"63b96b57-dc79-4b02-8919-14b2db24b678",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -154,7 +154,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"2910da7d-1f86-4a58-95bf-c4aede168b06",
+                    "name":"2855a58c-74de-4536-8768-ffefe28af5cf",
                     "path":"sprites/spr_blackguard_p3_attack_strip5/spr_blackguard_p3_attack_strip5.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -162,7 +162,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f5290e21-b704-4783-9017-42a5ac098dc9",
+              "id":"d8c7d69a-880e-4477-955b-65aa54bd6abd",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -176,7 +176,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"c0ef4725-8200-4ffc-bd21-ba5404e42eea",
+                    "name":"d4a9f655-76d1-4960-ae5d-f7304dd2ede4",
                     "path":"sprites/spr_blackguard_p3_attack_strip5/spr_blackguard_p3_attack_strip5.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -184,7 +184,7 @@
                 },
               },
               "Disabled":false,
-              "id":"db0a0ad5-a939-46a3-9621-53ffab3bffc5",
+              "id":"13476da3-49d4-4d90-adc9-2120d05d0b64",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -198,7 +198,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"57128e74-5a19-45ce-8158-6b42eb91dc63",
+                    "name":"fcb9eaf8-7af6-406a-b223-4a52b030e820",
                     "path":"sprites/spr_blackguard_p3_attack_strip5/spr_blackguard_p3_attack_strip5.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -206,7 +206,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f97f9c6b-0eac-4a8d-9b5f-60538455bfa8",
+              "id":"93821362-3270-4291-9453-1cd31cba9fe1",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -220,7 +220,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"cdf53cf4-5823-4bb3-ac49-e026b6dea09b",
+                    "name":"08aa767c-c1dd-4aeb-a6f8-7b58a90532b4",
                     "path":"sprites/spr_blackguard_p3_attack_strip5/spr_blackguard_p3_attack_strip5.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -228,7 +228,7 @@
                 },
               },
               "Disabled":false,
-              "id":"1dfe843e-9596-4fba-82a1-4286be5ed34c",
+              "id":"3af548fa-c41d-4549-b599-ceec0c933e5b",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,

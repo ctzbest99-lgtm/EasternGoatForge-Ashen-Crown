@@ -78,12 +78,12 @@ function scr_skill_build(_skill_id) {
 
         // ---- Taren Holt (canon kit text; PLACEHOLDER numbers) -----------------------------
         case "rallying_cry":
-            _s = scr_skill_make("rallying_cry", "Rallying Cry", 4, "all_allies", "buff", 0, "attack", "raises a Rallying Cry!");
+            _s = scr_skill_make("rallying_cry", "Rallying Cry", 4, "all_allies", "buff", 0, "skill_rally", "raises a Rallying Cry!"); // spr_taren_skill_rally_strip6
             _s.buffs = [{ stat: "atk", pct: 0.25, turns: 3 }]; // 3 turns is canon; +25% and 4 MP are PLACEHOLDER
             _s.desc = "Party ATK up for 3 turns.";
             return _s;
         case "cleave":
-            _s = scr_skill_make("cleave", "Cleave", 3, "all", "damage", 0.6, "attack", "Cleaves");
+            _s = scr_skill_make("cleave", "Cleave", 3, "all", "damage", 0.6, "skill_cleave", "Cleaves"); // spr_taren_skill_cleave_strip6
             _s.desc = "Hit all enemies, reduced damage."; // 60% power and 3 MP are PLACEHOLDER
             return _s;
         case "unbowed":

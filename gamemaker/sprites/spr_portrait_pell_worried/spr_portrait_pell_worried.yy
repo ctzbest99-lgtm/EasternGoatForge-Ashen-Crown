@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"3c708331-ab4b-4899-a64e-caf6bf017d3d",
-      "name":"3c708331-ab4b-4899-a64e-caf6bf017d3d",
+      "%Name":"a6d9bad5-5167-4eba-a557-33bba63364fd",
+      "name":"a6d9bad5-5167-4eba-a557-33bba63364fd",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"386731f1-55dc-4adb-b82a-94e0c7bf1d55",
+      "%Name":"191413bb-e2c8-431b-9aee-311a1ccba0d0",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"386731f1-55dc-4adb-b82a-94e0c7bf1d55",
+      "name":"191413bb-e2c8-431b-9aee-311a1ccba0d0",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"3c708331-ab4b-4899-a64e-caf6bf017d3d",
+                    "name":"a6d9bad5-5167-4eba-a557-33bba63364fd",
                     "path":"sprites/spr_portrait_pell_worried/spr_portrait_pell_worried.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"96f21eaa-6be8-4552-9212-5a35d0b69eaa",
+              "id":"d69ac134-6e35-4fad-8541-ebdd167f5232",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

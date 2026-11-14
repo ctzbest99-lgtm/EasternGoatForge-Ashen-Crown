@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"f8322d5f-3d14-4be6-a4a9-73dca5b88536",
-      "name":"f8322d5f-3d14-4be6-a4a9-73dca5b88536",
+      "%Name":"e37d5923-9605-40bf-832b-29c87cb949eb",
+      "name":"e37d5923-9605-40bf-832b-29c87cb949eb",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"4fa7e97f-0f07-485e-9df4-046a98f38e75",
+      "%Name":"c068f038-a77b-41db-a470-4ae3216c560e",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"4fa7e97f-0f07-485e-9df4-046a98f38e75",
+      "name":"c068f038-a77b-41db-a470-4ae3216c560e",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"f8322d5f-3d14-4be6-a4a9-73dca5b88536",
+                    "name":"e37d5923-9605-40bf-832b-29c87cb949eb",
                     "path":"sprites/spr_portrait_commander_hailen_resolve/spr_portrait_commander_hailen_resolve.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"548fdec2-c8eb-494e-a014-9649575c09b5",
+              "id":"2d540534-f00c-429c-b1b0-3f533649440f",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
