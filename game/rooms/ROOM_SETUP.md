@@ -1,11 +1,53 @@
 # Room Setup
 
-1. Create a new GameMaker project in the IDE.
-2. Create rm_overworld and document the chosen room size.
-3. Create a placeholder top-down player sprite and assign it to obj_player.
-4. Create solid collision objects or configure tilemap collision. Movement must use the project's actual collision system.
-5. Add one obj_game_controller and one obj_player to rm_overworld.
-6. If choosing a dedicated battle room, create rm_battle_test and add the battle controller and placeholder UI.
-7. Compile and run before adding more systems.
-
 Do not fabricate .yy/.yyp metadata. Let GameMaker create resources. This document does not prove the project compiles.
+
+Room size, tile size, and resolution are still undecided. The numbers below are **placeholders** so the prototype can be tested; change them freely.
+
+## 1. Project
+1. Create a new GameMaker project (GML, GameMaker 2023.1+).
+2. Create every Script listed in `game/README.md` first, pasting each `game/scripts/*.gml` file into the script of the same name. Scripts reference objects and rooms by name, so the project will not compile until steps 2–4 are done too.
+
+## 2. Placeholder sprites (Asset Browser → Create → Sprite; draw a flat colour in the Image Editor)
+| Sprite | Size | Origin | Collision mask | Notes |
+|---|---|---|---|---|
+| `spr_player_placeholder` | 32×48 (matches the requested player reference) | Bottom Centre | Rectangle, manual, roughly the bottom 24×16 (feet), e.g. left 4, top 32, right 27, bottom 47 | Any colour |
+| `spr_solid_placeholder` | 32×32 | Top Left | Rectangle, full image | Dark grey |
+| `spr_interactable_placeholder` | 32×32 | Top Left | Rectangle, full image | e.g. brown "sign" |
+| `spr_encounter_trigger_placeholder` | 32×32 | Top Left | Rectangle, full image | Semi-transparent red; can be stretched in the room |
+
+Code reads the collision box (`bbox_*`), not the origin, so other origins work too. No final art exists; record real assets in docs/ASSET_INVENTORY.md when added.
+
+## 3. Objects
+Create each object in the table in `game/README.md` with the listed sprite, flags, and events, then paste the matching `.gml` file into each event:
+- **obj_game_controller:** no sprite, tick **Persistent**, untick Visible. Events: Create, Step ▸ Begin Step, Other ▸ Room Start.
+- **obj_player:** sprite `spr_player_placeholder`. Events: Create, Step. (Replaces the earlier Create/Step snippets; movement behaviour is unchanged.)
+- **obj_solid:** sprite `spr_solid_placeholder`. No events.
+- **obj_interactable:** sprite `spr_interactable_placeholder`, **Parent = obj_solid** (blocks movement). Event: Create.
+- **obj_dialogue_box:** no sprite. Events: Create, Step, Draw ▸ Draw GUI, Clean Up.
+- **obj_encounter_trigger:** sprite `spr_encounter_trigger_placeholder`, no parent. Events: Create, Other ▸ Room Start, Step.
+- **obj_battle_controller:** no sprite. Events: Create, Step, Draw ▸ Draw GUI.
+
+## 4. rm_overworld (placeholder 640×360)
+1. Create room `rm_overworld`; set it **first** in the Room Order (open the Room Manager and drag it to the top; the home icon marks the start room). Leave Persistent **off**.
+2. Instances layer:
+   - 1 × `obj_game_controller` anywhere.
+   - Border of `obj_solid` around the room edge (stretch instances), plus a few interior walls to test sliding.
+   - 1 × `obj_player` in open space.
+   - 1 × `obj_interactable` next to open space (the sign).
+   - 1 × `obj_encounter_trigger` on a path a few tiles from the player, **not** overlapping the player's start position.
+3. Optional per-instance overrides (double-click instance → Creation Code):
+   - Sign: `dialogue_lines = ["[Placeholder line]"]; speaker_name = "";`
+   - Trigger: `enemy_id = "fallen_knight"; encounter_id = "zone01_test_knight";` (each trigger needs a unique `encounter_id`).
+4. Optional tile collision: add a Tile layer named exactly **`Collision`** with any tileset; every non-empty tile blocks the player. The layer may be hidden. If you use tiles for all walls you can drop the `obj_solid` walls, but keep the `obj_solid` object (the code references it).
+
+## 5. rm_battle_test (placeholder 640×360)
+1. Create room `rm_battle_test`. Leave Persistent off.
+2. Place 1 × `obj_battle_controller`. Do **not** place `obj_player` or `obj_game_controller` here (the controller arrives from rm_overworld because it is persistent).
+3. Running this room alone (Room Order first) works for UI testing: it fights a Bandit, but returning needs `rm_overworld`.
+
+## 6. Compile and run
+Run (F5). Expected: player moves and collides, the sign opens dialogue, the trigger starts a Bandit battle, and victory/defeat returns to the same spot. Then run the "Exploration" and "Battle prototype" sections of docs/TEST_PLAN.md.
+
+## Why a battle room instead of an overlay?
+Chosen for this prototype (open question in DECISIONS_AND_OPEN_QUESTIONS.md): a separate room keeps overworld objects frozen, prevents overworld input during battle by construction, and makes the "save position → return" step explicit. Cost: the overworld room is rebuilt on return, so any overworld state that must survive a battle has to live in `global.game` (as `cleared_encounters` does).
