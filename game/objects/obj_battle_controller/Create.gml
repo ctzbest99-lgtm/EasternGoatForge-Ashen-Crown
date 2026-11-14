@@ -5,8 +5,9 @@ scr_game_state_init();
 
 party = global.game.party; // structs are shared by reference, so HP changes persist to the overworld
 scr_party_clear_guard(party);
+scr_party_clear_participation();
 
-command_options = ["Attack", "Guard"];
+command_options = scr_party_battle_commands();
 command_index = 0;
 actor_index = -1;       // party member currently choosing a command
 queued_actions = [];    // { actor_index, command } for this round
@@ -75,6 +76,12 @@ apply_pending_hit = function() {
 
     if (anim_hit.kind == "player_attack" && is_struct(enemy)) {
         enemy.hp = scr_apply_damage(enemy.hp, enemy.max_hp, anim_hit.damage);
+        if (enemy.hp <= 0 && !enemy.xp_credited) {
+            // Credit at the actual hit, while living participants are still standing.
+            // Banked pending_xp is applied at victory only.
+            scr_party_credit_enemy_xp(enemy.xp_reward);
+            enemy.xp_credited = true;
+        }
         if (is_struct(anim_target_vis)) {
             scr_battle_vis_play(anim_target_vis, (enemy.hp <= 0) ? "death" : "hurt");
         }

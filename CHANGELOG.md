@@ -5,10 +5,28 @@
 - `obj_player` uses the 16×24 Kael sheet: idle/walk by facing, walk at 8 fps, `depth = -y`, no `image_xscale` (left is pre-mirrored). `mask_index` is pinned to idle-down (16×16 standing-tile feet box). `asset_get_index` falls back to the IDE placeholder if the sheet is missing. The 32×48 overworld set is a code fallback only.
 - Overworld scale defaults (pending approval): `TILE_SIZE` 16, `PLAYER_MOVE_SPEED` 1 (same tiles-per-second as the old speed of 2 on 32 px tiles), `PLAYER_INTERACT_REACH` 4. Encounter steps are 16 pixels (one tile); the 8–24 step interval is unchanged in tile terms.
 - Town respawn after merging Zone 1 is Greyhaven `player_start` (2984, 2752), not the earlier 16 px-grid test point (320, 176).
-- Battle: `obj_battle_controller` draws Kael and the enemy with idle loops, plays attack then hurt (or death on a KO) in a new `BATTLE_STATE.ANIMATING` state, and holds the last death frame. Confirm skips the clip. Missing sprites draw the old placeholder rectangles and do not stall the state machine. Party faces left via `xscale = -1`; the Fallen Knight's 64×48 attack origin (32, 47) is honoured so the feet stay planted.
+- Battle: `obj_battle_controller` draws Kael and the enemy with idle loops, plays attack then hurt (or death on a KO) in a new `BATTLE_STATE.ANIMATING` state, and holds the last death frame. Confirm skips the clip. Missing sprites draw the old placeholder rectangles and do not stall the state machine. Party faces left via `xscale = -1`; the Fallen Knight's 64×48 attack origin (32, 47) is honoured so the feet stay planted. Per-enemy XP credit runs in `apply_pending_hit()` at the hit frame (not when the Attack command is chosen).
 - Camera follow lives once in `scr_map_tilemaps` (`scr_camera_follow_player`), called from the existing `obj_game_controller` End Step. Overhead tiles stay at depth -10000 so they remain above a player using `depth = -y`.
 - Documented in `game/sprites/IMPORT.md`, `game/rooms/ROOM_SETUP.md`, docs/ASSET_INVENTORY.md, docs/DECISIONS_AND_OPEN_QUESTIONS.md; test plan S1–S9 added. Not compiled or playtested in GameMaker yet.
 
+## 2026-11-14 — Per-enemy XP credit for living participants
+- Owner decision: when an enemy dies, its XP is credited to each party member who has participated (taken at least one turn) and is not KO'd at that moment. Credit is stored as `pending_xp` and applied at victory (level-up messages unchanged). A defeat grants no XP. Gold stays shared.
+- A member KO'd before an enemy dies gets no XP for that enemy, but keeps credit for enemies that died before they fell. A reserve member who swapped in and has taken a turn counts from then on, but gets no credit for earlier kills.
+- Replaces the earlier "KO'd members who acted still get XP" behaviour. `XP_REQUIRES_PARTICIPATION` still names the rule. Test plan P5/P10/P12 updated.
+
+## 2026-11-14 — Battle XP requires participation; mid-battle Swap
+- Owner decision: a bench/reserve member gets no XP unless they participate for at least one turn in that battle. Victory XP goes only to members who took a turn (Attack, Guard, or Swap).
+- A KO'd member who already acted still receives XP; a member KO'd before their first action does not. `RESERVE_EARNS_XP` / `RESERVE_XP_SHARE` were replaced by this rule (`XP_REQUIRES_PARTICIPATION`).
+- Mid-battle Swap command (shown only when a reserve member is waiting) costs the acting member's turn; the incoming member acts on later rounds.
+- Test plan P5/P10 updated; P11–P12 added.
+
+## 2026-11-14 — Party reserve slot (five-person roster)
+- Permanent roster is five: Kael, Lyra, Caelan, Sera, and Taren Holt (Rebel Captain of the Broken Yoke, frontline warrior). Four active battle slots plus one reserve. Default run: only Kael has joined.
+- Helpers: `scr_party_list_active`, `scr_party_list_reserve`, `scr_party_swap_active_reserve`, `scr_party_join`. Battle still reads `global.game.party` (the active list) and was not rewritten.
+- Defeat check and the defeat XP/gold penalty apply to active members only (assumption). Reserve HP is still restored on defeat. `RESERVE_EARNS_XP` defaults to true with `RESERVE_XP_SHARE` 1.0 (pending owner approval).
+- Placeholder stats (pending): Lyra 24/7/1, Caelan 22/8/1, Sera 28/4/4, Taren 36/8/3. Taren's weapon categories include `heavy_sword`; his equipment stub starts with a bastard sword. Skills are placeholders.
+- `scr_save_state_collect()` snapshots active and reserve ids (`save_schema_version` 0). The versioned save schema is still roadmap step 5.
+- `DEBUG_ADD_FULL_ROSTER` fills all five for testing (Taren in reserve). Test plan P5–P6 updated; P9–P10 added.
 ## 2026-11-14 — Zone 1 overworld and Old Watchtower maps
 - Added the 400×300-tile overworld (`rm_overworld`, 6400×4800) and 60×45 Old Watchtower (`rm_old_watchtower`, 960×720) at 16×16. Tileset `game/tilesets/ts_zone1.png` (256×608); layer data in Included Files `game/datafiles/overworld/*.bin` with 100×75 CSV chunk fallback. Watchtower layers are embedded in `scr_build_old_watchtower`.
 - Five Tile layers: Ground, Decoration, Overhead (depth -10000, so it stays above a player using `depth = -y`), Collision (hooks into the existing `obj_player` Collision-layer check), Markers.
