@@ -87,14 +87,14 @@ Quotes are copied exactly from the doc (curly quotes and ellipses included).
   - how to contain supernatural forces
 - They built enormous cities, sanctuaries, temples and underground structures.
 - Their greatest achievement was the **Crown Engine**, a mechanism associated with maintaining the Crownveil.
-- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Caelan is recruited at an abandoned Aethari sanctuary (Act II).
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Caelan is recruited at an abandoned Aethari sanctuary (Act II): **the Hollow Sanctuary**, a day's travel from Valemere in the countryside. It is a self-contained dungeon.
 - **[C-confirmed]** (Kevin via Coder, Nov 14 2026) **The Aethari and the Architects are the same people.** "We can use both names depending on who's talking about them." Everything in 2.2 (The Architects) applies to the Aethari too.
 
 #### Naming guide: Aethari vs Architects **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 | Name | Who uses it |
 |---|---|
 | **Architects** (the common modern Eldorian term) | Ordinary people, villagers, soldiers, the Crown, most of the Radiant Flame, and Kael early in the game. Also the **default for UI, bestiary and quest text**. |
-| **Aethari** (the true, old name) | People with deep or forbidden knowledge: Caelan (former royal scholar), royal scholars and archives, the Aethari's own records and inscriptions, some of the Ashbound, and anyone who has learned the truth. Kael and the party shift to "Aethari" after the relevant revelation (which act is **[O]**). |
+| **Aethari** (the true, old name) | People with deep or forbidden knowledge: Caelan (former royal scholar), royal scholars and archives, the Aethari's own records and inscriptions, some of the Ashbound, and anyone who has learned the truth. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Kael and the party shift to "Aethari" in dialogue after the revelation at Caelan's recruitment in Act II, at the Hollow Sanctuary. UI, bestiary and quest text stay on "Architects." |
 
 Example lines **[C-confirmed]**, illustrations of the guide and not scripted scenes:
 - Villager: "Don't go poking at those old Architect stones. Nothing good comes up out of the ground."
@@ -103,7 +103,8 @@ Example lines **[C-confirmed]**, illustrations of the guide and not scripted sce
 - Inscription (Aethari record): "Here the Aethari set the first stone of the Veil."
 - Kael (after the revelation): "The Aethari built this to hold something. We need to know what."
 
-- **[O]** Where the sanctuary is, what it was for, and why it was abandoned. What happened to the Aethari (same as the open Architects question).
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Where the sanctuary is: the Hollow Sanctuary, a day's travel from Valemere in the countryside.
+- **[O]** What the sanctuary was for, and why it was abandoned. What happened to the Aethari (same as the open Architects question).
 
 ### 2.6 Lumen **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 - The ancient magic the Aethari understood.
@@ -125,21 +126,46 @@ Example lines **[C-confirmed]**, illustrations of the guide and not scripted sce
 | 2 | **Greyhaven** | Kael's hometown. A small farming and trading settlement of about 1,200 residents. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Already destroyed when Kael arrives. The destruction itself is not played. |
 | 3 | **Blackwood** | A cursed forest: missing travelers, strange creatures, ancient stone doors, unnatural darkness, forgotten ruins, connections to Mira's disappearance. |
 | 4 | **Ironspine Mountains** | A dangerous mountain region with ancient Architect ruins: mountain passes, abandoned mines, underground structures, ancient machines, powerful enemies, important Crownveil discoveries. |
-| 5 | **Drowned Coast** | A coastal region with submerged remains of an ancient civilization: flooded ruins, coastal villages, shipwrecks, underwater or submerged exploration where technically appropriate, ancient records. |
+| 5 | **Drowned Coast** | A coastal region with submerged remains of an ancient civilization: flooded ruins, coastal villages, shipwrecks, underwater or submerged exploration where technically appropriate, ancient records. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) The named coastal village is **Saltreach**. |
 | 6 | **Ashlands** | A dead region beyond the Crownveil: ash-covered ground, distorted landscapes, mutated creatures, broken ancient structures, dangerous environmental effects, major story revelations. |
-| 7 | **Frostwilds** | A northern region: frozen ruins, snow-covered settlements, an ancient northern civilization, difficult environmental conditions, late-game enemies and story content. |
+| 7 | **Frostwilds** | A northern region: frozen ruins, snow-covered settlements, an ancient northern civilization, difficult environmental conditions, late-game enemies and story content. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) The named settlement is **Rimehold**. |
 
 ### Millhaven **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 - A settlement, and Taren Holt's place of origin.
-- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) It lies near the Crown-occupied village where Taren's recruitment begins in early Act II.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) It lies near **Wrenfield**, the Crown-occupied village where Taren's recruitment begins in early Act II.
 - **[O]** Its region, size, layout and current state. Whether Kael, Taren and Alden grew up together there or in Greyhaven (Kael's home).
+
+### Wrenfield **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
+- The Crown-occupied village near Millhaven where Taren Holt is recruited in Act II.
+- The Crown has seized several villagers, accused of aiding the Broken Yoke, and scheduled them for public execution. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) The party and Taren stop the hanging and free all of the accused, with a close call (the rope is already on a neck when they intervene). The Crown retreats; the village stays under occupation.
+- Chapter 2 boss: **Reeve Calder**, a Crown occupation officer who believes he is keeping order. Not Ash-corrupted.
+
+### The Hollow Sanctuary **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
+- The abandoned Aethari sanctuary where Caelan Rook is recruited in Act II.
+- A day's travel from Valemere, in the countryside. A self-contained dungeon.
+- This is where the party learns the Aethari name and, afterward, shifts to saying "Aethari" in dialogue (see 2.5).
+- Chapter 4 boss: an ancient sanctuary guardian-construct, to show Aethari mechanisms without explaining the Crown Engine. Its name is still **[PROPOSED]** in `ACT2_OUTLINE.md`.
+- **[O]** What the sanctuary was for, and why it was abandoned.
+
+### The Blackwood Road Garrison **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
+- The royal garrison where Seraphine Thorn is recruited in Act II. A royal post on the forest road toward the Blackwood.
+- Sera is detained there as a deserter. The party comes for a Blackwood lead and finds her. She will not say what she saw in the palace (that remains **[O]**).
+- Chapter 5 boss: **Commander Hailen**, the garrison's commanding officer, an honorable Crown soldier who tries to stop Sera and the party. Not Ash-corrupted.
+
+### Saltreach **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
+- The named coastal village of the **Drowned Coast**.
+- **[O]** Its size, layout, current state, and where the Drowned Coast falls in the eight acts.
+
+### Rimehold **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
+- The named settlement of the **Frostwilds**.
+- **[O]** Its size, layout, current state, and where the Frostwilds falls in the eight acts. Whether the Frostwilds' "ancient northern civilization" is the Aethari/Architects is also still **[O]**.
 
 ### Greyhaven locations [C]
 Varyn House · Rusted Boar Tavern · Greyhaven Chapel · Blacksmith · General Store · Town Square · Old Watchtower · North Gate
 
 - **[C]** The Zone 1 area list for Greyhaven gives the same places, minus the Old Watchtower, and calls the chapel just "Chapel." It names Greyhaven a safe area with no random battles. In Zone 1 the Old Watchtower is a separate dungeon, reached after the Old Road and the Bandit Camp.
 - **[O]** Whether the Old Watchtower is inside Greyhaven or out along the road.
-- **[O]** No region has a canon map or layout. The "ancient northern civilization" in the Frostwilds is not named, and the doc doesn't say whether it is the Architects.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Named settlements: **Saltreach** (Drowned Coast coastal village) and **Rimehold** (Frostwilds settlement). **[O]** No region has a canon map or layout. The "ancient northern civilization" in the Frostwilds is not named, and the doc doesn't say whether it is the Architects.
 
 ---
 
@@ -164,7 +190,7 @@ Varyn House · Rusted Boar Tavern · Greyhaven Chapel · Blacksmith · General S
 - **Note for Coder:** Party Order must support **4 active slots plus 1 reserve slot**, letting the player swap a reserve member in and out. Battle, the save system and XP rules need to handle a benched member (whether the reserve earns XP is **[O]**).
 - **Note for Coder:** the party now has **two frontline melee fighters, Kael and Taren**. Formation and targeting rules should allow both to hold front slots, and their kits should be distinct. Taren's skill kit is set in 5.5, with numbers still open.
 - **Note for Coder:** the equipment system needs a **"heavy sword" weapon category**. Taren can equip any weapon in it, and his starting weapon is a bastard sword in that category. Which other characters, if any, can use heavy swords is **[O]**, as is the list of heavy swords.
-- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Recruitment order, all in Act II (The Broken Crown):** 1) Taren Holt, at a Crown-occupied village near Millhaven. 2) Lyra Veyne, in Valemere's Lower City. 3) Caelan Rook, at an abandoned Aethari sanctuary. 4) Seraphine Thorn, at a royal garrison. Since everyone else joins in Act II, Kael travels alone in Act I (consistent with `CHAPTER1_SCRIPT.md`).
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Recruitment order, all in Act II (The Broken Crown):** 1) Taren Holt, at **Wrenfield**, a Crown-occupied village near Millhaven (public execution of accused rebel sympathizers; all of the accused are freed, the village stays occupied). 2) Lyra Veyne, in Valemere's Lower City (a paid job to steal a seized scholar's document that points to the Hollow Sanctuary). 3) Caelan Rook, at **the Hollow Sanctuary**, an abandoned Aethari sanctuary a day's travel from Valemere; the party learns the Aethari name here. 4) Seraphine Thorn, at **the Blackwood Road Garrison**, where she is detained as a deserter. Since everyone else joins in Act II, Kael travels alone in Act I (consistent with `CHAPTER1_SCRIPT.md`).
 - **[O]** Whether the story restricts swapping, e.g. forced or locked members in certain scenes. The reserve slot only matters once the fifth member joins (Sera).
 
 ### 5.1 Kael Varyn — protagonist [C]
@@ -201,27 +227,30 @@ Varyn House · Rusted Boar Tavern · Greyhaven Chapel · Blacksmith · General S
 **The wooden pendant [C]**
 - A permanent story item: Mira's wooden pendant, which Kael **finds in the ruins of Varyn House**. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Mira did not give it to him. This replaces the doc's line "given by Mira."
 - It carries the same symbol as the old royal banner in the Old Watchtower and the symbol connected to the Crownveil.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) That shared symbol is **a crown ringing a black sun**, the same mark as the Watchtower banner and the Watchtower Basement carvings.
 - At the end of Chapter 1 it reacts to the sealed stone door.
-- **[O]** The symbol's design is undefined.
 
 ### 5.2 Lyra Veyne — Rogue [C]
 - **Weapon:** twin daggers. **Role:** critical hits, bleeding, poison, multiple attacks, stealth, fast damage.
 - **Personality:** sarcastic, selfish at first, loyal once trust is earned, brings occasional humor.
 - **Background:** from the lower city and the criminal underworld. Has ties to the Black Hand.
 - **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Joins:** second recruit, in Act II, in Valemere's Lower City.
-- **[O]** Her recruitment storyline. The nature of her Black Hand ties.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Recruitment hook:** the party needs a thief to steal a seized document (a scholar's notes or a ledger) that points toward the Hollow Sanctuary. Lyra takes the job for coin. Mid-heist, the job breaks; she can run or finish it. She finishes it and stays because she is now exposed.
+- **[O]** The nature of her Black Hand ties. Finer scene texture (who sells the lead, the exact mid-heist complication, the Lower City enforcer's name) is still **[PROPOSED]** in `ACT2_OUTLINE.md`.
 
 ### 5.3 Caelan Rook — Arcanist [C]
 - **Weapon:** spellbook. **Role:** fire, ice, lightning and dark magic; exploiting enemy weaknesses; magical damage.
 - **Background:** former royal scholar. He knows more about the Crownveil, and why it broke, than he admits at first.
-- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Joins:** third recruit, in Act II, at an abandoned **Aethari** sanctuary (see 2.5 and 2.7).
-- **[O]** His recruitment storyline. What exactly he knows.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Joins:** third recruit, in Act II, at **the Hollow Sanctuary**, an abandoned **Aethari** sanctuary a day's travel from Valemere in the countryside (see 2.5 and 2.7).
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) At this recruitment the party learns the Aethari name: inscriptions say "Aethari," and Caelan explains that "Architects" is the textbook name. Party dialogue shifts to "Aethari" afterward; UI, bestiary and quest text stay on "Architects."
+- **[O]** What exactly he knows about the Crownveil and why it broke. Finer recruitment texture is still **[PROPOSED]** in `ACT2_OUTLINE.md`.
 
 ### 5.4 Seraphine "Sera" Thorn — Warden [C]
 - **Weapon:** holy sword. **Role:** healing, shields, buffs, resurrection, holy damage.
 - **Background:** former Silver Guard knight. She left the kingdom after witnessing something inside the royal palace.
-- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Joins:** fourth recruit, in Act II, at a royal garrison.
-- **[O]** Her recruitment storyline and which garrison. What she saw.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Joins:** fourth recruit, in Act II, at **the Blackwood Road Garrison**. She is detained there as a deserter. The party comes for a Blackwood lead and finds her. She will not say what she saw in the palace.
+- Chapter 5 boss: **Commander Hailen**, the garrison's commanding officer, an honorable Crown soldier who tries to stop Sera and the party.
+- **[O]** What she saw inside the royal palace. Finer recruitment texture is still **[PROPOSED]** in `ACT2_OUTLINE.md`.
 
 ### 5.5 Taren Holt — Rebel Captain, permanent party member **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 - **[C]** In the design doc he appears only in Alden's entry: "Kael and Taren must stop him."
@@ -240,8 +269,8 @@ Varyn House · Rusted Boar Tavern · Greyhaven Chapel · Blacksmith · General S
   - **Unbowed (passive):** resists Fear and Stun.
   - **Banner of the Yoke (later ability):** when an ally falls, restores some HP to all surviving allies. It mirrors Kael's Ashen Resolve.
 - **[O]** Exact numbers: MP costs, % values, how much damage Cleave loses, how much Defense Breaking Blow removes, and unlock levels. **Note for Coder:** these need balancing values in the skill and character databases. Use placeholders until they're set.
-- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Joins:** first recruit, early in Act II. Kael arrives at a village near Millhaven occupied by royal soldiers. The Crown has seized several villagers, accused of aiding the rebellion, and scheduled them for public execution. Taren's recruitment storyline starts here.
-- **[O]** Everything past that setup: the village's name, how the scene plays out, and the villagers' fate.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Joins:** first recruit, early in Act II, at **Wrenfield**, a village near Millhaven occupied by royal soldiers. The Crown has seized several villagers, accused of aiding the rebellion, and scheduled them for public execution. The party and Taren stop the hanging and free all of the accused, with a close call (the rope is already on a neck). The Crown retreats; the village stays under occupation. At Wrenfield, Taren speaks of Alden with warmth; they have not split.
+- Chapter 2 boss: **Reeve Calder**, a Crown occupation officer who believes he is keeping order.
 - **[O]** Where the three grew up together. Taren is from Millhaven and Kael from Greyhaven, so was it Millhaven, Greyhaven or somewhere else? Alden's origin is also undefined.
 - **[O]** What a "Rebel Captain" means in the Broken Yoke's structure, and who commands him.
 - Not in Chapter 1. Canon doesn't place him there, so `CHAPTER1_SCRIPT.md` is unchanged.
@@ -255,7 +284,8 @@ Varyn House · Rusted Boar Tavern · Greyhaven Chapel · Blacksmith · General S
 - **[C]** He still needs backstory, a sprite, equipment, stats, abilities, dialogue, story appearances, his relationship with the rebellion, and the three-phase boss fight.
 - **[C]** "Preserve this ending concept as canon, but do not assume it is the only ending the player can receive."
 - **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Alden is a childhood friend of **Taren** and becomes Taren's greatest disappointment. They start with the same dream: Taren keeps faith with self-government, while Alden decides he should rule Eldoria himself. The final Alden confrontation should be one of the game's most emotional moments, driven by Taren's friendship with Kael and his history with Alden.
-- **[O]** All of the above details. Who defeats Aldric, and how. When and how Alden and Taren split.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Act II appearances:** Taren speaks of him with warmth at Wrenfield. In Valemere the party meets him in person: still a friend, still sincere about freeing the serfs, with one line that already thinks ahead to "when we hold the city." They do not split in Act II.
+- **[O]** All of the above details. Who defeats Aldric, and how. When and how Alden and Taren split (not in Act II).
 
 ### 5.7 King Aldric IV [C]
 - Ruler of Eldoria and leader of the Crown. Knows the Crownveil is failing and has hidden the truth. He is defeated at some point before Alden seizes the capital (Ending C concept).
@@ -284,6 +314,7 @@ Varyn House · Rusted Boar Tavern · Greyhaven Chapel · Blacksmith · General S
 - He recognizes Kael and says *“Your father knew what was coming.”* and later *“She opened the door.”*
 - **[C]** Separately, "Fallen Knight" is a common elite enemy type (Zone 1), and Act 5 is titled "The Fallen Knight."
 - **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Chapter 1 placement:** line 1 at the Abandoned Bandit Camp's north exit, after which he walks off toward the Watchtower. Line 2 at the top of the Watchtower Basement stairs, after which he descends and vanishes. He never fights and is never named in Chapter 1.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Act II appearances:** two brief non-combat sightings, never named. One on the road to Valemere after Taren has joined; one after the Blackwood Road Garrison, hinting at the woods. Cryptic lines only. He walks off. Exact lines are still **[PROPOSED]** in `ACT2_OUTLINE.md`.
 - **[O]** Who he is, whether he is one of the Fallen Knight enemies, and whether he is the subject of Act 5.
 
 ### 5.13 The Blackguard — Zone 1 boss [C]
@@ -314,6 +345,18 @@ Varyn House · Rusted Boar Tavern · Greyhaven Chapel · Blacksmith · General S
 **[C]** Chapter title (Act 1): *The Night of Ash*. Zone name: *The Ashen Road*. Recommended levels 1–7. Main settlement: Greyhaven. Main dungeon: Old Watchtower. Zone boss: the Blackguard.
 **[C]** Route: Greyhaven → Farmlands → Hunter's Camp (optional) → Old Road → Abandoned Bandit Camp → Old Watchtower → Watchtower Basement → Blackguard → Crownveil Door.
 
+### Zone 1 signs **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
+
+| Location | Sign text |
+|---|---|
+| North Gate | "North Gate. Keep it barred after dark." |
+| Hunter's Camp | "Hunter's Camp. Wolves thick this season — ask for Renn." |
+| Old Road | "Old Road. Travel in daylight. Crown Patrol" *(an old, weathered notice)* |
+| Abandoned Bandit Camp | "Turn back. This is our road now." *(the second line is crossed out)* |
+| Old Watchtower | "Old Watchtower. Property of the Crown. Closed by order." |
+
+These signs are also recorded in `CHAPTER1_SCRIPT.md`.
+
 The beats below follow that route. **[O]** The doc doesn't say exactly where the Tomas, pendant and Fallen Knight beats happen. Their positions here are suggestions only.
 
 1. **Return to Greyhaven** (level 1, safe, no random battles). Kael comes home to an already destroyed village. **[C-confirmed]** The destruction is not played. His dying father says *“Your sister… she went into the woods.”* Kael searches the ruins of Varyn House and finds Mira's wooden pendant, with no body. **[C-confirmed]** **Opening quest: Find Mira.** **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) The order follows `CHAPTER1_SCRIPT.md`: arrival, then Tomas in the forge (he passes out, not dead), then the pendant in the Varyn House ruins, after which Corwin opens the North Gate.
@@ -323,7 +366,7 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 5. **Ashbound Hunter special encounter** (rare, 3–5%, recommended level 3–5; can appear on the Old Road, at the Bandit Camp and in the Watchtower). "An arrow lands beside Kael before combat begins." **Story clue:** a parchment reads *“Find the girl. The Varyn girl is still alive.”* **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **The parchment can't be missed:** the first Ashbound Hunter fight in the Old Watchtower is guaranteed and drops the parchment if the player hasn't already got it. The rare 3–5% encounter stays in place elsewhere.
 6. **Abandoned Bandit Camp** (level 3–4). Bandits, Fallen Knights, Ashen Wretches, rare Ashbound Hunter. Possible chest rewards: Minor Potion x3, Antidote x2, 50 Gold, Iron Sword.
 7. **Fallen Knight lines** (**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) line 1 at the Bandit Camp's north exit, line 2 at the top of the Basement stairs): *“Your father knew what was coming.”* … later *“She opened the door.”*
-8. **Old Watchtower** (level 4–7, main dungeon). Fallen Knights, Grave Spiders, Hollow Soldiers, Ashbound Hunter. Locked doors, keys, chests, traps, environmental lore, ancient symbols. **Banner clue:** an old royal banner bears the same symbol as Kael's pendant and the symbol connected to the Crownveil.
+8. **Old Watchtower** (level 4–7, main dungeon). Fallen Knights, Grave Spiders, Hollow Soldiers, Ashbound Hunter. Locked doors, keys, chests, traps, environmental lore, ancient symbols. **Banner clue:** an old royal banner bears the same symbol as Kael's pendant and the symbol connected to the Crownveil. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) That symbol is a crown ringing a black sun, the same mark as the Basement carvings. Show this design; do not use a placeholder sprite.
 9. **Watchtower Basement: Architect carvings.** A giant crown surrounds a black sun. A woman stands before a stone door. She resembles Mira, even though the carvings are thousands of years old.
 10. **Blackguard Arena: boss intro (verbatim)**
     > **Blackguard:** “You shouldn’t have come here.”
@@ -339,6 +382,7 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 13. **Rewards:** 250 XP, 100 Gold, Blackguard's Longsword, Crownveil Fragment.
 14. **Chapter ending at the Crownveil Door.** The main quest changes from **Find Mira → Beyond the Veil**. The pendant reacts to the sealed stone door. "Something touches the other side. Then everything stops." **Chapter 1 completes.**
     **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Presentation:** hard cut to black and silence, then the quest-change and chapter-complete screens and a save prompt. The Blackguard collapses into ash and empty armor when defeated.
+    **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Act II opens** with Kael coming to on this side of the still-sealed door. The pendant is quiet. He backtracks through the Watchtower and may optionally stop in Greyhaven (Tomas still unconscious; Elira and the cause of the destruction remain untouched) before taking the road toward Millhaven.
     **[O]** What "everything stops" *means* in the story. Whether this door is the same passage beneath Greyhaven that Mira opened.
 
 ---
@@ -350,7 +394,7 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 | Act | Chapter name | Status |
 |---|---|---|
 | 1 | The Night of Ash | **[C]** Zone 1 detailed (section 6) |
-| 2 | The Broken Crown | **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Recruitment act: Taren (Crown-occupied village near Millhaven, a public execution of accused rebel sympathizers) → Lyra (Valemere Lower City) → Caelan (abandoned Aethari sanctuary) → Sera (royal garrison). **[O]** Everything else. |
+| 2 | The Broken Crown | **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Recruitment act, detailed in `ACT2_OUTLINE.md` and summarized below. |
 | 3 | The Blackwood | **[O]** Not yet detailed |
 | 4 | The Forgotten King | **[O]** Not yet detailed |
 | 5 | The Fallen Knight | **[O]** Not yet detailed |
@@ -359,7 +403,18 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 | 8 | The Truth | **[O]** Not yet detailed |
 | Finale | **The Ashen Crown** (final endgame sequence) | **[O]** Not yet detailed |
 
-- **[O]** The names suggest region links (Blackwood, Ironspine as "Beneath the Mountains", Ashlands), but the doc never assigns regions to acts. The act list has no clear place for Valemere, the Drowned Coast or the Frostwilds. The doc also doesn't name the "Forgotten King."
+### Act II — The Broken Crown (summary) **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
+
+Act II is four chapters (Chapters 2–5; titles still **[PROPOSED]** in `ACT2_OUTLINE.md`), each with a recruit and a chapter boss. Kael travels alone until the first recruit.
+
+1. **Opening.** Kael comes to on this side of the still-sealed Crownveil Door. The pendant is quiet. What "everything stops" means stays **[O]**. He backtracks through the Watchtower, may optionally stop in Greyhaven (Tomas still unconscious; Elira and the destruction remain untouched), and takes the road toward Millhaven after survivors or travelers mention Crown hangings — and that Taren Holt has been seen with the Broken Yoke.
+2. **Chapter 2, Wrenfield.** Taren's recruitment, during a public execution of villagers accused of aiding the rebellion. The party and Taren stop the hanging and free all of the accused (close call: the rope is already on a neck). The Crown retreats; the village stays under occupation. Taren speaks of Alden with warmth. Boss: **Reeve Calder**, a Crown occupation officer who believes he is keeping order.
+3. **Chapter 3, Valemere.** The capital is the Act II hub. The party meets **Alden Marr** in person: still a friend, still sincere about freeing the serfs, with one line that already thinks ahead to "when we hold the city." No split in this act. **Lyra** is recruited in the Lower City on a paid job to steal a seized scholar's document that points to the Hollow Sanctuary. Mid-heist the job breaks; she finishes it and stays because she is now exposed. Boss: a Lower City enforcer tied to the stolen document, not a named Black Hand leader (name still **[PROPOSED]**).
+4. **Chapter 4, the Hollow Sanctuary.** An abandoned Aethari sanctuary a day's travel from Valemere in the countryside. **Caelan** is recruited here. Inscriptions say "Aethari." Caelan explains that "Architects" is the textbook name. The party shifts to "Aethari" in dialogue afterward; UI, bestiary and quest text stay on "Architects." Boss: an ancient sanctuary guardian-construct (name still **[PROPOSED]**). What the sanctuary was for, why it was abandoned, what Caelan knows about why the Veil broke, Lumen, and the Crown Engine's state all stay **[O]**.
+5. **Chapter 5, the Blackwood Road Garrison.** **Sera** is detained there as a deserter. The party comes for a Blackwood lead and finds her. She will not say what she saw in the palace (that stays **[O]**). Boss: **Commander Hailen**, an honorable garrison commander who tries to stop Sera and the party. The garrison yields a lead into the Blackwood (Act III).
+6. **Fallen Knight.** Two brief non-combat sightings, never named: one on the road to Valemere after Taren joins; one after the garrison, hinting at the woods. His identity stays **[O]**.
+
+- **[O]** The names suggest region links (Blackwood, Ironspine as "Beneath the Mountains", Ashlands), but the doc never assigns regions to acts. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Valemere is the Act II hub; Act II is set in the Kingdom of Eldoria and hands off to the Blackwood for Act III. The Drowned Coast (named village: **Saltreach**) and the Frostwilds (named settlement: **Rimehold**) still have no act assignment. The doc also doesn't name the "Forgotten King."
 
 ---
 
@@ -381,27 +436,29 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 - **Locked:** the Alden Marr Ending C concept.
 - **Confirmed (Nov 14 2026):** Taren Holt (27, from Millhaven, Rebel Captain of the Broken Yoke, frontline warrior), and a five-person roster with four active in battle.
 - **Confirmed by Kevin (Nov 14 2026):** FF1-style top-down exploration camera; Kael finds the pendant in the Varyn House ruins; Kael arrives after Greyhaven's destruction, which is not played; all of `CHAPTER1_SCRIPT.md` (every line and scene in it is canon).
+- **Confirmed by Kevin (Nov 14 2026), Act II:** opening after the sealed door (meaning of "everything stops" still open); **Wrenfield** (execution stopped, all accused freed, village stays occupied); **Reeve Calder**; Lyra's Lower City document job; **the Hollow Sanctuary**; the Aethari name shift at Caelan's recruitment (UI stays "Architects"); Alden met in Valemere as a friend, no split in this act; **the Blackwood Road Garrison** (Sera detained as a deserter); **Commander Hailen**; two unnamed Fallen Knight sightings in Act II. Detail: `ACT2_OUTLINE.md`. Remaining outline texture is still **[PROPOSED]**.
+- **Confirmed by Kevin (Nov 14 2026), world and Chapter 1:** the Drowned Coast coastal village is **Saltreach**; the Frostwilds settlement is **Rimehold**; the pendant, Watchtower banner and Basement carvings share one mark, a crown ringing a black sun; Zone 1 sign text is set (North Gate, Hunter's Camp, Old Road, Abandoned Bandit Camp, Old Watchtower).
 - **Canon:** everything tagged [C] above, including all verbatim dialogue.
 - **Unconfirmed:** Endings 1–3.
-- **Open:** everything in section 10.
+- **Open:** everything in section 10 still marked **[O]**.
 
 ## 10. Open questions for Kevin
 
 **People**
 1. Who or what is the Ash King? How does it connect to the Crownveil, the Ash, and "the entity beyond it"?
-2. Who is the Fallen Knight who recognizes Kael? Is he one of the Fallen Knight enemies, and is he the subject of Act 5?
+2. Who is the Fallen Knight who recognizes Kael? Is he one of the Fallen Knight enemies, and is he the subject of Act 5? *(Act II appearances settled, Nov 14 2026: two brief non-combat sightings, never named. Identity still open.)*
 3. Who is the Blackguard (name, history)? How does he know Mira and Kael?
 4. What did Sera see inside the royal palace?
 5. What exactly does Caelan know about the Crownveil and why it broke?
 6. What are Lyra's Black Hand ties?
-7. Details of each Act II recruitment beyond its setting: the occupied village's name and what happens at the execution, Lyra's Lower City storyline, the Aethari sanctuary's location, and which royal garrison Sera is at. (The order and settings are settled.)
+7. ~~Details of each Act II recruitment beyond its setting: the occupied village's name and what happens at the execution, Lyra's Lower City storyline, the Aethari sanctuary's location, and which royal garrison Sera is at.~~ **Resolved (Nov 14 2026):** Wrenfield; the hanging is stopped and all of the accused are freed (close call), but the village stays occupied; Lyra takes a paid job to steal a seized scholar's document pointing to the sanctuary, finishes the broken heist, and stays because she is exposed; the Hollow Sanctuary, a day's travel from Valemere in the countryside; the Blackwood Road Garrison, where Sera is detained as a deserter. Finer scene texture remains **[PROPOSED]** in `ACT2_OUTLINE.md`.
 8. What is Lumen, how does it relate to modern magic, and does Ending 3's "magic permanently destroyed" include it?
 9. The Crown Engine: where is it, what state is it in, how does it work, and is its condition why the Crownveil is failing?
-10. Where did Kael (Greyhaven), Taren (Millhaven) and Alden grow up together: Millhaven, Greyhaven or elsewhere? Where is Alden from? When and how did Alden and Taren split? Where is Millhaven, and what is it like?
+10. Where did Kael (Greyhaven), Taren (Millhaven) and Alden grow up together: Millhaven, Greyhaven or elsewhere? Where is Alden from? When and how did Alden and Taren split? Where is Millhaven, and what is it like? **(Partly resolved, Nov 14 2026:** they do not split in Act II. Taren speaks of Alden with warmth at Wrenfield; the party meets him in Valemere as a friend. Childhood setting, Alden's origin, Millhaven's details, and when they later split are still open.)
 11. Elira's fate: alive, dead or missing after Greyhaven?
 12. What is Tomas's ultimate fate (he passes out in Chapter 1, not dead), and what did he know "was coming"?
 13. Who is the "Forgotten King" in Act 4?
-14. Alden's backstory, his exact role in the Broken Yoke, and who defeats King Aldric IV, and how.
+14. Alden's backstory, his exact role in the Broken Yoke, and who defeats King Aldric IV, and how. *(Act II appearance settled, Nov 14 2026: met in Valemere as a friend, with one line that thinks ahead to "when we hold the city." Backstory, rank, and Aldric's defeat are still open.)*
 15. What are Aldric IV's motives for hiding the Crownveil's failure?
 
 **Events and world**
@@ -411,13 +468,13 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 19. What happened to Mira's black stone?
 20. Why do the Architect carvings resemble Mira?
 21. Who wrote the Ashbound parchment, and who sent the Ashbound Hunter?
-22. What does "Then everything stops" mean in the story? (The on-screen presentation is settled: a hard cut to black.)
-23. What does the pendant's shared symbol look like, and is it the crown around a black sun?
-24. Why does a royal banner carry the Crownveil symbol? What does the crown know?
+22. What does "Then everything stops" mean in the story? (The on-screen presentation is settled: a hard cut to black. **Act II opening settled, Nov 14 2026:** Kael comes to on this side of the still-sealed door; the pendant is quiet. The meaning of the phenomenon is still open.)
+23. ~~What does the pendant's shared symbol look like, and is it the crown around a black sun?~~ **Resolved (Nov 14 2026):** a crown ringing a black sun, the same mark as the Watchtower banner and the Watchtower Basement carvings.
+24. Why does a royal banner carry the Crownveil symbol? What does the crown know? *(The mark itself is settled, Nov 14 2026: a crown ringing a black sun. Why the banner bears it, and what the crown knows, are still open.)*
 25. Where exactly does the Crownveil run? It is believed to protect Eldoria, but the Ashlands lie "beyond" it. What is it keeping in?
 26. What are the answers to the six gradual Crownveil truths, and in which acts are they revealed?
 27. Is the Frostwilds' "ancient northern civilization" the Architects or a separate people?
-28. Which acts map to which regions? Where do Valemere, the Drowned Coast and the Frostwilds fall in the eight acts?
+28. Which acts map to which regions? Where do Valemere, the Drowned Coast and the Frostwilds fall in the eight acts? **(Partly resolved, Nov 14 2026:** Valemere is the Act II hub; Act II is set in the Kingdom of Eldoria and hands off to the Blackwood for Act III. Named settlements: Saltreach on the Drowned Coast, Rimehold in the Frostwilds. Those two regions, and a full act-to-region map, are still open.)
 29. Who leads the Broken Yoke, and how is it structured? (Name settled. Taren is a Rebel Captain.)
 30. Is Greyhaven Chapel part of the Radiant Flame?
 31. What is Mira's age now? The doc gives "twelve when the tragedy began." How much time has passed?
@@ -451,3 +508,16 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 | Nov 14 2026 | Defined the Aethari: an extraordinarily advanced civilization that understood Lumen (ancient magic), the nature of the Crownveil, the relationship between life and the Ash, magical mechanisms, and the containment of supernatural forces. They built enormous cities, sanctuaries, temples and underground structures. Their greatest achievement was the Crown Engine, associated with maintaining the Crownveil. | 2.5 rewritten. New 2.6 Lumen and 2.7 Crown Engine, details open. [PROPOSED, pending Kevin] working assumption: Aethari = the Architects' own name. Open questions updated. |
 | Nov 14 2026 | (Kevin via Coder) "We can use both names depending on who's talking about them." The Aethari and the Architects are the same people. | 2.5: the link is confirmed, and the working assumption and the "don't state it in game text" rule are removed. 2.2 heading cross-referenced. A [PROPOSED] naming guide was added for Kevin's review. The open question was removed. |
 | Nov 14 2026 | Approved the Aethari vs Architects naming guide. | 2.5 naming guide and its example lines changed from [PROPOSED] to [C-confirmed]. |
+| Nov 14 2026 | Act II, decision 1: the occupied village is **Wrenfield**. The party and Taren stop the hanging and free all of the accused (close call: the rope is already on a neck). The Crown retreats; the village stays under occupation. | Wrenfield added under Regions. Taren's join entry and the Act II summary updated. Question 7 resolved on the village name and the prisoners' fate. |
+| Nov 14 2026 | Act II, decision 2: after "everything stops," Kael comes to on this side of the still-sealed door. The pendant is quiet. He backtracks through the Watchtower, may optionally stop in Greyhaven (Tomas still unconscious; Elira and the destruction untouched), and takes the road toward Millhaven after survivors or travelers mention Crown hangings and that Taren Holt has been seen with the rebellion. | Cross-reference added at the end of section 6. Act II summary opening filled in. Question 22 still open for *meaning*; the Act II opening is settled. |
+| Nov 14 2026 | Act II, decision 3: Lyra's Lower City hook is a paid job to steal a seized document (a scholar's notes or a ledger) that points to the abandoned sanctuary. Mid-heist the job breaks; she finishes it and stays because she is now exposed. Her Black Hand ties stay undefined. | Lyra entry updated. Question 7 resolved on the Lower City storyline; question 6 (the nature of her ties) stays open. |
+| Nov 14 2026 | Act II, decision 4: the abandoned Aethari sanctuary is **the Hollow Sanctuary**, a day's travel from Valemere in the countryside, a self-contained dungeon. | New Hollow Sanctuary location. 2.5 and Caelan's join entry updated. "Where the sanctuary is" resolved; what it was for and why it was abandoned stay open. Question 7 resolved on the sanctuary's location. |
+| Nov 14 2026 | Act II, decision 5: Sera is recruited at **the Blackwood Road Garrison**. She is detained there as a deserter. The party comes for a Blackwood lead and finds her. She will not say what she saw in the palace. | New Blackwood Road Garrison location. Sera's join entry and the Act II summary updated. Question 7 resolved on which garrison; question 4 (what she saw) stays open. |
+| Nov 14 2026 | Act II, decision 6: the party learns the Aethari name in Act II, at the Hollow Sanctuary, when Caelan joins. Inscriptions say "Aethari." Caelan explains that "Architects" is the textbook name. Party dialogue shifts afterward; UI, bestiary and quest text stay "Architects." | 2.5 naming guide: the act of the language shift is no longer open. Caelan entry and the Act II summary updated. The six Crownveil truths (question 26) stay open. |
+| Nov 14 2026 | Act II, decision 7: Taren speaks of Alden with warmth at Wrenfield. In Valemere the party meets him in person: still a friend, still sincere about freeing the serfs, with one line that already thinks ahead to "when we hold the city." No split in this act. | Alden entry and the Act II summary updated. Question 10 partly resolved (they do not split in Act II). Backstory, rank, and when they later split stay open (questions 10 and 14). |
+| Nov 14 2026 | Act II, decision 8: the Fallen Knight has two brief Act II sightings, never named and never fighting. One on the road after Taren joins; one after the garrison, hinting at the woods. Cryptic lines only. He walks off. | Fallen Knight entry (5.12) and the Act II summary updated. Question 2: appearances settled; identity still open. |
+| Nov 14 2026 | Act II, decision 9: chapter bosses are human Crown or underworld officers, not Ash-corrupted, except the sanctuary construct. Ch 2: **Reeve Calder**, a Crown occupation officer who believes he is keeping order. Ch 3: a Lower City enforcer tied to the stolen document, not a named Black Hand leader. Ch 4: an ancient sanctuary guardian-construct (shows Aethari mechanisms; does not explain the Crown Engine). Ch 5: **Commander Hailen**, an honorable garrison commander who tries to stop Sera and the party. | Reeve Calder and Commander Hailen added as canon. Act II treated as four chapters (2–5). The Lower City enforcer's name and the construct's name stay **[PROPOSED]** in `ACT2_OUTLINE.md`. |
+| Nov 14 2026 | The Drowned Coast coastal village is **Saltreach**. | Saltreach added under Regions and to the Drowned Coast row. Question 28 still open for act placement; only the village's name is settled. |
+| Nov 14 2026 | The Frostwilds settlement is **Rimehold**. | Rimehold added under Regions and to the Frostwilds row. Question 27 (whether the ancient northern civilization is the Architects) stays open. Question 28 still open for act placement. |
+| Nov 14 2026 | The pendant symbol is a crown ringing a black sun, the same mark as the Watchtower banner and the Watchtower Basement carvings. | Sections 5.1 and 6 (banner clue) updated. Question 23 resolved. Question 24 (why the banner bears the mark, and what the crown knows) stays open. `CHAPTER1_SCRIPT.md` no longer calls for a placeholder sprite. |
+| Nov 14 2026 | Zone 1 sign text: North Gate ("North Gate. Keep it barred after dark."); Hunter's Camp ("Hunter's Camp. Wolves thick this season — ask for Renn."); Old Road ("Old Road. Travel in daylight. Crown Patrol", an old weathered notice); Abandoned Bandit Camp ("Turn back. This is our road now.", second line crossed out); Old Watchtower ("Old Watchtower. Property of the Crown. Closed by order."). | New "Zone 1 signs" block in section 6. The same text was added to `CHAPTER1_SCRIPT.md`. |

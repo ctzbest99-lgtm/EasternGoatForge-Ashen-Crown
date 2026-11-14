@@ -189,6 +189,9 @@ Survivors don't know what destroyed the town, and they don't explain it. Lines w
 **GH_GATE_03_B** · Kael
 > Could be hers.
 
+**GH_GATE_SIGN** · NARRATION *(sign on the North Gate)* **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
+> North Gate. Keep it barred after dark.
+
 ---
 
 ## 2. Greyhaven Farmlands (level 1–2) — Bandits, Ash Wolves
@@ -233,6 +236,10 @@ Survivors don't know what destroyed the town, and they don't explain it. Lines w
 ## 3. Hunter's Camp (optional, level 2) — Old Hunter Renn
 
 [STAGE] A small camp with a tent, drying racks and a fire. No random battles here [C-confirmed].
+
+**HC_SIGN_01** · NARRATION *(camp sign)* **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
+> Hunter's Camp. Wolves thick this season — ask for Renn.
+
 Renn's personality is not in the doc. Everything below is **[C-confirmed]**: a gruff, dry old woodsman.
 
 **HC_RENN_01** · Old Hunter Renn
@@ -270,6 +277,9 @@ Renn's personality is not in the doc. Everything below is **[C-confirmed]**: a g
 
 ## 4. Old Road (level 2–3) — Bandits, Ash Wolves, Ashen Wretches, rare Ashbound Hunter
 
+**OR_SIGN_01** · NARRATION *(old, weathered notice)* **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
+> Old Road. Travel in daylight. Crown Patrol
+
 **OR_ENTER_01** · Kael [C-confirmed]
 > Small boots. Heading north. Keep going, Mira. I'm right behind you.
 *(Uses the "small tracks" hint from GH_GATE_02_B. It is [C-confirmed] connective motivation for following the route.)*
@@ -297,6 +307,9 @@ Renn's personality is not in the doc. Everything below is **[C-confirmed]**: a g
 
 ## 5. Abandoned Bandit Camp (level 3–4) — Bandits, Fallen Knights, Ashen Wretches, rare Ashbound Hunter
 
+**BC_SIGN_01** · NARRATION *(camp sign; the second line is crossed out)* **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
+> Turn back. This is our road now.
+
 **BC_ENTER_01** · Kael [C-confirmed]
 > Abandoned. Fires cold for days. Whatever ran them off, I'm walking toward it.
 
@@ -320,6 +333,10 @@ Chests (canon pool): Minor Potion x3, Antidote x2, 50 Gold, Iron Sword. Which ch
 ## 6. Old Watchtower (level 4–7) — Fallen Knights, Grave Spiders, Hollow Soldiers, Ashbound Hunter
 
 [STAGE] A dungeon with locked doors, keys, chests and traps [CANON]. Ancient symbols are carved in the stone [CANON].
+
+**WT_SIGN_01** · NARRATION *(sign at the entrance)* **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
+> Old Watchtower. Property of the Crown. Closed by order.
+
 [STAGE] [C-confirmed] The guaranteed first Ashbound Hunter fight happens here (see 4.1), before the banner room.
 
 ### 6.1 Interactables and lore notes [C-confirmed unless marked]
@@ -344,7 +361,7 @@ Chests (canon pool): Minor Potion x3, Antidote x2, 50 Gold, Iron Sword. Which ch
 **WT_BANNER_03** · Kael
 > A royal banner. Mira's pendant. Same mark.
 > Why would the crown share anything with a girl from Greyhaven?
-[STAGE] Set `flag_banner_clue`. The pendant icon pulses briefly [C-confirmed]. Don't show the symbol's design until Kevin defines it; use a placeholder sprite. The doc says the same symbol is connected to the Crownveil. Kael doesn't know that yet, so he doesn't say it.
+[STAGE] Set `flag_banner_clue`. The pendant icon pulses briefly [C-confirmed]. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) The symbol on the banner and on Mira's pendant is a crown ringing a black sun, the same mark as the Basement carvings. Show that design; do not use a placeholder sprite. The same symbol is connected to the Crownveil. Kael doesn't know that yet, so he doesn't say it.
 
 ### 6.3 The Fallen Knight, second line — `FK_02` [CANON line / C-confirmed placement]
 [STAGE] [C-confirmed] At the top of the stairs down to the Basement, the Fallen Knight is waiting again. He doesn't fight.
@@ -362,7 +379,7 @@ Chests (canon pool): Minor Potion x3, Antidote x2, 50 Gold, Iron Sword. Which ch
 ## 7. Watchtower Basement — Architect carvings
 
 ### 7.1 Carvings — `WB_CARVING` [CANON imagery / C-confirmed lines]
-[STAGE] A wall-sized relief. Design: a giant crown surrounding a black sun. Below it, a woman stands before a stone door. The woman resembles Mira, even though the carvings are thousands of years old [CANON].
+[STAGE] A wall-sized relief. Design: a giant crown surrounding a black sun. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) This is the same mark as Mira's pendant and the Watchtower banner. Below it, a woman stands before a stone door. The woman resembles Mira, even though the carvings are thousands of years old [CANON].
 
 **WB_CARVING_01** · NARRATION
 > A great crown, carved around a black sun.
@@ -468,3 +485,5 @@ Kevin approved all of the following as canon. Item 9 resolved to the guaranteed 
 14. Ending presentation: Kael's line at the door, a hard cut to black for "everything stops," and a save prompt.
 15. Quest descriptions and stage objective text for Find Mira and Beyond the Veil.
 16. The basic shops: Pell's equipment stock and Marda's Minor Potion and Antidote stock.
+17. The pendant, the Watchtower banner and the Basement carvings share one symbol: a crown ringing a black sun. Do not use a placeholder sprite for it.
+18. Zone 1 sign text: North Gate, Hunter's Camp, Old Road (old weathered notice), Abandoned Bandit Camp (second line crossed out), and Old Watchtower.
