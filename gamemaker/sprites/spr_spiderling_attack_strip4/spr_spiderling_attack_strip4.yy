@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"d4e3f42f-3120-440e-ba0f-d51b639bc987",
-      "name":"d4e3f42f-3120-440e-ba0f-d51b639bc987",
+      "%Name":"d037b9a8-3bec-45d4-99f6-2126218a4d9c",
+      "name":"d037b9a8-3bec-45d4-99f6-2126218a4d9c",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"ee0e6ebb-59e9-4304-9005-10d17f7e958b",
-      "name":"ee0e6ebb-59e9-4304-9005-10d17f7e958b",
+      "%Name":"5a460f0b-9df9-4be0-b649-c4caff0aacb6",
+      "name":"5a460f0b-9df9-4be0-b649-c4caff0aacb6",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"26a55aec-74de-4a16-89a9-a937a5ba356f",
-      "name":"26a55aec-74de-4a16-89a9-a937a5ba356f",
+      "%Name":"53adc414-a1f5-44dd-b57e-303198b86d3a",
+      "name":"53adc414-a1f5-44dd-b57e-303198b86d3a",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"24b92df6-6cac-4a28-90b5-45af4d744db6",
-      "name":"24b92df6-6cac-4a28-90b5-45af4d744db6",
+      "%Name":"abcae85a-919d-4936-8c29-0842066ac372",
+      "name":"abcae85a-919d-4936-8c29-0842066ac372",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"f68f4216-e523-4011-af37-27a8227c1928",
+      "%Name":"26004fed-ee9f-43bd-b024-fd32f7e984ae",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"f68f4216-e523-4011-af37-27a8227c1928",
+      "name":"26004fed-ee9f-43bd-b024-fd32f7e984ae",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"d4e3f42f-3120-440e-ba0f-d51b639bc987",
+                    "name":"d037b9a8-3bec-45d4-99f6-2126218a4d9c",
                     "path":"sprites/spr_spiderling_attack_strip4/spr_spiderling_attack_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"39c7ce30-6917-4395-aa7a-4e063e285e36",
+              "id":"68dc8907-fa50-46dc-ae06-356acedc0354",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ee0e6ebb-59e9-4304-9005-10d17f7e958b",
+                    "name":"5a460f0b-9df9-4be0-b649-c4caff0aacb6",
                     "path":"sprites/spr_spiderling_attack_strip4/spr_spiderling_attack_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"c606af21-8d6a-4ff2-8da1-5455095b5348",
+              "id":"3ea6c948-1af2-47d1-847e-d1ed1cc6400c",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"26a55aec-74de-4a16-89a9-a937a5ba356f",
+                    "name":"53adc414-a1f5-44dd-b57e-303198b86d3a",
                     "path":"sprites/spr_spiderling_attack_strip4/spr_spiderling_attack_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f90fad1c-56f2-4f26-9c0d-293ca954c6d8",
+              "id":"7284bdfd-bb4b-4903-b096-adb3bd93b896",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"24b92df6-6cac-4a28-90b5-45af4d744db6",
+                    "name":"abcae85a-919d-4936-8c29-0842066ac372",
                     "path":"sprites/spr_spiderling_attack_strip4/spr_spiderling_attack_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"36520d66-9ddf-47c0-b1e4-e70ce752e042",
+              "id":"5d97340e-3376-4943-afad-d62b3d41c408",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

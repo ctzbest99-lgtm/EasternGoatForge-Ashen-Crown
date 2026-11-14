@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"c2b933ae-20cb-4ef8-9d59-5300b2f11916",
-      "name":"c2b933ae-20cb-4ef8-9d59-5300b2f11916",
+      "%Name":"66d7232c-e0fa-4d1e-88b7-2bbbb5511b80",
+      "name":"66d7232c-e0fa-4d1e-88b7-2bbbb5511b80",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"4f205a74-0729-4112-9dc0-6d6b127680d4",
+      "%Name":"bca9af90-1bad-473e-946b-97b356ee5476",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"4f205a74-0729-4112-9dc0-6d6b127680d4",
+      "name":"bca9af90-1bad-473e-946b-97b356ee5476",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"c2b933ae-20cb-4ef8-9d59-5300b2f11916",
+                    "name":"66d7232c-e0fa-4d1e-88b7-2bbbb5511b80",
                     "path":"sprites/spr_respawn_point_placeholder/spr_respawn_point_placeholder.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"b64cd4c5-c3e2-453d-ac0d-b06f88d770f1",
+              "id":"ac205607-1cfa-450a-9be6-6e3c2dd2fc14",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

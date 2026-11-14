@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"f82139ce-8b5f-4fba-abbe-03c90058fc25",
-      "name":"f82139ce-8b5f-4fba-abbe-03c90058fc25",
+      "%Name":"070be4af-ab5f-440c-8fda-d66e4ab704e9",
+      "name":"070be4af-ab5f-440c-8fda-d66e4ab704e9",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"9895d645-59f9-4ce8-b051-e03fca4252ef",
-      "name":"9895d645-59f9-4ce8-b051-e03fca4252ef",
+      "%Name":"bea0fc44-68be-492b-a68e-3c7bf1185eb0",
+      "name":"bea0fc44-68be-492b-a68e-3c7bf1185eb0",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"fff8ba57-6707-49eb-912d-89663ce927ce",
-      "name":"fff8ba57-6707-49eb-912d-89663ce927ce",
+      "%Name":"7230f28c-6b7f-42eb-a615-f0c05a0a5904",
+      "name":"7230f28c-6b7f-42eb-a615-f0c05a0a5904",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"0753959f-64ea-4e2b-b8ad-aa11baf56080",
-      "name":"0753959f-64ea-4e2b-b8ad-aa11baf56080",
+      "%Name":"d6809cdf-2c41-4ac1-8a51-ce99417cc56d",
+      "name":"d6809cdf-2c41-4ac1-8a51-ce99417cc56d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"e98c200a-fda1-4062-af36-743ebb058d5e",
-      "name":"e98c200a-fda1-4062-af36-743ebb058d5e",
+      "%Name":"13a87a4f-e2d4-4467-a7fa-9ca2fd7822b8",
+      "name":"13a87a4f-e2d4-4467-a7fa-9ca2fd7822b8",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"ee7da85b-03e2-4f28-87df-a821c00c1d97",
-      "name":"ee7da85b-03e2-4f28-87df-a821c00c1d97",
+      "%Name":"3e669d44-3595-41a3-8f1a-c4595646c7c6",
+      "name":"3e669d44-3595-41a3-8f1a-c4595646c7c6",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"7d302fd6-9613-44a9-a9b7-86246acc863f",
+      "%Name":"73b704d5-19fc-45de-adbf-c2b374dc1bd5",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"7d302fd6-9613-44a9-a9b7-86246acc863f",
+      "name":"73b704d5-19fc-45de-adbf-c2b374dc1bd5",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"f82139ce-8b5f-4fba-abbe-03c90058fc25",
+                    "name":"070be4af-ab5f-440c-8fda-d66e4ab704e9",
                     "path":"sprites/spr_occupation_soldier_attack_strip6/spr_occupation_soldier_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"923a33fd-4449-456a-91cc-dbe5080cd16b",
+              "id":"c673908e-5d62-4ec7-9deb-b4e63f99e059",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"9895d645-59f9-4ce8-b051-e03fca4252ef",
+                    "name":"bea0fc44-68be-492b-a68e-3c7bf1185eb0",
                     "path":"sprites/spr_occupation_soldier_attack_strip6/spr_occupation_soldier_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"a7eb6adc-0e84-49b2-b650-0c0781d7b9cb",
+              "id":"0ccc1204-eed0-4f54-9d6a-93451bb12f73",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"fff8ba57-6707-49eb-912d-89663ce927ce",
+                    "name":"7230f28c-6b7f-42eb-a615-f0c05a0a5904",
                     "path":"sprites/spr_occupation_soldier_attack_strip6/spr_occupation_soldier_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"65ee89d3-c8f8-44f3-9631-dd6e693cdb32",
+              "id":"9d5423d0-c064-4ad3-b3e2-a0930ea28322",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0753959f-64ea-4e2b-b8ad-aa11baf56080",
+                    "name":"d6809cdf-2c41-4ac1-8a51-ce99417cc56d",
                     "path":"sprites/spr_occupation_soldier_attack_strip6/spr_occupation_soldier_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f4f10e8f-e3f1-49d8-a7c6-333ff6cab495",
+              "id":"49d37eb2-b5bc-4a4b-8a51-5a63c4772d08",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"e98c200a-fda1-4062-af36-743ebb058d5e",
+                    "name":"13a87a4f-e2d4-4467-a7fa-9ca2fd7822b8",
                     "path":"sprites/spr_occupation_soldier_attack_strip6/spr_occupation_soldier_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"52063028-d51f-40fe-be6c-7db40efeef75",
+              "id":"e4c02311-8dba-4c94-aa29-65f09221eeca",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ee7da85b-03e2-4f28-87df-a821c00c1d97",
+                    "name":"3e669d44-3595-41a3-8f1a-c4595646c7c6",
                     "path":"sprites/spr_occupation_soldier_attack_strip6/spr_occupation_soldier_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"cf1de287-a42a-43bf-afe6-58bc3f352833",
+              "id":"7f21c3d0-7386-4513-ae8f-ea771a0b3a9f",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"37614742-87e0-4913-81d1-722dada083ba",
-      "name":"37614742-87e0-4913-81d1-722dada083ba",
+      "%Name":"fd59454d-d0d9-46e9-85b8-732146f65555",
+      "name":"fd59454d-d0d9-46e9-85b8-732146f65555",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"a70661a1-8d0c-4b60-ab6e-f5b052a46b21",
+      "%Name":"3d8619ca-c703-40a2-9b79-6a117dab6aca",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"a70661a1-8d0c-4b60-ab6e-f5b052a46b21",
+      "name":"3d8619ca-c703-40a2-9b79-6a117dab6aca",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"37614742-87e0-4913-81d1-722dada083ba",
+                    "name":"fd59454d-d0d9-46e9-85b8-732146f65555",
                     "path":"sprites/spr_portrait_marda_stern/spr_portrait_marda_stern.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"ad248665-7e1d-40c6-84d0-8752909d3aa5",
+              "id":"ecab7873-a256-40bd-91e1-59a32bc0454e",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

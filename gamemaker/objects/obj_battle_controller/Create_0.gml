@@ -143,7 +143,7 @@ get_feet = function(_side, _idx) {
 is_up = function(_side, _idx) {
     var _a = get_actor(_side, _idx);
     if (!is_struct(_a) || _a.hp <= 0) return false;
-    if (_side == "enemy" && _a.yielded) return false;
+    if (_side == "enemy" && (_a.yielded || (variable_struct_exists(_a, "withdrawn") && _a.withdrawn))) return false;
     return true;
 };
 
@@ -212,20 +212,43 @@ apply_pending_hit = function() {
         var _feet = get_feet(_e.side, _e.index);
         var _vis = get_vis(_e.side, _e.index);
 
-        if (_h.effect == "damage") {
+        if (_h.effect == "damage" || _h.effect == "steal") {
             if (_tgt.hp <= 0) continue;
+            if (_e.miss) {
+                array_push(dmg_pops, { x: _feet.x - 12, y: _feet.y - 40, value: 0, kind: "dmg", word: "spr_ui_dmg_miss", vy: -0.4, life: 40 });
+                continue;
+            }
             if (_e.side == "enemy" && _e.guarded) _tgt.is_guarding = false; // enemy guard absorbs one hit
             _tgt.hp = scr_apply_damage(_tgt.hp, _tgt.max_hp, _e.damage);
+            if (_e.damage > 0) scr_battle_remove_status(_tgt, "sleep"); // a hit wakes a sleeper
+            if (_e.steal > 0) {
+                var _thief = get_actor(_h.user_side, _h.user_index);
+                var _took = min(_e.steal, global.game.gold);
+                global.game.gold -= _took;
+                if (is_struct(_thief)) _thief.stolen_gold += _took;
+            }
             if (_e.damage > 0) scr_battle_pop_add(dmg_pops, _feet.x, _feet.y, _e.damage, "dmg");
             if (_e.weak) array_push(dmg_pops, { x: _feet.x - 14, y: _feet.y - 40, value: 0, kind: "dmg", word: "spr_ui_dmg_weak", vy: -0.4, life: 40 });
             if (_e.side == "enemy") {
                 if (_tgt.hp <= 0) {
-                    if (_tgt.yields) {
+                    var _does_yield = _tgt.yields || (_tgt.yields_if_flag != "" && scr_flag_get(_tgt.yields_if_flag));
+                    if (_does_yield) {
                         // Yield replaces death: hold the yield clip's last frame; he lives.
                         _tgt.yielded = true;
                         _tgt.hp = 1; // he lives; is_up() treats a yielded boss as out of the fight
                         if (is_string(_tgt.yield_flag) && _tgt.yield_flag != "") scr_flag_set(_tgt.yield_flag, true);
                         scr_battle_vis_play(_vis, "yield");
+                        // Balance pass (PLACEHOLDER rule): the soldiers still standing withdraw, but
+                        // their XP is credited now (same participant rule) and their gold is summed at victory.
+                        for (var _w = 0; _w < array_length(enemies); _w++) {
+                            var _wd = enemies[_w];
+                            if (_wd == _tgt || _wd.hp <= 0 || _wd.yielded) continue;
+                            _wd.withdrawn = true;
+                            if (!_wd.xp_credited) {
+                                scr_party_credit_enemy_xp(_wd.xp_reward);
+                                _wd.xp_credited = true;
+                            }
+                        }
                     } else {
                         if (is_struct(_vis) && _vis.kind == "blackguard") _vis.phase = 3; // final death is the p3 strip
                         scr_battle_vis_play(_vis, "death");
@@ -251,6 +274,8 @@ apply_pending_hit = function() {
             }
         } else if (_h.effect == "guard") {
             _tgt.is_guarding = true;
+        } else if (_h.effect == "status") {
+            if (_e.status_ok) scr_battle_try_add_status(_tgt, _sk.status, _sk.status_turns);
         }
         // "flavor": message / visual only (Chapter 1 howl, scream, web, Blood Oath).
     }
@@ -283,6 +308,15 @@ finish_animating = function() {
             }
         }
     }
+    // Generic two-phase bosses (Sanctuary Warden, Blackwood Matriarch): one shift at phase2_at.
+    for (var _g2 = 0; _g2 < array_length(enemies); _g2++) {
+        var _ge = enemies[_g2];
+        if (_ge.actor_id == "blackguard" || _ge.phase2_at <= 0 || _ge.phase >= 2 || !is_up("enemy", _g2)) continue;
+        if (_ge.hp <= _ge.max_hp * _ge.phase2_at) {
+            start_phase_shift(_g2, 2);
+            return;
+        }
+    }
     if (try_start_stance()) return;
     queue_message(anim_message, anim_next_state);
 };
@@ -294,6 +328,7 @@ start_phase_shift = function(_index, _want) {
     phase_want = _want;
     phase_next = phase_from + 1;
     var _anim = (phase_next == 2) ? "transition_p1to2" : "transition_p2to3";
+    if (_bg.actor_id != "blackguard") _anim = "trans"; // generic bosses: trans strip, then idle_p2
     var _vis = get_vis("enemy", _index);
     if (is_struct(_vis)) {
         _vis.phase = phase_from;
@@ -304,7 +339,16 @@ start_phase_shift = function(_index, _want) {
 
 finish_phase_shift = function() {
     var _bg = enemies[phase_enemy];
-    scr_blackguard_apply_phase(_bg, phase_next);
+    var _generic = (_bg.actor_id != "blackguard");
+    if (_generic) {
+        _bg.phase = phase_next;
+        for (var _pb = 0; _pb < array_length(_bg.phase2_buffs); _pb++) {
+            var _pbf = _bg.phase2_buffs[_pb];
+            scr_battle_add_buff(_bg, _pbf.stat, _pbf.pct, _pbf.turns, "phase2");
+        }
+    } else {
+        scr_blackguard_apply_phase(_bg, phase_next);
+    }
     var _vis = get_vis("enemy", phase_enemy);
     if (is_struct(_vis)) {
         _vis.phase = phase_next;
@@ -315,7 +359,7 @@ finish_phase_shift = function() {
         return;
     }
     var _line = anim_message;
-    var _pl = scr_blackguard_phase_line(phase_want);
+    var _pl = _generic ? ((_bg.phase2_line != "") ? _bg.phase2_line : (_bg.name + " changes!")) : scr_blackguard_phase_line(phase_want);
     if (_pl != "") _line = (_line == "") ? _pl : (_line + "\n" + _pl);
     queue_message(_line, anim_next_state);
 };
@@ -388,6 +432,17 @@ resolve_targets = function(_side, _idx, _sk, _pick) {
             var _ai = is_up(_side, _pick) ? _pick : _idx;
             array_push(_out, { side: _side, index: _ai });
             break;
+        case "ally_lowest": // most-hurt living member of the user's side (field surgeon heal)
+            var _lw = living(_side);
+            var _best = -1;
+            var _best_pct = 2;
+            for (var _q = 0; _q < array_length(_lw); _q++) {
+                var _qa = get_actor(_side, _lw[_q]);
+                var _pct = _qa.hp / max(1, _qa.max_hp);
+                if (_pct < _best_pct) { _best_pct = _pct; _best = _lw[_q]; }
+            }
+            if (_best != -1) array_push(_out, { side: _side, index: _best });
+            break;
         case "all_allies":
             var _mine = living(_side);
             for (var _m = 0; _m < array_length(_mine); _m++) array_push(_out, { side: _side, index: _mine[_m] });
@@ -413,6 +468,8 @@ run_skill = function(_side, _idx, _sk, _targets) {
         enemy_kind: (_side == "enemy") ? _user.actor_id : "",
         party_index: 0,
         fx_frame: _sk.fx_frame,
+        projectile: _sk.projectile,
+        projectile_frames: _sk.projectile_frames,
         fx_from: get_feet(_side, _idx),
         fx_to: undefined
     };
@@ -421,8 +478,8 @@ run_skill = function(_side, _idx, _sk, _targets) {
     for (var _t = 0; _t < array_length(_targets); _t++) {
         var _tr = _targets[_t];
         var _tgt = get_actor(_tr.side, _tr.index);
-        var _entry = { side: _tr.side, index: _tr.index, damage: 0, weak: false, guarded: false };
-        if (_sk.effect == "damage") {
+        var _entry = { side: _tr.side, index: _tr.index, damage: 0, weak: false, guarded: false, miss: false, steal: 0, status_ok: false };
+        if (_sk.effect == "damage" || _sk.effect == "steal") {
             var _r = scr_battle_skill_damage(_user, _tgt, _sk);
             _entry.damage = _r.damage;
             _entry.weak = _r.weak;
@@ -430,9 +487,20 @@ run_skill = function(_side, _idx, _sk, _targets) {
                 _entry.damage = scr_apply_guard(_entry.damage, true);
                 _entry.guarded = true;
             }
+            // Physical misses: a blind user, or a veiled (faded) target.
+            if (_sk.dmg_type == "phys" && (scr_battle_status_has(_tgt, "veiled")
+                || (scr_battle_status_has(_user, "blind") && random(1) < BATTLE_BLIND_MISS_CHANCE))) {
+                _entry.miss = true;
+                _entry.damage = 0;
+            }
+            if (_sk.effect == "steal" && !_entry.miss && _tr.side == "party") {
+                _entry.steal = min(global.game.gold, irandom_range(_sk.steal_min, _sk.steal_max));
+            }
             array_push(_vises, get_vis(_tr.side, _tr.index));
             if (_parts != "") _parts += ", ";
-            _parts += _tgt.name + " " + string(_entry.damage) + (_entry.guarded ? " (guarded)" : "") + (_entry.weak ? " Weak!" : "");
+            _parts += _tgt.name + (_entry.miss ? " missed" : (" " + string(_entry.damage))) + (_entry.guarded ? " (guarded)" : "") + (_entry.weak ? " Weak!" : "");
+        } else if (_sk.effect == "status") {
+            _entry.status_ok = (random(1) < _sk.status_chance) && !scr_battle_status_has(_tgt, _sk.status) && !scr_battle_status_resisted(_tgt, _sk.status);
         } else if (_sk.effect == "heal") {
             _entry.damage = max(1, floor(_sk.power));
             array_push(_vises, get_vis(_tr.side, _tr.index));
@@ -446,7 +514,26 @@ run_skill = function(_side, _idx, _sk, _targets) {
 
     // Message. Single-target Attack keeps the Chapter 1 wording.
     var _text = "";
-    if (_sk.effect == "damage" && array_length(_hit.targets) == 1) {
+    if ((_sk.effect == "damage" || _sk.effect == "steal") && array_length(_hit.targets) == 1 && _hit.targets[0].miss) {
+        var _m0 = get_actor(_hit.targets[0].side, _hit.targets[0].index);
+        _text = _user.name + ((_sk.id == "attack") ? " attacks" : (" uses " + _sk.name)) + "... " + _m0.name + " evades! (miss)";
+    } else if (_sk.effect == "steal" && array_length(_hit.targets) == 1) {
+        var _s0 = _hit.targets[0];
+        var _st0 = get_actor(_s0.side, _s0.index);
+        _text = _user.name + " strikes " + _st0.name + " for " + string(_s0.damage) + " and steals " + string(_s0.steal) + " gold!";
+    } else if (_sk.effect == "status" && _sk.target != "self") {
+        var _sp = "";
+        for (var _si = 0; _si < array_length(_hit.targets); _si++) {
+            var _se = _hit.targets[_si];
+            var _sa = get_actor(_se.side, _se.index);
+            var _word = (_sk.status == "blind") ? " is blinded!" : ((_sk.status == "sleep") ? " falls asleep!" : (" is afflicted (" + _sk.status + ")!"));
+            _sp += (_sp == "" ? "" : " ") + _sa.name + (_se.status_ok ? _word : " resists.");
+        }
+        _text = _user.name + " uses " + _sk.name + "! " + _sp;
+    } else if (_sk.effect == "status") {
+        _hit.targets[0].status_ok = true; // self status (Fade) always lands
+        _text = _user.name + " " + ((_sk.verb != "") ? _sk.verb : ("uses " + _sk.name + "!"));
+    } else if (_sk.effect == "damage" && array_length(_hit.targets) == 1) {
         var _e0 = _hit.targets[0];
         var _t0 = get_actor(_e0.side, _e0.index);
         var _gn = _e0.guarded ? " (guarded)" : "";

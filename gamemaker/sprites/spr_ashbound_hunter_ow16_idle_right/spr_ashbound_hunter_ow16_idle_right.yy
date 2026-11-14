@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"f994b36b-a685-4265-a0d8-7f90b3bfa9bb",
-      "name":"f994b36b-a685-4265-a0d8-7f90b3bfa9bb",
+      "%Name":"110ec548-0951-41b6-9826-43ba360bf74a",
+      "name":"110ec548-0951-41b6-9826-43ba360bf74a",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"9e031d3d-1fd7-4dea-85d9-0f7c23b07005",
+      "%Name":"4c7eb252-cf6d-47a1-bd6c-261eaa73fba7",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"9e031d3d-1fd7-4dea-85d9-0f7c23b07005",
+      "name":"4c7eb252-cf6d-47a1-bd6c-261eaa73fba7",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"f994b36b-a685-4265-a0d8-7f90b3bfa9bb",
+                    "name":"110ec548-0951-41b6-9826-43ba360bf74a",
                     "path":"sprites/spr_ashbound_hunter_ow16_idle_right/spr_ashbound_hunter_ow16_idle_right.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"34fe6d5e-43e5-4a22-a49f-39b903c752b0",
+              "id":"214c6fd3-465c-49c3-a278-2a8514db7a1f",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

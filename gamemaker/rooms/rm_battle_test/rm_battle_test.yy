@@ -7,7 +7,7 @@
   "inheritLayers":false,
   "instanceCreationOrder":[
     {
-      "name":"inst_ED6F63C6",
+      "name":"inst_95A5FE6F",
       "path":"PLACEHOLDER",
     },
   ],
@@ -29,7 +29,7 @@
       "instances":[
         {
           "$GMRInstance":"v4",
-          "%Name":"inst_ED6F63C6",
+          "%Name":"inst_95A5FE6F",
           "colour":4294967295,
           "frozen":false,
           "hasCreationCode":false,
@@ -40,7 +40,7 @@
           "inheritedItemId":null,
           "inheritItemSettings":false,
           "isDnd":false,
-          "name":"inst_ED6F63C6",
+          "name":"inst_95A5FE6F",
           "objectId":{
             "name":"obj_battle_controller",
             "path":"objects/obj_battle_controller/obj_battle_controller.yy",

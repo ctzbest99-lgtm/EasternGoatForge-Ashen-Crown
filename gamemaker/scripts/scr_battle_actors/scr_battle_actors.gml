@@ -64,6 +64,7 @@ function scr_actor_from_enemy_data(_data) {
     _actor.yields = variable_struct_exists(_data, "yields") && _data.yields;      // yield replaces death (Reeve Calder)
     _actor.yield_flag = variable_struct_exists(_data, "yield_flag") ? _data.yield_flag : "";
     _actor.yielded = false;
+    _actor.withdrawn = false; // left the field when the boss yielded (still gives XP / gold)
     _actor.stance_on_adds_fall = variable_struct_exists(_data, "stance_on_adds_fall") && _data.stance_on_adds_fall;
     _actor.stance_used = false;
     _actor.stance_buffs = (variable_struct_exists(_data, "stance_buffs") && is_array(_data.stance_buffs)) ? _data.stance_buffs : [];
@@ -73,6 +74,16 @@ function scr_actor_from_enemy_data(_data) {
     _actor.is_add = false;
     _actor.slot = 0;
     _actor.fade = 1;
+    // Batches 7–8 (generic kit support):
+    // yields_if_flag — yield instead of dying only while this story flag is set (Commander Hailen:
+    //                   "he can live, yield, or fall"); otherwise the normal death clip plays.
+    // phase2_at      — HP fraction that triggers a one-time phase shift: play `trans`, then idle_p2 /
+    //                   attack_p2, apply phase2_buffs, show phase2_line, use phase_actions[1].
+    _actor.yields_if_flag = variable_struct_exists(_data, "yields_if_flag") ? _data.yields_if_flag : "";
+    _actor.phase2_at = variable_struct_exists(_data, "phase2_at") ? _data.phase2_at : 0;
+    _actor.phase2_buffs = (variable_struct_exists(_data, "phase2_buffs") && is_array(_data.phase2_buffs)) ? _data.phase2_buffs : [];
+    _actor.phase2_line = variable_struct_exists(_data, "phase2_line") ? _data.phase2_line : "";
+    _actor.stolen_gold = 0; // cutpurse: gold taken this battle; returned at victory if it falls
     return _actor;
 }
 

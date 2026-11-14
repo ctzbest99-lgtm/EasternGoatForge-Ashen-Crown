@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"fa6a3fc4-0033-41f9-af3c-3cbfddc7e3dc",
-      "name":"fa6a3fc4-0033-41f9-af3c-3cbfddc7e3dc",
+      "%Name":"ca77b63f-6a44-4bb1-87f9-49c462f63086",
+      "name":"ca77b63f-6a44-4bb1-87f9-49c462f63086",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"945374d2-6540-404e-81b8-f250068c79fc",
+      "%Name":"419e5b23-aec1-439f-9d0c-f106ec76b71f",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"945374d2-6540-404e-81b8-f250068c79fc",
+      "name":"419e5b23-aec1-439f-9d0c-f106ec76b71f",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"fa6a3fc4-0033-41f9-af3c-3cbfddc7e3dc",
+                    "name":"ca77b63f-6a44-4bb1-87f9-49c462f63086",
                     "path":"sprites/spr_portrait_hob_grim/spr_portrait_hob_grim.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"fbc17c62-486c-49e9-99f9-6b9476811d0b",
+              "id":"ac93ffa0-ee09-4397-9b0a-426c439e4705",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

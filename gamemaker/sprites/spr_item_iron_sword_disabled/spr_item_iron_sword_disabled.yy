@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"729ed106-e507-45e1-8130-44b4ebf284f1",
-      "name":"729ed106-e507-45e1-8130-44b4ebf284f1",
+      "%Name":"fc9f1035-9830-4db6-a006-3fffb5522654",
+      "name":"fc9f1035-9830-4db6-a006-3fffb5522654",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"ed141a98-32c3-4339-b097-639b33e16789",
+      "%Name":"fdaa648d-e2e2-423b-85a6-bce5f7770eed",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"ed141a98-32c3-4339-b097-639b33e16789",
+      "name":"fdaa648d-e2e2-423b-85a6-bce5f7770eed",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"729ed106-e507-45e1-8130-44b4ebf284f1",
+                    "name":"fc9f1035-9830-4db6-a006-3fffb5522654",
                     "path":"sprites/spr_item_iron_sword_disabled/spr_item_iron_sword_disabled.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"15690f5b-9eba-46c7-b30d-9c86c4d09c9d",
+              "id":"a8cad9f0-18ad-4133-a80c-b9b9542888b5",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

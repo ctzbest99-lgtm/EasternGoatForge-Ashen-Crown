@@ -30,7 +30,8 @@ for (var _o = 0; _o < array_length(_order); _o++) {
     var _ei = _order[_o].index;
     var _en = enemies[_ei];
     var _f = _en.feet;
-    var _alpha = (_en.hp > 0 || _en.yielded || _en.is_boss) ? 1 : _en.fade;
+    var _alpha = ((_en.hp > 0 && !_en.withdrawn) || _en.yielded || _en.is_boss) ? 1 : _en.fade;
+    if (_en.hp > 0 && scr_battle_status_has(_en, "veiled")) _alpha = 0.4; // shade_stalker Fade
     if (!scr_battle_draw_vis(enemy_vis[_ei], _f.x, _f.y, _alpha) && _alpha > 0) {
         draw_set_alpha(_alpha);
         draw_set_color((_en.hp > 0 || _en.yielded) ? c_maroon : c_dkgray);
@@ -199,14 +200,16 @@ if (_choosing) {
             else if (scr_battle_has_buff_sign(_hud, "def", -1)) _icon = 5;
             else if (scr_battle_has_buff_sign(_hud, "spd", 1)) _icon = 8;
             else if (scr_battle_has_buff_sign(_hud, "spd", -1)) _icon = 9;
-            if (_icon != -1) scr_ui_status_icon(309, _hy + 5, _icon);
+            var _tags = scr_battle_status_tags(_hud);
+            if (_tags != "") scr_ui_text(303, _hy, string_copy(_tags, 1, 2), make_color_rgb(186, 140, 220)); // blind / sleep (no icon frames yet)
+            else if (_icon != -1) scr_ui_status_icon(309, _hy + 5, _icon);
         }
     }
 } else if (state == BATTLE_STATE.MESSAGE || state == BATTLE_STATE.ANIMATING || state == BATTLE_STATE.PHASE_SHIFT || state == BATTLE_STATE.STANCE_SHIFT) {
     var _wkind = (boss_index == 0) ? "gold" : "normal";
     scr_ui_window(4, _menu_y, 312, 48, _wkind);
     var _msg = (state == BATTLE_STATE.MESSAGE) ? message : "";
-    if (state == BATTLE_STATE.PHASE_SHIFT) _msg = "The air thickens with Ash...";
+    if (state == BATTLE_STATE.PHASE_SHIFT && phase_enemy >= 0 && phase_enemy < array_length(enemies) && enemies[phase_enemy].actor_id == "blackguard") _msg = "The air thickens with Ash...";
     if (_msg != "") scr_ui_text_ext(12, _menu_y + 8, _msg, 280, c_white);
     var _hint = (state == BATTLE_STATE.MESSAGE) ? "[Z]" : "[Z skip]";
     scr_ui_text(308 - string_width(_hint), _gh - 14, _hint, (state == BATTLE_STATE.MESSAGE) ? _gold_col : _grey_col);

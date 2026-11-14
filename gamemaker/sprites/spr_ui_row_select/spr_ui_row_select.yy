@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"6569b636-5289-4812-8883-d1897e04ab7d",
-      "name":"6569b636-5289-4812-8883-d1897e04ab7d",
+      "%Name":"ffccb66a-41d1-462e-9ab5-fff551ddf211",
+      "name":"ffccb66a-41d1-462e-9ab5-fff551ddf211",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"3426839d-9490-4407-a003-73f031a6d0bc",
+      "%Name":"3596fe9d-b928-4700-975b-66ee716c0d8c",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"3426839d-9490-4407-a003-73f031a6d0bc",
+      "name":"3596fe9d-b928-4700-975b-66ee716c0d8c",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -128,7 +128,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"6569b636-5289-4812-8883-d1897e04ab7d",
+                    "name":"ffccb66a-41d1-462e-9ab5-fff551ddf211",
                     "path":"sprites/spr_ui_row_select/spr_ui_row_select.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -136,7 +136,7 @@
                 },
               },
               "Disabled":false,
-              "id":"88d0e9ec-22bf-426b-b6a1-3a7e52f1f49b",
+              "id":"a2503c6b-7cfe-43cc-8c09-233f33c69784",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

@@ -14,22 +14,22 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"76eb6166-1236-4641-8b03-f7fd303141cc",
-      "name":"76eb6166-1236-4641-8b03-f7fd303141cc",
+      "%Name":"be1e38e6-b9af-4b65-b7e6-6189964bf7d6",
+      "name":"be1e38e6-b9af-4b65-b7e6-6189964bf7d6",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"f1921aa3-587b-490d-8ce9-6c09b91539d4",
-      "name":"f1921aa3-587b-490d-8ce9-6c09b91539d4",
+      "%Name":"180589c8-d246-45b1-b8e1-96a53bfc6a68",
+      "name":"180589c8-d246-45b1-b8e1-96a53bfc6a68",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"64c4d542-9da7-4f38-ba96-f53221184869",
-      "name":"64c4d542-9da7-4f38-ba96-f53221184869",
+      "%Name":"cf100f65-159e-4248-8ba0-fd799d661d6a",
+      "name":"cf100f65-159e-4248-8ba0-fd799d661d6a",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -41,11 +41,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"aef6cb2c-9cba-4b0f-84ca-5bbde007dc3a",
+      "%Name":"8a02e766-748b-43b6-92ba-99fa8e0eac0c",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"aef6cb2c-9cba-4b0f-84ca-5bbde007dc3a",
+      "name":"8a02e766-748b-43b6-92ba-99fa8e0eac0c",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -118,7 +118,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"76eb6166-1236-4641-8b03-f7fd303141cc",
+                    "name":"be1e38e6-b9af-4b65-b7e6-6189964bf7d6",
                     "path":"sprites/spr_ui_stat_arrow_strip3/spr_ui_stat_arrow_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -126,7 +126,7 @@
                 },
               },
               "Disabled":false,
-              "id":"fcdf4e36-6b9a-45b2-b570-5f2fbf95e776",
+              "id":"efa4be1f-43a4-4472-a6f2-546103074b21",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -140,7 +140,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"f1921aa3-587b-490d-8ce9-6c09b91539d4",
+                    "name":"180589c8-d246-45b1-b8e1-96a53bfc6a68",
                     "path":"sprites/spr_ui_stat_arrow_strip3/spr_ui_stat_arrow_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -148,7 +148,7 @@
                 },
               },
               "Disabled":false,
-              "id":"89b79ca3-f8f8-4321-92ec-9a4c19060b10",
+              "id":"9ba5728b-1350-4b29-8dc4-3603613a737b",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -162,7 +162,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"64c4d542-9da7-4f38-ba96-f53221184869",
+                    "name":"cf100f65-159e-4248-8ba0-fd799d661d6a",
                     "path":"sprites/spr_ui_stat_arrow_strip3/spr_ui_stat_arrow_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -170,7 +170,7 @@
                 },
               },
               "Disabled":false,
-              "id":"49a1004f-4168-479d-b7a9-021085baf96b",
+              "id":"cb469859-410e-4480-a2c6-3307a9020ec7",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,

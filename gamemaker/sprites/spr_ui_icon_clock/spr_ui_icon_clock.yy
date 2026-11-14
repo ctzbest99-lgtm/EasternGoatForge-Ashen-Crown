@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"f7f77e00-b67f-4774-a05d-2257caa707d4",
-      "name":"f7f77e00-b67f-4774-a05d-2257caa707d4",
+      "%Name":"58ab1bb2-745d-4700-a528-39ae8f57fc3a",
+      "name":"58ab1bb2-745d-4700-a528-39ae8f57fc3a",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"c7e2a746-a9b5-4659-a93b-a26d05a08b4d",
+      "%Name":"5c54760f-bec8-4d0d-ba35-4d828a859bc5",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"c7e2a746-a9b5-4659-a93b-a26d05a08b4d",
+      "name":"5c54760f-bec8-4d0d-ba35-4d828a859bc5",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"f7f77e00-b67f-4774-a05d-2257caa707d4",
+                    "name":"58ab1bb2-745d-4700-a528-39ae8f57fc3a",
                     "path":"sprites/spr_ui_icon_clock/spr_ui_icon_clock.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"eb1ddeb7-2db6-45ad-836d-419ed360c819",
+              "id":"11fdadb9-46b6-44eb-90d0-fca62af6578a",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

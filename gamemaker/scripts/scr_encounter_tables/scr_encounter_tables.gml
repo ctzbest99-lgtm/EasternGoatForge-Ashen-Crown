@@ -72,11 +72,12 @@ function scr_get_encounter_table(_table_id) {
         // Level band 8–10 (Design batch 6 / CHAPTER2_SCRIPT.md). Groups and weights are PLACEHOLDER.
         case "ch2_millhaven_road":
         case "millhaven_road":
-            // Crown road patrols, road veterans, grey ash wolves.
+            // Crown road patrols, road veterans, grey ash wolves. Kael walks this road alone (Taren
+            // joins at the Calder fight), so groups stop at 2 (balance pass; see DECISIONS).
             return [
                 { enemy_id: "crown_patrolman", weight: 2 },
                 { group: ["crown_patrolman", "crown_crossbowman"], weight: 3 },
-                { group: ["crown_crossbowman", "crown_patrolman", "occupation_soldier"], weight: 2 },
+                { enemy_id: "crown_crossbowman", weight: 1 },
                 { enemy_id: "bandit_veteran", weight: 1 },
                 { group: ["bandit_veteran", "bandit_veteran"], weight: 2 },
                 { enemy_id: "grey_ash_wolf", weight: 1 },
@@ -89,7 +90,37 @@ function scr_get_encounter_table(_table_id) {
                 { enemy_id: "occupation_soldier", weight: 2 },
                 { group: ["occupation_soldier", "crown_patrolman"], weight: 3 },
                 { group: ["occupation_soldier", "crown_crossbowman"], weight: 2 },
-                { group: ["occupation_soldier", "occupation_soldier"], weight: 1 }
+                { group: ["occupation_soldier", "occupation_soldier"], weight: 1 },
+                { group: ["crown_sergeant", "occupation_soldier"], weight: 1 } // batch 7 elite
+            ];
+
+        // ---- Design batches 7–8 (data only; no rooms or zones yet). Weights PLACEHOLDER. ----
+        case "valemere_lower_city": // Chapter 3
+            return [
+                { enemy_id: "dock_thug", weight: 2 },
+                { group: ["dock_thug", "cutpurse"], weight: 3 },
+                { group: ["cutpurse", "dock_thug", "cutpurse"], weight: 1 },
+                { group: ["debt_collector", "dock_thug"], weight: 1 }
+            ];
+        case "hollow_sanctuary": // Chapter 4
+            return [
+                { group: ["ward_sentinel", "glyph_wisp"], weight: 3 },
+                { group: ["glyph_wisp", "glyph_wisp", "ward_sentinel"], weight: 2 },
+                { group: ["aethari_automaton", "glyph_wisp"], weight: 1 }
+            ];
+        case "blackwood_garrison": // Chapter 5
+            return [
+                { group: ["garrison_pikeman", "garrison_field_surgeon"], weight: 3 },
+                { group: ["garrison_pikeman", "garrison_pikeman", "garrison_field_surgeon"], weight: 2 },
+                { group: ["garrison_knight", "garrison_field_surgeon"], weight: 1 }
+            ];
+        case "blackwood": // Act III
+            return [
+                { group: ["lost_one", "briar_hulk"], weight: 2 },
+                { group: ["shade_stalker", "lost_one"], weight: 2 },
+                { group: ["lost_one", "briar_hulk", "shade_stalker"], weight: 2 },
+                { group: ["night_moth_swarm", "lost_one"], weight: 2 },
+                { group: ["door_warden", "night_moth_swarm"], weight: 1 }
             ];
     }
     return undefined;
@@ -103,6 +134,11 @@ function scr_encounter_table_level_band(_table_id) {
         case "zone01_bandit_camp": case "bandit_camp": return { min: 3, max: 4 };
         case "zone01_watchtower": case "watchtower": case "zone01_basement_nest": case "zone01_basement_hall": return { min: 4, max: 7 };
         case "ch2_millhaven_road": case "millhaven_road": case "ch2_wrenfield": case "wrenfield": return { min: 8, max: 10 };
+        // PROPOSED bands from ACT2_OUTLINE.md; the Blackwood is a coder placeholder.
+        case "valemere_lower_city": return { min: 10, max: 13 };
+        case "hollow_sanctuary": return { min: 13, max: 16 };
+        case "blackwood_garrison": return { min: 16, max: 18 };
+        case "blackwood": return { min: 18, max: 20 };
     }
     return undefined;
 }
@@ -120,6 +156,11 @@ function scr_get_encounter_group(_group_id) {
             for (var _i = 0; _i < _n; _i++) array_push(_adds, "occupation_soldier");
             return { boss: "reeve_calder", adds: _adds };
         }
+        // Batch 7–8 boss groups (adds follow Design's mockups; PLACEHOLDER).
+        case "grp_debtman": return { boss: "debtman", adds: ["dock_thug"] };
+        case "grp_sanctuary_warden": return { boss: "sanctuary_warden", adds: ["ward_sentinel"] };
+        case "grp_commander_hailen": return { boss: "commander_hailen", adds: ["garrison_pikeman"] };
+        case "grp_blackwood_matriarch": return { boss: "blackwood_matriarch", adds: ["shade_stalker"] };
         case "grp_crown_patrol":
             return { enemies: ["crown_crossbowman", "crown_patrolman", "occupation_soldier"] };
     }

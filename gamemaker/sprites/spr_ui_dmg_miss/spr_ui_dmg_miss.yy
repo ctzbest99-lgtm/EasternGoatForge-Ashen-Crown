@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"74c321c9-b6af-47f7-a074-e6e4e446938e",
-      "name":"74c321c9-b6af-47f7-a074-e6e4e446938e",
+      "%Name":"8814c60f-51fd-4300-af85-1b41fbb2e6f0",
+      "name":"8814c60f-51fd-4300-af85-1b41fbb2e6f0",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"56bf00d3-a1de-4b10-abc7-bae7850ac77c",
+      "%Name":"99cbbc02-b1bd-4094-877c-27786c0599c9",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"56bf00d3-a1de-4b10-abc7-bae7850ac77c",
+      "name":"99cbbc02-b1bd-4094-877c-27786c0599c9",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"74c321c9-b6af-47f7-a074-e6e4e446938e",
+                    "name":"8814c60f-51fd-4300-af85-1b41fbb2e6f0",
                     "path":"sprites/spr_ui_dmg_miss/spr_ui_dmg_miss.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"41113c0f-e39a-435f-8682-3ff948c9d5b9",
+              "id":"436c6824-f45f-45ca-8b57-b3543566dc76",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

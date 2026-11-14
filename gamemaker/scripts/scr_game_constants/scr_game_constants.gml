@@ -115,6 +115,20 @@
 #macro LEVEL_UP_MP_GROWTH 2
 #macro LEVEL_UP_SPD_GROWTH 1
 #macro LEVEL_UP_MDEF_GROWTH 1
+// Balance pass (PLACEHOLDER): level-ups INTO level LEVEL_UP_TIER_LEVEL and above use the *_HIGH
+// growth. Chapter 1 runs at levels 1–7, so its numbers are unchanged. Chapter 2 suggests 8–10.
+// Tuned with tools/balance_sim.py (table in docs/DECISIONS_AND_OPEN_QUESTIONS.md).
+#macro LEVEL_UP_TIER_LEVEL 8
+#macro LEVEL_UP_HP_GROWTH_HIGH 10
+#macro LEVEL_UP_ATTACK_GROWTH_HIGH 2
+#macro LEVEL_UP_DEFENSE_GROWTH_HIGH 2
+#macro LEVEL_UP_MP_GROWTH_HIGH 3
+#macro LEVEL_UP_SPD_GROWTH_HIGH 1
+#macro LEVEL_UP_MDEF_GROWTH_HIGH 1
+// MP recovery (PLACEHOLDER). Ether restores ITEM_ETHER_MP; the Wrenfield inn (The Bent Post)
+// restores HP and MP for the active party and reserve for INN_WRENFIELD_PRICE gold.
+#macro ITEM_ETHER_MP 10
+#macro INN_WRENFIELD_PRICE 30
 // Debug only: add a second placeholder ally so multi-member battle can be tested. Not canon.
 // Prefer DEBUG_ADD_FULL_ROSTER for canon members (4 active + 1 reserve).
 #macro DEBUG_ADD_PLACEHOLDER_ALLY false
@@ -145,8 +159,10 @@
 #macro BATTLE_MAX_ADDS 3                // a boss can bring up to 3 adds
 #macro BATTLE_WEAKNESS_MULTIPLIER 1.5   // damage × this when the skill element matches `weakness`
 #macro BATTLE_SPD_TIEBREAK 0.99         // turn order = SPD + random(0..this); keeps ties fair, never reorders a real SPD gap
-#macro BATTLE_VICTORY_MP_REGEN 2        // living active members regain this much MP after a win (PLACEHOLDER until inns / Ethers exist)
+#macro BATTLE_VICTORY_MP_REGEN 2        // living active members regain this much MP after a win (PLACEHOLDER; kept alongside the inn and Ether)
 #macro BATTLE_DEAD_ENEMY_FADE_FRAMES 30 // defeated regulars fade out after their death clip; a yielding boss stays
+#macro BATTLE_BLIND_MISS_CHANCE 0.5      // blind: physical attacks miss this often (PLACEHOLDER, batch 8 moths)
+#macro BATTLE_HEAL_ALLY_THRESHOLD 0.6    // field surgeon heals only when an ally is below this HP fraction (PLACEHOLDER)
 #macro CALDER_ADD_COUNT 2               // occupation_soldier adds in grp_reeve_calder (script says 2–3; Design mockup shows 2)
 
 // Optional camera: if Viewport 0 is enabled (or created by scr_map_enable_camera),

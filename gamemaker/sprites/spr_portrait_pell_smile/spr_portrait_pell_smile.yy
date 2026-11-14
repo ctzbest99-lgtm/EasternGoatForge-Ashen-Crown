@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"8fa38887-ce7d-44c5-a199-f8a2297c8233",
-      "name":"8fa38887-ce7d-44c5-a199-f8a2297c8233",
+      "%Name":"d33aee21-ff8a-438b-ac4d-a8348d7e90b6",
+      "name":"d33aee21-ff8a-438b-ac4d-a8348d7e90b6",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"2e485475-2fe6-47e7-a30d-3b5fab6b3ee1",
+      "%Name":"80f47cf1-fc89-4269-9d61-5707696dc9f4",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"2e485475-2fe6-47e7-a30d-3b5fab6b3ee1",
+      "name":"80f47cf1-fc89-4269-9d61-5707696dc9f4",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"8fa38887-ce7d-44c5-a199-f8a2297c8233",
+                    "name":"d33aee21-ff8a-438b-ac4d-a8348d7e90b6",
                     "path":"sprites/spr_portrait_pell_smile/spr_portrait_pell_smile.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"a90a5af1-aa2a-4086-9e3f-60d6ac4b6282",
+              "id":"c3f5eeb8-3352-45f5-bfb8-c852d72cb0ef",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

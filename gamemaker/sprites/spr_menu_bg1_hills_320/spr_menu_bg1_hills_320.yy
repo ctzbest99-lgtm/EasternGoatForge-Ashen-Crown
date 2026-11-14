@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"ebf4f73b-7880-42f4-b83c-95a5156cf646",
-      "name":"ebf4f73b-7880-42f4-b83c-95a5156cf646",
+      "%Name":"8e2185c8-a867-43dd-965c-274433882768",
+      "name":"8e2185c8-a867-43dd-965c-274433882768",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"2f696650-b5b6-404b-856e-d2acdbc6c464",
+      "%Name":"6cdecc56-63ff-41a1-b6b2-8ccdad32c50e",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"2f696650-b5b6-404b-856e-d2acdbc6c464",
+      "name":"6cdecc56-63ff-41a1-b6b2-8ccdad32c50e",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ebf4f73b-7880-42f4-b83c-95a5156cf646",
+                    "name":"8e2185c8-a867-43dd-965c-274433882768",
                     "path":"sprites/spr_menu_bg1_hills_320/spr_menu_bg1_hills_320.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"758af584-3863-4cc7-8a88-c550a191030d",
+              "id":"524dae4d-bd59-419a-a171-492d132cff97",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
