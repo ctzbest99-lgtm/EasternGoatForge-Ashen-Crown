@@ -61,8 +61,16 @@ if (mode == "menu") {
     }
 } else if (mode == "saves") {
     var _sn = array_length(slots);
-    if (scr_input_up_pressed() && _sn > 0) save_index = (save_index - 1 + _sn) mod _sn;
-    if (scr_input_down_pressed() && _sn > 0) save_index = (save_index + 1) mod _sn;
+    if (scr_input_up_pressed() && _sn > 0) {
+        var _tries = 0;
+        do { save_index = (save_index - 1 + _sn) mod _sn; _tries += 1; }
+        until (_tries >= _sn || slots[save_index].ok);
+    }
+    if (scr_input_down_pressed() && _sn > 0) {
+        var _tries2 = 0;
+        do { save_index = (save_index + 1) mod _sn; _tries2 += 1; }
+        until (_tries2 >= _sn || slots[save_index].ok);
+    }
     if (scr_input_cancel_pressed()) {
         mode = "menu";
         has_save = scr_save_any_exists();

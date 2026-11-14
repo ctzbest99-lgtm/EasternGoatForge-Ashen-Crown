@@ -1,9 +1,9 @@
 # obj_save_point
 
-A save shrine in the world. The map builder spawns one in the Greyhaven chapel and one in the tavern (exact tiles are an open decision). Do not also hand-place them unless you are testing.
+A 16×24 ember-crowned crystal (`spr_save_point_idle_strip8`, origin (8, 23)) that stands in the aisle. The map builder spawns one in the Greyhaven chapel and one in the tavern (exact tiles are still an open decision).
 
-**Parent:** `obj_interactable` (solid). Events: Create (this file; inherits the parent's Step for y-sort).
+**Parent:** `obj_interactable`. Events: Create, Step (inherits y-sort, then plays the activate clip).
 
-Sprite lookup (first one that exists): `spr_menu_save_point`, `spr_save_point`, `spr_ui_save_point`, then `spr_interactable_placeholder`.
+On confirm, swap to `spr_save_point_activate_strip8` (origin (16, 39), 12 fps, once). At the last frame, open `obj_save_menu` and return to the idle loop (8 fps). The two origins keep the plinth aligned at the same x/y.
 
-Facing the tile and pressing Z / Enter / Space opens `obj_save_menu`. A DEBUG F5 "save anywhere" key exists in `obj_game_controller` but is off by default (`DEBUG_SAVE_ANYWHERE`).
+If the strips are missing, the interactable placeholder is used and the menu opens immediately. A DEBUG F5 "save anywhere" key exists on `obj_game_controller` but is off by default (`DEBUG_SAVE_ANYWHERE`).

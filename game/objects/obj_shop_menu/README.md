@@ -1,7 +1,7 @@
 # obj_shop_menu
 
-Shop overlay (Buy / Sell / Exit). Created at runtime by `scr_shop_open` after a shopkeeper's dialogue. Do not place in a room.
+Shop overlay matching Design's field-menu mockups. Created at runtime by `scr_shop_open` after a shopkeeper's dialogue. Do not place in a room.
 
-Uses the nine-slice windows, bitmap font, cursor, and item icons. Dedicated shop art (later, `/workspace/sprites/ui/menus/`) is looked up first via `scr_menu_sprite_window("shop")`.
+Tabs (Buy / Sell / Exit) are 40×15 strips drawn at `list_y - 12` after the list window. Left/right switches tabs. Unaffordable or unsellable rows use the greyed item icons and `spr_ui_row_select_disabled`. Key items on Sell show "--" and `spr_ui_icon_key`. Quantity (Buy, consumables only): up/down ±1, left/right ±10.
 
-Input is locked through `global.game.menu_open` while this exists.
+Layout constants and sprite fallbacks live in `scr_menu_layout.gml`.

@@ -8,17 +8,21 @@ function scr_shop_get(_shop_id) {
         case "shop_greyhaven_store":
             return {
                 shop_id: "shop_greyhaven_store",
-                name: "Marda's Store",
+                name: "General Store",
                 keeper: "Marda",
-                items: ["item_minor_potion", "item_antidote"]
+                items: ["item_minor_potion", "item_antidote"],
+                lines_buy: ["Coin's still coin, Kael.", "Even now."],
+                lines_sell: ["Everything went up.", "Including the roof."]
             };
         case "shop_greyhaven_forge":
             return {
                 shop_id: "shop_greyhaven_forge",
-                name: "Pell's Forge",
+                name: "Tomas's Forge",
                 keeper: "Pell",
                 // PLACEHOLDER stock: Chapter 1 equipment that has art and is not a unique reward.
-                items: ["item_iron_sword", "item_leather_armor", "item_iron_helm"]
+                items: ["item_iron_sword", "item_leather_armor", "item_iron_helm"],
+                lines_buy: ["His tools are mostly fine.", "Iron's tougher than people."],
+                lines_sell: ["His tools are mostly fine.", "Iron's tougher than people."]
             };
     }
     return undefined;
@@ -48,6 +52,7 @@ function scr_shop_open(_shop_id) {
     return _inst;
 }
 
+/// Every bag item, including unsellable / key rows (those are drawn disabled).
 function scr_shop_sellable_list() {
     scr_game_state_init();
     var _out = [];
@@ -58,10 +63,9 @@ function scr_shop_sellable_list() {
         if (!is_struct(_e)) continue;
         var _it = scr_item_get(_e.item_id);
         var _key = (variable_struct_exists(_e, "key_item") && _e.key_item) || _it.key_item;
-        if (_key || !_it.sellable) continue;
         var _price = scr_item_sell_price(_e.item_id);
-        if (_price <= 0) continue;
-        array_push(_out, { item_id: _e.item_id, name: _it.name, qty: _e.qty, price: _price });
+        var _can = (!_key && _it.sellable && _price > 0);
+        array_push(_out, { item_id: _e.item_id, name: _it.name, qty: _e.qty, price: _price, unsellable: !_can, key_item: _key });
     }
     return _out;
 }

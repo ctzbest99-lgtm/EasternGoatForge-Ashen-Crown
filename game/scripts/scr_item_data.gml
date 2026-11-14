@@ -13,8 +13,8 @@ function scr_item_make(_item_id, _name, _kind, _price, _extra = undefined) {
     var _it = {
         item_id: scr_item_id_norm(_item_id),
         name: _name,
-        kind: _kind,          // "consumable" | "weapon" | "armor" | "accessory" | "key" | "misc"
-        slot: "",             // "weapon" | "armor" | "accessory" or ""
+        kind: _kind,          // "consumable" | "weapon" | "armor" | "helm" | "accessory" | "key" | "misc"
+        slot: "",             // "weapon" | "armor" | "helm" | "accessory" or ""
         price: max(0, _price),
         sellable: true,
         key_item: false,
@@ -31,6 +31,7 @@ function scr_item_make(_item_id, _name, _kind, _price, _extra = undefined) {
     }
     if (_kind == "weapon") _it.slot = "weapon";
     if (_kind == "armor") _it.slot = "armor";
+    if (_kind == "helm") _it.slot = "helm";
     if (_kind == "accessory") _it.slot = "accessory";
     if (is_struct(_extra)) {
         var _names = variable_struct_get_names(_extra);
@@ -68,7 +69,7 @@ function scr_item_database() {
         def_bonus: 2,
         desc: "Scuffed travelling leathers. DEF +2. (PLACEHOLDER.)"
     }));
-    _add(_db, scr_item_make("item_iron_helm", "Iron Helm", "accessory", 40, {
+    _add(_db, scr_item_make("item_iron_helm", "Iron Helm", "helm", 40, {
         def_bonus: 1,
         desc: "A simple iron cap. DEF +1. (PLACEHOLDER.)"
     }));
@@ -156,7 +157,7 @@ function scr_item_is_key(_item_id) {
 
 function scr_item_is_equipment(_item_id) {
     var _it = scr_item_get(_item_id);
-    return _it.slot == "weapon" || _it.slot == "armor" || _it.slot == "accessory";
+    return _it.slot == "weapon" || _it.slot == "armor" || _it.slot == "helm" || _it.slot == "accessory";
 }
 
 function scr_item_is_consumable(_item_id) {
@@ -177,7 +178,7 @@ function scr_item_sell_price(_item_id) {
 function scr_item_can_equip(_actor, _item_id) {
     if (!is_struct(_actor)) return false;
     var _it = scr_item_get(_item_id);
-    if (_it.slot == "armor" || _it.slot == "accessory") return true;
+    if (_it.slot == "armor" || _it.slot == "helm" || _it.slot == "accessory") return true;
     if (_it.slot != "weapon") return false;
     var _need = _it.weapon_categories;
     var _have = variable_struct_exists(_actor, "weapon_categories") ? _actor.weapon_categories : [];
@@ -197,7 +198,14 @@ function scr_actor_ensure_bases(_actor) {
     if (!variable_struct_exists(_actor, "base_defense")) _actor.base_defense = _actor.defense;
     if (!variable_struct_exists(_actor, "poisoned")) _actor.poisoned = false;
     if (!variable_struct_exists(_actor, "equipment") || !is_struct(_actor.equipment)) {
-        _actor.equipment = { weapon: "", armor: "", accessory: "" };
+        _actor.equipment = { weapon: "", armor: "", helm: "", accessory: "" };
+    }
+    if (!variable_struct_exists(_actor.equipment, "helm")) _actor.equipment.helm = "";
+    // Iron Helm used to live in the accessory slot; move it if needed.
+    var _acc = is_string(_actor.equipment.accessory) ? _actor.equipment.accessory : "";
+    if (scr_item_id_norm(_acc) == "item_iron_helm" && _actor.equipment.helm == "") {
+        _actor.equipment.helm = _acc;
+        _actor.equipment.accessory = "";
     }
 }
 
@@ -213,8 +221,8 @@ function scr_actor_refresh_equipment(_actor) {
     scr_actor_ensure_bases(_actor);
     var _atk = 0;
     var _def = 0;
-    var _slots = ["weapon", "armor", "accessory"];
-    for (var _i = 0; _i < 3; _i++) {
+    var _slots = ["weapon", "armor", "helm", "accessory"];
+    for (var _i = 0; _i < 4; _i++) {
         var _id = _actor.equipment[$ _slots[_i]];
         if (is_string(_id) && _id != "") {
             var _b = scr_item_equip_bonuses(_id);
@@ -269,10 +277,10 @@ function scr_item_preview_line(_actor, _item_id) {
     var _atk0 = variable_struct_exists(_actor, "base_attack") ? _actor.base_attack : _actor.attack;
     var _def0 = variable_struct_exists(_actor, "base_defense") ? _actor.base_defense : _actor.defense;
     // Other slots stay worn; only this slot is replaced in the preview.
-    var _slots = ["weapon", "armor", "accessory"];
+    var _slots = ["weapon", "armor", "helm", "accessory"];
     var _atk_other = 0;
     var _def_other = 0;
-    for (var _i = 0; _i < 3; _i++) {
+    for (var _i = 0; _i < 4; _i++) {
         if (_slots[_i] == _it.slot) continue;
         var _ob = scr_item_equip_bonuses(scr_actor_equipped_in_slot(_actor, _slots[_i]));
         _atk_other += _ob.atk;

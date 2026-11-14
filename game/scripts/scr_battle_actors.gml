@@ -23,7 +23,7 @@ function scr_actor_create(_actor_id, _name, _max_hp, _attack, _defense) {
         joined: false,
         poisoned: false,     // overworld status; battle poison is not implemented yet
         weapon_categories: [],
-        equipment: { weapon: "", armor: "", accessory: "" }
+        equipment: { weapon: "", armor: "", helm: "", accessory: "" }
     };
 }
 
