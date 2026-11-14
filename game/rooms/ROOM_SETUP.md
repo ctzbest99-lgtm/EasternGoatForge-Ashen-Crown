@@ -2,7 +2,7 @@
 
 Do not fabricate .yy/.yyp metadata. Let GameMaker create resources. This document does not prove the project compiles.
 
-Room size, tile size, and resolution are still undecided. The numbers below are **placeholders** so the prototype can be tested; change them freely.
+Room size, tile size, and resolution are still undecided in a final-design sense, but the Zone 1 overworld is built as a **16×16** tile map: `rm_overworld` is **6400×4800** (400×300 tiles) and `rm_old_watchtower` is **960×720** (60×45 tiles). A camera is required.
 
 ## 1. Project
 1. Create a new GameMaker project (GML, GameMaker 2023.1+).
@@ -21,7 +21,7 @@ Code reads the collision box (`bbox_*`), not the origin, so other origins work t
 
 ## 3. Objects
 Create each object in the table in `game/README.md` with the listed sprite, flags, and events, then paste the matching `.gml` file into each event:
-- **obj_game_controller:** no sprite, tick **Persistent**, untick Visible. Events: Create, Step ▸ Begin Step, Other ▸ Room Start.
+- **obj_game_controller:** no sprite, tick **Persistent**, untick Visible. Events: Create, Step ▸ Begin Step, Step ▸ End Step, Other ▸ Room Start.
 - **obj_player:** sprite `spr_player_placeholder`. Events: Create, Step. (Replaces the earlier Create/Step snippets; movement behaviour is unchanged.)
 - **obj_solid:** sprite `spr_solid_placeholder`. No events.
 - **obj_interactable:** sprite `spr_interactable_placeholder`, **Parent = obj_solid** (blocks movement). Event: Create.
@@ -29,45 +29,60 @@ Create each object in the table in `game/README.md` with the listed sprite, flag
 - **obj_encounter_trigger:** sprite `spr_encounter_trigger_placeholder`, no parent. Events: Create, Other ▸ Room Start, Step.
 - **obj_battle_controller:** no sprite. Events: Create, Step, Draw ▸ Draw GUI.
 - **obj_respawn_point:** optional sprite `spr_respawn_point_placeholder` (any small colour; only needed so you can see it while laying out the room). Event: Create. No parent, not solid.
-- **obj_encounter_zone:** sprite `spr_encounter_zone_placeholder`. Event: Create. No parent, not solid. Stretch over the wild path only.
+- **obj_encounter_zone:** sprite `spr_encounter_zone_placeholder`. Event: Create. No parent, not solid. The overworld builder stretches these from map markers; you do not have to place them by hand.
+- **obj_zone_entrance:** sprite any 16×16 (e.g. `spr_encounter_trigger_placeholder`). Events: Create, Step. No parent, not solid. See `game/objects/obj_zone_entrance/README.md`.
 
-## 4. rm_overworld (placeholder 640×360)
-1. Create room `rm_overworld`; set it **first** in the Room Order (open the Room Manager and drag it to the top; the home icon marks the start room). Leave Persistent **off**.
-2. Instances layer:
-   - 1 × `obj_game_controller` anywhere.
-   - Border of `obj_solid` around the room edge (stretch instances), plus a few interior walls to test sliding.
-   - 1 × `obj_player` in open space.
-   - 1 × `obj_interactable` next to open space (the sign).
-   - 1 × `obj_encounter_trigger` on a path a few tiles from the player, **not** overlapping the player's start position.
-   - 1 × `obj_respawn_point` in open space, **not** on the encounter trigger. This is the stand-in town wake-up spot until a town room exists. If you omit it, defeat places the player at `TOWN_RESPAWN_X` / `TOWN_RESPAWN_Y` (320, 180 by default), which must also be walkable.
-   - 1 × `obj_encounter_zone` stretched over the wild path / grass, **not** covering the respawn marker, the player start if that pocket is meant to be "town", or a story trigger if you want that tile to stay a fixed fight only. The zone is what enables random encounters in this room (`rm_overworld` has no room-wide table because it is also the temporary town).
-3. Optional per-instance overrides (double-click instance → Creation Code):
-   - Sign: `dialogue_lines = ["[Placeholder line]"]; speaker_name = "";`
-   - Trigger: `enemy_id = "fallen_knight"; encounter_id = "zone01_test_knight";` (each trigger needs a unique `encounter_id`).
-   - Respawn marker: `facing_x = 0; facing_y = 1;` (defaults face down).
-   - Zone: `table_id = "zone01_path";` or `table_id = ""; enemy_table = [{ enemy_id: "bandit", weight: 3 }, { enemy_id: "fallen_knight", weight: 1 }];`
-4. Optional tile collision: add a Tile layer named exactly **`Collision`** with any tileset; every non-empty tile blocks the player. The layer may be hidden. If you use tiles for all walls you can drop the `obj_solid` walls, but keep the `obj_solid` object (the code references it).
+## 4. Tileset and Included Files (do this before the rooms)
+1. **Tileset:** follow `game/tilesets/README.md`. You need a Sprite `spr_ts_zone1` (import `game/tilesets/ts_zone1.png`, do not split it) and a Tile Set named exactly **`ts_zone1`**, tile size 16×16, offset 0, separation 0.
+2. **Included Files:** copy `game/datafiles/overworld/` into the project's Included Files so `overworld/ow_ground.bin` (and the other four `.bin` layers, plus `overworld/chunks/` as a fallback) can be found at runtime. See `game/datafiles/README.md`.
 
-## 5. rm_battle_test (placeholder 640×360)
+## 5. rm_overworld (6400×4800, 400×300 tiles)
+1. Create (or resize) room `rm_overworld` to width **6400**, height **4800**. Set it **first** in the Room Order. Leave Persistent **off**.
+2. Add Tile layers, all using tileset `ts_zone1`:
+
+   | Layer | Depth | Visible | Purpose |
+   |---|---|---|---|
+   | `Ground` | 400 | yes | terrain |
+   | `Decoration` | 300 | yes | trees, walls, buildings (below the player) |
+   | `Overhead` | **-10000** | yes | canopy / arches, always above the player (including when `depth = -y`) |
+   | `Collision` | 500 | hidden | tile 1 = solid; `obj_player` already looks up this exact name in Create |
+   | `Markers` | 600 | hidden | debug icons; optional |
+
+   Keep the **Instances** layer at depth 0. Create `Collision` in the editor (not only from code) so it exists when `obj_player` is created.
+3. Instances layer: place **1 × `obj_game_controller`** and **1 × `obj_player`**. Do **not** hand-place a border of `obj_solid`, the test sign, the test trigger, the test zone, or a respawn marker — `scr_build_overworld()` fills the tiles and spawns signs, chests, NPCs, entrances, encounter triggers, encounter zones, and an `obj_respawn_point` at Greyhaven `player_start`.
+4. Room Creation Code: `scr_build_overworld();`
+5. **Camera:** enable Views, enable Viewport 0, camera / view size **320×180** (display the window at 2× to 640×360), or 256×240 for a closer FF1 feel. The build script also calls `scr_map_enable_camera(320, 180)` if no camera exists yet. `obj_game_controller` End Step follows the player and clamps to the room.
+6. Defeat respawn: `TOWN_RESPAWN_X/Y` are **2984, 2752** (Varyn House / `player_start`). The builder also drops `obj_respawn_point` there (facing down). Greyhaven has no encounter zone (safe).
+
+## 6. rm_old_watchtower (960×720, 60×45 tiles)
+1. Create room `rm_old_watchtower`, size **960×720**. Leave Persistent off. Use the **same five Tile layers** and tileset `ts_zone1`, plus Instances at depth 0. Enable Viewport 0 the same way as the overworld (the build script will also enable a 320×180 camera if needed).
+2. Place **1 × `obj_player`**. Do **not** place a second `obj_game_controller` (the existing one is persistent). Do not hand-place markers; the script spawns them.
+3. Room Creation Code: `scr_build_old_watchtower();` (map data is embedded in that script; no Included Files needed).
+4. The south exit returns to `rm_overworld` at the `old_watchtower` entrance marker. The basement stairs (`rm_watchtower_basement`) and the Crownveil door are stubs (placeholder dialogue). The Blackguard boss uses `enemy_id = "blackguard"` (placeholder stats in `scr_enemy_database`).
+5. **Integration with PR #4** (`feature/watchtower-scripted-encounter`): that PR adds `obj_story_encounter` for the guaranteed Ashbound Hunter fight. Design did not include a Hunter marker. Place that object in this room on a tile before the banner / `old_royal_banner` (41, 25) once that PR is in, and do not also spawn a second trigger on the same tile.
+
+## 7. rm_battle_test (placeholder 640×360)
 1. Create room `rm_battle_test`. Leave Persistent off.
 2. Place 1 × `obj_battle_controller`. Do **not** place `obj_player` or `obj_game_controller` here (the controller arrives from rm_overworld because it is persistent).
 3. Running this room alone (Room Order first) works for UI testing: it fights a Bandit, but returning needs `rm_overworld`.
 
-## 6. Compile and run
-Run (F5). Expected: player moves and collides, the sign opens dialogue, the trigger starts a Bandit battle, walking the wild path (inside the zone, after a short grace) can start a random Bandit or Fallen Knight fight, victory returns to the same spot, and defeat wakes the party up at the respawn marker (or 320, 180) with a short placeholder dialogue that reports any gold and XP lost. Then run the "Exploration", "Battle prototype", and "Random encounters" sections of docs/TEST_PLAN.md.
+## 8. Compile and run
+Run (F5). Expected: the overworld loads (watch the compile / first-room time; 120k tiles × 5 layers), the camera follows Kael, he starts at Varyn House in Greyhaven, collision tiles block movement, tree tops draw above him, walking a farmlands / Old Road / bandit-camp zone can start a random fight, signs and placeholder NPCs (Tomas, Renn) can be inspected, the Old Watchtower entrance goes to `rm_old_watchtower`, victory returns to the exact overworld spot, and defeat wakes the party up at Greyhaven (2984, 2752) with the gold/XP penalty dialogue. Then run docs/TEST_PLAN.md, including the new Zone 1 map cases.
 
-## 7. Random encounter areas
+If the Included Files are missing, the debug log will print `scr_build_overworld: missing overworld/chunks/...` and the ground will be empty. If `ts_zone1` is not a Tile Set asset, tile layers will be blank or the script will fail.
+
+## 9. Random encounter areas
 Rooms are safe until you opt in:
-1. **Zone (recommended for `rm_overworld`):** create `obj_encounter_zone` with `spr_encounter_zone_placeholder`, stretch it over the wild area only, leave towns / the respawn pocket uncovered. Default table is `zone01_path`. See `game/objects/obj_encounter_zone/README.md`.
+1. **Zone (used by the overworld builder):** `scr_map_spawn_markers` creates stretched `obj_encounter_zone` instances from map markers (`zone01_farmlands`, `zone01_old_road`, `zone01_bandit_camp`, `zone01_watchtower`), using the existing `table_id` / `enemy_table` API. Greyhaven has no zone. You can still hand-place extra zones the same way as before. See `game/objects/obj_encounter_zone/README.md`.
 2. **Whole room:** in `scr_get_room_encounter_table()` (in `scr_encounter_tables`), return `scr_get_encounter_table("zone01_path")` (or a custom table) for that room. Do not do this for `TOWN_RESPAWN_ROOM` or other safe rooms. A zone at the player's position overrides the room table.
 3. Keep `obj_encounter_trigger` for fixed boss/story fights. Standing on a trigger does not also roll a random encounter.
 4. To disable random encounters while testing: set `#macro RANDOM_ENCOUNTERS_ENABLED false` and recompile, or in the debugger set `global.game.random_encounters_enabled = false`.
 5. Default rates (pending tuning): 32 pixels = 1 step, a new fight after 8–24 steps in an area, 5 grace steps after room entry or after returning from battle.
 
-## 8. When the town room is built
+## 10. When the town room is built
 1. Create the town room (e.g. `rm_town`). Leave Persistent off. Place `obj_player` in that room (required; the player object is not persistent). Do **not** place a second `obj_game_controller` (the existing one is persistent and will arrive with the party).
 2. In `game/scripts/scr_game_constants.gml`, change `#macro TOWN_RESPAWN_ROOM` to the new room asset (e.g. `rm_town`).
-3. Place one `obj_respawn_point` in open space (inn, shrine, etc.), or set `TOWN_RESPAWN_X` / `TOWN_RESPAWN_Y` to a known open position in that room instead.
+3. Place one `obj_respawn_point` in open space (inn, shrine, etc.), or set `TOWN_RESPAWN_X` / `TOWN_RESPAWN_Y` (currently Greyhaven 2984, 2752) to a known open position in that room instead.
 4. Re-run the defeat cases in docs/TEST_PLAN.md.
 
 ## Why a battle room instead of an overlay?
