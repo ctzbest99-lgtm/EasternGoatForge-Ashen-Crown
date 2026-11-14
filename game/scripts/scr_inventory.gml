@@ -1,4 +1,4 @@
-/// scr_inventory — placeholder bag. Key items cannot be sold or dropped (enforced later).
+/// scr_inventory — party bag. Key items cannot be sold or dropped.
 
 function scr_inventory_find(_item_id) {
     scr_game_state_init();
@@ -63,7 +63,33 @@ function scr_loot_grant(_loot = undefined, _item_id = "", _item_name = "") {
     }
 }
 
+function scr_inventory_count(_item_id) {
+    var _index = scr_inventory_find(_item_id);
+    if (_index == -1) return 0;
+    var _e = global.game.inventory[_index];
+    return (is_struct(_e) && variable_struct_exists(_e, "qty")) ? _e.qty : 0;
+}
+
+/// Remove `_qty` of a stack. Key items refuse unless `_allow_key` is true (internal unequip only).
+function scr_inventory_remove(_item_id, _qty = 1, _allow_key = false) {
+    scr_game_state_init();
+    var _index = scr_inventory_find(_item_id);
+    if (_index == -1) return false;
+    var _e = global.game.inventory[_index];
+    if (!is_struct(_e)) return false;
+    if (_e.key_item && !_allow_key) return false;
+    var _n = max(1, floor(_qty));
+    if (_e.qty < _n) return false;
+    _e.qty -= _n;
+    if (_e.qty <= 0) array_delete(global.game.inventory, _index, 1);
+    return true;
+}
+
 function scr_item_display_name(_item_id) {
+    if (variable_global_exists("item_db") && is_struct(global.item_db)) {
+        var _id = scr_item_id_norm(_item_id);
+        if (variable_struct_exists(global.item_db, _id)) return global.item_db[$ _id].name;
+    }
     switch (_item_id) {
         case "item_mira_pendant": return "Mira's Wooden Pendant";
         case "item_watchtower_key": return "Watchtower Key";

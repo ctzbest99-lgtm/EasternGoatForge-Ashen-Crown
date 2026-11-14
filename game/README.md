@@ -23,15 +23,19 @@ Snippets are prototypes, not verified production code. Compile in the selected G
 | `scr_sprites` | `asset_get_index` lookups, overworld idle/walk, battle visual clips (all Chapter 1 enemy kinds and Blackguard phases) |
 | `scr_ch1_art` | NPC / enemy / chest binding, portraits, item icons, battle backgrounds, Blackguard phase helpers |
 | `scr_ui` | 320×180 GUI helpers: bitmap font, nine-slice windows, HP bars, damage digits |
-| `scr_input` | Prototype key mapping: confirm, cancel, menu up/down |
+| `scr_menu_layout` | Shop / save / inventory layout macros and sprite lookups (`asset_get_index` with fallbacks for later Design art in `/workspace/sprites/ui/menus/`) |
+| `scr_item_data` | Item table (prices, heal, slots, ATK/DEF bonuses — PLACEHOLDER), use / equip helpers |
+| `scr_shop_data` | Shop tables (`shop_greyhaven_store`, `shop_greyhaven_forge`) plus buy / sell |
+| `scr_save` | Versioned JSON save / load (`save1.sav`–`save3.sav`), slot info, playtime, load placement |
+| `scr_input` | Prototype key mapping: confirm, cancel, menu up / down / left / right |
 | `scr_dialogue` | `scr_dialogue_open(lines, speaker)` |
 | `scr_dialogue_data` | Chapter 1 nodes by ID (`ENC_AH_01` …) and `scr_dialogue_play()` |
 | `scr_flags` | `scr_flag_get` / `scr_flag_set` / `scr_flag_clear` (`global.game.flags`) |
-| `scr_inventory` | `scr_inventory_has` / `scr_inventory_add` (key items unique) |
+| `scr_inventory` | `scr_inventory_has` / `scr_inventory_add` / `scr_inventory_remove` / `scr_inventory_count` (key items unique and unsellable) |
 | `scr_story` | Ashbound Hunter pre/post-fight flow (`scr_ashbound_hunter_start`) |
 | `scr_encounter` | `scr_encounter_start()`, `scr_battle_finish()`, `scr_apply_defeat_penalty()`, `scr_apply_town_respawn()`, `scr_town_wake_up_dialogue()`, `scr_random_encounter_tick()` (overworld ↔ battle hand-off and walking encounters) |
 | `scr_encounter_tables` | Named / per-room random encounter tables (`zone01_path`, `zone01_farmlands`, `zone01_old_road`, `zone01_bandit_camp`, `zone01_watchtower`, plus short-id aliases `old_road` / `bandit_camp` / `watchtower`) |
-| `scr_battle_actors` | Actor structs (level, xp, equipment stubs), party of up to four, party helpers |
+| `scr_battle_actors` | Actor structs (level, xp, `base_attack` / `base_defense`, equipment slots), party of up to four, party helpers |
 | `scr_progression` | XP curve (`scr_xp_for_level`), `scr_party_grant_xp()`, level-up growth |
 | `scr_battle_math` | Damage, HP clamp, Guard reduction (existing file, `scr_apply_guard` added) |
 | `scr_enemy_database` | Bandit, Fallen Knight, Ashbound Hunter, Chapter 1 regulars (placeholder ATK/DEF), and **Blackguard** (canon 450 HP / 250 XP / 100 Gold; ATK/DEF still placeholder) |
@@ -60,6 +64,10 @@ Snippets are prototypes, not verified production code. Compile in the selected G
 
 | `obj_title` | none | — | `Create.gml` → Create; `Step.gml` → Step ▸ Step; `Draw_GUI.gml` → Draw ▸ Draw GUI. Place in `rm_title` only. |
 | `obj_inventory_menu` | none | — | `Create.gml` → Create; `Step.gml` → Step ▸ Step; `Draw_GUI.gml` → Draw ▸ Draw GUI; `Clean_Up.gml` → Clean Up. Created at runtime (I / Tab). |
+| `obj_shop_menu` | none | — | `Create.gml` → Create; `Step.gml` → Step ▸ Step; `Draw_GUI.gml` → Draw ▸ Draw GUI; `Clean_Up.gml` → Clean Up. Created at runtime by `scr_shop_open`. |
+| `obj_save_menu` | none | — | `Create.gml` → Create; `Step.gml` → Step ▸ Step; `Draw_GUI.gml` → Draw ▸ Draw GUI; `Clean_Up.gml` → Clean Up. Created at runtime by `scr_save_menu_open`. |
+| `obj_save_point` | `spr_save_point_idle_strip8` (fallback `spr_interactable_placeholder`) | **Parent: `obj_interactable`** | `Create.gml` → Create; `Step.gml` → Step ▸ Step. Spawned by the map builder in the chapel and tavern. |
+| `obj_save_toast` | none | — | `Create.gml` → Create; `Step.gml` → Step ▸ Step; `Draw_GUI.gml` → Draw ▸ Draw GUI. Created at runtime after a successful save. |
 
 `obj_dialogue_box` and `obj_battle_controller` draw only in Draw GUI. Adding a Draw GUI event does not disable default sprite drawing, but neither object has a sprite, so nothing else is drawn.
 

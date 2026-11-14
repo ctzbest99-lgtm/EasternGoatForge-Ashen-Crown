@@ -94,25 +94,35 @@ if (mode == "menu" || mode == "options" || mode == "saves") {
     }
 }
 
-if (mode == "options" || mode == "saves") {
+if (mode == "options") {
     draw_set_color(c_black);
     draw_set_alpha(0.5);
     draw_rectangle(0, 0, _gw, _gh, false);
     draw_set_alpha(1);
-    var _panel = (mode == "options") ? spr_panel_options : spr_panel_saves;
+    var _panel = spr_panel_options;
+    var _px, _py, _pw, _ph;
     if (scr_sprite_is_valid(_panel)) {
-        var _pw = sprite_get_width(_panel);
-        var _ph = sprite_get_height(_panel);
-        draw_sprite(_panel, 0, (_gw - _pw) * 0.5, (_gh - _ph) * 0.5);
+        _pw = sprite_get_width(_panel);
+        _ph = sprite_get_height(_panel);
+        _px = (_gw - _pw) * 0.5;
+        _py = (_gh - _ph) * 0.5;
+        draw_sprite(_panel, 0, _px, _py);
     } else {
-        var _pw = (mode == "options") ? 200 * _s : 220 * _s;
-        var _ph = (mode == "options") ? 118 * _s : 132 * _s;
-        scr_ui_window((_gw - _pw) * 0.5, (_gh - _ph) * 0.5, _pw, _ph, "gold");
-        var _title = (mode == "options") ? "Options  (placeholder)" : "No save file";
-        draw_set_halign(fa_center);
-        scr_ui_text(_gw * 0.5, (_gh - _ph) * 0.5 + 16, _title, c_white);
-        draw_set_halign(fa_left);
+        _pw = 200 * _s;
+        _ph = 118 * _s;
+        _px = (_gw - _pw) * 0.5;
+        _py = (_gh - _ph) * 0.5;
+        scr_menu_draw_window(_px, _py, _pw, _ph, "gold");
     }
+    draw_set_halign(fa_center);
+    scr_ui_text(_gw * 0.5, _py + 16, "Options  (placeholder)", c_white);
+    draw_set_halign(fa_left);
+}
+
+if (mode == "saves") {
+    // Field-menu load layout (320 GUI). Dither, then the three slot windows.
+    scr_menu_draw_dither();
+    scr_menu_draw_save_slots(slots, save_index, "load", "Load which file?", save_message);
 }
 
 draw_set_halign(fa_left);

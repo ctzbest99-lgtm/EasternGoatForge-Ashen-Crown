@@ -33,8 +33,13 @@ function scr_actor_apply_level_up(_actor) {
     _actor.level += 1;
     _actor.max_hp += _hp;
     if (_actor.hp > 0) _actor.hp = min(_actor.max_hp, _actor.hp + _hp);
+    if (!variable_struct_exists(_actor, "base_attack")) _actor.base_attack = _actor.attack;
+    if (!variable_struct_exists(_actor, "base_defense")) _actor.base_defense = _actor.defense;
+    _actor.base_attack += _atk;
+    _actor.base_defense += _def;
     _actor.attack += _atk;
     _actor.defense += _def;
+    scr_actor_refresh_equipment(_actor);
     return { name: _actor.name, level: _actor.level, hp: _hp, attack: _atk, defense: _def };
 }
 

@@ -1,5 +1,9 @@
 # obj_inventory_menu
 
-Simple inventory / key-item overlay. Toggle with I or Tab (opened from `obj_game_controller` Begin Step). Close with I, Tab, X, or Backspace.
+Field menu (I or Tab). Tabs: Items, Equip, Key (Q/E, or left/right on Items/Key). Close with I, Tab, X, or Backspace.
 
-Not a full menu system (roadmap step 5). Item use, equipment, and shops are not implemented.
+- Items: consumables and unequipped gear. Z on a potion opens the target picker; Z on gear jumps to the Equip tab.
+- Key: key items with the key icon; they cannot be used or sold.
+- Equip: left/right changes member, up/down picks a slot (Weapon, Armor, Helm, Accessory), Z lists candidates. Helm and Accessory stay empty until such items exist (Iron Helm uses the Helm slot).
+
+Layout constants and sprite fallbacks live in `scr_menu_layout.gml`. Dedicated art is in `game/sprites/ui/menus/`.

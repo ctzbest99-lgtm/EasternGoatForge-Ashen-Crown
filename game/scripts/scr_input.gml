@@ -17,3 +17,19 @@ function scr_input_up_pressed() {
 function scr_input_down_pressed() {
     return keyboard_check_pressed(vk_down);
 }
+
+function scr_input_left_pressed() {
+    return keyboard_check_pressed(vk_left);
+}
+
+function scr_input_right_pressed() {
+    return keyboard_check_pressed(vk_right);
+}
+
+function scr_input_tab_prev_pressed() {
+    return keyboard_check_pressed(ord("Q"));
+}
+
+function scr_input_tab_next_pressed() {
+    return keyboard_check_pressed(ord("E"));
+}

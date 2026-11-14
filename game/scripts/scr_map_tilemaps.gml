@@ -234,6 +234,7 @@ function scr_map_spawn_markers(_markers) {
     var _o_trap = asset_get_index("obj_trap_plate");
     var _o_sttrig = asset_get_index("obj_story_trigger");
     var _o_solid = asset_get_index("obj_solid");
+    var _o_save = asset_get_index("obj_save_point");
     var _spawn = undefined;
     var _town_square = undefined;
     if (variable_global_exists("map_spawn_name") && is_string(global.map_spawn_name) && global.map_spawn_name != "") {
@@ -398,6 +399,26 @@ function scr_map_spawn_markers(_markers) {
                         scr_map_fit_to_tile(_sn, _m.x, _m.y);
                     }
                     if (scr_flag_get(_sn.story_flag)) instance_destroy(_sn);
+                }
+                break;
+            case "save_point":
+                if (_o_save != -1) {
+                    // 16x24, origin (8,23): instance x/y is the tile's feet, same as the player.
+                    var _sv = instance_create_layer(_m.x, _m.y, _lay, _o_save);
+                    _sv.x = _m.x;
+                    _sv.y = _m.y;
+                    _sv.depth = -_m.y;
+                    _sv.map_marker = _m;
+                    var _sspr = scr_menu_sprite_save_point_idle();
+                    if (scr_sprite_is_valid(_sspr)) {
+                        _sv.sprite_index = _sspr;
+                        _sv.image_xscale = 1;
+                        _sv.image_yscale = 1;
+                        _sv.x = _m.x;
+                        _sv.y = _m.y;
+                    } else {
+                        scr_map_fit_to_tile(_sv, _m.x, _m.y);
+                    }
                 }
                 break;
             case "barrier":

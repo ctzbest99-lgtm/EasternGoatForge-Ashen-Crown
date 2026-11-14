@@ -13,11 +13,11 @@ The overworld player uses **16×24** Kael sprites on that 16×16 grid (`depth = 
 2. **Room Order:** move `rm_title` to the **top** so it is the first room. `rm_overworld` is no longer first.
 3. Place **`obj_title`** and **`obj_game_controller`** (persistent). Do **not** place `obj_player` here.
 4. Views: enable Viewport 0, camera 320×180, visible area 1280×720 (or 2× the camera). `scr_ui_init()` also locks the GUI to 320×180.
-5. Background layers are optional. `obj_title` draws the parallax (`spr_menu_bg0`–`bg3`) in Draw GUI at speeds 0, −0.05, −0.1, −0.2, then the ember loop at 12 fps, the logo, and the menu options (New Game, Continue disabled when `save1.sav` is missing, Options, Quit).
+5. Background layers are optional. `obj_title` draws the parallax (`spr_menu_bg0`–`bg3`) in Draw GUI at speeds 0, −0.05, −0.1, −0.2, then the ember loop at 12 fps, the logo, and the menu options (New Game, Continue disabled when no `save1.sav`–`save3.sav` exists, Options, Quit). Continue opens the field-menu load panel (leader portrait, location, level, party icons, playtime, gold). Import the field-menu parts from `game/sprites/IMPORT.md` (Field menus) so tabs, dither, and slot frames appear; missing sprites fall back to the nine-slice windows.
 6. Uncheck **Game Options ▸ Graphics ▸ Interpolate colours between pixels**.
 7. Import the 320 title sprites (and the UI font / nine-slice windows) from `game/sprites/IMPORT.md`. The 640 ember strip needs its own Texture Group (see IMPORT.md); otherwise skip it and the 320 strip is used.
 8. `#macro TITLE_ROOM rm_title` is in `scr_game_constants.gml`. The project will not compile until this room exists.
-9. New Game goes to `rm_overworld`. Continue is visual-only until a save format exists (roadmap step 5). Options opens the placeholder panel (`spr_menu_panel_options_*`).
+9. New Game resets `global.game` and goes to `rm_overworld`. Continue is enabled when any of `save1.sav`–`save3.sav` exists and opens the load panel. A damaged file is listed as such and will not crash. Options opens the placeholder panel (`spr_menu_panel_options_*`).
 
 The Design README called this room `rm_main_menu`. This project uses **`rm_title`**.
 
@@ -53,7 +53,11 @@ Record imported assets in docs/ASSET_INVENTORY.md.
 Create each object in the table in `game/README.md` with the listed sprite, flags, and events, then paste the matching `.gml` file into each event:
 - **obj_game_controller:** no sprite, tick **Persistent**, untick Visible. Events: Create, Step ▸ Begin Step, Step ▸ End Step, Other ▸ Room Start. Place in `rm_title` (and a spare in `rm_overworld` is fine — the duplicate destroys itself).
 - **obj_title:** no sprite. Events: Create, Step, Draw ▸ Draw GUI. Place only in `rm_title`.
-- **obj_inventory_menu:** no sprite. Events: Create, Step, Draw ▸ Draw GUI, Clean Up. Do not place in a room; `obj_game_controller` creates it when I or Tab is pressed.
+- **obj_inventory_menu:** no sprite. Events: Create, Step, Draw ▸ Draw GUI, Clean Up. Do not place in a room; `obj_game_controller` creates it when I or Tab is pressed. Tabs: Items / Equip / Key (Q/E). Z uses a consumable or opens the Equip slot list.
+- **obj_shop_menu:** no sprite. Events: Create, Step, Draw ▸ Draw GUI, Clean Up. Do not place in a room; talking to Marda or (after the pendant) Pell opens it after their dialogue. Tabs Buy / Sell / Exit sit 12px above the list window and are drawn after it.
+- **obj_save_menu:** no sprite. Events: Create, Step, Draw ▸ Draw GUI, Clean Up. Do not place in a room; opened by `obj_save_point`, `CV_END`, or (if `DEBUG_SAVE_ANYWHERE` is true) F5. Overwrite confirm defaults to No. A successful save creates `obj_save_toast`.
+- **obj_save_toast:** no sprite. Events: Create, Step, Draw ▸ Draw GUI. Do not place in a room. Draws `spr_ui_toast_saved` (origin (32, 0)) at (160, 8).
+- **obj_save_point:** parent `obj_interactable`. Events: Create, Step. Sprite: `spr_save_point_idle_strip8` (16×24, origin (8, 23), 8 fps loop); activate uses `spr_save_point_activate_strip8` (32×40, origin (16, 39), 12 fps once) then opens the save menu. Import a feet mask (0, 16, 15, 23). The map builder places one in the chapel and one in the tavern — do not also hand-place them unless you are testing.
 - **obj_player:** sprite `spr_kael_ow16_idle_down` (or `spr_player_placeholder` if the sheet is not imported yet). Events: Create, Step. The Step event also picks idle/walk by facing, plays the walk at 8 fps, and sets `depth = -y`.
 - **obj_solid:** sprite `spr_solid_placeholder`. No events.
 - **obj_interactable:** (also add a Step event: `Step.gml` — y-sort, Tomas pallet pose, chest open strip)  sprite `spr_interactable_placeholder` (16×16 Top Left preferred; a larger placeholder is scaled to one tile by the map spawner), **Parent = obj_solid** (blocks movement). Event: Create. The spawner also sets `script_id` / `struck_lines` / item fields from map data.
@@ -112,10 +116,10 @@ Create each room below with the **same five Tile layers** (`ts_zone1`), Instance
 | Room | Size (px) | Tiles | Creation Code | Notes |
 |---|---|---|---|---|
 | `rm_greyhaven_varyn_house` | 320×240 | 20×15 | `scr_build_greyhaven_varyn_house();` | `GH_HOUSE_01`–`02` debris; `mira_pendant` plays `GH_HOUSE_03`–`05`, adds `item_mira_pendant`, sets `flag_pendant_found` (unlocks the North Gate) |
-| `rm_greyhaven_tavern` | 384×256 | 24×16 | `scr_build_greyhaven_tavern();` | Hob (`GH_TAVERN_01`–`04`). The cellar hatch is closed and inspectable. |
-| `rm_greyhaven_chapel` | 320×288 | 20×18 | `scr_build_greyhaven_chapel();` | Sister Ilse (`GH_CHAPEL_01`–`03`) |
-| `rm_greyhaven_blacksmith` | 320×240 | 20×15 | `scr_build_greyhaven_blacksmith();` | Tomas and Pell (`GH_TOMAS`). After the pendant, Pell's repeat line is `GH_SMITH_01_B`. A buy UI for the forge shop is not implemented (open). |
-| `rm_greyhaven_general_store` | 320×240 | 20×15 | `scr_build_greyhaven_general_store();` | Marda (`GH_STORE_01`–`03`). Shop stock would be Minor Potion and Antidote; buy UI is not implemented (open). |
+| `rm_greyhaven_tavern` | 384×256 | 24×16 | `scr_build_greyhaven_tavern();` | Hob (`GH_TAVERN_01`–`04`). The cellar hatch is closed and inspectable. An `obj_save_point` is spawned at tile (10, 6) — location is still open. |
+| `rm_greyhaven_chapel` | 320×288 | 20×18 | `scr_build_greyhaven_chapel();` | Sister Ilse (`GH_CHAPEL_01`–`03`). An `obj_save_point` is spawned at tile (10, 7) — location is still open. |
+| `rm_greyhaven_blacksmith` | 320×240 | 20×15 | `scr_build_greyhaven_blacksmith();` | Tomas and Pell (`GH_TOMAS`). After the pendant, Pell's repeat line is `GH_SMITH_01_B`, then `shop_greyhaven_forge` opens (Iron Sword, Leather Armor, Iron Helm; PLACEHOLDER prices). |
+| `rm_greyhaven_general_store` | 320×240 | 20×15 | `scr_build_greyhaven_general_store();` | Marda (`GH_STORE_01`–`03`), then `shop_greyhaven_store` opens (Minor Potion, Antidote; PLACEHOLDER prices). |
 
 Paste every new `scr_build_*.gml` and `scr_map_markers_data.gml` as Script assets. Re-import `ts_zone1.png` (now **256×800**; ids in rows 0–37 are unchanged; rows 38–49 are interior/dungeon tiles).
 
