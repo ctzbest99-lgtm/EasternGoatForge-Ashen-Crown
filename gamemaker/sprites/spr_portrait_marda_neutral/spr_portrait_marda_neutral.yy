@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"b4e33188-080d-4f3a-abab-651c1bf74788",
-      "name":"b4e33188-080d-4f3a-abab-651c1bf74788",
+      "%Name":"a2ecfc26-4cc5-455a-8fa8-7e1d811832dc",
+      "name":"a2ecfc26-4cc5-455a-8fa8-7e1d811832dc",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"4b649324-8dfa-4c6b-8027-d93f2e32b4c4",
+      "%Name":"0c877071-9b16-487e-8a51-b19359f23484",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"4b649324-8dfa-4c6b-8027-d93f2e32b4c4",
+      "name":"0c877071-9b16-487e-8a51-b19359f23484",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"b4e33188-080d-4f3a-abab-651c1bf74788",
+                    "name":"a2ecfc26-4cc5-455a-8fa8-7e1d811832dc",
                     "path":"sprites/spr_portrait_marda_neutral/spr_portrait_marda_neutral.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"2d76128f-05f9-444c-ba27-d716485359f4",
+              "id":"449beb0e-3f31-4738-ada2-e78cfdefad6e",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

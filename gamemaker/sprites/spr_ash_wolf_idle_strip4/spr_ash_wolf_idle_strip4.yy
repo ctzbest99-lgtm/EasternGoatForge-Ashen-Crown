@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"18fb4e4a-8349-4854-aecb-c58d8bf91010",
-      "name":"18fb4e4a-8349-4854-aecb-c58d8bf91010",
+      "%Name":"5ff002a1-db29-453b-8649-f3c2fbabb3d5",
+      "name":"5ff002a1-db29-453b-8649-f3c2fbabb3d5",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"585f57c5-f9ba-429b-81e5-c6c4b1dcd6d3",
-      "name":"585f57c5-f9ba-429b-81e5-c6c4b1dcd6d3",
+      "%Name":"f95b7588-0446-412d-885c-aa2d312b741d",
+      "name":"f95b7588-0446-412d-885c-aa2d312b741d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"7d4d21d1-cbdd-4852-98fa-b4f00679bcdf",
-      "name":"7d4d21d1-cbdd-4852-98fa-b4f00679bcdf",
+      "%Name":"e40572fd-9ad8-4801-be24-50ed4c04edc4",
+      "name":"e40572fd-9ad8-4801-be24-50ed4c04edc4",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"4eced4e5-494c-480d-9227-a988f0e7438c",
-      "name":"4eced4e5-494c-480d-9227-a988f0e7438c",
+      "%Name":"fdc61d3c-fc50-456d-8a61-1071854333d2",
+      "name":"fdc61d3c-fc50-456d-8a61-1071854333d2",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"45ffb3f3-a0a8-47b7-88cc-1a80ee00f741",
+      "%Name":"176804cb-5a54-4982-b78d-f9da2531c31a",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"45ffb3f3-a0a8-47b7-88cc-1a80ee00f741",
+      "name":"176804cb-5a54-4982-b78d-f9da2531c31a",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"18fb4e4a-8349-4854-aecb-c58d8bf91010",
+                    "name":"5ff002a1-db29-453b-8649-f3c2fbabb3d5",
                     "path":"sprites/spr_ash_wolf_idle_strip4/spr_ash_wolf_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"5ecca934-2e58-4ffc-8d7d-5db7b265528f",
+              "id":"c0f02d4f-70a2-4fb1-9ca3-54bb054a36e5",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"585f57c5-f9ba-429b-81e5-c6c4b1dcd6d3",
+                    "name":"f95b7588-0446-412d-885c-aa2d312b741d",
                     "path":"sprites/spr_ash_wolf_idle_strip4/spr_ash_wolf_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"35928bc7-46ce-4ec7-9346-ae9bf4bc0bf7",
+              "id":"be8bb858-9603-4981-8ae6-6293eb4ad575",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"7d4d21d1-cbdd-4852-98fa-b4f00679bcdf",
+                    "name":"e40572fd-9ad8-4801-be24-50ed4c04edc4",
                     "path":"sprites/spr_ash_wolf_idle_strip4/spr_ash_wolf_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"a1ca469e-8f79-45d2-b430-b740ef8ade78",
+              "id":"08163c41-ec14-4537-b74a-f6f566d04580",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"4eced4e5-494c-480d-9227-a988f0e7438c",
+                    "name":"fdc61d3c-fc50-456d-8a61-1071854333d2",
                     "path":"sprites/spr_ash_wolf_idle_strip4/spr_ash_wolf_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"2e99ea9b-553f-4f5a-8765-3aca37858f2e",
+              "id":"ecd5c120-a905-46e4-8cf8-e6ff8287c37b",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

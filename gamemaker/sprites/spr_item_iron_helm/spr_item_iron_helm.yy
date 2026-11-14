@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"984c69d3-c403-4898-b7fb-6b80b32a385c",
-      "name":"984c69d3-c403-4898-b7fb-6b80b32a385c",
+      "%Name":"ab78c307-6a82-49d0-b662-fc0a5a13d3fc",
+      "name":"ab78c307-6a82-49d0-b662-fc0a5a13d3fc",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"af6da787-54cb-42ea-bd11-043b0009a2eb",
+      "%Name":"b7749ee2-cd6c-4f6f-bd4d-44eb11fac940",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"af6da787-54cb-42ea-bd11-043b0009a2eb",
+      "name":"b7749ee2-cd6c-4f6f-bd4d-44eb11fac940",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"984c69d3-c403-4898-b7fb-6b80b32a385c",
+                    "name":"ab78c307-6a82-49d0-b662-fc0a5a13d3fc",
                     "path":"sprites/spr_item_iron_helm/spr_item_iron_helm.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d7fb3eae-1bd7-4f72-99d4-d4dbadc413f6",
+              "id":"77c25f28-b574-41cd-b087-74c8c48d8c06",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-11-14 — Balance pass (`feature/balance-pass`)
+- Act II is tuned for levels 8–10 with `tools/balance_sim.py`. The simulation table and every placeholder are in `docs/DECISIONS_AND_OPEN_QUESTIONS.md` ("Balance pass").
+- Tiered growth: level-ups into 8+ give +10 HP / +2 ATK / +2 DEF / +3 MP. Levels 2–7 (Chapter 1) are unchanged.
+- Act II enemy HP / ATK / DEF were lowered (Calder 130 / 15 / 16; Occupation Soldier 50 / 12 / 14). Millhaven Road groups stop at 2 (Kael is alone there).
+- MP recovery: Ether (10 MP, 60 g), an inn helper (`scr_inn_offer`, Wrenfield price 30 g), and +2 MP after each win as before. New items: Ether, Chain Mail (Len's mid-tier, DEF +4), Travel Brigandine (Taren's starting armour). New shop table `shop_wrenfield_store`.
+- The dialogue box supports a choice on its last line (`scr_dialogue_choice`).
+- If Reeve Calder yields, his remaining soldiers withdraw but still give XP (at the yield) and gold (placeholder rule).
+- `scr_actor_raise_to_level` lets Taren join at Kael's level (used by the Chapter 2 wiring).
+- Nothing has been compiled or playtested in GameMaker.
+
 ## 2026-11-14 — 640 title set imported; generator committed to the repo
 - `gamemaker/` now includes the full 640 title set (19 sprites, including `spr_menu_embers_640_strip24`) in its own `tex_title_640` texture group, as IMPORT.md prescribes; every platform's texture page is already 2048×2048. The previous "skip the 640 ember strip" note no longer applies. 461 sprites total.
 - Added `gen_gamemaker.py` and `validate_gamemaker.py` at the repo root: the generator rebuilds `gamemaker/` from `game/` self-contained (options and README are restored from the existing tree; needs Python 3 + Pillow), and the validator re-checks the result (JSON parses, resource paths resolve, sprite PNG dimensions, byte-identical scripts/datafiles, room layers and room order).

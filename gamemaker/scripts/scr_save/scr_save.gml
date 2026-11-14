@@ -354,10 +354,11 @@ function scr_save_migrate(_data) {
                 if (!is_struct(_snap) || !variable_struct_exists(_snap, "actor_id")) continue;
                 var _d = scr_actor_battle_defaults(_snap.actor_id);
                 var _lv = variable_struct_exists(_snap, "level") ? max(1, _snap.level) : 1;
-                _snap.max_mp = _d.mp + (_lv - 1) * LEVEL_UP_MP_GROWTH;
+                var _gt = scr_level_growth_total(_lv);
+                _snap.max_mp = _d.mp + _gt.mp;
                 _snap.mp = _snap.max_mp;
-                _snap.base_spd = _d.spd + (_lv - 1) * LEVEL_UP_SPD_GROWTH;
-                _snap.base_mdef = _d.mdef + (_lv - 1) * LEVEL_UP_MDEF_GROWTH;
+                _snap.base_spd = _d.spd + _gt.spd;
+                _snap.base_mdef = _d.mdef + _gt.mdef;
                 _snap.skills = _d.skills;
                 _snap.passives = _d.passives;
             }

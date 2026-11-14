@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"4b50284b-c443-4f9f-a743-189037af1c0c",
-      "name":"4b50284b-c443-4f9f-a743-189037af1c0c",
+      "%Name":"ec063020-e752-4ee9-9572-616cd107308a",
+      "name":"ec063020-e752-4ee9-9572-616cd107308a",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"784a5690-0313-44b0-89d6-c531bbf2e0c6",
+      "%Name":"ec9eeebe-91d0-4f5e-a12a-e9359103ccfb",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"784a5690-0313-44b0-89d6-c531bbf2e0c6",
+      "name":"ec9eeebe-91d0-4f5e-a12a-e9359103ccfb",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"4b50284b-c443-4f9f-a743-189037af1c0c",
+                    "name":"ec063020-e752-4ee9-9572-616cd107308a",
                     "path":"sprites/spr_grave_spider_ow16_idle_left/spr_grave_spider_ow16_idle_left.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"0a04cb23-593f-4066-a06f-aef671327d7a",
+              "id":"748fe448-caca-40ab-b330-268dd34ed899",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

@@ -20,6 +20,7 @@ function scr_item_make(_item_id, _name, _kind, _price, _extra = undefined) {
         key_item: false,
         heal: 0,
         cures_poison: false,
+        mp_restore: 0,
         atk_bonus: 0,
         def_bonus: 0,
         weapon_categories: [],
@@ -57,6 +58,23 @@ function scr_item_database() {
     _add(_db, scr_item_make("item_antidote", "Antidote", "consumable", 20, {
         cures_poison: true,
         desc: "Cures poison. Overworld status only until battle poison exists. (PLACEHOLDER.)"
+    }));
+
+    // Chapter 2 (balance pass). Ether: MP recovery, sold by Len in Wrenfield and found in a
+    // Millhaven Road chest. Chain Mail: Len's mid-tier item. All numbers / prices PLACEHOLDER.
+    // No icons yet (menus fall back to the generic row).
+    _add(_db, scr_item_make("item_ether", "Ether", "consumable", 60, {
+        mp_restore: ITEM_ETHER_MP,
+        desc: "Restores " + string(ITEM_ETHER_MP) + " MP. (PLACEHOLDER amount.)"
+    }));
+    _add(_db, scr_item_make("item_chain_mail", "Chain Mail", "armor", 220, {
+        def_bonus: 4,
+        desc: "Riveted rings over padding. DEF +4. (PLACEHOLDER.)"
+    }));
+    _add(_db, scr_item_make("item_travel_brigandine", "Travel Brigandine", "armor", 0, {
+        def_bonus: 2,
+        sellable: false,
+        desc: "Taren's olive brigandine. DEF +2. (PLACEHOLDER.)"
     }));
 
     // Basic equipment (Pell's forge). Bonuses and prices PLACEHOLDER.
@@ -309,6 +327,16 @@ function scr_item_use_on(_actor, _item_id) {
         _actor.hp += _gain;
         scr_inventory_remove(_item_id, 1, true);
         return _actor.name + " recovered " + string(_gain) + " HP.";
+    }
+    if (_it.mp_restore > 0) {
+        if (_actor.hp <= 0) return _actor.name + " can't use this while down.";
+        var _mmp = variable_struct_exists(_actor, "max_mp") ? _actor.max_mp : 0;
+        if (_mmp <= 0) return _actor.name + " has no MP.";
+        if (_actor.mp >= _mmp) return _actor.name + "'s MP is already full.";
+        var _mgain = min(_it.mp_restore, _mmp - _actor.mp);
+        _actor.mp += _mgain;
+        scr_inventory_remove(_item_id, 1, true);
+        return _actor.name + " recovered " + string(_mgain) + " MP.";
     }
     if (_it.cures_poison) {
         var _poisoned = variable_struct_exists(_actor, "poisoned") && _actor.poisoned;

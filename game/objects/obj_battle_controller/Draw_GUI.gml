@@ -30,7 +30,7 @@ for (var _o = 0; _o < array_length(_order); _o++) {
     var _ei = _order[_o].index;
     var _en = enemies[_ei];
     var _f = _en.feet;
-    var _alpha = (_en.hp > 0 || _en.yielded || _en.is_boss) ? 1 : _en.fade;
+    var _alpha = ((_en.hp > 0 && !_en.withdrawn) || _en.yielded || _en.is_boss) ? 1 : _en.fade;
     if (!scr_battle_draw_vis(enemy_vis[_ei], _f.x, _f.y, _alpha) && _alpha > 0) {
         draw_set_alpha(_alpha);
         draw_set_color((_en.hp > 0 || _en.yielded) ? c_maroon : c_dkgray);

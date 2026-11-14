@@ -57,27 +57,32 @@ function scr_get_enemy_data(_enemy_id) {
                 actions: [{ skill: "attack", weight: 3 }, { skill: "shield_wall", weight: 1 }] };
 
         // ---- Act II: Millhaven Road / Wrenfield (Design batch 6, level 8–10) ----------------
-        // Stats are Design's SUGGESTIONS (2026-11-14), not approved. Skill weights are PLACEHOLDER.
+        // Balance pass (PLACEHOLDER): HP / ATK / DEF were lowered from Design's suggestions so a
+        // solo level-8 Kael can clear 1–2 enemy road fights and Kael + Taren at 9–10 beat Calder
+        // with no in-battle healing (tools/balance_sim.py; table in DECISIONS). XP / gold / SPD /
+        // MDEF are still Design's suggestions. Skill weights are PLACEHOLDER.
+        // Design suggested: Patrolman 90/16/12, Crossbowman 70/18/8, Occupation Soldier 120/17/16,
+        // Bandit Veteran 95/18/11, Grey Ash Wolf 80/20/8, Reeve Calder 320/24/18 (HP/ATK/DEF).
         case "crown_patrolman":
-            return { id: "crown_patrolman", name: "Crown Patrolman", short_name: "Patrolman", max_hp: 90, attack: 16, defense: 12, mdef: 6, spd: 11, max_mp: 0,
+            return { id: "crown_patrolman", name: "Crown Patrolman", short_name: "Patrolman", max_hp: 44, attack: 13, defense: 12, mdef: 6, spd: 11, max_mp: 0,
                 xp_reward: 28, gold_min: 12, gold_max: 20, gold_reward: 16, weakness: "lightning", placeholder: true,
                 actions: [{ skill: "attack", weight: 2 }, { skill: "thrust", weight: 2 }, { skill: "brace", weight: 1 }] };
         case "crown_crossbowman":
-            return { id: "crown_crossbowman", name: "Crown Crossbowman", short_name: "Crossbowman", max_hp: 70, attack: 18, defense: 8, mdef: 6, spd: 13, max_mp: 0,
+            return { id: "crown_crossbowman", name: "Crown Crossbowman", short_name: "Crossbowman", max_hp: 36, attack: 14, defense: 8, mdef: 6, spd: 13, max_mp: 0,
                 xp_reward: 26, gold_min: 12, gold_max: 18, gold_reward: 15, weakness: "lightning", placeholder: true,
                 actions: [{ skill: "crossbow_bolt", weight: 1 }] };
         case "occupation_soldier":
-            return { id: "occupation_soldier", name: "Occupation Soldier", short_name: "Occ. Soldier", max_hp: 120, attack: 17, defense: 16, mdef: 8, spd: 8, max_mp: 0,
+            return { id: "occupation_soldier", name: "Occupation Soldier", short_name: "Occ. Soldier", max_hp: 50, attack: 12, defense: 14, mdef: 8, spd: 8, max_mp: 0,
                 xp_reward: 36, gold_min: 15, gold_max: 25, gold_reward: 20, weakness: "lightning", placeholder: true,
                 actions: [{ skill: "attack", weight: 2 }, { skill: "slash", weight: 2 }, { skill: "soldier_guard", weight: 1 }] };
         case "bandit_veteran":
             // Same kit as the bandit (plain attack).
-            return { id: "bandit_veteran", name: "Bandit Veteran", short_name: "Bandit Vet.", max_hp: 95, attack: 18, defense: 11, mdef: 5, spd: 14, max_mp: 0,
+            return { id: "bandit_veteran", name: "Bandit Veteran", short_name: "Bandit Vet.", max_hp: 42, attack: 13, defense: 10, mdef: 5, spd: 14, max_mp: 0,
                 xp_reward: 32, gold_min: 16, gold_max: 28, gold_reward: 22, placeholder: true,
                 actions: [{ skill: "attack", weight: 1 }] };
         case "grey_ash_wolf":
             // Same kit as the ash wolf. MDEF and gold were not in Design's list: PLACEHOLDER 4 and 10–16.
-            return { id: "grey_ash_wolf", name: "Grey Ash Wolf", short_name: "Grey Wolf", max_hp: 80, attack: 20, defense: 8, mdef: 4, spd: 20, max_mp: 0,
+            return { id: "grey_ash_wolf", name: "Grey Ash Wolf", short_name: "Grey Wolf", max_hp: 36, attack: 13, defense: 8, mdef: 4, spd: 20, max_mp: 0,
                 xp_reward: 28, gold_min: 10, gold_max: 16, gold_reward: 13, weakness: "fire", placeholder: true,
                 actions: [{ skill: "attack", weight: 4 }, { skill: "wolf_howl", weight: 1 }] };
         case "reeve_calder":
@@ -85,7 +90,7 @@ function scr_get_enemy_data(_enemy_id) {
             // soldiers; a heavy strike; a harder stance when the detachment falls; he yields and lives.
             // Numbers are Design's suggestions. Stance (+25% ATK, +15% DEF for the rest of the
             // battle) is PLACEHOLDER. Fought as group "grp_reeve_calder" with occupation_soldier adds.
-            return { id: "reeve_calder", name: "Reeve Calder", short_name: "Reeve Calder", max_hp: 320, attack: 24, defense: 18, mdef: 12, spd: 10, max_mp: 20,
+            return { id: "reeve_calder", name: "Reeve Calder", short_name: "Reeve Calder", max_hp: 130, attack: 15, defense: 16, mdef: 12, spd: 10, max_mp: 20,
                 xp_reward: 220, gold_min: 80, gold_max: 120, gold_reward: 100, placeholder: true,
                 is_boss: true, yields: true, yield_flag: "flag_reeve_calder_yielded",
                 stance_on_adds_fall: true,

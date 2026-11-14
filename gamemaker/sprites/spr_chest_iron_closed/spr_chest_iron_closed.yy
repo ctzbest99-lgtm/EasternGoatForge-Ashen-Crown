@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"b1889e49-2bb4-45ea-a5b3-7e32e01700ad",
-      "name":"b1889e49-2bb4-45ea-a5b3-7e32e01700ad",
+      "%Name":"d5bb8267-c155-4c28-8c72-b2f6de606173",
+      "name":"d5bb8267-c155-4c28-8c72-b2f6de606173",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"5ebe3bdb-41c0-43c1-abe4-91520558f823",
+      "%Name":"290356d2-8075-43e0-8eec-fb2b98ab6065",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"5ebe3bdb-41c0-43c1-abe4-91520558f823",
+      "name":"290356d2-8075-43e0-8eec-fb2b98ab6065",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"b1889e49-2bb4-45ea-a5b3-7e32e01700ad",
+                    "name":"d5bb8267-c155-4c28-8c72-b2f6de606173",
                     "path":"sprites/spr_chest_iron_closed/spr_chest_iron_closed.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"9cb4c8c1-ea15-41ef-8296-2a4686b49182",
+              "id":"5fe5fd2d-68d1-494c-9617-ec76777a8b8e",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

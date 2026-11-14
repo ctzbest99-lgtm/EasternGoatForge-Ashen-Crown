@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"6eec40dc-99cd-49ab-b6d0-c5fa55ff1bbb",
-      "name":"6eec40dc-99cd-49ab-b6d0-c5fa55ff1bbb",
+      "%Name":"a96efe28-0829-4395-b8d5-ad8221b10068",
+      "name":"a96efe28-0829-4395-b8d5-ad8221b10068",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"4b0b88cc-c3b6-4d3a-965e-fe1793870983",
+      "%Name":"4e7c3c85-19b7-4899-ada9-7c694b982555",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"4b0b88cc-c3b6-4d3a-965e-fe1793870983",
+      "name":"4e7c3c85-19b7-4899-ada9-7c694b982555",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"6eec40dc-99cd-49ab-b6d0-c5fa55ff1bbb",
+                    "name":"a96efe28-0829-4395-b8d5-ad8221b10068",
                     "path":"sprites/spr_item_blackguards_longsword_disabled/spr_item_blackguards_longsword_disabled.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"929331c6-eaa6-4710-814d-f5d442b9063e",
+              "id":"c1525571-9a3d-4330-928e-885524369656",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

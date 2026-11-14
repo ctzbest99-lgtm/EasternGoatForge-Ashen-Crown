@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"71c57faa-7a7f-4ef6-94c1-1caa9f5ed63e",
-      "name":"71c57faa-7a7f-4ef6-94c1-1caa9f5ed63e",
+      "%Name":"12a51e01-0690-4526-af1d-2fd443594940",
+      "name":"12a51e01-0690-4526-af1d-2fd443594940",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"3c0476dd-da33-4c80-941f-531f32e87c55",
+      "%Name":"3a11fc2b-e911-47ea-adcb-42887d481fcf",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"3c0476dd-da33-4c80-941f-531f32e87c55",
+      "name":"3a11fc2b-e911-47ea-adcb-42887d481fcf",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"71c57faa-7a7f-4ef6-94c1-1caa9f5ed63e",
+                    "name":"12a51e01-0690-4526-af1d-2fd443594940",
                     "path":"sprites/spr_hollow_soldier_ow16_idle_right/spr_hollow_soldier_ow16_idle_right.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"7ab9eae7-ebae-4ccd-ae59-a5fbbf008536",
+              "id":"3c7920de-b01f-402c-a6b1-b076dfcb724f",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

@@ -43,6 +43,46 @@ These were chosen so roadmap step 5 (menus/saves) could start. None is a locked 
 - PLACEHOLDER prices: Minor Potion 15g (heals 15 HP), Antidote 20g, Iron Sword 80g (ATK +3, longsword), Leather Armor 60g (DEF +2), Iron Helm 40g (accessory, DEF +1). No prices appear in CHAPTER1_SCRIPT.md or STORY_BIBLE.md.
 - Inventory (I / Tab): use Minor Potion; Antidote cures an overworld `poisoned` flag (battle poison does not exist yet, so it usually reports no effect). Equipment can be worn from this menu. Dedicated shop / save / inventory art will land later in `/workspace/sprites/ui/menus/`; menus look up those sprite names first and fall back to the nine-slice windows, font, cursor, and item icons. Layout constants are centralized in `scr_menu_layout.gml`.
 
+## Balance pass (feature/balance-pass; pending owner approval)
+Every number here is a PLACEHOLDER chosen with `tools/balance_sim.py` (run `python3 tools/balance_sim.py`; it mirrors the GML damage formula, Guard, buffs, SPD order, and enemy AI weights). Targets from the brief: Act II winnable at levels 8–10, Reeve Calder ≈ 8–15 party turns, Occupation Soldiers ≈ 3–5 hits, Chapter 1 unchanged.
+- **Party growth is tiered.** Level-ups into levels 2–7 keep the Chapter 1 numbers (+4 HP, +1 ATK, +1 DEF, +2 MP, +1 SPD, +1 MDEF). Level-ups into level 8 and above give +10 HP, +2 ATK, +2 DEF, +3 MP, +1 SPD, +1 MDEF (`LEVEL_UP_TIER_LEVEL`, `LEVEL_UP_*_GROWTH_HIGH`). Chapter 1 is levels 1–7, so its numbers and the Blackguard fight are unchanged. Old saves keep their stored HP / ATK / DEF; their MP / SPD / MDEF use the tiered totals.
+- **Gear curve.** End of Chapter 1: Kael ATK +5 (Blackguard's Longsword), DEF +3 (Leather Armor + Iron Helm). Taren joins with the Bastard Sword (ATK +3) and a new **Travel Brigandine** (DEF +2, not sellable). Len sells **Chain Mail** (DEF +4, 220 g) as the Chapter 2 mid-tier item, after the rescue, so the Calder fight does not depend on it.
+- **Taren joins at Kael's level** (`scr_actor_raise_to_level`, used by the Chapter 2 wiring). The sim assumes both are the same level.
+- **Act II enemies, lowered from Design's suggestions** (HP / ATK / DEF): Crown Patrolman 44 / 13 / 12 (was 90 / 16 / 12), Crown Crossbowman 36 / 14 / 8 (70 / 18 / 8), Occupation Soldier 50 / 12 / 14 (120 / 17 / 16), Bandit Veteran 42 / 13 / 10 (95 / 18 / 11), Grey Ash Wolf 36 / 13 / 8 (80 / 20 / 8), Reeve Calder 130 / 15 / 16 (320 / 24 / 18). SPD, MDEF, XP and gold are unchanged. Calder's stance (+25% ATK, +15% DEF) is unchanged.
+- **Millhaven Road groups stop at 2**, because Kael walks it alone (Taren joins at the Calder fight). The 3-enemy Crown group was replaced by a single Crossbowman. The Wrenfield table keeps its groups but is never rolled (no random battles in the village).
+- **No in-battle healing exists** (no Item command yet), so every fight is balanced to be survivable on HP alone. **Open:** add an in-battle Item command, which would make the level-8 Calder fight easier.
+- **MP recovery:** +2 MP after each win (kept). **Ether** restores 10 MP (60 g; Len's shop and a Millhaven Road chest). The **Wrenfield inn** (The Bent Post, Perrin) costs **30 g** and restores HP and MP for the active party and reserve. All placeholders.
+- **Calder's yield (placeholder rule):** if Calder yields while soldiers still stand, they withdraw, but their XP is credited at the moment of the yield to the members who took a turn and are standing, and their gold is added at victory.
+
+Simulated results, 4,000 runs per row. Policy: Taren opens with Rallying Cry, Cleaves while 2+ enemies stand, and otherwise everyone hits the weakest add first, then Calder. No Guard, no items. "Turns on Calder" counts party actions that damaged him (Cleave split across targets).
+
+| Fight | Lv | Party | Win % | Rounds | Party turns | Turns on Calder | Party HP left |
+|---|---|---|---|---|---|---|---|
+| Millhaven: 1 Patrolman | 8 | Kael | 100% | 4.0 | 4.0 | — | 71% |
+| Millhaven: Patrolman + Crossbowman | 8 | Kael | 100% | 7.0 | 7.0 | — | 17% |
+| Millhaven: 2 Bandit Veterans | 8 | Kael | 100% | 6.0 | 6.0 | — | 23% |
+| Millhaven: 2 Grey Ash Wolves | 8 | Kael | 100% | 6.0 | 6.0 | — | 22% |
+| Calder + 2 Occupation Soldiers | 8 | Kael+Taren | 25% | 11.7 | 22.2 | 13.9 | 13% |
+| Millhaven: 1 Patrolman | 9 | Kael | 100% | 3.4 | 3.4 | — | 83% |
+| Millhaven: Patrolman + Crossbowman | 9 | Kael | 100% | 6.5 | 6.5 | — | 41% |
+| Millhaven: 2 Bandit Veterans | 9 | Kael | 100% | 6.0 | 6.0 | — | 43% |
+| Millhaven: 2 Grey Ash Wolves | 9 | Kael | 100% | 6.0 | 6.0 | — | 42% |
+| Calder + 2 Occupation Soldiers | 9 | Kael+Taren | 94% | 10.2 | 19.1 | 11.3 | 27% |
+| Millhaven: 1 Patrolman | 10 | Kael | 100% | 3.0 | 3.0 | — | 89% |
+| Millhaven: Patrolman + Crossbowman | 10 | Kael | 100% | 5.0 | 5.0 | — | 71% |
+| Millhaven: 2 Bandit Veterans | 10 | Kael | 100% | 6.0 | 6.0 | — | 58% |
+| Millhaven: 2 Grey Ash Wolves | 10 | Kael | 100% | 4.0 | 4.0 | — | 71% |
+| Calder + 2 Occupation Soldiers | 10 | Kael+Taren | 100% | 8.2 | 16.0 | 9.6 | 54% |
+
+| Level | Kael ATK / DEF / HP | Taren ATK / DEF / HP | Hits (Kael) to kill: Occ. Soldier | Patrolman | Crossbowman | Bandit Vet. | Grey Wolf | Calder (pre-stance) |
+|---|---|---|---|---|---|---|---|---|
+| 7 | 17 / 11 / 54 | 17 / 11 / 60 | 5 | 4 | 3 | 4 | 3 | 15 |
+| 8 | 19 / 13 / 64 | 19 / 13 / 70 | 5 | 4 | 3 | 3 | 3 | 12 |
+| 9 | 21 / 15 / 74 | 21 / 15 / 80 | 4 | 3 | 3 | 3 | 3 | 10 |
+| 10 | 23 / 17 / 84 | 23 / 17 / 90 | 4 | 3 | 2 | 3 | 2 | 9 |
+
+Reading: at level 8 the Calder fight is hard (about 25% for this naive policy); at 9 it is about 94%; at 10 it is reliable. Calder takes about 10–14 party turns, inside the 8–15 target. Occupation Soldiers take 4–5 Kael hits at levels 8–10. Kael alone clears every Millhaven Road group from level 8.
+
 ## Prototype assumptions (battle upgrade; pending owner approval)
 Built on `feature/battle-upgrade` (depends on PR #10). Every number below is a PLACEHOLDER unless marked canon. Owner-decided rules above (XP per enemy to living participants, defeat penalty, random encounters, Swap) are unchanged.
 - **Canon used:** Taren's Rallying Cry (raises party Attack for 3 turns), Cleave (hits all enemies for reduced damage), Unbowed (passive, resists Fear and Stun) — STORY_BIBLE.md §5.5 / CHAPTER2_SCRIPT.md WF_CALDER_SYS. Reeve Calder's kit (Guard, a shout that buffs his soldiers, a heavy strike, a harder stance when the detachment falls, he yields and lives). Blackguard 450 HP / phases / Phase 3 SPD +30%.

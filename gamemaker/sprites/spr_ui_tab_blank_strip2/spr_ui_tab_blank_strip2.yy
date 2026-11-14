@@ -14,15 +14,15 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"bdc1fdab-c84b-4d4e-85c0-fc7fea8553b0",
-      "name":"bdc1fdab-c84b-4d4e-85c0-fc7fea8553b0",
+      "%Name":"c212e6d3-b6d3-422f-9127-3e8d95d7e100",
+      "name":"c212e6d3-b6d3-422f-9127-3e8d95d7e100",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"84d83553-5b4e-4cd2-82e7-e888cfcc65ea",
-      "name":"84d83553-5b4e-4cd2-82e7-e888cfcc65ea",
+      "%Name":"3413e43d-b15c-4bfd-984c-eb6088838e50",
+      "name":"3413e43d-b15c-4bfd-984c-eb6088838e50",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -34,11 +34,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"bd27545d-f967-4c12-8cc4-afe0a2217a64",
+      "%Name":"510236c6-0b1d-47de-8c92-09b109bdb162",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"bd27545d-f967-4c12-8cc4-afe0a2217a64",
+      "name":"510236c6-0b1d-47de-8c92-09b109bdb162",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -135,7 +135,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"bdc1fdab-c84b-4d4e-85c0-fc7fea8553b0",
+                    "name":"c212e6d3-b6d3-422f-9127-3e8d95d7e100",
                     "path":"sprites/spr_ui_tab_blank_strip2/spr_ui_tab_blank_strip2.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -143,7 +143,7 @@
                 },
               },
               "Disabled":false,
-              "id":"b341d781-cbc4-4072-8966-1a5c5fcdce77",
+              "id":"a03aedab-7b30-41dd-b52b-89090fdf199c",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -157,7 +157,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"84d83553-5b4e-4cd2-82e7-e888cfcc65ea",
+                    "name":"3413e43d-b15c-4bfd-984c-eb6088838e50",
                     "path":"sprites/spr_ui_tab_blank_strip2/spr_ui_tab_blank_strip2.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -165,7 +165,7 @@
                 },
               },
               "Disabled":false,
-              "id":"2d3c5fdc-0290-411c-85a5-a710bf88729f",
+              "id":"68c00a24-b2a0-4fea-b5aa-13ab85b54aff",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,

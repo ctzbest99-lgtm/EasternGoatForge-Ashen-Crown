@@ -17,3 +17,15 @@ function scr_dialogue_open(_lines, _speaker = "", _struck_lines = undefined) {
     global.game.dialogue_open = true;
     return _box;
 }
+
+/// Open a box whose last line ends in a choice (up / down, confirm). Cancel picks the last
+/// option. `_on_choice(index)` runs after the box closes (through dialogue_on_finish), so it
+/// may open another box. Returns the box or noone.
+function scr_dialogue_choice(_lines, _speaker, _choices, _on_choice) {
+    var _box = scr_dialogue_open(_lines, _speaker);
+    if (_box == noone) return noone;
+    _box.choices = is_array(_choices) ? _choices : [];
+    _box.choice_index = 0;
+    _box.on_choice = _on_choice;
+    return _box;
+}

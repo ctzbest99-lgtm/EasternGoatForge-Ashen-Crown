@@ -24,6 +24,18 @@ function scr_shop_get(_shop_id) {
                 lines_buy: ["His tools are mostly fine.", "Iron's tougher than people."],
                 lines_sell: ["His tools are mostly fine.", "Iron's tougher than people."]
             };
+        case "shop_wrenfield_store":
+            // Len, Wrenfield (CHAPTER2_SCRIPT.md: "Minor Potion, Antidote, and any mid-tier items
+            // Design wants for level 8–10"). Ether and Chain Mail are PLACEHOLDER picks / prices.
+            // Opened by the Chapter 2 room wiring (only after the rescue; WF_STORE_SHUT before).
+            return {
+                shop_id: "shop_wrenfield_store",
+                name: "Len's Goods",
+                keeper: "Len",
+                items: ["item_minor_potion", "item_antidote", "item_ether", "item_chain_mail"],
+                lines_buy: ["Shelves are the same.", "Prices are the same."],
+                lines_sell: ["Shelves are the same.", "Prices are the same."]
+            };
     }
     return undefined;
 }
@@ -96,4 +108,42 @@ function scr_shop_sell(_item_id, _qty) {
     if (!scr_inventory_remove(_item_id, _n, false)) return "You can't sell that.";
     global.game.gold += _unit * _n;
     return "Sold " + _it.name + " x" + string(_n) + ".";
+}
+
+/// Inn rest (PLACEHOLDER price). Offers a Yes / No choice; on Yes with enough gold, restores HP
+/// and MP for the active party and reserve, clears overworld poison, and takes the gold.
+/// `_lines` are the keeper's lines shown before the choice (the last one carries the choice).
+function scr_inn_offer(_keeper, _price, _lines = undefined) {
+    scr_game_state_init();
+    var _ask = "Rest for the night? " + string(_price) + " gold. (You have " + string(global.game.gold) + ".)";
+    var _all = is_array(_lines) ? _lines : [];
+    var _show = [];
+    for (var _i = 0; _i < array_length(_all); _i++) array_push(_show, _all[_i]);
+    array_push(_show, _ask);
+    var _cb = method({ keeper: _keeper, price: _price }, function(_idx) {
+        if (_idx != 0) return;
+        if (global.game.gold < price) {
+            scr_dialogue_open(["Not enough gold."], keeper);
+            return;
+        }
+        global.game.gold -= price;
+        scr_inn_rest_party();
+        scr_dialogue_open(["You rest until morning. HP and MP are fully restored."], "");
+    });
+    return scr_dialogue_choice(_show, _keeper, ["Rest (" + string(_price) + "g)", "Leave"], _cb);
+}
+
+function scr_inn_rest_party() {
+    var _lists = [global.game.party, global.game.reserve];
+    for (var _l = 0; _l < 2; _l++) {
+        var _list = _lists[_l];
+        if (!is_array(_list)) continue;
+        for (var _i = 0; _i < array_length(_list); _i++) {
+            var _a = _list[_i];
+            if (!is_struct(_a)) continue;
+            _a.hp = _a.max_hp;
+            if (variable_struct_exists(_a, "max_mp")) _a.mp = _a.max_mp;
+            _a.poisoned = false;
+        }
+    }
 }

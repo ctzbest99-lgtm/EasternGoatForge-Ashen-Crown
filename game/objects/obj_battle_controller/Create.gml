@@ -143,7 +143,7 @@ get_feet = function(_side, _idx) {
 is_up = function(_side, _idx) {
     var _a = get_actor(_side, _idx);
     if (!is_struct(_a) || _a.hp <= 0) return false;
-    if (_side == "enemy" && _a.yielded) return false;
+    if (_side == "enemy" && (_a.yielded || (variable_struct_exists(_a, "withdrawn") && _a.withdrawn))) return false;
     return true;
 };
 
@@ -226,6 +226,17 @@ apply_pending_hit = function() {
                         _tgt.hp = 1; // he lives; is_up() treats a yielded boss as out of the fight
                         if (is_string(_tgt.yield_flag) && _tgt.yield_flag != "") scr_flag_set(_tgt.yield_flag, true);
                         scr_battle_vis_play(_vis, "yield");
+                        // Balance pass (PLACEHOLDER rule): the soldiers still standing withdraw, but
+                        // their XP is credited now (same participant rule) and their gold is summed at victory.
+                        for (var _w = 0; _w < array_length(enemies); _w++) {
+                            var _wd = enemies[_w];
+                            if (_wd == _tgt || _wd.hp <= 0 || _wd.yielded) continue;
+                            _wd.withdrawn = true;
+                            if (!_wd.xp_credited) {
+                                scr_party_credit_enemy_xp(_wd.xp_reward);
+                                _wd.xp_credited = true;
+                            }
+                        }
                     } else {
                         if (is_struct(_vis) && _vis.kind == "blackguard") _vis.phase = 3; // final death is the p3 strip
                         scr_battle_vis_play(_vis, "death");

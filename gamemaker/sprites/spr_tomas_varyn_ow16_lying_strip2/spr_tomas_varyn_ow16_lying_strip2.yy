@@ -14,15 +14,15 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"f5ea196f-10a5-4531-981f-8c6a03d2f06c",
-      "name":"f5ea196f-10a5-4531-981f-8c6a03d2f06c",
+      "%Name":"089d7265-03da-40f9-926f-ef0b742d8469",
+      "name":"089d7265-03da-40f9-926f-ef0b742d8469",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"16e4e086-3962-4b53-8263-276ad26f02f7",
-      "name":"16e4e086-3962-4b53-8263-276ad26f02f7",
+      "%Name":"550cda00-b0b5-4751-b2d1-577e144c54dc",
+      "name":"550cda00-b0b5-4751-b2d1-577e144c54dc",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -34,11 +34,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"6428c58c-50f3-40d6-b3a9-c762991fa5e7",
+      "%Name":"59124f52-ac5c-457a-b8ad-d82d88514e16",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"6428c58c-50f3-40d6-b3a9-c762991fa5e7",
+      "name":"59124f52-ac5c-457a-b8ad-d82d88514e16",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -111,7 +111,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"f5ea196f-10a5-4531-981f-8c6a03d2f06c",
+                    "name":"089d7265-03da-40f9-926f-ef0b742d8469",
                     "path":"sprites/spr_tomas_varyn_ow16_lying_strip2/spr_tomas_varyn_ow16_lying_strip2.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -119,7 +119,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f1cbfb2a-fbf3-4b91-b824-52cc773700ff",
+              "id":"e32a0f8b-9d01-4842-bd03-5f3fd2768f08",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -133,7 +133,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"16e4e086-3962-4b53-8263-276ad26f02f7",
+                    "name":"550cda00-b0b5-4751-b2d1-577e144c54dc",
                     "path":"sprites/spr_tomas_varyn_ow16_lying_strip2/spr_tomas_varyn_ow16_lying_strip2.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -141,7 +141,7 @@
                 },
               },
               "Disabled":false,
-              "id":"7e60bbad-d59d-4581-8624-664fa081943c",
+              "id":"50960f2c-c9e4-40c1-a9dc-54869ee52099",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,

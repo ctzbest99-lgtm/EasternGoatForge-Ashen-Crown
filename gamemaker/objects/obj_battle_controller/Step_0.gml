@@ -13,9 +13,10 @@ scr_battle_pops_step(dmg_pops);
 // yielding boss stay on screen (yield holds its last frame).
 for (_v = 0; _v < array_length(enemies); _v++) {
     var _fe = enemies[_v];
-    if (_fe.hp > 0 || _fe.yielded || _fe.is_boss || _fe.fade <= 0) continue;
+    var _fw = variable_struct_exists(_fe, "withdrawn") && _fe.withdrawn; // left the field after a yield
+    if ((_fe.hp > 0 && !_fw) || _fe.yielded || _fe.is_boss || _fe.fade <= 0) continue;
     var _fv = enemy_vis[_v];
-    if (!is_struct(_fv) || _fv.finished) _fe.fade = max(0, _fe.fade - 1 / max(1, BATTLE_DEAD_ENEMY_FADE_FRAMES));
+    if (_fw || !is_struct(_fv) || _fv.finished) _fe.fade = max(0, _fe.fade - 1 / max(1, BATTLE_DEAD_ENEMY_FADE_FRAMES));
 }
 
 switch (state) {
@@ -214,10 +215,12 @@ switch (state) {
             victory_gold = 0;
             // Gold is shared and summed over every defeated (or yielded) enemy. XP was banked per
             // living participant at each enemy's killing hit; this only catches anything missed.
-            // Enemies still standing when a boss yields withdraw and give nothing.
+            // Enemies still standing when a boss yields withdraw; they still give XP (credited at
+            // the yield) and gold (PLACEHOLDER rule, balance pass).
             for (var _ve = 0; _ve < array_length(enemies); _ve++) {
                 var _de = enemies[_ve];
-                if (_de.hp > 0 && !_de.yielded) continue;
+                var _dw = variable_struct_exists(_de, "withdrawn") && _de.withdrawn;
+                if (_de.hp > 0 && !_de.yielded && !_dw) continue;
                 victory_gold += _de.gold_reward;
                 victory_xp += _de.xp_reward;
                 if (!_de.xp_credited) {
@@ -233,7 +236,11 @@ switch (state) {
         for (var _ye = 0; _ye < array_length(enemies); _ye++) {
             if (!enemies[_ye].yielded) continue;
             _yield_line = enemies[_ye].full_name + " yields.";
-            if (array_length(living("enemy")) > 0) _yield_line += " The rest withdraw.";
+            var _any_wd = false;
+            for (var _wq = 0; _wq < array_length(enemies); _wq++) {
+                if (variable_struct_exists(enemies[_wq], "withdrawn") && enemies[_wq].withdrawn) _any_wd = true;
+            }
+            if (_any_wd) _yield_line += " The rest withdraw.";
             _yield_line += "\n";
         }
         var _after_victory = (array_length(level_ups) > 0) ? BATTLE_STATE.LEVEL_UP : BATTLE_STATE.EXIT;

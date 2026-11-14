@@ -72,11 +72,12 @@ function scr_get_encounter_table(_table_id) {
         // Level band 8–10 (Design batch 6 / CHAPTER2_SCRIPT.md). Groups and weights are PLACEHOLDER.
         case "ch2_millhaven_road":
         case "millhaven_road":
-            // Crown road patrols, road veterans, grey ash wolves.
+            // Crown road patrols, road veterans, grey ash wolves. Kael walks this road alone (Taren
+            // joins at the Calder fight), so groups stop at 2 (balance pass; see DECISIONS).
             return [
                 { enemy_id: "crown_patrolman", weight: 2 },
                 { group: ["crown_patrolman", "crown_crossbowman"], weight: 3 },
-                { group: ["crown_crossbowman", "crown_patrolman", "occupation_soldier"], weight: 2 },
+                { enemy_id: "crown_crossbowman", weight: 1 },
                 { enemy_id: "bandit_veteran", weight: 1 },
                 { group: ["bandit_veteran", "bandit_veteran"], weight: 2 },
                 { enemy_id: "grey_ash_wolf", weight: 1 },
