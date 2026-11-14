@@ -38,14 +38,12 @@ function scr_actor_apply_level_up(_actor) {
     return { name: _actor.name, level: _actor.level, hp: _hp, attack: _atk, defense: _def };
 }
 
-/// Grant `_amount` XP to every current party member (including KO'd; pending assumption)
-/// and apply as many level-ups as the curve allows. Returns an array of level-up structs
-/// in party order. Caps XP at the max-level floor.
-function scr_party_grant_xp(_party, _amount) {
+/// Grant `_amount` XP to each actor in `_list` (including KO'd). Returns level-up structs.
+function scr_party_grant_xp_to(_list, _amount) {
     var _ups = [];
-    if (_amount <= 0) return _ups;
-    for (var _i = 0; _i < array_length(_party); _i++) {
-        var _actor = _party[_i];
+    if (_amount <= 0 || !is_array(_list)) return _ups;
+    for (var _i = 0; _i < array_length(_list); _i++) {
+        var _actor = _list[_i];
         if (!is_struct(_actor)) continue;
         _actor.xp += _amount;
         while (_actor.level < PARTY_MAX_LEVEL && _actor.xp >= scr_xp_for_level(_actor.level + 1)) {
@@ -56,4 +54,12 @@ function scr_party_grant_xp(_party, _amount) {
         }
     }
     return _ups;
+}
+
+/// Legacy helper: grant `_amount` XP now. Battle victory uses
+/// scr_party_credit_enemy_xp / scr_party_apply_pending_xp instead (per-enemy
+/// credit to living participants, applied only if the party wins).
+function scr_party_grant_xp(_party, _amount) {
+    if (!XP_REQUIRES_PARTICIPATION) return scr_party_grant_xp_to(_party, _amount);
+    return scr_party_grant_xp_to(scr_party_participants(), _amount);
 }

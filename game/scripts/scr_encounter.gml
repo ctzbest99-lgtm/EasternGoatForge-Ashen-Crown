@@ -41,7 +41,9 @@ function scr_battle_finish(_result) {
     scr_party_clear_guard(_g.party);
 
     if (_result == "defeat") {
-        scr_party_restore_all(_g.party);
+        // Defeat *check* and XP/gold penalty use the active party only (assumption).
+        // HP is still restored for the reserve member too (they wake up in town with the others).
+        scr_party_restore_active_and_reserve();
         scr_apply_defeat_penalty();
     } else {
         _g.last_defeat_penalty = undefined;
@@ -62,7 +64,8 @@ function scr_battle_finish(_result) {
     room_goto(_target_room);
 }
 
-/// Deduct the defeat penalty from shared gold and each member's XP. Stores the
+/// Deduct the defeat penalty from shared gold and each *active* member's XP
+/// (reserve is not penalized; assumption pending owner approval). Stores the
 /// amounts in global.game.last_defeat_penalty for the wake-up message.
 /// Gold: floor(current * DEFEAT_GOLD_LOSS_PCT), never below 0.
 /// XP: 10% of progress toward the next level, never enough to drop a level.

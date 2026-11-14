@@ -4,6 +4,7 @@
 /// Create global.game once. Safe to call any number of times.
 function scr_game_state_init() {
     if (variable_global_exists("game") && is_struct(global.game)) return;
+    var _ps = scr_party_state_create();
     global.game = {
         frame: 0,                     // incremented by obj_game_controller : Begin Step
         input_block_until_frame: -1,  // overworld input ignored while frame <= this
@@ -15,7 +16,9 @@ function scr_game_state_init() {
         last_battle_result: undefined,// "victory" | "defeat" | "error"
         last_defeat_penalty: undefined, // { gold_lost, xp_lost } set by scr_apply_defeat_penalty
         cleared_encounters: {},       // encounter_id -> true after a victory
-        party: scr_party_create_default(),
+        roster: _ps.roster,           // five permanent members (Kael, Lyra, Caelan, Sera, Taren Holt)
+        party: _ps.party,             // active battle slots (1–4); this is what battle uses
+        reserve: _ps.reserve,         // 0–1 benched member
         xp: 0,                        // mirror of party[0].xp (Kael) for the debugger; each member has their own xp/level
         gold: 0,                      // shared party currency
         inventory: [],                // [{ item_id, name, qty, key_item }]; menus are roadmap step 5
@@ -25,6 +28,7 @@ function scr_game_state_init() {
         pending_post_dialogue: undefined, // node IDs to play after returning from a victory
         pending_ashbound_encounter_id: "",
         ashbound_rare_chance: ASHBOUND_HUNTER_RARE_CHANCE, // debugger-tunable rare roll
+        // Party order (party + reserve) will be part of the save; versioned schema is roadmap step 5.
         random_encounters_enabled: RANDOM_ENCOUNTERS_ENABLED, // debugger toggle; also requires the macro
         encounter_step_remainder: 0,  // leftover pixels toward the next encounter step
         encounter_steps_until: 0,     // steps remaining until a random fight (0 = roll a new interval)
