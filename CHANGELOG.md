@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-14 — Party and progression (roadmap step 4)
+- Each party member has `level` and `xp`. Shared gold is unchanged. Placeholder XP curve: `20*(L-1)^2 + 10*(L-1)` (L2=30, L3=100, cap 20). Level-up growth: +4 HP, +1 ATK, +1 DEF. All pending owner approval.
+- Victory grants XP to every current member, then shows a level-up message per threshold crossed before returning to the map. HUD shows `Lv`.
+- Party supports up to four members (Kael only by default; `DEBUG_ADD_PLACEHOLDER_ALLY` adds a non-canon test ally). Battle command order, cancel, and enemy targeting already follow living members in party order.
+- Defeat XP penalty now uses `scr_xp_for_level(level)` as `_level_floor`: 10% of progress toward the next level, never a level-down.
+- Empty equipment slots and `global.game.inventory` are stubs for roadmap step 5 menus.
+- Documented in docs/DECISIONS_AND_OPEN_QUESTIONS.md; test plan P1–P8 added; B8/B15 updated.
+
 ## 2026-11-14 — Random encounters while walking
 - Walking in an encounter area uses a randomized steps-until-encounter counter (distance-based). Steps count only when the player actually moves and input is not locked, after `ENCOUNTER_GRACE_STEPS` following battle or room entry.
 - Defaults (pending tuning): 32 pixels per step, 8–24 steps between fights, 5 grace steps. Disable with `RANDOM_ENCOUNTERS_ENABLED` or `global.game.random_encounters_enabled`.

@@ -21,7 +21,8 @@ Snippets are prototypes, not verified production code. Compile in the selected G
 | `scr_dialogue` | `scr_dialogue_open(lines, speaker)` |
 | `scr_encounter` | `scr_encounter_start()`, `scr_battle_finish()`, `scr_apply_defeat_penalty()`, `scr_apply_town_respawn()`, `scr_town_wake_up_dialogue()`, `scr_random_encounter_tick()` (overworld ↔ battle hand-off and walking encounters) |
 | `scr_encounter_tables` | Named / per-room random encounter tables (`zone01_path`, `scr_get_room_encounter_table`) |
-| `scr_battle_actors` | Actor structs, placeholder party, party helpers |
+| `scr_battle_actors` | Actor structs (level, xp, equipment stubs), party of up to four, party helpers |
+| `scr_progression` | XP curve (`scr_xp_for_level`), `scr_party_grant_xp()`, level-up growth |
 | `scr_battle_math` | Damage, HP clamp, Guard reduction (existing file, `scr_apply_guard` added) |
 | `scr_enemy_database` | Bandit / Fallen Knight data (existing, unchanged) |
 
@@ -49,8 +50,8 @@ Snippets are prototypes, not verified production code. Compile in the selected G
 2. `obj_player` moves only when `scr_input_locked()` is false (no dialogue, battle, or transition, and not the frame right after one closes).
 3. Facing an `obj_interactable` and pressing confirm calls its `interact()` method → `scr_dialogue_open()` → `obj_dialogue_box`. Closing the box blocks overworld input for one extra frame so the same key press cannot reopen it.
 4. Walking onto an armed `obj_encounter_trigger` calls `scr_encounter_start()`: saves the return point, sets `battle_active`, goes to `rm_battle_test`.
-5. `obj_battle_controller` runs the `BATTLE_STATE` machine: INTRO → ROUND_START → COMMAND_SELECT → PLAYER_ACTION → ENEMY_TURN → (ROUND_START | VICTORY | DEFEAT) → EXIT. Every message waits for a confirm press.
-6. EXIT calls `scr_battle_finish()` once: remembers a victory by `encounter_id`, clears `battle_active`, sets `transition_active`. Victory and error return to the saved room; defeat restores party HP, deducts 50% of current gold and 10% of total XP (floored; percentages are macros, pending tuning), and goes to `TOWN_RESPAWN_ROOM`. `obj_game_controller`'s Room Start then either restores the pre-battle position/facing, or (on defeat) places the player at `obj_respawn_point` / `TOWN_RESPAWN_X,Y` and opens the wake-up dialogue, including the amounts lost.
+5. `obj_battle_controller` runs the `BATTLE_STATE` machine: INTRO → ROUND_START → COMMAND_SELECT → PLAYER_ACTION → ENEMY_TURN → (ROUND_START | VICTORY | DEFEAT) → EXIT. Living members choose and act in party order; the enemy targets a random living member. Victory may go through `LEVEL_UP` messages before EXIT. Every message waits for a confirm press.
+6. EXIT calls `scr_battle_finish()` once: remembers a victory by `encounter_id`, clears `battle_active`, sets `transition_active`. Victory and error return to the saved room; defeat restores party HP, deducts 50% of current gold and 10% of each member's XP progress toward the next level (never below the current level's floor), and goes to `TOWN_RESPAWN_ROOM`. `obj_game_controller`'s Room Start then either restores the pre-battle position/facing, or (on defeat) places the player at `obj_respawn_point` / `TOWN_RESPAWN_X,Y` and opens the wake-up dialogue, including the amounts lost.
 7. A won trigger destroys itself on Room Start. A lost encounter is not cleared, so walking back onto that trigger starts the fight again.
 8. Random encounters: while moving inside an `obj_encounter_zone` (or a room listed in `scr_get_room_encounter_table`), actual movement accumulates toward steps of `ENCOUNTER_STEP_PIXELS`. After `ENCOUNTER_GRACE_STEPS` following room entry or battle, a randomized counter in `[ENCOUNTER_STEPS_MIN, ENCOUNTER_STEPS_MAX]` counts down and starts a fight from the area's weighted table. Towns and rooms with no table are safe. Disable with `RANDOM_ENCOUNTERS_ENABLED` or `global.game.random_encounters_enabled`. Victory still returns to the exact spot; random fights are not stored in `cleared_encounters`.
 

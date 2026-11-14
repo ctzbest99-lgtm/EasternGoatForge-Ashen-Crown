@@ -1,5 +1,5 @@
 /// scr_battle_actors — actor structs shared by party members and enemies.
-/// The party is an array so it can grow to the planned four members (roadmap step 4).
+/// The party is an array of 1–PARTY_MAX_SIZE members. Array order is battle turn order.
 
 function scr_actor_create(_actor_id, _name, _max_hp, _attack, _defense) {
     return {
@@ -9,7 +9,11 @@ function scr_actor_create(_actor_id, _name, _max_hp, _attack, _defense) {
         hp: _max_hp,
         attack: _attack,
         defense: _defense,
-        is_guarding: false
+        is_guarding: false,
+        level: 1,
+        xp: 0,
+        // Equipment slots are placeholders until menus (roadmap step 5) exist.
+        equipment: { weapon: "", armor: "", accessory: "" }
     };
 }
 
@@ -23,8 +27,31 @@ function scr_actor_from_enemy_data(_data) {
 }
 
 /// Placeholder party: Kael only, with placeholder stats (not balanced, not canon).
+/// Flip DEBUG_ADD_PLACEHOLDER_ALLY to test a two-member party (not a canon character).
 function scr_party_create_default() {
-    return [ scr_actor_create("kael", "Kael", 30, 6, 2) ];
+    var _party = [ scr_actor_create("kael", "Kael", KAEL_BASE_HP, KAEL_BASE_ATTACK, KAEL_BASE_DEFENSE) ];
+    if (DEBUG_ADD_PLACEHOLDER_ALLY) {
+        scr_party_add_member(_party, scr_actor_create("placeholder_ally", "Placeholder Ally", 24, 5, 2));
+    }
+    return _party;
+}
+
+/// Append a member if the party is not full. Returns true on success.
+function scr_party_add_member(_party, _actor) {
+    if (!is_array(_party) || !is_struct(_actor)) return false;
+    if (array_length(_party) >= PARTY_MAX_SIZE) return false;
+    array_push(_party, _actor);
+    return true;
+}
+
+/// Swap two slots (party order = command and turn order). No-op on bad indices.
+function scr_party_swap(_party, _a, _b) {
+    if (!is_array(_party)) return;
+    var _n = array_length(_party);
+    if (_a < 0 || _b < 0 || _a >= _n || _b >= _n || _a == _b) return;
+    var _tmp = _party[_a];
+    _party[_a] = _party[_b];
+    _party[_b] = _tmp;
 }
 
 function scr_actor_is_alive(_actor) {
@@ -35,7 +62,7 @@ function scr_party_any_alive(_party) {
     return scr_party_next_living_index(_party, 0) != -1;
 }
 
-/// First living party index >= _from, or -1.
+/// First living party index >= _from, or -1. Used for command and action order.
 function scr_party_next_living_index(_party, _from) {
     for (var _i = max(0, _from); _i < array_length(_party); _i++) {
         if (scr_actor_is_alive(_party[_i])) return _i;
@@ -43,7 +70,7 @@ function scr_party_next_living_index(_party, _from) {
     return -1;
 }
 
-/// Random living party index, or -1 if everyone is down.
+/// Random living party index, or -1 if everyone is down. Used for enemy targeting.
 function scr_party_random_living_index(_party) {
     var _living = [];
     for (var _i = 0; _i < array_length(_party); _i++) {
