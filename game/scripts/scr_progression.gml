@@ -38,14 +38,12 @@ function scr_actor_apply_level_up(_actor) {
     return { name: _actor.name, level: _actor.level, hp: _hp, attack: _atk, defense: _def };
 }
 
-/// Grant `_amount` XP to every current party member (including KO'd; pending assumption)
-/// and apply as many level-ups as the curve allows. Returns an array of level-up structs
-/// in party order. Caps XP at the max-level floor.
-function scr_party_grant_xp(_party, _amount) {
+/// Grant `_amount` XP to each actor in `_list` (including KO'd). Returns level-up structs.
+function scr_party_grant_xp_to(_list, _amount) {
     var _ups = [];
-    if (_amount <= 0) return _ups;
-    for (var _i = 0; _i < array_length(_party); _i++) {
-        var _actor = _party[_i];
+    if (_amount <= 0 || !is_array(_list)) return _ups;
+    for (var _i = 0; _i < array_length(_list); _i++) {
+        var _actor = _list[_i];
         if (!is_struct(_actor)) continue;
         _actor.xp += _amount;
         while (_actor.level < PARTY_MAX_LEVEL && _actor.xp >= scr_xp_for_level(_actor.level + 1)) {
@@ -54,6 +52,19 @@ function scr_party_grant_xp(_party, _amount) {
         if (_actor.level >= PARTY_MAX_LEVEL) {
             _actor.xp = min(_actor.xp, scr_xp_for_level(PARTY_MAX_LEVEL));
         }
+    }
+    return _ups;
+}
+
+/// Grant `_amount` XP to the active party (the array passed in, usually global.game.party).
+/// If RESERVE_EARNS_XP, also grant floor(_amount * RESERVE_XP_SHARE) to the reserve slot.
+/// Returns level-up structs, active first, then reserve. Caps XP at the max-level floor.
+/// Whether the reserve earns XP, and the share, are pending owner approval (defaults: yes, 1.0).
+function scr_party_grant_xp(_party, _amount) {
+    var _ups = scr_party_grant_xp_to(_party, _amount);
+    if (RESERVE_EARNS_XP) {
+        var _reserve_ups = scr_party_grant_xp_to(scr_party_list_reserve(), floor(_amount * RESERVE_XP_SHARE));
+        for (var _j = 0; _j < array_length(_reserve_ups); _j++) array_push(_ups, _reserve_ups[_j]);
     }
     return _ups;
 }

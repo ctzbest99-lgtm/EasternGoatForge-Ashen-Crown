@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-14 — Party reserve slot (five-person roster)
+- Permanent roster is five: Kael, Lyra, Caelan, Sera, and Taren Holt (Rebel Captain of the Broken Yoke, frontline warrior). Four active battle slots plus one reserve. Default run: only Kael has joined.
+- Helpers: `scr_party_list_active`, `scr_party_list_reserve`, `scr_party_swap_active_reserve`, `scr_party_join`. Battle still reads `global.game.party` (the active list) and was not rewritten.
+- Defeat check and the defeat XP/gold penalty apply to active members only (assumption). Reserve HP is still restored on defeat. `RESERVE_EARNS_XP` defaults to true with `RESERVE_XP_SHARE` 1.0 (pending owner approval).
+- Placeholder stats (pending): Lyra 24/7/1, Caelan 22/8/1, Sera 28/4/4, Taren 36/8/3. Taren's weapon categories include `heavy_sword`; his equipment stub starts with a bastard sword. Skills are placeholders.
+- `scr_save_state_collect()` snapshots active and reserve ids (`save_schema_version` 0). The versioned save schema is still roadmap step 5.
+- `DEBUG_ADD_FULL_ROSTER` fills all five for testing (Taren in reserve). Test plan P5–P6 updated; P9–P10 added.
+
 ## 2026-11-14 — Party and progression (roadmap step 4)
 - Each party member has `level` and `xp`. Shared gold is unchanged. Placeholder XP curve: `20*(L-1)^2 + 10*(L-1)` (L2=30, L3=100, cap 20). Level-up growth: +4 HP, +1 ATK, +1 DEF. All pending owner approval.
 - Victory grants XP to every current member, then shows a level-up message per threshold crossed before returning to the map. HUD shows `Lv`.

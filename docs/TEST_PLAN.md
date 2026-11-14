@@ -59,15 +59,18 @@ Setup: place a stretched `obj_encounter_zone` over the wild path in `rm_overworl
 - [ ] R8 Setting `RANDOM_ENCOUNTERS_ENABLED` to false (recompile) or `global.game.random_encounters_enabled = false` in the debugger disables random fights; fixed triggers still work. Setting it back to true re-enables them.
 
 ## Party and progression (roadmap step 4; numbers pending owner approval)
-XP curve: total XP to be level L is `20*(L-1)^2 + 10*(L-1)` (L2=30, L3=100, L4=210). Growth: +4 max HP, +1 ATK, +1 DEF per level. Cap 20. Default party is Kael only (30/6/2 at level 1).
+XP curve: total XP to be level L is `20*(L-1)^2 + 10*(L-1)` (L2=30, L3=100, L4=210). Growth: +4 max HP, +1 ATK, +1 DEF per level. Cap 20. Default party is Kael only (30/6/2 at level 1), with Lyra, Caelan, Sera and Taren Holt on the roster but not joined.
 - [ ] P1 Win fights until Kael reaches 30 XP (five Bandits, or set `party[0].xp = 24` then win one Bandit): after the victory line, a message says "Kael reached level 2! HP +4, ATK +1, DEF +1." Max HP is 34, ATK 7, DEF 3, current HP increased by 4, level 2, XP 30 (or 24+6). Confirming the level-up message then returns to the map.
 - [ ] P2 Rewards and a level-up are each granted once if Z is held. Two threshold crossings in one win (e.g. set XP to 29 and temporarily raise the Bandit reward, or set XP to 99 and grant enough) show one message per level, in order, then exit.
 - [ ] P3 Defeat never lowers `level`. At the exact floor (level 2, XP 30) a defeat takes 0 XP. Below the next threshold, only 10% of the progress is lost (see B15).
 - [ ] P4 Battle HUD shows `Lv` for each member. Command select still walks only living members; cancel still steps back to the previous member's command when more than one member is present.
-- [ ] P5 Multi-member: set `DEBUG_ADD_PLACEHOLDER_ALLY` true (or add a second member in `scr_party_create_default`), recompile. Both members pick Attack/Guard in party order; the enemy attacks a random living member (name in the message). A KO'd member is skipped in command select and cannot act, but still receives victory XP (pending assumption). If the ally is KO'd and levels up, they stay at 0 HP.
-- [ ] P6 A third and fourth placeholder member still fit the battle HUD (four rows) and command order; a fifth cannot be added (`scr_party_add_member` returns false).
+- [ ] P5 Multi-member: set `DEBUG_ADD_FULL_ROSTER` (or `DEBUG_ADD_PLACEHOLDER_ALLY`) true and recompile. Active members pick Attack/Guard in party order; the enemy attacks a random *active* living member (name in the message). A KO'd active member is skipped in command select and cannot act, but still receives victory XP (pending assumption). If an active member is KO'd and levels up, they stay at 0 HP. The reserve member does not appear in the command menu or as a target.
+- [ ] P6 Four active members fit the battle HUD (four rows) and command order. `scr_party_add_member` returns false for a fifth *active* member. A fifth *joined* member goes to `global.game.reserve` (`scr_party_join`); a sixth join fails.
 - [ ] P7 At `PARTY_MAX_LEVEL` (20), further XP does not raise the level or stats; XP stays at the level-20 floor (7410).
-- [ ] P8 `global.game.inventory` starts empty and equipment slots are empty strings; they do not affect combat yet.
+- [ ] P8 `global.game.inventory` starts empty. Equipment slots do not affect combat yet. Taren Holt's roster entry has `weapon_categories = ["heavy_sword"]` and `equipment.weapon = "bastard_sword"`; the others have empty weapon stubs and category lists matching their kit (longsword, dagger, spellbook, holy_sword).
+- [ ] P9 `DEBUG_ADD_FULL_ROSTER`: active ids are kael, lyra, caelan, sera; reserve is taren. `scr_party_swap_active_reserve(0)` puts Taren in active slot 0 and Kael in reserve; swap again restores the original. `scr_save_state_collect()` reports those id lists and `save_schema_version` 0.
+- [ ] P10 Reserve XP and defeat (with `DEBUG_ADD_FULL_ROSTER`): a victory grants the full reward to Taren in reserve when `RESERVE_EARNS_XP` is true and `RESERVE_XP_SHARE` is 1.0 (check `roster` / `reserve[0].xp`). A defeat does **not** deduct Taren's XP, but does restore his HP if it was not full. If all four active members are KO'd, the battle is lost even if the reserve still has HP.
+
 
 ## Menus and saves
 - [ ] Selection and cancel/back work.

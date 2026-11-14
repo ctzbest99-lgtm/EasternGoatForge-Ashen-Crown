@@ -1,10 +1,12 @@
 /// scr_battle_actors — actor structs shared by party members and enemies.
-/// The party is an array of 1–PARTY_MAX_SIZE members. Array order is battle turn order.
+/// The active battle party is global.game.party (1–PARTY_ACTIVE_MAX). Array order is turn order.
+/// The fifth roster member sits in global.game.reserve (0–PARTY_RESERVE_MAX). See scr_party.gml.
 
 function scr_actor_create(_actor_id, _name, _max_hp, _attack, _defense) {
     return {
         actor_id: _actor_id,
         name: _name,
+        full_name: _name,
         max_hp: _max_hp,
         hp: _max_hp,
         attack: _attack,
@@ -12,6 +14,10 @@ function scr_actor_create(_actor_id, _name, _max_hp, _attack, _defense) {
         is_guarding: false,
         level: 1,
         xp: 0,
+        class_name: "",
+        role: "",
+        joined: false,
+        weapon_categories: [],
         // Equipment slots are placeholders until menus (roadmap step 5) exist.
         equipment: { weapon: "", armor: "", accessory: "" }
     };
@@ -26,25 +32,21 @@ function scr_actor_from_enemy_data(_data) {
     return _actor;
 }
 
-/// Placeholder party: Kael only, with placeholder stats (not balanced, not canon).
-/// Flip DEBUG_ADD_PLACEHOLDER_ALLY to test a two-member party (not a canon character).
+/// Default active party: Kael only. Full roster / reserve are created in scr_party_state_create().
 function scr_party_create_default() {
-    var _party = [ scr_actor_create("kael", "Kael", KAEL_BASE_HP, KAEL_BASE_ATTACK, KAEL_BASE_DEFENSE) ];
-    if (DEBUG_ADD_PLACEHOLDER_ALLY) {
-        scr_party_add_member(_party, scr_actor_create("placeholder_ally", "Placeholder Ally", 24, 5, 2));
-    }
-    return _party;
+    var _state = scr_party_state_create();
+    return _state.party;
 }
 
-/// Append a member if the party is not full. Returns true on success.
+/// Append a member to an active-party array if it is not full. Returns true on success.
 function scr_party_add_member(_party, _actor) {
     if (!is_array(_party) || !is_struct(_actor)) return false;
-    if (array_length(_party) >= PARTY_MAX_SIZE) return false;
+    if (array_length(_party) >= PARTY_ACTIVE_MAX) return false;
     array_push(_party, _actor);
     return true;
 }
 
-/// Swap two slots (party order = command and turn order). No-op on bad indices.
+/// Swap two active slots (party order = command and turn order). No-op on bad indices.
 function scr_party_swap(_party, _a, _b) {
     if (!is_array(_party)) return;
     var _n = array_length(_party);
@@ -84,9 +86,11 @@ function scr_party_clear_guard(_party) {
     for (var _i = 0; _i < array_length(_party); _i++) _party[_i].is_guarding = false;
 }
 
-/// Restore everyone to full HP and clear Guard. Used after a defeat (owner decision 2026-11-14).
+/// Restore everyone in `_party` to full HP and clear Guard.
 function scr_party_restore_all(_party) {
+    if (!is_array(_party)) return;
     for (var _i = 0; _i < array_length(_party); _i++) {
+        if (!is_struct(_party[_i])) continue;
         _party[_i].hp = _party[_i].max_hp;
         _party[_i].is_guarding = false;
     }
