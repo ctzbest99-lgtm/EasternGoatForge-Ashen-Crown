@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"9ffdb1e6-d745-4b57-b06c-cd4144a16e91",
-      "name":"9ffdb1e6-d745-4b57-b06c-cd4144a16e91",
+      "%Name":"64abf66b-bc04-422e-baac-2a8ca8f3d80b",
+      "name":"64abf66b-bc04-422e-baac-2a8ca8f3d80b",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"3b51f561-823d-42ac-91b3-ebfca4d298ed",
+      "%Name":"85aeacab-8d31-4c8e-b7bf-a0aeee89260a",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"3b51f561-823d-42ac-91b3-ebfca4d298ed",
+      "name":"85aeacab-8d31-4c8e-b7bf-a0aeee89260a",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"9ffdb1e6-d745-4b57-b06c-cd4144a16e91",
+                    "name":"64abf66b-bc04-422e-baac-2a8ca8f3d80b",
                     "path":"sprites/spr_hob_ow16_idle_right/spr_hob_ow16_idle_right.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"53a0fd26-c54f-40b8-877f-a61a90f9af40",
+              "id":"2fe1fc66-15bd-4b15-a9c4-d7dfbe58aefa",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

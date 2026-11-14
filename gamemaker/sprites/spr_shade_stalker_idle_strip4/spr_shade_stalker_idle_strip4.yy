@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"9911819e-0639-4bb5-8130-4e59253ece85",
-      "name":"9911819e-0639-4bb5-8130-4e59253ece85",
+      "%Name":"9eb1b3bd-a7f3-4af3-8998-21f1e88f63cb",
+      "name":"9eb1b3bd-a7f3-4af3-8998-21f1e88f63cb",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"15b12314-6a61-4e02-9bd3-ee74b44dd100",
-      "name":"15b12314-6a61-4e02-9bd3-ee74b44dd100",
+      "%Name":"f5caffdf-f007-486f-b881-3928dec45c6b",
+      "name":"f5caffdf-f007-486f-b881-3928dec45c6b",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"9a618e86-75e8-4f76-a58d-01c8264ba8da",
-      "name":"9a618e86-75e8-4f76-a58d-01c8264ba8da",
+      "%Name":"e9c45e83-d743-475f-a995-d8d87175120e",
+      "name":"e9c45e83-d743-475f-a995-d8d87175120e",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"30556631-3723-4880-b617-7344f06c3c1f",
-      "name":"30556631-3723-4880-b617-7344f06c3c1f",
+      "%Name":"29c596f8-2bc4-43de-81d1-b5a047069128",
+      "name":"29c596f8-2bc4-43de-81d1-b5a047069128",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"3bdf3172-bf57-4483-b50d-68780a03705c",
+      "%Name":"f6905489-5052-4a2c-a2cf-dfecb1f33591",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"3bdf3172-bf57-4483-b50d-68780a03705c",
+      "name":"f6905489-5052-4a2c-a2cf-dfecb1f33591",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"9911819e-0639-4bb5-8130-4e59253ece85",
+                    "name":"9eb1b3bd-a7f3-4af3-8998-21f1e88f63cb",
                     "path":"sprites/spr_shade_stalker_idle_strip4/spr_shade_stalker_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"99c36882-5cf0-4aec-b7f8-b8e574fa397f",
+              "id":"97098cc5-836b-46ca-adc9-d56e96e95dbb",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"15b12314-6a61-4e02-9bd3-ee74b44dd100",
+                    "name":"f5caffdf-f007-486f-b881-3928dec45c6b",
                     "path":"sprites/spr_shade_stalker_idle_strip4/spr_shade_stalker_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"b6a8d6b7-9249-4487-b650-185e5afd41d4",
+              "id":"97e9400c-b01d-4271-9648-e07bc9e32f63",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"9a618e86-75e8-4f76-a58d-01c8264ba8da",
+                    "name":"e9c45e83-d743-475f-a995-d8d87175120e",
                     "path":"sprites/spr_shade_stalker_idle_strip4/spr_shade_stalker_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"301f1aba-e9cc-4e34-86b0-087aabbdcfea",
+              "id":"00cec076-9b21-4c96-bfea-eb80ed812444",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"30556631-3723-4880-b617-7344f06c3c1f",
+                    "name":"29c596f8-2bc4-43de-81d1-b5a047069128",
                     "path":"sprites/spr_shade_stalker_idle_strip4/spr_shade_stalker_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"0e0b2b91-0823-4b32-a2e2-2d3b31b2b264",
+              "id":"2d3ac928-059c-4fbe-8b52-a819b3a7ca34",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

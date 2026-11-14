@@ -29,7 +29,13 @@ function scr_build_overworld() {
         layer_set_visible(layer_get_id(_def.name), _def.visible);
     }
     scr_map_hook_player_collision();
-    scr_map_spawn_markers(scr_overworld_markers());
+    // Chapter 2: the Millhaven Road branch (wrenfield/overworld_patch). Tiles first, then one marker
+    // pass so a spawn name such as "millhaven_road" or "from_wrenfield_west" is found.
+    scr_wf_apply_patch(scr_wf_overworld_patch());
+    var _ow_markers = scr_overworld_markers();
+    var _wf_markers = scr_wf_overworld_markers();
+    for (var _wm = 0; _wm < array_length(_wf_markers); _wm++) array_push(_ow_markers, _wf_markers[_wm]);
+    scr_map_spawn_markers(_ow_markers);
     scr_map_enable_camera(320, 180);
     scr_camera_follow_player();
     show_debug_message("scr_build_overworld: " + string((get_timer() - _t0) / 1000) + " ms");

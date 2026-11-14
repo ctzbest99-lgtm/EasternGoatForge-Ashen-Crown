@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"b54793c6-b133-4050-aca6-620c9271df02",
-      "name":"b54793c6-b133-4050-aca6-620c9271df02",
+      "%Name":"0dd4d401-840f-42e9-aab4-30284a5afd0b",
+      "name":"0dd4d401-840f-42e9-aab4-30284a5afd0b",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"ef7d0bc4-863a-4984-8a1f-5b8acad005ef",
+      "%Name":"0a3dca1a-8a25-41ed-850e-b3a1dbf48568",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"ef7d0bc4-863a-4984-8a1f-5b8acad005ef",
+      "name":"0a3dca1a-8a25-41ed-850e-b3a1dbf48568",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"b54793c6-b133-4050-aca6-620c9271df02",
+                    "name":"0dd4d401-840f-42e9-aab4-30284a5afd0b",
                     "path":"sprites/spr_bg_battle_lower_city/spr_bg_battle_lower_city.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"88a22a02-cbfc-49c5-9337-f4b7d93888e5",
+              "id":"6facdbe2-1799-4e19-8355-3472c52ef74c",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

@@ -202,9 +202,19 @@ function scr_ch1_portrait(_speaker, _expr = "neutral") {
     else if (_who == "renn" || _who == "old hunter renn" || _who == "old renn") _stem = "renn";
     else if (_who == "fallen knight") _stem = "fallen_knight_story";
     else if (_who == "reeve calder" || _who == "calder") _stem = "reeve_calder"; // neutral / stern / weary (Design batch 6)
+    // Chapter 2 (Design): bram shaken/afraid/grateful, oda worried/pleading/relieved,
+    // perrin neutral/grim/warm, len neutral/nervous/smile, taren neutral/determined/wry.
+    else if (_who == "bram") _stem = "bram";
+    else if (_who == "oda") _stem = "oda";
+    else if (_who == "perrin") _stem = "perrin";
+    else if (_who == "len") _stem = "len";
+    else if (_who == "taren" || _who == "taren holt") _stem = "taren";
     if (_stem == "") return -1;
     var _spr = scr_sprite_index("spr_portrait_" + _stem + "_" + _expr);
     if (!scr_sprite_is_valid(_spr)) _spr = scr_sprite_index("spr_portrait_" + _stem + "_neutral");
+    // Sets without a neutral face use their calmest expression as the default.
+    if (!scr_sprite_is_valid(_spr) && _stem == "bram") _spr = scr_sprite_index("spr_portrait_bram_shaken");
+    if (!scr_sprite_is_valid(_spr) && _stem == "oda") _spr = scr_sprite_index("spr_portrait_oda_worried");
     // Design filenames are spr_portrait_<name>_<expr> — also try unsuffixed folder names
     if (!scr_sprite_is_valid(_spr)) {
         var _alt = "spr_portrait_";

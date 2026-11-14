@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"7f3b5998-3990-4128-97f1-2e05c8d2a333",
-      "name":"7f3b5998-3990-4128-97f1-2e05c8d2a333",
+      "%Name":"3dd46f38-1fe0-4603-b148-5fafe5c226b0",
+      "name":"3dd46f38-1fe0-4603-b148-5fafe5c226b0",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"a8f4f64e-b2cf-4322-945e-5678a4d5b6c8",
+      "%Name":"08b5a9c6-0faf-4c73-833c-47c492c7cd45",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"a8f4f64e-b2cf-4322-945e-5678a4d5b6c8",
+      "name":"08b5a9c6-0faf-4c73-833c-47c492c7cd45",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"7f3b5998-3990-4128-97f1-2e05c8d2a333",
+                    "name":"3dd46f38-1fe0-4603-b148-5fafe5c226b0",
                     "path":"sprites/spr_portrait_kael_surprised/spr_portrait_kael_surprised.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"40d98752-bd85-4b55-acc3-d0b86172fced",
+              "id":"fbd42886-c3b6-4783-847b-65ae1d2440a8",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

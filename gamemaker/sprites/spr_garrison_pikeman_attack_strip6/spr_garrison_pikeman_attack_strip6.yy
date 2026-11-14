@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"bf1c7199-bc7f-4f1e-b8aa-9ba658d29a85",
-      "name":"bf1c7199-bc7f-4f1e-b8aa-9ba658d29a85",
+      "%Name":"d7c3d88e-a1b7-474f-9054-e47dc903dd60",
+      "name":"d7c3d88e-a1b7-474f-9054-e47dc903dd60",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"c66cf599-d363-4ce8-9419-72e93fb91c4a",
-      "name":"c66cf599-d363-4ce8-9419-72e93fb91c4a",
+      "%Name":"c67a4aba-0b7c-4071-93b8-11948c6032d7",
+      "name":"c67a4aba-0b7c-4071-93b8-11948c6032d7",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"070af9ff-52b7-4f70-b27c-de10d9e2f45f",
-      "name":"070af9ff-52b7-4f70-b27c-de10d9e2f45f",
+      "%Name":"4b8ca098-88b5-4e1f-96b6-b03b2b91f491",
+      "name":"4b8ca098-88b5-4e1f-96b6-b03b2b91f491",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"cb5a6361-91e1-4bb1-b417-7d25eb1c2e5f",
-      "name":"cb5a6361-91e1-4bb1-b417-7d25eb1c2e5f",
+      "%Name":"42b0645d-249b-4836-9b3b-0ba5f29b0631",
+      "name":"42b0645d-249b-4836-9b3b-0ba5f29b0631",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"4ed7a4f3-347d-46eb-ada8-fd6bc640fe81",
-      "name":"4ed7a4f3-347d-46eb-ada8-fd6bc640fe81",
+      "%Name":"7d7d6926-ac08-45a4-8167-28ec7ced2eec",
+      "name":"7d7d6926-ac08-45a4-8167-28ec7ced2eec",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"af13d345-9848-441f-9398-dd1842ae048e",
-      "name":"af13d345-9848-441f-9398-dd1842ae048e",
+      "%Name":"a75af2ed-2331-4741-8abc-0607452fabaa",
+      "name":"a75af2ed-2331-4741-8abc-0607452fabaa",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"ebd5341f-303c-4122-9aa8-5655869b766c",
+      "%Name":"9c02c641-b479-46ad-b6a5-8cf3ccd6ad5a",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"ebd5341f-303c-4122-9aa8-5655869b766c",
+      "name":"9c02c641-b479-46ad-b6a5-8cf3ccd6ad5a",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"bf1c7199-bc7f-4f1e-b8aa-9ba658d29a85",
+                    "name":"d7c3d88e-a1b7-474f-9054-e47dc903dd60",
                     "path":"sprites/spr_garrison_pikeman_attack_strip6/spr_garrison_pikeman_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d6e4657f-4521-4ebe-9ca9-f23b13780ec0",
+              "id":"aaff827d-b9b2-4f40-abc5-eac6b245a9b6",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"c66cf599-d363-4ce8-9419-72e93fb91c4a",
+                    "name":"c67a4aba-0b7c-4071-93b8-11948c6032d7",
                     "path":"sprites/spr_garrison_pikeman_attack_strip6/spr_garrison_pikeman_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f281ff9b-7555-4f0d-bd29-d8fa608d77a2",
+              "id":"8f47e0e0-1ffe-4649-b009-94cf26e3b4d2",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"070af9ff-52b7-4f70-b27c-de10d9e2f45f",
+                    "name":"4b8ca098-88b5-4e1f-96b6-b03b2b91f491",
                     "path":"sprites/spr_garrison_pikeman_attack_strip6/spr_garrison_pikeman_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"812e13a1-d50f-4b37-afb6-8ade3d5b7ecb",
+              "id":"cba546ee-4db4-45be-bacc-bead605de4c8",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"cb5a6361-91e1-4bb1-b417-7d25eb1c2e5f",
+                    "name":"42b0645d-249b-4836-9b3b-0ba5f29b0631",
                     "path":"sprites/spr_garrison_pikeman_attack_strip6/spr_garrison_pikeman_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"b663488b-9579-4bd4-a0db-d53689fba116",
+              "id":"023786a8-7538-4e6d-bb29-211bb7cc3c94",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"4ed7a4f3-347d-46eb-ada8-fd6bc640fe81",
+                    "name":"7d7d6926-ac08-45a4-8167-28ec7ced2eec",
                     "path":"sprites/spr_garrison_pikeman_attack_strip6/spr_garrison_pikeman_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"86514b68-73d5-44f2-b172-3a2c9cdf1ca9",
+              "id":"9a33d70d-ce7c-4d86-9785-4d03372d31c6",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"af13d345-9848-441f-9398-dd1842ae048e",
+                    "name":"a75af2ed-2331-4741-8abc-0607452fabaa",
                     "path":"sprites/spr_garrison_pikeman_attack_strip6/spr_garrison_pikeman_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"72ce96c1-27e9-43c8-a30e-9476d84a009b",
+              "id":"586a6052-5cdb-4af3-a0e0-8023c44be1f2",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"25852179-b66f-4f39-9820-e50600bddc53",
-      "name":"25852179-b66f-4f39-9820-e50600bddc53",
+      "%Name":"7b0a873a-5320-4114-b336-35d25e4f362a",
+      "name":"7b0a873a-5320-4114-b336-35d25e4f362a",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"1dbed998-7642-4c79-ba36-a2e62715f802",
-      "name":"1dbed998-7642-4c79-ba36-a2e62715f802",
+      "%Name":"1158aece-36fe-4200-8678-a933e57b52a0",
+      "name":"1158aece-36fe-4200-8678-a933e57b52a0",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"0d9be115-c70b-46d6-95e7-007d9a504cd4",
-      "name":"0d9be115-c70b-46d6-95e7-007d9a504cd4",
+      "%Name":"3aa7cf5d-1757-45d1-8666-8d0fa8115a7f",
+      "name":"3aa7cf5d-1757-45d1-8666-8d0fa8115a7f",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"1fd5051e-4501-4d52-bf63-c0e38e029446",
-      "name":"1fd5051e-4501-4d52-bf63-c0e38e029446",
+      "%Name":"510464a5-1270-4948-98c0-53946f1004c1",
+      "name":"510464a5-1270-4948-98c0-53946f1004c1",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"4f95f1f8-15c0-4057-9f08-12847a806425",
+      "%Name":"150780f7-7ab0-4538-bd0a-be13a989ccdd",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"4f95f1f8-15c0-4057-9f08-12847a806425",
+      "name":"150780f7-7ab0-4538-bd0a-be13a989ccdd",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"25852179-b66f-4f39-9820-e50600bddc53",
+                    "name":"7b0a873a-5320-4114-b336-35d25e4f362a",
                     "path":"sprites/spr_door_warden_ow16_walk_right_strip4/spr_door_warden_ow16_walk_right_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"9e1ae71e-0adf-477c-b068-dcd217990160",
+              "id":"29b23787-1387-4c96-8c3d-458616b50132",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"1dbed998-7642-4c79-ba36-a2e62715f802",
+                    "name":"1158aece-36fe-4200-8678-a933e57b52a0",
                     "path":"sprites/spr_door_warden_ow16_walk_right_strip4/spr_door_warden_ow16_walk_right_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"3cfb704e-3170-40e4-85a4-224fac0e07a9",
+              "id":"ff6b4a41-4134-4ec2-944a-c6c0b9aaa043",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0d9be115-c70b-46d6-95e7-007d9a504cd4",
+                    "name":"3aa7cf5d-1757-45d1-8666-8d0fa8115a7f",
                     "path":"sprites/spr_door_warden_ow16_walk_right_strip4/spr_door_warden_ow16_walk_right_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"43bb50e3-9328-48bb-a1c5-c8b22c1e3231",
+              "id":"cbde8f24-abf6-4705-8084-a52a01bcac97",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"1fd5051e-4501-4d52-bf63-c0e38e029446",
+                    "name":"510464a5-1270-4948-98c0-53946f1004c1",
                     "path":"sprites/spr_door_warden_ow16_walk_right_strip4/spr_door_warden_ow16_walk_right_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f8e5af6e-eddc-4eb3-927b-d28930697ac9",
+              "id":"bd734b0b-7459-450d-8a1e-a6d13042b1aa",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

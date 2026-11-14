@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"986cd118-4418-4267-aea9-c72f9bcb7ec0",
-      "name":"986cd118-4418-4267-aea9-c72f9bcb7ec0",
+      "%Name":"e1e74c6c-b0ae-41aa-876e-7cdb9213e5ce",
+      "name":"e1e74c6c-b0ae-41aa-876e-7cdb9213e5ce",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"5b484540-a329-48fa-b256-04b4c729439f",
+      "%Name":"cc13be13-11e7-4916-a611-2c6f3dbb30f0",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"5b484540-a329-48fa-b256-04b4c729439f",
+      "name":"cc13be13-11e7-4916-a611-2c6f3dbb30f0",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"986cd118-4418-4267-aea9-c72f9bcb7ec0",
+                    "name":"e1e74c6c-b0ae-41aa-876e-7cdb9213e5ce",
                     "path":"sprites/spr_portrait_marda_smirk/spr_portrait_marda_smirk.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"63d65fd2-fddb-4465-830f-1dc9c34f193b",
+              "id":"9c6c8733-f56f-4e58-92e0-0463fbfd8883",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"6e75505b-a89f-4a3a-af02-02767b5d781b",
-      "name":"6e75505b-a89f-4a3a-af02-02767b5d781b",
+      "%Name":"5342f6f5-4f60-4dcd-944d-21ed6525cbf6",
+      "name":"5342f6f5-4f60-4dcd-944d-21ed6525cbf6",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"4673d216-91e4-453e-abe9-d5e76ad5e83b",
-      "name":"4673d216-91e4-453e-abe9-d5e76ad5e83b",
+      "%Name":"3b4ad364-e4a5-4934-835f-783ed37fe774",
+      "name":"3b4ad364-e4a5-4934-835f-783ed37fe774",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"037f4253-48ca-4c4d-bf43-f707ab9b4b97",
-      "name":"037f4253-48ca-4c4d-bf43-f707ab9b4b97",
+      "%Name":"90390b1a-caad-4f39-b78e-0e626a3a9c3a",
+      "name":"90390b1a-caad-4f39-b78e-0e626a3a9c3a",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"fc0329f3-0a99-4cfb-9c33-1735f72aff79",
-      "name":"fc0329f3-0a99-4cfb-9c33-1735f72aff79",
+      "%Name":"7a0a85b6-ab3a-4d84-ace1-32bd53991855",
+      "name":"7a0a85b6-ab3a-4d84-ace1-32bd53991855",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"612b17f6-5af7-4f92-bbf7-1d0cbe42be08",
+      "%Name":"2c33d07a-1fb0-4cf0-b50c-22f61187a6d6",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"612b17f6-5af7-4f92-bbf7-1d0cbe42be08",
+      "name":"2c33d07a-1fb0-4cf0-b50c-22f61187a6d6",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"6e75505b-a89f-4a3a-af02-02767b5d781b",
+                    "name":"5342f6f5-4f60-4dcd-944d-21ed6525cbf6",
                     "path":"sprites/spr_glyph_wisp_idle_strip4/spr_glyph_wisp_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"69ce673f-bad1-4ac3-86c5-4376665ebb07",
+              "id":"ea901cbe-d4a3-4125-80c7-acf9ec10b87a",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"4673d216-91e4-453e-abe9-d5e76ad5e83b",
+                    "name":"3b4ad364-e4a5-4934-835f-783ed37fe774",
                     "path":"sprites/spr_glyph_wisp_idle_strip4/spr_glyph_wisp_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"215738e4-6508-49a6-8840-d2ee7f3427a1",
+              "id":"1b0cea89-e102-42f8-83c2-4a8e1b6f365c",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"037f4253-48ca-4c4d-bf43-f707ab9b4b97",
+                    "name":"90390b1a-caad-4f39-b78e-0e626a3a9c3a",
                     "path":"sprites/spr_glyph_wisp_idle_strip4/spr_glyph_wisp_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"8bb1b975-385d-4332-880f-891fe47b7d51",
+              "id":"341140ab-d478-4b94-b52a-e749018116b3",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"fc0329f3-0a99-4cfb-9c33-1735f72aff79",
+                    "name":"7a0a85b6-ab3a-4d84-ace1-32bd53991855",
                     "path":"sprites/spr_glyph_wisp_idle_strip4/spr_glyph_wisp_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"7d4dd808-a717-4a74-81be-47eb9f4aaee9",
+              "id":"a7e694fe-723e-4592-8b04-586198c3eadc",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

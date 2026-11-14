@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"79ea9738-f901-4fb6-aba6-5b45e35e1328",
-      "name":"79ea9738-f901-4fb6-aba6-5b45e35e1328",
+      "%Name":"44b2cfcc-caad-422c-bbf3-cd37780df231",
+      "name":"44b2cfcc-caad-422c-bbf3-cd37780df231",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"0ffd961f-8b89-4841-8703-25ad978c7596",
-      "name":"0ffd961f-8b89-4841-8703-25ad978c7596",
+      "%Name":"d4e2d9ad-1915-40c6-9d6e-ffc148a16646",
+      "name":"d4e2d9ad-1915-40c6-9d6e-ffc148a16646",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"151ff53f-7139-4d76-bb60-27676488c060",
-      "name":"151ff53f-7139-4d76-bb60-27676488c060",
+      "%Name":"de787843-e091-497d-a9f5-c6e490321bb0",
+      "name":"de787843-e091-497d-a9f5-c6e490321bb0",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"73f74653-9355-448f-b53c-847d43970275",
-      "name":"73f74653-9355-448f-b53c-847d43970275",
+      "%Name":"dba5dee5-7d50-4c47-a330-30d3d48f6555",
+      "name":"dba5dee5-7d50-4c47-a330-30d3d48f6555",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"67ca6d7d-df86-4d45-9512-9901e931d9e9",
-      "name":"67ca6d7d-df86-4d45-9512-9901e931d9e9",
+      "%Name":"3db1b8fe-bd0c-4ec0-ad67-b004e853245d",
+      "name":"3db1b8fe-bd0c-4ec0-ad67-b004e853245d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"d6894a1a-0a6a-4ced-909e-0a7dc2cb73a9",
-      "name":"d6894a1a-0a6a-4ced-909e-0a7dc2cb73a9",
+      "%Name":"8b6ee056-ad4c-4ac3-aa23-fe085168871e",
+      "name":"8b6ee056-ad4c-4ac3-aa23-fe085168871e",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"1dbfd6a1-507a-4016-8f66-7b57583203f9",
+      "%Name":"ad84a9bf-c591-4d46-8535-f91ae3ca413d",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"1dbfd6a1-507a-4016-8f66-7b57583203f9",
+      "name":"ad84a9bf-c591-4d46-8535-f91ae3ca413d",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"79ea9738-f901-4fb6-aba6-5b45e35e1328",
+                    "name":"44b2cfcc-caad-422c-bbf3-cd37780df231",
                     "path":"sprites/spr_glyph_wisp_attack_strip6/spr_glyph_wisp_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"61cd4fb7-f8c5-43f9-a2f3-7c72b123344c",
+              "id":"3c196c2f-6946-411b-acf4-315b6f4bea5c",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0ffd961f-8b89-4841-8703-25ad978c7596",
+                    "name":"d4e2d9ad-1915-40c6-9d6e-ffc148a16646",
                     "path":"sprites/spr_glyph_wisp_attack_strip6/spr_glyph_wisp_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"72438f3e-9d7a-41d4-8ed4-26236ee7d05d",
+              "id":"b988d5a8-8bcf-41f8-8142-ace946a5400f",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"151ff53f-7139-4d76-bb60-27676488c060",
+                    "name":"de787843-e091-497d-a9f5-c6e490321bb0",
                     "path":"sprites/spr_glyph_wisp_attack_strip6/spr_glyph_wisp_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f9e382e9-ee01-495f-bfb3-05e881291316",
+              "id":"b010ff70-f2a6-415e-9efb-f7491d239432",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"73f74653-9355-448f-b53c-847d43970275",
+                    "name":"dba5dee5-7d50-4c47-a330-30d3d48f6555",
                     "path":"sprites/spr_glyph_wisp_attack_strip6/spr_glyph_wisp_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"4baf6d18-c539-481c-81a4-e3e0919c7292",
+              "id":"55ba1a10-3b60-43ab-9dc9-3617053ba9b5",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"67ca6d7d-df86-4d45-9512-9901e931d9e9",
+                    "name":"3db1b8fe-bd0c-4ec0-ad67-b004e853245d",
                     "path":"sprites/spr_glyph_wisp_attack_strip6/spr_glyph_wisp_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"1a73aa6f-d849-4ff2-bc47-26394f8880ce",
+              "id":"ba889fb3-c125-4e86-981e-9908e5838832",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"d6894a1a-0a6a-4ced-909e-0a7dc2cb73a9",
+                    "name":"8b6ee056-ad4c-4ac3-aa23-fe085168871e",
                     "path":"sprites/spr_glyph_wisp_attack_strip6/spr_glyph_wisp_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"c2cdfe74-6720-4093-b135-5018f302c353",
+              "id":"30e12f0a-fef4-4ff4-8220-1c233c0094c5",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

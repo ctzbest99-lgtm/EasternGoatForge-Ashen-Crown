@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"85a0104b-f8c4-4729-aaca-b7a36472a769",
-      "name":"85a0104b-f8c4-4729-aaca-b7a36472a769",
+      "%Name":"99d87e4c-4fdb-4f27-9c4c-6d1a8bd7abbf",
+      "name":"99d87e4c-4fdb-4f27-9c4c-6d1a8bd7abbf",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"5bdd818f-cb95-4335-a1c4-5a3b941d437c",
-      "name":"5bdd818f-cb95-4335-a1c4-5a3b941d437c",
+      "%Name":"0348e333-3724-4bcb-a455-09fd633713dd",
+      "name":"0348e333-3724-4bcb-a455-09fd633713dd",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"454cdcad-de41-4304-b037-45dd402343cb",
-      "name":"454cdcad-de41-4304-b037-45dd402343cb",
+      "%Name":"69499a2b-2125-4140-97f7-32f7a14518ec",
+      "name":"69499a2b-2125-4140-97f7-32f7a14518ec",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"a8848e19-9ce1-4df7-a63f-ce55a260a884",
-      "name":"a8848e19-9ce1-4df7-a63f-ce55a260a884",
+      "%Name":"be8cba9e-337a-4237-847d-f8cf1dda98df",
+      "name":"be8cba9e-337a-4237-847d-f8cf1dda98df",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"a756f8e3-66c6-463b-9240-5b0369dca4fe",
+      "%Name":"5e8f7da6-ac67-4786-88be-9faa5b0889f2",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"a756f8e3-66c6-463b-9240-5b0369dca4fe",
+      "name":"5e8f7da6-ac67-4786-88be-9faa5b0889f2",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"85a0104b-f8c4-4729-aaca-b7a36472a769",
+                    "name":"99d87e4c-4fdb-4f27-9c4c-6d1a8bd7abbf",
                     "path":"sprites/spr_aethari_automaton_ow16_walk_left_strip4/spr_aethari_automaton_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"de383132-db8f-42a8-8ff6-2a591162a7d2",
+              "id":"d5721d0c-e447-4820-8e27-8820923d8efe",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"5bdd818f-cb95-4335-a1c4-5a3b941d437c",
+                    "name":"0348e333-3724-4bcb-a455-09fd633713dd",
                     "path":"sprites/spr_aethari_automaton_ow16_walk_left_strip4/spr_aethari_automaton_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"84a00946-5366-4cc0-82c3-0b1d076d9351",
+              "id":"670d0026-c86c-42f6-bc07-9bc6378339e8",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"454cdcad-de41-4304-b037-45dd402343cb",
+                    "name":"69499a2b-2125-4140-97f7-32f7a14518ec",
                     "path":"sprites/spr_aethari_automaton_ow16_walk_left_strip4/spr_aethari_automaton_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"90debd9b-452b-40ed-85bc-59edd0005f8a",
+              "id":"21f09b6f-c98b-4d72-bfbf-2b1eb4f32a0e",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a8848e19-9ce1-4df7-a63f-ce55a260a884",
+                    "name":"be8cba9e-337a-4237-847d-f8cf1dda98df",
                     "path":"sprites/spr_aethari_automaton_ow16_walk_left_strip4/spr_aethari_automaton_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"7fb7c9f8-9f75-41ee-9ca0-fe33be5d8060",
+              "id":"c3c0d1f7-2263-44f0-b32b-aaaf08a8062d",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

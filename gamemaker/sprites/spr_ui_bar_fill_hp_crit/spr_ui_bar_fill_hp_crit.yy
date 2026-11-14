@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"a8ce3c30-983d-4ccc-ae53-b57389b1daac",
-      "name":"a8ce3c30-983d-4ccc-ae53-b57389b1daac",
+      "%Name":"4cec91b0-dedb-4363-a1ca-a839a9f50f1f",
+      "name":"4cec91b0-dedb-4363-a1ca-a839a9f50f1f",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"78b2039e-9f0f-450c-973e-f94871434595",
+      "%Name":"cab81a45-f698-442a-8cc2-9827cde04c99",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"78b2039e-9f0f-450c-973e-f94871434595",
+      "name":"cab81a45-f698-442a-8cc2-9827cde04c99",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a8ce3c30-983d-4ccc-ae53-b57389b1daac",
+                    "name":"4cec91b0-dedb-4363-a1ca-a839a9f50f1f",
                     "path":"sprites/spr_ui_bar_fill_hp_crit/spr_ui_bar_fill_hp_crit.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"ce768fd0-df1a-4506-a35a-c2b05ac564c8",
+              "id":"aaa0ab21-0853-4c22-ab45-885cfe62d259",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"5c91f43c-1075-4d69-a1ec-dfede79afe0f",
-      "name":"5c91f43c-1075-4d69-a1ec-dfede79afe0f",
+      "%Name":"3ff70a61-41d3-478e-9f78-517341f3edfe",
+      "name":"3ff70a61-41d3-478e-9f78-517341f3edfe",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"ef2f2f4f-a6ab-43e4-8a2d-72b060cc8e4f",
-      "name":"ef2f2f4f-a6ab-43e4-8a2d-72b060cc8e4f",
+      "%Name":"fd16af86-715c-47b8-a833-8814618501f3",
+      "name":"fd16af86-715c-47b8-a833-8814618501f3",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"0707e89a-d055-42ae-bf6c-215c638f94a8",
-      "name":"0707e89a-d055-42ae-bf6c-215c638f94a8",
+      "%Name":"d0098c15-3adf-4e32-aeeb-1bb408fb55c5",
+      "name":"d0098c15-3adf-4e32-aeeb-1bb408fb55c5",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"e9ac701b-ab3a-4b8b-9cb3-7904922d19d0",
-      "name":"e9ac701b-ab3a-4b8b-9cb3-7904922d19d0",
+      "%Name":"9c6c4e30-e3c2-4e40-9fa6-1f67dc7edf94",
+      "name":"9c6c4e30-e3c2-4e40-9fa6-1f67dc7edf94",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"eb69c295-9618-42d9-a351-0325d38e5b3d",
+      "%Name":"309c2dd6-a5f7-434e-a2b9-c0be91f20ec7",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"eb69c295-9618-42d9-a351-0325d38e5b3d",
+      "name":"309c2dd6-a5f7-434e-a2b9-c0be91f20ec7",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"5c91f43c-1075-4d69-a1ec-dfede79afe0f",
+                    "name":"3ff70a61-41d3-478e-9f78-517341f3edfe",
                     "path":"sprites/spr_reeve_calder_hurt_strip4/spr_reeve_calder_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d854c50c-4cb0-41fb-a7bd-bfdd0bd4fa52",
+              "id":"f223e8d7-2c27-4ccd-a74a-bf7b22e485fb",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ef2f2f4f-a6ab-43e4-8a2d-72b060cc8e4f",
+                    "name":"fd16af86-715c-47b8-a833-8814618501f3",
                     "path":"sprites/spr_reeve_calder_hurt_strip4/spr_reeve_calder_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"09533c11-7104-4046-aaec-0702914e6962",
+              "id":"b3906e85-35eb-4cad-beb7-2015e0d2dd1e",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0707e89a-d055-42ae-bf6c-215c638f94a8",
+                    "name":"d0098c15-3adf-4e32-aeeb-1bb408fb55c5",
                     "path":"sprites/spr_reeve_calder_hurt_strip4/spr_reeve_calder_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"409907e3-8280-4280-9cb5-1d2bdf36be17",
+              "id":"f4189d1c-cc43-44ca-8b2b-22deff2c3717",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"e9ac701b-ab3a-4b8b-9cb3-7904922d19d0",
+                    "name":"9c6c4e30-e3c2-4e40-9fa6-1f67dc7edf94",
                     "path":"sprites/spr_reeve_calder_hurt_strip4/spr_reeve_calder_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"8c76f541-1a98-4de1-8aa0-ff8a37b65821",
+              "id":"284f111c-9613-44d9-8b28-62cf5db7311e",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

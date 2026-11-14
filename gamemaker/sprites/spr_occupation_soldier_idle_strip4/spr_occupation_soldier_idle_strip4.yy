@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"d9161930-04df-420d-9b92-344ff2659590",
-      "name":"d9161930-04df-420d-9b92-344ff2659590",
+      "%Name":"696d87fe-e5fc-4db6-855e-6b0363de2e8d",
+      "name":"696d87fe-e5fc-4db6-855e-6b0363de2e8d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"16093676-0fd8-4232-a7e8-2a0851174205",
-      "name":"16093676-0fd8-4232-a7e8-2a0851174205",
+      "%Name":"b3bad7c2-233e-4a70-b096-7cfe15276da5",
+      "name":"b3bad7c2-233e-4a70-b096-7cfe15276da5",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"d7cf3e60-1fd9-4604-932e-d626c9aad410",
-      "name":"d7cf3e60-1fd9-4604-932e-d626c9aad410",
+      "%Name":"7ceb4e27-dda2-4885-a9fe-33b211d1ab57",
+      "name":"7ceb4e27-dda2-4885-a9fe-33b211d1ab57",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"116f4f89-4b57-465a-bd68-4842f526a2d2",
-      "name":"116f4f89-4b57-465a-bd68-4842f526a2d2",
+      "%Name":"db55ca79-887f-4250-8d9f-60764158e875",
+      "name":"db55ca79-887f-4250-8d9f-60764158e875",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"b9e9aeb2-24ae-4044-a311-3e15e3071993",
+      "%Name":"74bb7b14-0afe-431a-8f57-6ff6db421a77",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"b9e9aeb2-24ae-4044-a311-3e15e3071993",
+      "name":"74bb7b14-0afe-431a-8f57-6ff6db421a77",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"d9161930-04df-420d-9b92-344ff2659590",
+                    "name":"696d87fe-e5fc-4db6-855e-6b0363de2e8d",
                     "path":"sprites/spr_occupation_soldier_idle_strip4/spr_occupation_soldier_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"4e219315-af12-413c-8d72-264c4d63fd99",
+              "id":"89ee0ac8-6c65-4229-8269-174c80ca7a54",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"16093676-0fd8-4232-a7e8-2a0851174205",
+                    "name":"b3bad7c2-233e-4a70-b096-7cfe15276da5",
                     "path":"sprites/spr_occupation_soldier_idle_strip4/spr_occupation_soldier_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f57112c9-d10e-4c2e-9b9a-febac8b4934d",
+              "id":"6e79810f-2931-49c1-ab94-85d5b11df1a9",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"d7cf3e60-1fd9-4604-932e-d626c9aad410",
+                    "name":"7ceb4e27-dda2-4885-a9fe-33b211d1ab57",
                     "path":"sprites/spr_occupation_soldier_idle_strip4/spr_occupation_soldier_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"031881e3-eb9a-48dd-9598-27b22604fcd2",
+              "id":"b47b1162-fbf7-4973-bb7e-eb74b60ff587",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"116f4f89-4b57-465a-bd68-4842f526a2d2",
+                    "name":"db55ca79-887f-4250-8d9f-60764158e875",
                     "path":"sprites/spr_occupation_soldier_idle_strip4/spr_occupation_soldier_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"7736355b-9e57-4926-a52c-19822cba5b5f",
+              "id":"db06f896-6310-4cad-bd4c-0f3e67eedc95",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
