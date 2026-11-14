@@ -75,14 +75,14 @@ This act gathers the party, plants Alden as a friend, and gives the player one r
 
 ## 3. Chapter map
 
-Act I was a single chapter (Chapter 1, "The Night of Ash"). **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Act II is four chapters (Chapters 2–5), one recruit and one chapter boss each, ending on the road to the Blackwood. Chapter 2's title, **The Weight of the Yoke**, is **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Titles for Chapters 3–5 and all suggested levels stay **[PROPOSED]**.
+Act I was a single chapter (Chapter 1, "The Night of Ash"). **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Act II is four chapters (Chapters 2–5), one recruit and one chapter boss each, ending on the road to the Blackwood. Chapter 2's title, **The Weight of the Yoke**, and its suggested levels (8–10) are **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Titles for Chapters 3–5 and suggested levels for those chapters stay **[PROPOSED]**. All of `CHAPTER2_SCRIPT.md` is canon.
 
-| Chapter | Title **[PROPOSED]** | Main locations | Recruit | Boss | Suggested levels **[PROPOSED]** |
+| Chapter | Title | Main locations | Recruit | Boss | Suggested levels |
 |---|---|---|---|---|---|
-| 2 | The Weight of the Yoke **[C-confirmed]** | Road from the Watchtower; optional return to Greyhaven; **Wrenfield** **[C-confirmed]** | Taren Holt | **Reeve Calder**, Crown occupation officer **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) | 8–10 |
-| 3 | Crowns and Alleys | Road to the capital; **Valemere** (Lower City as the story focus; other districts as hub) | Lyra Veyne | A Lower City enforcer tied to the stolen document, not a named Black Hand leader **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Working name **the Debtman** is still **[PROPOSED]**. | 10–13 |
-| 4 | The Old Name | Countryside a day's travel from Valemere; **the Hollow Sanctuary** **[C-confirmed]** | Caelan Rook | An ancient sanctuary guardian-construct **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Working name **the Sanctuary Warden** is still **[PROPOSED]**. | 13–16 |
-| 5 | The Deserted Oath | **The Blackwood Road Garrison** **[C-confirmed]** | Sera Thorn | **Commander Hailen**, the garrison's commanding officer **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) | 16–18 |
+| 2 | The Weight of the Yoke **[C-confirmed]** | Watchtower backtrack; optional Greyhaven; **Millhaven Road**; **Wrenfield** **[C-confirmed]** | Taren Holt | **Reeve Calder**, Crown occupation officer **[C-confirmed]** | 8–10 **[C-confirmed]** |
+| 3 | Crowns and Alleys **[PROPOSED title]** | Road to the capital; **Valemere** (Lower City as the story focus; other districts as hub) | Lyra Veyne | A Lower City enforcer tied to the stolen document, not a named Black Hand leader **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Working name **the Debtman** is still **[PROPOSED]**. | 10–13 **[PROPOSED]** |
+| 4 | The Old Name **[PROPOSED title]** | Countryside a day's travel from Valemere; **the Hollow Sanctuary** **[C-confirmed]** | Caelan Rook | An ancient sanctuary guardian-construct **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Working name **the Sanctuary Warden** is still **[PROPOSED]**. | 13–16 **[PROPOSED]** |
+| 5 | The Deserted Oath **[PROPOSED title]** | **The Blackwood Road Garrison** **[C-confirmed]** | Sera Thorn | **Commander Hailen**, the garrison's commanding officer **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) | 16–18 **[PROPOSED]** |
 
 Region-to-act mapping for the rest of the game stays **[O]** (question 28). **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) This act uses the Kingdom of Eldoria and Valemere as its hub, and hands off to the Blackwood for Act III. It does not claim the Drowned Coast, Ironspine, Frostwilds, or Ashlands.
 
@@ -92,7 +92,7 @@ Region-to-act mapping for the rest of the game stays **[O]** (question 28). **[C
 
 ## 4. Main quest: Beyond the Veil
 
-**[C]** The quest title and the change from Find Mira are canon. The Chapter 1 script leaves stage `Q_BV_S1` as "Find a way beyond the Veil." Proposed stages for Act II:
+**[C]** The quest title and the change from Find Mira are canon. The Chapter 1 script leaves stage `Q_BV_S1` as "Find a way beyond the Veil." Stages 1–3 are **[C-confirmed]** in `CHAPTER2_SCRIPT.md`. Stages 4–7 remain **[PROPOSED]**.
 
 | Stage | ID | Objective text | Completes when |
 |---|---|---|---|
@@ -104,13 +104,15 @@ Region-to-act mapping for the rest of the game stays **[O]** (question 28). **[C
 | 6 | `Q_BV_S6` | Investigate the Blackwood Road Garrison. | Sera is recruited and the Blackwood lead is obtained |
 | 7 | `Q_BV_S7` | Follow the trail into the Blackwood. | The party enters Act III |
 
-Stage IDs and objective text are **[PROPOSED]**. The completion events they point at are **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) where they match the nine decisions (Taren at Wrenfield, the Lower City document, the Aethari name at the Hollow Sanctuary, Sera and the Blackwood lead at the garrison).
+Stage IDs and objective text for S1–S3 are **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). S4–S7 stay **[PROPOSED]**, though the completion events they point at are **[C-confirmed]** where they match the Act II recruitment decisions.
 
-Optional side-quest hooks, also **[PROPOSED]**, not fully designed here: a Wrenfield family looking for a missing accused relative; a Lower City courier job that can raise or lower Lyra's trust; a Radiant Flame petition in the Temple District (doctrine details and leaders stay **[O]**); a sanctuary side-chamber with fragmented records that hint, but do not explain, Lumen.
+Optional side-quest hooks: **The One on the List** (Oda and Bram in Wrenfield) is **[C-confirmed]** in `CHAPTER2_SCRIPT.md`. Still **[PROPOSED]**, not fully designed: a Lower City courier job that can raise or lower Lyra's trust; a Radiant Flame petition in the Temple District (doctrine details and leaders stay **[O]**); a sanctuary side-chamber with fragmented records that hint, but do not explain, Lumen.
 
 ---
 
-## 5. Chapter 2 — "The Weight of the Yoke" **[PROPOSED title]**
+## 5. Chapter 2 — "The Weight of the Yoke" **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
+
+Full script: `CHAPTER2_SCRIPT.md` (approved Nov 14 2026, 3:00 PM ET). Suggested levels: 8–10.
 
 ### 5.1 Opening, after "everything stops"
 
@@ -120,35 +122,38 @@ Optional side-quest hooks, also **[PROPOSED]**, not fully designed here: a Wrenf
 
 Beats:
 
-1. **[PROPOSED]** Kael tries the door again. It does not open. He understands, at least, that he cannot follow Mira this way. The Blackguard's empty armor is where it fell.
-2. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) He backtracks through the Old Watchtower and out onto the road. He may optionally stop in Greyhaven: Tomas is still unconscious in the forge, tended by Pell. Elira is not resolved. Survivors still do not explain the destruction. **[O]** questions 11, 12, and 16 are untouched.
-3. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Hook toward Millhaven: survivors or travelers mention Crown patrols hanging people for aiding the rebellion in a village near Millhaven, and that **Taren Holt** has been seen with the Broken Yoke. Kael goes looking for him. **[PROPOSED]** The speaker can be Pell, Corwin, or a traveler on the Old Road.
-4. **[PROPOSED]** He travels alone (still Act II, but before the first recruit). Road encounters can start to include Crown patrols as well as the Zone 1 enemy types, at a higher level band.
+1. Kael tries the door again. It does not open. He understands, at least, that he cannot follow Mira this way. The Blackguard's empty armor is where it fell.
+2. He backtracks through the Old Watchtower and out onto the road. He may optionally stop in Greyhaven: Tomas is still unconscious in the forge, tended by Pell. Elira is not resolved. Survivors still do not explain the destruction. **[O]** questions 11, 12, and 16 are untouched. If he visits, Pell and Corwin deliver the hook toward Wrenfield.
+3. **Hook toward Wrenfield, unmissable on the Millhaven Road:** a Traveler delivers it, with a weathered Crown notice as backup. They mention Crown hangings at Wrenfield, near Millhaven, and that **Taren Holt** has been seen with the Broken Yoke. Kael goes looking for him.
+4. He travels alone on the Millhaven Road (still Act II, but before the first recruit). Encounters may include Crown Patrols as well as Bandits and Ash Wolves, at levels 8–10.
 
-Set `flag_act2_started`. Advance to `Q_BV_S2`.
+Set `flag_act2_started`. When the hook is heard and Kael takes the road toward Millhaven, complete `Q_BV_S1` and start `Q_BV_S2`.
 
-The Fallen Knight does not appear at the door. His first Act II sighting is on the road after Taren joins (section 10).
+The Fallen Knight does not appear at the door or in this chapter. His first Act II sighting is on the road to Valemere after Taren joins (section 10 / Chapter 3).
 
 ### 5.2 Wrenfield
 
 **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Wrenfield** is the Crown-occupied village near Millhaven. The Crown has seized several villagers, accused of aiding the rebellion, and scheduled them for public execution. Taren's recruitment starts here.
 
-Millhaven's region, size, layout, and current state stay **[O]** (question 10). This outline does not tour Millhaven. It can be seen as a place-name on a signpost, or heard in Taren's mouth, without being described.
+Millhaven's region, size, layout, and current state stay **[O]** (question 10). This chapter does not tour Millhaven. It can be seen as a place-name on a signpost, or heard in Taren's mouth, without being described.
 
 Key scenes:
 
-1. **Approach.** **[PROPOSED]** Checkpoints on the road. Notices naming the accused as Yoke sympathizers. The village square has been cleared for a hanging. Ordinary soldiers, not monsters, hold the line. Some look unwilling. The Crown is not a cartoon.
-2. **The square.** **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Several villagers bound at the gallows. **Reeve Calder**, a Crown occupation officer, is the chapter boss; he believes he is keeping order in an unstable kingdom. **[PROPOSED]** He reads the sentence. Taren is already here, or arrives as Kael does: bastard sword in hand, trying to stop the hanging without getting the prisoners killed in the rush.
-3. **Recognition.** **[PROPOSED]** Kael and Taren see each other across the square. No long reunion yet. There is no time.
-4. **The fight.** **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) They fight Reeve Calder, a human Crown officer, not an Ash-corrupted foe. **[PROPOSED]** Scripted chaos, then the boss. Kael and Taren fight on the same line for the first time in the game. Rallying Cry can be introduced here as a short tutorial bark once Taren is controllable, or immediately after he joins. Possible kit direction for Calder: heavy guard, a shout that buffs his soldiers, a post-break stance when the detachment falls. If he yields or falls, he should still read as a man who thought he was protecting the kingdom.
-5. **The prisoners.** **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) All of the accused are cut down alive, but only just — a rope is already on a neck when they reach the gallows. The Crown retreats. The village remains occupied; the party does not "liberate" the region. Taren has protected people today. The work is not done.
-6. **Aftermath, personal stake.** Taren's stake is the one already confirmed: freedom is worth fighting for, and these are people the Crown would hang to keep its grip. **[PROPOSED]** He also will not let Kael walk the rest of this road alone. He asks about Greyhaven and Mira; Kael tells him what little he knows (the pendant, the parchment, "She crossed the Crownveil"). Taren does not turn that into a recruitment speech for the Yoke. He joins Kael's search, and he does not hide that the Yoke's fight and Kael's fight are going to keep crossing.
-7. **The Alden seed.** **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Taren speaks of Alden with warmth, as a childhood friend who still shares the dream. He does not know disappointment yet. No split is shown. **[PROPOSED]** A line in this spirit, not final wording: "Alden's in the capital, talking to people who still think the Crown will save them. He'll want to see you." Alden's rank and the Yoke's leadership stay **[O]** (questions 14 and 29).
+1. **Approach.** Checkpoints on the road. A posted list names four accused as Yoke sympathizers, including **Bram**. The village square has been cleared for a hanging. Ordinary soldiers, not monsters, hold the line. Some look unwilling. The Crown is not a cartoon. **Oda**, Bram's sister, can give the optional quest **The One on the List** in the crowd.
+2. **The square.** Several villagers bound at the gallows. **Reeve Calder** stands on the platform and is reading the sentence. He believes he is keeping order in an unstable kingdom. **Taren Holt** is already in the square, bastard sword in hand, trying to stop the hanging without getting the prisoners killed in the rush.
+3. **Recognition and close call.** Kael and Taren see each other across the square. No long reunion yet: "Kael—? Later. The rope." A noose is already on Bram's neck; they cut him down alive. The other three accused are still bound, still alive.
+4. **The fight.** Taren becomes controllable at the start of the Calder fight (2nd party slot; bastard sword; Rallying Cry, Cleave, and Unbowed). The longer join conversation happens after the battle. They fight Reeve Calder, a human Crown officer, not an Ash-corrupted foe, with a small detachment of Crown Soldiers. Kit: Guard; a shout that buffs his soldiers; a heavy strike; a harder stance when the detachment falls.
+5. **The prisoners.** All of the accused are cut down alive. Calder yields, lives, and withdraws with his remaining men to the village checkpoints. The village remains occupied; the party does not "liberate" the region.
+6. **Aftermath, personal stake.** Taren will not let Kael walk the rest of this road alone. He asks about Greyhaven and Mira; Kael tells him what little he knows (the pendant, the parchment, "She crossed the Crownveil," the door that would not open). Taren does not turn this into a recruitment speech for the Yoke. He joins Kael's search, and he does not hide that the Yoke's fight and Kael's fight are going to keep crossing.
+7. **The Alden seed.** Taren speaks of Alden with warmth, as a childhood friend who still shares the dream. He does not know disappointment yet. No split is shown. He says Alden is in the capital, talking to people who still think the Crown will save them, and that he'll want to see Kael. Alden's rank and the Yoke's leadership stay **[O]** (questions 14 and 29).
 8. **Where they grew up** is **[O]** (question 10). They can call each other old friends. They should not settle the town.
+9. **Handoff.** After shops and optional turn-in with Oda, the party takes Wrenfield's west road toward Valemere. Chapter-complete screen and a save prompt. `Q_BV_S3` is active. Chapter 3 begins on that road.
 
-**Boss: Reeve Calder** **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) — a Crown occupation officer who believes he is keeping order. Not Ash-corrupted. His kit and whether he yields or falls stay **[PROPOSED]**.
+**Boss: Reeve Calder** **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) — a Crown occupation officer who believes he is keeping order. Not Ash-corrupted. Kit as above. He yields, lives, and withdraws to the checkpoints.
 
-Suggested flags: `flag_wrenfield_entered`, `flag_execution_stopped`, `flag_taren_recruited`. Advance to `Q_BV_S3`. Taren is now in the party (2 members).
+Village NPCs: **Bram**, **Oda**, **Perrin** (The Bent Post), **Len** (store), a **Crown Sergeant**, and Crown Soldiers. Road NPC: the **Traveler**.
+
+Suggested flags: `flag_act2_started`, `flag_hook_taren`, `flag_wrenfield_entered`, `flag_execution_stopped`, `flag_taren_recruited`, `flag_chapter2_complete`. Advance to `Q_BV_S3`. Taren is now in the party (2 members).
 
 ---
 
