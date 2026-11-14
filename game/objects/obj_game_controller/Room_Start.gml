@@ -23,3 +23,6 @@ if (_g.transition_active) {
     _g.transition_active = false;
     scr_input_block(1);
 }
+
+// Grace period + new steps-until counter after room entry and after returning from battle.
+scr_random_encounter_on_room_start();

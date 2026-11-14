@@ -136,3 +136,115 @@ function scr_town_wake_up_dialogue() {
         "You lost " + string(_gold_lost) + " gold and " + string(_xp_lost) + " EXP."
     ]);
 }
+
+
+/// Reset the random-encounter grace period and roll a new steps-until counter.
+/// Called from obj_game_controller : Room Start on every non-battle room.
+function scr_random_encounter_on_room_start() {
+    scr_game_state_init();
+    var _g = global.game;
+    _g.encounter_grace_steps = ENCOUNTER_GRACE_STEPS;
+    _g.encounter_step_remainder = 0;
+    _g.encounter_steps_until = scr_random_encounter_roll_steps();
+}
+
+function scr_random_encounter_roll_steps() {
+    var _min = max(1, ENCOUNTER_STEPS_MIN);
+    var _max = max(_min, ENCOUNTER_STEPS_MAX);
+    return irandom_range(_min, _max);
+}
+
+/// Advance the random-encounter counter by `_pixels_moved` of actual movement.
+/// Only counts inside an encounter area, and only when input is not locked.
+function scr_random_encounter_tick(_pixels_moved) {
+    scr_game_state_init();
+    var _g = global.game;
+    if (!RANDOM_ENCOUNTERS_ENABLED || !_g.random_encounters_enabled) return;
+    if (_g.battle_active || _g.transition_active || _g.dialogue_open) return;
+    if (!instance_exists(obj_player) || _pixels_moved <= 0) return;
+
+    // Fixed story/boss triggers win over a random roll on the same tile.
+    var _on_trigger = false;
+    with (obj_player) _on_trigger = place_meeting(x, y, obj_encounter_trigger);
+    if (_on_trigger) return;
+
+    var _table = scr_random_encounter_table_at(obj_player.x, obj_player.y);
+    if (!is_array(_table)) return; // safe area (town, or no zone / room table)
+
+    var _size = max(1, ENCOUNTER_STEP_PIXELS);
+    _g.encounter_step_remainder += _pixels_moved;
+
+    while (_g.encounter_step_remainder >= _size) {
+        _g.encounter_step_remainder -= _size;
+
+        if (_g.encounter_grace_steps > 0) {
+            _g.encounter_grace_steps -= 1;
+            continue;
+        }
+
+        if (_g.encounter_steps_until <= 0) {
+            _g.encounter_steps_until = scr_random_encounter_roll_steps();
+        }
+
+        _g.encounter_steps_until -= 1;
+        if (_g.encounter_steps_until > 0) continue;
+
+        var _enemy_id = scr_encounter_table_pick(_table);
+        _g.encounter_steps_until = scr_random_encounter_roll_steps();
+        if (is_undefined(_enemy_id)) continue;
+        // Empty encounter_id: random fights are not recorded in cleared_encounters.
+        scr_encounter_start(_enemy_id, "");
+        return;
+    }
+}
+
+/// Encounter table at a world position: overlapping obj_encounter_zone first,
+/// otherwise the room table from scr_get_room_encounter_table(). Undefined = safe.
+function scr_random_encounter_table_at(_x, _y) {
+    if (instance_exists(obj_player)) {
+        var _zone = noone;
+        with (obj_player) _zone = instance_place(_x, _y, obj_encounter_zone);
+        if (_zone != noone) {
+            var _zone_table = scr_encounter_zone_table(_zone);
+            if (is_array(_zone_table)) return _zone_table;
+        }
+    }
+    return scr_get_room_encounter_table(room);
+}
+
+function scr_encounter_zone_table(_zone) {
+    if (!instance_exists(_zone)) return undefined;
+    if (is_string(_zone.table_id) && _zone.table_id != "") {
+        var _named = scr_get_encounter_table(_zone.table_id);
+        if (is_array(_named)) return _named;
+    }
+    if (is_array(_zone.enemy_table)) return _zone.enemy_table;
+    return undefined;
+}
+
+/// Weighted pick from [{ enemy_id, weight }, ...]. Skips unknown ids and non-positive
+/// weights. Returns an enemy id, or undefined if the table is empty.
+function scr_encounter_table_pick(_table) {
+    if (!is_array(_table)) return undefined;
+    var _ids = [];
+    var _weights = [];
+    var _total = 0;
+    for (var _i = 0; _i < array_length(_table); _i++) {
+        var _entry = _table[_i];
+        if (!is_struct(_entry)) continue;
+        var _id = _entry.enemy_id;
+        var _w = max(0, _entry.weight);
+        if (_w <= 0) continue;
+        if (is_undefined(scr_get_enemy_data(_id))) continue;
+        array_push(_ids, _id);
+        array_push(_weights, _w);
+        _total += _w;
+    }
+    if (_total <= 0) return undefined;
+    var _roll = irandom(_total - 1);
+    for (var _j = 0; _j < array_length(_ids); _j++) {
+        _roll -= _weights[_j];
+        if (_roll < 0) return _ids[_j];
+    }
+    return _ids[array_length(_ids) - 1];
+}

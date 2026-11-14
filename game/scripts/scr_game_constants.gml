@@ -32,6 +32,18 @@
 #macro DEFEAT_GOLD_LOSS_PCT 0.5
 #macro DEFEAT_XP_LOSS_PCT 0.1
 
+// Random encounters while walking (owner decision 2026-11-14; rates pending tuning).
+// A "step" is ENCOUNTER_STEP_PIXELS of actual movement (default: one 32px placeholder tile).
+// After grace, a randomized counter in [MIN, MAX] counts down; 0 starts a fight from the
+// current area table. Standing still, sliding into a wall, or locked input does not count.
+// Set RANDOM_ENCOUNTERS_ENABLED to false to compile them out, or flip
+// global.game.random_encounters_enabled in the debugger at runtime.
+#macro RANDOM_ENCOUNTERS_ENABLED true
+#macro ENCOUNTER_STEP_PIXELS 32
+#macro ENCOUNTER_STEPS_MIN 8
+#macro ENCOUNTER_STEPS_MAX 24
+#macro ENCOUNTER_GRACE_STEPS 5
+
 // Explicit battle states. The battle controller is only ever in exactly one of these.
 enum BATTLE_STATE {
     INTRO,          // announce the enemy

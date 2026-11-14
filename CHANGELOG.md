@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-14 — Random encounters while walking
+- Walking in an encounter area uses a randomized steps-until-encounter counter (distance-based). Steps count only when the player actually moves and input is not locked, after `ENCOUNTER_GRACE_STEPS` following battle or room entry.
+- Defaults (pending tuning): 32 pixels per step, 8–24 steps between fights, 5 grace steps. Disable with `RANDOM_ENCOUNTERS_ENABLED` or `global.game.random_encounters_enabled`.
+- Per-area tables: stretch `obj_encounter_zone` over a wild region (default `zone01_path`, 3:1 Bandit/Fallen Knight) or add a room table in `scr_encounter_tables`. Towns and rooms with no table are safe. `obj_encounter_trigger` remains for fixed boss/story fights.
+- Victory still returns to the exact pre-battle spot; defeat (town wake-up plus gold/XP penalty) is unchanged. Random fights are not added to `cleared_encounters`.
+- Owner decision recorded in docs/DECISIONS_AND_OPEN_QUESTIONS.md; test plan R1–R8 added. Encounter rates and table weights remain pending tuning.
+
 ## 2026-11-14 — Defeat costs gold and XP
 - On defeat, the party loses `DEFEAT_GOLD_LOSS_PCT` (default 50%) of current shared gold, floored, and `DEFEAT_XP_LOSS_PCT` (default 10%) of XP progress toward the next level, never going negative or causing a level-down.
 - No level system exists yet, so the XP penalty is 10% of total shared XP, floored. Exact percentages are pending tuning.

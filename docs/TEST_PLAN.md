@@ -47,6 +47,17 @@ Setup per game/rooms/ROOM_SETUP.md. Controls: arrows move, Z/Enter/Space confirm
 - [ ] B14 X/Backspace in the command menu does nothing harmful with a one-member party.
 - [ ] B15 Defeat penalty (check in the debugger and on the wake-up line "You lost X gold and Y EXP."): gold becomes `gold - floor(gold * DEFEAT_GOLD_LOSS_PCT)` and XP becomes `xp - floor(xp * DEFEAT_XP_LOSS_PCT)` (no level system yet, so the XP cut is of the total; never below 0). Suggested check: win one Bandit first (gold 4, XP 6), then lose — gold 2, XP 6 (`floor(6 * 0.1) = 0`); or set gold 10 / XP 25 in the debugger, then lose — gold 5, XP 23 (`floor(25 * 0.1) = 2`). A second defeat from those values yields gold 3, XP 21. Starting from 0 gold and 0 XP reports "You lost 0 gold and 0 EXP." and stays at 0. The encounter trigger is not cleared: walking back onto it starts the fight again.
 
+## Random encounters (owner decision 2026-11-14; rates pending tuning)
+Setup: place a stretched `obj_encounter_zone` over the wild path in `rm_overworld`, not covering the respawn marker or a safe pocket. Defaults: 32 pixels = 1 step, `ENCOUNTER_STEPS_MIN` 8, `ENCOUNTER_STEPS_MAX` 24, `ENCOUNTER_GRACE_STEPS` 5. Default table `zone01_path` is Bandit weight 3, Fallen Knight weight 1.
+- [ ] R1 Walking in a safe area (no zone, no room table, or the respawn/town pocket) never starts a random battle, even after many tiles.
+- [ ] R2 Walking inside an `obj_encounter_zone` eventually starts a battle with an enemy from that zone's table (Bandit or Fallen Knight with the default weights).
+- [ ] R3 After room entry and after returning from a victory, the first `ENCOUNTER_GRACE_STEPS` tiles in an encounter area do not start a fight (5 tiles at the default).
+- [ ] R4 Standing still, walking into a wall (no position change), or holding a direction during dialogue does not advance the encounter counter.
+- [ ] R5 Victory from a random encounter returns to the exact pre-battle position and facing; the zone remains and another fight can occur after grace. Random fights are not recorded in `cleared_encounters`.
+- [ ] R6 Defeat from a random encounter still wakes the party up in town with HP restored and the gold/XP penalty applied (same as B10/B15).
+- [ ] R7 `obj_encounter_trigger` still starts its fixed fight. Standing on a trigger does not also roll a random encounter. Victory still removes that trigger for the session.
+- [ ] R8 Setting `RANDOM_ENCOUNTERS_ENABLED` to false (recompile) or `global.game.random_encounters_enabled = false` in the debugger disables random fights; fixed triggers still work. Setting it back to true re-enables them.
+
 ## Menus and saves
 - [ ] Selection and cancel/back work.
 - [ ] Save/load persists after restart; missing/corrupt save fails safely.

@@ -3,6 +3,9 @@
 /// Input is ignored while dialogue, battle, or a room transition is active (scr_input_locked).
 if (!input_enabled || scr_input_locked()) exit;
 
+var _prev_x = x;
+var _prev_y = y;
+
 // --- Movement (same behaviour as the original prototype; collision targets extended) ---
 var _ix = keyboard_check(vk_right) - keyboard_check(vk_left);
 var _iy = keyboard_check(vk_down) - keyboard_check(vk_up);
@@ -27,4 +30,10 @@ if (scr_input_confirm_pressed()) {
     var _probe_y = _cy + facing_y * ((bbox_bottom - bbox_top) * 0.5 + interact_reach);
     var _target = collision_rectangle(_probe_x - 4, _probe_y - 4, _probe_x + 4, _probe_y + 4, obj_interactable, false, true);
     if (_target != noone) _target.interact();
+}
+
+// --- Random encounters: only actual movement, and only if interact did not lock input ---
+if (!scr_input_locked()) {
+    var _moved = point_distance(_prev_x, _prev_y, x, y);
+    if (_moved > 0) scr_random_encounter_tick(_moved);
 }
