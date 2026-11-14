@@ -9,14 +9,16 @@ Snippets are prototypes, not verified production code. Compile in the selected G
 ## File layout
 - `game/scripts/<name>.gml` → one **Script** asset named `<name>`; paste the whole file in.
 - `game/objects/<obj>/<Event>.gml` → object `<obj>`, event `<Event>` (see the event table below).
+- `game/sprites/` → PNG art plus [`sprites/IMPORT.md`](sprites/IMPORT.md). Import in the IDE; do not expect a `.yy` sidecar here.
 
 ## Resources (roadmap steps 2–3: exploration + battle prototype)
 
 ### Scripts (Asset Browser → Create → Script; name must match exactly)
 | Script | Purpose |
 |---|---|
-| `scr_game_constants` | Macros (`OVERWORLD_ROOM`, `BATTLE_ROOM`, `TOWN_RESPAWN_ROOM` / `_X` / `_Y`, `DEFEAT_GOLD_LOSS_PCT`, `DEFEAT_XP_LOSS_PCT`, `RANDOM_ENCOUNTERS_ENABLED`, `ENCOUNTER_STEP_PIXELS`, `ENCOUNTER_STEPS_MIN` / `_MAX`, `ENCOUNTER_GRACE_STEPS`, `DEBUG_SHOW_TRIGGERS`, `GUARD_DAMAGE_MULTIPLIER`) and `enum BATTLE_STATE` |
+| `scr_game_constants` | Macros (`OVERWORLD_ROOM`, `BATTLE_ROOM`, `TOWN_RESPAWN_ROOM` / `_X` / `_Y`, `DEFEAT_GOLD_LOSS_PCT`, `DEFEAT_XP_LOSS_PCT`, `RANDOM_ENCOUNTERS_ENABLED`, `ENCOUNTER_STEP_PIXELS`, `ENCOUNTER_STEPS_MIN` / `_MAX`, `ENCOUNTER_GRACE_STEPS`, `DEBUG_SHOW_TRIGGERS`, `GUARD_DAMAGE_MULTIPLIER`, `TILE_SIZE`, `PLAYER_MOVE_SPEED`, `PLAYER_INTERACT_REACH`, `PLAYER_WALK_FPS`, `BATTLE_ANIM_FPS`, `BATTLE_IDLE_FPS`, `BATTLE_SPRITE_SCALE`, `CAMERA_FOLLOW_PLAYER`) and `enum BATTLE_STATE` (includes `ANIMATING`) |
 | `scr_game_state` | `global.game` struct, `scr_input_locked()`, `scr_input_block()` |
+| `scr_sprites` | `asset_get_index` lookups, overworld idle/walk, battle visual clips, optional camera follow |
 | `scr_input` | Prototype key mapping: confirm, cancel, menu up/down |
 | `scr_dialogue` | `scr_dialogue_open(lines, speaker)` |
 | `scr_encounter` | `scr_encounter_start()`, `scr_battle_finish()`, `scr_apply_defeat_penalty()`, `scr_apply_town_respawn()`, `scr_town_wake_up_dialogue()`, `scr_random_encounter_tick()` (overworld ↔ battle hand-off and walking encounters) |
@@ -29,8 +31,8 @@ Snippets are prototypes, not verified production code. Compile in the selected G
 ### Objects
 | Object | Sprite | Flags | Events (file → IDE event) |
 |---|---|---|---|
-| `obj_game_controller` | none | **Persistent** ✔, Visible off | `Create.gml` → Create; `Begin_Step.gml` → Step ▸ Begin Step; `Room_Start.gml` → Other ▸ Room Start |
-| `obj_player` | `spr_player_placeholder` | — | `Create.gml` → Create; `Step.gml` → Step ▸ Step |
+| `obj_game_controller` | none | **Persistent** ✔, Visible off | `Create.gml` → Create; `Begin_Step.gml` → Step ▸ Begin Step; `End_Step.gml` → Step ▸ End Step; `Room_Start.gml` → Other ▸ Room Start |
+| `obj_player` | `spr_kael_ow16_idle_down` (fallback `spr_player_placeholder`) | — | `Create.gml` → Create; `Step.gml` → Step ▸ Step |
 | `obj_solid` | `spr_solid_placeholder` | — | none (see `obj_solid/README.md`) |
 | `obj_interactable` | `spr_interactable_placeholder` | **Parent: `obj_solid`** | `Create.gml` → Create |
 | `obj_dialogue_box` | none | — | `Create.gml` → Create; `Step.gml` → Step ▸ Step; `Draw_GUI.gml` → Draw ▸ Draw GUI; `Clean_Up.gml` → Clean Up |
@@ -50,7 +52,7 @@ Snippets are prototypes, not verified production code. Compile in the selected G
 2. `obj_player` moves only when `scr_input_locked()` is false (no dialogue, battle, or transition, and not the frame right after one closes).
 3. Facing an `obj_interactable` and pressing confirm calls its `interact()` method → `scr_dialogue_open()` → `obj_dialogue_box`. Closing the box blocks overworld input for one extra frame so the same key press cannot reopen it.
 4. Walking onto an armed `obj_encounter_trigger` calls `scr_encounter_start()`: saves the return point, sets `battle_active`, goes to `rm_battle_test`.
-5. `obj_battle_controller` runs the `BATTLE_STATE` machine: INTRO → ROUND_START → COMMAND_SELECT → PLAYER_ACTION → ENEMY_TURN → (ROUND_START | VICTORY | DEFEAT) → EXIT. Living members choose and act in party order; the enemy targets a random living member. Victory may go through `LEVEL_UP` messages before EXIT. Every message waits for a confirm press.
+5. `obj_battle_controller` runs the `BATTLE_STATE` machine: INTRO → ROUND_START → COMMAND_SELECT → PLAYER_ACTION → (ANIMATING) → ENEMY_TURN → (ANIMATING) → (ROUND_START | VICTORY | DEFEAT) → EXIT. Attack clips play in `ANIMATING` (hit frame applies damage, then hurt or death); Guard has no clip. Living members choose and act in party order; the enemy targets a random living member. Victory may go through `LEVEL_UP` messages before EXIT. Every message waits for a confirm press. Pressing Z during `ANIMATING` skips to the end of the clip. Missing sprites draw as rectangles and do not block the state machine.
 6. EXIT calls `scr_battle_finish()` once: remembers a victory by `encounter_id`, clears `battle_active`, sets `transition_active`. Victory and error return to the saved room; defeat restores party HP, deducts 50% of current gold and 10% of each member's XP progress toward the next level (never below the current level's floor), and goes to `TOWN_RESPAWN_ROOM`. `obj_game_controller`'s Room Start then either restores the pre-battle position/facing, or (on defeat) places the player at `obj_respawn_point` / `TOWN_RESPAWN_X,Y` and opens the wake-up dialogue, including the amounts lost.
 7. A won trigger destroys itself on Room Start. A lost encounter is not cleared, so walking back onto that trigger starts the fight again.
 8. Random encounters: while moving inside an `obj_encounter_zone` (or a room listed in `scr_get_room_encounter_table`), actual movement accumulates toward steps of `ENCOUNTER_STEP_PIXELS`. After `ENCOUNTER_GRACE_STEPS` following room entry or battle, a randomized counter in `[ENCOUNTER_STEPS_MIN, ENCOUNTER_STEPS_MAX]` counts down and starts a fight from the area's weighted table. Towns and rooms with no table are safe. Disable with `RANDOM_ENCOUNTERS_ENABLED` or `global.game.random_encounters_enabled`. Victory still returns to the exact spot; random fights are not stored in `cleared_encounters`.

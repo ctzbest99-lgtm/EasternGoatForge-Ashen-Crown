@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-14 — Character sprites and 16×16 overworld scale
+- Added Kael, Bandit, and Fallen Knight art under `game/sprites/` (battle strips plus 16×24 and 32×48 overworld walk/idle sets for Kael and the Bandit). IDE import table is `game/sprites/IMPORT.md`. Source generators (`src/*.py`) are included because they are small. The Zone 1 tileset / map is not imported; it is still being built.
+- `obj_player` uses the 16×24 Kael sheet: idle/walk by facing, walk at 8 fps, `depth = -y`, no `image_xscale` (left is pre-mirrored). `mask_index` is pinned to idle-down (16×16 standing-tile feet box). `asset_get_index` falls back to the IDE placeholder if the sheet is missing. The 32×48 overworld set is a code fallback only.
+- Overworld scale defaults (pending approval): `TILE_SIZE` 16, `PLAYER_MOVE_SPEED` 1 (same tiles-per-second as the old speed of 2 on 32 px tiles), `PLAYER_INTERACT_REACH` 4. Encounter steps are now 16 pixels (one tile); the 8–24 step interval is unchanged in tile terms. Default town respawn is (320, 176) so it sits on the 16 px grid (was 320, 180).
+- Battle: `obj_battle_controller` draws Kael and the enemy with idle loops, plays attack then hurt (or death on a KO) in a new `BATTLE_STATE.ANIMATING` state, and holds the last death frame. Confirm skips the clip. Missing sprites draw the old placeholder rectangles and do not stall the state machine. Party faces left via `xscale = -1`; the Fallen Knight's 64×48 attack origin (32, 47) is honoured so the feet stay planted.
+- Optional camera: if Viewport 0 is enabled, `obj_game_controller` End Step follows the player and clamps to the room (`CAMERA_FOLLOW_PLAYER`). Recommended view is 320×180 at 2×, or 640×360 1:1. Rooms themselves are still 640×360 (height is not a multiple of 16).
+- Documented in `game/sprites/IMPORT.md`, `game/rooms/ROOM_SETUP.md`, docs/ASSET_INVENTORY.md, docs/DECISIONS_AND_OPEN_QUESTIONS.md; test plan S1–S9 added. Not compiled or playtested in GameMaker yet.
+
+
 ## 2026-11-14 — Party and progression (roadmap step 4)
 - Each party member has `level` and `xp`. Shared gold is unchanged. Placeholder XP curve: `20*(L-1)^2 + 10*(L-1)` (L2=30, L3=100, cap 20). Level-up growth: +4 HP, +1 ATK, +1 DEF. All pending owner approval.
 - Victory grants XP to every current member, then shows a level-up message per threshold crossed before returning to the map. HUD shows `Lv`.
