@@ -105,6 +105,21 @@ function scr_item_database() {
         sellable: false,
         desc: "Taren's starting weapon. ATK +3. (PLACEHOLDER.)"
     }));
+    _add(_db, scr_item_make("item_twin_daggers", "Twin Daggers", "weapon", 0, {
+        atk_bonus: 2,
+        weapon_categories: ["dagger"],
+        sellable: false,
+        desc: "Lyra's starting weapon. ATK +2. (PLACEHOLDER.)"
+    }));
+    // Chapter 3 key items (CHAPTER3_SCRIPT.md §4.1, §5).
+    _add(_db, scr_item_make("item_nim_parcel", "Nim's Parcel", "key", 0, {
+        sellable: false,
+        desc: "A plain parcel, no Crown seal. The stall under the blue awning is expecting it."
+    }));
+    _add(_db, scr_item_make("item_scholar_notes", "Scholar's Notes", "key", 0, {
+        sellable: false,
+        desc: "A scholar's hand, hurried. A hollow in the hills a day's walk from the capital. Architect doors. Still standing."
+    }));
     _add(_db, scr_item_make("item_hunters_knife", "Hunter's Knife", "weapon", 0, {
         atk_bonus: 2,
         weapon_categories: ["dagger"],

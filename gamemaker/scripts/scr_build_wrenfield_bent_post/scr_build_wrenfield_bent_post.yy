@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_build_wrenfield_bent_post",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_build_wrenfield_bent_post",
+  "parent":{
+    "name":"scripts",
+    "path":"folders/scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

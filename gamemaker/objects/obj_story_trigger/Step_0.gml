@@ -21,6 +21,9 @@ if (script_id != "" && scr_dialogue_play_script(script_id, id)) {
         if (flag != "") scr_flag_set(flag);
         if (src != noone && instance_exists(src)) instance_destroy(src);
     }));
+} else if (story_flag != "") {
+    // Flag-only trigger (Chapter 2 wf_enter sets flag_wrenfield_entered with no line).
+    scr_flag_set(story_flag);
 }
 if (story_flag != "" && scr_flag_get(story_flag)) {
     instance_destroy();

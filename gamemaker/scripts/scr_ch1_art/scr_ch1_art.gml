@@ -202,9 +202,19 @@ function scr_ch1_portrait(_speaker, _expr = "neutral") {
     else if (_who == "renn" || _who == "old hunter renn" || _who == "old renn") _stem = "renn";
     else if (_who == "fallen knight") _stem = "fallen_knight_story";
     else if (_who == "reeve calder" || _who == "calder") _stem = "reeve_calder"; // neutral / stern / weary (Design batch 6)
+    // Chapter 2 (Design): bram shaken/afraid/grateful, oda worried/pleading/relieved,
+    // perrin neutral/grim/warm, len neutral/nervous/smile, taren neutral/determined/wry.
+    else if (_who == "bram") _stem = "bram";
+    else if (_who == "oda") _stem = "oda";
+    else if (_who == "perrin") _stem = "perrin";
+    else if (_who == "len") _stem = "len";
+    else if (_who == "taren" || _who == "taren holt") _stem = "taren";
     if (_stem == "") return -1;
     var _spr = scr_sprite_index("spr_portrait_" + _stem + "_" + _expr);
     if (!scr_sprite_is_valid(_spr)) _spr = scr_sprite_index("spr_portrait_" + _stem + "_neutral");
+    // Sets without a neutral face use their calmest expression as the default.
+    if (!scr_sprite_is_valid(_spr) && _stem == "bram") _spr = scr_sprite_index("spr_portrait_bram_shaken");
+    if (!scr_sprite_is_valid(_spr) && _stem == "oda") _spr = scr_sprite_index("spr_portrait_oda_worried");
     // Design filenames are spr_portrait_<name>_<expr> — also try unsuffixed folder names
     if (!scr_sprite_is_valid(_spr)) {
         var _alt = "spr_portrait_";
@@ -221,6 +231,13 @@ function scr_ch1_battle_area(_enemy_id, _encounter_id = "") {
     // Act II stand-ins until Design paints Millhaven Road / Wrenfield backgrounds:
     // Wrenfield (and the Calder fight) use the Greyhaven village bg, as in Design's Calder mockup.
     if (_enemy_id == "reeve_calder" || string_pos("calder", _encounter_id) > 0 || string_pos("wrenfield", _encounter_id) > 0) return "greyhaven";
+    // Batches 7–8: area from the zone / encounter id, else from the lead enemy.
+    var _bz = scr_enemy_battle_area(_enemy_id);
+    if (string_pos("lower_city", _encounter_id) > 0 || string_pos("debtman", _encounter_id) > 0) return "lower_city";
+    if (string_pos("sanctuary", _encounter_id) > 0) return "sanctuary_hall";
+    if (string_pos("garrison", _encounter_id) > 0 || string_pos("hailen", _encounter_id) > 0) return "garrison_yard";
+    if (string_pos("blackwood", _encounter_id) > 0 || string_pos("matriarch", _encounter_id) > 0) return "blackwood";
+    if (_bz != "") return _bz;
     var _rn = room_get_name(room);
     if (string_pos("basement", _rn) > 0) return "watchtower";
     if (string_pos("watchtower", _rn) > 0) return "watchtower";
@@ -251,6 +268,11 @@ function scr_ch1_battle_bg(_area) {
         case "bandit_camp": return scr_sprite_index("spr_bg_battle_bandit_camp");
         case "watchtower": return scr_sprite_index("spr_bg_battle_watchtower");
         case "blackguard_arena": return scr_sprite_index("spr_bg_battle_blackguard_arena");
+        // Design batches 7–8. Missing imports fall back to the forest background.
+        case "lower_city": return scr_sprite_index("spr_bg_battle_lower_city", "spr_bg_battle_forest");
+        case "sanctuary_hall": return scr_sprite_index("spr_bg_battle_sanctuary_hall", "spr_bg_battle_forest");
+        case "garrison_yard": return scr_sprite_index("spr_bg_battle_garrison_yard", "spr_bg_battle_forest");
+        case "blackwood": return scr_sprite_index("spr_bg_battle_blackwood", "spr_bg_battle_forest");
         default: return scr_sprite_index("spr_bg_battle_forest");
     }
 }
@@ -323,6 +345,19 @@ function scr_ch1_battle_spawn_special_fx(_hit) {
     var _ef = (variable_struct_exists(_hit, "fx_from") && is_struct(_hit.fx_from)) ? _hit.fx_from : scr_battle_layout_enemy_feet();
     var _pi = variable_struct_exists(_hit, "party_index") ? _hit.party_index : 0;
     var _pf = (variable_struct_exists(_hit, "fx_to") && is_struct(_hit.fx_to)) ? _hit.fx_to : scr_battle_layout_party_feet(_pi);
+
+    // Generic projectile from the skill table (glyph wisp mote, night moth dust): user -> target.
+    if (variable_struct_exists(_hit, "projectile") && is_string(_hit.projectile) && _hit.projectile != "") {
+        var _pspr = scr_sprite_index(_hit.projectile);
+        if (scr_sprite_is_valid(_pspr)) {
+            var _pfr = variable_struct_exists(_hit, "projectile_frames") ? max(1, _hit.projectile_frames) : 1;
+            array_push(_ctrl.battle_fx, {
+                sprite: _pspr, frame: 0, frames: _pfr, fps: 10,
+                x: _ef.x + 10, y: _ef.y - 24, x0: _ef.x + 10, y0: _ef.y - 24,
+                tx: _pf.x, ty: _pf.y - 20, t: 0, life: 16, xscale: 1
+            });
+        }
+    }
 
     if (_kind == "crown_crossbowman" && _anim == "attack") {
         // Bolt: 16×8, origin (15, 4) at the tip, 12 fps loop in flight. Spawned on attack frame 3.

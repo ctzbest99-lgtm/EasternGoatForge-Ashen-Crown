@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"2719b24f-f2d8-46f9-b6dd-501df6641478",
-      "name":"2719b24f-f2d8-46f9-b6dd-501df6641478",
+      "%Name":"0d7c5504-9e2b-4469-b062-446571130aae",
+      "name":"0d7c5504-9e2b-4469-b062-446571130aae",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"0c58f1dd-767c-4d73-8ac3-d66d7e753f5f",
+      "%Name":"782c33c0-8cb4-4266-8629-cf2181b82dda",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"0c58f1dd-767c-4d73-8ac3-d66d7e753f5f",
+      "name":"782c33c0-8cb4-4266-8629-cf2181b82dda",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"2719b24f-f2d8-46f9-b6dd-501df6641478",
+                    "name":"0d7c5504-9e2b-4469-b062-446571130aae",
                     "path":"sprites/spr_menu_bg0_sky_640/spr_menu_bg0_sky_640.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d36158e8-fdf5-4442-96ac-33f53d62d15c",
+              "id":"91641474-bfb5-42d3-8dcb-07ed918c660b",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"4ec09dba-2238-40f1-af94-4d9c28ff6337",
-      "name":"4ec09dba-2238-40f1-af94-4d9c28ff6337",
+      "%Name":"6ada0043-263c-43f6-82a8-a222fc04f390",
+      "name":"6ada0043-263c-43f6-82a8-a222fc04f390",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"3a350011-7eac-47f3-9db1-cd8c7663ebea",
+      "%Name":"8eaf85f6-dd1d-4ded-b95f-72daa9e25969",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"3a350011-7eac-47f3-9db1-cd8c7663ebea",
+      "name":"8eaf85f6-dd1d-4ded-b95f-72daa9e25969",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"4ec09dba-2238-40f1-af94-4d9c28ff6337",
+                    "name":"6ada0043-263c-43f6-82a8-a222fc04f390",
                     "path":"sprites/spr_portrait_renn_stern/spr_portrait_renn_stern.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"9b76bc1a-8286-40e3-848e-a35caf810e2b",
+              "id":"9e35729e-562c-4baf-b083-c41cefa21d68",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

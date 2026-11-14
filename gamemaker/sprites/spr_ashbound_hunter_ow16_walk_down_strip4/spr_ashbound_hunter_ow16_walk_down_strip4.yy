@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"9366cde0-2660-427c-a1de-6d96d309c27e",
-      "name":"9366cde0-2660-427c-a1de-6d96d309c27e",
+      "%Name":"b7b5276e-2f0c-409f-b3c6-604b31d341cc",
+      "name":"b7b5276e-2f0c-409f-b3c6-604b31d341cc",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"f7f0ebfc-c414-4409-b7ec-48fbacdd8843",
-      "name":"f7f0ebfc-c414-4409-b7ec-48fbacdd8843",
+      "%Name":"9b40944a-2bb7-45c7-af1b-c83e56041c92",
+      "name":"9b40944a-2bb7-45c7-af1b-c83e56041c92",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"fd4303fc-537a-45ee-b088-8662b0e58edf",
-      "name":"fd4303fc-537a-45ee-b088-8662b0e58edf",
+      "%Name":"0970e1ac-09cd-45a7-aabb-7f988f9ad90d",
+      "name":"0970e1ac-09cd-45a7-aabb-7f988f9ad90d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"fd96e96f-3916-4413-938a-16634fad0093",
-      "name":"fd96e96f-3916-4413-938a-16634fad0093",
+      "%Name":"64395f62-5f28-4fb5-b67f-f42a5a2c9ff4",
+      "name":"64395f62-5f28-4fb5-b67f-f42a5a2c9ff4",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"c01d963c-ab5d-45f1-afb8-6f853c25e050",
+      "%Name":"260f4580-c51a-482d-b0af-139b5b5f9b2a",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"c01d963c-ab5d-45f1-afb8-6f853c25e050",
+      "name":"260f4580-c51a-482d-b0af-139b5b5f9b2a",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"9366cde0-2660-427c-a1de-6d96d309c27e",
+                    "name":"b7b5276e-2f0c-409f-b3c6-604b31d341cc",
                     "path":"sprites/spr_ashbound_hunter_ow16_walk_down_strip4/spr_ashbound_hunter_ow16_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"9a6ddf14-36ab-4414-a713-c7866e4979c6",
+              "id":"64274b9d-a026-4b22-b160-429eb5491cae",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"f7f0ebfc-c414-4409-b7ec-48fbacdd8843",
+                    "name":"9b40944a-2bb7-45c7-af1b-c83e56041c92",
                     "path":"sprites/spr_ashbound_hunter_ow16_walk_down_strip4/spr_ashbound_hunter_ow16_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"1f10ad9d-1a6e-41fd-a40a-98b2c04c6284",
+              "id":"384251f9-6878-4895-86f0-9cf13c56a6f4",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"fd4303fc-537a-45ee-b088-8662b0e58edf",
+                    "name":"0970e1ac-09cd-45a7-aabb-7f988f9ad90d",
                     "path":"sprites/spr_ashbound_hunter_ow16_walk_down_strip4/spr_ashbound_hunter_ow16_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"842c9de1-19fb-4c12-9dc3-f40e6470302b",
+              "id":"83b0f621-524a-46cc-8227-243466405676",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"fd96e96f-3916-4413-938a-16634fad0093",
+                    "name":"64395f62-5f28-4fb5-b67f-f42a5a2c9ff4",
                     "path":"sprites/spr_ashbound_hunter_ow16_walk_down_strip4/spr_ashbound_hunter_ow16_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"861f3066-ce76-4e14-bec4-9ed6f5463e5a",
+              "id":"a982e9f4-d8cf-4ffe-bfe4-beab10781858",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

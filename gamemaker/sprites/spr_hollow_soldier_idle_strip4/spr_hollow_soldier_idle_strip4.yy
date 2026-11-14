@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"58beef5b-1017-4e1e-8f86-b81d8d844dab",
-      "name":"58beef5b-1017-4e1e-8f86-b81d8d844dab",
+      "%Name":"91223336-d183-415b-8b6e-b3e0734455b5",
+      "name":"91223336-d183-415b-8b6e-b3e0734455b5",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"02bb3f98-6a64-4d90-99c1-88840d16c409",
-      "name":"02bb3f98-6a64-4d90-99c1-88840d16c409",
+      "%Name":"173d84d3-f574-4a80-ad2e-5fe5d2dea174",
+      "name":"173d84d3-f574-4a80-ad2e-5fe5d2dea174",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"bf87a90d-31a7-489b-aaed-4ca19cf0c2f0",
-      "name":"bf87a90d-31a7-489b-aaed-4ca19cf0c2f0",
+      "%Name":"15d22d78-6235-41dc-8018-fb926f2481e7",
+      "name":"15d22d78-6235-41dc-8018-fb926f2481e7",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"646abb97-2c25-4d24-8c96-3d9a5e63f1e4",
-      "name":"646abb97-2c25-4d24-8c96-3d9a5e63f1e4",
+      "%Name":"e47eaddd-2e68-4b57-837c-d29d5da1d2f6",
+      "name":"e47eaddd-2e68-4b57-837c-d29d5da1d2f6",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"647eb834-748b-45fc-a26b-dbe97bccff76",
+      "%Name":"29df20e6-a838-4535-8589-209a453fa8cf",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"647eb834-748b-45fc-a26b-dbe97bccff76",
+      "name":"29df20e6-a838-4535-8589-209a453fa8cf",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"58beef5b-1017-4e1e-8f86-b81d8d844dab",
+                    "name":"91223336-d183-415b-8b6e-b3e0734455b5",
                     "path":"sprites/spr_hollow_soldier_idle_strip4/spr_hollow_soldier_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"1ed7ad9d-48ff-4de3-a43b-e7c6ad05e2d2",
+              "id":"1c0943bb-1205-4c53-bbe2-b07b57d2a2d5",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"02bb3f98-6a64-4d90-99c1-88840d16c409",
+                    "name":"173d84d3-f574-4a80-ad2e-5fe5d2dea174",
                     "path":"sprites/spr_hollow_soldier_idle_strip4/spr_hollow_soldier_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"8c488510-513f-4658-afe2-5e6ec580db57",
+              "id":"92e113ed-31a8-4d98-befb-e54410ddb0de",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"bf87a90d-31a7-489b-aaed-4ca19cf0c2f0",
+                    "name":"15d22d78-6235-41dc-8018-fb926f2481e7",
                     "path":"sprites/spr_hollow_soldier_idle_strip4/spr_hollow_soldier_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f1757989-47fe-4c07-8999-b25e53dc2e56",
+              "id":"6d32fc5b-30f2-43ee-8c99-ec383d5d5fe6",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"646abb97-2c25-4d24-8c96-3d9a5e63f1e4",
+                    "name":"e47eaddd-2e68-4b57-837c-d29d5da1d2f6",
                     "path":"sprites/spr_hollow_soldier_idle_strip4/spr_hollow_soldier_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"74963a6d-7303-4e44-8111-364d0391db73",
+              "id":"e495c2e1-b410-42e2-be4d-b853a82d8e49",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

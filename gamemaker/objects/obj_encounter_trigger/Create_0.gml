@@ -10,3 +10,9 @@ encounter_id = "zone01_test_bandit";
 // Only fires after the player has been seen OFF the trigger, so returning onto it never re-fires.
 armed = false;
 visible = DEBUG_SHOW_TRIGGERS;
+
+// Chapter 2: optional bark before the fight (marker script_chain), and "avoidable" patrols that
+// offer Fight / Move along. passive = waved through this visit (never fires again).
+pre_chain = undefined;
+avoidable = false;
+passive = false;

@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"f994b36b-a685-4265-a0d8-7f90b3bfa9bb",
-      "name":"f994b36b-a685-4265-a0d8-7f90b3bfa9bb",
+      "%Name":"1fcfdafb-24ab-49f8-bf4d-4b8698eaea7c",
+      "name":"1fcfdafb-24ab-49f8-bf4d-4b8698eaea7c",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"9e031d3d-1fd7-4dea-85d9-0f7c23b07005",
+      "%Name":"c3bd377c-b129-4d8c-bf21-c6d17deaaf62",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"9e031d3d-1fd7-4dea-85d9-0f7c23b07005",
+      "name":"c3bd377c-b129-4d8c-bf21-c6d17deaaf62",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"f994b36b-a685-4265-a0d8-7f90b3bfa9bb",
+                    "name":"1fcfdafb-24ab-49f8-bf4d-4b8698eaea7c",
                     "path":"sprites/spr_ashbound_hunter_ow16_idle_right/spr_ashbound_hunter_ow16_idle_right.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"34fe6d5e-43e5-4a22-a49f-39b903c752b0",
+              "id":"01a46650-d397-42cc-95ac-d8a361ccf4bc",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"7ad0817c-2b51-48d9-bcc0-784f130a01d0",
-      "name":"7ad0817c-2b51-48d9-bcc0-784f130a01d0",
+      "%Name":"fa7ba8c5-4a46-48d3-a5d8-2cc3b6d1bba0",
+      "name":"fa7ba8c5-4a46-48d3-a5d8-2cc3b6d1bba0",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"4f272afe-12ca-4abc-b9b7-630fb105db3e",
+      "%Name":"90e166b5-a62a-4d55-86ba-8e60ec37fb5e",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"4f272afe-12ca-4abc-b9b7-630fb105db3e",
+      "name":"90e166b5-a62a-4d55-86ba-8e60ec37fb5e",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"7ad0817c-2b51-48d9-bcc0-784f130a01d0",
+                    "name":"fa7ba8c5-4a46-48d3-a5d8-2cc3b6d1bba0",
                     "path":"sprites/spr_item_hunters_charm_disabled/spr_item_hunters_charm_disabled.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f7dd534f-02e8-4533-917b-caf23887c07f",
+              "id":"4a39ec5d-a45c-4ad0-bc7c-aa7292b11f8f",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

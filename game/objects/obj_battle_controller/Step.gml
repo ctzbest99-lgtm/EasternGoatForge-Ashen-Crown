@@ -38,6 +38,24 @@ switch (state) {
         }
         for (_r = 0; _r < array_length(party); _r++) { scr_battle_tick_buffs(party[_r]); scr_battle_tick_statuses(party[_r]); }
         for (_r = 0; _r < array_length(enemies); _r++) { scr_battle_tick_buffs(enemies[_r]); scr_battle_tick_statuses(enemies[_r]); }
+        // Bleed (Open Vein) reports its tick before commands resume.
+        var _bleed_txt = "";
+        for (_r = 0; _r < array_length(party); _r++) {
+            if (variable_struct_exists(party[_r], "bleed_last") && party[_r].bleed_last > 0) {
+                _bleed_txt += party[_r].name + " bleeds for " + string(party[_r].bleed_last) + ". ";
+                party[_r].bleed_last = 0;
+            }
+        }
+        for (_r = 0; _r < array_length(enemies); _r++) {
+            if (variable_struct_exists(enemies[_r], "bleed_last") && enemies[_r].bleed_last > 0) {
+                _bleed_txt += enemies[_r].name + " bleeds for " + string(enemies[_r].bleed_last) + ". ";
+                enemies[_r].bleed_last = 0;
+            }
+        }
+        if (_bleed_txt != "") {
+            queue_message(_bleed_txt, BATTLE_STATE.COMMAND_SELECT);
+            break;
+        }
         queued_actions = [];
         turn_order = [];
         turn_pos = 0;
@@ -71,6 +89,10 @@ switch (state) {
                 skill_list = scr_skill_list_active(_cur);
                 skill_index = 0;
                 if (array_length(skill_list) > 0) state = BATTLE_STATE.SKILL_SELECT;
+            } else if (_cmd == "Item") {
+                item_list = scr_party_battle_items();
+                item_index = 0;
+                if (array_length(item_list) > 0) state = BATTLE_STATE.ITEM_SELECT;
             } else {
                 commit_action({ actor_index: actor_index, command: _cmd, skill_id: "", target_side: "", target_index: -1 });
             }
@@ -100,12 +122,27 @@ switch (state) {
         }
         break;
 
+    case BATTLE_STATE.ITEM_SELECT:
+        var _in = array_length(item_list);
+        if (_in == 0) { state = BATTLE_STATE.COMMAND_SELECT; break; }
+        if (item_index >= _in) item_index = 0;
+        if (scr_input_up_pressed()) item_index = (item_index - 1 + _in) mod _in;
+        if (scr_input_down_pressed()) item_index = (item_index + 1) mod _in;
+        if (scr_input_cancel_pressed()) { state = BATTLE_STATE.COMMAND_SELECT; break; }
+        if (scr_input_confirm_pressed()) {
+            pending_command = "Item";
+            pending_skill = item_list[item_index]; // the item id rides the pending skill slot
+            begin_target_select("party");
+        }
+        break;
+
     case BATTLE_STATE.TARGET_SELECT:
         if (!is_up(target_side, target_index)) cycle_target(1);
         if (scr_input_up_pressed() || scr_input_left_pressed()) cycle_target(-1);
         if (scr_input_down_pressed() || scr_input_right_pressed()) cycle_target(1);
         if (scr_input_cancel_pressed()) {
-            state = (pending_command == "Skill") ? BATTLE_STATE.SKILL_SELECT : BATTLE_STATE.COMMAND_SELECT;
+            state = (pending_command == "Skill") ? BATTLE_STATE.SKILL_SELECT
+                : ((pending_command == "Item") ? BATTLE_STATE.ITEM_SELECT : BATTLE_STATE.COMMAND_SELECT);
             break;
         }
         if (scr_input_confirm_pressed()) {
@@ -157,6 +194,8 @@ switch (state) {
             }
         } else if (_action.command == "Skill") {
             do_party_skill(_action.actor_index, _action.skill_id, _action.target_index);
+        } else if (_action.command == "Item") {
+            do_party_item(_action.actor_index, _action.skill_id, _action.target_index);
         } else { // "Attack"
             do_party_skill(_action.actor_index, "attack", _action.target_index);
         }

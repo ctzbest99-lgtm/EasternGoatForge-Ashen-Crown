@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"9ab79362-003d-45ef-b05a-025ab895c026",
-      "name":"9ab79362-003d-45ef-b05a-025ab895c026",
+      "%Name":"dee694cc-2e8f-4b0f-8253-6544bcecc55c",
+      "name":"dee694cc-2e8f-4b0f-8253-6544bcecc55c",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"9469f68d-0f6c-4b5c-9bbf-973f5301636c",
+      "%Name":"4e3c96d9-1d2a-41e2-bfa1-4224ed4b3cb0",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"9469f68d-0f6c-4b5c-9bbf-973f5301636c",
+      "name":"4e3c96d9-1d2a-41e2-bfa1-4224ed4b3cb0",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"9ab79362-003d-45ef-b05a-025ab895c026",
+                    "name":"dee694cc-2e8f-4b0f-8253-6544bcecc55c",
                     "path":"sprites/spr_ui_icon_ember/spr_ui_icon_ember.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"033fc780-06fe-4e2e-996d-57d2ab1741c1",
+              "id":"0b2cbc89-de2a-4171-9ef4-c6f4eaafaa8c",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

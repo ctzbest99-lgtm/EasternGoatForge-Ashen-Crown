@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"f02f0392-9034-4956-a3f2-b55606b3468d",
-      "name":"f02f0392-9034-4956-a3f2-b55606b3468d",
+      "%Name":"88b6b2b2-49c4-4ad5-af09-9806304d71d6",
+      "name":"88b6b2b2-49c4-4ad5-af09-9806304d71d6",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"7eabc20a-20cc-45d0-8641-d50b37f7acea",
-      "name":"7eabc20a-20cc-45d0-8641-d50b37f7acea",
+      "%Name":"f2758e95-3649-409b-b2d4-6af3a63640e6",
+      "name":"f2758e95-3649-409b-b2d4-6af3a63640e6",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"7065d2aa-6c4c-434a-a50e-2da923e3edb9",
-      "name":"7065d2aa-6c4c-434a-a50e-2da923e3edb9",
+      "%Name":"59bf340b-8abc-44c8-8f84-e0875db36b84",
+      "name":"59bf340b-8abc-44c8-8f84-e0875db36b84",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"f54b5937-2392-4c6f-b479-a768d9c32d5a",
-      "name":"f54b5937-2392-4c6f-b479-a768d9c32d5a",
+      "%Name":"7e3c68e4-b656-48d9-9b9f-09b290688a00",
+      "name":"7e3c68e4-b656-48d9-9b9f-09b290688a00",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"75d5a1c8-cb62-456b-bb9b-8f5c46a9e5a9",
-      "name":"75d5a1c8-cb62-456b-bb9b-8f5c46a9e5a9",
+      "%Name":"1f5607c3-c972-4be0-b298-4a95035f5eeb",
+      "name":"1f5607c3-c972-4be0-b298-4a95035f5eeb",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"e1845a34-ce42-471a-bebe-447804c6683b",
-      "name":"e1845a34-ce42-471a-bebe-447804c6683b",
+      "%Name":"9ea36872-b244-4981-89a5-0c18a824031a",
+      "name":"9ea36872-b244-4981-89a5-0c18a824031a",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"39f8ffea-44cc-445f-9b83-b8a7a0a9ce32",
+      "%Name":"337c1e14-71d5-476d-bc2b-6218b159c6cd",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"39f8ffea-44cc-445f-9b83-b8a7a0a9ce32",
+      "name":"337c1e14-71d5-476d-bc2b-6218b159c6cd",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"f02f0392-9034-4956-a3f2-b55606b3468d",
+                    "name":"88b6b2b2-49c4-4ad5-af09-9806304d71d6",
                     "path":"sprites/spr_crown_patrolman_death_strip6/spr_crown_patrolman_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"32259a13-37cd-4ade-9490-9179c24069c8",
+              "id":"3a9bae3a-593d-4652-9af1-2e061ef10fc3",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"7eabc20a-20cc-45d0-8641-d50b37f7acea",
+                    "name":"f2758e95-3649-409b-b2d4-6af3a63640e6",
                     "path":"sprites/spr_crown_patrolman_death_strip6/spr_crown_patrolman_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"410b5eea-e8ff-4c14-99d0-3942cba13a08",
+              "id":"3b2b200a-f3dd-4044-a686-97fa24f7c181",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"7065d2aa-6c4c-434a-a50e-2da923e3edb9",
+                    "name":"59bf340b-8abc-44c8-8f84-e0875db36b84",
                     "path":"sprites/spr_crown_patrolman_death_strip6/spr_crown_patrolman_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"af44fc14-9032-493d-9b14-343ace16620c",
+              "id":"5e4e9e8e-bcd6-483c-ba05-9ca9ab301f68",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"f54b5937-2392-4c6f-b479-a768d9c32d5a",
+                    "name":"7e3c68e4-b656-48d9-9b9f-09b290688a00",
                     "path":"sprites/spr_crown_patrolman_death_strip6/spr_crown_patrolman_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"9a3b4c08-c9e0-45e3-8ed8-f6753122dfa5",
+              "id":"855be2a5-96f3-4ea2-a6f4-773a62393447",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"75d5a1c8-cb62-456b-bb9b-8f5c46a9e5a9",
+                    "name":"1f5607c3-c972-4be0-b298-4a95035f5eeb",
                     "path":"sprites/spr_crown_patrolman_death_strip6/spr_crown_patrolman_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"8f3e5a09-0c39-4bda-bf2c-a8e2e157bd5d",
+              "id":"a02df912-41e1-43da-96e5-445395c37760",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"e1845a34-ce42-471a-bebe-447804c6683b",
+                    "name":"9ea36872-b244-4981-89a5-0c18a824031a",
                     "path":"sprites/spr_crown_patrolman_death_strip6/spr_crown_patrolman_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"26e1e371-4187-47a1-9cad-f3dabfde9c5c",
+              "id":"72f37652-660a-4e4b-a4f6-3b673cb807c3",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

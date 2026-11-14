@@ -17,7 +17,7 @@ draw_set_valign(fa_top);
 
 scr_ui_window(_left, _top, _right - _left, _bottom - _top, "normal");
 
-var _portrait = scr_ch1_portrait(speaker_name, "neutral");
+var _portrait = scr_ch1_portrait(speaker_name, variable_instance_exists(id, "portrait_expr") ? portrait_expr : "neutral");
 var _px = 0;
 if (scr_sprite_is_valid(_portrait)) {
     // 48×48 in a 48×48 well on the left of the box.
@@ -59,6 +59,22 @@ if (_struck) {
         if (_r == _rows - 1) _lw = min(string_width(_text), _max_w);
         else _lw = _max_w;
         draw_line(_left + 8 + _px, _ly, _left + 8 + _px + _lw, _ly);
+    }
+}
+
+// Choice list (scr_dialogue_choice) in a small window above the box, right-aligned.
+if (is_array(choices) && array_length(choices) > 0 && line_index >= array_length(lines) - 1) {
+    var _cw = 0;
+    for (var _c = 0; _c < array_length(choices); _c++) _cw = max(_cw, string_width(choices[_c]));
+    _cw += 24;
+    var _ch = 8 + 11 * array_length(choices);
+    var _cx = _right - _cw;
+    var _cy = _top - _ch - 2;
+    scr_ui_window(_cx, _cy, _cw, _ch, "normal");
+    for (var _c2 = 0; _c2 < array_length(choices); _c2++) {
+        var _col = (_c2 == choice_index) ? make_color_rgb(217, 184, 96) : c_white;
+        scr_ui_text(_cx + 14, _cy + 4 + 11 * _c2, choices[_c2], _col);
+        if (_c2 == choice_index) scr_ui_text(_cx + 5, _cy + 4 + 11 * _c2, ">", _col);
     }
 }
 

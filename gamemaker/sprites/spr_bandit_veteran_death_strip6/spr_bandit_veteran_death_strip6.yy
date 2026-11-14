@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"ee4df6f1-c3b6-4864-b7d7-5a28b8a56746",
-      "name":"ee4df6f1-c3b6-4864-b7d7-5a28b8a56746",
+      "%Name":"25277164-87e5-4fc2-ab36-3006d8c907c5",
+      "name":"25277164-87e5-4fc2-ab36-3006d8c907c5",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"9a2bcf5f-f2c6-43c0-a086-2236d4155ca0",
-      "name":"9a2bcf5f-f2c6-43c0-a086-2236d4155ca0",
+      "%Name":"1294b5b8-128c-4f0c-8928-d4a93a533f8d",
+      "name":"1294b5b8-128c-4f0c-8928-d4a93a533f8d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"a0100203-82e9-4731-9a00-9f54d61c408e",
-      "name":"a0100203-82e9-4731-9a00-9f54d61c408e",
+      "%Name":"54684c52-3eae-4301-9954-84501c84aff4",
+      "name":"54684c52-3eae-4301-9954-84501c84aff4",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"5f641be7-e8b1-4f03-a5a0-71f3dedf83a7",
-      "name":"5f641be7-e8b1-4f03-a5a0-71f3dedf83a7",
+      "%Name":"f74a6bda-d636-4861-86bd-8fb2f2a68a7c",
+      "name":"f74a6bda-d636-4861-86bd-8fb2f2a68a7c",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"cdf3780c-e2b4-46da-b59c-57833db5ca8e",
-      "name":"cdf3780c-e2b4-46da-b59c-57833db5ca8e",
+      "%Name":"d9ade7d9-467e-4dcb-95f0-41a0c85d2a33",
+      "name":"d9ade7d9-467e-4dcb-95f0-41a0c85d2a33",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"f953f29b-937a-484d-a65d-832282ebfbfd",
-      "name":"f953f29b-937a-484d-a65d-832282ebfbfd",
+      "%Name":"9c405f67-1698-4491-b837-776ca581cea7",
+      "name":"9c405f67-1698-4491-b837-776ca581cea7",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"31026571-6f56-4f80-9dd6-618021376ec3",
+      "%Name":"0648314e-1531-4bb2-a243-834af0c5ae84",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"31026571-6f56-4f80-9dd6-618021376ec3",
+      "name":"0648314e-1531-4bb2-a243-834af0c5ae84",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ee4df6f1-c3b6-4864-b7d7-5a28b8a56746",
+                    "name":"25277164-87e5-4fc2-ab36-3006d8c907c5",
                     "path":"sprites/spr_bandit_veteran_death_strip6/spr_bandit_veteran_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"00508eca-570d-47e5-903a-9a50d7f55574",
+              "id":"ff0a282a-115d-467d-b6c9-193ad6151e67",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"9a2bcf5f-f2c6-43c0-a086-2236d4155ca0",
+                    "name":"1294b5b8-128c-4f0c-8928-d4a93a533f8d",
                     "path":"sprites/spr_bandit_veteran_death_strip6/spr_bandit_veteran_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"bd47c008-0754-44a6-bdee-18035791d240",
+              "id":"65e1c63e-4b33-4c8d-96dd-c598c9c7212a",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a0100203-82e9-4731-9a00-9f54d61c408e",
+                    "name":"54684c52-3eae-4301-9954-84501c84aff4",
                     "path":"sprites/spr_bandit_veteran_death_strip6/spr_bandit_veteran_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"6310cc26-764c-4f97-aff8-a5f3840bf6de",
+              "id":"34f24a19-6ff4-4290-a13e-042da26728e1",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"5f641be7-e8b1-4f03-a5a0-71f3dedf83a7",
+                    "name":"f74a6bda-d636-4861-86bd-8fb2f2a68a7c",
                     "path":"sprites/spr_bandit_veteran_death_strip6/spr_bandit_veteran_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"65474c1c-4184-4045-8f7b-2853a0d01f19",
+              "id":"6ab02934-2b51-4071-ba90-120c3dc1d5e7",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"cdf3780c-e2b4-46da-b59c-57833db5ca8e",
+                    "name":"d9ade7d9-467e-4dcb-95f0-41a0c85d2a33",
                     "path":"sprites/spr_bandit_veteran_death_strip6/spr_bandit_veteran_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"2fd2a131-eb6f-4ce8-bcbf-17869f601a2c",
+              "id":"df8b2228-adad-4653-a9f3-99caa3fdf4e4",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"f953f29b-937a-484d-a65d-832282ebfbfd",
+                    "name":"9c405f67-1698-4491-b837-776ca581cea7",
                     "path":"sprites/spr_bandit_veteran_death_strip6/spr_bandit_veteran_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"ced12ecb-d7b3-4c17-91f1-9f1650ca7382",
+              "id":"57eb545b-0918-46df-b90d-8c0b3e73a606",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

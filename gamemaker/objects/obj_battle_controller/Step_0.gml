@@ -13,9 +13,10 @@ scr_battle_pops_step(dmg_pops);
 // yielding boss stay on screen (yield holds its last frame).
 for (_v = 0; _v < array_length(enemies); _v++) {
     var _fe = enemies[_v];
-    if (_fe.hp > 0 || _fe.yielded || _fe.is_boss || _fe.fade <= 0) continue;
+    var _fw = variable_struct_exists(_fe, "withdrawn") && _fe.withdrawn; // left the field after a yield
+    if ((_fe.hp > 0 && !_fw) || _fe.yielded || _fe.is_boss || _fe.fade <= 0) continue;
     var _fv = enemy_vis[_v];
-    if (!is_struct(_fv) || _fv.finished) _fe.fade = max(0, _fe.fade - 1 / max(1, BATTLE_DEAD_ENEMY_FADE_FRAMES));
+    if (_fw || !is_struct(_fv) || _fv.finished) _fe.fade = max(0, _fe.fade - 1 / max(1, BATTLE_DEAD_ENEMY_FADE_FRAMES));
 }
 
 switch (state) {
@@ -32,8 +33,29 @@ switch (state) {
     case BATTLE_STATE.ROUND_START:
         scr_party_clear_guard(party); // Guard lasts from when it resolves until the party's next command phase
         var _r;
-        for (_r = 0; _r < array_length(party); _r++) scr_battle_tick_buffs(party[_r]);
-        for (_r = 0; _r < array_length(enemies); _r++) scr_battle_tick_buffs(enemies[_r]);
+        for (_r = 0; _r < array_length(party_vis); _r++) {
+            if (is_struct(party_vis[_r]) && party_vis[_r].anim == "defend") scr_battle_vis_play(party_vis[_r], "idle");
+        }
+        for (_r = 0; _r < array_length(party); _r++) { scr_battle_tick_buffs(party[_r]); scr_battle_tick_statuses(party[_r]); }
+        for (_r = 0; _r < array_length(enemies); _r++) { scr_battle_tick_buffs(enemies[_r]); scr_battle_tick_statuses(enemies[_r]); }
+        // Bleed (Open Vein) reports its tick before commands resume.
+        var _bleed_txt = "";
+        for (_r = 0; _r < array_length(party); _r++) {
+            if (variable_struct_exists(party[_r], "bleed_last") && party[_r].bleed_last > 0) {
+                _bleed_txt += party[_r].name + " bleeds for " + string(party[_r].bleed_last) + ". ";
+                party[_r].bleed_last = 0;
+            }
+        }
+        for (_r = 0; _r < array_length(enemies); _r++) {
+            if (variable_struct_exists(enemies[_r], "bleed_last") && enemies[_r].bleed_last > 0) {
+                _bleed_txt += enemies[_r].name + " bleeds for " + string(enemies[_r].bleed_last) + ". ";
+                enemies[_r].bleed_last = 0;
+            }
+        }
+        if (_bleed_txt != "") {
+            queue_message(_bleed_txt, BATTLE_STATE.COMMAND_SELECT);
+            break;
+        }
         queued_actions = [];
         turn_order = [];
         turn_pos = 0;
@@ -46,6 +68,11 @@ switch (state) {
 
     case BATTLE_STATE.COMMAND_SELECT:
         var _cur = party[actor_index];
+        if (scr_battle_status_has(_cur, "sleep")) {
+            // Asleep: no command this round (the turn is skipped when it comes up).
+            commit_action({ actor_index: actor_index, command: "Sleep", skill_id: "", target_side: "", target_index: -1 });
+            break;
+        }
         command_options = scr_party_battle_commands(_cur);
         var _command_count = array_length(command_options);
         if (command_index >= _command_count) command_index = 0;
@@ -62,6 +89,10 @@ switch (state) {
                 skill_list = scr_skill_list_active(_cur);
                 skill_index = 0;
                 if (array_length(skill_list) > 0) state = BATTLE_STATE.SKILL_SELECT;
+            } else if (_cmd == "Item") {
+                item_list = scr_party_battle_items();
+                item_index = 0;
+                if (array_length(item_list) > 0) state = BATTLE_STATE.ITEM_SELECT;
             } else {
                 commit_action({ actor_index: actor_index, command: _cmd, skill_id: "", target_side: "", target_index: -1 });
             }
@@ -91,12 +122,27 @@ switch (state) {
         }
         break;
 
+    case BATTLE_STATE.ITEM_SELECT:
+        var _in = array_length(item_list);
+        if (_in == 0) { state = BATTLE_STATE.COMMAND_SELECT; break; }
+        if (item_index >= _in) item_index = 0;
+        if (scr_input_up_pressed()) item_index = (item_index - 1 + _in) mod _in;
+        if (scr_input_down_pressed()) item_index = (item_index + 1) mod _in;
+        if (scr_input_cancel_pressed()) { state = BATTLE_STATE.COMMAND_SELECT; break; }
+        if (scr_input_confirm_pressed()) {
+            pending_command = "Item";
+            pending_skill = item_list[item_index]; // the item id rides the pending skill slot
+            begin_target_select("party");
+        }
+        break;
+
     case BATTLE_STATE.TARGET_SELECT:
         if (!is_up(target_side, target_index)) cycle_target(1);
         if (scr_input_up_pressed() || scr_input_left_pressed()) cycle_target(-1);
         if (scr_input_down_pressed() || scr_input_right_pressed()) cycle_target(1);
         if (scr_input_cancel_pressed()) {
-            state = (pending_command == "Skill") ? BATTLE_STATE.SKILL_SELECT : BATTLE_STATE.COMMAND_SELECT;
+            state = (pending_command == "Skill") ? BATTLE_STATE.SKILL_SELECT
+                : ((pending_command == "Item") ? BATTLE_STATE.ITEM_SELECT : BATTLE_STATE.COMMAND_SELECT);
             break;
         }
         if (scr_input_confirm_pressed()) {
@@ -118,12 +164,20 @@ switch (state) {
         var _action = current_turn.action;
         var _actor = party[_action.actor_index];
         if (!scr_actor_is_alive(_actor)) { state = BATTLE_STATE.TURN_NEXT; break; } // KO'd before their turn
+        if (_action.command == "Sleep" || scr_battle_status_has(_actor, "sleep")) {
+            // Sleeping is not taking a turn, so it does not count for XP participation.
+            queue_message(_actor.name + " is asleep.", BATTLE_STATE.TURN_NEXT);
+            break;
+        }
 
         // Taking the turn counts for XP, even if the action later fails (e.g. a blocked swap).
         scr_party_mark_participated(_actor);
 
         if (_action.command == "Guard") {
             _actor.is_guarding = true;
+            // Hold a defend pose while guarding when the member has one (Taren: spr_taren_defend_strip3).
+            var _gv = get_vis("party", _action.actor_index);
+            if (is_struct(_gv) && scr_sprite_is_valid(scr_battle_sprite(_gv.kind, "defend", 1))) scr_battle_vis_play(_gv, "defend");
             queue_message(_actor.name + " guards.", BATTLE_STATE.TURN_NEXT);
         } else if (_action.command == "Swap") {
             // Costs this member's turn. The incoming reserve member acts on later rounds, not this one.
@@ -140,6 +194,8 @@ switch (state) {
             }
         } else if (_action.command == "Skill") {
             do_party_skill(_action.actor_index, _action.skill_id, _action.target_index);
+        } else if (_action.command == "Item") {
+            do_party_item(_action.actor_index, _action.skill_id, _action.target_index);
         } else { // "Attack"
             do_party_skill(_action.actor_index, "attack", _action.target_index);
         }
@@ -150,7 +206,15 @@ switch (state) {
         if (!is_up("enemy", _ei)) { state = BATTLE_STATE.TURN_NEXT; break; }
         if (!scr_party_any_alive(party)) { state = BATTLE_STATE.DEFEAT; break; }
         var _foe = enemies[_ei];
+        if (scr_battle_status_has(_foe, "sleep")) { queue_message(_foe.name + " is asleep.", BATTLE_STATE.TURN_NEXT); break; }
         var _allies = array_length(living("enemy")) - 1;
+        // Field surgeon gate: is any living ally (self included) below the heal threshold?
+        _foe.ally_hurt = false;
+        var _lh = living("enemy");
+        for (var _hq = 0; _hq < array_length(_lh); _hq++) {
+            var _ha = enemies[_lh[_hq]];
+            if (_ha.hp < _ha.max_hp * BATTLE_HEAL_ALLY_THRESHOLD) _foe.ally_hurt = true;
+        }
         var _pick = scr_battle_ai_pick(_foe, _allies);
         var _esk = scr_skill_get(_pick);
         var _etargets = resolve_targets("enemy", _ei, _esk, -1);
@@ -214,11 +278,13 @@ switch (state) {
             victory_gold = 0;
             // Gold is shared and summed over every defeated (or yielded) enemy. XP was banked per
             // living participant at each enemy's killing hit; this only catches anything missed.
-            // Enemies still standing when a boss yields withdraw and give nothing.
+            // Enemies still standing when a boss yields withdraw; they still give XP (credited at
+            // the yield) and gold (PLACEHOLDER rule, balance pass).
             for (var _ve = 0; _ve < array_length(enemies); _ve++) {
                 var _de = enemies[_ve];
-                if (_de.hp > 0 && !_de.yielded) continue;
-                victory_gold += _de.gold_reward;
+                var _dw = variable_struct_exists(_de, "withdrawn") && _de.withdrawn;
+                if (_de.hp > 0 && !_de.yielded && !_dw) continue;
+                victory_gold += _de.gold_reward + _de.stolen_gold; // a beaten cutpurse drops what it stole
                 victory_xp += _de.xp_reward;
                 if (!_de.xp_credited) {
                     scr_party_credit_enemy_xp(_de.xp_reward);
@@ -232,8 +298,12 @@ switch (state) {
         }
         for (var _ye = 0; _ye < array_length(enemies); _ye++) {
             if (!enemies[_ye].yielded) continue;
-            _yield_line = enemies[_ye].full_name + " yields.";
-            if (array_length(living("enemy")) > 0) _yield_line += " The rest withdraw.";
+            _yield_line = (enemies[_ye].yield_line != "") ? enemies[_ye].yield_line : (enemies[_ye].full_name + " yields.");
+            var _any_wd = false;
+            for (var _wq = 0; _wq < array_length(enemies); _wq++) {
+                if (variable_struct_exists(enemies[_wq], "withdrawn") && enemies[_wq].withdrawn) _any_wd = true;
+            }
+            if (_any_wd) _yield_line += " The rest withdraw.";
             _yield_line += "\n";
         }
         var _after_victory = (array_length(level_ups) > 0) ? BATTLE_STATE.LEVEL_UP : BATTLE_STATE.EXIT;

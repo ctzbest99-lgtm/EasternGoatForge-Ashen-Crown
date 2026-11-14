@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"7ce35720-a8f5-43f9-b5e0-623cdba3ff7c",
-      "name":"7ce35720-a8f5-43f9-b5e0-623cdba3ff7c",
+      "%Name":"fd2b8426-7539-4d67-b011-77d57a8b28ff",
+      "name":"fd2b8426-7539-4d67-b011-77d57a8b28ff",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"a7e97cf4-1bf5-486a-a764-53bbfd5caeb0",
-      "name":"a7e97cf4-1bf5-486a-a764-53bbfd5caeb0",
+      "%Name":"b8136175-4475-4e05-91c4-16198255aa8c",
+      "name":"b8136175-4475-4e05-91c4-16198255aa8c",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"37f04d77-1f11-4979-92b5-9b4e964cd5f8",
-      "name":"37f04d77-1f11-4979-92b5-9b4e964cd5f8",
+      "%Name":"1f978466-5905-4954-b5e3-4b7b8d55ec39",
+      "name":"1f978466-5905-4954-b5e3-4b7b8d55ec39",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"00baeb41-9801-4a03-b1f2-df59a4e20019",
-      "name":"00baeb41-9801-4a03-b1f2-df59a4e20019",
+      "%Name":"aec3845b-3d08-4693-b93c-54e6f5ce7b68",
+      "name":"aec3845b-3d08-4693-b93c-54e6f5ce7b68",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"bbb0bdad-349b-4b20-8ee2-0c8bec3ad4fc",
-      "name":"bbb0bdad-349b-4b20-8ee2-0c8bec3ad4fc",
+      "%Name":"39aa934f-b4ae-490e-9ead-bde9c428f228",
+      "name":"39aa934f-b4ae-490e-9ead-bde9c428f228",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"cbb16ed8-d231-4cd5-a617-bc8f5d3c84df",
-      "name":"cbb16ed8-d231-4cd5-a617-bc8f5d3c84df",
+      "%Name":"10811108-bc4a-4768-9770-1c20e38d1123",
+      "name":"10811108-bc4a-4768-9770-1c20e38d1123",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"a30d823e-9d09-4075-a33e-73a7acf1debc",
+      "%Name":"699c2115-d261-4f71-bdc0-46c9cf74a364",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"a30d823e-9d09-4075-a33e-73a7acf1debc",
+      "name":"699c2115-d261-4f71-bdc0-46c9cf74a364",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"7ce35720-a8f5-43f9-b5e0-623cdba3ff7c",
+                    "name":"fd2b8426-7539-4d67-b011-77d57a8b28ff",
                     "path":"sprites/spr_ashbound_hunter_attack_strip6/spr_ashbound_hunter_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"23f72862-a65c-4bd5-ae98-3b9d9a946c13",
+              "id":"330fe3f7-f725-4673-bd2f-94581b1e9646",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a7e97cf4-1bf5-486a-a764-53bbfd5caeb0",
+                    "name":"b8136175-4475-4e05-91c4-16198255aa8c",
                     "path":"sprites/spr_ashbound_hunter_attack_strip6/spr_ashbound_hunter_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"08830d3e-a444-4637-88fe-c4d6d0ac65c2",
+              "id":"471a6b8c-7485-4a5d-a166-71a1974b5c9a",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"37f04d77-1f11-4979-92b5-9b4e964cd5f8",
+                    "name":"1f978466-5905-4954-b5e3-4b7b8d55ec39",
                     "path":"sprites/spr_ashbound_hunter_attack_strip6/spr_ashbound_hunter_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"dc1a1a7b-4c07-49b4-ab36-63de368352ab",
+              "id":"0eae9107-7efe-4976-ab34-bc4113a7cbcf",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"00baeb41-9801-4a03-b1f2-df59a4e20019",
+                    "name":"aec3845b-3d08-4693-b93c-54e6f5ce7b68",
                     "path":"sprites/spr_ashbound_hunter_attack_strip6/spr_ashbound_hunter_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"8d0bb8f0-c4cf-4f5d-8b7c-d68ed76bd9d0",
+              "id":"43b47d04-e564-4d8c-adb4-5ff799b7b179",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"bbb0bdad-349b-4b20-8ee2-0c8bec3ad4fc",
+                    "name":"39aa934f-b4ae-490e-9ead-bde9c428f228",
                     "path":"sprites/spr_ashbound_hunter_attack_strip6/spr_ashbound_hunter_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f4cf1c2a-e470-40cd-a2af-f1b33ce4c7d9",
+              "id":"657209f8-de18-4aff-b25a-7119efc9ef80",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"cbb16ed8-d231-4cd5-a617-bc8f5d3c84df",
+                    "name":"10811108-bc4a-4768-9770-1c20e38d1123",
                     "path":"sprites/spr_ashbound_hunter_attack_strip6/spr_ashbound_hunter_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"2a773955-c91a-45e9-881e-33aedf3bf681",
+              "id":"d432c51b-fb56-4d3f-8531-179f20d20112",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

@@ -115,7 +115,7 @@ if (state == BATTLE_STATE.TARGET_SELECT && is_up(target_side, target_index)) {
 
 // Bottom windows.
 var _menu_y = 128;
-var _choosing = (state == BATTLE_STATE.COMMAND_SELECT || state == BATTLE_STATE.SKILL_SELECT || state == BATTLE_STATE.TARGET_SELECT) && actor_index != -1;
+var _choosing = (state == BATTLE_STATE.COMMAND_SELECT || state == BATTLE_STATE.SKILL_SELECT || state == BATTLE_STATE.ITEM_SELECT || state == BATTLE_STATE.TARGET_SELECT) && actor_index != -1;
 if (_choosing) {
     // Enemy list (living enemies, highlighted while targeting).
     scr_ui_window(4, _menu_y, 86, 48, (boss_index == 0) ? "gold" : "normal");
@@ -155,6 +155,20 @@ if (_choosing) {
                 scr_ui_window(60, 3, 200, 20, "normal");
                 scr_ui_text(68, 8, _help, c_white);
             }
+        }
+    } else if (state == BATTLE_STATE.ITEM_SELECT) {
+        // Item window over the command + party area; count shown per stack.
+        scr_ui_window(92, _menu_y, 224, 48, "normal");
+        for (var _s2 = 0; _s2 < array_length(item_list) && _s2 < 4; _s2++) {
+            var _iy = _menu_y + 5 + _s2 * 10;
+            var _icol = c_white;
+            if (_s2 == item_index) {
+                _icol = _gold_col;
+                scr_ui_cursor(104, _iy + 5);
+            }
+            scr_ui_text(110, _iy, scr_item_display_name(item_list[_s2]), _icol);
+            var _ct = "x" + string(scr_inventory_count(item_list[_s2]));
+            scr_ui_text(300 - string_width(_ct), _iy, _ct, _icol);
         }
     } else {
         // Commands.

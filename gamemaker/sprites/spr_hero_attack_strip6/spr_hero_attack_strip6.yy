@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"f15698d0-1083-415c-acb9-8175704cd872",
-      "name":"f15698d0-1083-415c-acb9-8175704cd872",
+      "%Name":"16719e83-0e92-429a-8fdb-9376bb9088e7",
+      "name":"16719e83-0e92-429a-8fdb-9376bb9088e7",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"1e669a0e-041b-4057-8b7a-f02c1a96d509",
-      "name":"1e669a0e-041b-4057-8b7a-f02c1a96d509",
+      "%Name":"ff54043d-978f-4f13-bc3e-9e31b78198ad",
+      "name":"ff54043d-978f-4f13-bc3e-9e31b78198ad",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"d03a5279-6541-4a68-aa33-a80a1989de7b",
-      "name":"d03a5279-6541-4a68-aa33-a80a1989de7b",
+      "%Name":"d394b22f-b1c2-424f-a4b8-dbe6bb9d09a9",
+      "name":"d394b22f-b1c2-424f-a4b8-dbe6bb9d09a9",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"013182ee-80c0-48b8-8043-2ff92cba24b8",
-      "name":"013182ee-80c0-48b8-8043-2ff92cba24b8",
+      "%Name":"8cdffaab-32a0-4824-a1cb-f40ff3e264f5",
+      "name":"8cdffaab-32a0-4824-a1cb-f40ff3e264f5",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"67826da9-763d-4296-bd7f-f3deefa1716b",
-      "name":"67826da9-763d-4296-bd7f-f3deefa1716b",
+      "%Name":"6bb51408-29a7-4557-8ed4-afe4e3ca84c6",
+      "name":"6bb51408-29a7-4557-8ed4-afe4e3ca84c6",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"1e6bdc1a-8108-4d19-9976-d46c0810d7e2",
-      "name":"1e6bdc1a-8108-4d19-9976-d46c0810d7e2",
+      "%Name":"4eafbbec-1ea8-4924-92eb-5d9182e8eedc",
+      "name":"4eafbbec-1ea8-4924-92eb-5d9182e8eedc",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"a7f5abba-a64e-4f54-be97-d0ddcde35860",
+      "%Name":"9b1d52f4-937f-475a-92b4-089953e61d25",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"a7f5abba-a64e-4f54-be97-d0ddcde35860",
+      "name":"9b1d52f4-937f-475a-92b4-089953e61d25",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"f15698d0-1083-415c-acb9-8175704cd872",
+                    "name":"16719e83-0e92-429a-8fdb-9376bb9088e7",
                     "path":"sprites/spr_hero_attack_strip6/spr_hero_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"64fa0767-025e-411f-a0d6-8a5994674aab",
+              "id":"c2fb7172-3be5-42f9-802d-ceb7687ada54",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"1e669a0e-041b-4057-8b7a-f02c1a96d509",
+                    "name":"ff54043d-978f-4f13-bc3e-9e31b78198ad",
                     "path":"sprites/spr_hero_attack_strip6/spr_hero_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"83c0e7a8-8376-4b06-9faa-5cc5a246aedc",
+              "id":"f7373236-d6ff-4068-91d6-cf6dcb9183a8",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"d03a5279-6541-4a68-aa33-a80a1989de7b",
+                    "name":"d394b22f-b1c2-424f-a4b8-dbe6bb9d09a9",
                     "path":"sprites/spr_hero_attack_strip6/spr_hero_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"bcf2c7bf-411b-4de8-95eb-5d9d48bccac8",
+              "id":"a0b61d80-bbb3-45a1-bd90-d2e8c7e4cd7f",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"013182ee-80c0-48b8-8043-2ff92cba24b8",
+                    "name":"8cdffaab-32a0-4824-a1cb-f40ff3e264f5",
                     "path":"sprites/spr_hero_attack_strip6/spr_hero_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"1ae7ea27-7307-4f0c-8fc9-c702de3f02f6",
+              "id":"26c7b92f-7e29-43e5-a997-d5abffeb6ff2",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"67826da9-763d-4296-bd7f-f3deefa1716b",
+                    "name":"6bb51408-29a7-4557-8ed4-afe4e3ca84c6",
                     "path":"sprites/spr_hero_attack_strip6/spr_hero_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d70e36a1-61c7-4a03-9d00-91b044794766",
+              "id":"f6ccc721-d560-437e-bd75-0b2d3d9e2020",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"1e6bdc1a-8108-4d19-9976-d46c0810d7e2",
+                    "name":"4eafbbec-1ea8-4924-92eb-5d9182e8eedc",
                     "path":"sprites/spr_hero_attack_strip6/spr_hero_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f6637896-db86-4c62-9b5b-5f4840062a51",
+              "id":"bf7052a7-a47b-4bd4-99e8-b6c16451f142",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

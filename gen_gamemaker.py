@@ -115,6 +115,8 @@ OBJ_META = {
     'obj_shop_menu':          (None, None, False, True),
     'obj_save_menu':          (None, None, False, True),
     'obj_save_toast':         (None, None, False, True),
+    # Chapter 3: heist-night lighting (drawn in the GUI layer, no sprite)
+    'obj_night_overlay':      (None, None, False, True),
 }
 
 obj_names = []
@@ -261,6 +263,12 @@ specs['spr_ts_zone1'] = dict(name='spr_ts_zone1',
                             fw=256, fh=800, n=1, oenum=0, xo=0, yo=0, menum=1,
                             bbox=(0, 0, 255, 799), fps=0.0, texture=None, nineslice=None)
 
+# wrenfield tileset source sprite (Chapter 2/3 rooms; rows 0-49 == ts_zone1)
+specs['spr_ts_wrenfield'] = dict(name='spr_ts_wrenfield',
+                            src=os.path.join(SRC, 'tilesets', 'ts_wrenfield.png'),
+                            fw=256, fh=1040, n=1, oenum=0, xo=0, yo=0, menum=1,
+                            bbox=(0, 0, 255, 1039), fps=0.0, texture=None, nineslice=None)
+
 # 640 title set gets its own texture group (tex_title_640) per IMPORT.md
 for name, sp in specs.items():
     if sp['src'] and ('title/640' + os.sep in sp['src'] or '/title/640/' in sp['src'].replace(os.sep, '/')):
@@ -395,6 +403,27 @@ write_json(os.path.join(ts_dir, 'ts_zone1.yy'), {
 })
 RESOURCES.append({"id": {"name": "ts_zone1", "path": "tilesets/ts_zone1/ts_zone1.yy"}})
 
+# ---------------------------------------------------------------- wrenfield tileset
+# ts_wrenfield: rows 0-49 are ts_zone1 unchanged; the new rows are the Chapter 2/3
+# exterior and interior tiles (16x16, no offset/spacing). 256x1040 = 1040 tiles.
+ts_dir = os.path.join(OUT, 'tilesets', 'ts_wrenfield')
+os.makedirs(ts_dir, exist_ok=True)
+write_json(os.path.join(ts_dir, 'ts_wrenfield.yy'), {
+    "$GMTileSet": "v1", "%Name": "ts_wrenfield", "autoTileSets": [],
+    "macroPageTiles": {"SerialiseHeight": 0, "SerialiseWidth": 0,
+                       "TileSerialiseData": []},
+    "name": "ts_wrenfield", "out_columns": 16, "out_tilehborder": 2,
+    "out_tilevborder": 2, "parent": parent_ref("tilesets"),
+    "resourceType": "GMTileSet", "resourceVersion": "2.0",
+    "spriteId": {"name": "spr_ts_wrenfield", "path": "sprites/spr_ts_wrenfield/spr_ts_wrenfield.yy"},
+    "spriteNoExport": True,
+    "textureGroupId": {"name": "Default", "path": "texturegroups/Default"},
+    "tileAnimationFrames": [], "tileAnimationSpeed": 15.0,
+    "tileHeight": 16, "tilehsep": 0, "tilevsep": 0, "tileWidth": 16,
+    "tilexoff": 0, "tileyoff": 0, "tile_count": 1040,
+})
+RESOURCES.append({"id": {"name": "ts_wrenfield", "path": "tilesets/ts_wrenfield/ts_wrenfield.yy"}})
+
 # ---------------------------------------------------------------- rooms
 # layer definitions used by scr_map_layer_defs(): name, depth, visible
 TILE_LAYERS = [("Ground", 400, True), ("Decoration", 300, True),
@@ -472,6 +501,24 @@ ROOMS = [
      'scr_build_greyhaven_general_store();', (320, 180, 640, 360)),
     ('rm_battle_test', 640, 360, [('obj_battle_controller', 32, 32)],
      None, (640, 360, 640, 360)),
+    # ---- Chapter 2 (feature/chapter2): Millhaven Road, Wrenfield and its interiors ----
+    ('rm_millhaven_road', 512, 960, [('obj_player', 264, 32)],
+     'scr_build_millhaven_road();', (320, 180, 640, 360)),
+    ('rm_wrenfield', 896, 704, [('obj_player', 200, 32)],
+     'scr_build_wrenfield();', (320, 180, 640, 360)),
+    ('rm_wrenfield_bent_post', 384, 256, [('obj_player', 184, 208)],
+     'scr_build_wrenfield_bent_post();', (320, 180, 640, 360)),
+    ('rm_wrenfield_store', 320, 224, [('obj_player', 152, 160)],
+     'scr_build_wrenfield_store();', (320, 180, 640, 360)),
+    # ---- Chapter 3 (feature/chapter3): Valemere Road, Valemere, Salt Lamp, warehouse ----
+    ('rm_valemere_road', 384, 704, [('obj_player', 352, 592)],
+     'scr_build_valemere_road();', (320, 180, 640, 360)),
+    ('rm_valemere', 640, 480, [('obj_player', 40, 240)],
+     'scr_build_valemere();', (320, 180, 640, 360)),
+    ('rm_salt_lamp', 320, 224, [('obj_player', 152, 208)],
+     'scr_build_salt_lamp();', (320, 180, 640, 360)),
+    ('rm_warehouse', 416, 288, [('obj_player', 200, 224)],
+     'scr_build_warehouse();', (320, 180, 640, 360)),
 ]
 
 room_order = []

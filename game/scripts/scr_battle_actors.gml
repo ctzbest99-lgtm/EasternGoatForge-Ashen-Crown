@@ -86,7 +86,12 @@ function scr_actor_from_enemy_data(_data) {
     _actor.stolen_gold = 0; // cutpurse: gold taken this battle; returned at victory if it falls
     // Story barks (dialogue node ids) shown in battle instead of the system line, e.g. Calder's
     // stance bark WF_CALDER_PHASE2_01 and yield line WF_CALDER_DEFEAT_01. "" = system line.
-    _actor.stance_line = variable_struct_exists(_data, "stance_line_node") ? scr_ch2_node_text(_data.stance_line_node) : "";
+    // Stance bark nodes live in the chapter dialogue data (Calder: ch2, Debtman: ch3).
+    _actor.stance_line = "";
+    if (variable_struct_exists(_data, "stance_line_node")) {
+        _actor.stance_line = scr_ch2_node_text(_data.stance_line_node);
+        if (_actor.stance_line == "") _actor.stance_line = scr_ch3_node_text(_data.stance_line_node);
+    }
     _actor.yield_line = variable_struct_exists(_data, "yield_line_node") ? scr_ch2_node_text(_data.yield_line_node) : "";
     return _actor;
 }

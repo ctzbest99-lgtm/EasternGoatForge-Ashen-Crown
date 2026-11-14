@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"e179788a-5783-4a79-a848-85da1abc65c8",
-      "name":"e179788a-5783-4a79-a848-85da1abc65c8",
+      "%Name":"df3a1f56-0c09-41ad-ad6e-f19c51262481",
+      "name":"df3a1f56-0c09-41ad-ad6e-f19c51262481",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"b5730fbe-d652-4e41-a937-4949d7fb7863",
+      "%Name":"190629a5-5ba0-4b61-801e-8afc2bf665b4",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"b5730fbe-d652-4e41-a937-4949d7fb7863",
+      "name":"190629a5-5ba0-4b61-801e-8afc2bf665b4",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"e179788a-5783-4a79-a848-85da1abc65c8",
+                    "name":"df3a1f56-0c09-41ad-ad6e-f19c51262481",
                     "path":"sprites/spr_item_hunters_knife/spr_item_hunters_knife.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"33ff84ef-64ef-42ad-b21d-e6af83dc2206",
+              "id":"b4c0b7c0-19ee-4219-9ecf-6f4e4d27e5bc",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

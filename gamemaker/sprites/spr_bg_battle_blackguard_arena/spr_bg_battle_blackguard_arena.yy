@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"88753b4a-1d30-438e-9bbb-626855788f00",
-      "name":"88753b4a-1d30-438e-9bbb-626855788f00",
+      "%Name":"d4a45785-4c3d-4519-9957-72d90c7f2db4",
+      "name":"d4a45785-4c3d-4519-9957-72d90c7f2db4",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"d1dc0db3-b195-4aa7-b152-0534c9925dec",
+      "%Name":"de1e6b2e-a335-4904-9447-9b89c3b60afb",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"d1dc0db3-b195-4aa7-b152-0534c9925dec",
+      "name":"de1e6b2e-a335-4904-9447-9b89c3b60afb",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"88753b4a-1d30-438e-9bbb-626855788f00",
+                    "name":"d4a45785-4c3d-4519-9957-72d90c7f2db4",
                     "path":"sprites/spr_bg_battle_blackguard_arena/spr_bg_battle_blackguard_arena.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"ec710de0-ff00-4ba8-a84d-f475b55bf56f",
+              "id":"54083a00-71de-4dd2-b800-36e43318c470",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

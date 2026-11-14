@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"990a0ebd-53fc-4924-89aa-166ef1a8e50f",
-      "name":"990a0ebd-53fc-4924-89aa-166ef1a8e50f",
+      "%Name":"287d23c0-4053-4cdb-b4f3-0d832f3a916f",
+      "name":"287d23c0-4053-4cdb-b4f3-0d832f3a916f",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"2921569a-8dff-4fba-80e0-2618349dc2df",
-      "name":"2921569a-8dff-4fba-80e0-2618349dc2df",
+      "%Name":"5f124afe-5429-43ad-8956-29113365ccec",
+      "name":"5f124afe-5429-43ad-8956-29113365ccec",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"883b239a-8cce-4125-9171-3f172b9c6d6d",
-      "name":"883b239a-8cce-4125-9171-3f172b9c6d6d",
+      "%Name":"04760324-edff-40da-ac08-6192036b2367",
+      "name":"04760324-edff-40da-ac08-6192036b2367",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"9ca94a37-10ec-4d59-98ae-bbda54aab384",
-      "name":"9ca94a37-10ec-4d59-98ae-bbda54aab384",
+      "%Name":"2a7a8d18-8afd-4d9f-bcba-6de4f477dff3",
+      "name":"2a7a8d18-8afd-4d9f-bcba-6de4f477dff3",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"f01bd23c-55ca-44fb-9509-ace3efbdb284",
+      "%Name":"e20a8cd7-17c6-4573-af94-bb31cb6e47b7",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"f01bd23c-55ca-44fb-9509-ace3efbdb284",
+      "name":"e20a8cd7-17c6-4573-af94-bb31cb6e47b7",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"990a0ebd-53fc-4924-89aa-166ef1a8e50f",
+                    "name":"287d23c0-4053-4cdb-b4f3-0d832f3a916f",
                     "path":"sprites/spr_bandit_veteran_hurt_strip4/spr_bandit_veteran_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"dde504a9-23be-4edd-9066-1e4475ada737",
+              "id":"40c05fb6-7c2d-450f-8d84-f4b2bff17cac",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"2921569a-8dff-4fba-80e0-2618349dc2df",
+                    "name":"5f124afe-5429-43ad-8956-29113365ccec",
                     "path":"sprites/spr_bandit_veteran_hurt_strip4/spr_bandit_veteran_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"1d8e5b65-03eb-4bfe-8c69-05bd3d817536",
+              "id":"998a4400-6c11-4f57-9f8e-a3ee2ce3b4b9",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"883b239a-8cce-4125-9171-3f172b9c6d6d",
+                    "name":"04760324-edff-40da-ac08-6192036b2367",
                     "path":"sprites/spr_bandit_veteran_hurt_strip4/spr_bandit_veteran_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f643cf9e-4698-4377-b460-a2bdef20c7a4",
+              "id":"599a5d54-0427-43bb-beb1-0fb167b8a2e5",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"9ca94a37-10ec-4d59-98ae-bbda54aab384",
+                    "name":"2a7a8d18-8afd-4d9f-bcba-6de4f477dff3",
                     "path":"sprites/spr_bandit_veteran_hurt_strip4/spr_bandit_veteran_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"ab3de77e-5aa6-4c31-bc5b-0759f59db06a",
+              "id":"fa1d0909-fe16-40f2-ae4f-a745f6c234a2",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

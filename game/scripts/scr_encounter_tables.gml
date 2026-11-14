@@ -94,6 +94,16 @@ function scr_get_encounter_table(_table_id) {
                 { group: ["crown_sergeant", "occupation_soldier"], weight: 1 } // batch 7 elite
             ];
 
+        // ---- Chapter 3: the road east of Wrenfield (weights PLACEHOLDER). ----
+        case "ch3_valemere_road":
+            return [
+                { enemy_id: "crown_patrolman", weight: 3 },
+                { enemy_id: "crown_crossbowman", weight: 1 },
+                { enemy_id: "bandit_veteran", weight: 2 },
+                { group: ["crown_patrolman", "crown_crossbowman"], weight: 2 },
+                { group: ["bandit_veteran", "bandit"], weight: 1 }
+            ];
+
         // ---- Design batches 7–8 (data only; no rooms or zones yet). Weights PLACEHOLDER. ----
         case "valemere_lower_city": // Chapter 3
             return [
@@ -135,7 +145,7 @@ function scr_encounter_table_level_band(_table_id) {
         case "zone01_watchtower": case "watchtower": case "zone01_basement_nest": case "zone01_basement_hall": return { min: 4, max: 7 };
         case "ch2_millhaven_road": case "millhaven_road": case "ch2_wrenfield": case "wrenfield": return { min: 8, max: 10 };
         // PROPOSED bands from ACT2_OUTLINE.md; the Blackwood is a coder placeholder.
-        case "valemere_lower_city": return { min: 10, max: 13 };
+        case "valemere_lower_city": case "ch3_valemere_road": return { min: 10, max: 13 };
         case "hollow_sanctuary": return { min: 13, max: 16 };
         case "blackwood_garrison": return { min: 16, max: 18 };
         case "blackwood": return { min: 18, max: 20 };
@@ -157,7 +167,8 @@ function scr_get_encounter_group(_group_id) {
             return { boss: "reeve_calder", adds: _adds };
         }
         // Batch 7–8 boss groups (adds follow Design's mockups; PLACEHOLDER).
-        case "grp_debtman": return { boss: "debtman", adds: ["dock_thug"] };
+        // CHAPTER3_SCRIPT.md §6: the Debtman plus 1-2 Lower City toughs (PLACEHOLDER 2).
+        case "grp_debtman": return { boss: "debtman", adds: ["dock_thug", "debt_collector"] };
         case "grp_sanctuary_warden": return { boss: "sanctuary_warden", adds: ["ward_sentinel"] };
         case "grp_commander_hailen": return { boss: "commander_hailen", adds: ["garrison_pikeman"] };
         case "grp_blackwood_matriarch": return { boss: "blackwood_matriarch", adds: ["shade_stalker"] };

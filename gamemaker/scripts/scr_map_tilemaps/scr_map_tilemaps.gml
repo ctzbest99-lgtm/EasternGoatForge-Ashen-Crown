@@ -244,6 +244,7 @@ function scr_map_spawn_markers(_markers) {
     for (var _i = 0; _i < array_length(_markers); _i++) {
         var _m = _markers[_i];
         if (variable_struct_exists(_m, "name") && _m.name == "town_square") _town_square = _m;
+        if (scr_ch2_marker_skip(_m)) continue; // avoided patrol (and its escort) stays gone
         switch (_m.type) {
             case "player_spawn":
                 if (_spawn == undefined) _spawn = _m;
@@ -277,6 +278,10 @@ function scr_map_spawn_markers(_markers) {
                     _t.enemy_id = _eid;
                     _t.encounter_id = _m.encounter_id;
                     scr_ch1_bind_enemy_ow(_t, _eid, _m);
+                    // Chapter 2: Design's suggested sprite, a bark before the fight, avoidable patrols.
+                    if (variable_struct_exists(_m, "sprite")) scr_ch2_apply_marker_sprite(_t, _m);
+                    if (variable_struct_exists(_m, "script_chain")) _t.pre_chain = _m.script_chain;
+                    if (variable_struct_exists(_m, "avoidable")) _t.avoidable = _m.avoidable;
                 }
                 break;
             case "encounter_zone":
@@ -378,6 +383,7 @@ function scr_map_spawn_markers(_markers) {
                         var _nid = variable_struct_exists(_m, "npc_id") ? _m.npc_id : "";
                         var _nm = variable_struct_exists(_m, "name") ? _m.name : "";
                         scr_ch1_bind_npc_ow(_s, _nid, _nm, _m);
+                        if (variable_struct_exists(_m, "sprite")) scr_ch2_apply_marker_sprite(_s, _m); // Chapter 2 NPCs
                     }
                     _s.map_marker = _m;
                 }
@@ -395,10 +401,22 @@ function scr_map_spawn_markers(_markers) {
                     var _sid = variable_struct_exists(_m, "npc_id") ? _m.npc_id : "fallen_knight_story";
                     var _snm = variable_struct_exists(_m, "name") ? _m.name : "";
                     scr_ch1_bind_npc_ow(_sn, _sid, _snm, _m);
+                    if (variable_struct_exists(_m, "sprite")) scr_ch2_apply_marker_sprite(_sn, _m); // Chapter 2 (Bram's noose strip etc.)
                     if (_sn.image_xscale != 1 || !scr_sprite_is_valid(_sn.sprite_index)) {
                         scr_map_fit_to_tile(_sn, _m.x, _m.y);
                     }
                     if (scr_flag_get(_sn.story_flag)) instance_destroy(_sn);
+                }
+                break;
+            case "extra":
+                // Chapter 2: a silent body (crowd, guards). Blocks like an NPC, says nothing.
+                if (_o_int != -1) {
+                    var _ex = scr_map_create_at_feet(_o_int, _lay, _m.x, _m.y);
+                    scr_map_fit_to_tile(_ex, _m.x, _m.y);
+                    _ex.dialogue_lines = [];
+                    _ex.speaker_name = "";
+                    _ex.map_marker = _m;
+                    scr_ch2_apply_marker_sprite(_ex, _m);
                 }
                 break;
             case "save_point":
@@ -526,6 +544,11 @@ function scr_map_spawn_markers(_markers) {
                     _d.target_room = asset_get_index(_m.target_room);
                     _d.target_room_name = _m.target_room;
                     _d.target_spawn = variable_struct_exists(_m, "target_spawn") ? _m.target_spawn : "";
+                    // Chapter 2 stubs: until the target room exists, use the marker's fallback.
+                    if (_d.target_room == -1 && variable_struct_exists(_m, "fallback_room")) {
+                        _d.target_room = asset_get_index(_m.fallback_room);
+                        _d.target_spawn = variable_struct_exists(_m, "fallback_spawn") ? _m.fallback_spawn : "";
+                    }
                     _d.sets_flag = variable_struct_exists(_m, "sets_flag") ? _m.sets_flag : "";
                     _d.map_marker = _m;
                 }

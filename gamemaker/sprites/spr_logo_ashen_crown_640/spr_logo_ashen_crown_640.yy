@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"cf440833-0a18-4324-ab73-a8452dd049d2",
-      "name":"cf440833-0a18-4324-ab73-a8452dd049d2",
+      "%Name":"9a6f786d-8f9c-4386-b91e-174282ea1dfa",
+      "name":"9a6f786d-8f9c-4386-b91e-174282ea1dfa",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"72b0b30a-ce3d-479a-83fe-96cff7818240",
+      "%Name":"45d0e63e-e438-4eae-ac78-13f3532a41ee",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"72b0b30a-ce3d-479a-83fe-96cff7818240",
+      "name":"45d0e63e-e438-4eae-ac78-13f3532a41ee",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"cf440833-0a18-4324-ab73-a8452dd049d2",
+                    "name":"9a6f786d-8f9c-4386-b91e-174282ea1dfa",
                     "path":"sprites/spr_logo_ashen_crown_640/spr_logo_ashen_crown_640.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"c292f5ac-f014-4845-98f0-349cd612eb87",
+              "id":"3b815bf9-54c5-4c6d-b627-9ad838a0630a",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

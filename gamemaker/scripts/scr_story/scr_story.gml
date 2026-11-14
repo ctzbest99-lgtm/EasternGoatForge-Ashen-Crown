@@ -49,8 +49,13 @@ function scr_story_try_pending_post_dialogue() {
     scr_game_state_init();
     var _ids = global.game.pending_post_dialogue;
     global.game.pending_post_dialogue = undefined;
+    // Optional callback after the lines (Chapter 2: Taren's join talk sets flag_taren_recruited).
+    var _cb = variable_struct_exists(global.game, "pending_post_callback") ? global.game.pending_post_callback : undefined;
+    global.game.pending_post_callback = undefined;
     if (is_array(_ids) && array_length(_ids) > 0) {
-        scr_dialogue_play(_ids);
+        scr_dialogue_play(_ids, _cb);
+    } else if (!is_undefined(_cb)) {
+        _cb();
     }
 }
 

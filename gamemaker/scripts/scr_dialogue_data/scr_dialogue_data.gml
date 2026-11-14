@@ -1,7 +1,7 @@
 /// scr_dialogue_data — Chapter 1 dialogue nodes keyed by stable IDs from
 /// docs/story/CHAPTER1_SCRIPT.md (ZONE_PLACE_NN). Text is verbatim from the script.
-/// Speaker "" is NARRATION (no name in the box).
-/// Do not wire lines tagged [PROPOSED] in docs/story/CHAPTER2_SCRIPT.md.
+/// Speaker "" is NARRATION (no name in the box). Chapters 2–3 are approved and live in
+/// scr_dialogue_data_ch2 / scr_dialogue_data_ch3 (chained at the bottom of scr_dialogue_node).
 
 function scr_dialogue_node(_id) {
     switch (_id) {
@@ -181,11 +181,17 @@ function scr_dialogue_node(_id) {
         case "CV_END_06":
             return { id: "CV_END_06", speaker: "SYSTEM", lines: ["Chapter 1 — The Night of Ash — Complete."] };
     }
-    return undefined;
+    var _ch2 = scr_ch2_dialogue_node(_id); // Chapter 2 (scr_dialogue_data_ch2, generated)
+    if (is_struct(_ch2)) return _ch2;
+    return scr_ch3_dialogue_node(_id); // Chapter 3 (scr_dialogue_data_ch3, generated)
 }
 
 function scr_dialogue_play_script(_script_id, _source = noone) {
     scr_game_state_init();
+    // Chapter 2 first: its own ids, plus Act II versions of Chapter 1 scenes (Greyhaven return, CV door).
+    if (scr_ch2_play_script(_script_id, _source)) return true;
+    // Chapter 3 (Crowns and Alleys). Runs after Chapter 2 so its Wrenfield exits still resolve.
+    if (scr_ch3_play_script(_script_id, _source)) return true;
     switch (_script_id) {
         case "GH_ARRIVAL":
             if (scr_flag_get("flag_arrived_greyhaven")) return true;
@@ -383,7 +389,10 @@ function scr_dialogue_try_advance_queue() {
         var _node = scr_dialogue_node(_id);
         if (!is_struct(_node)) continue;
         var _box = scr_dialogue_open(_node.lines, _node.speaker);
-        if (_box != noone) return;
+        if (_box != noone) {
+            if (variable_struct_exists(_node, "expr")) _box.portrait_expr = _node.expr;
+            return;
+        }
     }
 
     if (!is_undefined(_g.dialogue_on_finish)) {
