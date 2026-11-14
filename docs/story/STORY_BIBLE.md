@@ -90,13 +90,13 @@ Quotes are copied exactly from the doc (curly quotes and ellipses included).
 - **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Caelan is recruited at an abandoned Aethari sanctuary (Act II).
 - **[C-confirmed]** (Kevin via Coder, Nov 14 2026) **The Aethari and the Architects are the same people.** "We can use both names depending on who's talking about them." Everything in 2.2 (The Architects) applies to the Aethari too.
 
-#### Naming guide: Aethari vs Architects **[PROPOSED]** (for Kevin's review)
+#### Naming guide: Aethari vs Architects **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 | Name | Who uses it |
 |---|---|
 | **Architects** (the common modern Eldorian term) | Ordinary people, villagers, soldiers, the Crown, most of the Radiant Flame, and Kael early in the game. Also the **default for UI, bestiary and quest text**. |
 | **Aethari** (the true, old name) | People with deep or forbidden knowledge: Caelan (former royal scholar), royal scholars and archives, the Aethari's own records and inscriptions, some of the Ashbound, and anyone who has learned the truth. Kael and the party shift to "Aethari" after the relevant revelation (which act is **[O]**). |
 
-Example lines **[PROPOSED]**, illustration only and not scripted scenes:
+Example lines **[C-confirmed]**, illustrations of the guide and not scripted scenes:
 - Villager: "Don't go poking at those old Architect stones. Nothing good comes up out of the ground."
 - Kael (early): "More Architect carvings. Whoever they were, they liked doors."
 - Caelan: "The Architects. That's what the textbooks call them. They called themselves the Aethari."
@@ -450,3 +450,4 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 | Nov 14 2026 | Act II's working title stays **The Broken Crown**. An earlier outline called Act II "The Broken Yoke," but that is now the rebellion's name only. | Act outline unchanged. Use "The Broken Yoke" only for the faction. |
 | Nov 14 2026 | Defined the Aethari: an extraordinarily advanced civilization that understood Lumen (ancient magic), the nature of the Crownveil, the relationship between life and the Ash, magical mechanisms, and the containment of supernatural forces. They built enormous cities, sanctuaries, temples and underground structures. Their greatest achievement was the Crown Engine, associated with maintaining the Crownveil. | 2.5 rewritten. New 2.6 Lumen and 2.7 Crown Engine, details open. [PROPOSED, pending Kevin] working assumption: Aethari = the Architects' own name. Open questions updated. |
 | Nov 14 2026 | (Kevin via Coder) "We can use both names depending on who's talking about them." The Aethari and the Architects are the same people. | 2.5: the link is confirmed, and the working assumption and the "don't state it in game text" rule are removed. 2.2 heading cross-referenced. A [PROPOSED] naming guide was added for Kevin's review. The open question was removed. |
+| Nov 14 2026 | Approved the Aethari vs Architects naming guide. | 2.5 naming guide and its example lines changed from [PROPOSED] to [C-confirmed]. |
