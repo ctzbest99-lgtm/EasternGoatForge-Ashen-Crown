@@ -16,6 +16,7 @@ Room size, tile size, and resolution are still undecided in a final-design sense
 | `spr_interactable_placeholder` | 32×32 | Top Left | Rectangle, full image | e.g. brown "sign" |
 | `spr_encounter_trigger_placeholder` | 32×32 | Top Left | Rectangle, full image | Semi-transparent red; can be stretched in the room |
 | `spr_encounter_zone_placeholder` | 32×32 | Top Left | Rectangle, full image | Semi-transparent yellow; stretch over the wild area. Required so the zone mask matches the rectangle. |
+| `spr_story_encounter_placeholder` | 32×32 | Top Left | Rectangle, full image | Semi-transparent purple; one tile. Required so the story-trigger mask matches the tile. |
 
 Code reads the collision box (`bbox_*`), not the origin, so other origins work too. No final art exists; record real assets in docs/ASSET_INVENTORY.md when added.
 
@@ -30,6 +31,7 @@ Create each object in the table in `game/README.md` with the listed sprite, flag
 - **obj_battle_controller:** no sprite. Events: Create, Step, Draw ▸ Draw GUI.
 - **obj_respawn_point:** optional sprite `spr_respawn_point_placeholder` (any small colour; only needed so you can see it while laying out the room). Event: Create. No parent, not solid.
 - **obj_encounter_zone:** sprite `spr_encounter_zone_placeholder`. Event: Create. No parent, not solid. The overworld builder stretches these from map markers; you do not have to place them by hand.
+- **obj_story_encounter:** sprite `spr_story_encounter_placeholder` (16×16 preferred; a larger placeholder is scaled to one tile). Events: Create, Other ▸ Room Start, Step. No parent, not solid. The Watchtower builder spawns the guaranteed Hunter trigger; do not also hand-place one on the same tile.
 - **obj_zone_entrance:** sprite any 16×16 (e.g. `spr_encounter_trigger_placeholder`). Events: Create, Step. No parent, not solid. See `game/objects/obj_zone_entrance/README.md`.
 
 ## 4. Tileset and Included Files (do this before the rooms)
@@ -59,7 +61,7 @@ Create each object in the table in `game/README.md` with the listed sprite, flag
 2. Place **1 × `obj_player`**. Do **not** place a second `obj_game_controller` (the existing one is persistent). Do not hand-place markers; the script spawns them.
 3. Room Creation Code: `scr_build_old_watchtower();` (map data is embedded in that script; no Included Files needed).
 4. The south exit returns to `rm_overworld` at the `old_watchtower` entrance marker. The basement stairs (`rm_watchtower_basement`) and the Crownveil door are stubs (placeholder dialogue). The Blackguard boss uses `enemy_id = "blackguard"` (placeholder stats in `scr_enemy_database`).
-5. **Integration with PR #4** (`feature/watchtower-scripted-encounter`): that PR adds `obj_story_encounter` for the guaranteed Ashbound Hunter fight. Design did not include a Hunter marker. Place that object in this room on a tile before the banner / `old_royal_banner` (41, 25) once that PR is in, and do not also spawn a second trigger on the same tile.
+5. The guaranteed Ashbound Hunter fight (`enc_ashbound_hunter_wt`) is spawned by `scr_build_old_watchtower` as a `story_encounter` marker on walkable tile **(41, 24)**, immediately in front of `old_royal_banner` (41, 25). Do not also hand-place a second `obj_story_encounter` on that tile.
 
 ## 7. rm_battle_test (placeholder 640×360)
 1. Create room `rm_battle_test`. Leave Persistent off.
@@ -75,11 +77,16 @@ If the Included Files are missing, the debug log will print `scr_build_overworld
 Rooms are safe until you opt in:
 1. **Zone (used by the overworld builder):** `scr_map_spawn_markers` creates stretched `obj_encounter_zone` instances from map markers (`zone01_farmlands`, `zone01_old_road`, `zone01_bandit_camp`, `zone01_watchtower`), using the existing `table_id` / `enemy_table` API. Greyhaven has no zone. You can still hand-place extra zones the same way as before. See `game/objects/obj_encounter_zone/README.md`.
 2. **Whole room:** in `scr_get_room_encounter_table()` (in `scr_encounter_tables`), return `scr_get_encounter_table("zone01_path")` (or a custom table) for that room. Do not do this for `TOWN_RESPAWN_ROOM` or other safe rooms. A zone at the player's position overrides the room table.
-3. Keep `obj_encounter_trigger` for fixed boss/story fights. Standing on a trigger does not also roll a random encounter.
+3. Keep `obj_encounter_trigger` for simple fixed fights, and `obj_story_encounter` for the guaranteed Watchtower Ashbound Hunter (and later scripted beats). Standing on either does not also roll a random encounter.
 4. To disable random encounters while testing: set `#macro RANDOM_ENCOUNTERS_ENABLED false` and recompile, or in the debugger set `global.game.random_encounters_enabled = false`.
 5. Default rates (pending tuning): 32 pixels = 1 step, a new fight after 8–24 steps in an area, 5 grace steps after room entry or after returning from battle.
 
-## 10. When the town room is built
+## 10. Old Watchtower Ashbound Hunter (`enc_ashbound_hunter_wt`)
+1. Create `obj_story_encounter` and `spr_story_encounter_placeholder` as in the tables above. Paste the Create, Room Start, and Step snippets. A 16×16 sprite matches the tile grid; a larger placeholder is scaled to one tile when spawned from the map.
+2. You do **not** have to place the instance by hand in `rm_old_watchtower`. `scr_build_old_watchtower` / `scr_map_spawn_markers` spawn one on walkable tile (41, 24), immediately in front of `old_royal_banner` (41, 25). Leave `encounter_id` as `enc_ashbound_hunter_wt`. Do not also hand-place a second trigger on that tile.
+3. To test the rare random source, walk the Old Road, bandit-camp, or Watchtower encounter zones (`table_id` `zone01_old_road` / `zone01_bandit_camp` / `zone01_watchtower`; the older short ids still work). You can also set `allow_ashbound_rare = true` on a zone. In the debugger, `global.game.ashbound_rare_chance = 1` makes the next random fight in that zone the Hunter. Do not enable this on `zone01_farmlands` or the `zone01_path` fallback unless you are specifically testing the rare roll.
+
+## 11. When the town room is built
 1. Create the town room (e.g. `rm_town`). Leave Persistent off. Place `obj_player` in that room (required; the player object is not persistent). Do **not** place a second `obj_game_controller` (the existing one is persistent and will arrive with the party).
 2. In `game/scripts/scr_game_constants.gml`, change `#macro TOWN_RESPAWN_ROOM` to the new room asset (e.g. `rm_town`).
 3. Place one `obj_respawn_point` in open space (inn, shrine, etc.), or set `TOWN_RESPAWN_X` / `TOWN_RESPAWN_Y` (currently Greyhaven 2984, 2752) to a known open position in that room instead.

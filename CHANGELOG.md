@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-14 — Old Watchtower Ashbound Hunter scripted encounter
+- Added a story-flag system (`global.game.flags`, `scr_flag_get` / `scr_flag_set`) and key-item helpers (`scr_inventory_add` / `scr_inventory_has`).
+- Added the Ashbound Hunter to `scr_enemy_database` (placeholder stats: 42 HP, 9 ATK, 5 DEF, 20 XP, 12 gold; Ice weakness stored for the bestiary, not used in combat). The Zone 1 **Blackguard** entry is kept as well (one of each).
+- Guaranteed Watchtower fight (`enc_ashbound_hunter_wt` via `obj_story_encounter`): pre-fight `ENC_AH_01`–`02`, battle, then on first victory set `flag_parchment_found`, add `item_ashbound_parchment`, and play `ENC_AH_03`–`05`. If the flag is already set, the fight still happens once and the pickup is skipped.
+- The map builder spawns that trigger on walkable tile (41, 24) in `rm_old_watchtower`, immediately in front of `old_royal_banner` (41, 25). Do not also hand-place a second instance on the same tile.
+- Rare random Hunter (default 4% of random fights) in areas that opt in (`allow_ashbound_rare`, or table ids `zone01_old_road` / `zone01_bandit_camp` / `zone01_watchtower`, plus the older short ids `old_road` / `bandit_camp` / `watchtower`). Same pre/post lines; a rare victory does not consume the Watchtower trigger.
+- Dialogue nodes are keyed by the script's IDs in `scr_dialogue_data` and played through `scr_dialogue_play` / `scr_dialogue_open`.
+- Assumptions (open questions): a defeat does not consume the guaranteed trigger; the fight grants regular XP/gold; rare rate and Hunter stats are placeholders pending tuning.
+
 ## 2026-11-14 — Per-enemy XP credit for living participants
 - Owner decision: when an enemy dies, its XP is credited to each party member who has participated (taken at least one turn) and is not KO'd at that moment. Credit is stored as `pending_xp` and applied at victory (level-up messages unchanged). A defeat grants no XP. Gold stays shared.
 - A member KO'd before an enemy dies gets no XP for that enemy, but keeps credit for enemies that died before they fell. A reserve member who swapped in and has taken a turn counts from then on, but gets no credit for earlier kills.
@@ -18,7 +27,6 @@
 - Placeholder stats (pending): Lyra 24/7/1, Caelan 22/8/1, Sera 28/4/4, Taren 36/8/3. Taren's weapon categories include `heavy_sword`; his equipment stub starts with a bastard sword. Skills are placeholders.
 - `scr_save_state_collect()` snapshots active and reserve ids (`save_schema_version` 0). The versioned save schema is still roadmap step 5.
 - `DEBUG_ADD_FULL_ROSTER` fills all five for testing (Taren in reserve). Test plan P5–P6 updated; P9–P10 added.
-
 ## 2026-11-14 — Zone 1 overworld and Old Watchtower maps
 - Added the 400×300-tile overworld (`rm_overworld`, 6400×4800) and 60×45 Old Watchtower (`rm_old_watchtower`, 960×720) at 16×16. Tileset `game/tilesets/ts_zone1.png` (256×608); layer data in Included Files `game/datafiles/overworld/*.bin` with 100×75 CSV chunk fallback. Watchtower layers are embedded in `scr_build_old_watchtower`.
 - Five Tile layers: Ground, Decoration, Overhead (depth -10000, so it stays above a player using `depth = -y`), Collision (hooks into the existing `obj_player` Collision-layer check), Markers.

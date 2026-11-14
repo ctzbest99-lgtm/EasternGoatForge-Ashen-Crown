@@ -43,6 +43,18 @@
   "note": "Block these stairs (obj_solid or a locked door) until the Basement is done; route is Watchtower -> Basement -> Blackguard."
  },
  {
+  "type": "story_encounter",
+  "name": "enc_ashbound_hunter_wt",
+  "tile_x": 41,
+  "tile_y": 24,
+  "x": 664,
+  "y": 400,
+  "encounter_id": "enc_ashbound_hunter_wt",
+  "enemy_id": "ashbound_hunter",
+  "script_id": "ENC_ASHBOUND_HUNTER",
+  "note": "Guaranteed first Ashbound Hunter fight, on the walkable tile immediately in front of old_royal_banner (41, 25)."
+ },
+ {
   "type": "lore",
   "name": "old_royal_banner",
   "tile_x": 41,

@@ -10,3 +10,6 @@
 table_id = "zone01_path";
 enemy_table = scr_get_encounter_table("zone01_path");
 visible = DEBUG_SHOW_TRIGGERS;
+// Set true (or use table_id old_road / bandit_camp / watchtower) to allow the
+// rare Ashbound Hunter random encounter (CHAPTER1_SCRIPT.md §4.1). Default off.
+allow_ashbound_rare = false;

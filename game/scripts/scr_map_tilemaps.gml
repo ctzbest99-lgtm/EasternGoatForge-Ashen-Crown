@@ -142,6 +142,7 @@ function scr_map_spawn_markers(_markers) {
     var _o_int  = asset_get_index("obj_interactable");
     var _o_door = asset_get_index("obj_zone_entrance");
     var _o_resp = asset_get_index("obj_respawn_point");
+    var _o_story = asset_get_index("obj_story_encounter");
     var _spawn = undefined;
     if (variable_global_exists("map_spawn_name") && is_string(global.map_spawn_name) && global.map_spawn_name != "") {
         _spawn = scr_map_find_marker(_markers, global.map_spawn_name);
@@ -152,6 +153,22 @@ function scr_map_spawn_markers(_markers) {
         switch (_m.type) {
             case "player_spawn":
                 if (_spawn == undefined) _spawn = _m;
+                break;
+            case "story_encounter":
+                // Guaranteed scripted fight (Ashbound Hunter). Skip if the object
+                // is not in the project yet. Covers one 16×16 tile; a larger
+                // placeholder sprite is scaled down so the mask matches.
+                if (_o_story != -1) {
+                    var _st = instance_create_layer(_m.tile_x * 16, _m.tile_y * 16, _lay, _o_story);
+                    var _sspr = _st.sprite_index;
+                    if (_sspr != -1 && sprite_exists(_sspr) && sprite_get_width(_sspr) > 0 && sprite_get_height(_sspr) > 0) {
+                        _st.image_xscale = 16 / sprite_get_width(_sspr);
+                        _st.image_yscale = 16 / sprite_get_height(_sspr);
+                    }
+                    if (variable_struct_exists(_m, "encounter_id")) _st.encounter_id = _m.encounter_id;
+                    if (variable_struct_exists(_m, "enemy_id")) _st.enemy_id = _m.enemy_id;
+                    if (variable_struct_exists(_m, "script_id")) _st.script_id = _m.script_id;
+                }
                 break;
             case "bandit_spawn": case "encounter": case "enemy_spawn": case "boss_spawn":
                 if (_o_trig != -1) {

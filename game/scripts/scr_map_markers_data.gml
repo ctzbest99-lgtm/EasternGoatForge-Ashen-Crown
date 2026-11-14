@@ -66,6 +66,7 @@ function scr_old_watchtower_markers() {
         { type: "zone_exit", name: "to_overworld", tile_x: 29, tile_y: 44, x: 472, y: 720, target_room: "rm_overworld", target_spawn: "old_watchtower", w: 4, h: 1 },
         { type: "entrance", name: "watchtower_basement_stairs", tile_x: 20, tile_y: 28, x: 328, y: 464, target_room: "rm_watchtower_basement", status: "stub", note: "Stair down to the Watchtower Basement (Architect carvings). Room not built yet." },
         { type: "location", name: "locked_terrace_stairs", tile_x: 29, tile_y: 21, x: 472, y: 352, requires: "watchtower_basement_cleared", note: "Block these stairs (obj_solid or a locked door) until the Basement is done; route is Watchtower -> Basement -> Blackguard." },
+        { type: "story_encounter", name: "enc_ashbound_hunter_wt", tile_x: 41, tile_y: 24, x: 664, y: 400, encounter_id: "enc_ashbound_hunter_wt", enemy_id: "ashbound_hunter", script_id: "ENC_ASHBOUND_HUNTER", note: "Guaranteed first Ashbound Hunter fight, on the walkable tile immediately in front of old_royal_banner (41, 25)." },
         { type: "lore", name: "old_royal_banner", tile_x: 41, tile_y: 25, x: 664, y: 416, note: "Old royal banner bearing the same symbol as Kael's pendant (symbol design is still Open)." },
         { type: "treasure", name: "watchtower_chest_key", tile_x: 46, tile_y: 23, x: 744, y: 384, loot: ["Watchtower Key"], note: "Key for locked doors." },
         { type: "treasure", name: "watchtower_chest_2", tile_x: 12, tile_y: 34, x: 200, y: 560, loot: ["placeholder"] },

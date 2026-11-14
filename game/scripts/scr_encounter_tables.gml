@@ -19,22 +19,26 @@ function scr_get_encounter_table(_table_id) {
             return [
                 { enemy_id: "bandit", weight: 1 }
             ];
+        // Old Road / Bandit Camp / Watchtower: these table ids also opt the area
+        // into the rare Ashbound Hunter roll (see scr_area_allows_ashbound_rare).
+        // Other Chapter 1 enemies are not in the database yet, so these are
+        // placeholders using Bandit / Fallen Knight plus the separate rare roll.
         case "zone01_old_road":
+        case "old_road":
             // Design: Bandits, Ash Wolves, Ashen Wretches, rare Ashbound Hunter, Lv 2–3.
-            // Missing enemies omitted. PR #4 (feature/watchtower-scripted-encounter) adds
-            // the rare Hunter roll for table ids "old_road" / "bandit_camp" / "watchtower";
-            // after that PR merges, add "zone01_old_road" (and the two below) to its allow list.
             return [
                 { enemy_id: "bandit", weight: 3 },
                 { enemy_id: "fallen_knight", weight: 1 }
             ];
         case "zone01_bandit_camp":
+        case "bandit_camp":
             // Design: Bandits, Fallen Knights, Ashen Wretches, rare Ashbound Hunter, Lv 3–4.
             return [
                 { enemy_id: "bandit", weight: 2 },
                 { enemy_id: "fallen_knight", weight: 2 }
             ];
         case "zone01_watchtower":
+        case "watchtower":
             // Design: Fallen Knights, Grave Spiders, Hollow Soldiers, Ashbound Hunter, Lv 4–7.
             // Missing enemies omitted. Greyhaven itself has no zone (safe).
             return [

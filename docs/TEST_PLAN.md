@@ -75,6 +75,15 @@ XP curve: total XP to be level L is `20*(L-1)^2 + 10*(L-1)` (L2=30, L3=100, L4=2
 
 
 
+## Old Watchtower Ashbound Hunter (CHAPTER1_SCRIPT.md §4.1 / §6)
+Setup: create `obj_story_encounter` with `spr_story_encounter_placeholder` (16×16 preferred; a larger placeholder is scaled to one tile). `scr_build_old_watchtower` already spawns one instance (`encounter_id` = `enc_ashbound_hunter_wt`) on walkable tile (41, 24), immediately in front of `old_royal_banner` (41, 25). Do not also hand-place a second trigger on that tile. Dialogue IDs and speakers must match the script.
+- [ ] W1 Walking onto the story tile plays `ENC_AH_01` (NARRATION: "An arrow slams into the dirt beside Kael's boot.") then `ENC_AH_02` (Kael: "That was a warning. Or a bad shot. Let's find out which."), then a battle against the Ashbound Hunter starts. The sequence does not start mid-dialogue or twice on one touch.
+- [ ] W2 First victory (no parchment yet): after returning to the tile, `ENC_AH_03` (NARRATION), `ENC_AH_04` (Parchment, verbatim “Find the girl. The Varyn girl is still alive.”), and `ENC_AH_05` (Kael: "Alive." / "...Then who else is looking for her.") play. `flag_parchment_found` is true, `item_ashbound_parchment` is in `global.game.inventory` as a key item, and the story trigger is gone.
+- [ ] W3 If `flag_parchment_found` is already true (set it in the debugger, or obtain the parchment from a rare fight first), the guaranteed fight still plays pre-dialogue and the battle, but `ENC_AH_03`–`05` do not play and a second parchment is not added. After victory the trigger is gone.
+- [ ] W4 Defeat during the scripted fight uses the usual town wake-up and gold/XP penalty (B10/B15). The Watchtower trigger is **not** cleared; walking onto it again starts the fight (the parchment cannot be missed).
+- [ ] W5 In a zone with `allow_ashbound_rare = true` (or `table_id` `zone01_old_road` / `zone01_bandit_camp` / `zone01_watchtower`, also the older short ids `old_road` / `bandit_camp` / `watchtower`), a random encounter can be the Hunter. Suggested debug: set `global.game.ashbound_rare_chance = 1` so the next random fight is always the Hunter. Same pre-dialogue; first victory gives the parchment and post lines; a later rare victory does not. The guaranteed Watchtower fight still occurs afterwards (see W3). Default chance is 0.04 (4%).
+- [ ] W6 `zone01_path` and other areas without the rare flag never roll the Hunter from a random encounter (leave `ashbound_rare_chance` at 1 and walk only in `zone01_path` to confirm).
+- [ ] W7 Standing on the story tile (or a fixed `obj_encounter_trigger`) does not also start a random fight. Input stays locked during pre- and post-fight dialogue.
 
 ## Zone 1 overworld and Old Watchtower (map delivery; untested in GameMaker)
 Setup per `game/rooms/ROOM_SETUP.md` sections 4–6 (tileset `ts_zone1`, Included Files, room sizes, Creation Code, camera). Greyhaven is safe (no encounter zone). Default farmlands / road / camp / watchtower tables use only enemies already in `scr_get_enemy_data()`.
@@ -86,9 +95,8 @@ Setup per `game/rooms/ROOM_SETUP.md` sections 4–6 (tileset `ts_zone1`, Include
 - [ ] Z6 Signs and placeholders can be inspected: Greyhaven / bridge / Watchtower signs (placeholder wording), Mira's pendant marker, Tomas Varyn (placement is a suggestion), old hunter Renn, chests (loot is not granted yet), the old royal banner (symbol still Open), and the Crownveil door / basement stairs (stub lines).
 - [ ] Z7 Walking into the Old Watchtower entrance goes to `rm_old_watchtower` at `from_overworld`. The south exit returns to the overworld door. Other entrances (Valemere, Frostwilds settlement, coastal village, Crownveil breach, basement, …) show `[rm_… is not built yet.]` and do not crash.
 - [ ] Z8 Defeat in a Zone 1 or Watchtower fight still wakes the party at Greyhaven (respawn point or 2984, 2752) with HP restored and the gold/XP penalty, not at the pre-battle tile.
-- [ ] Z9 Locked terrace stairs are a blocking placeholder until the basement exists; they should not already lead into the Blackguard arena as a free shortcut (if they do, that is a known gap — the marker has `requires: watchtower_basement_cleared` but no flag system is on this branch).
+- [ ] Z9 Locked terrace stairs are a blocking placeholder until the basement exists; they should not already lead into the Blackguard arena as a free shortcut (if they do, that is a known gap — the marker has `requires: watchtower_basement_cleared`; a flag system exists on this branch but the stairs are not yet wired to it).
 - [ ] Z10 After a victory in the overworld, Room Start restores the saved position and facing (map `player_start` must not win over the return point). After going through an entrance, `global.map_spawn_name` is honoured.
-
 ## Menus and saves
 - [ ] Selection and cancel/back work.
 - [ ] Save/load persists after restart; missing/corrupt save fails safely.
