@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"bf4c2e8a-5d53-4be1-8f38-b8850db5e895",
-      "name":"bf4c2e8a-5d53-4be1-8f38-b8850db5e895",
+      "%Name":"1fefedcd-1aff-4a71-b4b5-5a9f9aa66f2e",
+      "name":"1fefedcd-1aff-4a71-b4b5-5a9f9aa66f2e",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"530191ae-6ee9-4fd9-9440-96f63bb02ce4",
-      "name":"530191ae-6ee9-4fd9-9440-96f63bb02ce4",
+      "%Name":"82b40ce6-d9f8-4dad-81aa-7c8cb6e69f9b",
+      "name":"82b40ce6-d9f8-4dad-81aa-7c8cb6e69f9b",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"8241e01b-3423-478d-9e66-3cd87867e164",
-      "name":"8241e01b-3423-478d-9e66-3cd87867e164",
+      "%Name":"081658f1-78e0-4ddd-a841-0be20ec8adcc",
+      "name":"081658f1-78e0-4ddd-a841-0be20ec8adcc",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"12f74617-18f1-4084-a58a-a6e1750c81ae",
-      "name":"12f74617-18f1-4084-a58a-a6e1750c81ae",
+      "%Name":"42587275-f5b0-412b-8ce7-4e1e8b2b4dff",
+      "name":"42587275-f5b0-412b-8ce7-4e1e8b2b4dff",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"2e4e14db-9fab-4513-8b81-c227f9900c93",
-      "name":"2e4e14db-9fab-4513-8b81-c227f9900c93",
+      "%Name":"58e0b401-b89a-4341-8ea3-171c7f58d7fa",
+      "name":"58e0b401-b89a-4341-8ea3-171c7f58d7fa",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"14bdb5e3-61a3-4dba-8641-8008ededae8b",
-      "name":"14bdb5e3-61a3-4dba-8641-8008ededae8b",
+      "%Name":"6d875d1e-916b-4024-aa68-8c1831b58539",
+      "name":"6d875d1e-916b-4024-aa68-8c1831b58539",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"7d5bddd3-e70e-4eb7-be04-a05f180569da",
+      "%Name":"ac713c64-4004-402e-834f-57581175466b",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"7d5bddd3-e70e-4eb7-be04-a05f180569da",
+      "name":"ac713c64-4004-402e-834f-57581175466b",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"bf4c2e8a-5d53-4be1-8f38-b8850db5e895",
+                    "name":"1fefedcd-1aff-4a71-b4b5-5a9f9aa66f2e",
                     "path":"sprites/spr_garrison_field_surgeon_cast_strip6/spr_garrison_field_surgeon_cast_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"4a300d85-22ee-4736-b614-30868c3ecf44",
+              "id":"25e1b121-a75b-4b20-b5ad-fca2075743f3",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"530191ae-6ee9-4fd9-9440-96f63bb02ce4",
+                    "name":"82b40ce6-d9f8-4dad-81aa-7c8cb6e69f9b",
                     "path":"sprites/spr_garrison_field_surgeon_cast_strip6/spr_garrison_field_surgeon_cast_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"b72a935b-0a02-4ca3-bb6b-82be8bd0db43",
+              "id":"076d863e-ed0d-4619-bf86-910fb89728d4",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"8241e01b-3423-478d-9e66-3cd87867e164",
+                    "name":"081658f1-78e0-4ddd-a841-0be20ec8adcc",
                     "path":"sprites/spr_garrison_field_surgeon_cast_strip6/spr_garrison_field_surgeon_cast_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"06610a2d-04cc-4409-ae5e-a301b1eabb3b",
+              "id":"37b3bb78-f6ff-4662-b1ab-f989fdd20c8b",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"12f74617-18f1-4084-a58a-a6e1750c81ae",
+                    "name":"42587275-f5b0-412b-8ce7-4e1e8b2b4dff",
                     "path":"sprites/spr_garrison_field_surgeon_cast_strip6/spr_garrison_field_surgeon_cast_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d4ee8282-6937-4cb7-9701-b4661d340493",
+              "id":"9ffe80b1-858e-48c1-a02e-437dbe3daffb",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"2e4e14db-9fab-4513-8b81-c227f9900c93",
+                    "name":"58e0b401-b89a-4341-8ea3-171c7f58d7fa",
                     "path":"sprites/spr_garrison_field_surgeon_cast_strip6/spr_garrison_field_surgeon_cast_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"c74595cd-0a48-4830-9a84-ae6ed5f42a4f",
+              "id":"16a5b90e-8524-42fa-88ab-e4fd8b0a1b10",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"14bdb5e3-61a3-4dba-8641-8008ededae8b",
+                    "name":"6d875d1e-916b-4024-aa68-8c1831b58539",
                     "path":"sprites/spr_garrison_field_surgeon_cast_strip6/spr_garrison_field_surgeon_cast_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"91a3fdde-5a29-475f-ad8a-ebdc2fb3746c",
+              "id":"60c3ed98-5bd6-413a-9b63-01f58a7e0114",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"c0471671-086c-471e-93e5-3e5769d0ac8d",
-      "name":"c0471671-086c-471e-93e5-3e5769d0ac8d",
+      "%Name":"57c4b8ea-46b8-42f8-a9b8-e6ca34edd1ae",
+      "name":"57c4b8ea-46b8-42f8-a9b8-e6ca34edd1ae",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"a85febe9-348f-421d-b529-ea9c022e0892",
+      "%Name":"37e6f8fa-8e7b-42c7-80e6-8a16d5c9088e",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"a85febe9-348f-421d-b529-ea9c022e0892",
+      "name":"37e6f8fa-8e7b-42c7-80e6-8a16d5c9088e",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"c0471671-086c-471e-93e5-3e5769d0ac8d",
+                    "name":"57c4b8ea-46b8-42f8-a9b8-e6ca34edd1ae",
                     "path":"sprites/spr_ui_slider_knob/spr_ui_slider_knob.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"0366dbef-1da2-40f9-9293-138b53fbab3f",
+              "id":"eec73d24-57f5-41a4-8032-1567057f1d66",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

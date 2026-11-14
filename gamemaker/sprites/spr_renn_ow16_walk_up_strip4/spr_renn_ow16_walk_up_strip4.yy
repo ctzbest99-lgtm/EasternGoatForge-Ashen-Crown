@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"61c5a355-30f5-49da-81a5-debd8a6e1766",
-      "name":"61c5a355-30f5-49da-81a5-debd8a6e1766",
+      "%Name":"cd5440c3-c17d-4d30-8992-a8dd8461c514",
+      "name":"cd5440c3-c17d-4d30-8992-a8dd8461c514",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"7be10b86-f0d6-4eeb-8497-b27d3416c400",
-      "name":"7be10b86-f0d6-4eeb-8497-b27d3416c400",
+      "%Name":"55fa8fac-4892-4f19-a9b1-55685193906e",
+      "name":"55fa8fac-4892-4f19-a9b1-55685193906e",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"f01b299d-53cc-4dcd-a065-81bb4cde4ab0",
-      "name":"f01b299d-53cc-4dcd-a065-81bb4cde4ab0",
+      "%Name":"3119f85b-6a17-416b-8303-c6e0784654d9",
+      "name":"3119f85b-6a17-416b-8303-c6e0784654d9",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"97407db2-d6c4-486e-8622-ff37d7aafc5a",
-      "name":"97407db2-d6c4-486e-8622-ff37d7aafc5a",
+      "%Name":"4b9b1d69-3a9e-46b5-bfa3-8038b7da21b9",
+      "name":"4b9b1d69-3a9e-46b5-bfa3-8038b7da21b9",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"4aad835d-d03b-40d6-9525-b08957d433fb",
+      "%Name":"6f155d80-6753-4039-80db-cad2b9df1190",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"4aad835d-d03b-40d6-9525-b08957d433fb",
+      "name":"6f155d80-6753-4039-80db-cad2b9df1190",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"61c5a355-30f5-49da-81a5-debd8a6e1766",
+                    "name":"cd5440c3-c17d-4d30-8992-a8dd8461c514",
                     "path":"sprites/spr_renn_ow16_walk_up_strip4/spr_renn_ow16_walk_up_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"5a81ed15-86a3-4ed5-b58a-52a2a34505c4",
+              "id":"a339a744-3376-45da-927e-c14a78c74e78",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"7be10b86-f0d6-4eeb-8497-b27d3416c400",
+                    "name":"55fa8fac-4892-4f19-a9b1-55685193906e",
                     "path":"sprites/spr_renn_ow16_walk_up_strip4/spr_renn_ow16_walk_up_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"2343397a-1cd7-4cda-88d2-ffc7eef2917a",
+              "id":"bcde356b-4112-4b70-9a4e-46af419495dd",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"f01b299d-53cc-4dcd-a065-81bb4cde4ab0",
+                    "name":"3119f85b-6a17-416b-8303-c6e0784654d9",
                     "path":"sprites/spr_renn_ow16_walk_up_strip4/spr_renn_ow16_walk_up_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"71e60e1a-acf8-427f-b5ec-642ae48bdcbd",
+              "id":"e026782c-b8db-4568-b8ee-9066ce1b484d",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"97407db2-d6c4-486e-8622-ff37d7aafc5a",
+                    "name":"4b9b1d69-3a9e-46b5-bfa3-8038b7da21b9",
                     "path":"sprites/spr_renn_ow16_walk_up_strip4/spr_renn_ow16_walk_up_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"e6ddf687-dba7-4d96-8175-d633d810d0d6",
+              "id":"e1d8d448-0b1c-4192-a8a4-ec193d02eae6",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

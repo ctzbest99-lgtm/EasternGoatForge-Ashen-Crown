@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"66d56a79-3e76-45ea-af3d-ed58379cb1c7",
-      "name":"66d56a79-3e76-45ea-af3d-ed58379cb1c7",
+      "%Name":"1fdf75aa-d6fd-4d4d-9645-a1c50b188d82",
+      "name":"1fdf75aa-d6fd-4d4d-9645-a1c50b188d82",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"3e878d33-587b-4cdc-a0a9-b2ab837076dd",
-      "name":"3e878d33-587b-4cdc-a0a9-b2ab837076dd",
+      "%Name":"8e594569-e6c6-42a5-8f0f-3187435e99d9",
+      "name":"8e594569-e6c6-42a5-8f0f-3187435e99d9",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"82f4d4be-54bf-4c18-93fd-d8cb31e3e680",
-      "name":"82f4d4be-54bf-4c18-93fd-d8cb31e3e680",
+      "%Name":"c8646a2f-051a-4e45-bf8f-bb9a6ec9c047",
+      "name":"c8646a2f-051a-4e45-bf8f-bb9a6ec9c047",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"05071247-aac6-468e-9526-65d716663739",
-      "name":"05071247-aac6-468e-9526-65d716663739",
+      "%Name":"10065758-e611-4a85-a6aa-4008c2f327ae",
+      "name":"10065758-e611-4a85-a6aa-4008c2f327ae",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"07c30226-1c28-485b-be01-64bb2c5fa886",
-      "name":"07c30226-1c28-485b-be01-64bb2c5fa886",
+      "%Name":"f4befb4f-4093-4b1e-a74d-72f2f42922a3",
+      "name":"f4befb4f-4093-4b1e-a74d-72f2f42922a3",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"787da1f0-65f3-4726-87b3-f8c0993fdc84",
-      "name":"787da1f0-65f3-4726-87b3-f8c0993fdc84",
+      "%Name":"29110108-f2ff-4e74-8f24-ca53aa48b116",
+      "name":"29110108-f2ff-4e74-8f24-ca53aa48b116",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"dd4f4951-bbc9-4b7d-a1c1-d43246e0350b",
+      "%Name":"98546cfc-644a-4837-915b-0bf86d58c4a6",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"dd4f4951-bbc9-4b7d-a1c1-d43246e0350b",
+      "name":"98546cfc-644a-4837-915b-0bf86d58c4a6",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"66d56a79-3e76-45ea-af3d-ed58379cb1c7",
+                    "name":"1fdf75aa-d6fd-4d4d-9645-a1c50b188d82",
                     "path":"sprites/spr_crown_crossbowman_attack_strip6/spr_crown_crossbowman_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d7d86331-6be7-40ec-beb6-276ab27f24be",
+              "id":"a29abfab-5ba3-4fee-8f03-aa4d85f0a186",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"3e878d33-587b-4cdc-a0a9-b2ab837076dd",
+                    "name":"8e594569-e6c6-42a5-8f0f-3187435e99d9",
                     "path":"sprites/spr_crown_crossbowman_attack_strip6/spr_crown_crossbowman_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"2d6a0177-76a7-4470-b4b3-e6b00c51fa82",
+              "id":"2f93a8ea-113d-4d2c-8c92-c5b6c5345ec9",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"82f4d4be-54bf-4c18-93fd-d8cb31e3e680",
+                    "name":"c8646a2f-051a-4e45-bf8f-bb9a6ec9c047",
                     "path":"sprites/spr_crown_crossbowman_attack_strip6/spr_crown_crossbowman_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"a728178c-fdbe-499e-8603-e729a0e14fa2",
+              "id":"babab31b-4055-4701-aaa5-a0eeea34ffad",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"05071247-aac6-468e-9526-65d716663739",
+                    "name":"10065758-e611-4a85-a6aa-4008c2f327ae",
                     "path":"sprites/spr_crown_crossbowman_attack_strip6/spr_crown_crossbowman_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"b2aa1925-dc70-4795-bbca-94cc36348732",
+              "id":"0ecff0c0-6023-4a3f-9495-8a444935698d",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"07c30226-1c28-485b-be01-64bb2c5fa886",
+                    "name":"f4befb4f-4093-4b1e-a74d-72f2f42922a3",
                     "path":"sprites/spr_crown_crossbowman_attack_strip6/spr_crown_crossbowman_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d00bf466-bc7a-4e63-b893-8dd2e28a92fb",
+              "id":"c857b883-8dc0-45fd-895c-213f6857e70e",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"787da1f0-65f3-4726-87b3-f8c0993fdc84",
+                    "name":"29110108-f2ff-4e74-8f24-ca53aa48b116",
                     "path":"sprites/spr_crown_crossbowman_attack_strip6/spr_crown_crossbowman_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"bd3887c8-936e-44a9-91b2-0ab5390a3571",
+              "id":"dfa8edf5-0911-4215-a917-e2a5d4508f46",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

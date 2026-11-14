@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"9e34b98d-0325-45f7-bd16-379b05f630d3",
-      "name":"9e34b98d-0325-45f7-bd16-379b05f630d3",
+      "%Name":"4d06c098-3693-4ad9-89f3-870758ed17de",
+      "name":"4d06c098-3693-4ad9-89f3-870758ed17de",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"112c9663-9c91-4236-bace-b63861ea8994",
+      "%Name":"752eea57-8dca-4ca8-a323-4b5314e2a482",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"112c9663-9c91-4236-bace-b63861ea8994",
+      "name":"752eea57-8dca-4ca8-a323-4b5314e2a482",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"9e34b98d-0325-45f7-bd16-379b05f630d3",
+                    "name":"4d06c098-3693-4ad9-89f3-870758ed17de",
                     "path":"sprites/spr_bg_battle_blackwood/spr_bg_battle_blackwood.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"60e8f9b2-f153-4668-8a73-96e4a69a63b0",
+              "id":"df33f4d1-93c5-46af-81fb-55f419eaf968",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

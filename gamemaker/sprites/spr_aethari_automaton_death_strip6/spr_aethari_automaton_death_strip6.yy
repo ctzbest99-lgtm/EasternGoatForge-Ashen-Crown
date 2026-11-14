@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"44e5f880-dbb7-4ee1-8d2f-f822494d339b",
-      "name":"44e5f880-dbb7-4ee1-8d2f-f822494d339b",
+      "%Name":"8623b84b-91f4-48d0-99ac-e45e1eb86e75",
+      "name":"8623b84b-91f4-48d0-99ac-e45e1eb86e75",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"299d3537-cfc1-46b2-8136-b8c087d61f51",
-      "name":"299d3537-cfc1-46b2-8136-b8c087d61f51",
+      "%Name":"cdc014ac-8d6e-492a-92a2-fd085b2b5788",
+      "name":"cdc014ac-8d6e-492a-92a2-fd085b2b5788",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"8312c7f9-7a9a-45bc-9b28-2be6788035cd",
-      "name":"8312c7f9-7a9a-45bc-9b28-2be6788035cd",
+      "%Name":"360a024f-eef6-4208-a329-2ccc4b484d3a",
+      "name":"360a024f-eef6-4208-a329-2ccc4b484d3a",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"a95cbfd2-9a6d-47f0-b8e0-6b4443594bf6",
-      "name":"a95cbfd2-9a6d-47f0-b8e0-6b4443594bf6",
+      "%Name":"6fa74518-8472-4e86-a5de-e8334b273600",
+      "name":"6fa74518-8472-4e86-a5de-e8334b273600",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"b192d97a-f0b4-400e-bf4e-66242b2b3925",
-      "name":"b192d97a-f0b4-400e-bf4e-66242b2b3925",
+      "%Name":"ac5bdc44-a904-4c42-9139-d1b5d739ed4b",
+      "name":"ac5bdc44-a904-4c42-9139-d1b5d739ed4b",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"6c335a85-a7d7-4b35-9a18-374fe071f1a1",
-      "name":"6c335a85-a7d7-4b35-9a18-374fe071f1a1",
+      "%Name":"f39225f0-7a57-4e83-ad0d-22d064b123e3",
+      "name":"f39225f0-7a57-4e83-ad0d-22d064b123e3",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"134b0d6f-d68c-4741-84c5-e99f5e8a384a",
+      "%Name":"53c04601-a928-4b68-aed0-07ec4a2aafb9",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"134b0d6f-d68c-4741-84c5-e99f5e8a384a",
+      "name":"53c04601-a928-4b68-aed0-07ec4a2aafb9",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"44e5f880-dbb7-4ee1-8d2f-f822494d339b",
+                    "name":"8623b84b-91f4-48d0-99ac-e45e1eb86e75",
                     "path":"sprites/spr_aethari_automaton_death_strip6/spr_aethari_automaton_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"bb39c762-7624-4d11-ab36-7efe39ae2251",
+              "id":"49544a3c-a568-4128-9409-ee42485d848a",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"299d3537-cfc1-46b2-8136-b8c087d61f51",
+                    "name":"cdc014ac-8d6e-492a-92a2-fd085b2b5788",
                     "path":"sprites/spr_aethari_automaton_death_strip6/spr_aethari_automaton_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"2d76d6c0-dd1a-4fbc-b087-b3c97d5583da",
+              "id":"1a37d651-4fc0-405e-9f81-32f6044a20e3",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"8312c7f9-7a9a-45bc-9b28-2be6788035cd",
+                    "name":"360a024f-eef6-4208-a329-2ccc4b484d3a",
                     "path":"sprites/spr_aethari_automaton_death_strip6/spr_aethari_automaton_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"c74faa00-0a7e-490d-bb6d-2250edffafa4",
+              "id":"66b7bfd3-0f88-4406-8ec2-9afe58de86e6",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a95cbfd2-9a6d-47f0-b8e0-6b4443594bf6",
+                    "name":"6fa74518-8472-4e86-a5de-e8334b273600",
                     "path":"sprites/spr_aethari_automaton_death_strip6/spr_aethari_automaton_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"9993e1c6-7f11-4934-a835-ac66d2d52fae",
+              "id":"43e4eeca-2e54-4f08-a92b-f12ea8d25d11",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"b192d97a-f0b4-400e-bf4e-66242b2b3925",
+                    "name":"ac5bdc44-a904-4c42-9139-d1b5d739ed4b",
                     "path":"sprites/spr_aethari_automaton_death_strip6/spr_aethari_automaton_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"c9fa3ca0-7d41-4310-8539-bceac9e2945e",
+              "id":"16572a1c-0aea-4fa2-a99f-e2eaa952b61d",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"6c335a85-a7d7-4b35-9a18-374fe071f1a1",
+                    "name":"f39225f0-7a57-4e83-ad0d-22d064b123e3",
                     "path":"sprites/spr_aethari_automaton_death_strip6/spr_aethari_automaton_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"16a888ab-93a5-4085-8062-57bc75041eca",
+              "id":"e1e0da34-8271-4bc8-81c6-cb70cfdece8d",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

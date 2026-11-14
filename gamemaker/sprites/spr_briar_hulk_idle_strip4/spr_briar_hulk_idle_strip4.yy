@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"8fabb473-6944-4789-a332-352963c786a9",
-      "name":"8fabb473-6944-4789-a332-352963c786a9",
+      "%Name":"9d09bc6f-2819-4208-b1ba-8f1c4ab88d11",
+      "name":"9d09bc6f-2819-4208-b1ba-8f1c4ab88d11",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"1e6422b3-4c4e-49bc-bd34-7ea3c664d77d",
-      "name":"1e6422b3-4c4e-49bc-bd34-7ea3c664d77d",
+      "%Name":"964ad6e5-45d9-44f8-9199-0db764ce5db6",
+      "name":"964ad6e5-45d9-44f8-9199-0db764ce5db6",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"fc40e57e-f532-4513-8c0b-a53f211a581c",
-      "name":"fc40e57e-f532-4513-8c0b-a53f211a581c",
+      "%Name":"c947e050-65b8-4fe8-8ccb-0637f5e67cdc",
+      "name":"c947e050-65b8-4fe8-8ccb-0637f5e67cdc",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"0a9f0efd-791b-4a4a-8e44-41017bf4e2a8",
-      "name":"0a9f0efd-791b-4a4a-8e44-41017bf4e2a8",
+      "%Name":"de416734-a255-4237-888c-ceb132b095d0",
+      "name":"de416734-a255-4237-888c-ceb132b095d0",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"7a76a7c4-464d-4f5e-9688-b48a48021912",
+      "%Name":"6f02faad-7ba7-43ef-8150-d8fa65028578",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"7a76a7c4-464d-4f5e-9688-b48a48021912",
+      "name":"6f02faad-7ba7-43ef-8150-d8fa65028578",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"8fabb473-6944-4789-a332-352963c786a9",
+                    "name":"9d09bc6f-2819-4208-b1ba-8f1c4ab88d11",
                     "path":"sprites/spr_briar_hulk_idle_strip4/spr_briar_hulk_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"ce336bf7-bb14-4b25-ac69-17c9c2cf9b98",
+              "id":"f7c409d6-1491-43b2-9893-2de937818b09",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"1e6422b3-4c4e-49bc-bd34-7ea3c664d77d",
+                    "name":"964ad6e5-45d9-44f8-9199-0db764ce5db6",
                     "path":"sprites/spr_briar_hulk_idle_strip4/spr_briar_hulk_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"850bb0de-b26e-4c01-a641-046cc1413536",
+              "id":"e4dcccec-eeee-407d-9358-149ed66d9582",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"fc40e57e-f532-4513-8c0b-a53f211a581c",
+                    "name":"c947e050-65b8-4fe8-8ccb-0637f5e67cdc",
                     "path":"sprites/spr_briar_hulk_idle_strip4/spr_briar_hulk_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"e50b132c-5765-4b47-8c4d-a2392f23f392",
+              "id":"35eb5d74-2d9c-4842-97a3-6b0497e0856e",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0a9f0efd-791b-4a4a-8e44-41017bf4e2a8",
+                    "name":"de416734-a255-4237-888c-ceb132b095d0",
                     "path":"sprites/spr_briar_hulk_idle_strip4/spr_briar_hulk_idle_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"7645b543-cac7-4f62-b80e-4abab5be8d3f",
+              "id":"aa068e8d-9be9-45d7-ad89-0c80fe52ef7d",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

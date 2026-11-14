@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"7125cc66-8f11-4b2c-9422-077103ca8c00",
-      "name":"7125cc66-8f11-4b2c-9422-077103ca8c00",
+      "%Name":"b50a362c-d8b7-430a-ad1d-278cb3dc9a7f",
+      "name":"b50a362c-d8b7-430a-ad1d-278cb3dc9a7f",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"6694e4a3-a612-49ea-bcf2-731ad8498a68",
-      "name":"6694e4a3-a612-49ea-bcf2-731ad8498a68",
+      "%Name":"f4061492-94a1-41dd-bfcb-841a5ebcd66f",
+      "name":"f4061492-94a1-41dd-bfcb-841a5ebcd66f",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"b13f2459-b405-48f6-81f5-b7e860a195e4",
-      "name":"b13f2459-b405-48f6-81f5-b7e860a195e4",
+      "%Name":"6e7c7a68-b54d-4c5d-bcc2-4feee610fcaf",
+      "name":"6e7c7a68-b54d-4c5d-bcc2-4feee610fcaf",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"4f2cfa12-ba07-4f24-93e6-75c65ec83fdc",
-      "name":"4f2cfa12-ba07-4f24-93e6-75c65ec83fdc",
+      "%Name":"3d2154dc-9578-436e-aba4-715d1d164e28",
+      "name":"3d2154dc-9578-436e-aba4-715d1d164e28",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"808ef0f7-e0f3-4db2-8d49-469b52d5ae6a",
+      "%Name":"4d5a82d1-ab90-4751-ab03-072b0fc6dad9",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"808ef0f7-e0f3-4db2-8d49-469b52d5ae6a",
+      "name":"4d5a82d1-ab90-4751-ab03-072b0fc6dad9",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"7125cc66-8f11-4b2c-9422-077103ca8c00",
+                    "name":"b50a362c-d8b7-430a-ad1d-278cb3dc9a7f",
                     "path":"sprites/spr_briar_hulk_walk_strip4/spr_briar_hulk_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"ec71ebd4-d037-4f57-bed8-7eb2ee86bd41",
+              "id":"85af640e-162e-4904-9520-3203e9ed9116",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"6694e4a3-a612-49ea-bcf2-731ad8498a68",
+                    "name":"f4061492-94a1-41dd-bfcb-841a5ebcd66f",
                     "path":"sprites/spr_briar_hulk_walk_strip4/spr_briar_hulk_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f446e7fc-d31b-4276-bccc-7bcda65606ce",
+              "id":"6e01e911-e348-4829-88ed-8ff499577e9f",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"b13f2459-b405-48f6-81f5-b7e860a195e4",
+                    "name":"6e7c7a68-b54d-4c5d-bcc2-4feee610fcaf",
                     "path":"sprites/spr_briar_hulk_walk_strip4/spr_briar_hulk_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"3c76f791-b800-4cbd-ac34-954d37e73ac9",
+              "id":"145cbdc2-0b3e-4f1a-9c17-4941b9b09fc8",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"4f2cfa12-ba07-4f24-93e6-75c65ec83fdc",
+                    "name":"3d2154dc-9578-436e-aba4-715d1d164e28",
                     "path":"sprites/spr_briar_hulk_walk_strip4/spr_briar_hulk_walk_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"85e8441e-7a0c-4ef3-8101-8c955d221a4b",
+              "id":"0bf0eab5-a839-4dd5-8b3e-d7ca68018598",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

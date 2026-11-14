@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"0dd5279e-192a-47f9-9ce7-8c5049075463",
-      "name":"0dd5279e-192a-47f9-9ce7-8c5049075463",
+      "%Name":"f1c31622-e759-4f33-ae92-b9afa0aead7e",
+      "name":"f1c31622-e759-4f33-ae92-b9afa0aead7e",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"54f1ce57-887f-4f83-a3ea-17f3eb076210",
-      "name":"54f1ce57-887f-4f83-a3ea-17f3eb076210",
+      "%Name":"10ff4cc6-0ac8-412a-8336-9df74b846338",
+      "name":"10ff4cc6-0ac8-412a-8336-9df74b846338",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"dafcff6a-eaaa-477d-afde-79ea3a7e4d99",
-      "name":"dafcff6a-eaaa-477d-afde-79ea3a7e4d99",
+      "%Name":"7b52875c-9452-4348-a70c-0faf7dbdaa37",
+      "name":"7b52875c-9452-4348-a70c-0faf7dbdaa37",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"3cc6fb0c-bbb5-4169-a4ff-05759ed7ab52",
-      "name":"3cc6fb0c-bbb5-4169-a4ff-05759ed7ab52",
+      "%Name":"169fb42e-e085-4c1e-b938-e044b115383c",
+      "name":"169fb42e-e085-4c1e-b938-e044b115383c",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"ec478d7b-7224-406a-9439-3582bbcf8670",
-      "name":"ec478d7b-7224-406a-9439-3582bbcf8670",
+      "%Name":"4edb08f6-79fe-472e-a83b-69240e113a9f",
+      "name":"4edb08f6-79fe-472e-a83b-69240e113a9f",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"2322162f-a3c9-4ac2-bff8-5b8cd823f4ff",
-      "name":"2322162f-a3c9-4ac2-bff8-5b8cd823f4ff",
+      "%Name":"f12ee68f-992d-4eff-b3a9-08a19d793e4c",
+      "name":"f12ee68f-992d-4eff-b3a9-08a19d793e4c",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"c29e363d-dd65-4e22-a959-52855d581936",
+      "%Name":"8b398ed5-a6b1-4085-9b96-eb75de5cada3",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"c29e363d-dd65-4e22-a959-52855d581936",
+      "name":"8b398ed5-a6b1-4085-9b96-eb75de5cada3",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0dd5279e-192a-47f9-9ce7-8c5049075463",
+                    "name":"f1c31622-e759-4f33-ae92-b9afa0aead7e",
                     "path":"sprites/spr_ash_wolf_attack_strip6/spr_ash_wolf_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d02887aa-0753-45df-9a54-9882cf0f8e1a",
+              "id":"78c0a38b-d3f7-45b5-96e5-65a1463b9fa9",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"54f1ce57-887f-4f83-a3ea-17f3eb076210",
+                    "name":"10ff4cc6-0ac8-412a-8336-9df74b846338",
                     "path":"sprites/spr_ash_wolf_attack_strip6/spr_ash_wolf_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"78b21e03-0121-45d3-9a00-ecf4f9a822d0",
+              "id":"283a5801-75ce-4d1e-8a9f-4fee2d76e219",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"dafcff6a-eaaa-477d-afde-79ea3a7e4d99",
+                    "name":"7b52875c-9452-4348-a70c-0faf7dbdaa37",
                     "path":"sprites/spr_ash_wolf_attack_strip6/spr_ash_wolf_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"be620f41-fa02-4cb2-ac69-230464301378",
+              "id":"a8b15685-4fe7-4605-a05c-3ba2aab7adf4",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"3cc6fb0c-bbb5-4169-a4ff-05759ed7ab52",
+                    "name":"169fb42e-e085-4c1e-b938-e044b115383c",
                     "path":"sprites/spr_ash_wolf_attack_strip6/spr_ash_wolf_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"43d33ab0-441e-42f4-ad98-206d39517047",
+              "id":"df1e77f8-774e-40ae-b1f6-a3c3c716fcd2",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ec478d7b-7224-406a-9439-3582bbcf8670",
+                    "name":"4edb08f6-79fe-472e-a83b-69240e113a9f",
                     "path":"sprites/spr_ash_wolf_attack_strip6/spr_ash_wolf_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d0eebacb-c3d2-4c7b-a81d-25dba17c857f",
+              "id":"b2fd6220-62d9-4326-93e8-fe0312dd875d",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"2322162f-a3c9-4ac2-bff8-5b8cd823f4ff",
+                    "name":"f12ee68f-992d-4eff-b3a9-08a19d793e4c",
                     "path":"sprites/spr_ash_wolf_attack_strip6/spr_ash_wolf_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"b5bb5ec4-686d-4b6a-9364-bd4326f4433d",
+              "id":"af27b695-06f7-418d-a27b-bfcb7bd92c32",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

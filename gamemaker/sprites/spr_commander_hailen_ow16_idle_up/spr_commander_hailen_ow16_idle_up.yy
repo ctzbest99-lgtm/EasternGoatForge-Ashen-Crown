@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"69de0c58-6e04-45f6-83be-b6e3f39ada67",
-      "name":"69de0c58-6e04-45f6-83be-b6e3f39ada67",
+      "%Name":"b69b4892-cb73-40fd-aa26-d0354d267d18",
+      "name":"b69b4892-cb73-40fd-aa26-d0354d267d18",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"406b594c-2a23-4823-967f-3d44b5963293",
+      "%Name":"5a62b72c-83e1-4103-896e-1c574d57ec13",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"406b594c-2a23-4823-967f-3d44b5963293",
+      "name":"5a62b72c-83e1-4103-896e-1c574d57ec13",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"69de0c58-6e04-45f6-83be-b6e3f39ada67",
+                    "name":"b69b4892-cb73-40fd-aa26-d0354d267d18",
                     "path":"sprites/spr_commander_hailen_ow16_idle_up/spr_commander_hailen_ow16_idle_up.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"0eab34a8-6e99-43ba-8672-6cc542b0cdc9",
+              "id":"6d584ec3-36f2-463c-b330-3ad39181457e",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

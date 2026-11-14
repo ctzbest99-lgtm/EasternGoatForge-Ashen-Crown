@@ -31,6 +31,10 @@
 - "Interpolate colours between pixels" unchecked on every platform; nine-slice enabled on the UI windows (8/3/2 px), select bars, tabs, and menu frames per IMPORT.md. `spr_menu_embers_640_strip24` intentionally not imported (does not fit a default texture page; the documented 320 fallback is used). Ten flat-color placeholder sprites stand in for missing art. Act II enemy art is imported; Chapter 2 rooms/dialogue remain unwired (stub entrances are string data only).
 - Requires GameMaker IDE 2023.1+ (project format is 2024.x). Generated and validated by script: 537 JSON files parse, every resource path resolves, sprite frame PNGs match declared dimensions, nine-slice enabled where required, layer names/depths match `scr_map_layer_defs`, scripts and datafiles byte-identical to source, all instances inside room bounds, `rm_title` first in Room Order.
 - `game/` remains the human-readable source of truth; READMEs updated.
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main
 ## 2026-11-14 — Battle upgrade (`feature/battle-upgrade`)
 - Branched from `feature/save-and-shops` (PR #10, stacked on #9 → #8). This PR depends on #10 and should be merged after it. Chapter 2 dialogue is **not** wired.
 - **Multi-enemy battles:** 1–3 regular enemies, or a boss plus adds (Reeve Calder + 2 Occupation Soldiers). Target cursor (auto-target when one enemy is left, so Chapter 1 fights play as before), per-enemy mini HP bars and A / B / C labels, enemy list window, boss name plate, formations on the left half. Encounter tables accept `group` entries; single entries still work. XP is credited per enemy at its killing hit (owner rule unchanged); gold is summed.

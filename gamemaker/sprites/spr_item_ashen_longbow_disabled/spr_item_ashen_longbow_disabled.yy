@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"67e9a6d0-1021-4f13-aae4-81adcc0799ae",
-      "name":"67e9a6d0-1021-4f13-aae4-81adcc0799ae",
+      "%Name":"16997eb9-6fa2-4db3-a10d-5ba913b4652c",
+      "name":"16997eb9-6fa2-4db3-a10d-5ba913b4652c",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"5cfd4ab8-0599-46cb-84ce-844b2e24e64b",
+      "%Name":"f8585d3b-1fd6-4878-b3f7-3d78329d5a8b",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"5cfd4ab8-0599-46cb-84ce-844b2e24e64b",
+      "name":"f8585d3b-1fd6-4878-b3f7-3d78329d5a8b",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"67e9a6d0-1021-4f13-aae4-81adcc0799ae",
+                    "name":"16997eb9-6fa2-4db3-a10d-5ba913b4652c",
                     "path":"sprites/spr_item_ashen_longbow_disabled/spr_item_ashen_longbow_disabled.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"00c94a19-3312-482d-b9ba-2a8081f45e28",
+              "id":"2803a844-dab9-4303-9cd0-00611c00f8b0",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

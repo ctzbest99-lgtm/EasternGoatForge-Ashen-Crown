@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"a34feef6-f472-414c-9d93-9c008c914d57",
-      "name":"a34feef6-f472-414c-9d93-9c008c914d57",
+      "%Name":"d46e214a-1a38-4652-8c5a-b6d241c6c6e3",
+      "name":"d46e214a-1a38-4652-8c5a-b6d241c6c6e3",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"4d3f143f-3b89-460d-83bf-c22035bb155f",
+      "%Name":"aa0b7c69-87db-40c7-9127-7f1f02dd6e10",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"4d3f143f-3b89-460d-83bf-c22035bb155f",
+      "name":"aa0b7c69-87db-40c7-9127-7f1f02dd6e10",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a34feef6-f472-414c-9d93-9c008c914d57",
+                    "name":"d46e214a-1a38-4652-8c5a-b6d241c6c6e3",
                     "path":"sprites/spr_portrait_debtman_grim/spr_portrait_debtman_grim.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"7c056c58-dbdd-43a9-ae04-3fd0e92cf589",
+              "id":"ebe740f9-d439-4038-9ddc-8787e22fc863",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

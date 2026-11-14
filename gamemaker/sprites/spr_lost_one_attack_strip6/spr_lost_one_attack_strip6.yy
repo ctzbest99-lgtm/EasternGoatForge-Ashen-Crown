@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"00138808-31d5-4c98-96cd-d5cc778aed77",
-      "name":"00138808-31d5-4c98-96cd-d5cc778aed77",
+      "%Name":"f0a6761c-464b-4f42-b483-6374691d10ee",
+      "name":"f0a6761c-464b-4f42-b483-6374691d10ee",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"a1d8eeb3-0a49-4f06-ad92-b55366cf9011",
-      "name":"a1d8eeb3-0a49-4f06-ad92-b55366cf9011",
+      "%Name":"6df1c189-a7af-40fb-9e64-dada8974b720",
+      "name":"6df1c189-a7af-40fb-9e64-dada8974b720",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"62b9a8e7-9974-41f9-9733-ee8dccec6349",
-      "name":"62b9a8e7-9974-41f9-9733-ee8dccec6349",
+      "%Name":"0dcfe05c-3428-46b2-9989-f5bc5266f78c",
+      "name":"0dcfe05c-3428-46b2-9989-f5bc5266f78c",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"04acc16d-0f76-46a8-bc69-564982af5e24",
-      "name":"04acc16d-0f76-46a8-bc69-564982af5e24",
+      "%Name":"c0d1876c-5353-4c11-bcfb-b7e3b8c9d16b",
+      "name":"c0d1876c-5353-4c11-bcfb-b7e3b8c9d16b",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"daf2ca7c-e397-42aa-b9ae-65616293eca5",
-      "name":"daf2ca7c-e397-42aa-b9ae-65616293eca5",
+      "%Name":"87aca255-b0e4-4227-8533-2ae106b939ca",
+      "name":"87aca255-b0e4-4227-8533-2ae106b939ca",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"427b9c55-738c-436b-b19e-30d60e384431",
-      "name":"427b9c55-738c-436b-b19e-30d60e384431",
+      "%Name":"857ac287-03ee-46f4-ab34-24e04ae89637",
+      "name":"857ac287-03ee-46f4-ab34-24e04ae89637",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"36275fbb-0ad6-479e-99bd-c46422068336",
+      "%Name":"2fc4d60a-15ba-4f3e-b436-c8c10f928b9c",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"36275fbb-0ad6-479e-99bd-c46422068336",
+      "name":"2fc4d60a-15ba-4f3e-b436-c8c10f928b9c",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"00138808-31d5-4c98-96cd-d5cc778aed77",
+                    "name":"f0a6761c-464b-4f42-b483-6374691d10ee",
                     "path":"sprites/spr_lost_one_attack_strip6/spr_lost_one_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"57982184-4ace-4fb0-bf75-6473de89b6c0",
+              "id":"3cdc49b7-d54d-4b8c-ad86-f5e65a1849ab",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a1d8eeb3-0a49-4f06-ad92-b55366cf9011",
+                    "name":"6df1c189-a7af-40fb-9e64-dada8974b720",
                     "path":"sprites/spr_lost_one_attack_strip6/spr_lost_one_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"62c43159-28b0-479b-813b-2e29e0ff9b3c",
+              "id":"7fb31f12-0de7-4d34-9ab8-e25ed3fa3b15",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"62b9a8e7-9974-41f9-9733-ee8dccec6349",
+                    "name":"0dcfe05c-3428-46b2-9989-f5bc5266f78c",
                     "path":"sprites/spr_lost_one_attack_strip6/spr_lost_one_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"91aceac4-d930-4147-b40b-de4241ff3638",
+              "id":"74f07de2-8c5a-4fd2-8405-4254a7378ec2",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"04acc16d-0f76-46a8-bc69-564982af5e24",
+                    "name":"c0d1876c-5353-4c11-bcfb-b7e3b8c9d16b",
                     "path":"sprites/spr_lost_one_attack_strip6/spr_lost_one_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"a5afa93f-b80a-4fd3-ae05-6155e1f692ed",
+              "id":"dc4fc11b-b44a-47b9-b47c-7a657fc2c7f3",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"daf2ca7c-e397-42aa-b9ae-65616293eca5",
+                    "name":"87aca255-b0e4-4227-8533-2ae106b939ca",
                     "path":"sprites/spr_lost_one_attack_strip6/spr_lost_one_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"fd84ee28-0d6e-49b6-a332-abebf153d3cb",
+              "id":"93c11c69-640b-47c1-8d6b-6b4a8981d4c3",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"427b9c55-738c-436b-b19e-30d60e384431",
+                    "name":"857ac287-03ee-46f4-ab34-24e04ae89637",
                     "path":"sprites/spr_lost_one_attack_strip6/spr_lost_one_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"52c0f15b-64fe-40f2-8344-43043df60fb1",
+              "id":"d5502a58-6386-4382-9dec-44ce3e92ade1",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

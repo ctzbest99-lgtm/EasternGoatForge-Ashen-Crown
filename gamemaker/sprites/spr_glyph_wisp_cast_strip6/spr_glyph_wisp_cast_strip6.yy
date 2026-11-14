@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"57000aed-44ae-4357-acba-6d0face74c8e",
-      "name":"57000aed-44ae-4357-acba-6d0face74c8e",
+      "%Name":"ed6b425a-5000-4132-90b2-f09a9d15fe59",
+      "name":"ed6b425a-5000-4132-90b2-f09a9d15fe59",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"d3a6d735-e337-422f-800b-c4c15f379bdb",
-      "name":"d3a6d735-e337-422f-800b-c4c15f379bdb",
+      "%Name":"cb1e69d3-a004-4d5c-a3bd-5483966aa45d",
+      "name":"cb1e69d3-a004-4d5c-a3bd-5483966aa45d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"ca0d7961-bda2-4781-94f0-c7e154a987ad",
-      "name":"ca0d7961-bda2-4781-94f0-c7e154a987ad",
+      "%Name":"0d4ef566-a9f1-4156-a253-9bb03fb8c8d4",
+      "name":"0d4ef566-a9f1-4156-a253-9bb03fb8c8d4",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"ec7b64d1-9488-463a-8d23-97a66532d3e8",
-      "name":"ec7b64d1-9488-463a-8d23-97a66532d3e8",
+      "%Name":"af01b528-44f6-461d-a327-b56d70b28789",
+      "name":"af01b528-44f6-461d-a327-b56d70b28789",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"45756b2f-ffa2-4eef-93ea-794daf477ae8",
-      "name":"45756b2f-ffa2-4eef-93ea-794daf477ae8",
+      "%Name":"e2d2f524-a98e-484f-ab69-9f7a39277ad3",
+      "name":"e2d2f524-a98e-484f-ab69-9f7a39277ad3",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"f6c90d57-9ca0-4afe-93a3-cba6e21d06b6",
-      "name":"f6c90d57-9ca0-4afe-93a3-cba6e21d06b6",
+      "%Name":"9c6602c1-28a5-413f-8591-313a8b9ded0f",
+      "name":"9c6602c1-28a5-413f-8591-313a8b9ded0f",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"60f52d91-d686-4019-b87b-e726ad8cee9f",
+      "%Name":"21dcbe5e-352f-4040-a6ac-83862a18aa4d",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"60f52d91-d686-4019-b87b-e726ad8cee9f",
+      "name":"21dcbe5e-352f-4040-a6ac-83862a18aa4d",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"57000aed-44ae-4357-acba-6d0face74c8e",
+                    "name":"ed6b425a-5000-4132-90b2-f09a9d15fe59",
                     "path":"sprites/spr_glyph_wisp_cast_strip6/spr_glyph_wisp_cast_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f9e01b4f-dd32-4b8e-af19-3a9f7d2c46cb",
+              "id":"5153043d-b565-4d66-b66f-53c38e2c973d",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"d3a6d735-e337-422f-800b-c4c15f379bdb",
+                    "name":"cb1e69d3-a004-4d5c-a3bd-5483966aa45d",
                     "path":"sprites/spr_glyph_wisp_cast_strip6/spr_glyph_wisp_cast_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"e8fd7cd8-7d45-414f-9dd3-fd137102caa5",
+              "id":"bcac2366-7842-4443-862c-4712933c604c",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ca0d7961-bda2-4781-94f0-c7e154a987ad",
+                    "name":"0d4ef566-a9f1-4156-a253-9bb03fb8c8d4",
                     "path":"sprites/spr_glyph_wisp_cast_strip6/spr_glyph_wisp_cast_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"0f926770-854c-4fc0-aa94-4e7206176922",
+              "id":"f715d959-cd17-46e2-8de5-00086bfba815",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ec7b64d1-9488-463a-8d23-97a66532d3e8",
+                    "name":"af01b528-44f6-461d-a327-b56d70b28789",
                     "path":"sprites/spr_glyph_wisp_cast_strip6/spr_glyph_wisp_cast_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d8599afd-583b-4855-ad26-241b65d7d988",
+              "id":"55ff5e7b-6b3f-45d4-96cb-d35a5cc7049c",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"45756b2f-ffa2-4eef-93ea-794daf477ae8",
+                    "name":"e2d2f524-a98e-484f-ab69-9f7a39277ad3",
                     "path":"sprites/spr_glyph_wisp_cast_strip6/spr_glyph_wisp_cast_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"3bae419a-de00-46c9-8ecc-c1048ac4dcc4",
+              "id":"5a4ec80a-16b7-4a5b-9778-960aa8af98cf",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"f6c90d57-9ca0-4afe-93a3-cba6e21d06b6",
+                    "name":"9c6602c1-28a5-413f-8591-313a8b9ded0f",
                     "path":"sprites/spr_glyph_wisp_cast_strip6/spr_glyph_wisp_cast_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"84b26d68-31e7-4223-9750-c685ed560aa8",
+              "id":"11a340d9-2975-4070-9442-098c1a7e2be5",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

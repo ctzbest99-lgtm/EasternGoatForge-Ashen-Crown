@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"f885d2a5-6882-409e-96d0-420088655576",
-      "name":"f885d2a5-6882-409e-96d0-420088655576",
+      "%Name":"2fffa3f3-ff26-4fe2-a3da-ff87ad259fdf",
+      "name":"2fffa3f3-ff26-4fe2-a3da-ff87ad259fdf",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"ff061529-9fc2-4bd3-8c51-5ca2f741a62b",
+      "%Name":"fe3b5ea3-7fd0-4383-805a-1c3ab516209a",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"ff061529-9fc2-4bd3-8c51-5ca2f741a62b",
+      "name":"fe3b5ea3-7fd0-4383-805a-1c3ab516209a",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"f885d2a5-6882-409e-96d0-420088655576",
+                    "name":"2fffa3f3-ff26-4fe2-a3da-ff87ad259fdf",
                     "path":"sprites/spr_aethari_automaton_ow16_idle_right/spr_aethari_automaton_ow16_idle_right.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f71eb5d1-0e8d-4e96-8d6e-02bf0e24174a",
+              "id":"41b2e209-4652-4f58-a8e3-0fa9a0c7a73b",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

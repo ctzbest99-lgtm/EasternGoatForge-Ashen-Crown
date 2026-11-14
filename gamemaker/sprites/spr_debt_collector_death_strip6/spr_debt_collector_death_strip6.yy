@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"20994681-3ebf-4a1a-8468-b4c4752ca47b",
-      "name":"20994681-3ebf-4a1a-8468-b4c4752ca47b",
+      "%Name":"e4752bb9-224f-4d1a-ae11-50c82a797d37",
+      "name":"e4752bb9-224f-4d1a-ae11-50c82a797d37",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"3edece44-13b2-430b-a1fd-d9d70307cc0b",
-      "name":"3edece44-13b2-430b-a1fd-d9d70307cc0b",
+      "%Name":"ef4f87f8-5d56-418c-99c6-380b1be74431",
+      "name":"ef4f87f8-5d56-418c-99c6-380b1be74431",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"e4a885eb-f7fb-4baa-84ab-95f12b7fb80c",
-      "name":"e4a885eb-f7fb-4baa-84ab-95f12b7fb80c",
+      "%Name":"28ba7dd6-c64b-494d-a2fe-2cbb96b874c3",
+      "name":"28ba7dd6-c64b-494d-a2fe-2cbb96b874c3",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"c7b0faa1-ec11-4c0e-8596-9cffe21abc4e",
-      "name":"c7b0faa1-ec11-4c0e-8596-9cffe21abc4e",
+      "%Name":"4234f469-2352-4758-9715-1fab08a63ff3",
+      "name":"4234f469-2352-4758-9715-1fab08a63ff3",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"8f2c889f-aa40-467e-afa8-76036a6debdd",
-      "name":"8f2c889f-aa40-467e-afa8-76036a6debdd",
+      "%Name":"1c3f45a8-f2b7-4e8e-84a2-19f7ba52f85c",
+      "name":"1c3f45a8-f2b7-4e8e-84a2-19f7ba52f85c",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"0db30003-1969-4e80-bb76-e8852e1b0156",
-      "name":"0db30003-1969-4e80-bb76-e8852e1b0156",
+      "%Name":"9c541904-ecd9-45d9-aa39-bdbfc489e847",
+      "name":"9c541904-ecd9-45d9-aa39-bdbfc489e847",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"58a0044f-1b15-493d-ab24-363e41b84f9b",
+      "%Name":"5261e39a-6313-4243-ab12-a47f76c03628",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"58a0044f-1b15-493d-ab24-363e41b84f9b",
+      "name":"5261e39a-6313-4243-ab12-a47f76c03628",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"20994681-3ebf-4a1a-8468-b4c4752ca47b",
+                    "name":"e4752bb9-224f-4d1a-ae11-50c82a797d37",
                     "path":"sprites/spr_debt_collector_death_strip6/spr_debt_collector_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"6d185de0-a6e8-4c20-a9b8-2e8920ea93d5",
+              "id":"e533c1d4-b932-4728-bf3d-262ec4a191a1",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"3edece44-13b2-430b-a1fd-d9d70307cc0b",
+                    "name":"ef4f87f8-5d56-418c-99c6-380b1be74431",
                     "path":"sprites/spr_debt_collector_death_strip6/spr_debt_collector_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"0fc1a2c6-65a9-453e-90c2-3d45528c2365",
+              "id":"709289a4-ddb6-4b1e-bdbf-c238164951ed",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"e4a885eb-f7fb-4baa-84ab-95f12b7fb80c",
+                    "name":"28ba7dd6-c64b-494d-a2fe-2cbb96b874c3",
                     "path":"sprites/spr_debt_collector_death_strip6/spr_debt_collector_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"ef6ae6b7-ca5d-4efc-87bf-86d0a108ad0d",
+              "id":"043c0f07-4ec3-4a82-9228-f3350d2096bc",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"c7b0faa1-ec11-4c0e-8596-9cffe21abc4e",
+                    "name":"4234f469-2352-4758-9715-1fab08a63ff3",
                     "path":"sprites/spr_debt_collector_death_strip6/spr_debt_collector_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"09cdbb32-d2d9-48a5-aa5d-5c5e85714baa",
+              "id":"35fec469-45df-42ef-83c2-b947e74059c1",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"8f2c889f-aa40-467e-afa8-76036a6debdd",
+                    "name":"1c3f45a8-f2b7-4e8e-84a2-19f7ba52f85c",
                     "path":"sprites/spr_debt_collector_death_strip6/spr_debt_collector_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"235b2391-fc33-47d4-8b03-f265dd5d2642",
+              "id":"009a40c6-0d7c-4d30-bb4c-0210fef44251",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0db30003-1969-4e80-bb76-e8852e1b0156",
+                    "name":"9c541904-ecd9-45d9-aa39-bdbfc489e847",
                     "path":"sprites/spr_debt_collector_death_strip6/spr_debt_collector_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"a1e81e5a-3750-4962-b766-f88a36e56335",
+              "id":"d1961619-2dd5-415a-8bc4-2a268f5fb8a9",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

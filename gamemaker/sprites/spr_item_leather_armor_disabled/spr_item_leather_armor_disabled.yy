@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"7adb8d1e-4992-43dd-90ea-f1b44545267e",
-      "name":"7adb8d1e-4992-43dd-90ea-f1b44545267e",
+      "%Name":"f7814ddc-8be3-4d2e-b253-a4c44971eb99",
+      "name":"f7814ddc-8be3-4d2e-b253-a4c44971eb99",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"fd7a38ba-0c9e-4dc2-ae38-f4df2b5550ce",
+      "%Name":"2eece0aa-a604-467c-8eee-260a54800937",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"fd7a38ba-0c9e-4dc2-ae38-f4df2b5550ce",
+      "name":"2eece0aa-a604-467c-8eee-260a54800937",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"7adb8d1e-4992-43dd-90ea-f1b44545267e",
+                    "name":"f7814ddc-8be3-4d2e-b253-a4c44971eb99",
                     "path":"sprites/spr_item_leather_armor_disabled/spr_item_leather_armor_disabled.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"828a9b2a-9dc3-4b39-87d0-b33adcca22b2",
+              "id":"a775ce7a-402f-4f32-9944-e6bf9386fc21",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

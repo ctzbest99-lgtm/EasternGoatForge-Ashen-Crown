@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"6846a9a7-03c9-4d5d-ac3a-f3d427aba3d3",
-      "name":"6846a9a7-03c9-4d5d-ac3a-f3d427aba3d3",
+      "%Name":"c912d174-df83-4c19-b4f3-26837888288e",
+      "name":"c912d174-df83-4c19-b4f3-26837888288e",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"a3b6e455-424a-4e62-9555-57e83b718dcb",
+      "%Name":"4ed0ec21-2b46-48d8-b8d3-33c2537400a9",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"a3b6e455-424a-4e62-9555-57e83b718dcb",
+      "name":"4ed0ec21-2b46-48d8-b8d3-33c2537400a9",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"6846a9a7-03c9-4d5d-ac3a-f3d427aba3d3",
+                    "name":"c912d174-df83-4c19-b4f3-26837888288e",
                     "path":"sprites/spr_ui_icon_coin/spr_ui_icon_coin.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"df2c044e-80f4-4c3f-8f23-87b91dda2351",
+              "id":"afa724d3-3c5f-4b3a-b34d-aea2aaae3d69",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

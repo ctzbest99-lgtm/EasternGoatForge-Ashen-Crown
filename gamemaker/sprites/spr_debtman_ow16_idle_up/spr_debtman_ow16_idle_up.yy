@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"6adc34d5-ed16-4884-978b-3eef57b41618",
-      "name":"6adc34d5-ed16-4884-978b-3eef57b41618",
+      "%Name":"68882554-a4ac-4363-aca3-0a89304d6eb5",
+      "name":"68882554-a4ac-4363-aca3-0a89304d6eb5",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"3dea8047-2b40-43d9-8ff3-160abdf07bed",
+      "%Name":"023bd912-289f-4d4f-83da-05fc55b28f34",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"3dea8047-2b40-43d9-8ff3-160abdf07bed",
+      "name":"023bd912-289f-4d4f-83da-05fc55b28f34",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"6adc34d5-ed16-4884-978b-3eef57b41618",
+                    "name":"68882554-a4ac-4363-aca3-0a89304d6eb5",
                     "path":"sprites/spr_debtman_ow16_idle_up/spr_debtman_ow16_idle_up.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"cfccc37a-4f31-4351-be73-307870dc4abd",
+              "id":"3bc79959-c758-4aa1-af14-a14ee7866680",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

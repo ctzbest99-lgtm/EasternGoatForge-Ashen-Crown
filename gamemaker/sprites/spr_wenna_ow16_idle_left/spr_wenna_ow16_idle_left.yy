@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"12284416-aa2c-40cb-b8c0-95bb6d479968",
-      "name":"12284416-aa2c-40cb-b8c0-95bb6d479968",
+      "%Name":"c303e3ef-a2d8-4d6b-9ee4-c1dce93cc964",
+      "name":"c303e3ef-a2d8-4d6b-9ee4-c1dce93cc964",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"a7733110-afe0-4935-99eb-b8a1c6ddb423",
+      "%Name":"6bd763e2-3dca-46f7-9666-1161d12b60f5",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"a7733110-afe0-4935-99eb-b8a1c6ddb423",
+      "name":"6bd763e2-3dca-46f7-9666-1161d12b60f5",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"12284416-aa2c-40cb-b8c0-95bb6d479968",
+                    "name":"c303e3ef-a2d8-4d6b-9ee4-c1dce93cc964",
                     "path":"sprites/spr_wenna_ow16_idle_left/spr_wenna_ow16_idle_left.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d5a6c452-9a54-46b0-84b6-c6b27ef7abf0",
+              "id":"ff43513f-be08-4d22-a728-73220971b1e2",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

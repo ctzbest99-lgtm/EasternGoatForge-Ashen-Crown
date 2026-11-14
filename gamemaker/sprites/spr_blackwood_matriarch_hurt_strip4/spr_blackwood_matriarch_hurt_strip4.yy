@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"a0209978-f26a-4255-af13-106a82b5a6b7",
-      "name":"a0209978-f26a-4255-af13-106a82b5a6b7",
+      "%Name":"e705e536-b45d-4597-9efd-385d12544750",
+      "name":"e705e536-b45d-4597-9efd-385d12544750",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"5cb69f53-d330-4039-8c53-0abfc4768a61",
-      "name":"5cb69f53-d330-4039-8c53-0abfc4768a61",
+      "%Name":"c79c4f3e-9ee5-45ec-b4f8-7d3c7159d65e",
+      "name":"c79c4f3e-9ee5-45ec-b4f8-7d3c7159d65e",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"39242041-6b81-46c5-b2a9-cb63166214cf",
-      "name":"39242041-6b81-46c5-b2a9-cb63166214cf",
+      "%Name":"92bf89b3-6fa0-438e-8cc3-62db113e8911",
+      "name":"92bf89b3-6fa0-438e-8cc3-62db113e8911",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"59791e18-e0f8-4608-b8e7-122fee898006",
-      "name":"59791e18-e0f8-4608-b8e7-122fee898006",
+      "%Name":"637354f8-d237-44c7-b128-8078711df7b0",
+      "name":"637354f8-d237-44c7-b128-8078711df7b0",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"00b531f0-9f4c-4d9b-af6d-6f46afea1718",
+      "%Name":"512ed1e9-28a5-48e8-9c75-57f1161cefbc",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"00b531f0-9f4c-4d9b-af6d-6f46afea1718",
+      "name":"512ed1e9-28a5-48e8-9c75-57f1161cefbc",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a0209978-f26a-4255-af13-106a82b5a6b7",
+                    "name":"e705e536-b45d-4597-9efd-385d12544750",
                     "path":"sprites/spr_blackwood_matriarch_hurt_strip4/spr_blackwood_matriarch_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"7bc41666-e7a2-4b37-b96b-f9447a1e8cc8",
+              "id":"0324757e-37b6-4471-9d3d-d74d9db27741",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"5cb69f53-d330-4039-8c53-0abfc4768a61",
+                    "name":"c79c4f3e-9ee5-45ec-b4f8-7d3c7159d65e",
                     "path":"sprites/spr_blackwood_matriarch_hurt_strip4/spr_blackwood_matriarch_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"8ca0b9c5-e3a6-4613-ae81-6119324296a7",
+              "id":"5725bcb0-2ebb-4b52-aa61-23f238379d4e",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"39242041-6b81-46c5-b2a9-cb63166214cf",
+                    "name":"92bf89b3-6fa0-438e-8cc3-62db113e8911",
                     "path":"sprites/spr_blackwood_matriarch_hurt_strip4/spr_blackwood_matriarch_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"776fd0bb-7a66-4295-9d61-efd56a754b1d",
+              "id":"f789438b-6bf0-4365-b4a3-b6db607e9790",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"59791e18-e0f8-4608-b8e7-122fee898006",
+                    "name":"637354f8-d237-44c7-b128-8078711df7b0",
                     "path":"sprites/spr_blackwood_matriarch_hurt_strip4/spr_blackwood_matriarch_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f9f44709-388f-4f4b-84e3-2d191e5413f8",
+              "id":"3f88768f-0e12-4425-9378-1a4a1bbaa7bc",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

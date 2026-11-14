@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"ac5a7387-d2dc-44c2-8eea-6e008ccf5335",
-      "name":"ac5a7387-d2dc-44c2-8eea-6e008ccf5335",
+      "%Name":"f98613e5-d6c9-4f16-9dff-eb29654bd313",
+      "name":"f98613e5-d6c9-4f16-9dff-eb29654bd313",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"e0a1783f-7078-4dc1-9a08-426741fad326",
-      "name":"e0a1783f-7078-4dc1-9a08-426741fad326",
+      "%Name":"c840219f-4c09-4f37-8016-e6f8fcecc74e",
+      "name":"c840219f-4c09-4f37-8016-e6f8fcecc74e",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"e015e825-b539-45c8-b88f-01afc9a2507d",
-      "name":"e015e825-b539-45c8-b88f-01afc9a2507d",
+      "%Name":"d8070d54-6ba0-48a6-9254-e9bd837e8035",
+      "name":"d8070d54-6ba0-48a6-9254-e9bd837e8035",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"82536117-a913-4e9d-bfab-36aedf153424",
-      "name":"82536117-a913-4e9d-bfab-36aedf153424",
+      "%Name":"f2d7992d-cceb-405e-a489-46de4f45dbcb",
+      "name":"f2d7992d-cceb-405e-a489-46de4f45dbcb",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"158f8643-9e08-464b-ab9d-a3ac32e66535",
+      "%Name":"5ebe0e8d-8c14-497c-b875-ca924f301e2d",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"158f8643-9e08-464b-ab9d-a3ac32e66535",
+      "name":"5ebe0e8d-8c14-497c-b875-ca924f301e2d",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ac5a7387-d2dc-44c2-8eea-6e008ccf5335",
+                    "name":"f98613e5-d6c9-4f16-9dff-eb29654bd313",
                     "path":"sprites/spr_fallen_knight_story_ow16_walk_left_strip4/spr_fallen_knight_story_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"71737a5d-8ce8-417a-89fb-39db4c2e4349",
+              "id":"81e2f10d-d7a8-4dcf-b998-e6470969a8ea",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"e0a1783f-7078-4dc1-9a08-426741fad326",
+                    "name":"c840219f-4c09-4f37-8016-e6f8fcecc74e",
                     "path":"sprites/spr_fallen_knight_story_ow16_walk_left_strip4/spr_fallen_knight_story_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"6f8c0c60-6836-4ae8-bd60-3c05cd468f9b",
+              "id":"273ef4c2-a4ff-4d6d-85ca-2f210c5ac4e0",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"e015e825-b539-45c8-b88f-01afc9a2507d",
+                    "name":"d8070d54-6ba0-48a6-9254-e9bd837e8035",
                     "path":"sprites/spr_fallen_knight_story_ow16_walk_left_strip4/spr_fallen_knight_story_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f190971c-6c41-4d43-aadd-6424b5bcdd6a",
+              "id":"741f57ff-19eb-4190-818b-916bd381afea",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"82536117-a913-4e9d-bfab-36aedf153424",
+                    "name":"f2d7992d-cceb-405e-a489-46de4f45dbcb",
                     "path":"sprites/spr_fallen_knight_story_ow16_walk_left_strip4/spr_fallen_knight_story_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"016f98c5-627b-499d-ae72-e47cc23b2b09",
+              "id":"8ad1f8da-d5bb-42e2-bdb2-c4051d2de320",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"0651d5d7-3858-4b8d-8186-2cd84f9acd54",
-      "name":"0651d5d7-3858-4b8d-8186-2cd84f9acd54",
+      "%Name":"31fb16cf-524e-4474-bf72-12cb08fcdb4f",
+      "name":"31fb16cf-524e-4474-bf72-12cb08fcdb4f",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"102b4d0b-5a3b-46f3-b007-ff19bd8aad75",
-      "name":"102b4d0b-5a3b-46f3-b007-ff19bd8aad75",
+      "%Name":"94f4af34-7dde-4b09-85c1-0c984c5d5a43",
+      "name":"94f4af34-7dde-4b09-85c1-0c984c5d5a43",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"b0db6279-3e41-45f1-b069-44a4d95676c1",
-      "name":"b0db6279-3e41-45f1-b069-44a4d95676c1",
+      "%Name":"e5bc8e6c-de1b-45f6-8da6-a0ae02e45108",
+      "name":"e5bc8e6c-de1b-45f6-8da6-a0ae02e45108",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"8ef49254-34c3-481e-b49d-ab987576a0ed",
-      "name":"8ef49254-34c3-481e-b49d-ab987576a0ed",
+      "%Name":"cb8c43af-3417-4be0-b636-0046888e9aa8",
+      "name":"cb8c43af-3417-4be0-b636-0046888e9aa8",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"6aa3ac0b-d7fe-4618-aebe-c9563e57e3d6",
-      "name":"6aa3ac0b-d7fe-4618-aebe-c9563e57e3d6",
+      "%Name":"08848d0e-e7f1-4525-a6b1-60a845926643",
+      "name":"08848d0e-e7f1-4525-a6b1-60a845926643",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"a7273a4e-a9d6-4aeb-b417-f65935573e17",
-      "name":"a7273a4e-a9d6-4aeb-b417-f65935573e17",
+      "%Name":"33dcbeb7-6f58-43bb-89b0-c86797f8cae9",
+      "name":"33dcbeb7-6f58-43bb-89b0-c86797f8cae9",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"0e41b783-b90d-43e6-b7b8-b4d75c7b7a59",
+      "%Name":"994d9961-09a1-4d99-8b28-3d17588da6e7",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"0e41b783-b90d-43e6-b7b8-b4d75c7b7a59",
+      "name":"994d9961-09a1-4d99-8b28-3d17588da6e7",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0651d5d7-3858-4b8d-8186-2cd84f9acd54",
+                    "name":"31fb16cf-524e-4474-bf72-12cb08fcdb4f",
                     "path":"sprites/spr_door_warden_death_strip6/spr_door_warden_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"69f5dad2-3c14-46c8-a02c-ac61b46a38c9",
+              "id":"ad916dd9-c659-4f1d-af98-e50f42d7fe5c",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"102b4d0b-5a3b-46f3-b007-ff19bd8aad75",
+                    "name":"94f4af34-7dde-4b09-85c1-0c984c5d5a43",
                     "path":"sprites/spr_door_warden_death_strip6/spr_door_warden_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"78294bce-8034-49e8-9ee4-85d641aed856",
+              "id":"d6c97d6f-e177-4e3a-8009-7c2124f497b6",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"b0db6279-3e41-45f1-b069-44a4d95676c1",
+                    "name":"e5bc8e6c-de1b-45f6-8da6-a0ae02e45108",
                     "path":"sprites/spr_door_warden_death_strip6/spr_door_warden_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"e2b61ae7-3671-4f4a-abc4-88e770da214d",
+              "id":"11c8ebaf-f0a7-4118-984c-a5ff103d2dd9",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"8ef49254-34c3-481e-b49d-ab987576a0ed",
+                    "name":"cb8c43af-3417-4be0-b636-0046888e9aa8",
                     "path":"sprites/spr_door_warden_death_strip6/spr_door_warden_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"6cd307cd-93a5-4a28-861a-955a5c70b261",
+              "id":"3d2253cc-2e89-4ee7-94c7-3e55c3181e28",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"6aa3ac0b-d7fe-4618-aebe-c9563e57e3d6",
+                    "name":"08848d0e-e7f1-4525-a6b1-60a845926643",
                     "path":"sprites/spr_door_warden_death_strip6/spr_door_warden_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"6ebc7895-d381-4bb9-aaaa-88f5c22fce30",
+              "id":"08e53113-69bb-43af-8fe1-86db0e15b816",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a7273a4e-a9d6-4aeb-b417-f65935573e17",
+                    "name":"33dcbeb7-6f58-43bb-89b0-c86797f8cae9",
                     "path":"sprites/spr_door_warden_death_strip6/spr_door_warden_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"c2d76b72-887c-42c4-9d29-64e19408c459",
+              "id":"7e293e04-b290-46cf-8d77-1cdf087c7b01",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,
