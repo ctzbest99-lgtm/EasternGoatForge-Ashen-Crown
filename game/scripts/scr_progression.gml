@@ -26,10 +26,44 @@ function scr_xp_progress_to_next(_xp, _level) {
 
 /// Apply one level of placeholder stat growth. KO'd members gain max HP only (stay at 0 HP).
 /// Returns a struct describing the change, for the battle level-up message.
+/// Growth for one level-up INTO `_new_level`. Levels below LEVEL_UP_TIER_LEVEL keep the
+/// Chapter 1 numbers; from the tier level up the *_HIGH placeholders apply (balance pass).
+function scr_level_growth(_new_level) {
+    if (_new_level >= LEVEL_UP_TIER_LEVEL) {
+        return { hp: LEVEL_UP_HP_GROWTH_HIGH, atk: LEVEL_UP_ATTACK_GROWTH_HIGH, def: LEVEL_UP_DEFENSE_GROWTH_HIGH,
+                 mp: LEVEL_UP_MP_GROWTH_HIGH, spd: LEVEL_UP_SPD_GROWTH_HIGH, mdef: LEVEL_UP_MDEF_GROWTH_HIGH };
+    }
+    return { hp: LEVEL_UP_HP_GROWTH, atk: LEVEL_UP_ATTACK_GROWTH, def: LEVEL_UP_DEFENSE_GROWTH,
+             mp: LEVEL_UP_MP_GROWTH, spd: LEVEL_UP_SPD_GROWTH, mdef: LEVEL_UP_MDEF_GROWTH };
+}
+
+/// Total growth from level 1 to `_level` (sum of scr_level_growth for 2.._level).
+function scr_level_growth_total(_level) {
+    var _t = { hp: 0, atk: 0, def: 0, mp: 0, spd: 0, mdef: 0 };
+    for (var _l = 2; _l <= _level; _l++) {
+        var _g = scr_level_growth(_l);
+        _t.hp += _g.hp; _t.atk += _g.atk; _t.def += _g.def;
+        _t.mp += _g.mp; _t.spd += _g.spd; _t.mdef += _g.mdef;
+    }
+    return _t;
+}
+
+/// Raise a (usually newly joined) member to `_level` with normal growth, XP set to that
+/// level's floor, then full HP / MP. Used when Taren joins at Kael's level (Chapter 2).
+function scr_actor_raise_to_level(_actor, _level) {
+    if (!is_struct(_actor)) return;
+    _level = clamp(_level, 1, PARTY_MAX_LEVEL);
+    while (_actor.level < _level) scr_actor_apply_level_up(_actor);
+    _actor.xp = max(_actor.xp, scr_xp_for_level(_actor.level));
+    _actor.hp = _actor.max_hp;
+    if (variable_struct_exists(_actor, "max_mp")) _actor.mp = _actor.max_mp;
+}
+
 function scr_actor_apply_level_up(_actor) {
-    var _hp = LEVEL_UP_HP_GROWTH;
-    var _atk = LEVEL_UP_ATTACK_GROWTH;
-    var _def = LEVEL_UP_DEFENSE_GROWTH;
+    var _gr = scr_level_growth(_actor.level + 1);
+    var _hp = _gr.hp;
+    var _atk = _gr.atk;
+    var _def = _gr.def;
     _actor.level += 1;
     _actor.max_hp += _hp;
     if (_actor.hp > 0) _actor.hp = min(_actor.max_hp, _actor.hp + _hp);
@@ -39,10 +73,10 @@ function scr_actor_apply_level_up(_actor) {
     _actor.base_defense += _def;
     _actor.attack += _atk;
     _actor.defense += _def;
-    // Battle upgrade: PLACEHOLDER flat growth for MP / SPD / MDEF. KO'd members gain max MP only.
-    var _mp = LEVEL_UP_MP_GROWTH;
-    var _spd = LEVEL_UP_SPD_GROWTH;
-    var _mdef = LEVEL_UP_MDEF_GROWTH;
+    // PLACEHOLDER growth for MP / SPD / MDEF (tiered, see scr_level_growth). KO'd members gain max MP only.
+    var _mp = _gr.mp;
+    var _spd = _gr.spd;
+    var _mdef = _gr.mdef;
     if (!variable_struct_exists(_actor, "max_mp")) { _actor.max_mp = 0; _actor.mp = 0; }
     if (!variable_struct_exists(_actor, "base_spd")) _actor.base_spd = variable_struct_exists(_actor, "spd") ? _actor.spd : 8;
     if (!variable_struct_exists(_actor, "base_mdef")) _actor.base_mdef = variable_struct_exists(_actor, "mdef") ? _actor.mdef : 0;

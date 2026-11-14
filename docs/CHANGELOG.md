@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased — Balance pass (`feature/balance-pass`)
+- Act II is tuned for levels 8–10 with `tools/balance_sim.py`. The simulation table and every placeholder are in `docs/DECISIONS_AND_OPEN_QUESTIONS.md` ("Balance pass").
+- Tiered growth: level-ups into 8+ give +10 HP / +2 ATK / +2 DEF / +3 MP. Levels 2–7 (Chapter 1) are unchanged.
+- Act II enemy HP / ATK / DEF were lowered (Calder 130 / 15 / 16; Occupation Soldier 50 / 12 / 14). Millhaven Road groups stop at 2 (Kael is alone there).
+- MP recovery: Ether (10 MP, 60 g), an inn helper (`scr_inn_offer`, Wrenfield price 30 g), and +2 MP after each win as before. New items: Ether, Chain Mail (Len's mid-tier, DEF +4), Travel Brigandine (Taren's starting armour). New shop table `shop_wrenfield_store`.
+- The dialogue box supports a choice on its last line (`scr_dialogue_choice`).
+- If Reeve Calder yields, his remaining soldiers withdraw but still give XP (at the yield) and gold (placeholder rule).
+- `scr_actor_raise_to_level` lets Taren join at Kael's level (used by the Chapter 2 wiring).
+- Nothing has been compiled or playtested in GameMaker.
+
 ## Unreleased — Battle upgrade (`feature/battle-upgrade`)
 
 Multi-enemy battles, SPD / MP / MDEF, skills, enemy AI, and the Act II enemy roster, built on the saves-and-shops branch (PR #10).

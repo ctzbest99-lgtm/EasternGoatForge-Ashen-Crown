@@ -75,6 +75,15 @@ XP curve: total XP to be level L is `20*(L-1)^2 + 10*(L-1)` (L2=30, L3=100, L4=2
 
 
 
+## Balance pass (feature/balance-pass; untested in GameMaker)
+- [ ] BP1 Chapter 1 is unchanged: level-ups from 2 to 7 still show +4 HP / +1 ATK / +1 DEF, Chapter 1 enemy stats are unchanged, and a Blackguard run feels the same.
+- [ ] BP2 Level-ups into 8, 9 and 10 show +10 HP, +2 ATK, +2 DEF, +3 MP. With the debugger, `scr_actor_raise_to_level(taren, 9)` gives Taren 80 max HP, ATK 21 with the Bastard Sword, and DEF 15 with the Travel Brigandine.
+- [ ] BP3 Kael at level 8 (Blackguard's Longsword, Leather Armor, Iron Helm) beats `["crown_patrolman", "crown_crossbowman"]` and `["grey_ash_wolf", "grey_ash_wolf"]` without items. Occupation Soldiers take about 4–5 hits.
+- [ ] BP4 Kael + Taren at level 9 beat `grp_reeve_calder` most of the time. Calder takes about 10–14 party turns.
+- [ ] BP5 If Calder yields while a soldier stands, the soldier fades out, "The rest withdraw." shows, and the victory XP / gold totals include the soldier. XP goes only to members who took a turn and are standing.
+- [ ] BP6 Ether from the bag on a member with MP restores up to 10 MP (refused when full, or when the member has no MP). The `shop_wrenfield_store` table lists Minor Potion, Antidote, Ether, Chain Mail.
+- [ ] BP7 `scr_inn_offer("Perrin", INN_WRENFIELD_PRICE)` shows the price and the gold you have, then Rest / Leave. Up / down moves; X picks Leave. Rest with enough gold takes 30 g and fully restores HP and MP for the party and reserve. Without enough gold it says "Not enough gold." Leave does nothing.
+
 ## Battle upgrade (feature/battle-upgrade; untested in GameMaker)
 Paste `scr_skill_data` and `scr_battle_system` as new scripts and re-paste the changed scripts and the three `obj_battle_controller` events (ROOM_SETUP.md §7). Use `DEBUG_ADD_FULL_ROSTER true` for the party cases. All numbers are PLACEHOLDER.
 - [ ] B1 **Chapter 1 regression:** a single Bandit / Fallen Knight / Chapter 1 regular plays as before: Attack goes straight to the enemy (no target cursor with one enemy), the same "X attacks! Y takes N damage." lines, the same damage numbers (no buffs, no element), Guard halves the next hit until the next round, victory gold / XP and level-up lines are unchanged apart from the new MP / SPD numbers.

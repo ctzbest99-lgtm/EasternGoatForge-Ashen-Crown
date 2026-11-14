@@ -62,6 +62,22 @@ if (_struck) {
     }
 }
 
+// Choice list (scr_dialogue_choice) in a small window above the box, right-aligned.
+if (is_array(choices) && array_length(choices) > 0 && line_index >= array_length(lines) - 1) {
+    var _cw = 0;
+    for (var _c = 0; _c < array_length(choices); _c++) _cw = max(_cw, string_width(choices[_c]));
+    _cw += 24;
+    var _ch = 8 + 11 * array_length(choices);
+    var _cx = _right - _cw;
+    var _cy = _top - _ch - 2;
+    scr_ui_window(_cx, _cy, _cw, _ch, "normal");
+    for (var _c2 = 0; _c2 < array_length(choices); _c2++) {
+        var _col = (_c2 == choice_index) ? make_color_rgb(217, 184, 96) : c_white;
+        scr_ui_text(_cx + 14, _cy + 4 + 11 * _c2, choices[_c2], _col);
+        if (_c2 == choice_index) scr_ui_text(_cx + 5, _cy + 4 + 11 * _c2, ">", _col);
+    }
+}
+
 draw_set_halign(fa_right);
 scr_ui_text(_right - 6, _bottom - 12, (line_index < array_length(lines) - 1) ? "[Z]" : "[Z]", make_color_rgb(154, 146, 132));
 draw_set_halign(fa_left);

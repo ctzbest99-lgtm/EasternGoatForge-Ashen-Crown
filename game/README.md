@@ -25,10 +25,10 @@ Snippets are prototypes, not verified production code. Compile in the selected G
 | `scr_ui` | 320×180 GUI helpers: bitmap font, nine-slice windows, HP bars, damage digits |
 | `scr_menu_layout` | Shop / save / inventory layout macros and sprite lookups (`asset_get_index` with fallbacks for later Design art in `/workspace/sprites/ui/menus/`) |
 | `scr_item_data` | Item table (prices, heal, slots, ATK/DEF bonuses — PLACEHOLDER), use / equip helpers |
-| `scr_shop_data` | Shop tables (`shop_greyhaven_store`, `shop_greyhaven_forge`) plus buy / sell |
+| `scr_shop_data` | Shop tables (`shop_greyhaven_store`, `shop_greyhaven_forge`, `shop_wrenfield_store`) plus buy / sell, and the inn (`scr_inn_offer`, `scr_inn_rest_party`) |
 | `scr_save` | Versioned JSON save / load (`save1.sav`–`save3.sav`), slot info, playtime, load placement; schema v2 adds MP / SPD / MDEF / skills and `scr_save_migrate()` upgrades v1 saves |
 | `scr_input` | Prototype key mapping: confirm, cancel, menu up / down / left / right |
-| `scr_dialogue` | `scr_dialogue_open(lines, speaker)` |
+| `scr_dialogue` | `scr_dialogue_open(lines, speaker)`, `scr_dialogue_choice(lines, speaker, choices, on_choice)` (choice on the last line) |
 | `scr_dialogue_data` | Chapter 1 nodes by ID (`ENC_AH_01` …) and `scr_dialogue_play()` |
 | `scr_flags` | `scr_flag_get` / `scr_flag_set` / `scr_flag_clear` (`global.game.flags`) |
 | `scr_inventory` | `scr_inventory_has` / `scr_inventory_add` / `scr_inventory_remove` / `scr_inventory_count` (key items unique and unsellable) |
@@ -36,7 +36,7 @@ Snippets are prototypes, not verified production code. Compile in the selected G
 | `scr_encounter` | `scr_encounter_start()`, `scr_battle_finish()`, `scr_apply_defeat_penalty()`, `scr_apply_town_respawn()`, `scr_town_wake_up_dialogue()`, `scr_random_encounter_tick()` (overworld ↔ battle hand-off and walking encounters) |
 | `scr_encounter_tables` | Named / per-room random encounter tables (`zone01_path`, `zone01_farmlands`, `zone01_old_road`, `zone01_bandit_camp`, `zone01_watchtower`, plus short-id aliases `old_road` / `bandit_camp` / `watchtower`); entries may be a single enemy or a `group`; Act II stubs `ch2_millhaven_road` / `ch2_wrenfield` (data only) and fixed groups (`grp_reeve_calder`, `grp_crown_patrol`) |
 | `scr_battle_actors` | Actor structs (level, xp, `base_attack` / `base_defense`, equipment slots), party of up to four, party helpers |
-| `scr_progression` | XP curve (`scr_xp_for_level`), `scr_party_grant_xp()`, level-up growth |
+| `scr_progression` | XP curve (`scr_xp_for_level`), `scr_party_grant_xp()`, tiered level-up growth (`scr_level_growth`), `scr_actor_raise_to_level` |
 | `scr_skill_data` | **New.** Data-driven skill table (`scr_skill_get`): Attack, Taren's Rallying Cry / Cleave / Unbowed, Chapter 1 flavor actions, Act II enemy kits (Thrust, Brace, Crossbow Bolt, Slash, Guard, Heavy Strike, Calder's Shout). MP cost, target, power, element, buffs, AI conditions — PLACEHOLDER numbers |
 | `scr_battle_system` | **New.** Battle stats with timed buffs (`scr_battle_stat`, `scr_battle_add_buff`, `scr_battle_tick_buffs`), status resists, skill damage with elemental weakness, weighted enemy AI (`scr_battle_ai_pick`), SPD turn order, 1–3 enemy / boss-plus-adds formations, duplicate labels (A / B / C) |
 | `scr_battle_math` | Damage, HP clamp, Guard reduction (existing file, `scr_apply_guard` added) |
