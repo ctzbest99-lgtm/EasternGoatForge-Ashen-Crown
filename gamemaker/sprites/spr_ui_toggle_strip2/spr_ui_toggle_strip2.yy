@@ -14,15 +14,15 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"4bee3d33-f66c-4ec4-a5ef-fcc8e80d2fb1",
-      "name":"4bee3d33-f66c-4ec4-a5ef-fcc8e80d2fb1",
+      "%Name":"8b07bf98-ffc4-4042-851c-576cf0383a85",
+      "name":"8b07bf98-ffc4-4042-851c-576cf0383a85",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"12540e62-65b6-4702-a41a-e3e211822d3e",
-      "name":"12540e62-65b6-4702-a41a-e3e211822d3e",
+      "%Name":"64946ae1-b599-4007-9709-978d14ad7877",
+      "name":"64946ae1-b599-4007-9709-978d14ad7877",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -34,11 +34,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"bf164a44-8c03-4471-9e0e-8411133cddf4",
+      "%Name":"800853c5-3576-491a-a0c0-80c1043b3c9a",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"bf164a44-8c03-4471-9e0e-8411133cddf4",
+      "name":"800853c5-3576-491a-a0c0-80c1043b3c9a",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -111,7 +111,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"4bee3d33-f66c-4ec4-a5ef-fcc8e80d2fb1",
+                    "name":"8b07bf98-ffc4-4042-851c-576cf0383a85",
                     "path":"sprites/spr_ui_toggle_strip2/spr_ui_toggle_strip2.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -119,7 +119,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d82895f3-3cf7-4270-96f5-8b72de3375fe",
+              "id":"aedf5333-2e38-4d8e-9f4e-481b2f1a7390",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -133,7 +133,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"12540e62-65b6-4702-a41a-e3e211822d3e",
+                    "name":"64946ae1-b599-4007-9709-978d14ad7877",
                     "path":"sprites/spr_ui_toggle_strip2/spr_ui_toggle_strip2.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -141,7 +141,7 @@
                 },
               },
               "Disabled":false,
-              "id":"1a988af9-2af9-4bd1-a299-e1848481a17d",
+              "id":"a69f603c-fca8-4ffc-a465-cf8bc2920104",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,

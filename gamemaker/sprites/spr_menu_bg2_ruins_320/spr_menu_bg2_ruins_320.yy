@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"f00279b7-270d-4397-8bc2-480476865600",
-      "name":"f00279b7-270d-4397-8bc2-480476865600",
+      "%Name":"3097bc2b-3dce-404e-9b6a-f9d847489af9",
+      "name":"3097bc2b-3dce-404e-9b6a-f9d847489af9",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"5eb223c7-764e-4b86-a7f2-9013b37467e1",
+      "%Name":"10fa7b96-426f-4a87-985e-9139627b4a41",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"5eb223c7-764e-4b86-a7f2-9013b37467e1",
+      "name":"10fa7b96-426f-4a87-985e-9139627b4a41",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"f00279b7-270d-4397-8bc2-480476865600",
+                    "name":"3097bc2b-3dce-404e-9b6a-f9d847489af9",
                     "path":"sprites/spr_menu_bg2_ruins_320/spr_menu_bg2_ruins_320.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"70e1c7ac-36ee-43ce-80fb-f262aa0c36bc",
+              "id":"44baefa5-f6da-4749-b340-863910c7c855",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

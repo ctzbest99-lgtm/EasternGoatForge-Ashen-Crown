@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"aca8481c-d76c-4301-ab16-26189ef71ede",
-      "name":"aca8481c-d76c-4301-ab16-26189ef71ede",
+      "%Name":"ec899363-6333-48f2-9bc5-6293ba59d7b8",
+      "name":"ec899363-6333-48f2-9bc5-6293ba59d7b8",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"72d4f8d4-999b-4ea6-9f95-700bd08dae3d",
+      "%Name":"400ec205-2b04-4e29-b263-49ff6c440f53",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"72d4f8d4-999b-4ea6-9f95-700bd08dae3d",
+      "name":"400ec205-2b04-4e29-b263-49ff6c440f53",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"aca8481c-d76c-4301-ab16-26189ef71ede",
+                    "name":"ec899363-6333-48f2-9bc5-6293ba59d7b8",
                     "path":"sprites/spr_bandit_ow_idle_down/spr_bandit_ow_idle_down.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"99fa5846-7672-4ec4-9bb6-cf77dc2655e0",
+              "id":"ea90ca78-f48f-4fba-b314-13a57c5fac94",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

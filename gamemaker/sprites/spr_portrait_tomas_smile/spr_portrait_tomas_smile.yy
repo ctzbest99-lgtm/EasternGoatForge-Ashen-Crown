@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"ea02a00f-84b7-4086-93ea-822d9755c805",
-      "name":"ea02a00f-84b7-4086-93ea-822d9755c805",
+      "%Name":"0837ed70-3144-4c98-8b66-c017cfb5c400",
+      "name":"0837ed70-3144-4c98-8b66-c017cfb5c400",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"2ce54fbf-5148-4fc6-9897-b2065a64b401",
+      "%Name":"96775199-6d15-4d6e-9343-2932bdd34a2a",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"2ce54fbf-5148-4fc6-9897-b2065a64b401",
+      "name":"96775199-6d15-4d6e-9343-2932bdd34a2a",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ea02a00f-84b7-4086-93ea-822d9755c805",
+                    "name":"0837ed70-3144-4c98-8b66-c017cfb5c400",
                     "path":"sprites/spr_portrait_tomas_smile/spr_portrait_tomas_smile.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"7fb4e803-4e69-4a09-8170-a13e73619a5e",
+              "id":"87021580-f878-4260-ad25-18b6b2228e02",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

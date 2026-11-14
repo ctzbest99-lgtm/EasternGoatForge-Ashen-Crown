@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"2a0f3f19-ca5c-4c9a-98de-c5ac82f44c04",
-      "name":"2a0f3f19-ca5c-4c9a-98de-c5ac82f44c04",
+      "%Name":"dc2850fb-4163-48ef-8a32-341651249216",
+      "name":"dc2850fb-4163-48ef-8a32-341651249216",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"a9aa78d9-5464-4cb8-94ba-3f66afed9166",
-      "name":"a9aa78d9-5464-4cb8-94ba-3f66afed9166",
+      "%Name":"5f6d3904-2157-4c5a-8621-737e249b61a1",
+      "name":"5f6d3904-2157-4c5a-8621-737e249b61a1",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"37c7c4c5-f568-498e-92d8-59d8533de825",
-      "name":"37c7c4c5-f568-498e-92d8-59d8533de825",
+      "%Name":"cb958500-bc18-4d1a-abf5-62574fc731de",
+      "name":"cb958500-bc18-4d1a-abf5-62574fc731de",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"71ddd156-da20-4f9e-9e9d-0d2c0c2f7dd9",
-      "name":"71ddd156-da20-4f9e-9e9d-0d2c0c2f7dd9",
+      "%Name":"9bc976d0-956b-47a8-ae09-6989e6b27928",
+      "name":"9bc976d0-956b-47a8-ae09-6989e6b27928",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"409e40fd-f0b2-4d8d-9b9a-fcac60a956ef",
+      "%Name":"310175f2-46a6-460b-9f8d-81bb74c8c9b1",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"409e40fd-f0b2-4d8d-9b9a-fcac60a956ef",
+      "name":"310175f2-46a6-460b-9f8d-81bb74c8c9b1",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"2a0f3f19-ca5c-4c9a-98de-c5ac82f44c04",
+                    "name":"dc2850fb-4163-48ef-8a32-341651249216",
                     "path":"sprites/spr_reeve_calder_ow16_walk_left_strip4/spr_reeve_calder_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"2c4fd5f7-69ff-4e62-91fe-4a0b92ecbbac",
+              "id":"59d45720-9f51-4106-8d3f-9cf4666b5247",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a9aa78d9-5464-4cb8-94ba-3f66afed9166",
+                    "name":"5f6d3904-2157-4c5a-8621-737e249b61a1",
                     "path":"sprites/spr_reeve_calder_ow16_walk_left_strip4/spr_reeve_calder_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"6360a12f-523e-4291-9b8c-648243b1afc9",
+              "id":"dfdf3f28-50d6-4f17-8876-c5b8892b9dbb",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"37c7c4c5-f568-498e-92d8-59d8533de825",
+                    "name":"cb958500-bc18-4d1a-abf5-62574fc731de",
                     "path":"sprites/spr_reeve_calder_ow16_walk_left_strip4/spr_reeve_calder_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"4f985d97-fa05-42be-8862-4e546fcb92b0",
+              "id":"6f6b2f22-a77b-4561-9d10-2bf3d590d751",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"71ddd156-da20-4f9e-9e9d-0d2c0c2f7dd9",
+                    "name":"9bc976d0-956b-47a8-ae09-6989e6b27928",
                     "path":"sprites/spr_reeve_calder_ow16_walk_left_strip4/spr_reeve_calder_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"a91c5b24-b9ea-43e5-bdd1-93d4502470aa",
+              "id":"cb8e7428-8c47-4fce-a2b7-5896cd0ca6c9",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

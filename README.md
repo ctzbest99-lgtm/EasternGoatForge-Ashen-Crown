@@ -25,5 +25,6 @@ A dark medieval fantasy RPG by Eastern Goat Forge, built with GameMaker and GML.
 - prompts/: Codex implementation prompts.
 - game/: human-readable GML snippets, setup notes, `game/sprites/` art, tileset, and overworld Included Files (the source the GameMaker project is generated from).
 - gamemaker/: the generated, ready-to-open GameMaker project (`.yyp`, resources, and datafiles).
+- gen_gamemaker.py / validate_gamemaker.py: rebuild and re-check `gamemaker/` from `game/` (Python 3 + Pillow).
 
 Proprietary: all source code and all game assets are the property of Eastern Goat Forge, all rights reserved; see LICENSE.

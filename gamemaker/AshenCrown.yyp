@@ -2885,6 +2885,12 @@
     },
     {
       "id":{
+        "name":"spr_menu_embers_640_strip24",
+        "path":"sprites/spr_menu_embers_640_strip24/spr_menu_embers_640_strip24.yy",
+      },
+    },
+    {
+      "id":{
         "name":"spr_menu_opt_continue_disabled_320",
         "path":"sprites/spr_menu_opt_continue_disabled_320/spr_menu_opt_continue_disabled_320.yy",
       },
@@ -4060,6 +4066,23 @@
   ],
   "templateType":"game",
   "TextureGroups":[
+    {
+      "$GMTextureGroup":"",
+      "%Name":"tex_title_640",
+      "autocrop":true,
+      "border":2,
+      "compressFormat":"bz2",
+      "customOptions":"",
+      "directory":"",
+      "groupParent":null,
+      "isScaled":true,
+      "loadType":"default",
+      "mipsToGenerate":0,
+      "name":"tex_title_640",
+      "resourceType":"GMTextureGroup",
+      "resourceVersion":"2.0",
+      "targets":-1,
+    },
     {
       "$GMTextureGroup":"",
       "%Name":"Default",

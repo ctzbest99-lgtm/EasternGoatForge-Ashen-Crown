@@ -14,15 +14,15 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"b7e57b2a-6e5c-4b56-866e-0699a6e77e69",
-      "name":"b7e57b2a-6e5c-4b56-866e-0699a6e77e69",
+      "%Name":"ea97ee6d-9a33-43e3-8cd2-0f9d99b3b17f",
+      "name":"ea97ee6d-9a33-43e3-8cd2-0f9d99b3b17f",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"ed7186b2-1e2a-42f1-aac5-22a968d0c88a",
-      "name":"ed7186b2-1e2a-42f1-aac5-22a968d0c88a",
+      "%Name":"c1d709c1-159d-49bb-b7cb-1ebfd8ad84df",
+      "name":"c1d709c1-159d-49bb-b7cb-1ebfd8ad84df",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -34,11 +34,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"90a139a0-654c-4985-8378-25c9b79a477c",
+      "%Name":"11f77a46-9fd7-46a6-9d7c-24f6068d6bcd",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"90a139a0-654c-4985-8378-25c9b79a477c",
+      "name":"11f77a46-9fd7-46a6-9d7c-24f6068d6bcd",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -111,7 +111,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"b7e57b2a-6e5c-4b56-866e-0699a6e77e69",
+                    "name":"ea97ee6d-9a33-43e3-8cd2-0f9d99b3b17f",
                     "path":"sprites/spr_ui_cursor_strip2/spr_ui_cursor_strip2.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -119,7 +119,7 @@
                 },
               },
               "Disabled":false,
-              "id":"fc1ee21b-aca0-4616-98f0-320c1b90a749",
+              "id":"5d8d3e89-4a94-486d-8029-d7324585e5a9",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -133,7 +133,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ed7186b2-1e2a-42f1-aac5-22a968d0c88a",
+                    "name":"c1d709c1-159d-49bb-b7cb-1ebfd8ad84df",
                     "path":"sprites/spr_ui_cursor_strip2/spr_ui_cursor_strip2.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -141,7 +141,7 @@
                 },
               },
               "Disabled":false,
-              "id":"16178bf0-a3fd-4a34-aaef-acbd5667a281",
+              "id":"d7f95cf4-8a3d-4294-b292-83374a62bc28",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
