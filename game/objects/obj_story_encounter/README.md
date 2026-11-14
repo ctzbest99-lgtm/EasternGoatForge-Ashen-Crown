@@ -8,7 +8,7 @@ Scripted story fight trigger. Default instance is the guaranteed first Ashbound 
 - Visible follows `DEBUG_SHOW_TRIGGERS`.
 
 ## Watchtower placement
-`scr_build_old_watchtower` places **one** instance on walkable tile **(41, 23)** in `rm_old_watchtower`, two tiles north of `old_royal_banner` (41, 25). The banner is scaled to a single 16×16 tile so it cannot cover the trigger (a static review found a 32×32 placeholder would sit on (41, 24)). Tile (41, 24) stays walkable between the trigger and the banner. Do not also hand-place a second trigger on that tile.
+`scr_build_old_watchtower` places **one** instance on walkable tile **(33, 33)** in `rm_old_watchtower`, on the way to `old_royal_banner` (41, 25). Design marks this as type `encounter`; the spawner still uses this object so the ENC_AH parchment flow is kept. Interactables are fitted to one 16×16 tile so a 32×32 placeholder cannot cover a neighbour. Do not also hand-place a second trigger on that tile.
 
 Default `encounter_id` is `enc_ashbound_hunter_wt`. Do not change it for the guaranteed fight: a victory records that id in `cleared_encounters` and the instance is removed. A defeat does **not** clear it.
 

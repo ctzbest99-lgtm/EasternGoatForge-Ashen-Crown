@@ -73,3 +73,22 @@ function scr_area_allows_ashbound_rare() {
     }
     return false;
 }
+
+
+/// On a Blackguard victory: set blackguard_defeated, grant the canon key items
+/// (Longsword + Crownveil Fragment), and queue BG_DEFEAT / BG_REWARD. XP and gold
+/// still come from the PLACEHOLDER enemy entry, not the script's 250 / 100.
+function scr_blackguard_on_battle_finish(_result, _pending) {
+    if (!is_struct(_pending)) return;
+    var _is_bg = (_pending.enemy_id == "blackguard");
+    if (!_is_bg && variable_struct_exists(_pending, "encounter_id") && _pending.encounter_id == "zone01_boss_blackguard") _is_bg = true;
+    if (!_is_bg) return;
+    scr_game_state_init();
+    if (_result != "victory") {
+        return;
+    }
+    scr_flag_set("blackguard_defeated");
+    scr_inventory_add("item_blackguard_longsword", "Blackguard's Longsword", 1, true);
+    scr_inventory_add("item_crownveil_fragment", "Crownveil Fragment", 1, true);
+    global.game.pending_post_dialogue = ["BG_DEFEAT_01", "BG_DEFEAT_02", "BG_DEFEAT_03", "BG_REWARD_01"];
+}

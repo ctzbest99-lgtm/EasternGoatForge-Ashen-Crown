@@ -1,0 +1,86 @@
+[
+ {
+  "type": "player_spawn",
+  "name": "from_overworld",
+  "tile_x": 9,
+  "tile_y": 10,
+  "x": 152,
+  "y": 176,
+  "facing": "up",
+  "note": "Arrive here from overworld door marker door_varyn_house."
+ },
+ {
+  "type": "zone_exit",
+  "name": "to_overworld",
+  "tile_x": 9,
+  "tile_y": 11,
+  "x": 152,
+  "y": 192,
+  "target_room": "rm_overworld",
+  "target_spawn": "door_varyn_house",
+  "w": 2,
+  "h": 1
+ },
+ {
+  "type": "lore",
+  "name": "varyn_table",
+  "tile_x": 8,
+  "tile_y": 5,
+  "x": 136,
+  "y": 96,
+  "script_id": "GH_HOUSE_01",
+  "lines": [
+   "Mother's table. Split down the middle."
+  ],
+  "struck_lines": [],
+  "note": "Toppled table (interactable debris)."
+ },
+ {
+  "type": "lore",
+  "name": "varyn_beam",
+  "tile_x": 12,
+  "tile_y": 8,
+  "x": 200,
+  "y": 144,
+  "script_id": "GH_HOUSE_02",
+  "lines": [
+   "The roof came down here. Nothing underneath. Thank the gods."
+  ],
+  "struck_lines": [],
+  "note": "Collapsed beam (interactable debris)."
+ },
+ {
+  "type": "item",
+  "name": "mira_pendant",
+  "tile_x": 14,
+  "tile_y": 4,
+  "x": 232,
+  "y": 80,
+  "item_id": "item_mira_pendant",
+  "permanent": true,
+  "story_flag": "flag_pendant_found",
+  "script_id": "GH_HOUSE_03",
+  "script_chain": [
+   "GH_HOUSE_03",
+   "GH_HOUSE_04",
+   "GH_HOUSE_05"
+  ],
+  "quest_advance": "Q_FM_S3",
+  "unlocks": "north_gate_barrier",
+  "lines": [
+   "Under the ash and splinters: a small wooden pendant on a cord.",
+   "Mira's."
+  ],
+  "struck_lines": [],
+  "note": "Mira's corner: under the rubble where her bed was (mira_bed_rubble tile, beside the collapsed bed frame). Key item, can't be sold or dropped."
+ },
+ {
+  "type": "location",
+  "name": "toppled_chest",
+  "tile_x": 4,
+  "tile_y": 9,
+  "x": 72,
+  "y": 160,
+  "note": "Third debris point from the stage notes (a toppled chest). The script gives it no line, so no interactable is spawned."
+ }
+]

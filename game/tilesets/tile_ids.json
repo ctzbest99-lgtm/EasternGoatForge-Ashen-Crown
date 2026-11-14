@@ -809,5 +809,228 @@
    604,
    605
   ]
- ]
+ ],
+ "floor_wood_0": 608,
+ "floor_wood_1": 609,
+ "floor_wood_2": 610,
+ "floor_wood_3": 611,
+ "floor_burnt_0": 612,
+ "floor_burnt_1": 613,
+ "floor_burnt_2": 614,
+ "floor_flag_0": 616,
+ "floor_flag_1": 617,
+ "floor_flag_2": 618,
+ "floor_dun_0": 619,
+ "floor_dun_1": 620,
+ "floor_dun_2": 621,
+ "floor_dun_3": 622,
+ "floor_hole": 615,
+ "void": 623,
+ "floor_earth_0": 624,
+ "floor_earth_1": 625,
+ "floor_dun_sigil": 626,
+ "floor_plate": 627,
+ "floor_spikes": 628,
+ "exit_wood": 629,
+ "exit_stone": 630,
+ "hatch_open": 631,
+ "web_floor": 632,
+ "light_patch": 633,
+ "light_patch_2": 634,
+ "scorch": 635,
+ "ash_drift": 636,
+ "web_nw": 637,
+ "web_ne": 638,
+ "puddle_dun": 639,
+ "floor_wood_0_sh": 640,
+ "floor_wood_1_sh": 641,
+ "floor_wood_2_sh": 642,
+ "floor_wood_3_sh": 643,
+ "floor_burnt_0_sh": 644,
+ "floor_burnt_1_sh": 645,
+ "floor_burnt_2_sh": 646,
+ "floor_flag_0_sh": 647,
+ "floor_flag_1_sh": 648,
+ "floor_flag_2_sh": 649,
+ "floor_dun_0_sh": 650,
+ "floor_dun_1_sh": 651,
+ "floor_dun_2_sh": 652,
+ "floor_dun_3_sh": 653,
+ "floor_earth_0_sh": 654,
+ "floor_earth_1_sh": 655,
+ "wcap_wood_0": 656,
+ "wcap_dun_0": 672,
+ "wcap_wood_1": 657,
+ "wcap_dun_1": 673,
+ "wcap_wood_2": 658,
+ "wcap_dun_2": 674,
+ "wcap_wood_3": 659,
+ "wcap_dun_3": 675,
+ "wcap_wood_4": 660,
+ "wcap_dun_4": 676,
+ "wcap_wood_5": 661,
+ "wcap_dun_5": 677,
+ "wcap_wood_6": 662,
+ "wcap_dun_6": 678,
+ "wcap_wood_7": 663,
+ "wcap_dun_7": 679,
+ "wcap_wood_8": 664,
+ "wcap_dun_8": 680,
+ "wcap_wood_9": 665,
+ "wcap_dun_9": 681,
+ "wcap_wood_10": 666,
+ "wcap_dun_10": 682,
+ "wcap_wood_11": 667,
+ "wcap_dun_11": 683,
+ "wcap_wood_12": 668,
+ "wcap_dun_12": 684,
+ "wcap_wood_13": 669,
+ "wcap_dun_13": 685,
+ "wcap_wood_14": 670,
+ "wcap_dun_14": 686,
+ "wcap_wood_15": 671,
+ "wcap_dun_15": 687,
+ "wface_wood_0": 688,
+ "wface_wood_1": 689,
+ "wface_wood_window": 690,
+ "wface_wood_shelf": 691,
+ "wface_wood_potions": 692,
+ "wface_wood_mugs": 693,
+ "wface_wood_tools": 694,
+ "wface_stone_0": 695,
+ "wface_stone_1": 696,
+ "wface_stone_window": 697,
+ "wface_dun_0": 698,
+ "wface_dun_1": 699,
+ "wface_dun_torch": 700,
+ "wface_dun_symbol": 701,
+ "wface_dun_scratched": 702,
+ "wall_face_symbol": 703,
+ "bar_l": 704,
+ "bar_m": 705,
+ "bar_r": 706,
+ "bar_mug": 707,
+ "stool": 708,
+ "stool_toppled": 709,
+ "table_round": 710,
+ "chair_toppled": 711,
+ "table_split_l": 712,
+ "table_split_r": 713,
+ "chest_toppled": 714,
+ "beam_l": 715,
+ "beam_m": 716,
+ "beam_r": 717,
+ "barrel_burnt": 718,
+ "flour_sack": 719,
+ "cellar_hatch": 720,
+ "pew_l": 721,
+ "pew_r": 722,
+ "pew_broken": 723,
+ "altar_l": 724,
+ "altar_r": 725,
+ "candles": 726,
+ "lectern": 727,
+ "counter_l": 728,
+ "counter_m": 729,
+ "counter_r": 730,
+ "counter_scale": 731,
+ "potion_crate": 732,
+ "grindstone": 733,
+ "quench_l": 734,
+ "quench_r": 735,
+ "bed_scorched": [
+  [
+   736
+  ],
+  [
+   752
+  ]
+ ],
+ "bed_frame_broken": [
+  [
+   737
+  ],
+  [
+   753
+  ]
+ ],
+ "fireplace": [
+  [
+   738,
+   739
+  ],
+  [
+   754,
+   755
+  ]
+ ],
+ "forge": [
+  [
+   740,
+   741
+  ],
+  [
+   756,
+   757
+  ]
+ ],
+ "dstairs_up": [
+  [
+   742,
+   743
+  ],
+  [
+   758,
+   759
+  ]
+ ],
+ "web_big": [
+  [
+   744,
+   745
+  ],
+  [
+   760,
+   761
+  ]
+ ],
+ "mural_architect": [
+  [
+   746,
+   747,
+   748,
+   749,
+   750,
+   751
+  ],
+  [
+   762,
+   763,
+   764,
+   765,
+   766,
+   767
+  ],
+  [
+   778,
+   779,
+   780,
+   781,
+   782,
+   783
+  ],
+  [
+   794,
+   795,
+   796,
+   797,
+   798,
+   799
+  ]
+ ],
+ "egg_sacs": 768,
+ "shelf_fallen": 769,
+ "pot_broken": 770,
+ "soldier_bones": 771,
+ "faded_note": 772
 }

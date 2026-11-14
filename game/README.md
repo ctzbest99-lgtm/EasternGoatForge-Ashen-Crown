@@ -52,12 +52,17 @@ Snippets are prototypes, not verified production code. Compile in the selected G
 | `obj_encounter_zone` | `spr_encounter_zone_placeholder` | No parent (must **not** be `obj_solid`) | `Create.gml` → Create (see `obj_encounter_zone/README.md`) |
 | `obj_story_encounter` | `spr_story_encounter_placeholder` | No parent (must **not** be `obj_solid`) | `Create.gml` → Create; `Room_Start.gml` → Other ▸ Room Start; `Step.gml` → Step (see `obj_story_encounter/README.md`) |
 | `obj_zone_entrance` | 16×16 placeholder (e.g. `spr_encounter_trigger_placeholder`) | No parent (must **not** be `obj_solid`) | `Create.gml` → Create; `Step.gml` → Step ▸ Step (see `obj_zone_entrance/README.md`) |
+| `obj_story_npc` | `spr_story_npc_placeholder` (or interactable placeholder) | No parent (must **not** be `obj_solid`) | `Create.gml` → Create; `Room_Start.gml` → Other ▸ Room Start; `Step.gml` → Step (see `obj_story_npc/README.md`) |
+| `obj_story_trigger` | `spr_story_trigger_placeholder` (or story-encounter placeholder) | No parent (must **not** be `obj_solid`) | `Create.gml` → Create; `Room_Start.gml` → Other ▸ Room Start; `Step.gml` → Step (see `obj_story_trigger/README.md`) |
+| `obj_trap_plate` | `spr_trap_plate_placeholder` (or encounter-trigger placeholder) | No parent (must **not** be `obj_solid`) | `Create.gml` → Create; `Step.gml` → Step (see `obj_trap_plate/README.md`) |
 
 `obj_dialogue_box` and `obj_battle_controller` draw only in Draw GUI. Adding a Draw GUI event does not disable default sprite drawing, but neither object has a sprite, so nothing else is drawn.
 
 ### Rooms
 - `rm_overworld` (must be **first** in the Room Order) — 6400×4800 Zone 1 overworld; see `game/rooms/ROOM_SETUP.md`.
 - `rm_old_watchtower` — 960×720 Watchtower grounds and Blackguard arena.
+- `rm_watchtower_basement` — 704×512 Architect carvings, trap hall, spider nest.
+- `rm_greyhaven_varyn_house`, `rm_greyhaven_tavern`, `rm_greyhaven_chapel`, `rm_greyhaven_blacksmith`, `rm_greyhaven_general_store` — Greyhaven interiors.
 - `rm_battle_test` — dedicated battle room.
 
 ## How the pieces fit

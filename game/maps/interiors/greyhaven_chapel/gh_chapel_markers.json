@@ -1,0 +1,42 @@
+[
+ {
+  "type": "player_spawn",
+  "name": "from_overworld",
+  "tile_x": 9,
+  "tile_y": 15,
+  "x": 152,
+  "y": 256,
+  "facing": "up",
+  "note": "Arrive here from overworld door marker door_greyhaven_chapel."
+ },
+ {
+  "type": "zone_exit",
+  "name": "to_overworld",
+  "tile_x": 9,
+  "tile_y": 16,
+  "x": 152,
+  "y": 272,
+  "target_room": "rm_overworld",
+  "target_spawn": "door_greyhaven_chapel",
+  "w": 2,
+  "h": 1
+ },
+ {
+  "type": "npc",
+  "name": "sister_ilse",
+  "tile_x": 8,
+  "tile_y": 6,
+  "x": 136,
+  "y": 112,
+  "npc_id": "sister_ilse",
+  "speaker": "Sister Ilse",
+  "script_id": "GH_CHAPEL_01",
+  "script_chain": [
+   "GH_CHAPEL_01",
+   "GH_CHAPEL_02",
+   "GH_CHAPEL_03"
+  ],
+  "hostile": false,
+  "note": "Chapel keeper, before the altar. Her faith/order is unnamed (open), so the chapel shows no faith symbol."
+ }
+]

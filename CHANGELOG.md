@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-11-14 — Greyhaven interiors, Watchtower Basement, and map hookup
+- Merged Lore's docs commit `96882ca` (Chapter 2 draft) into this branch. Chapter 2 lines tagged `[PROPOSED]` are **not** wired.
+- Added `rm_watchtower_basement` (44×32) and five Greyhaven interiors (`rm_greyhaven_varyn_house`, `_tavern`, `_chapel`, `_blacksmith`, `_general_store`) from Design's dataset. Tileset is now 256×800 (rows 0–37 ids unchanged). Door markers link the overworld to each interior.
+- Opening: `player_start` is on the south road (199, 186 / 3192, 2992). `GH_ARRIVAL_01`–`03` play once (`flag_arrived_greyhaven`). Checked: the 16×24 Kael mask does not overlap a solid there. Defeat respawn is Greyhaven `town_square` (199, 176 / 3192, 2832).
+- Story scenes moved indoors: pendant in Varyn House (`GH_HOUSE_01`–`05`, actually adds `item_mira_pendant`), Tomas and Pell in the Blacksmith (`GH_TOMAS`), Hob, Sister Ilse, Marda. New square / gate NPCs: Wenna, Dov, Corwin. The North Gate barrier stays up until `flag_pendant_found`.
+- Watchtower: guaranteed Hunter trigger is on walkable tile **(33, 33)** (still `obj_story_encounter`, 16×16), banner remains at (41, 25), arena gate opens with `item_watchtower_key`, `BG_INTRO` fires on arena entry then the Blackguard fight starts. Victory sets `blackguard_defeated` and plays `BG_DEFEAT` / `BG_REWARD_01`. `CV_END` stays sealed until then.
+- Basement: trap hall (`obj_trap_plate`; sigil stones are the safe path; 10% max-HP damage, min 1, never below 1 HP, 8 px knockback, once per plate), Watchtower Key chest actually grants the key, mural plays `WB_CARVING`, hatch to the terrace sets `flag_wt_upper_unlocked`.
+- New objects: `obj_trap_plate`, `obj_story_trigger`. Doors use existing `obj_zone_entrance` with `requires_*` / `sets_flag`. Flags and inventory use the existing `scr_flag_*` / `scr_inventory_*` (thin `scr_map_*` wrappers only). Chests/pickups add items or gold.
+- PLACEHOLDER enemy DB entries: `ash_wolf`, `ashen_wretch`, `grave_spider`, `hollow_soldier`. `blackguard` and `ashbound_hunter` were already present (Blackguard remains a placeholder; canon 450 HP / phases are not implemented). Missing battle sprites still draw the rectangle.
+- Marda and Pell's forge shop have confirmed talk lines but **no buy UI** (open). FL_TUTORIAL pre/post lines and a save prompt at `CV_END` are also still open.
+- Test plan I1–I10 and updates to Z2, Z6, Z8, Z11, W1/W8. Not compiled or playtested in GameMaker yet.
+
+
 ## 2026-11-14 — Placement fixes and Zone 1 Design update
 - Fixed two placement bugs found in a static review, and folded in Design's updated Zone 1 dataset, on one branch.
 - **Spawn soft-lock:** `player_start` (186, 171) used to sit between solid `mira_pendant` and `tomas_varyn` markers (`obj_interactable` is parented to `obj_solid`), so the 16×24 Kael mask could overlap a solid on frame 1. Design moved Tomas and Pell into the Blacksmith (210/209, 179, `GH_TOMAS`) and placed `item_mira_pendant` at (186, 169) on `mira_bed_rubble` (`GH_HOUSE_03`), two tiles north of the spawn — verified clear of the 16×24 feet mask. `scr_player_unstick()` still runs on `obj_player` Create, after the map places the player, and on Room Start, and nudges to the nearest free pixel if an `obj_solid` overlap remains.

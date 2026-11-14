@@ -1,0 +1,47 @@
+[
+ {
+  "type": "player_spawn",
+  "name": "from_overworld",
+  "tile_x": 9,
+  "tile_y": 10,
+  "x": 152,
+  "y": 176,
+  "facing": "up",
+  "note": "Arrive here from overworld door marker door_general_store."
+ },
+ {
+  "type": "zone_exit",
+  "name": "to_overworld",
+  "tile_x": 9,
+  "tile_y": 11,
+  "x": 152,
+  "y": 192,
+  "target_room": "rm_overworld",
+  "target_spawn": "door_general_store",
+  "w": 2,
+  "h": 1
+ },
+ {
+  "type": "npc",
+  "name": "marda",
+  "tile_x": 10,
+  "tile_y": 6,
+  "x": 168,
+  "y": 112,
+  "npc_id": "marda",
+  "speaker": "Marda",
+  "script_id": "GH_STORE_01",
+  "script_chain": [
+   "GH_STORE_01",
+   "GH_STORE_02",
+   "GH_STORE_03"
+  ],
+  "shop_id": "shop_greyhaven_store",
+  "shop_stock": [
+   "Minor Potion",
+   "Antidote"
+  ],
+  "hostile": false,
+  "note": "Shopkeeper at the end of her counter. Shelves half ash; the potions survived. Prices from the item DB."
+ }
+]
