@@ -206,26 +206,5 @@ function scr_battle_draw_vis(_vis, _feet_x, _feet_y) {
     return true;
 }
 
-/// Follow the player with viewport 0 if the room has a camera enabled; otherwise do nothing.
-/// Clamps to the room so the camera never shows past the edge.
-function scr_camera_follow_player() {
-    if (!CAMERA_FOLLOW_PLAYER) return;
-    if (room == BATTLE_ROOM) return;
-    if (!view_enabled) return;
-    if (!view_visible[0]) return;
-    if (!instance_exists(obj_player)) return;
-    var _cam = view_camera[0];
-    if (_cam == -1) return;
-    var _vw = camera_get_view_width(_cam);
-    var _vh = camera_get_view_height(_cam);
-    if (_vw <= 0 || _vh <= 0) return;
-    var _cx = obj_player.x - _vw * 0.5;
-    var _cy = obj_player.y - _vh * 0.5;
-    var _max_x = max(0, room_width - _vw);
-    var _max_y = max(0, room_height - _vh);
-    if (_cx < 0) _cx = 0;
-    if (_cy < 0) _cy = 0;
-    if (_cx > _max_x) _cx = _max_x;
-    if (_cy > _max_y) _cy = _max_y;
-    camera_set_view_pos(_cam, _cx, _cy);
-}
+// Camera follow lives in scr_map_tilemaps.gml (scr_camera_follow_player),
+// called from obj_game_controller End Step. Do not add a second definition here.

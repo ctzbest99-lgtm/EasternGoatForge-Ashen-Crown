@@ -78,11 +78,15 @@ Quotes are copied exactly from the doc (curly quotes and ellipses included).
   6. Why the Ash King is connected to it.
 - **[C] Must stay mysterious:** the true nature of the Ash and of the Crownveil should not be revealed early. Pace these revelations across the acts. Chapter 1 gives clues only (the shared symbol, the carvings, "She crossed the Crownveil").
 
+### 2.5 Aethari [O]
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) The name appears in Kevin's Act II plan: Caelan is recruited at an **abandoned Aethari sanctuary**.
+- **[O]** Whether "Aethari" is another name for the Architects or a separate people. Where the sanctuary is, what it was for, and why it was abandoned.
+
 ---
 
 ## 3. Regions
 
-**[C]** The world has seven major regions.
+**[C]** The world has seven major regions. Smaller named settlements: Greyhaven (a region in its own right) and Millhaven (see below; confirmed Nov 14 2026).
 
 | # | Region | Canon details |
 |---|---|---|
@@ -93,6 +97,11 @@ Quotes are copied exactly from the doc (curly quotes and ellipses included).
 | 5 | **Drowned Coast** | A coastal region with submerged remains of an ancient civilization: flooded ruins, coastal villages, shipwrecks, underwater or submerged exploration where technically appropriate, ancient records. |
 | 6 | **Ashlands** | A dead region beyond the Crownveil: ash-covered ground, distorted landscapes, mutated creatures, broken ancient structures, dangerous environmental effects, major story revelations. |
 | 7 | **Frostwilds** | A northern region: frozen ruins, snow-covered settlements, an ancient northern civilization, difficult environmental conditions, late-game enemies and story content. |
+
+### Millhaven **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
+- A settlement, and Taren Holt's place of origin.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) It lies near the Crown-occupied village where Taren's recruitment begins in early Act II.
+- **[O]** Its region, size, layout and current state. Whether Kael, Taren and Alden grew up together there or in Greyhaven (Kael's home).
 
 ### Greyhaven locations [C]
 Varyn House · Rusted Boar Tavern · Greyhaven Chapel · Blacksmith · General Store · Town Square · Old Watchtower · North Gate
@@ -112,17 +121,20 @@ Varyn House · Rusted Boar Tavern · Greyhaven Chapel · Blacksmith · General S
 | **Silver Guard** | An elite military order serving the kingdom. Seraphine Thorn once served in its ranks. | Its leadership and its relationship to the Royal Army. |
 | **Black Hand** | A criminal organization operating across the kingdom. Controls smuggling, information, underground trade and criminal networks. Lyra has ties to it. | Leaders, and the nature of Lyra's ties. |
 | **Ashbound** | People who have become connected to the Ash. Some worship it, some study it, others believe they understand its true nature. Their beliefs are deliberately varied. In-game, the Ashbound Hunter enemy carries the parchment about Mira. | Who leads them, if anyone. Who sent the Hunter, and why. |
-| **The rebellion** | The population is split partly toward "rebellion," and Alden Marr has a "relationship with the rebellion" that is still to be written. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Its original purpose is freedom for the people, a system people govern themselves, and Taren embodies it. | Its name, leaders, structure, and Taren's and Alden's roles in it. |
+| **The Broken Yoke** (the rebellion) | The population is split partly toward "rebellion," and Alden Marr has a "relationship with the rebellion" that is still to be written. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) The rebellion is named **the Broken Yoke**. Its original purpose is freedom for the people, a system people govern themselves, and Taren embodies it. Taren Holt is a Rebel Captain in it. Alden starts out sharing its dream, then turns to seizing the throne himself. | Its leader, structure and base. Alden's exact role and rank in it, and whether he splits from it or takes it with him. |
 
 ---
 
 ## 5. Characters
 
 ### Party roster **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
-- **Five playable party members:** Kael (Vanguard), Lyra (Rogue), Caelan (Arcanist), Sera (Warden), Taren (Scout/Thief). **Four fight at a time.** This overrides the doc's "The party contains four main characters."
+- **Five playable party members:** Kael (Vanguard), Lyra (Rogue), Caelan (Arcanist), Sera (Warden), Taren (Rebel Captain, heavy swords; starts with a bastard sword). **Four fight at a time.** This overrides the doc's "The party contains four main characters."
 - **[C]** Classic ordered party: formation affects targeting, defense and damage, and the player rearranges the order through the Adventure menu.
 - **Note for Coder:** Party Order must support **4 active slots plus 1 reserve slot**, letting the player swap a reserve member in and out. Battle, the save system and XP rules need to handle a benched member (whether the reserve earns XP is **[O]**).
-- **[O]** Whether the story restricts swapping, e.g. forced or locked members in certain scenes, and when members join.
+- **Note for Coder:** the party now has **two frontline melee fighters, Kael and Taren**. Formation and targeting rules should allow both to hold front slots, and their kits should be distinct. Taren's skill kit is set in 5.5, with numbers still open.
+- **Note for Coder:** the equipment system needs a **"heavy sword" weapon category**. Taren can equip any weapon in it, and his starting weapon is a bastard sword in that category. Which other characters, if any, can use heavy swords is **[O]**, as is the list of heavy swords.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Recruitment order, all in Act II (The Broken Crown):** 1) Taren Holt, at a Crown-occupied village near Millhaven. 2) Lyra Veyne, in Valemere's Lower City. 3) Caelan Rook, at an abandoned Aethari sanctuary. 4) Seraphine Thorn, at a royal garrison. Since everyone else joins in Act II, Kael travels alone in Act I (consistent with `CHAPTER1_SCRIPT.md`).
+- **[O]** Whether the story restricts swapping, e.g. forced or locked members in certain scenes. The reserve slot only matters once the fifth member joins (Sera).
 
 ### 5.1 Kael Varyn — protagonist [C]
 - **Age** 24 · **Home** Greyhaven · **Class** Vanguard · **Weapon** Longsword · **Role** Balanced frontline physical fighter (frontline damage, balanced physical attacks, protection, consistent damage).
@@ -165,31 +177,42 @@ Varyn House · Rusted Boar Tavern · Greyhaven Chapel · Blacksmith · General S
 - **Weapon:** twin daggers. **Role:** critical hits, bleeding, poison, multiple attacks, stealth, fast damage.
 - **Personality:** sarcastic, selfish at first, loyal once trust is earned, brings occasional humor.
 - **Background:** from the lower city and the criminal underworld. Has ties to the Black Hand.
-- **[O]** Where and how she joins. The nature of her Black Hand ties.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Joins:** second recruit, in Act II, in Valemere's Lower City.
+- **[O]** Her recruitment storyline. The nature of her Black Hand ties.
 
 ### 5.3 Caelan Rook — Arcanist [C]
 - **Weapon:** spellbook. **Role:** fire, ice, lightning and dark magic; exploiting enemy weaknesses; magical damage.
 - **Background:** former royal scholar. He knows more about the Crownveil, and why it broke, than he admits at first.
-- **[O]** What exactly he knows. How and when he joins.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Joins:** third recruit, in Act II, at an abandoned **Aethari** sanctuary (see 2.5).
+- **[O]** His recruitment storyline. What exactly he knows.
 
 ### 5.4 Seraphine "Sera" Thorn — Warden [C]
 - **Weapon:** holy sword. **Role:** healing, shields, buffs, resurrection, holy damage.
 - **Background:** former Silver Guard knight. She left the kingdom after witnessing something inside the royal palace.
-- **[O]** What she saw. How and when she joins.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Joins:** fourth recruit, in Act II, at a royal garrison.
+- **[O]** Her recruitment storyline and which garrison. What she saw.
 
-### 5.5 Taren — Scout/Thief, permanent party member **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
+### 5.5 Taren Holt — Rebel Captain, permanent party member **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
 - **[C]** In the design doc he appears only in Alden's entry: "Kael and Taren must stop him."
-- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Beliefs:** freedom is worth fighting for. He stands for the rebellion's **original purpose: freedom for the people.** He wants to dismantle the oppressive system so that people govern themselves.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Beliefs:** freedom is worth fighting for. He stands for the Broken Yoke's (the rebellion's) **original purpose: freedom for the people.** He wants to dismantle the oppressive system so that people govern themselves.
 - **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Kael:** childhood friends who fight alongside one another.
 - **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Alden:** also Alden's childhood friend. Alden becomes Taren's greatest disappointment.
 - **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Ideological opposite of Alden:** both start with the same dream, but Alden decides he should rule Eldoria himself. That makes the betrayal especially painful for Taren.
 - **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Party:** a permanent party member, part of the five-person roster.
 - **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Story weight:** his friendship with Kael and his history with Alden should make the final Alden confrontation one of the most emotional moments in the game. He should be more than a warrior.
-- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Class:** Scout/Thief. **Weapon:** a knife or small blade.
-- **[PROPOSED] Design note:** to avoid overlapping with Lyra (Rogue: twin daggers, crits, bleed, poison), Taren leans toward scouting and utility: Steal, revealing or scanning enemy weaknesses, help escaping battles, ambush or first strike, and high speed. Kevin hasn't approved this yet.
-- **[O]** His exact combat role and skills, his age, and when and how he joins the party.
-- **[O]** Where Taren and Alden grew up, and whether Taren is from Greyhaven. Kael is, but the friendship's setting isn't stated. How the three childhood friendships overlapped.
-- **[O]** The rebellion's name, and Taren's rank or role in it.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Profile:** full name **Taren Holt**. **Age** 27. **Origin** Millhaven. **Class** Rebel Captain. **Faction** The Broken Yoke. **Role** Warrior / frontline fighter. **Weapon class** heavy swords: he can equip any sword classified as heavy, and his signature and starting weapon is a bastard sword. Childhood friend of Kael and Alden. *(This replaces the earlier Scout/Thief class and knife.)*
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Skill kit.** Theme: a frontline captain who leads the party, where Kael is the lone protector.
+  - **Rallying Cry:** raises the party's Attack for 3 turns.
+  - **Cleave:** a heavy bastard-sword swing that hits all enemies for reduced damage.
+  - **Shield the Line:** for 2 turns, Taren takes hits aimed at the back row (uses the formation system).
+  - **Breaking Blow:** a slow, powerful strike that lowers the target's Defense.
+  - **Unbowed (passive):** resists Fear and Stun.
+  - **Banner of the Yoke (later ability):** when an ally falls, restores some HP to all surviving allies. It mirrors Kael's Ashen Resolve.
+- **[O]** Exact numbers: MP costs, % values, how much damage Cleave loses, how much Defense Breaking Blow removes, and unlock levels. **Note for Coder:** these need balancing values in the skill and character databases. Use placeholders until they're set.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Joins:** first recruit, early in Act II. Kael arrives at a village near Millhaven occupied by royal soldiers. The Crown has seized several villagers, accused of aiding the rebellion, and scheduled them for public execution. Taren's recruitment storyline starts here.
+- **[O]** Everything past that setup: the village's name, how the scene plays out, and the villagers' fate.
+- **[O]** Where the three grew up together. Taren is from Millhaven and Kael from Greyhaven, so was it Millhaven, Greyhaven or somewhere else? Alden's origin is also undefined.
+- **[O]** What a "Rebel Captain" means in the Broken Yoke's structure, and who commands him.
 - Not in Chapter 1. Canon doesn't place him there, so `CHAPTER1_SCRIPT.md` is unchanged.
 
 ### 5.6 Alden Marr — major tragic antagonist [C-locked concept]
@@ -296,7 +319,7 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 | Act | Chapter name | Status |
 |---|---|---|
 | 1 | The Night of Ash | **[C]** Zone 1 detailed (section 6) |
-| 2 | The Broken Crown | **[O]** Not yet detailed |
+| 2 | The Broken Crown | **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Recruitment act: Taren (Crown-occupied village near Millhaven, a public execution of accused rebel sympathizers) → Lyra (Valemere Lower City) → Caelan (abandoned Aethari sanctuary) → Sera (royal garrison). **[O]** Everything else. |
 | 3 | The Blackwood | **[O]** Not yet detailed |
 | 4 | The Forgotten King | **[O]** Not yet detailed |
 | 5 | The Fallen Knight | **[O]** Not yet detailed |
@@ -325,7 +348,7 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 ## 9. Canon at a glance
 
 - **Locked:** the Alden Marr Ending C concept.
-- **Confirmed (Nov 14 2026):** Taren's definition, and a five-person roster with four active in battle.
+- **Confirmed (Nov 14 2026):** Taren Holt (27, from Millhaven, Rebel Captain of the Broken Yoke, frontline warrior), and a five-person roster with four active in battle.
 - **Confirmed by Kevin (Nov 14 2026):** FF1-style top-down exploration camera; Kael finds the pendant in the Varyn House ruins; Kael arrives after Greyhaven's destruction, which is not played; all of `CHAPTER1_SCRIPT.md` (every line and scene in it is canon).
 - **Canon:** everything tagged [C] above, including all verbatim dialogue.
 - **Unconfirmed:** Endings 1–3.
@@ -340,13 +363,13 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 4. What did Sera see inside the royal palace?
 5. What exactly does Caelan know about the Crownveil and why it broke?
 6. What are Lyra's Black Hand ties?
-7. When and where do Lyra, Caelan, Sera and Taren join the party?
-8. Taren's specific skills and exact combat role, and his age. (Class and weapon are settled; a scouting and utility direction is proposed.)
-9. Where did Kael, Taren and Alden grow up as childhood friends? Is Taren from Greyhaven? When and how did Alden and Taren split?
+7. Details of each Act II recruitment beyond its setting: the occupied village's name and what happens at the execution, Lyra's Lower City storyline, the Aethari sanctuary's location, and which royal garrison Sera is at. (The order and settings are settled.)
+8. Who or what are the Aethari: another name for the Architects, or a separate people?
+9. Where did Kael (Greyhaven), Taren (Millhaven) and Alden grow up together: Millhaven, Greyhaven or elsewhere? Where is Alden from? When and how did Alden and Taren split? Where is Millhaven, and what is it like?
 10. Elira's fate: alive, dead or missing after Greyhaven?
 11. What is Tomas's ultimate fate (he passes out in Chapter 1, not dead), and what did he know "was coming"?
 12. Who is the "Forgotten King" in Act 4?
-13. Alden's backstory, his relationship with the rebellion, and who defeats King Aldric IV, and how.
+13. Alden's backstory, his exact role in the Broken Yoke, and who defeats King Aldric IV, and how.
 14. What are Aldric IV's motives for hiding the Crownveil's failure?
 
 **Events and world**
@@ -363,12 +386,12 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 25. What are the answers to the six gradual Crownveil truths, and in which acts are they revealed?
 26. Is the Frostwilds' "ancient northern civilization" the Architects or a separate people?
 27. Which acts map to which regions? Where do Valemere, the Drowned Coast and the Frostwilds fall in the eight acts?
-28. What is the rebellion called, who leads it, and what are Taren's and Alden's roles in it?
+28. Who leads the Broken Yoke, and how is it structured? (Name settled. Taren is a Rebel Captain.)
 29. Is Greyhaven Chapel part of the Radiant Flame?
 30. What is Mira's age now? The doc gives "twelve when the tragedy began." How much time has passed?
 
 **Endings and systems that touch lore**
-> **Note for Coder:** the party is **5 members with 4 active** (Kael, Lyra, Caelan, Sera, Taren). The Adventure menu's Party Order needs a reserve slot. See "Party roster" in section 5.
+> **Note for Coder:** the party is **5 members with 4 active** (Kael, Lyra, Caelan, Sera, Taren). The Adventure menu's Party Order needs a reserve slot. Kael and Taren are both frontline melee fighters. See "Party roster" in section 5.
 31. Which ending(s) are final, and what are the branching conditions (choices, relationships)?
 32. How does Alden's Ending C relate to the three Crownveil endings? Is it a separate branch, a step before the finale, or a fourth ending?
 33. What is "the entity" in Endings 2 and 3, and is it the Ash or the Ash King?
@@ -387,4 +410,9 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 | Nov 14 2026 | The parchment can't be missed: the first Ashbound Hunter fight in the Old Watchtower is guaranteed. | Section 6, beat 5 updated. The rare encounter is kept elsewhere. |
 | Nov 14 2026 | Defined Taren: childhood friend of Kael (they fight side by side) and of Alden (Taren's greatest disappointment). Believes freedom is worth fighting for and embodies the rebellion's original purpose. Ideological opposite of Alden. Permanent party member, more than a warrior. The final Alden confrontation should be one of the most emotional moments. | New 5.5 Taren entry (later sections renumbered 5.6–5.14). Alden entry, Ending C row and rebellion faction row updated. "Who is Taren?" removed. New open items: his class, weapon, role, age and join point; the childhood setting. |
 | Nov 14 2026 | Party is a five-person roster (Kael, Lyra, Caelan, Sera, Taren), four in battle at a time. | New "Party roster" block in section 5 overrides the doc's four-member party. Coder note: Party Order needs a reserve slot. New open item: story restrictions on swapping, and reserve XP. |
-| Nov 14 2026 | Taren's class is Scout/Thief, and he uses a knife or small blade. | Taren entry and party roster updated. Open question trimmed to his skills, combat role and age. A [PROPOSED] scouting and utility direction was added so he doesn't overlap with Lyra. |
+| Nov 14 2026 | ~~Taren's class is Scout/Thief, and he uses a knife or small blade.~~ *(Superseded by the next entry.)* | Taren entry and party roster updated. Open question trimmed to his skills, combat role and age. A [PROPOSED] scouting and utility direction was added so he doesn't overlap with Lyra. |
+| Nov 14 2026 | **Revision, supersedes Scout/Thief:** Taren Holt, age 27, from Millhaven, class Rebel Captain, faction the Broken Yoke (the rebellion's name), role warrior / frontline fighter, childhood friend of Kael and Alden. | Taren entry rewritten. The Scout/Thief class, the knife and the [PROPOSED] Lyra-overlap note were removed, and his weapon is now open. Party roster updated, with a Coder note about two frontline melee fighters. The rebellion row became the Broken Yoke. Millhaven added. Questions resolved: the rebellion's name and Taren's age. |
+| Nov 14 2026 | Taren's weapon is a bastard sword. **Corrected the same day:** his weapon class is heavy swords. He can equip any heavy sword, and the bastard sword is his signature and starting weapon. | Taren entry and party roster updated, plus a Coder note for a "heavy sword" equipment category. The weapon is no longer open, and the open question is trimmed to his skills. |
+| Nov 14 2026 | Approved Taren Holt's skill kit (the captain who leads the party): Rallying Cry, Cleave, Shield the Line, Breaking Blow, Unbowed (passive), Banner of the Yoke (later ability). | Kit added to 5.5. Taren's skills question removed. Exact numbers are open, with a Coder balancing note. |
+| Nov 14 2026 | Act II recruitment plan: Taren (Crown-occupied village near Millhaven, villagers seized for aiding the rebellion and set for public execution) → Lyra (Valemere Lower City) → Caelan (abandoned Aethari sanctuary) → Sera (royal garrison). | Join points added to each character and to the party roster. Act II row filled in. Millhaven marked as near the occupied village. New open term "Aethari" (2.5). The join-point question is trimmed to recruitment details. |
+| Nov 14 2026 | Act II's working title stays **The Broken Crown**. An earlier outline called Act II "The Broken Yoke," but that is now the rebellion's name only. | Act outline unchanged. Use "The Broken Yoke" only for the faction. |

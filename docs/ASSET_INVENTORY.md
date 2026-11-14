@@ -12,7 +12,8 @@ Character sprites were added on 2026-11-14 under `game/sprites/`. Import setting
 | Fallen Knight battle (`spr_fallen_knight_*`) | In repo | Idle 8 / walk 8 / attack 6 / hurt 6 / death 8. Attack is 64×48, origin (32, 47); death 48×48. No overworld set. |
 | Rare encounter sprite | Planned | Concept not finalized |
 | Zone 1 boss sprite | Planned | Concept not finalized |
-| Zone 1 tileset (`ts_zone1.png`) | Being built, not in repo | Delivered alongside a large overworld map under `/workspace/zone1/`; may still change. Not imported in the sprites PR. |
+| Zone 1 tileset (`ts_zone1.png`) | In repo (`game/tilesets/`) | 256×608, 16×16, 16 columns × 38 rows, no spacing. Import as sprite `spr_ts_zone1` then Tile Set `ts_zone1`. Not playtested in GameMaker. |
+| Overworld / Watchtower map data | In repo (`game/datafiles/overworld/`, `scr_build_old_watchtower`) | 400×300 × 5 layers (bin + chunk fallback); Watchtower 60×45 embedded. |
 | UI panels/cursor | Planned | Readable at target resolution |
 | Music, SFX, font | Planned | Verify rights/licenses |
 | Source generators | In repo (`game/sprites/src/*.py`) | Python + Pillow. Included because they are small. Do not import as game assets. |

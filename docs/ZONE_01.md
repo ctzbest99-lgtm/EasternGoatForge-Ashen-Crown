@@ -13,6 +13,8 @@ Small outdoor route with grass, road, blocking terrain, a ruined landmark, and o
 
 Never start a second battle while one is active. Preserve the overworld return position and clear encounter locks on every exit.
 
-## Map and tileset status
+## Current map (2026-11-14)
 
-A 16×16 Zone 1 overworld (tileset, layers, markers) is being built and is **not** in this repository yet. Until it is imported, the playable overworld is the 640×360 test room described in `game/rooms/ROOM_SETUP.md`. Character sprites for the Bandit and Fallen Knight are in `game/sprites/`.
+The playable overworld is now `rm_overworld` at 400×300 tiles (6400×4800 px, 16×16), with Greyhaven (safe) and The Ashen Road at the centre of a larger Eldara hub. The Old Watchtower is `rm_old_watchtower` (60×45 tiles). Import and layer setup are in `game/rooms/ROOM_SETUP.md`. Labelled overviews live in `game/maps/renders/`. Character sprites for Kael, the Bandit, and the Fallen Knight are in `game/sprites/`.
+
+Standard enemies on the map are still Bandit and Fallen Knight. The arena boss is a placeholder **Blackguard**. Other named encounters from the design (Ash Wolves, Ashen Wretches, Grave Spiders, Hollow Soldiers, Ashbound Hunter) are not in the enemy database on this branch; the Ashbound Hunter scripted fight is being added on `feature/watchtower-scripted-encounter` (PR #4).
