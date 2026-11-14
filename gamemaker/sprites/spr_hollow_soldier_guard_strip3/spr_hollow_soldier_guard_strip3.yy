@@ -14,22 +14,22 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"09c84779-9c00-4758-8b9c-fa9d847f8d55",
-      "name":"09c84779-9c00-4758-8b9c-fa9d847f8d55",
+      "%Name":"f6fbecdd-c9ad-4386-a458-421b30387256",
+      "name":"f6fbecdd-c9ad-4386-a458-421b30387256",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"c361fda1-cdad-4a66-93ce-f53778e5e06c",
-      "name":"c361fda1-cdad-4a66-93ce-f53778e5e06c",
+      "%Name":"25d2c3cf-fb23-4b6f-a1fd-6ace0e25a6f7",
+      "name":"25d2c3cf-fb23-4b6f-a1fd-6ace0e25a6f7",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"de6f220e-00e9-4e7b-a646-ed05e0ac7627",
-      "name":"de6f220e-00e9-4e7b-a646-ed05e0ac7627",
+      "%Name":"d058a54a-ee93-43bc-8158-112fb10d8bff",
+      "name":"d058a54a-ee93-43bc-8158-112fb10d8bff",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -41,11 +41,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"e113329c-acbf-4480-8deb-01d5b0a333b9",
+      "%Name":"34c46fc4-1d99-40de-bd5c-194a3e13ab25",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"e113329c-acbf-4480-8deb-01d5b0a333b9",
+      "name":"34c46fc4-1d99-40de-bd5c-194a3e13ab25",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -118,7 +118,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"09c84779-9c00-4758-8b9c-fa9d847f8d55",
+                    "name":"f6fbecdd-c9ad-4386-a458-421b30387256",
                     "path":"sprites/spr_hollow_soldier_guard_strip3/spr_hollow_soldier_guard_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -126,7 +126,7 @@
                 },
               },
               "Disabled":false,
-              "id":"c360b454-2bc1-4b47-b1e1-403d23337ad2",
+              "id":"4a9affa6-792c-4409-80cf-babaa871c283",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -140,7 +140,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"c361fda1-cdad-4a66-93ce-f53778e5e06c",
+                    "name":"25d2c3cf-fb23-4b6f-a1fd-6ace0e25a6f7",
                     "path":"sprites/spr_hollow_soldier_guard_strip3/spr_hollow_soldier_guard_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -148,7 +148,7 @@
                 },
               },
               "Disabled":false,
-              "id":"c12cf4e6-fd2a-4a4a-a4ed-1ee2057a9fba",
+              "id":"5f02908d-c9c4-4c3e-b940-a90fcc38bb7c",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -162,7 +162,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"de6f220e-00e9-4e7b-a646-ed05e0ac7627",
+                    "name":"d058a54a-ee93-43bc-8158-112fb10d8bff",
                     "path":"sprites/spr_hollow_soldier_guard_strip3/spr_hollow_soldier_guard_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -170,7 +170,7 @@
                 },
               },
               "Disabled":false,
-              "id":"4335184d-8fb4-48c6-8788-bb4463faed45",
+              "id":"2d15f94f-f0f4-43dd-9a32-c83aebabe98a",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,

@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"834e5e30-25d7-410a-9140-65f31925f683",
-      "name":"834e5e30-25d7-410a-9140-65f31925f683",
+      "%Name":"281e1a77-3f34-4d58-aa06-c8b98f38632c",
+      "name":"281e1a77-3f34-4d58-aa06-c8b98f38632c",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"d0423b81-ee8a-412d-a6e7-dbf88ed87228",
+      "%Name":"f546aaa9-5f82-4cf5-ad85-6bf4e804a055",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"d0423b81-ee8a-412d-a6e7-dbf88ed87228",
+      "name":"f546aaa9-5f82-4cf5-ad85-6bf4e804a055",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"834e5e30-25d7-410a-9140-65f31925f683",
+                    "name":"281e1a77-3f34-4d58-aa06-c8b98f38632c",
                     "path":"sprites/spr_item_kaels_longsword/spr_item_kaels_longsword.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"fc380c1d-49dd-45c0-88eb-159e4d870ee9",
+              "id":"365a1af7-af28-499b-a714-683282b7a493",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

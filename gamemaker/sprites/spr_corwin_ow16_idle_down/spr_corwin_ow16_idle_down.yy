@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"16c3369f-2fdf-406a-9d21-1d7b87e1deba",
-      "name":"16c3369f-2fdf-406a-9d21-1d7b87e1deba",
+      "%Name":"1d94c141-ee7b-47c9-a148-c8a400281642",
+      "name":"1d94c141-ee7b-47c9-a148-c8a400281642",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"153cfc2f-5a88-40ba-b47d-e2db9768f496",
+      "%Name":"b5783b2c-f25a-41c9-a90b-01d111c8980b",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"153cfc2f-5a88-40ba-b47d-e2db9768f496",
+      "name":"b5783b2c-f25a-41c9-a90b-01d111c8980b",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"16c3369f-2fdf-406a-9d21-1d7b87e1deba",
+                    "name":"1d94c141-ee7b-47c9-a148-c8a400281642",
                     "path":"sprites/spr_corwin_ow16_idle_down/spr_corwin_ow16_idle_down.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f95c9d67-0857-490d-ade2-0531671036e5",
+              "id":"87b55c36-6d21-4a44-9483-cb8dc5cde290",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

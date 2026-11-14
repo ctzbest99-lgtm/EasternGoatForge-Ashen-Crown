@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"23943452-927b-472e-9cc6-379c07bcdb91",
-      "name":"23943452-927b-472e-9cc6-379c07bcdb91",
+      "%Name":"8053f46f-4778-40ff-8b8f-78a38bb57aac",
+      "name":"8053f46f-4778-40ff-8b8f-78a38bb57aac",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"105c586f-9811-4808-a73e-26500afc0bf4",
+      "%Name":"c2f96230-11d9-4816-b259-7d062e6dc84d",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"105c586f-9811-4808-a73e-26500afc0bf4",
+      "name":"c2f96230-11d9-4816-b259-7d062e6dc84d",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"23943452-927b-472e-9cc6-379c07bcdb91",
+                    "name":"8053f46f-4778-40ff-8b8f-78a38bb57aac",
                     "path":"sprites/spr_ashen_wretch_ow16_idle_right/spr_ashen_wretch_ow16_idle_right.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"554b642b-a5a1-4c1a-a1d7-06a4739a391c",
+              "id":"1ac8bf0b-27b8-4caf-a285-bae8f1d2dab0",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

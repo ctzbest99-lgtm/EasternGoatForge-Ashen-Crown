@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"0bc9f8d3-72ab-417f-b3c8-bf42c5ed292b",
-      "name":"0bc9f8d3-72ab-417f-b3c8-bf42c5ed292b",
+      "%Name":"dcf68c84-b9bd-4bf4-b995-649ef3b1ced0",
+      "name":"dcf68c84-b9bd-4bf4-b995-649ef3b1ced0",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"da64c325-3a55-475a-aa63-66f0cf468d87",
+      "%Name":"2c20186e-8b9c-438d-9fd8-7408c2183e38",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"da64c325-3a55-475a-aa63-66f0cf468d87",
+      "name":"2c20186e-8b9c-438d-9fd8-7408c2183e38",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0bc9f8d3-72ab-417f-b3c8-bf42c5ed292b",
+                    "name":"dcf68c84-b9bd-4bf4-b995-649ef3b1ced0",
                     "path":"sprites/spr_story_npc_placeholder/spr_story_npc_placeholder.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"6cee31f8-51e1-46b2-a4c7-a7b0b54d96dc",
+              "id":"33dcf09b-a653-4d49-965c-b312a55f2473",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

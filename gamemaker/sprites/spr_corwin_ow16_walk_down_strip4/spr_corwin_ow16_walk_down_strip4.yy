@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"c31342ee-4fe5-4971-992f-6da1a3dee39e",
-      "name":"c31342ee-4fe5-4971-992f-6da1a3dee39e",
+      "%Name":"49ef67fc-1566-4b31-b2d2-23b7a737ae45",
+      "name":"49ef67fc-1566-4b31-b2d2-23b7a737ae45",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"0d4cba66-b391-4159-931b-1c364605c581",
-      "name":"0d4cba66-b391-4159-931b-1c364605c581",
+      "%Name":"a7eadec3-b9c3-4d45-9738-b8e60a5ea87d",
+      "name":"a7eadec3-b9c3-4d45-9738-b8e60a5ea87d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"4fa46cda-9cc9-4d41-8471-06e092512a5f",
-      "name":"4fa46cda-9cc9-4d41-8471-06e092512a5f",
+      "%Name":"a4501b35-70e3-47d2-95b9-cf8d9bb489b6",
+      "name":"a4501b35-70e3-47d2-95b9-cf8d9bb489b6",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"b8fba335-3c5c-4983-94aa-e14825a5e456",
-      "name":"b8fba335-3c5c-4983-94aa-e14825a5e456",
+      "%Name":"918c1349-2434-4722-aaf6-18c19184af23",
+      "name":"918c1349-2434-4722-aaf6-18c19184af23",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"55be624c-6950-4184-9f8a-4233ef2ac66c",
+      "%Name":"5d469cd5-1c5f-49cf-8a71-561c5662895e",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"55be624c-6950-4184-9f8a-4233ef2ac66c",
+      "name":"5d469cd5-1c5f-49cf-8a71-561c5662895e",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"c31342ee-4fe5-4971-992f-6da1a3dee39e",
+                    "name":"49ef67fc-1566-4b31-b2d2-23b7a737ae45",
                     "path":"sprites/spr_corwin_ow16_walk_down_strip4/spr_corwin_ow16_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"7b2f8a90-3b89-48b2-be9f-7191749ecb79",
+              "id":"5dd0f020-13ea-4d76-96d1-0edce8dc3b04",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0d4cba66-b391-4159-931b-1c364605c581",
+                    "name":"a7eadec3-b9c3-4d45-9738-b8e60a5ea87d",
                     "path":"sprites/spr_corwin_ow16_walk_down_strip4/spr_corwin_ow16_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"adf464a2-2ab2-461a-88cb-145790d42992",
+              "id":"67eb8941-fb08-4d20-98a5-4dbe5971d835",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"4fa46cda-9cc9-4d41-8471-06e092512a5f",
+                    "name":"a4501b35-70e3-47d2-95b9-cf8d9bb489b6",
                     "path":"sprites/spr_corwin_ow16_walk_down_strip4/spr_corwin_ow16_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"4d831243-ac1d-437b-a306-3dd3582a9417",
+              "id":"58ca7384-8459-4979-84c3-6d4980a39758",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"b8fba335-3c5c-4983-94aa-e14825a5e456",
+                    "name":"918c1349-2434-4722-aaf6-18c19184af23",
                     "path":"sprites/spr_corwin_ow16_walk_down_strip4/spr_corwin_ow16_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f3e2f026-df97-4f81-ae14-e86aa02c0f67",
+              "id":"bbbc32cb-39af-4419-8bbb-1fdc4e853c0f",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

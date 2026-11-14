@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"55554a05-b19f-4357-8169-f7527e0e3f71",
-      "name":"55554a05-b19f-4357-8169-f7527e0e3f71",
+      "%Name":"708675a8-6d2c-4717-b292-586122cccfa3",
+      "name":"708675a8-6d2c-4717-b292-586122cccfa3",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"6b2b654f-6297-4146-acf2-e90145c4db3e",
+      "%Name":"3ae13650-6548-47b2-a57a-17da59d8cb80",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"6b2b654f-6297-4146-acf2-e90145c4db3e",
+      "name":"3ae13650-6548-47b2-a57a-17da59d8cb80",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"55554a05-b19f-4357-8169-f7527e0e3f71",
+                    "name":"708675a8-6d2c-4717-b292-586122cccfa3",
                     "path":"sprites/spr_portrait_reeve_calder_neutral/spr_portrait_reeve_calder_neutral.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"74876b43-6d60-4b4a-9c79-90c2f1718fc1",
+              "id":"a691d416-ecef-40fe-94d9-ca7713c64791",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

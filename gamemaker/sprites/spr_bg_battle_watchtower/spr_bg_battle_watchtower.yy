@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"303738ed-cf79-4322-aff2-093c066adfd1",
-      "name":"303738ed-cf79-4322-aff2-093c066adfd1",
+      "%Name":"267ce087-6162-490c-9a86-5e0bfcec6785",
+      "name":"267ce087-6162-490c-9a86-5e0bfcec6785",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"1945db42-3106-4190-926b-44f327bc3f60",
+      "%Name":"fead1edd-629e-4555-b819-065610fd8774",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"1945db42-3106-4190-926b-44f327bc3f60",
+      "name":"fead1edd-629e-4555-b819-065610fd8774",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"303738ed-cf79-4322-aff2-093c066adfd1",
+                    "name":"267ce087-6162-490c-9a86-5e0bfcec6785",
                     "path":"sprites/spr_bg_battle_watchtower/spr_bg_battle_watchtower.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"8345f0c0-cce1-466b-9f41-076697560158",
+              "id":"9027db9c-7562-4c37-b8f5-bdc410c7c3e7",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

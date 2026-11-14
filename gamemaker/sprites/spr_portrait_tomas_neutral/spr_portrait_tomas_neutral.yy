@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"ae7c4f49-a080-4a59-ab4e-7a35b3b1c2da",
-      "name":"ae7c4f49-a080-4a59-ab4e-7a35b3b1c2da",
+      "%Name":"fdab8fb5-7967-4fc9-af00-0dad0e010739",
+      "name":"fdab8fb5-7967-4fc9-af00-0dad0e010739",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"c675da2a-e36a-482f-a3cf-93acddfe0592",
+      "%Name":"429ec2af-c493-48ff-9b1d-e74a36a9e366",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"c675da2a-e36a-482f-a3cf-93acddfe0592",
+      "name":"429ec2af-c493-48ff-9b1d-e74a36a9e366",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ae7c4f49-a080-4a59-ab4e-7a35b3b1c2da",
+                    "name":"fdab8fb5-7967-4fc9-af00-0dad0e010739",
                     "path":"sprites/spr_portrait_tomas_neutral/spr_portrait_tomas_neutral.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"09c41a87-4502-4fc9-9e9d-bf73a375564d",
+              "id":"6827da00-6b1f-47a9-ab0a-7b6746464c3c",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

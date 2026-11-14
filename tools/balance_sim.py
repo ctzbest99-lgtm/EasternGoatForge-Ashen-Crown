@@ -169,3 +169,25 @@ if __name__ == "__main__":
         k = member("kael", L, *GEAR["kael"]); t = member("taren", L, *GEAR["taren"])
         print(f"| {L} | {k['atk']} / {k['df']} / {k['max_hp']} | {t['atk']} / {t['df']} / {t['max_hp']} | "
               + " | ".join(str(hits_to_kill(L, "kael", e)) for e in ["occupation_soldier", "crown_patrolman", "crown_crossbowman", "bandit_veteran", "grey_ash_wolf", "reeve_calder"]) + " |")
+
+# ---- Batches 7–8 template check (scr_enemy_scaled) ---------------------------------------
+def scaled(role, level, party=1, hp_mult=1.0, def_add=0):
+    d = level - 9
+    hp, atk, df = 44 + 7 * d, 13 + 2 * d, 11 + 2 * d
+    if role == "elite": hp *= 2; atk += 2; df += 2
+    if role == "boss": hp = round(hp * 1.5 * max(1, party)); atk += 3; df += 3
+    return dict(hp=round(hp * hp_mult), atk=atk, df=df + def_add)
+
+def template_table():
+    print()
+    print("| Enemy level | Role | HP / ATK / DEF | Kael hits to kill (same level, Ch2 gear) | Damage to Kael per hit |")
+    print("|---|---|---|---|---|")
+    for L in (11, 14, 17, 19):
+        k = member("kael", L, *GEAR["kael"])
+        for role, party in (("common", 1), ("elite", 1), ("boss", 4)):
+            e = scaled(role, L, party)
+            print(f"| {L} | {role}{' (party 4)' if role == 'boss' else ''} | {e['hp']} / {e['atk']} / {e['df']} | "
+                  f"{math.ceil(e['hp'] / dmg(k['atk'], e['df']))} | {dmg(e['atk'], k['df'])} of {k['max_hp']} HP |")
+
+if __name__ == "__main__" and "--templates" in sys.argv:
+    template_table()

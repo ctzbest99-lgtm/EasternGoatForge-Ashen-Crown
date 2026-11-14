@@ -78,17 +78,54 @@ function scr_battle_status_resisted(_actor, _status) {
     return false;
 }
 
-/// Try to inflict a status. Returns false if resisted or already present. No skill inflicts one yet;
-/// this is the hook Fear / Stun will use, so Unbowed already works when they arrive.
-function scr_battle_try_add_status(_actor, _status) {
+/// Battle statuses are { id, turns } structs in actor.statuses (battle only, never saved).
+/// "blind": physical attacks miss BATTLE_BLIND_MISS_CHANCE of the time. "sleep": the turn is
+/// skipped; any damage wakes the sleeper. "veiled" (shade_stalker Fade): physical attacks against
+/// it miss. Statuses tick down at round start like buffs. Unbowed resists "fear" / "stun".
+function scr_battle_status_has(_actor, _status) {
+    if (!is_struct(_actor) || !variable_struct_exists(_actor, "statuses") || !is_array(_actor.statuses)) return false;
+    for (var _i = 0; _i < array_length(_actor.statuses); _i++) {
+        var _st = _actor.statuses[_i];
+        if (is_struct(_st) && _st.id == _status) return true;
+        if (is_string(_st) && _st == _status) return true;
+    }
+    return false;
+}
+
+/// Try to inflict a status for `_turns` rounds. Returns false if resisted or already present.
+function scr_battle_try_add_status(_actor, _status, _turns = 2) {
     if (!is_struct(_actor)) return false;
     if (scr_battle_status_resisted(_actor, _status)) return false;
     if (!variable_struct_exists(_actor, "statuses") || !is_array(_actor.statuses)) _actor.statuses = [];
-    for (var _i = 0; _i < array_length(_actor.statuses); _i++) {
-        if (_actor.statuses[_i] == _status) return false;
-    }
-    array_push(_actor.statuses, _status);
+    if (scr_battle_status_has(_actor, _status)) return false;
+    array_push(_actor.statuses, { id: _status, turns: max(1, _turns) });
     return true;
+}
+
+function scr_battle_remove_status(_actor, _status) {
+    if (!is_struct(_actor) || !variable_struct_exists(_actor, "statuses") || !is_array(_actor.statuses)) return;
+    for (var _i = array_length(_actor.statuses) - 1; _i >= 0; _i--) {
+        var _st = _actor.statuses[_i];
+        if ((is_struct(_st) && _st.id == _status) || (is_string(_st) && _st == _status)) array_delete(_actor.statuses, _i, 1);
+    }
+}
+
+function scr_battle_tick_statuses(_actor) {
+    if (!is_struct(_actor) || !variable_struct_exists(_actor, "statuses") || !is_array(_actor.statuses)) return;
+    for (var _i = array_length(_actor.statuses) - 1; _i >= 0; _i--) {
+        var _st = _actor.statuses[_i];
+        if (!is_struct(_st)) { array_delete(_actor.statuses, _i, 1); continue; }
+        _st.turns -= 1;
+        if (_st.turns <= 0) array_delete(_actor.statuses, _i, 1);
+    }
+}
+
+/// Short tags for the HUD ("Bl", "Sl", "Vl").
+function scr_battle_status_tags(_actor) {
+    var _t = "";
+    if (scr_battle_status_has(_actor, "blind")) _t += "Bl";
+    if (scr_battle_status_has(_actor, "sleep")) _t += (_t == "" ? "" : " ") + "Sl";
+    return _t;
 }
 
 /// Damage of `_skill` (a scr_skill_get struct) from `_user` to `_target`, before Guard.
@@ -136,6 +173,8 @@ function scr_battle_ai_pick(_enemy, _allies_alive) {
         if (_sk.mp_cost > (variable_struct_exists(_enemy, "mp") ? _enemy.mp : 0)) continue;
         if (_sk.cond == "has_allies" && _allies_alive <= 0) continue;
         if (_sk.cond == "no_def_buff" && scr_battle_buff_total(_enemy, "def") > 0) continue;
+        if (_sk.cond == "not_veiled" && scr_battle_status_has(_enemy, "veiled")) continue;
+        if (_sk.cond == "ally_hurt" && !(variable_struct_exists(_enemy, "ally_hurt") && _enemy.ally_hurt)) continue;
         array_push(_ids, _e.skill);
         array_push(_weights, _w);
         _total += _w;

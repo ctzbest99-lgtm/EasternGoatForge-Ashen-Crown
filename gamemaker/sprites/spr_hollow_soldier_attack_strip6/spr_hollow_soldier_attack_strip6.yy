@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"5627eeca-5ec8-4d26-92b1-2734562e12af",
-      "name":"5627eeca-5ec8-4d26-92b1-2734562e12af",
+      "%Name":"2b1032e2-e282-46c1-aa93-d0ba6d29ef7d",
+      "name":"2b1032e2-e282-46c1-aa93-d0ba6d29ef7d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"6a52a2c5-6957-4bc8-a0e7-ce6296a8b6f0",
-      "name":"6a52a2c5-6957-4bc8-a0e7-ce6296a8b6f0",
+      "%Name":"e3db04f1-8e6d-4498-8d99-4bd1c58757ad",
+      "name":"e3db04f1-8e6d-4498-8d99-4bd1c58757ad",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"cf52d0a0-bc3b-4725-b60c-27c6d312416c",
-      "name":"cf52d0a0-bc3b-4725-b60c-27c6d312416c",
+      "%Name":"1138ae32-b20e-47db-b4f0-588ba7f98b79",
+      "name":"1138ae32-b20e-47db-b4f0-588ba7f98b79",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"a3289f27-71d8-4f30-8a64-341eb4df3bb1",
-      "name":"a3289f27-71d8-4f30-8a64-341eb4df3bb1",
+      "%Name":"dcbb45c6-3be0-4895-956e-aff8a5d138b1",
+      "name":"dcbb45c6-3be0-4895-956e-aff8a5d138b1",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"863edb75-1e1a-4401-a484-5a0611b42d5d",
-      "name":"863edb75-1e1a-4401-a484-5a0611b42d5d",
+      "%Name":"0e380bf9-da70-4048-824e-6236c988e303",
+      "name":"0e380bf9-da70-4048-824e-6236c988e303",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"3a38b081-9fed-469e-8fcd-6faf420cec84",
-      "name":"3a38b081-9fed-469e-8fcd-6faf420cec84",
+      "%Name":"b295887e-ffac-44e6-b983-636359aa4440",
+      "name":"b295887e-ffac-44e6-b983-636359aa4440",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"0f2a688c-fae4-4e51-a38a-b9e2a064bbe1",
+      "%Name":"84faf39b-70f7-41d3-8d4f-da46721b9c09",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"0f2a688c-fae4-4e51-a38a-b9e2a064bbe1",
+      "name":"84faf39b-70f7-41d3-8d4f-da46721b9c09",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"5627eeca-5ec8-4d26-92b1-2734562e12af",
+                    "name":"2b1032e2-e282-46c1-aa93-d0ba6d29ef7d",
                     "path":"sprites/spr_hollow_soldier_attack_strip6/spr_hollow_soldier_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"1a0166d9-5cf9-4ef8-b283-5d713c88cf52",
+              "id":"bc18cb56-7535-4097-af27-8b832b285b49",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"6a52a2c5-6957-4bc8-a0e7-ce6296a8b6f0",
+                    "name":"e3db04f1-8e6d-4498-8d99-4bd1c58757ad",
                     "path":"sprites/spr_hollow_soldier_attack_strip6/spr_hollow_soldier_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"40471303-b349-48d6-8aa3-f1ef21ca42e3",
+              "id":"7d925304-331c-4992-9b6a-ed840bec63df",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"cf52d0a0-bc3b-4725-b60c-27c6d312416c",
+                    "name":"1138ae32-b20e-47db-b4f0-588ba7f98b79",
                     "path":"sprites/spr_hollow_soldier_attack_strip6/spr_hollow_soldier_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f50e4ab6-b436-40a7-a36a-51297e711ba9",
+              "id":"7134643c-da75-4f68-9e67-8b6f724274f9",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a3289f27-71d8-4f30-8a64-341eb4df3bb1",
+                    "name":"dcbb45c6-3be0-4895-956e-aff8a5d138b1",
                     "path":"sprites/spr_hollow_soldier_attack_strip6/spr_hollow_soldier_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"eb929c97-7051-4692-a6a7-fe98968908dd",
+              "id":"ccfd0c19-c95c-462c-904b-dc35d1b248dd",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"863edb75-1e1a-4401-a484-5a0611b42d5d",
+                    "name":"0e380bf9-da70-4048-824e-6236c988e303",
                     "path":"sprites/spr_hollow_soldier_attack_strip6/spr_hollow_soldier_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"3fdda29b-5b7b-4e29-9f5f-bc7ad2f30b28",
+              "id":"6bd08b0c-9bd2-479f-a89d-eeab97b35d54",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"3a38b081-9fed-469e-8fcd-6faf420cec84",
+                    "name":"b295887e-ffac-44e6-b983-636359aa4440",
                     "path":"sprites/spr_hollow_soldier_attack_strip6/spr_hollow_soldier_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"6814e207-0879-4dd9-aeb8-036a95a6faa0",
+              "id":"aabd4ffb-7bdd-4b79-b8e9-778728d7d262",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

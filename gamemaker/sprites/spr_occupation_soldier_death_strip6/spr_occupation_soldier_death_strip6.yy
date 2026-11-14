@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"97ea1423-c071-40b9-85e4-36ba2faccdcc",
-      "name":"97ea1423-c071-40b9-85e4-36ba2faccdcc",
+      "%Name":"5d65e860-f4d5-43ca-b12d-bcbf736439cb",
+      "name":"5d65e860-f4d5-43ca-b12d-bcbf736439cb",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"7d368402-15b1-46ca-b61e-044ae27ef415",
-      "name":"7d368402-15b1-46ca-b61e-044ae27ef415",
+      "%Name":"0163d530-869e-459b-80bd-3f8b2662b23d",
+      "name":"0163d530-869e-459b-80bd-3f8b2662b23d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"1e6bab68-0e3c-4312-865a-654eb12effd9",
-      "name":"1e6bab68-0e3c-4312-865a-654eb12effd9",
+      "%Name":"ea5493fd-0584-4197-9273-a2f2bb4aae8a",
+      "name":"ea5493fd-0584-4197-9273-a2f2bb4aae8a",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"9ebb60c9-5546-40b7-8950-02dd02c77b7f",
-      "name":"9ebb60c9-5546-40b7-8950-02dd02c77b7f",
+      "%Name":"dc717f1c-756e-4e08-892c-fc1d5110d5c8",
+      "name":"dc717f1c-756e-4e08-892c-fc1d5110d5c8",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"6da09eb5-39bf-41a6-9df1-cb291cc5819a",
-      "name":"6da09eb5-39bf-41a6-9df1-cb291cc5819a",
+      "%Name":"c789820e-af2f-4318-94ac-f5f974a68382",
+      "name":"c789820e-af2f-4318-94ac-f5f974a68382",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"7768d24a-3397-4c31-bdf9-61df96c5414e",
-      "name":"7768d24a-3397-4c31-bdf9-61df96c5414e",
+      "%Name":"c264cde8-b3ba-4f86-9c02-2ce2d6f20b30",
+      "name":"c264cde8-b3ba-4f86-9c02-2ce2d6f20b30",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"11a406a1-e876-4f89-9165-3c2cbeb4448a",
+      "%Name":"5955a392-4066-4319-bd40-46fb24adb08a",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"11a406a1-e876-4f89-9165-3c2cbeb4448a",
+      "name":"5955a392-4066-4319-bd40-46fb24adb08a",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"97ea1423-c071-40b9-85e4-36ba2faccdcc",
+                    "name":"5d65e860-f4d5-43ca-b12d-bcbf736439cb",
                     "path":"sprites/spr_occupation_soldier_death_strip6/spr_occupation_soldier_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"b0377769-ae4b-4ce4-aa52-95adc66d6dc5",
+              "id":"9b7ccfb6-3259-4062-a902-a32ab0653f06",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"7d368402-15b1-46ca-b61e-044ae27ef415",
+                    "name":"0163d530-869e-459b-80bd-3f8b2662b23d",
                     "path":"sprites/spr_occupation_soldier_death_strip6/spr_occupation_soldier_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"db1828f0-0999-4325-a2ef-26edd2a498b4",
+              "id":"07f96331-aa42-411b-bc3c-8e2cd3d2a55c",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"1e6bab68-0e3c-4312-865a-654eb12effd9",
+                    "name":"ea5493fd-0584-4197-9273-a2f2bb4aae8a",
                     "path":"sprites/spr_occupation_soldier_death_strip6/spr_occupation_soldier_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"fb540185-0668-4c65-bd1f-d953c8ce9d5c",
+              "id":"3c72a5d2-84de-4d34-b4c3-9d438b8bcbff",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"9ebb60c9-5546-40b7-8950-02dd02c77b7f",
+                    "name":"dc717f1c-756e-4e08-892c-fc1d5110d5c8",
                     "path":"sprites/spr_occupation_soldier_death_strip6/spr_occupation_soldier_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"cf4d1816-ea7b-4045-9c07-506b00c04dd7",
+              "id":"22416780-a438-42f8-8981-9fed6a011d78",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"6da09eb5-39bf-41a6-9df1-cb291cc5819a",
+                    "name":"c789820e-af2f-4318-94ac-f5f974a68382",
                     "path":"sprites/spr_occupation_soldier_death_strip6/spr_occupation_soldier_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"de640571-1b44-4079-a73d-d7824b00d8b7",
+              "id":"98223fb6-c703-4d46-af8d-98124018c305",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"7768d24a-3397-4c31-bdf9-61df96c5414e",
+                    "name":"c264cde8-b3ba-4f86-9c02-2ce2d6f20b30",
                     "path":"sprites/spr_occupation_soldier_death_strip6/spr_occupation_soldier_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"2bd0e694-d8be-4289-94b2-9f49d9f79aad",
+              "id":"d058e2bf-5cb0-42ec-b901-7d851ecf2749",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"950e061d-e3ca-4bf3-a4cd-c4f31cab78f7",
-      "name":"950e061d-e3ca-4bf3-a4cd-c4f31cab78f7",
+      "%Name":"e38a6595-1fdd-4fde-a52d-8d0191548921",
+      "name":"e38a6595-1fdd-4fde-a52d-8d0191548921",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"1d5abfb2-2cce-4425-838c-185131ceb5ef",
-      "name":"1d5abfb2-2cce-4425-838c-185131ceb5ef",
+      "%Name":"476d5440-0c4e-4348-b11e-cf2bf272447e",
+      "name":"476d5440-0c4e-4348-b11e-cf2bf272447e",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"51f077ca-a377-4f94-8ba0-b9e02694ceff",
-      "name":"51f077ca-a377-4f94-8ba0-b9e02694ceff",
+      "%Name":"af87661b-2e43-4372-b9ee-a31f37164f99",
+      "name":"af87661b-2e43-4372-b9ee-a31f37164f99",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"3a039281-849f-485d-87ef-016f2a8018fa",
-      "name":"3a039281-849f-485d-87ef-016f2a8018fa",
+      "%Name":"5ddff202-d990-4c77-b2ea-3a54b8a99af9",
+      "name":"5ddff202-d990-4c77-b2ea-3a54b8a99af9",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"dae4044b-d670-40a8-953e-5f4430590bd7",
+      "%Name":"0ddfeb15-acef-407a-aa69-f18869e3b61f",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"dae4044b-d670-40a8-953e-5f4430590bd7",
+      "name":"0ddfeb15-acef-407a-aa69-f18869e3b61f",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"950e061d-e3ca-4bf3-a4cd-c4f31cab78f7",
+                    "name":"e38a6595-1fdd-4fde-a52d-8d0191548921",
                     "path":"sprites/spr_blackguard_p2_hurt_strip4/spr_blackguard_p2_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"4c05a3d5-fc5e-4b91-b9af-f000e6bcc270",
+              "id":"e1be097f-0ed9-4ba2-9d2a-125c41785c43",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"1d5abfb2-2cce-4425-838c-185131ceb5ef",
+                    "name":"476d5440-0c4e-4348-b11e-cf2bf272447e",
                     "path":"sprites/spr_blackguard_p2_hurt_strip4/spr_blackguard_p2_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"aa98d0a4-7638-4db4-9833-14908eb41841",
+              "id":"be9d5549-4bde-4d23-9f98-6b5475c6b643",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"51f077ca-a377-4f94-8ba0-b9e02694ceff",
+                    "name":"af87661b-2e43-4372-b9ee-a31f37164f99",
                     "path":"sprites/spr_blackguard_p2_hurt_strip4/spr_blackguard_p2_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d8500b2c-fb8d-4a00-9ae0-c50a98076e0f",
+              "id":"d72cd003-7c08-4b9a-8a1b-8a56c5853807",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"3a039281-849f-485d-87ef-016f2a8018fa",
+                    "name":"5ddff202-d990-4c77-b2ea-3a54b8a99af9",
                     "path":"sprites/spr_blackguard_p2_hurt_strip4/spr_blackguard_p2_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"6ec0701e-3ea4-46e7-8680-3ea74d8a964c",
+              "id":"838b3b3c-8508-403e-8243-534a343da4f8",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

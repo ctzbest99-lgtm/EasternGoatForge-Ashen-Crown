@@ -161,6 +161,8 @@
 #macro BATTLE_SPD_TIEBREAK 0.99         // turn order = SPD + random(0..this); keeps ties fair, never reorders a real SPD gap
 #macro BATTLE_VICTORY_MP_REGEN 2        // living active members regain this much MP after a win (PLACEHOLDER; kept alongside the inn and Ether)
 #macro BATTLE_DEAD_ENEMY_FADE_FRAMES 30 // defeated regulars fade out after their death clip; a yielding boss stays
+#macro BATTLE_BLIND_MISS_CHANCE 0.5      // blind: physical attacks miss this often (PLACEHOLDER, batch 8 moths)
+#macro BATTLE_HEAL_ALLY_THRESHOLD 0.6    // field surgeon heals only when an ally is below this HP fraction (PLACEHOLDER)
 #macro CALDER_ADD_COUNT 2               // occupation_soldier adds in grp_reeve_calder (script says 2–3; Design mockup shows 2)
 
 // Optional camera: if Viewport 0 is enabled (or created by scr_map_enable_camera),

@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"9b68737b-6d74-4fd6-8b3f-532ed5ebe802",
-      "name":"9b68737b-6d74-4fd6-8b3f-532ed5ebe802",
+      "%Name":"5406c6f5-9b27-4a00-b618-c5aaf577e57e",
+      "name":"5406c6f5-9b27-4a00-b618-c5aaf577e57e",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"19b7c3f9-cb9a-40ba-873e-a25099eee1d0",
+      "%Name":"03837c77-d274-41be-bbbc-7f80e44973d1",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"19b7c3f9-cb9a-40ba-873e-a25099eee1d0",
+      "name":"03837c77-d274-41be-bbbc-7f80e44973d1",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"9b68737b-6d74-4fd6-8b3f-532ed5ebe802",
+                    "name":"5406c6f5-9b27-4a00-b618-c5aaf577e57e",
                     "path":"sprites/spr_portrait_tomas_pained/spr_portrait_tomas_pained.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d28a8dcd-9a89-4270-86aa-a6608eb593c0",
+              "id":"53dae98b-67b1-441d-98fd-66b1c2815626",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

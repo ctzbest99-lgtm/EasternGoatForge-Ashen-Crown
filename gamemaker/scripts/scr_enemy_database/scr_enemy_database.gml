@@ -97,6 +97,120 @@ function scr_get_enemy_data(_enemy_id) {
                 stance_buffs: [{ stat: "atk", pct: 0.25, turns: -1 }, { stat: "def", pct: 0.15, turns: -1 }],
                 actions: [{ skill: "heavy_strike", weight: 3 }, { skill: "calder_guard", weight: 1 }, { skill: "calder_shout", weight: 2 }],
                 actions_alone: [{ skill: "heavy_strike", weight: 3 }, { skill: "calder_guard", weight: 1 }] };
+
+        // ---- Design batch 7: Wrenfield elite, Lower City (Ch 3), Hollow Sanctuary (Ch 4),
+        //      Blackwood Road Garrison (Ch 5). Batch 8: the Blackwood (Act III). -------------
+        // Stats come from scr_enemy_scaled (role + level template calibrated to the Chapter 2
+        // balance pass). Levels follow ACT2_OUTLINE's PROPOSED bands (Ch3 10–13, Ch4 13–16,
+        // Ch5 16–18); the Blackwood (18–20) is a coder placeholder. Everything here is PLACEHOLDER.
+        case "crown_sergeant": // Wrenfield elite (battle enemy; the gate NPC is crown_sergeant_gate)
+            return scr_enemy_scaled("crown_sergeant", "Crown Sergeant", "Sergeant", "elite", 9, 1, { spd: 10, weakness: "lightning",
+                actions: [{ skill: "attack", weight: 3 }, { skill: "sergeant_rally", weight: 2 }] });
+        case "dock_thug":
+            return scr_enemy_scaled("dock_thug", "Dock Thug", "Dock Thug", "common", 11, 1, { spd: 9, actions: [{ skill: "attack", weight: 1 }] });
+        case "cutpurse":
+            return scr_enemy_scaled("cutpurse", "Cutpurse", "Cutpurse", "common", 11, 1, { spd: 18, hp_mult: 0.8,
+                actions: [{ skill: "attack", weight: 2 }, { skill: "cutpurse_steal", weight: 2 }] });
+        case "debt_collector":
+            return scr_enemy_scaled("debt_collector", "Debt Collector", "Collector", "elite", 12, 1, { spd: 10, actions: [{ skill: "attack", weight: 1 }] });
+        case "debtman": // Ch 3 boss (working name; killing fight, has a death strip)
+            return scr_enemy_scaled("debtman", "The Debtman", "Debtman", "boss", 13, 3, { spd: 11,
+                actions: [{ skill: "attack", weight: 3 }, { skill: "debtman_reel", weight: 2 }] });
+        case "ward_sentinel":
+            return scr_enemy_scaled("ward_sentinel", "Ward Sentinel", "Sentinel", "common", 14, 1, { spd: 7, def_add: 3, weakness: "lightning",
+                actions: [{ skill: "attack", weight: 1 }] });
+        case "glyph_wisp":
+            return scr_enemy_scaled("glyph_wisp", "Glyph Wisp", "Wisp", "common", 14, 1, { spd: 15, hp_mult: 0.75,
+                actions: [{ skill: "attack", weight: 1 }, { skill: "wisp_mote", weight: 2 }] });
+        case "aethari_automaton":
+            return scr_enemy_scaled("aethari_automaton", "Aethari Automaton", "Automaton", "elite", 15, 1, { spd: 9, weakness: "lightning",
+                actions: [{ skill: "attack", weight: 1 }] });
+        case "sanctuary_warden": // Ch 4 boss (working name), two phases
+            return scr_enemy_scaled("sanctuary_warden", "Sanctuary Warden", "Warden", "boss", 16, 4, { spd: 8,
+                phase2_at: 0.5, phase2_buffs: [{ stat: "atk", pct: 0.2, turns: -1 }],
+                phase2_line: "The Warden's plates crack. Two more arms unfold!",
+                actions: [{ skill: "attack", weight: 2 }, { skill: "warden_ring", weight: 1 }],
+                phase_actions: [
+                    [{ skill: "attack", weight: 2 }, { skill: "warden_ring", weight: 1 }],
+                    [{ skill: "attack", weight: 2 }, { skill: "warden_ring", weight: 2 }]
+                ] });
+        case "garrison_pikeman":
+            return scr_enemy_scaled("garrison_pikeman", "Garrison Pikeman", "Pikeman", "common", 16, 1, { spd: 10, weakness: "lightning",
+                actions: [{ skill: "attack", weight: 2 }, { skill: "pike_thrust", weight: 2 }] });
+        case "garrison_field_surgeon":
+            return scr_enemy_scaled("garrison_field_surgeon", "Field Surgeon", "Surgeon", "common", 16, 1, { spd: 12, hp_mult: 0.8,
+                actions: [{ skill: "attack", weight: 2 }, { skill: "surgeon_heal", weight: 3 }] });
+        case "garrison_knight":
+            return scr_enemy_scaled("garrison_knight", "Garrison Knight", "Knight", "elite", 17, 1, { spd: 9, weakness: "lightning",
+                actions: [{ skill: "attack", weight: 3 }, { skill: "soldier_guard", weight: 1 }] });
+        case "commander_hailen": // Ch 5 boss: yields if the story flag is set, otherwise falls
+            return scr_enemy_scaled("commander_hailen", "Commander Hailen", "Hailen", "boss", 18, 4, { spd: 12,
+                yields_if_flag: "flag_hailen_yields", yield_flag: "flag_hailen_yielded",
+                actions: [{ skill: "attack", weight: 3 }, { skill: "hailen_glint", weight: 2 }] });
+        case "shade_stalker":
+            return scr_enemy_scaled("shade_stalker", "Shade Stalker", "Stalker", "common", 18, 1, { spd: 19, weakness: "holy",
+                actions: [{ skill: "attack", weight: 3 }, { skill: "shade_fade", weight: 1 }] });
+        case "briar_hulk":
+            return scr_enemy_scaled("briar_hulk", "Briar Hulk", "Briar Hulk", "common", 18, 1, { spd: 5, hp_mult: 1.4, weakness: "fire",
+                actions: [{ skill: "attack", weight: 1 }] });
+        case "lost_one": // id and concept may be revised (DECISIONS)
+            return scr_enemy_scaled("lost_one", "Lost One", "Lost One", "common", 18, 1, { spd: 8, weakness: "holy",
+                actions: [{ skill: "attack", weight: 1 }] });
+        case "night_moth_swarm":
+            return scr_enemy_scaled("night_moth_swarm", "Night Moth Swarm", "Moths", "common", 19, 1, { spd: 16, hp_mult: 0.7, weakness: "fire",
+                actions: [{ skill: "attack", weight: 2 }, { skill: "moth_blind", weight: 2 }, { skill: "moth_sleep", weight: 1 }] });
+        case "door_warden":
+            return scr_enemy_scaled("door_warden", "Door Warden", "Door Warden", "elite", 19, 1, { spd: 6, def_add: 3, weakness: "lightning",
+                actions: [{ skill: "attack", weight: 1 }] });
+        case "blackwood_matriarch": // PLACEHOLDER boss (proposed, not canon), two phases
+            return scr_enemy_scaled("blackwood_matriarch", "Blackwood Matriarch", "Matriarch", "boss", 20, 4, { spd: 13, weakness: "holy",
+                phase2_at: 0.5, phase2_buffs: [{ stat: "atk", pct: 0.25, turns: -1 }, { stat: "spd", pct: 0.2, turns: -1 }],
+                phase2_line: "Her antlers split. Embers wake in the cracks!",
+                actions: [{ skill: "attack", weight: 2 }, { skill: "matriarch_breath", weight: 1 }],
+                phase_actions: [
+                    [{ skill: "attack", weight: 2 }, { skill: "matriarch_breath", weight: 1 }],
+                    [{ skill: "attack", weight: 2 }, { skill: "matriarch_breath", weight: 2 }]
+                ] });
     }
     return undefined;
+}
+
+/// PLACEHOLDER stat template for enemies past Chapter 2 (Design batches 7–8). Calibrated so a
+/// "common" at level 9 matches the balance-pass Chapter 2 regulars (≈ 44 HP, 13 ATK, 11 DEF),
+/// then grows with the tiered party growth (+10 HP / +2 ATK / +2 DEF per level) so hits-to-kill
+/// and damage taken stay roughly flat. Roles: "common", "elite" (×2 HP, +2 ATK / DEF, ×2.5 XP),
+/// "boss" (HP × 1.5 × expected party size, +3 ATK / DEF, ×8 XP). `_extra` may set spd, mdef,
+/// weakness, actions, phase data, yields_if_flag, and tweaks hp_mult / def_add. Not approved.
+function scr_enemy_scaled(_id, _name, _short, _role, _level, _party, _extra) {
+    var _d = _level - 9;
+    var _hp = 44 + 7 * _d;
+    var _atk = 13 + 2 * _d;
+    var _def = 11 + 2 * _d;
+    var _mdef = 6 + _d;
+    var _xp = 28 + 8 * _d;
+    var _gmin = 12 + 3 * _d;
+    var _gmax = 20 + 4 * _d;
+    if (_role == "elite") { _hp *= 2; _atk += 2; _def += 2; _xp = round(_xp * 2.5); _gmin *= 2; _gmax *= 2; }
+    if (_role == "boss") { _hp = round(_hp * 1.5 * max(1, _party)); _atk += 3; _def += 3; _xp *= 8; _gmin *= 6; _gmax *= 6; }
+    var _e = { id: _id, name: _name, short_name: _short, max_hp: _hp, attack: _atk, defense: _def, mdef: _mdef, spd: 10, max_mp: 0,
+               xp_reward: _xp, gold_min: _gmin, gold_max: _gmax, gold_reward: round((_gmin + _gmax) / 2), placeholder: true,
+               level: _level, role: _role, is_boss: (_role == "boss") };
+    if (is_struct(_extra)) {
+        var _names = variable_struct_get_names(_extra);
+        for (var _i = 0; _i < array_length(_names); _i++) _e[$ _names[_i]] = _extra[$ _names[_i]];
+    }
+    if (variable_struct_exists(_e, "hp_mult")) _e.max_hp = max(1, round(_e.max_hp * _e.hp_mult));
+    if (variable_struct_exists(_e, "def_add")) _e.defense += _e.def_add;
+    return _e;
+}
+
+/// Battle background area for a batch 7–8 enemy id ("" = decide by room / encounter).
+function scr_enemy_battle_area(_enemy_id) {
+    switch (_enemy_id) {
+        case "dock_thug": case "cutpurse": case "debt_collector": case "debtman": return "lower_city";
+        case "ward_sentinel": case "glyph_wisp": case "aethari_automaton": case "sanctuary_warden": return "sanctuary_hall";
+        case "garrison_pikeman": case "garrison_field_surgeon": case "garrison_knight": case "commander_hailen": return "garrison_yard";
+        case "shade_stalker": case "briar_hulk": case "lost_one": case "night_moth_swarm": case "door_warden": case "blackwood_matriarch": return "blackwood";
+    }
+    return "";
 }

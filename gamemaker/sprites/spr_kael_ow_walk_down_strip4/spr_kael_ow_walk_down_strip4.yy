@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"9abff1d5-825b-4549-a15b-d1359ae22d04",
-      "name":"9abff1d5-825b-4549-a15b-d1359ae22d04",
+      "%Name":"eeba9171-5ad9-45a7-b014-57d4fdc0f16e",
+      "name":"eeba9171-5ad9-45a7-b014-57d4fdc0f16e",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"84e5f51a-8217-4d63-af2a-7ceaf63697cf",
-      "name":"84e5f51a-8217-4d63-af2a-7ceaf63697cf",
+      "%Name":"bc0af60b-4653-4c1f-9067-f560e1f4685c",
+      "name":"bc0af60b-4653-4c1f-9067-f560e1f4685c",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"852f0df5-0281-4c39-b0f3-fc73e32ca77a",
-      "name":"852f0df5-0281-4c39-b0f3-fc73e32ca77a",
+      "%Name":"398378c8-48c6-4475-aebe-e7430c22783b",
+      "name":"398378c8-48c6-4475-aebe-e7430c22783b",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"32bf3b2c-f945-40dc-8fe5-a42be4ff55b7",
-      "name":"32bf3b2c-f945-40dc-8fe5-a42be4ff55b7",
+      "%Name":"e59ce791-9c2a-4121-a242-caca252fe5fe",
+      "name":"e59ce791-9c2a-4121-a242-caca252fe5fe",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"13695c71-80eb-4c4e-805e-2729a553c19e",
+      "%Name":"b3ecb6be-0a3b-468e-9567-ff07b6d6900a",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"13695c71-80eb-4c4e-805e-2729a553c19e",
+      "name":"b3ecb6be-0a3b-468e-9567-ff07b6d6900a",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"9abff1d5-825b-4549-a15b-d1359ae22d04",
+                    "name":"eeba9171-5ad9-45a7-b014-57d4fdc0f16e",
                     "path":"sprites/spr_kael_ow_walk_down_strip4/spr_kael_ow_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"a0d85f6c-70f2-49e9-b4b7-67ce94fede38",
+              "id":"1fd9e382-d9de-4a42-8f48-b075088fd4d8",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"84e5f51a-8217-4d63-af2a-7ceaf63697cf",
+                    "name":"bc0af60b-4653-4c1f-9067-f560e1f4685c",
                     "path":"sprites/spr_kael_ow_walk_down_strip4/spr_kael_ow_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"6a7f9d77-4008-4b0a-9f20-4b9f11b4f587",
+              "id":"8c42c798-c308-4612-8299-18cee5aecce5",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"852f0df5-0281-4c39-b0f3-fc73e32ca77a",
+                    "name":"398378c8-48c6-4475-aebe-e7430c22783b",
                     "path":"sprites/spr_kael_ow_walk_down_strip4/spr_kael_ow_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"5fe8cdab-adf1-4805-94e2-6eae2a2ef420",
+              "id":"e7c4dd85-d382-4c89-b502-17b1d26d4ad6",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"32bf3b2c-f945-40dc-8fe5-a42be4ff55b7",
+                    "name":"e59ce791-9c2a-4121-a242-caca252fe5fe",
                     "path":"sprites/spr_kael_ow_walk_down_strip4/spr_kael_ow_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"844ebd9e-7fdc-4e2b-8713-9182ea390033",
+              "id":"d6cc9936-2d05-4da8-aa96-1a1e5cc6d60e",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

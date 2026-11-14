@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"a7dbd5bf-c2e6-4b03-aa96-4f8bec318c5b",
-      "name":"a7dbd5bf-c2e6-4b03-aa96-4f8bec318c5b",
+      "%Name":"d7a01594-4e43-4ece-bbbe-63141e063abf",
+      "name":"d7a01594-4e43-4ece-bbbe-63141e063abf",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"014859b5-4c18-43c1-9339-d1debb30cb8d",
+      "%Name":"d8205bfa-1aed-403f-a5db-e6da422c971f",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"014859b5-4c18-43c1-9339-d1debb30cb8d",
+      "name":"d8205bfa-1aed-403f-a5db-e6da422c971f",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a7dbd5bf-c2e6-4b03-aa96-4f8bec318c5b",
+                    "name":"d7a01594-4e43-4ece-bbbe-63141e063abf",
                     "path":"sprites/spr_item_antidote/spr_item_antidote.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"b09a0c36-4ea1-41b8-a9d9-c7f75bed1b60",
+              "id":"0536ca1a-7dfd-4c4b-abc2-03bfb71ebda5",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

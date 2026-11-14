@@ -107,11 +107,53 @@ function scr_battle_kind_from_id(_actor_id) {
         case "reeve_calder":
             return _actor_id;
         default:
+            // Batches 7–8 and later: strips are found by name (scr_battle_auto_strip).
+            if (scr_battle_kind_is_generic(_actor_id)) return _actor_id;
             return "";
     }
 }
 
+/// Enemy kinds whose strips are resolved generically by name (Design batches 7 and 8).
+function scr_battle_kind_is_generic(_kind) {
+    switch (_kind) {
+        case "crown_sergeant": case "dock_thug": case "cutpurse": case "debt_collector": case "debtman":
+        case "ward_sentinel": case "glyph_wisp": case "aethari_automaton": case "sanctuary_warden":
+        case "garrison_pikeman": case "garrison_field_surgeon": case "garrison_knight": case "commander_hailen":
+        case "shade_stalker": case "briar_hulk": case "lost_one": case "night_moth_swarm": case "door_warden":
+        case "blackwood_matriarch":
+            return true;
+    }
+    return false;
+}
+
+/// Find `spr_<kind>_<anim>_strip<N>` for any N (or no suffix), trying `<anim>_p2` first in
+/// phase 2+. Cached. Returns { spr, n } with spr -1 when nothing is imported (rectangle fallback).
+function scr_battle_auto_strip(_kind, _anim, _phase = 1) {
+    if (!variable_global_exists("battle_strip_cache") || !is_struct(global.battle_strip_cache)) global.battle_strip_cache = {};
+    var _key = _kind + "|" + _anim + "|" + string(min(_phase, 2));
+    if (variable_struct_exists(global.battle_strip_cache, _key)) return global.battle_strip_cache[$ _key];
+    var _names = (_phase >= 2) ? [_anim + "_p2", _anim] : [_anim];
+    var _counts = [8, 6, 4, 3, 7, 5, 2, 9, 10, 12, 1];
+    var _out = { spr: -1, n: 1 };
+    for (var _a = 0; _a < array_length(_names) && _out.spr == -1; _a++) {
+        for (var _c = 0; _c < array_length(_counts); _c++) {
+            var _s = scr_sprite_index("spr_" + _kind + "_" + _names[_a] + "_strip" + string(_counts[_c]));
+            if (_s != -1) {
+                _out = { spr: _s, n: sprite_get_number(_s) };
+                break;
+            }
+        }
+        if (_out.spr == -1) {
+            var _s1 = scr_sprite_index("spr_" + _kind + "_" + _names[_a]);
+            if (_s1 != -1) _out = { spr: _s1, n: sprite_get_number(_s1) };
+        }
+    }
+    global.battle_strip_cache[$ _key] = _out;
+    return _out;
+}
+
 function scr_battle_frame_count(_kind, _anim, _phase = 1) {
+    if (scr_battle_kind_is_generic(_kind)) return max(1, scr_battle_auto_strip(_kind, _anim, _phase).n);
     // Blackguard: phase 1 death is debug-only; a lethal hit always uses the p3 death8 strip.
     if (_kind == "blackguard") {
         if (_anim == "transition_p1to2" || _anim == "transition_p2to3") return 8;
@@ -213,6 +255,7 @@ function scr_battle_sprite(_kind, _anim, _phase = 1) {
         var _n = scr_battle_frame_count(_kind, _anim, _phase);
         return scr_sprite_index(_prefix + _anim + "_strip" + string(_n));
     }
+    if (scr_battle_kind_is_generic(_kind)) return scr_battle_auto_strip(_kind, _anim, _phase).spr;
     if (_kind == "reeve_calder" && _anim == "idle" && _phase >= 2) {
         // After his stance: Design's idle_p2 if imported, otherwise the normal idle.
         return scr_sprite_index("spr_reeve_calder_idle_p2_strip8", "spr_reeve_calder_idle_strip8");
