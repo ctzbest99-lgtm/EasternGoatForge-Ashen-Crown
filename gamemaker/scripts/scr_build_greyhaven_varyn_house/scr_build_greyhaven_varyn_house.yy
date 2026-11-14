@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_build_greyhaven_varyn_house",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_build_greyhaven_varyn_house",
+  "parent":{
+    "name":"scripts",
+    "path":"folders/scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,7 +1,7 @@
 # ASHEN CROWN — Act II Outline: "The Broken Crown"
 
 **Studio:** Eastern Goat Forge · **Engine:** GameMaker Studio (GML) · **Genre:** Dark medieval fantasy RPG, classic turn-based combat · **Platform:** PC
-**Status:** Kevin approved the nine Act II recommendations on Nov 14 2026. Those choices, and the scenes that depend on them, are **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Remaining texture — chapter titles, level bands, quest stage text, exact dialogue lines, some NPC and boss names, and other connective beats — is still **[PROPOSED]**.
+**Status:** Kevin approved the nine Act II recommendations on Nov 14 2026. Chapter 2 (`CHAPTER2_SCRIPT.md`, approved Nov 14 2026, 3:00 PM ET) and Chapter 3 (`CHAPTER3_SCRIPT.md`, approved Nov 14 2026, 3:53 PM ET) are fully canon. Remaining texture — titles and level bands for Chapters 4–5, later quest stage text, and other connective beats in those chapters — is still **[PROPOSED]**.
 **Source of canon:** `MASTER_GDD.txt` and `STORY_BIBLE.md`. Chapter 1 remains `CHAPTER1_SCRIPT.md`. Confirmed Act II material is also recorded in the bible.
 
 The act title is **The Broken Crown** **[C]**. **The Broken Yoke** is the rebellion's name only **[C-confirmed]**. Do not retitle this act.
@@ -60,27 +60,27 @@ This act gathers the party, plants Alden as a friend, and gives the player one r
 ## 2. Confirmed pieces this act is built from
 
 - **Taren Holt** **[C-confirmed]**: age 27, from Millhaven, Rebel Captain of the Broken Yoke, frontline heavy-sword user (starts with a bastard sword). Childhood friend of Kael and of Alden. Believes freedom is worth fighting for and stands for the Yoke's original purpose: freedom for the people, and a system they govern themselves. Alden becomes his greatest disappointment, but that disappointment is not completed in this act. Skill kit (Rallying Cry, Cleave, Shield the Line, Breaking Blow, Unbowed, and later Banner of the Yoke) is confirmed; exact numbers stay **[O]**.
-- **Lyra Veyne** **[C]**: twin daggers, Lower City and the criminal underworld, sarcastic, selfish at first, loyal once trust is earned, occasional humor. Joins second, in the Lower City **[C-confirmed]**. Surface hook for that join is now confirmed (section 6.4); the nature of her Black Hand ties stays **[O]**.
+- **Lyra Veyne** **[C]**: twin daggers, Lower City and the criminal underworld, sarcastic, selfish at first, loyal once trust is earned, occasional humor. Joins second, in the Lower City **[C-confirmed]**. Surface hook, join timing, and starting skills (Twin Cut, Open Vein, Cutthroat) are confirmed in `CHAPTER3_SCRIPT.md` (section 6.4); the nature of her Black Hand ties stays **[O]**. Exact skill numbers stay **[O]**.
 - **Caelan Rook** **[C]**: former royal scholar. Knows more about the Crownveil, and why it broke, than he admits at first. Joins third, at **the Hollow Sanctuary** **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026).
 - **Sera Thorn** **[C]**: former Silver Guard. She left the kingdom after witnessing something inside the royal palace. Joins fourth, at **the Blackwood Road Garrison**, where she is detained as a deserter **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). What she saw stays **[O]**.
-- **Alden Marr** **[C]**: at first he genuinely wants to free the serfs and rebuild Eldoria. Ambition gradually corrupts him. He must stay tragic, never evil without explanation. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) In this act Taren speaks of him with warmth at Wrenfield, and the party meets him in Valemere as a friend; there is no split here.
+- **Alden Marr** **[C]**: at first he genuinely wants to free the serfs and rebuild Eldoria. Ambition gradually corrupts him. He must stay tragic, never evil without explanation. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) In this act Taren speaks of him with warmth at Wrenfield, and the party meets him in Weigh-House Square in Valemere as a friend; there is no split here.
 - **Valemere** **[C]**: capital of Eldoria, about 80,000 residents. Districts: Royal, Merchant, Lower City, Temple, Military, Old Quarter. Major hub for politics, quests, shops, factions, and party development. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) It is the Act II hub.
 - **Lumen** **[C-confirmed]**: the ancient magic the Aethari understood. How it works is **[O]**.
 - **The Crown Engine** **[C-confirmed]**: the Aethari's greatest achievement, a mechanism associated with maintaining the Crownveil. Where it is, its state, and whether its condition causes the failure are **[O]**.
 - **Kael's middle-arc line** **[C]**: “I need to know why this happened.” Act II is where that shift should start to be felt, without abandoning “I just need to find Mira.”
 
-**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Named Act II places and officers: **Wrenfield**, **the Hollow Sanctuary**, **the Blackwood Road Garrison**, **Reeve Calder**, and **Commander Hailen**.
+**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Named Act II places and officers: **Wrenfield**, **Valemere Road**, **Weigh-House Square**, **the Salt Lamp**, **the Hollow Sanctuary**, **the Blackwood Road Garrison**, **Reeve Calder**, **Nim**, **the Debtman**, and **Commander Hailen**.
 
 ---
 
 ## 3. Chapter map
 
-Act I was a single chapter (Chapter 1, "The Night of Ash"). **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Act II is four chapters (Chapters 2–5), one recruit and one chapter boss each, ending on the road to the Blackwood. Chapter 2's title, **The Weight of the Yoke**, and its suggested levels (8–10) are **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Titles for Chapters 3–5 and suggested levels for those chapters stay **[PROPOSED]**. All of `CHAPTER2_SCRIPT.md` is canon.
+Act I was a single chapter (Chapter 1, "The Night of Ash"). **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Act II is four chapters (Chapters 2–5), one recruit and one chapter boss each, ending on the road to the Blackwood. Chapter 2's title, **The Weight of the Yoke**, and its suggested levels (8–10) are **[C-confirmed]**. Chapter 3's title, **Crowns and Alleys**, and its suggested levels (10–13) are **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Titles for Chapters 4–5 and suggested levels for those chapters stay **[PROPOSED]**. All of `CHAPTER2_SCRIPT.md` and `CHAPTER3_SCRIPT.md` are canon.
 
 | Chapter | Title | Main locations | Recruit | Boss | Suggested levels |
 |---|---|---|---|---|---|
 | 2 | The Weight of the Yoke **[C-confirmed]** | Watchtower backtrack; optional Greyhaven; **Millhaven Road**; **Wrenfield** **[C-confirmed]** | Taren Holt | **Reeve Calder**, Crown occupation officer **[C-confirmed]** | 8–10 **[C-confirmed]** |
-| 3 | Crowns and Alleys **[PROPOSED title]** | Road to the capital; **Valemere** (Lower City as the story focus; other districts as hub) | Lyra Veyne | A Lower City enforcer tied to the stolen document, not a named Black Hand leader **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Working name **the Debtman** is still **[PROPOSED]**. | 10–13 **[PROPOSED]** |
+| 3 | Crowns and Alleys **[C-confirmed]** | **Valemere Road**; **Valemere** (Weigh-House Square, the Salt Lamp, seized warehouse; Lower City as the story focus; other districts as hub) | Lyra Veyne | **the Debtman**, a human Lower City enforcer tied to the stolen document, not a named Black Hand leader **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). A moniker only; he withdraws alive. | 10–13 **[C-confirmed]** |
 | 4 | The Old Name **[PROPOSED title]** | Countryside a day's travel from Valemere; **the Hollow Sanctuary** **[C-confirmed]** | Caelan Rook | An ancient sanctuary guardian-construct **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Working name **the Sanctuary Warden** is still **[PROPOSED]**. | 13–16 **[PROPOSED]** |
 | 5 | The Deserted Oath **[PROPOSED title]** | **The Blackwood Road Garrison** **[C-confirmed]** | Sera Thorn | **Commander Hailen**, the garrison's commanding officer **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) | 16–18 **[PROPOSED]** |
 
@@ -92,7 +92,7 @@ Region-to-act mapping for the rest of the game stays **[O]** (question 28). **[C
 
 ## 4. Main quest: Beyond the Veil
 
-**[C]** The quest title and the change from Find Mira are canon. The Chapter 1 script leaves stage `Q_BV_S1` as "Find a way beyond the Veil." Stages 1–3 are **[C-confirmed]** in `CHAPTER2_SCRIPT.md`. Stages 4–7 remain **[PROPOSED]**.
+**[C]** The quest title and the change from Find Mira are canon. The Chapter 1 script leaves stage `Q_BV_S1` as "Find a way beyond the Veil." Stages 1–3 are **[C-confirmed]** in `CHAPTER2_SCRIPT.md`. Stages 4–5 are **[C-confirmed]** in `CHAPTER3_SCRIPT.md`. Stages 6–7 remain **[PROPOSED]**.
 
 | Stage | ID | Objective text | Completes when |
 |---|---|---|---|
@@ -104,9 +104,9 @@ Region-to-act mapping for the rest of the game stays **[O]** (question 28). **[C
 | 6 | `Q_BV_S6` | Investigate the Blackwood Road Garrison. | Sera is recruited and the Blackwood lead is obtained |
 | 7 | `Q_BV_S7` | Follow the trail into the Blackwood. | The party enters Act III |
 
-Stage IDs and objective text for S1–S3 are **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). S4–S7 stay **[PROPOSED]**, though the completion events they point at are **[C-confirmed]** where they match the Act II recruitment decisions.
+Stage IDs and objective text for S1–S5 are **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). S6–S7 stay **[PROPOSED]**, though the completion events they point at are **[C-confirmed]** where they match the Act II recruitment decisions. `Q_BV_S5` is started at the end of Chapter 3 and completes in Chapter 4.
 
-Optional side-quest hooks: **The One on the List** (Oda and Bram in Wrenfield) is **[C-confirmed]** in `CHAPTER2_SCRIPT.md`. Still **[PROPOSED]**, not fully designed: a Lower City courier job that can raise or lower Lyra's trust; a Radiant Flame petition in the Temple District (doctrine details and leaders stay **[O]**); a sanctuary side-chamber with fragmented records that hint, but do not explain, Lumen.
+Optional side-quest hooks: **The One on the List** (Oda and Bram in Wrenfield) is **[C-confirmed]** in `CHAPTER2_SCRIPT.md`. **A Parcel Unsealed** (Nim at the Salt Lamp) is **[C-confirmed]** in `CHAPTER3_SCRIPT.md`. Still **[PROPOSED]**, not fully designed: a Radiant Flame petition in the Temple District (doctrine details and leaders stay **[O]**); a sanctuary side-chamber with fragmented records that hint, but do not explain, Lumen.
 
 ---
 
@@ -157,31 +157,31 @@ Suggested flags: `flag_act2_started`, `flag_hook_taren`, `flag_wrenfield_entered
 
 ---
 
-## 6. Chapter 3 — "Crowns and Alleys" **[PROPOSED title]**
+## 6. Chapter 3 — "Crowns and Alleys" **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
+
+Full script: `CHAPTER3_SCRIPT.md` (approved Nov 14 2026, 3:53 PM ET). Suggested levels: 10–13.
 
 ### 6.1 The road to Valemere
 
-**[PROPOSED]** Kael and Taren travel from the Millhaven area to the capital. Overworld road, small settlements, Crown presence increasing as they near the walls.
+**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Kael and Taren travel from Wrenfield's west road to the capital. Overworld road, small settlements, Crown presence increasing as they near the walls. Suggested levels 10–13.
 
-**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Fallen Knight sighting 1 happens on this road (section 10), after Taren has joined and before the city.
+**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Fallen Knight sighting 1 happens on this road (section 10), after Taren has joined and before the city. He is never named and never fights. His line: "You cannot cross where she did. Not yet." Set `flag_fk_seen_3`.
 
-**[PROPOSED]** Optional: a Broken Yoke contact who will not name a leader, or a rumor that the king has been closed up in the Royal District. Do not explain Aldric's motives **[O]** (question 15).
+**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Optional: **Derry**, a Broken Yoke contact who will not name a leader, and a rumor that the king has been closed up in the Royal District. Do not explain Aldric's motives **[O]** (question 15).
 
 ### 6.2 Valemere, the hub
 
 **[C]** Valemere is the major hub. Open shops, inns, faction presence, and side content in the listed districts as Design is able to support them. The Royal District can be visible and largely closed. The Temple District can show the Radiant Flame as a living institution without deciding Greyhaven Chapel's affiliation **[O]** (question 30).
 
-**[PROPOSED]** Taren is a Rebel Captain walking into the capital. Kael is a former Royal Army soldier come home to a ruined village. That tension should color gates, checkpoints, and NPC talk. They are not here to seize the city.
+**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Taren is a Rebel Captain walking into the capital. Kael is a former Royal Army soldier come home to a ruined village. That tension colors gates, checkpoints, and NPC talk. They are not here to seize the city.
 
-**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) They come to the Lower City for a lead the Crown will not give, and Taren also wants to find Alden. **[PROPOSED]** Official channels will not talk about the Crownveil's failure, or about Mira; the Lower City is where you buy what the Crown will not say.
+**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) They come to the Lower City for a lead the Crown will not give, and Taren also wants to find Alden. Official channels will not talk about the Crownveil's failure, or about Mira; the Lower City is where you buy what the Crown will not say.
 
-Set `flag_entered_valemere`. Advance to `Q_BV_S4`.
+Set `flag_entered_valemere`. Complete `Q_BV_S3`. Start `Q_BV_S4`.
 
 ### 6.3 Alden in the capital
 
-**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) The party meets Alden in Valemere, in person. He greets Kael and Taren as friends. He is sincere about freeing the serfs and about the Crown having failed the people **[C]**. He has one line that already thinks ahead to "when we hold the city." Taren hears a plan. The player can hear a seed. There is no argument, and no split.
-
-**[PROPOSED]** The meeting is in a square or a Lower City room, not a throne. Sample wording, not final: "When we hold this city, we can actually build something." If they miss him in the street, a short scene later in the chapter should still put him in front of the player, so the confirmed meeting cannot be skipped.
+**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) The party meets Alden in Valemere, in person, in **Weigh-House Square**, on the seam of the Merchant District and the Lower City, unmissable on the way to the Salt Lamp, before the job. He greets Kael and Taren as friends. He is sincere about freeing the serfs and about the Crown having failed the people **[C]**. He speaks the "when we hold the city" line in the open ("When we hold this city, we can actually build something."), then greets them. Taren hears a plan. The player can hear a seed. There is no argument, and no split. If the player reaches the Lower City job without this scene, trigger it at the square before the Salt Lamp will open the lead.
 
 Set `flag_alden_met`. His backstory, exact role, and any break with Taren stay **[O]**.
 
@@ -189,23 +189,21 @@ Set `flag_alden_met`. His backstory, exact role, and any break with Taren stay *
 
 **[C-confirmed]** She joins here. **[C]** She is selfish at first. She has ties to the Black Hand. The nature of those ties stays **[O]** (question 6).
 
-**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) hook:
+**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) hook, as written in `CHAPTER3_SCRIPT.md`:
 
-1. The party needs a thief to steal a seized document — a scholar's notes or a ledger — that points toward the abandoned sanctuary (the Hollow Sanctuary).
-2. **Lyra Veyne** takes the job for coin.
-3. Mid-heist, the job breaks. She can run or finish it. She finishes it and stays because she is now exposed.
+1. **Nim**, a fence at **the Salt Lamp**, sells the lead. The party needs a thief to steal a seized document — a scholar's notes — that points toward the Hollow Sanctuary. The notes belonged to a royal scholar who left court. They mention an abandoned sanctuary and, at most, the word "Architects." They do not explain the Veil, name Lumen, locate the Crown Engine, or have to name Caelan Rook.
+2. **Lyra Veyne** takes the job for coin. She is dry, useful, and not interested in Mira or in the Yoke. She may needle Taren's sermons and Kael's grim silence. That is her humor, not a change of heart.
+3. Mid-heist, the job breaks. **The Debtman** and toughs cut them off as they leave with the notes, there to recover the prize and/or remind Lyra of a debt. She can run or finish it. She finishes it and stays because she is now exposed.
+4. **Lyra becomes controllable at the start of the Debtman fight** (3rd party slot; twin daggers; Twin Cut, Open Vein, and Cutthroat). The longer "I signed a job" conversation happens after the battle. Loyalty is later; she is a professional, not a convert. Confirmed line: "Don't look at me like I signed an oath. I signed a job."
+5. Optional side quest: **A Parcel Unsealed**, given by Nim (reward: 60 Gold, Antidote x2). It does not require Lyra.
 
-**[PROPOSED]** connective texture for that hook:
-
-- A broker, bartender, or fence sells the lead. The notes belonged to a royal scholar who left court. They mention an abandoned sanctuary and, at most, the word "Architects" in ordinary speech. They do not explain the Veil.
-- Lyra is dry, useful, and not interested in Mira or in the Yoke. She may needle Taren's sermons and Kael's grim silence. That is her humor, not a change of heart.
-- The break in the job may be a sweep, a double-cross, or an enforcer sent to recover the same prize. She finishes because leaving it half-done will get her killed or owned, not because she believes in the party yet.
-- **Boss:** a human Lower City enforcer tied to the stolen document, not a named Black Hand leader **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Working name **the Debtman** is still **[PROPOSED]**. He can imply that someone in the underworld wanted the notes, or wanted Lyra reminded of a debt. That is as close as this act should come to her ties. Leadership of the Black Hand stays **[O]**.
-- Personal stake, still **[PROPOSED]** wording: loyalty is later; she is a professional, not a convert. A line in this spirit: "Don't look at me like I signed an oath. I signed a job."
+**Boss: the Debtman** **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) — a human Lower City enforcer tied to the stolen document, not a named Black Hand leader. The Debtman is a moniker only, not a Black Hand title. Not Ash-corrupted. Kit: a fast knife strike; **Collect** (a debuff or a small HP drain); a bind or net that can Slow or Immobilize one target; he fights meaner and faster when his toughs fall. After the fight he withdraws, alive, leaving the debt hanging. That is as close as this act should come to Lyra's ties. Leadership of the Black Hand stays **[O]**.
 
 The document points the party at the Hollow Sanctuary (Chapter 4) without locating the Crown Engine or explaining Lumen.
 
-Suggested flags: `flag_lower_city_job`, `flag_lyra_recruited`, `flag_scholar_notes`. Advance to `Q_BV_S5`. Party size is now 3.
+Suggested flags: `flag_entered_valemere`, `flag_alden_met`, `flag_lower_city_job`, `flag_scholar_notes`, `flag_lyra_recruited`, `flag_debtman_beaten`, `flag_fk_seen_3`, `flag_chapter3_complete`. Complete `Q_BV_S4`. Advance to `Q_BV_S5`. Party size is now 3.
+
+**Handoff.** The party takes the west-country road out of Valemere toward the Hollow Sanctuary. Chapter-complete screen and a save prompt. `Q_BV_S5` is active. Chapter 4 begins on the approach to the sanctuary. Do not play a second Fallen Knight sighting here.
 
 ---
 
@@ -288,12 +286,12 @@ The party that walks toward the trees is complete for the first time: Kael, Tare
 
 **[C]** He begins sincere. Ambition gradually corrupts him. **[C-confirmed]** He is Taren's childhood friend and will become Taren's greatest disappointment. The final confrontation should be one of the most emotional moments in the game. **[O]** When and how they split, his rank, and his full backstory. They do not split in this act.
 
-**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) through-line for Chapters 2–3; later-chapter texture still **[PROPOSED]**:
+**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) through-line for Chapters 2–3 (`CHAPTER2_SCRIPT.md` and `CHAPTER3_SCRIPT.md`); later-chapter texture still **[PROPOSED]**:
 
 | Chapter | Alden |
 |---|---|
 | 2 | **[C-confirmed]** Present only in Taren's mouth, with warmth and a shared dream. |
-| 3 | **[C-confirmed]** A face-to-face meeting in Valemere. Friend, not foe. One seed of "when we hold the city." No split. |
+| 3 | **[C-confirmed]** A face-to-face meeting in **Weigh-House Square**, unmissable on the way to the Salt Lamp, before the job. Friend, not foe. One seed of "when we hold the city," spoken in the open. No split. |
 | 4 | **[PROPOSED]** Absent, or a short letter / message that still sounds like an ally. |
 | 5 | **[PROPOSED]** Still not the antagonist. No appearance required. |
 
@@ -309,7 +307,7 @@ Do not use Act II to start Ending C. The player should leave this act liking Ald
 
 **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Two more non-combat sightings, then he walks off, as before. Cryptic lines only. He is never named and never fights.
 
-1. **On the road to Valemere, after Taren has joined.** He bars nothing and explains nothing. **[PROPOSED]** A short line in this spirit: "You cannot cross where she did. Not yet." Set `flag_fk_seen_3`.
+1. **On the road to Valemere, after Taren has joined.** He bars nothing and explains nothing. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) His line, as written in `CHAPTER3_SCRIPT.md`: "You cannot cross where she did. Not yet." Set `flag_fk_seen_3`.
 2. **After the garrison, hinting at the woods.** **[PROPOSED]** Placement: just beyond the Blackwood Road Garrison, at the first trees. A short line in this spirit: "The forest has already taken its share." Set `flag_fk_seen_4`.
 
 No battle. No helmet removal. No reunion with Tomas's secret. No claim that he is, or is not, the subject of Act 5.
@@ -390,11 +388,11 @@ His identity remains **[O]** (question 2). He is never named and never fights, m
 
 ### 9. Chapter bosses
 
-**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Option A (chosen):** Ch 2: a Crown occupation officer (**Reeve Calder**) who believes he is keeping order. Ch 3: a Lower City enforcer tied to the stolen document, not a named Black Hand leader (working name still **[PROPOSED]**). Ch 4: an ancient sanctuary guardian-construct, to show Aethari mechanisms without touching the Crown Engine (working name still **[PROPOSED]**). Ch 5: an honorable garrison commander (**Commander Hailen**) who tries to stop Sera and the party.
+**[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Option A (chosen):** Ch 2: a Crown occupation officer (**Reeve Calder**) who believes he is keeping order. Ch 3: a Lower City enforcer tied to the stolen document, not a named Black Hand leader (**the Debtman**, a moniker only; he withdraws alive). Ch 4: an ancient sanctuary guardian-construct, to show Aethari mechanisms without touching the Crown Engine (working name still **[PROPOSED]**). Ch 5: an honorable garrison commander (**Commander Hailen**) who tries to stop Sera and the party.
 
 - ~~**Option B:** Replace the human officers with Ash-corrupted versions of the same roles.~~ *(Not chosen.)*
 - ~~**Option C:** One Ash-corrupted mid-act dungeon boss and fewer human bosses.~~ *(Not chosen.)*
 
 ---
 
-*Confirmed Act II material is recorded in `STORY_BIBLE.md`. Remaining [PROPOSED] texture stays in this file until Kevin approves a full Act II script.*
+*Confirmed Act II material is recorded in `STORY_BIBLE.md`. Chapter 2 and Chapter 3 scripts are fully canon. Remaining [PROPOSED] texture is Chapters 4–5, until Kevin approves those scripts.*
