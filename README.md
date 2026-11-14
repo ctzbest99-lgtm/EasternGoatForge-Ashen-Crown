@@ -4,7 +4,7 @@ A dark medieval fantasy RPG by Eastern Goat Forge, built with GameMaker and GML.
 
 **Direction:** classic top-down JRPG exploration inspired by the original Final Fantasy (1987), not side-view. Planned combat is classic menu-driven turn-based with a four-character party.
 
-**Status:** pre-production starter. This is not a complete runnable .yyp project. GML snippets must be integrated into GameMaker and tested there.
+**Status:** pre-production starter. A complete, ready-to-open GameMaker project now lives in `gamemaker/AshenCrown.yyp` — open it and press F5. The `game/` folder remains the human-readable source of truth for the same GML, sprites, and map data.
 
 ## Confirmed concepts
 - Protagonist: Kael Varyn; tragic backstory planned, exact canon still open.
@@ -16,13 +16,14 @@ A dark medieval fantasy RPG by Eastern Goat Forge, built with GameMaker and GML.
 
 ## Start here
 1. Read docs/GAME_DESIGN_DOCUMENT.md and docs/DECISIONS_AND_OPEN_QUESTIONS.md.
-2. Follow game/README.md and game/rooms/ROOM_SETUP.md to create real IDE resources.
+2. Open `gamemaker/AshenCrown.yyp` in GameMaker and run it. See `gamemaker/README.md` for what is included and what is intentionally stubbed.
 3. Use prompts/ one at a time with Codex.
 4. Run docs/TEST_PLAN.md before marking features complete.
 
 ## Folders
 - docs/: design, story, combat, Zone 1, art, asset inventory, roadmap, tests.
 - prompts/: Codex implementation prompts.
-- game/: illustrative GML snippets, setup notes, `game/sprites/` art (imported into the IDE by hand), tileset, and overworld Included Files.
+- game/: human-readable GML snippets, setup notes, `game/sprites/` art, tileset, and overworld Included Files (the source the GameMaker project is generated from).
+- gamemaker/: the generated, ready-to-open GameMaker project (`.yyp`, resources, and datafiles).
 
-Proprietary: all source code and all game assets are the property of Eastern Goat Forge, all rights reserved; see LICENSE. This is still not a complete GameMaker project (no `.yyp`).
+Proprietary: all source code and all game assets are the property of Eastern Goat Forge, all rights reserved; see LICENSE.
