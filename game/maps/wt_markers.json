@@ -1,0 +1,189 @@
+[
+ {
+  "type": "player_spawn",
+  "name": "from_overworld",
+  "tile_x": 29,
+  "tile_y": 42,
+  "x": 472,
+  "y": 688,
+  "facing": "up",
+  "note": "Arrive here from the overworld Old Watchtower entrance."
+ },
+ {
+  "type": "zone_exit",
+  "name": "to_overworld",
+  "tile_x": 29,
+  "tile_y": 44,
+  "x": 472,
+  "y": 720,
+  "target_room": "rm_overworld",
+  "target_spawn": "old_watchtower",
+  "w": 4,
+  "h": 1
+ },
+ {
+  "type": "entrance",
+  "name": "watchtower_basement_stairs",
+  "tile_x": 20,
+  "tile_y": 28,
+  "x": 328,
+  "y": 464,
+  "target_room": "rm_watchtower_basement",
+  "status": "stub",
+  "note": "Stair down to the Watchtower Basement (Architect carvings). Room not built yet."
+ },
+ {
+  "type": "location",
+  "name": "locked_terrace_stairs",
+  "tile_x": 29,
+  "tile_y": 21,
+  "x": 472,
+  "y": 352,
+  "requires": "watchtower_basement_cleared",
+  "note": "Block these stairs (obj_solid or a locked door) until the Basement is done; route is Watchtower -> Basement -> Blackguard."
+ },
+ {
+  "type": "lore",
+  "name": "old_royal_banner",
+  "tile_x": 41,
+  "tile_y": 25,
+  "x": 664,
+  "y": 416,
+  "note": "Old royal banner bearing the same symbol as Kael's pendant (symbol design is still Open)."
+ },
+ {
+  "type": "treasure",
+  "name": "watchtower_chest_key",
+  "tile_x": 46,
+  "tile_y": 23,
+  "x": 744,
+  "y": 384,
+  "loot": [
+   "Watchtower Key"
+  ],
+  "note": "Key for locked doors."
+ },
+ {
+  "type": "treasure",
+  "name": "watchtower_chest_2",
+  "tile_x": 12,
+  "tile_y": 34,
+  "x": 200,
+  "y": 560,
+  "loot": [
+   "placeholder"
+  ]
+ },
+ {
+  "type": "treasure",
+  "name": "watchtower_chest_3",
+  "tile_x": 30,
+  "tile_y": 16,
+  "x": 488,
+  "y": 272,
+  "loot": [
+   "placeholder"
+  ]
+ },
+ {
+  "type": "trap",
+  "name": "spike_trap_1",
+  "tile_x": 30,
+  "tile_y": 30,
+  "x": 488,
+  "y": 496,
+  "note": "Trap placeholder."
+ },
+ {
+  "type": "trap",
+  "name": "spike_trap_2",
+  "tile_x": 37,
+  "tile_y": 37,
+  "x": 600,
+  "y": 608,
+  "note": "Trap placeholder."
+ },
+ {
+  "type": "enemy_spawn",
+  "name": "fallen_knight_1",
+  "tile_x": 22,
+  "tile_y": 33,
+  "x": 360,
+  "y": 544,
+  "enemy_id": "fallen_knight",
+  "encounter_id": "zone01_watchtower_fallen_knight_1",
+  "group_size": 1
+ },
+ {
+  "type": "enemy_spawn",
+  "name": "fallen_knight_2",
+  "tile_x": 43,
+  "tile_y": 36,
+  "x": 696,
+  "y": 592,
+  "enemy_id": "fallen_knight",
+  "encounter_id": "zone01_watchtower_fallen_knight_2",
+  "group_size": 1
+ },
+ {
+  "type": "enemy_spawn",
+  "name": "fallen_knight_terrace",
+  "tile_x": 40,
+  "tile_y": 17,
+  "x": 648,
+  "y": 288,
+  "enemy_id": "fallen_knight",
+  "encounter_id": "zone01_watchtower_fallen_knight_terrace",
+  "group_size": 1
+ },
+ {
+  "type": "boss_spawn",
+  "name": "blackguard",
+  "tile_x": 29,
+  "tile_y": 6,
+  "x": 472,
+  "y": 112,
+  "enemy_id": "blackguard",
+  "fallback_enemy_id": "fallen_knight",
+  "encounter_id": "zone01_boss_blackguard",
+  "facing": "down",
+  "note": "Zone 1 boss. Intro/defeat dialogue in the story bible."
+ },
+ {
+  "type": "story",
+  "name": "crownveil_door",
+  "tile_x": 29,
+  "tile_y": 2,
+  "x": 472,
+  "y": 48,
+  "requires": "blackguard_defeated",
+  "note": "Sealed stone door; the pendant reacts. Chapter 1 ends here."
+ },
+ {
+  "type": "encounter_zone",
+  "name": "zone01_watchtower",
+  "tile_x": 8,
+  "tile_y": 14,
+  "x": 136,
+  "y": 240,
+  "table_id": "zone01_watchtower",
+  "fallback_table_id": "zone01_path",
+  "rect_px": [
+   128,
+   352,
+   832,
+   656
+  ],
+  "enemies": "Fallen Knights, Grave Spiders, Hollow Soldiers, Ashbound Hunter",
+  "levels": "4-7"
+ },
+ {
+  "type": "sign",
+  "name": "sign_grounds",
+  "tile_x": 33,
+  "tile_y": 40,
+  "x": 536,
+  "y": 656,
+  "text": "By order of the Crown: no entry."
+ }
+]

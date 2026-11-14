@@ -40,7 +40,7 @@ Setup per game/rooms/ROOM_SETUP.md. Controls: arrows move, Z/Enter/Space confirm
 - [ ] B7 HP never shows below 0 or above max for enemy or party.
 - [ ] B8 Victory: message shows XP/gold; gold increases once; each party member's `xp` increases by the reward once (Kael is also mirrored in `global.game.xp`); return to the exact pre-battle position and facing.
 - [ ] B9 After victory the trigger is gone, and stays gone after a second battle elsewhere (cleared_encounters).
-- [ ] B10 Defeat (e.g. set Kael's attack to 0 in scr_party_create_default, or fight Fallen Knight while guarding only): battle shows "The party has fallen..."; after confirm, the party appears in `TOWN_RESPAWN_ROOM` (`rm_overworld` until a town room exists) at `obj_respawn_point` if one is placed, otherwise at `TOWN_RESPAWN_X` / `TOWN_RESPAWN_Y` (320, 180) — not at the pre-battle position. Party HP is full. A placeholder wake-up dialogue opens (wake-up line, then "You lost X gold and Y EXP."); closing it returns overworld control. The same confirm that dismissed the defeat message must not also close the wake-up line.
+- [ ] B10 Defeat (e.g. set Kael's attack to 0 in scr_party_create_default, or fight Fallen Knight while guarding only): battle shows "The party has fallen..."; after confirm, the party appears in `TOWN_RESPAWN_ROOM` (`rm_overworld` until a town room exists) at `obj_respawn_point` if one is placed, otherwise at `TOWN_RESPAWN_X` / `TOWN_RESPAWN_Y` (2984, 2752, Greyhaven `player_start`) — not at the pre-battle position. Party HP is full. A placeholder wake-up dialogue opens (wake-up line, then "You lost X gold and Y EXP."); closing it returns overworld control. The same confirm that dismissed the defeat message must not also close the wake-up line.
 - [ ] B11 No input works in the overworld during the frame of return from a victory (holding Z does not open dialogue instantly). After a defeat, the wake-up box is already open; holding Z must not skip or instantly close it if that press was the battle confirm (see B10).
 - [ ] B12 Unknown enemy: set a trigger's `enemy_id = "nope"` → error message, safe return, game keeps running, no crash.
 - [ ] B13 Running rm_battle_test directly (no pending battle) fights a Bandit and logs "[battle] No pending battle".
@@ -68,6 +68,20 @@ XP curve: total XP to be level L is `20*(L-1)^2 + 10*(L-1)` (L2=30, L3=100, L4=2
 - [ ] P6 A third and fourth placeholder member still fit the battle HUD (four rows) and command order; a fifth cannot be added (`scr_party_add_member` returns false).
 - [ ] P7 At `PARTY_MAX_LEVEL` (20), further XP does not raise the level or stats; XP stays at the level-20 floor (7410).
 - [ ] P8 `global.game.inventory` starts empty and equipment slots are empty strings; they do not affect combat yet.
+
+
+## Zone 1 overworld and Old Watchtower (map delivery; untested in GameMaker)
+Setup per `game/rooms/ROOM_SETUP.md` sections 4–6 (tileset `ts_zone1`, Included Files, room sizes, Creation Code, camera). Greyhaven is safe (no encounter zone). Default farmlands / road / camp / watchtower tables use only enemies already in `scr_get_enemy_data()`.
+- [ ] Z1 `rm_overworld` is 6400×4800, loads without a crash, and draws terrain (not an empty room). First-load time is logged (`scr_build_overworld: … ms`). If the `.bin` files are missing, the chunk fallback still draws the map, or the debug log names the missing files.
+- [ ] Z2 The camera follows the player and stops at the room edges. Starting position is Varyn House in Greyhaven (2984, 2752, facing down).
+- [ ] Z3 Collision: the player cannot walk through palisades, water, or other Collision-tile solids; roads and Greyhaven streets are walkable. Tree canopy / gate arches on the Overhead layer draw above the player.
+- [ ] Z4 Greyhaven itself never starts a random encounter, even after many steps. Walking the Farmlands, Old Road, or bandit-camp zones (after grace) can start a fight from that zone's table. Victory returns to the exact pre-battle position; the zone remains.
+- [ ] Z5 Fixed triggers still work: `first_bandit` (tutorial) and the bandit camp / road spawns start their `encounter_id` once per victory (`cleared_encounters`). The Blackguard trigger in the Watchtower arena starts a **Blackguard** fight (not a silent Fallen Knight fallback); stats are placeholders.
+- [ ] Z6 Signs and placeholders can be inspected: Greyhaven / bridge / Watchtower signs (placeholder wording), Mira's pendant marker, Tomas Varyn (placement is a suggestion), old hunter Renn, chests (loot is not granted yet), the old royal banner (symbol still Open), and the Crownveil door / basement stairs (stub lines).
+- [ ] Z7 Walking into the Old Watchtower entrance goes to `rm_old_watchtower` at `from_overworld`. The south exit returns to the overworld door. Other entrances (Valemere, Frostwilds settlement, coastal village, Crownveil breach, basement, …) show `[rm_… is not built yet.]` and do not crash.
+- [ ] Z8 Defeat in a Zone 1 or Watchtower fight still wakes the party at Greyhaven (respawn point or 2984, 2752) with HP restored and the gold/XP penalty, not at the pre-battle tile.
+- [ ] Z9 Locked terrace stairs are a blocking placeholder until the basement exists; they should not already lead into the Blackguard arena as a free shortcut (if they do, that is a known gap — the marker has `requires: watchtower_basement_cleared` but no flag system is on this branch).
+- [ ] Z10 After a victory in the overworld, Room Start restores the saved position and facing (map `player_start` must not win over the return point). After going through an entrance, `global.map_spawn_name` is honoured.
 
 ## Menus and saves
 - [ ] Selection and cancel/back work.
