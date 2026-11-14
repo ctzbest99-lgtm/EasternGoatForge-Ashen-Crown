@@ -75,11 +75,11 @@ This act gathers the party, plants Alden as a friend, and gives the player one r
 
 ## 3. Chapter map
 
-Act I was a single chapter (Chapter 1, "The Night of Ash"). **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Act II is four chapters (Chapters 2–5), one recruit and one chapter boss each, ending on the road to the Blackwood. Chapter titles and suggested levels stay **[PROPOSED]**.
+Act I was a single chapter (Chapter 1, "The Night of Ash"). **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Act II is four chapters (Chapters 2–5), one recruit and one chapter boss each, ending on the road to the Blackwood. Chapter 2's title, **The Weight of the Yoke**, is **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Titles for Chapters 3–5 and all suggested levels stay **[PROPOSED]**.
 
 | Chapter | Title **[PROPOSED]** | Main locations | Recruit | Boss | Suggested levels **[PROPOSED]** |
 |---|---|---|---|---|---|
-| 2 | The Weight of the Yoke | Road from the Watchtower; optional return to Greyhaven; **Wrenfield** **[C-confirmed]** | Taren Holt | **Reeve Calder**, Crown occupation officer **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) | 8–10 |
+| 2 | The Weight of the Yoke **[C-confirmed]** | Road from the Watchtower; optional return to Greyhaven; **Wrenfield** **[C-confirmed]** | Taren Holt | **Reeve Calder**, Crown occupation officer **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) | 8–10 |
 | 3 | Crowns and Alleys | Road to the capital; **Valemere** (Lower City as the story focus; other districts as hub) | Lyra Veyne | A Lower City enforcer tied to the stolen document, not a named Black Hand leader **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Working name **the Debtman** is still **[PROPOSED]**. | 10–13 |
 | 4 | The Old Name | Countryside a day's travel from Valemere; **the Hollow Sanctuary** **[C-confirmed]** | Caelan Rook | An ancient sanctuary guardian-construct **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Working name **the Sanctuary Warden** is still **[PROPOSED]**. | 13–16 |
 | 5 | The Deserted Oath | **The Blackwood Road Garrison** **[C-confirmed]** | Sera Thorn | **Commander Hailen**, the garrison's commanding officer **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) | 16–18 |
