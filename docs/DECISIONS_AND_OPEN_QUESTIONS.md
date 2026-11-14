@@ -43,6 +43,44 @@ These were chosen so roadmap step 5 (menus/saves) could start. None is a locked 
 - PLACEHOLDER prices: Minor Potion 15g (heals 15 HP), Antidote 20g, Iron Sword 80g (ATK +3, longsword), Leather Armor 60g (DEF +2), Iron Helm 40g (accessory, DEF +1). No prices appear in CHAPTER1_SCRIPT.md or STORY_BIBLE.md.
 - Inventory (I / Tab): use Minor Potion; Antidote cures an overworld `poisoned` flag (battle poison does not exist yet, so it usually reports no effect). Equipment can be worn from this menu. Dedicated shop / save / inventory art will land later in `/workspace/sprites/ui/menus/`; menus look up those sprite names first and fall back to the nine-slice windows, font, cursor, and item icons. Layout constants are centralized in `scr_menu_layout.gml`.
 
+## Enemy batches 7–8 (feature/enemy-batches-7-8; pending owner approval)
+Design batch 7 (Wrenfield elite, Lower City, Hollow Sanctuary, Blackwood Road Garrison) and batch 8 (Act III, the Blackwood) are in the enemy database with sprites and encounter tables. No rooms or story beats use them yet. **Everything below is a PLACEHOLDER.**
+- **Stats come from a template** (`scr_enemy_scaled(id, …, role, level, party, extra)`), calibrated so a level-9 common matches the balance-pass Chapter 2 regulars and grows like the tiered party growth. Elite: ×2 HP, +2 ATK / DEF, ×2.5 XP. Boss: HP × 1.5 × expected party size, +3 ATK / DEF, ×8 XP. Per-enemy tweaks: Cutpurse ×0.8 HP; Wisp ×0.75 HP; Surgeon ×0.8 HP; Briar Hulk ×1.4 HP; Moths ×0.7 HP; Ward Sentinel and Door Warden +3 DEF. SPD is set per enemy.
+- **Levels** use ACT2_OUTLINE's PROPOSED bands: Lower City (Ch 3) 10–13, Hollow Sanctuary (Ch 4) 13–16, Garrison (Ch 5) 16–18. The Blackwood (Act III) is 18–20, which is my placeholder. **Open:** `PARTY_MAX_LEVEL` is 20, so Act III will need a higher cap.
+- **Expected party sizes for bosses:** Debtman 3 (after Lyra); Sanctuary Warden, Commander Hailen and the Matriarch 4.
+- **Template check** (Kael at the enemy's level, still in Chapter 2 gear, so later gear makes these easier):
+
+| Enemy level | Role | HP / ATK / DEF | Kael hits to kill (same level, Ch2 gear) | Damage to Kael per hit |
+|---|---|---|---|---|
+| 11 | common | 58 / 17 / 15 | 4 | 8 of 94 HP |
+| 11 | elite | 116 / 19 / 17 | 7 | 10 of 94 HP |
+| 11 | boss (party 4) | 348 / 20 / 18 | 22 | 11 of 94 HP |
+| 14 | common | 79 / 23 / 21 | 4 | 11 of 124 HP |
+| 14 | elite | 158 / 25 / 23 | 8 | 13 of 124 HP |
+| 14 | boss (party 4) | 474 / 26 / 24 | 25 | 14 of 124 HP |
+| 17 | common | 100 / 29 / 27 | 5 | 14 of 154 HP |
+| 17 | elite | 200 / 31 / 29 | 9 | 16 of 154 HP |
+| 17 | boss (party 4) | 600 / 32 / 30 | 28 | 17 of 154 HP |
+| 19 | common | 114 / 33 / 31 | 5 | 16 of 174 HP |
+| 19 | elite | 228 / 35 / 33 | 10 | 18 of 174 HP |
+| 19 | boss (party 4) | 684 / 36 / 34 | 29 | 19 of 174 HP |
+
+- **New kit mechanics:**
+  - **Steal** (Cutpurse): 60% damage plus 8–20 shared gold. A beaten Cutpurse returns what it took at victory.
+  - **Heal ally** (Field Surgeon): 30 HP to the most-hurt ally, only while some ally is below 60% HP.
+  - **Buffer elite** (Crown Sergeant Rally): +20% ATK to his side for 3 rounds, only with allies.
+  - **Two-phase bosses** (Sanctuary Warden, Blackwood Matriarch): the shift happens at 50% HP and plays `trans`, then `idle_p2` / `attack_p2`. Warden +20% ATK; Matriarch +25% ATK and +20% SPD. Their phase lines are mine.
+  - **Yield-or-death** (Commander Hailen): he yields only if `flag_hailen_yields` is set (no story sets it yet). Otherwise he dies. A yield sets `flag_hailen_yielded`.
+  - **Blind** (70%, 3 rounds): physical attacks miss 50% of the time.
+  - **Sleep** (50%, 2 rounds): the turn is skipped, any damage wakes, and sleeping does not count as taking a turn for XP.
+  - Moth dust and the wisp mote fly on cast frame 3. Blind and sleep show as "Bl" / "Sl" in the party window, because the status strip has no frames for them.
+  - **Shade Stalker Fade:** for the rest of the round, physical attacks against it miss; drawn at 40% alpha.
+  - **Calder idle_p2:** the stance plays once, then `idle_p2` loops (already in place).
+- **Boss groups (from Design's mockups):** Debtman + Dock Thug; Warden + Ward Sentinel; Hailen + Garrison Pikeman; Matriarch + Shade Stalker. The Crown Sergeant also appears in the Wrenfield table.
+- **blackwood_matriarch is a PLACEHOLDER boss** (Design's proposal, not canon); its name, role and kit wait on Kevin. **lost_one** is a revise-friendly id; its concept may change.
+- **Weaknesses** (placeholders): Crown / Garrison troops lightning; Aethari constructs lightning; Briar Hulk and Moths fire; Shade Stalker, Lost One and Matriarch holy. No party skill has an element yet.
+- **Open:** Design still needs status icons for blind and sleep.
+
 ## Balance pass (feature/balance-pass; pending owner approval)
 Every number here is a PLACEHOLDER chosen with `tools/balance_sim.py` (run `python3 tools/balance_sim.py`; it mirrors the GML damage formula, Guard, buffs, SPD order, and enemy AI weights). Targets from the brief: Act II winnable at levels 8–10, Reeve Calder ≈ 8–15 party turns, Occupation Soldiers ≈ 3–5 hits, Chapter 1 unchanged.
 - **Party growth is tiered.** Level-ups into levels 2–7 keep the Chapter 1 numbers (+4 HP, +1 ATK, +1 DEF, +2 MP, +1 SPD, +1 MDEF). Level-ups into level 8 and above give +10 HP, +2 ATK, +2 DEF, +3 MP, +1 SPD, +1 MDEF (`LEVEL_UP_TIER_LEVEL`, `LEVEL_UP_*_GROWTH_HIGH`). Chapter 1 is levels 1–7, so its numbers and the Blackguard fight are unchanged. Old saves keep their stored HP / ATK / DEF; their MP / SPD / MDEF use the tiered totals.

@@ -16,6 +16,10 @@
 ///   verb            — message text after the user's name, e.g. "braces!"
 ///   cond            — AI-only gate: "" | "has_allies" (needs another living member on its side) | "no_def_buff"
 ///   fx_frame        — attack frame (0-based) that spawns the projectile; -1 = spawn when the hit lands
+///   projectile      — optional sprite name flown from user to target (e.g. moth dust), with projectile_frames
+///   status          — "status" effect: status id ("blind" | "sleep" | "veiled" ...), status_turns, status_chance
+///   steal_min / _max — "steal" effect: damage plus this much shared gold (returned if the thief is beaten)
+///   (effects added for batches 7–8: "status", "steal"; target "ally_lowest" = most-hurt living ally)
 ///   placeholder     — true when any number is not approved (all of them, for now)
 ///   desc            — one-line help text for the Skill menu
 ///
@@ -40,6 +44,13 @@ function scr_skill_make(_id, _name, _mp, _target, _effect, _power = 1, _anim = "
         verb: _verb,
         cond: "",
         fx_frame: -1,
+        projectile: "",
+        projectile_frames: 1,
+        status: "",
+        status_turns: 0,
+        status_chance: 1,
+        steal_min: 0,
+        steal_max: 0,
         placeholder: true,
         desc: ""
     };
@@ -125,6 +136,67 @@ function scr_skill_build(_skill_id) {
             _s.buffs = [{ stat: "atk", pct: 0.25, turns: 3 }];
             _s.cond = "has_allies";
             return _s;
+
+        // ---- Batch 7 kits (Wrenfield elite, Lower City, Hollow Sanctuary, Garrison) — PLACEHOLDER --
+        case "sergeant_rally": // crown_sergeant: rally that buffs allies (cast clip)
+            _s = scr_skill_make("sergeant_rally", "Rally", 0, "all_allies", "buff", 0, "cast", "rallies the line! (ATK up)");
+            _s.buffs = [{ stat: "atk", pct: 0.2, turns: 3 }];
+            _s.cond = "has_allies";
+            return _s;
+        case "cutpurse_steal": // cutpurse: light hit + steals shared gold
+            _s = scr_skill_make("cutpurse_steal", "Steal", 0, "single", "steal", 0.6, "steal", "");
+            _s.steal_min = 8;
+            _s.steal_max = 20;
+            return _s;
+        case "debtman_reel": // debtman: hook reel / yank
+            return scr_skill_make("debtman_reel", "Hook Reel", 0, "single", "damage", 1.25, "reel", "");
+        case "wisp_mote": // glyph_wisp: light mote (magic), mote spawns on cast frame 3
+            _s = scr_skill_make("wisp_mote", "Mote", 0, "single", "damage", 1.1, "cast", "");
+            _s.dmg_type = "mag";
+            _s.fx_frame = 3;
+            _s.projectile = "spr_glyph_wisp_mote_strip3";
+            _s.projectile_frames = 3;
+            return _s;
+        case "warden_ring": // sanctuary_warden: ring pulse, hits everyone
+            _s = scr_skill_make("warden_ring", "Ring Pulse", 0, "all", "damage", 0.7, "special", "");
+            _s.dmg_type = "mag";
+            return _s;
+        case "surgeon_heal": // garrison_field_surgeon: heals the most-hurt ally (sage pulse)
+            _s = scr_skill_make("surgeon_heal", "Field Dressing", 0, "ally_lowest", "heal", 30, "cast", "dresses a wound!");
+            _s.cond = "ally_hurt";
+            return _s;
+        case "pike_thrust": // garrison_pikeman
+            return scr_skill_make("pike_thrust", "Pike Thrust", 0, "single", "damage", 1.2, "attack", "");
+        case "hailen_glint": // commander_hailen: blessed-steel glint (white / steel only)
+            return scr_skill_make("hailen_glint", "Steel Glint", 0, "single", "damage", 1.4, "special", "");
+
+        // ---- Batch 8 kits (Act III, the Blackwood) — PLACEHOLDER ---------------------------
+        case "shade_fade": // shade_stalker: fades out; attacks miss it until the next round
+            _s = scr_skill_make("shade_fade", "Fade", 0, "self", "status", 0, "special", "fades into the dark!");
+            _s.status = "veiled";
+            _s.status_turns = 1;
+            _s.cond = "not_veiled";
+            return _s;
+        case "moth_blind": // night_moth_swarm: blinding dust (dust spawns on cast frame 3)
+            _s = scr_skill_make("moth_blind", "Blinding Dust", 0, "single", "status", 0, "cast", "");
+            _s.status = "blind";
+            _s.status_turns = 3;
+            _s.status_chance = 0.7;
+            _s.fx_frame = 3;
+            _s.projectile = "spr_night_moth_swarm_dust_strip4";
+            _s.projectile_frames = 4;
+            return _s;
+        case "moth_sleep": // night_moth_swarm: sleeping dust
+            _s = scr_skill_make("moth_sleep", "Drowsy Dust", 0, "single", "status", 0, "cast", "");
+            _s.status = "sleep";
+            _s.status_turns = 2;
+            _s.status_chance = 0.5;
+            _s.fx_frame = 3;
+            _s.projectile = "spr_night_moth_swarm_dust_strip4";
+            _s.projectile_frames = 4;
+            return _s;
+        case "matriarch_breath": // blackwood_matriarch: ash-breath / bellow, hits everyone
+            return scr_skill_make("matriarch_breath", "Ash Breath", 0, "all", "damage", 0.8, "special", "");
     }
     show_debug_message("[skill] Unknown skill id '" + string(_skill_id) + "'; using Attack.");
     return scr_skill_build("attack");
@@ -154,5 +226,5 @@ function scr_skill_can_afford(_actor, _skill_id) {
 /// True when the skill needs the player to pick a target (single opponent or one ally).
 function scr_skill_needs_target(_skill_id) {
     var _t = scr_skill_get(_skill_id).target;
-    return (_t == "single" || _t == "ally");
+    return (_t == "single" || _t == "ally"); // "ally_lowest" is AI-only (picked automatically)
 }

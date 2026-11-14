@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-11-14 — Enemy batches 7–8 (`feature/enemy-batches-7-8`)
+- Stacked on the balance pass (`feature/balance-pass`). Adds 19 enemies from Design batch 7 (Wrenfield elite, Lower City, Hollow Sanctuary, Garrison) and batch 8 (the Blackwood), with sprites, IMPORT.md sections, four new battle backgrounds, and encounter tables (`valemere_lower_city`, `hollow_sanctuary`, `blackwood_garrison`, `blackwood`, boss groups). Data only: no rooms use them yet.
+- Generic kit support:
+  - steal gold; heal the most-hurt ally; ally-buff rally;
+  - two-phase bosses with `trans` → `idle_p2` / `attack_p2`;
+  - yield-or-death on a story flag;
+  - blind and sleep statuses with durations; Shade Stalker Fade (attacks miss);
+  - skill projectiles on a cast frame.
+- Generic battle sprite lookup by name (`scr_battle_auto_strip`), so new enemy strips need no code.
+- Stats use a placeholder level / role template (`scr_enemy_scaled`). `blackwood_matriarch` is a placeholder boss and `lost_one` may be revised.
+- Nothing has been compiled or playtested in GameMaker.
+
 ## 2026-11-14 — Balance pass (`feature/balance-pass`)
 - Act II is tuned for levels 8–10 with `tools/balance_sim.py`. The simulation table and every placeholder are in `docs/DECISIONS_AND_OPEN_QUESTIONS.md` ("Balance pass").
 - Tiered growth: level-ups into 8+ give +10 HP / +2 ATK / +2 DEF / +3 MP. Levels 2–7 (Chapter 1) are unchanged.

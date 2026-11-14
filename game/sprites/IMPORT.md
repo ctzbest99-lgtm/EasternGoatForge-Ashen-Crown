@@ -465,6 +465,228 @@ Not wired to an object yet (the Wrenfield rooms do not exist). Names follow the 
 | `spr_portrait_reeve_calder_stern` | `portraits/reeve_calder/spr_portrait_reeve_calder_stern.png` | 1 | 48×48 | (0, 0) | full image | 0 |
 | `spr_portrait_reeve_calder_weary` | `portraits/reeve_calder/spr_portrait_reeve_calder_weary.png` | 1 | 48×48 | (0, 0) | full image | 0 |
 
+### Act II enemies, batch 7: Wrenfield elite, Lower City, Hollow Sanctuary, Garrison (feature/enemy-batches-7-8)
+Design batch 7 (`/workspace/sprites/README.md`, "batch 7"). All face right. Commons are 32×48 with origin (16, 47); their 48×48 attack / steal frames use (24, 47) and 48×48 death frames use (16, 47). The Debtman and Commander Hailen are 48×64 with origin (24, 63); their 96×64 attack / reel / special frames use (40, 63), and Hailen's 96×64 death keeps (24, 63) under the standing feet. The Sanctuary Warden is 96×96 with origin (48, 95). The wisp mote is 16×16 with origin (8, 8) (centre). Masks are the idle bbox (measured), shifted on wider frames so the box stays on the body.
+- **No per-sprite code is needed.** These kinds are resolved by name (`scr_battle_auto_strip`: any `_stripN`, and `<anim>_p2` first in phase 2). A missing import draws a rectangle and never blocks a turn.
+- Two-phase bosses (Sanctuary Warden): `trans` plays once at the shift, then `idle_p2` / `attack_p2` loop.
+- Commander Hailen: `yield` holds its last frame if he yields (`flag_hailen_yields` set); otherwise `death` plays.
+- Do not import `*_preview.*` / GIFs or the 4× frame sheets (not copied).
+- `crown_sergeant` here is the **battle elite**. The Chapter 2 gate NPC is the separate `npcs/crown_sergeant_gate/` set.
+
+| Asset name | File | Frames | Frame size | Origin | Mask (L,T,R,B) | FPS |
+|---|---|---|---|---|---|---|
+| `spr_crown_sergeant_attack_strip6` | `enemies/crown_sergeant/spr_crown_sergeant_attack_strip6.png` | 6 | 48×48 | (24, 47) | 16, 6, 38, 47 | 10 |
+| `spr_crown_sergeant_cast_strip6` | `enemies/crown_sergeant/spr_crown_sergeant_cast_strip6.png` | 6 | 32×48 | (16, 47) | 8, 6, 30, 47 | 8 |
+| `spr_crown_sergeant_death_strip6` | `enemies/crown_sergeant/spr_crown_sergeant_death_strip6.png` | 6 | 48×48 | (16, 47) | 8, 6, 30, 47 | 8 |
+| `spr_crown_sergeant_hurt_strip3` | `enemies/crown_sergeant/spr_crown_sergeant_hurt_strip3.png` | 3 | 32×48 | (16, 47) | 8, 6, 30, 47 | 12 |
+| `spr_crown_sergeant_idle_strip4` | `enemies/crown_sergeant/spr_crown_sergeant_idle_strip4.png` | 4 | 32×48 | (16, 47) | 8, 6, 30, 47 | 6 |
+| `spr_crown_sergeant_walk_strip4` | `enemies/crown_sergeant/spr_crown_sergeant_walk_strip4.png` | 4 | 32×48 | (16, 47) | 8, 6, 30, 47 | 8 |
+| `spr_dock_thug_attack_strip6` | `enemies/dock_thug/spr_dock_thug_attack_strip6.png` | 6 | 48×48 | (24, 47) | 16, 7, 39, 47 | 10 |
+| `spr_dock_thug_death_strip6` | `enemies/dock_thug/spr_dock_thug_death_strip6.png` | 6 | 48×48 | (16, 47) | 8, 7, 31, 47 | 8 |
+| `spr_dock_thug_hurt_strip3` | `enemies/dock_thug/spr_dock_thug_hurt_strip3.png` | 3 | 32×48 | (16, 47) | 8, 7, 31, 47 | 12 |
+| `spr_dock_thug_idle_strip4` | `enemies/dock_thug/spr_dock_thug_idle_strip4.png` | 4 | 32×48 | (16, 47) | 8, 7, 31, 47 | 6 |
+| `spr_dock_thug_walk_strip4` | `enemies/dock_thug/spr_dock_thug_walk_strip4.png` | 4 | 32×48 | (16, 47) | 8, 7, 31, 47 | 8 |
+| `spr_cutpurse_attack_strip6` | `enemies/cutpurse/spr_cutpurse_attack_strip6.png` | 6 | 48×48 | (24, 47) | 14, 8, 37, 47 | 10 |
+| `spr_cutpurse_death_strip6` | `enemies/cutpurse/spr_cutpurse_death_strip6.png` | 6 | 48×48 | (16, 47) | 6, 8, 29, 47 | 8 |
+| `spr_cutpurse_hurt_strip3` | `enemies/cutpurse/spr_cutpurse_hurt_strip3.png` | 3 | 32×48 | (16, 47) | 6, 8, 29, 47 | 12 |
+| `spr_cutpurse_idle_strip4` | `enemies/cutpurse/spr_cutpurse_idle_strip4.png` | 4 | 32×48 | (16, 47) | 6, 8, 29, 47 | 6 |
+| `spr_cutpurse_steal_strip6` | `enemies/cutpurse/spr_cutpurse_steal_strip6.png` | 6 | 48×48 | (24, 47) | 14, 8, 37, 47 | 8 |
+| `spr_cutpurse_walk_strip4` | `enemies/cutpurse/spr_cutpurse_walk_strip4.png` | 4 | 32×48 | (16, 47) | 6, 8, 29, 47 | 8 |
+| `spr_debt_collector_attack_strip6` | `enemies/debt_collector/spr_debt_collector_attack_strip6.png` | 6 | 48×48 | (24, 47) | 16, 7, 37, 47 | 10 |
+| `spr_debt_collector_death_strip6` | `enemies/debt_collector/spr_debt_collector_death_strip6.png` | 6 | 48×48 | (16, 47) | 8, 7, 29, 47 | 8 |
+| `spr_debt_collector_hurt_strip3` | `enemies/debt_collector/spr_debt_collector_hurt_strip3.png` | 3 | 32×48 | (16, 47) | 8, 7, 29, 47 | 12 |
+| `spr_debt_collector_idle_strip4` | `enemies/debt_collector/spr_debt_collector_idle_strip4.png` | 4 | 32×48 | (16, 47) | 8, 7, 29, 47 | 6 |
+| `spr_debt_collector_walk_strip4` | `enemies/debt_collector/spr_debt_collector_walk_strip4.png` | 4 | 32×48 | (16, 47) | 8, 7, 29, 47 | 8 |
+| `spr_debtman_attack_strip6` | `enemies/debtman/spr_debtman_attack_strip6.png` | 6 | 96×64 | (40, 63) | 22, 4, 59, 63 | 10 |
+| `spr_debtman_death_strip7` | `enemies/debtman/spr_debtman_death_strip7.png` | 7 | 48×64 | (24, 63) | 6, 4, 43, 63 | 8 |
+| `spr_debtman_hurt_strip4` | `enemies/debtman/spr_debtman_hurt_strip4.png` | 4 | 48×64 | (24, 63) | 6, 4, 43, 63 | 12 |
+| `spr_debtman_idle_strip8` | `enemies/debtman/spr_debtman_idle_strip8.png` | 8 | 48×64 | (24, 63) | 6, 4, 43, 63 | 6 |
+| `spr_debtman_reel_strip6` | `enemies/debtman/spr_debtman_reel_strip6.png` | 6 | 96×64 | (40, 63) | 22, 4, 59, 63 | 10 |
+| `spr_debtman_walk_strip8` | `enemies/debtman/spr_debtman_walk_strip8.png` | 8 | 48×64 | (24, 63) | 6, 4, 43, 63 | 8 |
+| `spr_ward_sentinel_attack_strip6` | `enemies/ward_sentinel/spr_ward_sentinel_attack_strip6.png` | 6 | 32×48 | (16, 47) | 7, 6, 25, 47 | 10 |
+| `spr_ward_sentinel_death_strip6` | `enemies/ward_sentinel/spr_ward_sentinel_death_strip6.png` | 6 | 48×48 | (16, 47) | 7, 6, 25, 47 | 8 |
+| `spr_ward_sentinel_hurt_strip3` | `enemies/ward_sentinel/spr_ward_sentinel_hurt_strip3.png` | 3 | 32×48 | (16, 47) | 7, 6, 25, 47 | 12 |
+| `spr_ward_sentinel_idle_strip4` | `enemies/ward_sentinel/spr_ward_sentinel_idle_strip4.png` | 4 | 32×48 | (16, 47) | 7, 6, 25, 47 | 6 |
+| `spr_glyph_wisp_attack_strip6` | `enemies/glyph_wisp/spr_glyph_wisp_attack_strip6.png` | 6 | 32×48 | (16, 47) | 8, 13, 25, 47 | 10 |
+| `spr_glyph_wisp_cast_strip6` | `enemies/glyph_wisp/spr_glyph_wisp_cast_strip6.png` | 6 | 32×48 | (16, 47) | 8, 13, 25, 47 | 8 |
+| `spr_glyph_wisp_death_strip6` | `enemies/glyph_wisp/spr_glyph_wisp_death_strip6.png` | 6 | 48×48 | (16, 47) | 8, 13, 25, 47 | 8 |
+| `spr_glyph_wisp_hurt_strip3` | `enemies/glyph_wisp/spr_glyph_wisp_hurt_strip3.png` | 3 | 32×48 | (16, 47) | 8, 13, 25, 47 | 12 |
+| `spr_glyph_wisp_idle_strip4` | `enemies/glyph_wisp/spr_glyph_wisp_idle_strip4.png` | 4 | 32×48 | (16, 47) | 8, 13, 25, 47 | 6 |
+| `spr_glyph_wisp_mote_strip3` | `enemies/glyph_wisp/spr_glyph_wisp_mote_strip3.png` | 3 | 16×16 | (8, 8) | full image | 10 |
+| `spr_aethari_automaton_attack_strip6` | `enemies/aethari_automaton/spr_aethari_automaton_attack_strip6.png` | 6 | 48×48 | (24, 47) | 16, 6, 35, 47 | 10 |
+| `spr_aethari_automaton_death_strip6` | `enemies/aethari_automaton/spr_aethari_automaton_death_strip6.png` | 6 | 48×48 | (16, 47) | 8, 6, 27, 47 | 8 |
+| `spr_aethari_automaton_hurt_strip3` | `enemies/aethari_automaton/spr_aethari_automaton_hurt_strip3.png` | 3 | 32×48 | (16, 47) | 8, 6, 27, 47 | 12 |
+| `spr_aethari_automaton_idle_strip4` | `enemies/aethari_automaton/spr_aethari_automaton_idle_strip4.png` | 4 | 32×48 | (16, 47) | 8, 6, 27, 47 | 6 |
+| `spr_aethari_automaton_walk_strip4` | `enemies/aethari_automaton/spr_aethari_automaton_walk_strip4.png` | 4 | 32×48 | (16, 47) | 8, 6, 27, 47 | 8 |
+| `spr_sanctuary_warden_attack_p2_strip6` | `enemies/sanctuary_warden/spr_sanctuary_warden_attack_p2_strip6.png` | 6 | 96×96 | (48, 95) | 14, 14, 86, 95 | 10 |
+| `spr_sanctuary_warden_attack_strip6` | `enemies/sanctuary_warden/spr_sanctuary_warden_attack_strip6.png` | 6 | 96×96 | (48, 95) | 14, 14, 86, 95 | 10 |
+| `spr_sanctuary_warden_death_strip7` | `enemies/sanctuary_warden/spr_sanctuary_warden_death_strip7.png` | 7 | 96×96 | (48, 95) | 14, 14, 86, 95 | 8 |
+| `spr_sanctuary_warden_hurt_strip4` | `enemies/sanctuary_warden/spr_sanctuary_warden_hurt_strip4.png` | 4 | 96×96 | (48, 95) | 14, 14, 86, 95 | 12 |
+| `spr_sanctuary_warden_idle_p2_strip8` | `enemies/sanctuary_warden/spr_sanctuary_warden_idle_p2_strip8.png` | 8 | 96×96 | (48, 95) | 14, 14, 86, 95 | 6 |
+| `spr_sanctuary_warden_idle_strip8` | `enemies/sanctuary_warden/spr_sanctuary_warden_idle_strip8.png` | 8 | 96×96 | (48, 95) | 14, 14, 86, 95 | 6 |
+| `spr_sanctuary_warden_special_strip6` | `enemies/sanctuary_warden/spr_sanctuary_warden_special_strip6.png` | 6 | 96×96 | (48, 95) | 14, 14, 86, 95 | 8 |
+| `spr_sanctuary_warden_trans_strip6` | `enemies/sanctuary_warden/spr_sanctuary_warden_trans_strip6.png` | 6 | 96×96 | (48, 95) | 14, 14, 86, 95 | 8 |
+| `spr_sanctuary_warden_walk_strip4` | `enemies/sanctuary_warden/spr_sanctuary_warden_walk_strip4.png` | 4 | 96×96 | (48, 95) | 14, 14, 86, 95 | 8 |
+| `spr_garrison_pikeman_attack_strip6` | `enemies/garrison_pikeman/spr_garrison_pikeman_attack_strip6.png` | 6 | 48×48 | (24, 47) | 16, 1, 34, 47 | 10 |
+| `spr_garrison_pikeman_death_strip6` | `enemies/garrison_pikeman/spr_garrison_pikeman_death_strip6.png` | 6 | 48×48 | (16, 47) | 8, 1, 26, 47 | 8 |
+| `spr_garrison_pikeman_hurt_strip3` | `enemies/garrison_pikeman/spr_garrison_pikeman_hurt_strip3.png` | 3 | 32×48 | (16, 47) | 8, 1, 26, 47 | 12 |
+| `spr_garrison_pikeman_idle_strip4` | `enemies/garrison_pikeman/spr_garrison_pikeman_idle_strip4.png` | 4 | 32×48 | (16, 47) | 8, 1, 26, 47 | 6 |
+| `spr_garrison_pikeman_walk_strip4` | `enemies/garrison_pikeman/spr_garrison_pikeman_walk_strip4.png` | 4 | 32×48 | (16, 47) | 8, 1, 26, 47 | 8 |
+| `spr_garrison_field_surgeon_attack_strip6` | `enemies/garrison_field_surgeon/spr_garrison_field_surgeon_attack_strip6.png` | 6 | 48×48 | (24, 47) | 16, 5, 37, 47 | 10 |
+| `spr_garrison_field_surgeon_cast_strip6` | `enemies/garrison_field_surgeon/spr_garrison_field_surgeon_cast_strip6.png` | 6 | 32×48 | (16, 47) | 8, 5, 29, 47 | 8 |
+| `spr_garrison_field_surgeon_death_strip6` | `enemies/garrison_field_surgeon/spr_garrison_field_surgeon_death_strip6.png` | 6 | 48×48 | (16, 47) | 8, 5, 29, 47 | 8 |
+| `spr_garrison_field_surgeon_hurt_strip3` | `enemies/garrison_field_surgeon/spr_garrison_field_surgeon_hurt_strip3.png` | 3 | 32×48 | (16, 47) | 8, 5, 29, 47 | 12 |
+| `spr_garrison_field_surgeon_idle_strip4` | `enemies/garrison_field_surgeon/spr_garrison_field_surgeon_idle_strip4.png` | 4 | 32×48 | (16, 47) | 8, 5, 29, 47 | 6 |
+| `spr_garrison_field_surgeon_walk_strip4` | `enemies/garrison_field_surgeon/spr_garrison_field_surgeon_walk_strip4.png` | 4 | 32×48 | (16, 47) | 8, 5, 29, 47 | 8 |
+| `spr_garrison_knight_attack_strip6` | `enemies/garrison_knight/spr_garrison_knight_attack_strip6.png` | 6 | 48×48 | (24, 47) | 15, 5, 35, 47 | 10 |
+| `spr_garrison_knight_death_strip6` | `enemies/garrison_knight/spr_garrison_knight_death_strip6.png` | 6 | 48×48 | (16, 47) | 7, 5, 27, 47 | 8 |
+| `spr_garrison_knight_hurt_strip3` | `enemies/garrison_knight/spr_garrison_knight_hurt_strip3.png` | 3 | 32×48 | (16, 47) | 7, 5, 27, 47 | 12 |
+| `spr_garrison_knight_idle_strip4` | `enemies/garrison_knight/spr_garrison_knight_idle_strip4.png` | 4 | 32×48 | (16, 47) | 7, 5, 27, 47 | 6 |
+| `spr_garrison_knight_walk_strip4` | `enemies/garrison_knight/spr_garrison_knight_walk_strip4.png` | 4 | 32×48 | (16, 47) | 7, 5, 27, 47 | 8 |
+| `spr_commander_hailen_attack_strip6` | `enemies/commander_hailen/spr_commander_hailen_attack_strip6.png` | 6 | 96×64 | (40, 63) | 21, 5, 63, 63 | 10 |
+| `spr_commander_hailen_death_strip7` | `enemies/commander_hailen/spr_commander_hailen_death_strip7.png` | 7 | 96×64 | (24, 63) | 5, 5, 47, 63 | 8 |
+| `spr_commander_hailen_hurt_strip4` | `enemies/commander_hailen/spr_commander_hailen_hurt_strip4.png` | 4 | 48×64 | (24, 63) | 5, 5, 47, 63 | 12 |
+| `spr_commander_hailen_idle_strip8` | `enemies/commander_hailen/spr_commander_hailen_idle_strip8.png` | 8 | 48×64 | (24, 63) | 5, 5, 47, 63 | 6 |
+| `spr_commander_hailen_special_strip6` | `enemies/commander_hailen/spr_commander_hailen_special_strip6.png` | 6 | 96×64 | (40, 63) | 21, 5, 63, 63 | 8 |
+| `spr_commander_hailen_walk_strip8` | `enemies/commander_hailen/spr_commander_hailen_walk_strip8.png` | 8 | 48×64 | (24, 63) | 5, 5, 47, 63 | 8 |
+| `spr_commander_hailen_yield_strip8` | `enemies/commander_hailen/spr_commander_hailen_yield_strip8.png` | 8 | 48×64 | (24, 63) | 5, 5, 47, 63 | 8 |
+
+#### Batch 7 overworld sets (elites and bosses; 16×24, origin (8, 23))
+Not placed on any map yet.
+
+| Asset name | File | Frames | Frame size | Origin | Mask (L,T,R,B) | FPS |
+|---|---|---|---|---|---|---|
+| `spr_crown_sergeant_ow16_idle_down` | `enemies/crown_sergeant/overworld/spr_crown_sergeant_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_sergeant_ow16_idle_left` | `enemies/crown_sergeant/overworld/spr_crown_sergeant_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_sergeant_ow16_idle_right` | `enemies/crown_sergeant/overworld/spr_crown_sergeant_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_sergeant_ow16_idle_up` | `enemies/crown_sergeant/overworld/spr_crown_sergeant_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_sergeant_ow16_walk_down_strip4` | `enemies/crown_sergeant/overworld/spr_crown_sergeant_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_crown_sergeant_ow16_walk_left_strip4` | `enemies/crown_sergeant/overworld/spr_crown_sergeant_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_crown_sergeant_ow16_walk_right_strip4` | `enemies/crown_sergeant/overworld/spr_crown_sergeant_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_crown_sergeant_ow16_walk_up_strip4` | `enemies/crown_sergeant/overworld/spr_crown_sergeant_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_debt_collector_ow16_idle_down` | `enemies/debt_collector/overworld/spr_debt_collector_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_debt_collector_ow16_idle_left` | `enemies/debt_collector/overworld/spr_debt_collector_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_debt_collector_ow16_idle_right` | `enemies/debt_collector/overworld/spr_debt_collector_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_debt_collector_ow16_idle_up` | `enemies/debt_collector/overworld/spr_debt_collector_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_debt_collector_ow16_walk_down_strip4` | `enemies/debt_collector/overworld/spr_debt_collector_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_debt_collector_ow16_walk_left_strip4` | `enemies/debt_collector/overworld/spr_debt_collector_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_debt_collector_ow16_walk_right_strip4` | `enemies/debt_collector/overworld/spr_debt_collector_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_debt_collector_ow16_walk_up_strip4` | `enemies/debt_collector/overworld/spr_debt_collector_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_debtman_ow16_idle_down` | `enemies/debtman/overworld/spr_debtman_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_debtman_ow16_idle_left` | `enemies/debtman/overworld/spr_debtman_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_debtman_ow16_idle_right` | `enemies/debtman/overworld/spr_debtman_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_debtman_ow16_idle_up` | `enemies/debtman/overworld/spr_debtman_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_debtman_ow16_walk_down_strip4` | `enemies/debtman/overworld/spr_debtman_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_debtman_ow16_walk_left_strip4` | `enemies/debtman/overworld/spr_debtman_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_debtman_ow16_walk_right_strip4` | `enemies/debtman/overworld/spr_debtman_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_debtman_ow16_walk_up_strip4` | `enemies/debtman/overworld/spr_debtman_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_aethari_automaton_ow16_idle_down` | `enemies/aethari_automaton/overworld/spr_aethari_automaton_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_aethari_automaton_ow16_idle_left` | `enemies/aethari_automaton/overworld/spr_aethari_automaton_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_aethari_automaton_ow16_idle_right` | `enemies/aethari_automaton/overworld/spr_aethari_automaton_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_aethari_automaton_ow16_idle_up` | `enemies/aethari_automaton/overworld/spr_aethari_automaton_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_aethari_automaton_ow16_walk_down_strip4` | `enemies/aethari_automaton/overworld/spr_aethari_automaton_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_aethari_automaton_ow16_walk_left_strip4` | `enemies/aethari_automaton/overworld/spr_aethari_automaton_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_aethari_automaton_ow16_walk_right_strip4` | `enemies/aethari_automaton/overworld/spr_aethari_automaton_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_aethari_automaton_ow16_walk_up_strip4` | `enemies/aethari_automaton/overworld/spr_aethari_automaton_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_garrison_knight_ow16_idle_down` | `enemies/garrison_knight/overworld/spr_garrison_knight_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_garrison_knight_ow16_idle_left` | `enemies/garrison_knight/overworld/spr_garrison_knight_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_garrison_knight_ow16_idle_right` | `enemies/garrison_knight/overworld/spr_garrison_knight_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_garrison_knight_ow16_idle_up` | `enemies/garrison_knight/overworld/spr_garrison_knight_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_garrison_knight_ow16_walk_down_strip4` | `enemies/garrison_knight/overworld/spr_garrison_knight_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_garrison_knight_ow16_walk_left_strip4` | `enemies/garrison_knight/overworld/spr_garrison_knight_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_garrison_knight_ow16_walk_right_strip4` | `enemies/garrison_knight/overworld/spr_garrison_knight_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_garrison_knight_ow16_walk_up_strip4` | `enemies/garrison_knight/overworld/spr_garrison_knight_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_commander_hailen_ow16_idle_down` | `enemies/commander_hailen/overworld/spr_commander_hailen_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_commander_hailen_ow16_idle_left` | `enemies/commander_hailen/overworld/spr_commander_hailen_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_commander_hailen_ow16_idle_right` | `enemies/commander_hailen/overworld/spr_commander_hailen_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_commander_hailen_ow16_idle_up` | `enemies/commander_hailen/overworld/spr_commander_hailen_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_commander_hailen_ow16_walk_down_strip4` | `enemies/commander_hailen/overworld/spr_commander_hailen_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_commander_hailen_ow16_walk_left_strip4` | `enemies/commander_hailen/overworld/spr_commander_hailen_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_commander_hailen_ow16_walk_right_strip4` | `enemies/commander_hailen/overworld/spr_commander_hailen_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_commander_hailen_ow16_walk_up_strip4` | `enemies/commander_hailen/overworld/spr_commander_hailen_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+
+#### Batch 7 portraits (48×48, origin (0, 0))
+| Asset name | File | Frames | Frame size | Origin | Mask (L,T,R,B) | FPS |
+|---|---|---|---|---|---|---|
+| `spr_portrait_commander_hailen_neutral` | `portraits/commander_hailen/spr_portrait_commander_hailen_neutral.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_commander_hailen_resolve` | `portraits/commander_hailen/spr_portrait_commander_hailen_resolve.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_commander_hailen_weary` | `portraits/commander_hailen/spr_portrait_commander_hailen_weary.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_debtman_grim` | `portraits/debtman/spr_portrait_debtman_grim.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_debtman_neutral` | `portraits/debtman/spr_portrait_debtman_neutral.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_debtman_threat` | `portraits/debtman/spr_portrait_debtman_threat.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+
+### Act III enemies, batch 8: the Blackwood (feature/enemy-batches-7-8)
+Design batch 8 ("batch 8"). Shade Stalker is 64×48 with origin (32, 47). Briar Hulk is 48×48 with origin (24, 47). Lost One, Night Moth Swarm and Door Warden are 32×48 with origin (16, 47), with 48×48 attack (24, 47) and death (16, 47) frames. The moth dust is 16×16 with origin (8, 8), spawned on cast frame 3. The **Blackwood Matriarch** is 96×96 with origin (48, 95), two phases (`trans`, `idle_p2`, `attack_p2`). She is a **PLACEHOLDER boss, not canon**, and `lost_one` may be revised (see DECISIONS).
+
+| Asset name | File | Frames | Frame size | Origin | Mask (L,T,R,B) | FPS |
+|---|---|---|---|---|---|---|
+| `spr_shade_stalker_attack_strip6` | `enemies/shade_stalker/spr_shade_stalker_attack_strip6.png` | 6 | 64×48 | (32, 47) | 10, 12, 53, 47 | 10 |
+| `spr_shade_stalker_death_strip6` | `enemies/shade_stalker/spr_shade_stalker_death_strip6.png` | 6 | 64×48 | (32, 47) | 10, 12, 53, 47 | 8 |
+| `spr_shade_stalker_hurt_strip3` | `enemies/shade_stalker/spr_shade_stalker_hurt_strip3.png` | 3 | 64×48 | (32, 47) | 10, 12, 53, 47 | 12 |
+| `spr_shade_stalker_idle_strip4` | `enemies/shade_stalker/spr_shade_stalker_idle_strip4.png` | 4 | 64×48 | (32, 47) | 10, 12, 53, 47 | 6 |
+| `spr_shade_stalker_special_strip8` | `enemies/shade_stalker/spr_shade_stalker_special_strip8.png` | 8 | 64×48 | (32, 47) | 10, 12, 53, 47 | 8 |
+| `spr_shade_stalker_walk_strip4` | `enemies/shade_stalker/spr_shade_stalker_walk_strip4.png` | 4 | 64×48 | (32, 47) | 10, 12, 53, 47 | 8 |
+| `spr_briar_hulk_attack_strip6` | `enemies/briar_hulk/spr_briar_hulk_attack_strip6.png` | 6 | 48×48 | (24, 47) | 7, 12, 41, 47 | 10 |
+| `spr_briar_hulk_death_strip6` | `enemies/briar_hulk/spr_briar_hulk_death_strip6.png` | 6 | 48×48 | (24, 47) | 7, 12, 41, 47 | 8 |
+| `spr_briar_hulk_hurt_strip3` | `enemies/briar_hulk/spr_briar_hulk_hurt_strip3.png` | 3 | 48×48 | (24, 47) | 7, 12, 41, 47 | 12 |
+| `spr_briar_hulk_idle_strip4` | `enemies/briar_hulk/spr_briar_hulk_idle_strip4.png` | 4 | 48×48 | (24, 47) | 7, 12, 41, 47 | 6 |
+| `spr_briar_hulk_walk_strip4` | `enemies/briar_hulk/spr_briar_hulk_walk_strip4.png` | 4 | 48×48 | (24, 47) | 7, 12, 41, 47 | 8 |
+| `spr_lost_one_attack_strip6` | `enemies/lost_one/spr_lost_one_attack_strip6.png` | 6 | 48×48 | (24, 47) | 16, 7, 31, 47 | 10 |
+| `spr_lost_one_death_strip6` | `enemies/lost_one/spr_lost_one_death_strip6.png` | 6 | 48×48 | (16, 47) | 8, 7, 23, 47 | 8 |
+| `spr_lost_one_hurt_strip3` | `enemies/lost_one/spr_lost_one_hurt_strip3.png` | 3 | 32×48 | (16, 47) | 8, 7, 23, 47 | 12 |
+| `spr_lost_one_idle_strip4` | `enemies/lost_one/spr_lost_one_idle_strip4.png` | 4 | 32×48 | (16, 47) | 8, 7, 23, 47 | 6 |
+| `spr_lost_one_walk_strip4` | `enemies/lost_one/spr_lost_one_walk_strip4.png` | 4 | 32×48 | (16, 47) | 8, 7, 23, 47 | 8 |
+| `spr_night_moth_swarm_attack_strip6` | `enemies/night_moth_swarm/spr_night_moth_swarm_attack_strip6.png` | 6 | 32×48 | (16, 47) | 5, 13, 27, 47 | 10 |
+| `spr_night_moth_swarm_cast_strip6` | `enemies/night_moth_swarm/spr_night_moth_swarm_cast_strip6.png` | 6 | 32×48 | (16, 47) | 5, 13, 27, 47 | 8 |
+| `spr_night_moth_swarm_death_strip6` | `enemies/night_moth_swarm/spr_night_moth_swarm_death_strip6.png` | 6 | 48×48 | (16, 47) | 5, 13, 27, 47 | 8 |
+| `spr_night_moth_swarm_dust_strip4` | `enemies/night_moth_swarm/spr_night_moth_swarm_dust_strip4.png` | 4 | 16×16 | (8, 8) | full image | 10 |
+| `spr_night_moth_swarm_hurt_strip3` | `enemies/night_moth_swarm/spr_night_moth_swarm_hurt_strip3.png` | 3 | 32×48 | (16, 47) | 5, 13, 27, 47 | 12 |
+| `spr_night_moth_swarm_idle_strip4` | `enemies/night_moth_swarm/spr_night_moth_swarm_idle_strip4.png` | 4 | 32×48 | (16, 47) | 5, 13, 27, 47 | 6 |
+| `spr_door_warden_attack_strip6` | `enemies/door_warden/spr_door_warden_attack_strip6.png` | 6 | 48×48 | (24, 47) | 16, 5, 33, 47 | 10 |
+| `spr_door_warden_death_strip6` | `enemies/door_warden/spr_door_warden_death_strip6.png` | 6 | 48×48 | (16, 47) | 8, 5, 25, 47 | 8 |
+| `spr_door_warden_hurt_strip3` | `enemies/door_warden/spr_door_warden_hurt_strip3.png` | 3 | 32×48 | (16, 47) | 8, 5, 25, 47 | 12 |
+| `spr_door_warden_idle_strip4` | `enemies/door_warden/spr_door_warden_idle_strip4.png` | 4 | 32×48 | (16, 47) | 8, 5, 25, 47 | 6 |
+| `spr_door_warden_walk_strip4` | `enemies/door_warden/spr_door_warden_walk_strip4.png` | 4 | 32×48 | (16, 47) | 8, 5, 25, 47 | 8 |
+| `spr_blackwood_matriarch_attack_p2_strip6` | `enemies/blackwood_matriarch/spr_blackwood_matriarch_attack_p2_strip6.png` | 6 | 96×96 | (48, 95) | 22, 10, 87, 95 | 10 |
+| `spr_blackwood_matriarch_attack_strip6` | `enemies/blackwood_matriarch/spr_blackwood_matriarch_attack_strip6.png` | 6 | 96×96 | (48, 95) | 22, 10, 87, 95 | 10 |
+| `spr_blackwood_matriarch_death_strip8` | `enemies/blackwood_matriarch/spr_blackwood_matriarch_death_strip8.png` | 8 | 96×96 | (48, 95) | 22, 10, 87, 95 | 8 |
+| `spr_blackwood_matriarch_hurt_strip4` | `enemies/blackwood_matriarch/spr_blackwood_matriarch_hurt_strip4.png` | 4 | 96×96 | (48, 95) | 22, 10, 87, 95 | 12 |
+| `spr_blackwood_matriarch_idle_p2_strip8` | `enemies/blackwood_matriarch/spr_blackwood_matriarch_idle_p2_strip8.png` | 8 | 96×96 | (48, 95) | 22, 10, 87, 95 | 6 |
+| `spr_blackwood_matriarch_idle_strip8` | `enemies/blackwood_matriarch/spr_blackwood_matriarch_idle_strip8.png` | 8 | 96×96 | (48, 95) | 22, 10, 87, 95 | 6 |
+| `spr_blackwood_matriarch_special_strip6` | `enemies/blackwood_matriarch/spr_blackwood_matriarch_special_strip6.png` | 6 | 96×96 | (48, 95) | 22, 10, 87, 95 | 8 |
+| `spr_blackwood_matriarch_trans_strip6` | `enemies/blackwood_matriarch/spr_blackwood_matriarch_trans_strip6.png` | 6 | 96×96 | (48, 95) | 22, 10, 87, 95 | 8 |
+| `spr_blackwood_matriarch_walk_strip4` | `enemies/blackwood_matriarch/spr_blackwood_matriarch_walk_strip4.png` | 4 | 96×96 | (48, 95) | 22, 10, 87, 95 | 8 |
+
+#### Batch 8 overworld sets (16×24, origin (8, 23))
+| Asset name | File | Frames | Frame size | Origin | Mask (L,T,R,B) | FPS |
+|---|---|---|---|---|---|---|
+| `spr_door_warden_ow16_idle_down` | `enemies/door_warden/overworld/spr_door_warden_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_door_warden_ow16_idle_left` | `enemies/door_warden/overworld/spr_door_warden_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_door_warden_ow16_idle_right` | `enemies/door_warden/overworld/spr_door_warden_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_door_warden_ow16_idle_up` | `enemies/door_warden/overworld/spr_door_warden_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_door_warden_ow16_walk_down_strip4` | `enemies/door_warden/overworld/spr_door_warden_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_door_warden_ow16_walk_left_strip4` | `enemies/door_warden/overworld/spr_door_warden_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_door_warden_ow16_walk_right_strip4` | `enemies/door_warden/overworld/spr_door_warden_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_door_warden_ow16_walk_up_strip4` | `enemies/door_warden/overworld/spr_door_warden_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_blackwood_matriarch_ow16_idle_down` | `enemies/blackwood_matriarch/overworld/spr_blackwood_matriarch_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_blackwood_matriarch_ow16_idle_left` | `enemies/blackwood_matriarch/overworld/spr_blackwood_matriarch_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_blackwood_matriarch_ow16_idle_right` | `enemies/blackwood_matriarch/overworld/spr_blackwood_matriarch_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_blackwood_matriarch_ow16_idle_up` | `enemies/blackwood_matriarch/overworld/spr_blackwood_matriarch_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_blackwood_matriarch_ow16_walk_down_strip4` | `enemies/blackwood_matriarch/overworld/spr_blackwood_matriarch_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_blackwood_matriarch_ow16_walk_left_strip4` | `enemies/blackwood_matriarch/overworld/spr_blackwood_matriarch_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_blackwood_matriarch_ow16_walk_right_strip4` | `enemies/blackwood_matriarch/overworld/spr_blackwood_matriarch_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_blackwood_matriarch_ow16_walk_up_strip4` | `enemies/blackwood_matriarch/overworld/spr_blackwood_matriarch_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+
+#### New battle backgrounds (320×180, origin (0, 0))
+Used automatically by area: `lower_city`, `sanctuary_hall`, `garrison_yard`, `blackwood` (missing imports fall back to the forest background). Skip the `_2x_preview` files.
+
+| Asset name | File | Frames | Frame size | Origin | Mask (L,T,R,B) | FPS |
+|---|---|---|---|---|---|---|
+| `spr_bg_battle_blackwood` | `ui/battle_bg/spr_bg_battle_blackwood.png` | 1 | 320×180 | (0, 0) | full image | 0 |
+| `spr_bg_battle_garrison_yard` | `ui/battle_bg/spr_bg_battle_garrison_yard.png` | 1 | 320×180 | (0, 0) | full image | 0 |
+| `spr_bg_battle_lower_city` | `ui/battle_bg/spr_bg_battle_lower_city.png` | 1 | 320×180 | (0, 0) | full image | 0 |
+| `spr_bg_battle_sanctuary_hall` | `ui/battle_bg/spr_bg_battle_sanctuary_hall.png` | 1 | 320×180 | (0, 0) | full image | 0 |
+
 ### Chests
 16×16 tiles, origin (0, 0). Wood for the overworld; iron for Watchtower / basement. Play `*_open_strip3` once at ~10 fps, then hold the open frame.
 

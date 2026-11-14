@@ -75,6 +75,20 @@ XP curve: total XP to be level L is `20*(L-1)^2 + 10*(L-1)` (L2=30, L3=100, L4=2
 
 
 
+## Enemy batches 7–8 (feature/enemy-batches-7-8; untested in GameMaker)
+Start fights from the overworld with `scr_encounter_start(<id, group id, or array>, "test_x")`.
+- [ ] E1 Each new id (`crown_sergeant`, `dock_thug`, `cutpurse`, `debt_collector`, `debtman`, `ward_sentinel`, `glyph_wisp`, `aethari_automaton`, `sanctuary_warden`, `garrison_pikeman`, `garrison_field_surgeon`, `garrison_knight`, `commander_hailen`, `shade_stalker`, `briar_hulk`, `lost_one`, `night_moth_swarm`, `door_warden`, `blackwood_matriarch`) starts a battle. Imported strips animate (idle, attack, hurt, death); missing ones draw a rectangle without stalling.
+- [ ] E2 Backgrounds: Lower City, Sanctuary, Garrison and Blackwood enemies get their new backgrounds (or forest if not imported).
+- [ ] E3 Cutpurse Steal takes gold (never below 0) and says how much. Beating the Cutpurse adds the stolen gold to the victory total.
+- [ ] E4 Field Surgeon heals the most-hurt ally (green pop) only when one is below 60% HP.
+- [ ] E5 Crown Sergeant Rally puts ATK-up icons on his allies. He never uses it alone.
+- [ ] E6 `grp_sanctuary_warden` / `grp_blackwood_matriarch`: at 50% HP, `trans` plays once, the phase line shows, then `idle_p2` / `attack_p2` are used and the boss hits harder.
+- [ ] E7 Commander Hailen dies (death strip, battle won) by default. With `scr_flag_set("flag_hailen_yields")` he yields instead (yield holds, `flag_hailen_yielded` set).
+- [ ] E8 Night Moth Swarm: the dust flies on cast frame 3. Blind shows "Bl" and makes about half of physical attacks miss ("miss" pop). Sleep shows "Sl", skips the member's command and turn ("X is asleep."), and ends early when the member takes damage. Statuses wear off after their rounds.
+- [ ] E9 Shade Stalker Fade: it turns translucent and physical attacks on it miss until the next round.
+- [ ] E10 Glyph Wisp Mote flies on cast frame 3 and uses MDEF.
+- [ ] E11 Chapter 1 and Chapter 2 fights are unchanged (B1–B8, BP1–BP7).
+
 ## Balance pass (feature/balance-pass; untested in GameMaker)
 - [ ] BP1 Chapter 1 is unchanged: level-ups from 2 to 7 still show +4 HP / +1 ATK / +1 DEF, Chapter 1 enemy stats are unchanged, and a Blackguard run feels the same.
 - [ ] BP2 Level-ups into 8, 9 and 10 show +10 HP, +2 ATK, +2 DEF, +3 MP. With the debugger, `scr_actor_raise_to_level(taren, 9)` gives Taren 80 max HP, ATK 21 with the Bastard Sword, and DEF 15 with the Travel Brigandine.

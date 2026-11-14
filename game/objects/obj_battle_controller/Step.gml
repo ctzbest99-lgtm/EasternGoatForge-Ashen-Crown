@@ -33,8 +33,8 @@ switch (state) {
     case BATTLE_STATE.ROUND_START:
         scr_party_clear_guard(party); // Guard lasts from when it resolves until the party's next command phase
         var _r;
-        for (_r = 0; _r < array_length(party); _r++) scr_battle_tick_buffs(party[_r]);
-        for (_r = 0; _r < array_length(enemies); _r++) scr_battle_tick_buffs(enemies[_r]);
+        for (_r = 0; _r < array_length(party); _r++) { scr_battle_tick_buffs(party[_r]); scr_battle_tick_statuses(party[_r]); }
+        for (_r = 0; _r < array_length(enemies); _r++) { scr_battle_tick_buffs(enemies[_r]); scr_battle_tick_statuses(enemies[_r]); }
         queued_actions = [];
         turn_order = [];
         turn_pos = 0;
@@ -47,6 +47,11 @@ switch (state) {
 
     case BATTLE_STATE.COMMAND_SELECT:
         var _cur = party[actor_index];
+        if (scr_battle_status_has(_cur, "sleep")) {
+            // Asleep: no command this round (the turn is skipped when it comes up).
+            commit_action({ actor_index: actor_index, command: "Sleep", skill_id: "", target_side: "", target_index: -1 });
+            break;
+        }
         command_options = scr_party_battle_commands(_cur);
         var _command_count = array_length(command_options);
         if (command_index >= _command_count) command_index = 0;
@@ -119,6 +124,11 @@ switch (state) {
         var _action = current_turn.action;
         var _actor = party[_action.actor_index];
         if (!scr_actor_is_alive(_actor)) { state = BATTLE_STATE.TURN_NEXT; break; } // KO'd before their turn
+        if (_action.command == "Sleep" || scr_battle_status_has(_actor, "sleep")) {
+            // Sleeping is not taking a turn, so it does not count for XP participation.
+            queue_message(_actor.name + " is asleep.", BATTLE_STATE.TURN_NEXT);
+            break;
+        }
 
         // Taking the turn counts for XP, even if the action later fails (e.g. a blocked swap).
         scr_party_mark_participated(_actor);
@@ -151,7 +161,15 @@ switch (state) {
         if (!is_up("enemy", _ei)) { state = BATTLE_STATE.TURN_NEXT; break; }
         if (!scr_party_any_alive(party)) { state = BATTLE_STATE.DEFEAT; break; }
         var _foe = enemies[_ei];
+        if (scr_battle_status_has(_foe, "sleep")) { queue_message(_foe.name + " is asleep.", BATTLE_STATE.TURN_NEXT); break; }
         var _allies = array_length(living("enemy")) - 1;
+        // Field surgeon gate: is any living ally (self included) below the heal threshold?
+        _foe.ally_hurt = false;
+        var _lh = living("enemy");
+        for (var _hq = 0; _hq < array_length(_lh); _hq++) {
+            var _ha = enemies[_lh[_hq]];
+            if (_ha.hp < _ha.max_hp * BATTLE_HEAL_ALLY_THRESHOLD) _foe.ally_hurt = true;
+        }
         var _pick = scr_battle_ai_pick(_foe, _allies);
         var _esk = scr_skill_get(_pick);
         var _etargets = resolve_targets("enemy", _ei, _esk, -1);
@@ -221,7 +239,7 @@ switch (state) {
                 var _de = enemies[_ve];
                 var _dw = variable_struct_exists(_de, "withdrawn") && _de.withdrawn;
                 if (_de.hp > 0 && !_de.yielded && !_dw) continue;
-                victory_gold += _de.gold_reward;
+                victory_gold += _de.gold_reward + _de.stolen_gold; // a beaten cutpurse drops what it stole
                 victory_xp += _de.xp_reward;
                 if (!_de.xp_credited) {
                     scr_party_credit_enemy_xp(_de.xp_reward);
