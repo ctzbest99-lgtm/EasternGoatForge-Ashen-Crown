@@ -344,7 +344,7 @@ function scr_dialogue_play_script(_script_id, _source = noone) {
             }
             scr_dialogue_play(["CV_END_01", "CV_END_02", "CV_END_03", "CV_END_04", "CV_END_05", "CV_END_06"], function() {
                 scr_flag_set("flag_chapter1_complete");
-                scr_save_menu_open("save", true);
+                scr_save_menu_open("save", false);
             });
             return true;
     }

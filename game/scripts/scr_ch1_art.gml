@@ -197,6 +197,8 @@ function scr_ch1_portrait(_speaker, _expr = "neutral") {
     if (_who == "kael") _stem = "kael";
     else if (_who == "tomas" || _who == "tomas varyn") _stem = "tomas_varyn";
     else if (_who == "pell") _stem = "pell";
+    else if (_who == "marda") _stem = "marda";
+    else if (_who == "hob") _stem = "hob";
     else if (_who == "renn" || _who == "old hunter renn" || _who == "old renn") _stem = "renn";
     else if (_who == "fallen knight") _stem = "fallen_knight_story";
     else if (_who == "reeve calder" || _who == "calder") _stem = "reeve_calder"; // neutral / stern / weary (Design batch 6)

@@ -68,7 +68,8 @@ Snippets are prototypes, not verified production code. Compile in the selected G
 | `obj_inventory_menu` | none | — | `Create.gml` → Create; `Step.gml` → Step ▸ Step; `Draw_GUI.gml` → Draw ▸ Draw GUI; `Clean_Up.gml` → Clean Up. Created at runtime (I / Tab). |
 | `obj_shop_menu` | none | — | `Create.gml` → Create; `Step.gml` → Step ▸ Step; `Draw_GUI.gml` → Draw ▸ Draw GUI; `Clean_Up.gml` → Clean Up. Created at runtime by `scr_shop_open`. |
 | `obj_save_menu` | none | — | `Create.gml` → Create; `Step.gml` → Step ▸ Step; `Draw_GUI.gml` → Draw ▸ Draw GUI; `Clean_Up.gml` → Clean Up. Created at runtime by `scr_save_menu_open`. |
-| `obj_save_point` | `spr_menu_save_point` / `spr_save_point` if imported, else `spr_interactable_placeholder` | **Parent: `obj_interactable`** | `Create.gml` → Create (inherits Step). Spawned by the map builder in the chapel and tavern. |
+| `obj_save_point` | `spr_save_point_idle_strip8` (fallback `spr_interactable_placeholder`) | **Parent: `obj_interactable`** | `Create.gml` → Create; `Step.gml` → Step ▸ Step. Spawned by the map builder in the chapel and tavern. |
+| `obj_save_toast` | none | — | `Create.gml` → Create; `Step.gml` → Step ▸ Step; `Draw_GUI.gml` → Draw ▸ Draw GUI. Created at runtime after a successful save. |
 
 `obj_dialogue_box` and `obj_battle_controller` draw only in Draw GUI. Adding a Draw GUI event does not disable default sprite drawing, but neither object has a sprite, so nothing else is drawn.
 

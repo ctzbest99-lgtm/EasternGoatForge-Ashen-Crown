@@ -9,7 +9,19 @@ Multi-enemy battles, SPD / MP / MDEF, skills, enemy AI, and the Act II enemy ros
 - Save schema 2 (MP, SPD, MDEF, skills) with migration of schema 1 saves.
 - All numbers are PLACEHOLDER (see `docs/DECISIONS_AND_OPEN_QUESTIONS.md`). Chapter 2 dialogue is not wired. Nothing has been compiled or playtested in GameMaker.
 
-## Unreleased — Saves and shops (`feature/save-and-shops`)
+## Unreleased — Field menu art (`feature/save-and-shops`)
+
+Design's shop, save/load, and inventory art from `/workspace/sprites/ui/menus/` is wired into the existing save/shop menus.
+
+- Menus use the mockup layouts (dither backdrop, tab strips 12px above the window drawn after it, row select / disabled, coin / clock / key icons, party icons and frames, portrait and leader wells, quantity field, stat arrows). Coordinates and colours live in `scr_menu_layout.gml`. Missing sprites still fall back through `asset_get_index`.
+- Save / load slots show the leader overworld sprite, party icons, playtime (`hh:mm`) and gold. Overwrite confirm defaults to No. A successful save plays `spr_ui_toast_saved` (origin (32, 0)) at (160, 8).
+- `obj_save_point` uses `spr_save_point_idle_strip8` (origin (8, 23), 8 fps) and plays `spr_save_point_activate_strip8` (origin (16, 39), 12 fps) once before opening the save menu.
+- Unaffordable or unsellable shop rows use `items_disabled/spr_item_<id>_disabled` and the disabled select bar. Key items show the key icon instead of a price.
+- Inventory has Items / Equip / Key tabs. Equip lists Weapon, Armor, Helm, and Accessory (Iron Helm uses Helm). Other members use `spr_ui_party_icon_none` until their icons exist.
+- Marda (`neutral`, `smirk`, `stern`) and Hob (`neutral`, `grim`, `wry`) portraits are available for dialogue; the shop header uses the keeper's neutral portrait.
+- Nothing here has been compiled or playtested in GameMaker.
+
+## Saves and shops (previous) (`feature/save-and-shops`)
 
 Versioned JSON save / load and data-driven shops, built on the Chapter 1 art branch (PR #9).
 

@@ -78,10 +78,11 @@ function scr_save_clone_via_json(_value) {
 function scr_save_member_snapshot(_actor) {
     if (!is_struct(_actor)) return undefined;
     scr_actor_ensure_bases(_actor);
-    var _eq = { weapon: "", armor: "", accessory: "" };
+    var _eq = { weapon: "", armor: "", helm: "", accessory: "" };
     if (is_struct(_actor.equipment)) {
         if (variable_struct_exists(_actor.equipment, "weapon")) _eq.weapon = string(_actor.equipment.weapon);
         if (variable_struct_exists(_actor.equipment, "armor")) _eq.armor = string(_actor.equipment.armor);
+        if (variable_struct_exists(_actor.equipment, "helm")) _eq.helm = string(_actor.equipment.helm);
         if (variable_struct_exists(_actor.equipment, "accessory")) _eq.accessory = string(_actor.equipment.accessory);
     }
     var _cats = [];
@@ -247,6 +248,9 @@ function scr_save_slot_info(_slot) {
         corrupt: false,
         location_name: "",
         lead_level: 1,
+        lead_id: "",
+        lead_name: "",
+        party_ids: [],
         playtime_seconds: 0,
         gold: 0,
         room_name: ""
@@ -263,6 +267,23 @@ function scr_save_slot_info(_slot) {
         _info.location_name = scr_save_location_name(_data.room_name);
     }
     _info.lead_level = variable_struct_exists(_data, "lead_level") ? _data.lead_level : 1;
+    _info.lead_id = "kael";
+    _info.lead_name = "Kael";
+    _info.party_ids = [];
+    if (variable_struct_exists(_data, "party_active") && is_array(_data.party_active)) {
+        _info.party_ids = _data.party_active;
+        if (array_length(_data.party_active) > 0) _info.lead_id = string(_data.party_active[0]);
+    }
+    if (variable_struct_exists(_data, "roster") && is_array(_data.roster)) {
+        for (var _r = 0; _r < array_length(_data.roster); _r++) {
+            var _m = _data.roster[_r];
+            if (is_struct(_m) && variable_struct_exists(_m, "actor_id") && string(_m.actor_id) == _info.lead_id) {
+                if (variable_struct_exists(_m, "name")) _info.lead_name = _m.name;
+                if (variable_struct_exists(_m, "level")) _info.lead_level = _m.level;
+                break;
+            }
+        }
+    }
     _info.playtime_seconds = variable_struct_exists(_data, "playtime_seconds") ? _data.playtime_seconds : 0;
     _info.gold = variable_struct_exists(_data, "gold") ? _data.gold : 0;
     _info.room_name = variable_struct_exists(_data, "room_name") ? string(_data.room_name) : "";
@@ -298,6 +319,7 @@ function scr_save_apply_member(_actor, _snap) {
     if (variable_struct_exists(_snap, "equipment") && is_struct(_snap.equipment)) {
         _actor.equipment.weapon = variable_struct_exists(_snap.equipment, "weapon") ? string(_snap.equipment.weapon) : "";
         _actor.equipment.armor = variable_struct_exists(_snap.equipment, "armor") ? string(_snap.equipment.armor) : "";
+        _actor.equipment.helm = variable_struct_exists(_snap.equipment, "helm") ? string(_snap.equipment.helm) : "";
         _actor.equipment.accessory = variable_struct_exists(_snap.equipment, "accessory") ? string(_snap.equipment.accessory) : "";
     }
     // Schema v2 fields. scr_save_migrate() fills these in for v1 saves before we get here;
@@ -450,7 +472,7 @@ function scr_save_load(_slot) {
     return scr_save_apply(_data);
 }
 
-function scr_save_menu_open(_mode = "save", _prompt = true) {
+function scr_save_menu_open(_mode = "save", _prompt = false) {
     var _inst = scr_menu_open_object("obj_save_menu");
     if (_inst != noone && instance_exists(_inst)) {
         _inst.mode = (_mode == "load") ? "load" : "save";

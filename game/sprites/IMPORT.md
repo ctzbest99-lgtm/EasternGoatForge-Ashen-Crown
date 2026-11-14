@@ -700,13 +700,75 @@ Nine-slice **must** be turned on for `spr_ui_window`, `spr_ui_window_dim`, and `
 | `spr_ui_window_dim` | `ui/spr_ui_window_dim.png` | 1 | 24×24 | (0, 0) | full image | 0 |
 | `spr_ui_window_gold` | `ui/spr_ui_window_gold.png` | 1 | 24×24 | (0, 0) | full image | 0 |
 
-## Future menu art (`/workspace/sprites/ui/menus/`)
+### Field menus (`ui/menus/`) — shop, save/load, inventory/equip
 
-Design is preparing dedicated shop, save/load, and inventory panels. When those PNGs land, import them with these reserved asset names (origins and nine-slice TBD with the drop):
+Layout, colours, nine-slice margins, and behaviour: Design README section "Field menus: shop, save/load, inventory/equip", plus `ui/menus/mockups/`. All coordinates live in `scr_menu_layout.gml`. Code looks these up with `scr_sprite_index` / `asset_get_index` and falls back to the nine-slice windows, font, cursor, and item icons if a sprite is missing.
 
-- `spr_menu_shop_window`, `spr_ui_menu_shop`
-- `spr_menu_inventory_window`, `spr_ui_menu_inventory`
-- `spr_menu_save_window`, `spr_ui_menu_saves` (and `_640` if a hires panel is provided)
-- `spr_menu_save_point` (or `spr_save_point`) for the world shrine
+**Nine-slice (enable after import):**
 
-Code looks these up with `scr_sprite_index` / `asset_get_index` and already falls back to `spr_ui_window*`, `spr_menu_panel_saves_*`, and `spr_ui_cursor_strip2`. Layout numbers are in `scr_menu_layout.gml` — retune that file to match the new panels; do not scatter magic numbers in the menu objects.
+| Asset | Margins (L,T,R,B) |
+|---|---|
+| `spr_ui_row_select`, `spr_ui_row_select_disabled` | 4, 4, 4, 4 |
+| `spr_ui_tab_blank_strip2` | 4, 4, 4, 3 |
+| `spr_ui_portrait_frame`, `spr_ui_leader_frame`, `spr_ui_qty_field` | 3, 3, 3, 3 |
+
+Windows already listed above (`spr_ui_window*`, nine-slice 8) and `spr_ui_select_bar` (nine-slice 3) are reused. Tabs are drawn at `window_y - 12` **after** their window (the selected tab's bottom 3 rows cover the top border; a normal tab sits 2px lower). Cursor origin is still (15, 4): place it at the tip x, the row's middle y. `spr_ui_dither` is tiled full-screen behind every field menu. Item icons (colour and `_disabled`) are drawn from the top-left in the mockups even though their origin is (8, 8).
+
+| Asset name | File | Frames | Frame size | Origin | Mask (L,T,R,B) | FPS / notes |
+|---|---|---|---|---|---|---|
+| `spr_ui_tab_buy_normal` | `ui/menus/spr_ui_tab_buy_normal.png` | 1 | 40×15 | (0, 0) | full image | 0 |
+| `spr_ui_tab_buy_selected` | `ui/menus/spr_ui_tab_buy_selected.png` | 1 | 40×15 | (0, 0) | full image | 0 |
+| `spr_ui_tab_sell_normal` | `ui/menus/spr_ui_tab_sell_normal.png` | 1 | 40×15 | (0, 0) | full image | 0 |
+| `spr_ui_tab_sell_selected` | `ui/menus/spr_ui_tab_sell_selected.png` | 1 | 40×15 | (0, 0) | full image | 0 |
+| `spr_ui_tab_exit_normal` | `ui/menus/spr_ui_tab_exit_normal.png` | 1 | 40×15 | (0, 0) | full image | 0 |
+| `spr_ui_tab_exit_selected` | `ui/menus/spr_ui_tab_exit_selected.png` | 1 | 40×15 | (0, 0) | full image | 0 |
+| `spr_ui_tab_items_normal` | `ui/menus/spr_ui_tab_items_normal.png` | 1 | 40×15 | (0, 0) | full image | 0 |
+| `spr_ui_tab_items_selected` | `ui/menus/spr_ui_tab_items_selected.png` | 1 | 40×15 | (0, 0) | full image | 0 |
+| `spr_ui_tab_equip_normal` | `ui/menus/spr_ui_tab_equip_normal.png` | 1 | 40×15 | (0, 0) | full image | 0 |
+| `spr_ui_tab_equip_selected` | `ui/menus/spr_ui_tab_equip_selected.png` | 1 | 40×15 | (0, 0) | full image | 0 |
+| `spr_ui_tab_key_normal` | `ui/menus/spr_ui_tab_key_normal.png` | 1 | 40×15 | (0, 0) | full image | 0 |
+| `spr_ui_tab_key_selected` | `ui/menus/spr_ui_tab_key_selected.png` | 1 | 40×15 | (0, 0) | full image | 0 |
+| `spr_ui_tab_blank_strip2` | `ui/menus/spr_ui_tab_blank_strip2.png` | 2 | 40×15 | (0, 0) | full image | 0; frame 0 normal, 1 selected; nine-slice L4 T4 R4 B3 |
+| `spr_ui_row_select` | `ui/menus/spr_ui_row_select.png` | 1 | 24×16 | (0, 0) | full image | 0; nine-slice 4 |
+| `spr_ui_row_select_disabled` | `ui/menus/spr_ui_row_select_disabled.png` | 1 | 24×16 | (0, 0) | full image | 0; nine-slice 4 |
+| `spr_ui_arrow_strip4` | `ui/menus/spr_ui_arrow_strip4.png` | 4 | 9×6 | (0, 0) | full image | 0; 0 up, 1 down, 2 up-dim, 3 down-dim |
+| `spr_ui_stat_arrow_strip3` | `ui/menus/spr_ui_stat_arrow_strip3.png` | 3 | 7×7 | (0, 0) | full image | 0; 0 up, 1 down, 2 equal |
+| `spr_ui_icon_coin` | `ui/menus/spr_ui_icon_coin.png` | 1 | 8×8 | (0, 0) | full image | 0 |
+| `spr_ui_icon_clock` | `ui/menus/spr_ui_icon_clock.png` | 1 | 8×8 | (0, 0) | full image | 0 |
+| `spr_ui_icon_key` | `ui/menus/spr_ui_icon_key.png` | 1 | 8×8 | (0, 0) | full image | 0 |
+| `spr_ui_icon_ember` | `ui/menus/spr_ui_icon_ember.png` | 1 | 8×8 | (0, 0) | full image | 0 |
+| `spr_ui_party_icon_kael` | `ui/menus/spr_ui_party_icon_kael.png` | 1 | 12×12 | (0, 0) | full image | 0 |
+| `spr_ui_party_icon_none` | `ui/menus/spr_ui_party_icon_none.png` | 1 | 12×12 | (0, 0) | full image | 0; stand-in for Lyra / Caelan / Sera / Taren until their icons exist (`spr_ui_party_icon_<id>`) |
+| `spr_ui_party_frame_strip2` | `ui/menus/spr_ui_party_frame_strip2.png` | 2 | 14×14 | (0, 0) | full image | 0; 0 normal, 1 selected |
+| `spr_ui_slot_weapon` | `ui/menus/spr_ui_slot_weapon.png` | 1 | 16×16 | (0, 0) | full image | 0 |
+| `spr_ui_slot_armor` | `ui/menus/spr_ui_slot_armor.png` | 1 | 16×16 | (0, 0) | full image | 0 |
+| `spr_ui_slot_helm` | `ui/menus/spr_ui_slot_helm.png` | 1 | 16×16 | (0, 0) | full image | 0 |
+| `spr_ui_slot_accessory` | `ui/menus/spr_ui_slot_accessory.png` | 1 | 16×16 | (0, 0) | full image | 0 |
+| `spr_ui_portrait_frame` | `ui/menus/spr_ui_portrait_frame.png` | 1 | 52×52 | (0, 0) | full image | 0; nine-slice 3; portrait at +2,+2 |
+| `spr_ui_leader_frame` | `ui/menus/spr_ui_leader_frame.png` | 1 | 20×28 | (0, 0) | full image | 0; nine-slice 3; 16×24 idle_down at +2,+2 |
+| `spr_ui_qty_field` | `ui/menus/spr_ui_qty_field.png` | 1 | 28×14 | (0, 0) | full image | 0; nine-slice 3 |
+| `spr_ui_dither` | `ui/menus/spr_ui_dither.png` | 1 | 2×2 | (0, 0) | full image | 0; tile with `draw_sprite_tiled` |
+| `spr_ui_toast_saved` | `ui/menus/spr_ui_toast_saved.png` | 1 | 64×20 | **(32, 0)** | full image | 0; draw at (160, 8) |
+| `spr_save_point_idle_strip8` | `ui/menus/save_point/spr_save_point_idle_strip8.png` | 8 | 16×24 | **(8, 23)** | 0, 16, 15, 23 (feet) | 8; loop |
+| `spr_save_point_activate_strip8` | `ui/menus/save_point/spr_save_point_activate_strip8.png` | 8 | 32×40 | **(16, 39)** | feet-aligned with idle | 12; play once, then idle |
+
+Greyed item icons (16×16, origin (8, 8), same names as the colour icons plus `_disabled`). Import every file in `ui/menus/items_disabled/`:
+
+`spr_item_antidote_disabled`, `spr_item_ashbound_parchment_disabled`, `spr_item_ashen_arrow_disabled`, `spr_item_ashen_longbow_disabled`, `spr_item_blackened_feather_disabled`, `spr_item_blackguards_longsword_disabled`, `spr_item_crownveil_fragment_disabled`, `spr_item_gold_disabled`, `spr_item_hunters_charm_disabled`, `spr_item_hunters_knife_disabled`, `spr_item_iron_helm_disabled`, `spr_item_iron_sword_disabled`, `spr_item_kaels_longsword_disabled`, `spr_item_leather_armor_disabled`, `spr_item_minor_potion_disabled`, `spr_item_mira_pendant_disabled`, `spr_item_watchtower_key_disabled`.
+
+Do not import `menus_parts_preview.png`, the mockups, or the save-point preview GIFs as sprites (reference only).
+
+### Dialogue portraits (Marda, Hob)
+
+Same rules as the other 48×48 portraits: origin (0, 0), full-image mask, one sprite per expression.
+
+| Asset name | File | Frames | Frame size | Origin | Mask | FPS |
+|---|---|---|---|---|---|---|
+| `spr_portrait_marda_neutral` | `portraits/marda/spr_portrait_marda_neutral.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_marda_smirk` | `portraits/marda/spr_portrait_marda_smirk.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_marda_stern` | `portraits/marda/spr_portrait_marda_stern.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_hob_neutral` | `portraits/hob/spr_portrait_hob_neutral.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_hob_grim` | `portraits/hob/spr_portrait_hob_grim.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_hob_wry` | `portraits/hob/spr_portrait_hob_wry.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+
+Preview sheets in those folders are not imported.
