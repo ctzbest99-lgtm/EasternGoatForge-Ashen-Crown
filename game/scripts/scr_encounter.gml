@@ -38,6 +38,7 @@ function scr_battle_finish(_result) {
         _g.cleared_encounters[$ _pending.encounter_id] = true;
     }
     scr_ashbound_on_battle_finish(_result, _pending);
+    scr_blackguard_on_battle_finish(_result, _pending);
     scr_party_clear_guard(_g.party);
 
     if (_result == "defeat") {

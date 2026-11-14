@@ -1,0 +1,58 @@
+[
+ {
+  "type": "player_spawn",
+  "name": "from_overworld",
+  "tile_x": 9,
+  "tile_y": 10,
+  "x": 152,
+  "y": 176,
+  "facing": "up",
+  "note": "Arrive here from overworld door marker door_blacksmith."
+ },
+ {
+  "type": "zone_exit",
+  "name": "to_overworld",
+  "tile_x": 9,
+  "tile_y": 11,
+  "x": 152,
+  "y": 192,
+  "target_room": "rm_overworld",
+  "target_spawn": "door_blacksmith",
+  "w": 2,
+  "h": 1
+ },
+ {
+  "type": "npc",
+  "name": "tomas_varyn",
+  "tile_x": 12,
+  "tile_y": 8,
+  "x": 200,
+  "y": 144,
+  "npc_id": "tomas_varyn",
+  "speaker": "Tomas",
+  "script_id": "GH_TOMAS",
+  "repeat_script_id": "GH_TOMAS_R1",
+  "story_flag": "flag_met_tomas",
+  "quest_advance": "Q_FM_S2",
+  "hostile": false,
+  "dies_on_screen": false,
+  "note": "Lies on a pallet in his ruined forge, tended by Pell. Talking to Tomas or Pell starts GH_TOMAS. He lapses into unconsciousness; he does not die."
+ },
+ {
+  "type": "npc",
+  "name": "pell",
+  "tile_x": 11,
+  "tile_y": 8,
+  "x": 184,
+  "y": 144,
+  "npc_id": "pell",
+  "speaker": "Pell",
+  "script_id": "GH_TOMAS",
+  "repeat_script_id": "GH_TOMAS_R2",
+  "shop_id": "shop_greyhaven_forge",
+  "shop_script_id": "GH_SMITH_01_B",
+  "shop_stock": "from item DB (basic equipment)",
+  "hostile": false,
+  "note": "Young survivor kneeling by Tomas. After the pendant (_B lines) he runs the forge as a basic equipment shop."
+ }
+]

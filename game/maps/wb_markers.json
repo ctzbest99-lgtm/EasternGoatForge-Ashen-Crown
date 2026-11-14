@@ -1,0 +1,593 @@
+[
+ {
+  "type": "player_spawn",
+  "name": "from_watchtower",
+  "tile_x": 7,
+  "tile_y": 4,
+  "x": 120,
+  "y": 80,
+  "facing": "down",
+  "quest_advance": "Q_FM_S8",
+  "note": "Arrive from rm_old_watchtower (tower stair). Entering the Basement completes Q_FM_S7 \"Explore the Old Watchtower\"."
+ },
+ {
+  "type": "zone_exit",
+  "name": "stairs_to_watchtower",
+  "tile_x": 7,
+  "tile_y": 3,
+  "x": 120,
+  "y": 64,
+  "target_room": "rm_old_watchtower",
+  "target_spawn": "watchtower_basement_stairs",
+  "w": 2,
+  "h": 1
+ },
+ {
+  "type": "zone_exit",
+  "name": "stairs_to_upper_level",
+  "tile_x": 37,
+  "tile_y": 13,
+  "x": 600,
+  "y": 224,
+  "target_room": "rm_old_watchtower",
+  "target_spawn": "from_basement",
+  "w": 2,
+  "h": 1,
+  "sets_flag": "flag_wt_upper_unlocked",
+  "note": "Stairs up to the Watchtower upper level (the terrace below the Blackguard Arena). Using them sets flag_wt_upper_unlocked, which opens the locked terrace stairs from above."
+ },
+ {
+  "type": "player_spawn",
+  "name": "from_upper_level",
+  "tile_x": 37,
+  "tile_y": 15,
+  "x": 600,
+  "y": 256,
+  "facing": "down",
+  "note": "Arrive here when coming back down through the terrace hatch."
+ },
+ {
+  "type": "trap_field",
+  "name": "trap_hall_plates",
+  "tile_x": 12,
+  "tile_y": 5,
+  "x": 200,
+  "y": 96,
+  "script_id": "WT_TRAP_01",
+  "lines": [
+   "A pressure plate clicks underfoot\u2014"
+  ],
+  "struck_lines": [],
+  "rect_tiles": [
+   12,
+   5,
+   33,
+   8
+  ],
+  "rect_px": [
+   192,
+   80,
+   544,
+   144
+  ],
+  "plate_tiles": [
+   [
+    12,
+    5
+   ],
+   [
+    13,
+    5
+   ],
+   [
+    14,
+    5
+   ],
+   [
+    15,
+    5
+   ],
+   [
+    16,
+    5
+   ],
+   [
+    17,
+    5
+   ],
+   [
+    18,
+    5
+   ],
+   [
+    19,
+    5
+   ],
+   [
+    23,
+    5
+   ],
+   [
+    24,
+    5
+   ],
+   [
+    25,
+    5
+   ],
+   [
+    26,
+    5
+   ],
+   [
+    27,
+    5
+   ],
+   [
+    28,
+    5
+   ],
+   [
+    32,
+    5
+   ],
+   [
+    33,
+    5
+   ],
+   [
+    15,
+    6
+   ],
+   [
+    16,
+    6
+   ],
+   [
+    17,
+    6
+   ],
+   [
+    18,
+    6
+   ],
+   [
+    21,
+    6
+   ],
+   [
+    24,
+    6
+   ],
+   [
+    25,
+    6
+   ],
+   [
+    26,
+    6
+   ],
+   [
+    27,
+    6
+   ],
+   [
+    30,
+    6
+   ],
+   [
+    33,
+    6
+   ],
+   [
+    12,
+    7
+   ],
+   [
+    13,
+    7
+   ],
+   [
+    17,
+    7
+   ],
+   [
+    20,
+    7
+   ],
+   [
+    21,
+    7
+   ],
+   [
+    22,
+    7
+   ],
+   [
+    25,
+    7
+   ],
+   [
+    29,
+    7
+   ],
+   [
+    30,
+    7
+   ],
+   [
+    31,
+    7
+   ],
+   [
+    12,
+    8
+   ],
+   [
+    13,
+    8
+   ],
+   [
+    14,
+    8
+   ],
+   [
+    15,
+    8
+   ],
+   [
+    19,
+    8
+   ],
+   [
+    20,
+    8
+   ],
+   [
+    21,
+    8
+   ],
+   [
+    22,
+    8
+   ],
+   [
+    23,
+    8
+   ],
+   [
+    27,
+    8
+   ],
+   [
+    28,
+    8
+   ],
+   [
+    29,
+    8
+   ],
+   [
+    30,
+    8
+   ],
+   [
+    31,
+    8
+   ],
+   [
+    32,
+    8
+   ],
+   [
+    33,
+    8
+   ]
+  ],
+  "safe_tiles": [
+   [
+    12,
+    6
+   ],
+   [
+    13,
+    6
+   ],
+   [
+    14,
+    6
+   ],
+   [
+    14,
+    7
+   ],
+   [
+    15,
+    7
+   ],
+   [
+    16,
+    7
+   ],
+   [
+    16,
+    8
+   ],
+   [
+    17,
+    8
+   ],
+   [
+    18,
+    7
+   ],
+   [
+    18,
+    8
+   ],
+   [
+    19,
+    6
+   ],
+   [
+    19,
+    7
+   ],
+   [
+    20,
+    5
+   ],
+   [
+    20,
+    6
+   ],
+   [
+    21,
+    5
+   ],
+   [
+    22,
+    5
+   ],
+   [
+    22,
+    6
+   ],
+   [
+    23,
+    6
+   ],
+   [
+    23,
+    7
+   ],
+   [
+    24,
+    7
+   ],
+   [
+    24,
+    8
+   ],
+   [
+    25,
+    8
+   ],
+   [
+    26,
+    7
+   ],
+   [
+    26,
+    8
+   ],
+   [
+    27,
+    7
+   ],
+   [
+    28,
+    6
+   ],
+   [
+    28,
+    7
+   ],
+   [
+    29,
+    5
+   ],
+   [
+    29,
+    6
+   ],
+   [
+    30,
+    5
+   ],
+   [
+    31,
+    5
+   ],
+   [
+    31,
+    6
+   ],
+   [
+    32,
+    6
+   ],
+   [
+    32,
+    7
+   ],
+   [
+    33,
+    7
+   ]
+  ],
+  "damage_pct": 10,
+  "resets": true,
+  "note": "Trap puzzle (Design proposal on the canon trap): every stone is a pressure plate except the carved sigil stones (crown ringing a black sun). Follow the sigils across. A plate shows WT_TRAP_01, deals damage_pct of max HP to the party and resets."
+ },
+ {
+  "type": "lore",
+  "name": "trap_hall_symbols",
+  "tile_x": 16,
+  "tile_y": 4,
+  "x": 264,
+  "y": 80,
+  "script_id": "WT_SYMBOL_01",
+  "lines": [
+   "Carvings older than the tower itself. The stone around them is too smooth."
+  ],
+  "struck_lines": [],
+  "symbol": "crown_ringing_black_sun"
+ },
+ {
+  "type": "lore",
+  "name": "architect_mural",
+  "tile_x": 26,
+  "tile_y": 13,
+  "x": 424,
+  "y": 224,
+  "script_id": "WB_CARVING",
+  "script_chain": [
+   "WB_CARVING_01",
+   "WB_CARVING_02",
+   "WB_CARVING_03",
+   "WB_CARVING_04",
+   "WB_CARVING_05"
+  ],
+  "story_flag": "flag_carvings_seen",
+  "symbol": "crown_ringing_black_sun",
+  "lines": [
+   "A great crown, carved around a black sun.",
+   "Beneath it, a woman stands before a stone door.",
+   "The stone is worn smooth by thousands of years. The face is not."
+  ],
+  "struck_lines": [],
+  "note": "Wall-sized Architect relief (mural_architect, 6x4 tiles): a giant crown around a black sun; below it a woman (who resembles Mira) before a stone door. lines = the narration part; Kael replies WB_CARVING_04-05. Don't explain the resemblance."
+ },
+ {
+  "type": "lore",
+  "name": "basement_scratch_marks",
+  "tile_x": 11,
+  "tile_y": 13,
+  "x": 184,
+  "y": 224,
+  "lines": [
+   "[Scratch marks gouged into the stone.]"
+  ],
+  "struck_lines": [],
+  "placeholder": true,
+  "note": "Optional flavour for WT_NOTE_02 (\"scratching under the floor\"). The script has no line for it, so the text is a placeholder."
+ },
+ {
+  "type": "treasure",
+  "name": "basement_chest_key",
+  "tile_x": 9,
+  "tile_y": 26,
+  "x": 152,
+  "y": 432,
+  "loot": [
+   "Watchtower Key"
+  ],
+  "item_id": "item_watchtower_key",
+  "script_id": "WT_KEY_01",
+  "lines": [
+   "Obtained: Watchtower Key."
+  ],
+  "struck_lines": [],
+  "note": "The Watchtower Key opens the Blackguard Arena gate (WT_DOOR_LOCKED) on the upper level."
+ },
+ {
+  "type": "treasure",
+  "name": "basement_chest_hall",
+  "tile_x": 38,
+  "tile_y": 25,
+  "x": 616,
+  "y": 416,
+  "loot": [
+   "Minor Potion x2"
+  ],
+  "note": "Design proposal (canon item name)."
+ },
+ {
+  "type": "encounter_zone",
+  "name": "zone01_basement_nest",
+  "tile_x": 3,
+  "tile_y": 14,
+  "x": 56,
+  "y": 240,
+  "table_id": "zone01_basement_nest",
+  "fallback_table_id": "zone01_path",
+  "elite_fallen_knights": false,
+  "enemy_table": [
+   {
+    "enemy_id": "grave_spider",
+    "weight": 3
+   },
+   {
+    "enemy_id": "hollow_soldier",
+    "weight": 1
+   }
+  ],
+  "rect_px": [
+   48,
+   224,
+   256,
+   448
+  ],
+  "enemies": "Grave Spiders, Hollow Soldiers",
+  "levels": "5-7"
+ },
+ {
+  "type": "encounter_zone",
+  "name": "zone01_basement_hall",
+  "tile_x": 22,
+  "tile_y": 14,
+  "x": 360,
+  "y": 240,
+  "table_id": "zone01_basement_hall",
+  "fallback_table_id": "zone01_path",
+  "elite_fallen_knights": true,
+  "enemy_table": [
+   {
+    "enemy_id": "hollow_soldier",
+    "weight": 2
+   },
+   {
+    "enemy_id": "grave_spider",
+    "weight": 1
+   },
+   {
+    "enemy_id": "fallen_knight",
+    "weight": 1,
+    "elite": true
+   }
+  ],
+  "rect_px": [
+   352,
+   224,
+   640,
+   416
+  ],
+  "enemies": "Hollow Soldiers, Grave Spiders, Fallen Knights",
+  "levels": "5-7"
+ },
+ {
+  "type": "enemy_spawn",
+  "name": "fallen_knight_basement",
+  "tile_x": 31,
+  "tile_y": 19,
+  "x": 504,
+  "y": 320,
+  "enemy_id": "fallen_knight",
+  "encounter_id": "zone01_basement_fallen_knight",
+  "group_size": 1,
+  "hostile": true,
+  "elite": true,
+  "note": "Elite Fallen Knight (hostile) guarding the way to the upper level."
+ }
+]

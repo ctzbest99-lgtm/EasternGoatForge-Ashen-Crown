@@ -6,16 +6,16 @@
 #macro BATTLE_ROOM rm_battle_test
 
 // Town wake-up after defeat (owner decision 2026-11-14).
-// No separate town room yet. Respawn is Greyhaven, at the Varyn House
-// player_start marker (tile 186, 171 → 2984, 2752, facing down).
+// No separate town room yet. Respawn is Greyhaven town_square
+// (tile 199, 176 → 3192, 2832, facing down), not the south-road player_start.
 // scr_build_overworld also spawns obj_respawn_point there, which overrides
 // these constants if present. When a real town room is built:
 //   1. Change TOWN_RESPAWN_ROOM to that room's asset name (e.g. rm_town).
 //   2. Place one obj_respawn_point in open space (inn, shrine, etc.).
 //   3. Or set TOWN_RESPAWN_X / TOWN_RESPAWN_Y to a known open position.
 #macro TOWN_RESPAWN_ROOM rm_overworld
-#macro TOWN_RESPAWN_X 2984
-#macro TOWN_RESPAWN_Y 2752
+#macro TOWN_RESPAWN_X 3192
+#macro TOWN_RESPAWN_Y 2832
 
 // Show encounter trigger placeholders in-game while prototyping. Set to false to hide them.
 #macro DEBUG_SHOW_TRIGGERS true

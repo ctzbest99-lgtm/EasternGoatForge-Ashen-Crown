@@ -29,3 +29,7 @@ if (_g.transition_active) {
 
 // Grace period + new steps-until counter after room entry and after returning from battle.
 scr_random_encounter_on_room_start();
+
+// Safety: after spawn, after a return from battle, or after town wake-up,
+// nudge the player if they came up overlapping an obj_solid.
+scr_player_unstick();
