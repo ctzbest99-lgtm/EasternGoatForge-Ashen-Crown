@@ -41,7 +41,7 @@ Quotes are copied exactly from the doc (curly quotes and ellipses included).
 - **[C]** The population is split between loyalty to the crown, religious belief, rebellion, and fear of the Ash.
 - **[C]** The royal government is **not** entirely evil. It includes ordinary people, corrupt officials, honorable soldiers, and people who sincerely believe they are protecting the kingdom.
 
-### 2.2 The Architects
+### 2.2 The Architects (also called the Aethari, see 2.5)
 - **[C]** An ancient civilization that existed thousands of years before modern Eldoria. Their knowledge of magic and technology was far beyond that of modern kingdoms.
 - **[C]** They **created the Crownveil**.
 - **[C]** Their surviving records are fragmented, damaged and hard to interpret.
@@ -88,7 +88,21 @@ Quotes are copied exactly from the doc (curly quotes and ellipses included).
 - They built enormous cities, sanctuaries, temples and underground structures.
 - Their greatest achievement was the **Crown Engine**, a mechanism associated with maintaining the Crownveil.
 - **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Caelan is recruited at an abandoned Aethari sanctuary (Act II).
-- **[PROPOSED, pending Kevin] Working assumption:** "Aethari" is the civilization's own name, and "the Architects" is the modern Eldorian name for the same people. The design doc's Architects description (ancient, far more advanced, created the Crownveil, left underground cities and temples) matches almost exactly. Until Kevin confirms, treat both names as referring to one civilization, and don't write in-game text that states they are the same.
+- **[C-confirmed]** (Kevin via Coder, Nov 14 2026) **The Aethari and the Architects are the same people.** "We can use both names depending on who's talking about them." Everything in 2.2 (The Architects) applies to the Aethari too.
+
+#### Naming guide: Aethari vs Architects **[PROPOSED]** (for Kevin's review)
+| Name | Who uses it |
+|---|---|
+| **Architects** (the common modern Eldorian term) | Ordinary people, villagers, soldiers, the Crown, most of the Radiant Flame, and Kael early in the game. Also the **default for UI, bestiary and quest text**. |
+| **Aethari** (the true, old name) | People with deep or forbidden knowledge: Caelan (former royal scholar), royal scholars and archives, the Aethari's own records and inscriptions, some of the Ashbound, and anyone who has learned the truth. Kael and the party shift to "Aethari" after the relevant revelation (which act is **[O]**). |
+
+Example lines **[PROPOSED]**, illustration only and not scripted scenes:
+- Villager: "Don't go poking at those old Architect stones. Nothing good comes up out of the ground."
+- Kael (early): "More Architect carvings. Whoever they were, they liked doors."
+- Caelan: "The Architects. That's what the textbooks call them. They called themselves the Aethari."
+- Inscription (Aethari record): "Here the Aethari set the first stone of the Veil."
+- Kael (after the revelation): "The Aethari built this to hold something. We need to know what."
+
 - **[O]** Where the sanctuary is, what it was for, and why it was abandoned. What happened to the Aethari (same as the open Architects question).
 
 ### 2.6 Lumen **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026)
@@ -381,42 +395,41 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 5. What exactly does Caelan know about the Crownveil and why it broke?
 6. What are Lyra's Black Hand ties?
 7. Details of each Act II recruitment beyond its setting: the occupied village's name and what happens at the execution, Lyra's Lower City storyline, the Aethari sanctuary's location, and which royal garrison Sera is at. (The order and settings are settled.)
-8. Confirm: are the Aethari the same civilization as the Architects (the proposed working assumption), with "Architects" as the modern name?
-9. What is Lumen, how does it relate to modern magic, and does Ending 3's "magic permanently destroyed" include it?
-10. The Crown Engine: where is it, what state is it in, how does it work, and is its condition why the Crownveil is failing?
-11. Where did Kael (Greyhaven), Taren (Millhaven) and Alden grow up together: Millhaven, Greyhaven or elsewhere? Where is Alden from? When and how did Alden and Taren split? Where is Millhaven, and what is it like?
-12. Elira's fate: alive, dead or missing after Greyhaven?
-13. What is Tomas's ultimate fate (he passes out in Chapter 1, not dead), and what did he know "was coming"?
-14. Who is the "Forgotten King" in Act 4?
-15. Alden's backstory, his exact role in the Broken Yoke, and who defeats King Aldric IV, and how.
-16. What are Aldric IV's motives for hiding the Crownveil's failure?
+8. What is Lumen, how does it relate to modern magic, and does Ending 3's "magic permanently destroyed" include it?
+9. The Crown Engine: where is it, what state is it in, how does it work, and is its condition why the Crownveil is failing?
+10. Where did Kael (Greyhaven), Taren (Millhaven) and Alden grow up together: Millhaven, Greyhaven or elsewhere? Where is Alden from? When and how did Alden and Taren split? Where is Millhaven, and what is it like?
+11. Elira's fate: alive, dead or missing after Greyhaven?
+12. What is Tomas's ultimate fate (he passes out in Chapter 1, not dead), and what did he know "was coming"?
+13. Who is the "Forgotten King" in Act 4?
+14. Alden's backstory, his exact role in the Broken Yoke, and who defeats King Aldric IV, and how.
+15. What are Aldric IV's motives for hiding the Crownveil's failure?
 
 **Events and world**
-17. What destroyed Greyhaven, and how? (Timing is settled: before Kael arrives, not played.)
-18. What is "the Night of Ash" as an event?
-19. Is the passage beneath Greyhaven that Mira opened the same as the Crownveil Door at the end of Zone 1? Where is the Old Watchtower relative to Greyhaven?
-20. What happened to Mira's black stone?
-21. Why do the Architect carvings resemble Mira?
-22. Who wrote the Ashbound parchment, and who sent the Ashbound Hunter?
-23. What does "Then everything stops" mean in the story? (The on-screen presentation is settled: a hard cut to black.)
-24. What does the pendant's shared symbol look like, and is it the crown around a black sun?
-25. Why does a royal banner carry the Crownveil symbol? What does the crown know?
-26. Where exactly does the Crownveil run? It is believed to protect Eldoria, but the Ashlands lie "beyond" it. What is it keeping in?
-27. What are the answers to the six gradual Crownveil truths, and in which acts are they revealed?
-28. Is the Frostwilds' "ancient northern civilization" the Architects or a separate people?
-29. Which acts map to which regions? Where do Valemere, the Drowned Coast and the Frostwilds fall in the eight acts?
-30. Who leads the Broken Yoke, and how is it structured? (Name settled. Taren is a Rebel Captain.)
-31. Is Greyhaven Chapel part of the Radiant Flame?
-32. What is Mira's age now? The doc gives "twelve when the tragedy began." How much time has passed?
+16. What destroyed Greyhaven, and how? (Timing is settled: before Kael arrives, not played.)
+17. What is "the Night of Ash" as an event?
+18. Is the passage beneath Greyhaven that Mira opened the same as the Crownveil Door at the end of Zone 1? Where is the Old Watchtower relative to Greyhaven?
+19. What happened to Mira's black stone?
+20. Why do the Architect carvings resemble Mira?
+21. Who wrote the Ashbound parchment, and who sent the Ashbound Hunter?
+22. What does "Then everything stops" mean in the story? (The on-screen presentation is settled: a hard cut to black.)
+23. What does the pendant's shared symbol look like, and is it the crown around a black sun?
+24. Why does a royal banner carry the Crownveil symbol? What does the crown know?
+25. Where exactly does the Crownveil run? It is believed to protect Eldoria, but the Ashlands lie "beyond" it. What is it keeping in?
+26. What are the answers to the six gradual Crownveil truths, and in which acts are they revealed?
+27. Is the Frostwilds' "ancient northern civilization" the Architects or a separate people?
+28. Which acts map to which regions? Where do Valemere, the Drowned Coast and the Frostwilds fall in the eight acts?
+29. Who leads the Broken Yoke, and how is it structured? (Name settled. Taren is a Rebel Captain.)
+30. Is Greyhaven Chapel part of the Radiant Flame?
+31. What is Mira's age now? The doc gives "twelve when the tragedy began." How much time has passed?
 
 **Endings and systems that touch lore**
 > **Note for Coder:** the party is **5 members with 4 active** (Kael, Lyra, Caelan, Sera, Taren). The Adventure menu's Party Order needs a reserve slot. Kael and Taren are both frontline melee fighters. See "Party roster" in section 5.
-33. Which ending(s) are final, and what are the branching conditions (choices, relationships)?
-34. How does Alden's Ending C relate to the three Crownveil endings? Is it a separate branch, a step before the finale, or a fourth ending?
-35. What is "the entity" in Endings 2 and 3, and is it the Ash or the Ash King?
-36. Kael's Ashen Resolve says "Ash increases by 1." What is the Ash stat or meter?
-37. Party swapping: does the story restrict it (locked or forced members in certain scenes)? Does the reserve member earn XP?
-38. Battle presentation: are battles FF1-style menu battles (the current assumption)? The doc's "hybrid, varying by encounter" note still needs his final word. (The exploration camera is settled.)
+32. Which ending(s) are final, and what are the branching conditions (choices, relationships)?
+33. How does Alden's Ending C relate to the three Crownveil endings? Is it a separate branch, a step before the finale, or a fourth ending?
+34. What is "the entity" in Endings 2 and 3, and is it the Ash or the Ash King?
+35. Kael's Ashen Resolve says "Ash increases by 1." What is the Ash stat or meter?
+36. Party swapping: does the story restrict it (locked or forced members in certain scenes)? Does the reserve member earn XP?
+37. Battle presentation: are battles FF1-style menu battles (the current assumption)? The doc's "hybrid, varying by encounter" note still needs his final word. (The exploration camera is settled.)
 
 ## 11. Decision log
 
@@ -436,3 +449,4 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 | Nov 14 2026 | Act II recruitment plan: Taren (Crown-occupied village near Millhaven, villagers seized for aiding the rebellion and set for public execution) → Lyra (Valemere Lower City) → Caelan (abandoned Aethari sanctuary) → Sera (royal garrison). | Join points added to each character and to the party roster. Act II row filled in. Millhaven marked as near the occupied village. New open term "Aethari" (2.5). The join-point question is trimmed to recruitment details. |
 | Nov 14 2026 | Act II's working title stays **The Broken Crown**. An earlier outline called Act II "The Broken Yoke," but that is now the rebellion's name only. | Act outline unchanged. Use "The Broken Yoke" only for the faction. |
 | Nov 14 2026 | Defined the Aethari: an extraordinarily advanced civilization that understood Lumen (ancient magic), the nature of the Crownveil, the relationship between life and the Ash, magical mechanisms, and the containment of supernatural forces. They built enormous cities, sanctuaries, temples and underground structures. Their greatest achievement was the Crown Engine, associated with maintaining the Crownveil. | 2.5 rewritten. New 2.6 Lumen and 2.7 Crown Engine, details open. [PROPOSED, pending Kevin] working assumption: Aethari = the Architects' own name. Open questions updated. |
+| Nov 14 2026 | (Kevin via Coder) "We can use both names depending on who's talking about them." The Aethari and the Architects are the same people. | 2.5: the link is confirmed, and the working assumption and the "don't state it in game text" rule are removed. 2.2 heading cross-referenced. A [PROPOSED] naming guide was added for Kevin's review. The open question was removed. |
