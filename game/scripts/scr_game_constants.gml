@@ -44,6 +44,22 @@
 #macro ENCOUNTER_STEPS_MAX 24
 #macro ENCOUNTER_GRACE_STEPS 5
 
+// Party and progression (roadmap step 4). Placeholder numbers, pending owner approval.
+#macro PARTY_MAX_SIZE 4
+#macro PARTY_MAX_LEVEL 20
+#macro KAEL_BASE_HP 30
+#macro KAEL_BASE_ATTACK 6
+#macro KAEL_BASE_DEFENSE 2
+// Total XP to reach level L (L>=2): XP_CURVE_QUAD*(L-1)^2 + XP_CURVE_LIN*(L-1).
+// L1=0, L2=30, L3=100, L4=210, L5=360, L10=1710, L20=7410.
+#macro XP_CURVE_QUAD 20
+#macro XP_CURVE_LIN 10
+#macro LEVEL_UP_HP_GROWTH 4
+#macro LEVEL_UP_ATTACK_GROWTH 1
+#macro LEVEL_UP_DEFENSE_GROWTH 1
+// Debug only: add a second placeholder ally so multi-member battle can be tested. Not canon.
+#macro DEBUG_ADD_PLACEHOLDER_ALLY false
+
 // Explicit battle states. The battle controller is only ever in exactly one of these.
 enum BATTLE_STATE {
     INTRO,          // announce the enemy
@@ -52,7 +68,8 @@ enum BATTLE_STATE {
     PLAYER_ACTION,  // resolve queued party actions one at a time
     ENEMY_TURN,     // enemy attacks one living party member
     MESSAGE,        // show `message`, wait for confirm, then go to `next_state`
-    VICTORY,        // grant rewards once
+    VICTORY,        // grant rewards once, then maybe LEVEL_UP
+    LEVEL_UP,       // show one level-up message, then the next or EXIT
     DEFEAT,         // party has fallen; after EXIT they wake up in town
     ERROR,          // bad encounter data (e.g. unknown enemy id)
     EXIT            // hand control back to the overworld exactly once

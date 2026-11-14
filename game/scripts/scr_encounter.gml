@@ -61,8 +61,10 @@ function scr_battle_finish(_result) {
     room_goto(_target_room);
 }
 
-/// Deduct the defeat penalty from shared gold and XP. Stores the amounts in
-/// global.game.last_defeat_penalty for the wake-up message. Never goes negative.
+/// Deduct the defeat penalty from shared gold and each member's XP. Stores the
+/// amounts in global.game.last_defeat_penalty for the wake-up message.
+/// Gold: floor(current * DEFEAT_GOLD_LOSS_PCT), never below 0.
+/// XP: 10% of progress toward the next level, never enough to drop a level.
 function scr_apply_defeat_penalty() {
     scr_game_state_init();
     var _g = global.game;
@@ -72,19 +74,26 @@ function scr_apply_defeat_penalty() {
     if (_gold_lost < 0) _gold_lost = 0;
     _g.gold -= _gold_lost;
 
-    var _xp_lost = scr_defeat_xp_loss_amount(_g.xp);
-    _g.xp -= _xp_lost;
+    var _xp_lost = 0;
+    for (var _i = 0; _i < array_length(_g.party); _i++) {
+        var _member = _g.party[_i];
+        if (!is_struct(_member)) continue;
+        var _lost = scr_defeat_xp_loss_amount(_member.xp, _member.level);
+        _member.xp -= _lost;
+        _xp_lost += _lost;
+    }
+    if (array_length(_g.party) > 0 && is_struct(_g.party[0])) _g.xp = _g.party[0].xp;
 
     _g.last_defeat_penalty = { gold_lost: _gold_lost, xp_lost: _xp_lost };
     return _g.last_defeat_penalty;
 }
 
 /// XP deducted on defeat: floor(progress toward next level * DEFEAT_XP_LOSS_PCT),
-/// never enough to drop below the current level's floor (no level-down, never negative).
-/// No level system exists yet (roadmap step 4), so "progress" is the whole shared
-/// total and the floor is 0 — i.e. floor(total XP * DEFEAT_XP_LOSS_PCT).
-function scr_defeat_xp_loss_amount(_xp) {
-    var _level_floor = 0; // replace with XP required for the current level when progression exists
+/// never enough to drop below scr_xp_for_level(_level) (no level-down, never negative).
+/// Pass the member's current level so the floor is that level's XP requirement.
+function scr_defeat_xp_loss_amount(_xp, _level = undefined) {
+    if (is_undefined(_level)) _level = scr_level_from_xp(_xp);
+    var _level_floor = scr_xp_for_level(_level);
     var _progress = max(0, _xp - _level_floor);
     var _lost = floor(_progress * DEFEAT_XP_LOSS_PCT);
     if (_lost < 0) _lost = 0;

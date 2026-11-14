@@ -27,7 +27,7 @@ var _px = _gw * 0.6;
 var _py = _gh * 0.15;
 for (var _i = 0; _i < array_length(party); _i++) {
     var _member = party[_i];
-    var _line = _member.name + "  HP " + string(_member.hp) + "/" + string(_member.max_hp);
+    var _line = _member.name + "  Lv " + string(_member.level) + "  HP " + string(_member.hp) + "/" + string(_member.max_hp);
     if (_member.is_guarding) _line += "  [Guard]";
     if (_member.hp <= 0) draw_set_color(c_gray);
     else if (state == BATTLE_STATE.COMMAND_SELECT && _i == actor_index) draw_set_color(c_yellow);

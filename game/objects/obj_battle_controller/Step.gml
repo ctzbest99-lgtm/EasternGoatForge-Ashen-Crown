@@ -79,10 +79,21 @@ switch (state) {
         battle_result = "victory";
         if (!rewards_granted) {
             rewards_granted = true;
-            global.game.xp += enemy.xp_reward;
             global.game.gold += enemy.gold_reward;
+            level_ups = scr_party_grant_xp(party, enemy.xp_reward);
+            level_up_index = 0;
+            if (array_length(party) > 0 && is_struct(party[0])) global.game.xp = party[0].xp;
         }
-        queue_message("Victory! Gained " + string(enemy.xp_reward) + " XP and " + string(enemy.gold_reward) + " gold.", BATTLE_STATE.EXIT);
+        var _after_victory = (array_length(level_ups) > 0) ? BATTLE_STATE.LEVEL_UP : BATTLE_STATE.EXIT;
+        queue_message("Victory! Gained " + string(enemy.xp_reward) + " XP and " + string(enemy.gold_reward) + " gold.", _after_victory);
+        break;
+
+    case BATTLE_STATE.LEVEL_UP:
+        if (level_up_index >= array_length(level_ups)) { state = BATTLE_STATE.EXIT; break; }
+        var _up = level_ups[level_up_index];
+        level_up_index += 1;
+        var _after_level = (level_up_index >= array_length(level_ups)) ? BATTLE_STATE.EXIT : BATTLE_STATE.LEVEL_UP;
+        queue_message(_up.name + " reached level " + string(_up.level) + "! HP +" + string(_up.hp) + ", ATK +" + string(_up.attack) + ", DEF +" + string(_up.defense) + ".", _after_level);
         break;
 
     case BATTLE_STATE.DEFEAT:

@@ -16,8 +16,9 @@ function scr_game_state_init() {
         last_defeat_penalty: undefined, // { gold_lost, xp_lost } set by scr_apply_defeat_penalty
         cleared_encounters: {},       // encounter_id -> true after a victory
         party: scr_party_create_default(),
-        xp: 0,                        // party-wide placeholder until per-actor progression (roadmap step 4)
-        gold: 0,
+        xp: 0,                        // mirror of party[0].xp (Kael) for the debugger; each member has their own xp/level
+        gold: 0,                      // shared party currency
+        inventory: [],                // placeholder item list [{ item_id, name, qty }]; menus are roadmap step 5
         random_encounters_enabled: RANDOM_ENCOUNTERS_ENABLED, // debugger toggle; also requires the macro
         encounter_step_remainder: 0,  // leftover pixels toward the next encounter step
         encounter_steps_until: 0,     // steps remaining until a random fight (0 = roll a new interval)
