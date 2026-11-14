@@ -24,6 +24,14 @@
 // Guard multiplies incoming damage by this value (minimum 1 damage still applies).
 #macro GUARD_DAMAGE_MULTIPLIER 0.5
 
+// Defeat penalty (owner decision 2026-11-14; percentages are defaults pending tuning).
+// Gold: floor(current shared gold * DEFEAT_GOLD_LOSS_PCT), never below 0.
+// XP: floor(progress toward next level * DEFEAT_XP_LOSS_PCT), never a level-down
+// or a negative total. No level system exists yet (roadmap step 4), so this is
+// currently floor(total shared XP * DEFEAT_XP_LOSS_PCT).
+#macro DEFEAT_GOLD_LOSS_PCT 0.5
+#macro DEFEAT_XP_LOSS_PCT 0.1
+
 // Explicit battle states. The battle controller is only ever in exactly one of these.
 enum BATTLE_STATE {
     INTRO,          // announce the enemy

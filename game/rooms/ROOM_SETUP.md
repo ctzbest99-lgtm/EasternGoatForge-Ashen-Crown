@@ -50,7 +50,7 @@ Create each object in the table in `game/README.md` with the listed sprite, flag
 3. Running this room alone (Room Order first) works for UI testing: it fights a Bandit, but returning needs `rm_overworld`.
 
 ## 6. Compile and run
-Run (F5). Expected: player moves and collides, the sign opens dialogue, the trigger starts a Bandit battle, victory returns to the same spot, and defeat wakes the party up at the respawn marker (or 320, 180) with a short placeholder dialogue. Then run the "Exploration" and "Battle prototype" sections of docs/TEST_PLAN.md.
+Run (F5). Expected: player moves and collides, the sign opens dialogue, the trigger starts a Bandit battle, victory returns to the same spot, and defeat wakes the party up at the respawn marker (or 320, 180) with a short placeholder dialogue that reports any gold and XP lost. Then run the "Exploration" and "Battle prototype" sections of docs/TEST_PLAN.md.
 
 ## 7. When the town room is built
 1. Create the town room (e.g. `rm_town`). Leave Persistent off. Place `obj_player` in that room (required; the player object is not persistent). Do **not** place a second `obj_game_controller` (the existing one is persistent and will arrive with the party).

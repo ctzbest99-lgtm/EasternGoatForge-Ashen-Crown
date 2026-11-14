@@ -18,6 +18,7 @@ function scr_encounter_start(_enemy_id, _encounter_id = "") {
     };
     _g.pending_battle = { enemy_id: _enemy_id, encounter_id: _encounter_id };
     _g.last_battle_result = undefined;
+    _g.last_defeat_penalty = undefined;
     _g.battle_active = true; // locks overworld input immediately, before the room change happens
     room_goto(BATTLE_ROOM);
     return true;
@@ -26,7 +27,7 @@ function scr_encounter_start(_enemy_id, _encounter_id = "") {
 /// End the battle and leave the battle room. Called once by obj_battle_controller.
 /// _result: "victory" | "defeat" | "error"
 /// Victory and error return to the saved overworld position. Defeat restores party
-/// HP, keeps earned XP/gold, and sends the party to the town respawn point
+/// HP, applies the gold/XP penalty, and sends the party to the town respawn point
 /// (TOWN_RESPAWN_ROOM, currently rm_overworld until a town room exists).
 function scr_battle_finish(_result) {
     scr_game_state_init();
@@ -40,6 +41,9 @@ function scr_battle_finish(_result) {
 
     if (_result == "defeat") {
         scr_party_restore_all(_g.party);
+        scr_apply_defeat_penalty();
+    } else {
+        _g.last_defeat_penalty = undefined;
     }
 
     _g.last_battle_result = _result;
@@ -55,6 +59,37 @@ function scr_battle_finish(_result) {
         _target_room = _g.return_point.room_id;
     }
     room_goto(_target_room);
+}
+
+/// Deduct the defeat penalty from shared gold and XP. Stores the amounts in
+/// global.game.last_defeat_penalty for the wake-up message. Never goes negative.
+function scr_apply_defeat_penalty() {
+    scr_game_state_init();
+    var _g = global.game;
+
+    var _gold_lost = floor(max(0, _g.gold) * DEFEAT_GOLD_LOSS_PCT);
+    if (_gold_lost > _g.gold) _gold_lost = _g.gold;
+    if (_gold_lost < 0) _gold_lost = 0;
+    _g.gold -= _gold_lost;
+
+    var _xp_lost = scr_defeat_xp_loss_amount(_g.xp);
+    _g.xp -= _xp_lost;
+
+    _g.last_defeat_penalty = { gold_lost: _gold_lost, xp_lost: _xp_lost };
+    return _g.last_defeat_penalty;
+}
+
+/// XP deducted on defeat: floor(progress toward next level * DEFEAT_XP_LOSS_PCT),
+/// never enough to drop below the current level's floor (no level-down, never negative).
+/// No level system exists yet (roadmap step 4), so "progress" is the whole shared
+/// total and the floor is 0 — i.e. floor(total XP * DEFEAT_XP_LOSS_PCT).
+function scr_defeat_xp_loss_amount(_xp) {
+    var _level_floor = 0; // replace with XP required for the current level when progression exists
+    var _progress = max(0, _xp - _level_floor);
+    var _lost = floor(_progress * DEFEAT_XP_LOSS_PCT);
+    if (_lost < 0) _lost = 0;
+    if (_xp - _lost < _level_floor) _lost = max(0, _xp - _level_floor);
+    return _lost;
 }
 
 /// Place the player at obj_respawn_point if one exists in the current room,
@@ -84,7 +119,20 @@ function scr_apply_town_respawn() {
     }
 }
 
-/// Short placeholder line shown after a defeat respawn. Final wording is not approved.
+/// Placeholder wake-up lines after a defeat respawn, including the gold/XP lost.
+/// Final wording is not approved.
 function scr_town_wake_up_dialogue() {
-    scr_dialogue_open("[Placeholder] You wake up back in town.");
+    var _gold_lost = 0;
+    var _xp_lost = 0;
+    var _penalty = (variable_global_exists("game") && is_struct(global.game))
+        ? global.game.last_defeat_penalty
+        : undefined;
+    if (is_struct(_penalty)) {
+        _gold_lost = _penalty.gold_lost;
+        _xp_lost = _penalty.xp_lost;
+    }
+    scr_dialogue_open([
+        "[Placeholder] You wake up back in town.",
+        "You lost " + string(_gold_lost) + " gold and " + string(_xp_lost) + " EXP."
+    ]);
 }

@@ -11,10 +11,11 @@
 - Planned menu: equipment, party order, items, save/load, status, Bestiary.
 
 ## Owner-decided (2026-11-14)
-- Defeat: when the party loses a battle, they wake up back in town with HP fully restored. Until a town room exists, the respawn target is `TOWN_RESPAWN_ROOM` (currently `rm_overworld`), at `obj_respawn_point` if one is placed, otherwise at `TOWN_RESPAWN_X` / `TOWN_RESPAWN_Y`. A short placeholder wake-up line is shown through the existing dialogue box. Earned XP and gold are kept for now (see open questions).
+- Defeat: when the party loses a battle, they wake up back in town with HP fully restored. Until a town room exists, the respawn target is `TOWN_RESPAWN_ROOM` (currently `rm_overworld`), at `obj_respawn_point` if one is placed, otherwise at `TOWN_RESPAWN_X` / `TOWN_RESPAWN_Y`. A short placeholder wake-up dialogue is shown through the existing dialogue box and reports the gold and XP lost.
+- Defeat penalty: lose `DEFEAT_GOLD_LOSS_PCT` of current shared gold (floored) and `DEFEAT_XP_LOSS_PCT` of XP progress toward the next level, never causing a level-down or a negative total. Defaults are 50% gold and 10% XP; exact percentages are pending tuning. There is no level system yet (roadmap step 4), so the XP penalty is currently 10% of total shared XP, floored.
 
 ## Still undecided
-GameMaker version; room resolution and tile size; input mapping; battle room versus overlay; exact backstory; party members/classes; rare encounter and boss identity/mechanics; save schema; license/proprietary status; whether a defeat should deduct gold, XP, or items (currently none are deducted). Treat these as open questions, not approved requirements.
+GameMaker version; room resolution and tile size; input mapping; battle room versus overlay; exact backstory; party members/classes; rare encounter and boss identity/mechanics; save schema; license/proprietary status; exact defeat gold/XP percentages (defaults 50% / 10%, pending tuning); whether a defeat should also deduct items. Treat these as open questions, not approved requirements.
 
 ## Prototype assumptions (exploration + battle prototype; pending owner approval)
 These were chosen so roadmap steps 2–3 could be built. None is a locked design decision.

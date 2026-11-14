@@ -13,6 +13,7 @@ function scr_game_state_init() {
         pending_battle: undefined,    // { enemy_id, encounter_id } set by scr_encounter_start
         return_point: undefined,      // { room_id, px, py, facing_x, facing_y }
         last_battle_result: undefined,// "victory" | "defeat" | "error"
+        last_defeat_penalty: undefined, // { gold_lost, xp_lost } set by scr_apply_defeat_penalty
         cleared_encounters: {},       // encounter_id -> true after a victory
         party: scr_party_create_default(),
         xp: 0,                        // party-wide placeholder until per-actor progression (roadmap step 4)
