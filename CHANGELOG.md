@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-11-14 — Chapter 1 art wiring
+- Branched from `feature/zone1-placement-fixes` (PR #8). This PR depends on #8 and should be merged after it. Chapter 2 lines tagged `[PROPOSED]` are **not** wired.
+- Added Design's remaining Chapter 1 sprites under `game/sprites/` (`blackguard/`, `enemies/`, `npcs/`, `portraits/`, `title/`, `ui/`, `items/`). Import tables, origins, frame counts, and fps are in `game/sprites/IMPORT.md`. `README_CH1_ART.md` and `STATUS.md` are copies of Design's notes.
+- Hooked overworld NPC, enemy, chest, and item sprites at spawn (`scr_ch1_art`) with `asset_get_index` fallbacks. Tomas uses the pallet lying loop / awake pose. Watchtower chests use the iron set. `old_hunter_renn` is mapped even without `npc_id`.
+- Dialogue portraits (48×48) for Kael, Tomas, Pell, Renn, and the Fallen Knight. Nine-slice dialogue window on a 320×180 GUI.
+- Battle is now an FF1-style 320×180 screen (`scr_ui`): area backgrounds, party on the right with `image_xscale = -1`, enemies on the left, command / HP windows, cursor, bitmap font (`spr_font_main_strip95` via `font_add_sprite_ext`), HP bars, Guard icon, damage digits. New enemy battle strips and visual-only Hunter arrow / Spider web / spiderlings.
+- Blackguard canon from `STORY_BIBLE.md` §5.13 / `CHAPTER1_SCRIPT.md` §8: **450 HP**, **250 XP**, **100 Gold**, weak to Holy. ATK 12 / DEF 8 stay placeholders. Phase 2 at 60% HP (270) and Phase 3 at 20% HP (90) play `p1to2` / `p2to3` and swap sprite sets. Final death is `p3_death`; the Phase 1 death strip is debug only. Phase 2/3 attack modifiers are applied in battle (Speed +30% is stored but unused).
+- Title screen: new room `rm_title` (must be first in Room Order) and `obj_title`. Parallax at 0 / −0.05 / −0.1 / −0.2, ember loop at 12 fps in Draw GUI, logo, New Game / Continue (disabled without `save1.sav`) / Options / Quit. The 640 ember strip needs its own Texture Group — flagged in IMPORT.md.
+- Simple inventory overlay (I / Tab) with 16×16 icons. Not a full menu or save system (Continue stays disabled; no save writer).
+- New scripts `scr_ch1_art`, `scr_ui`; new objects `obj_title`, `obj_inventory_menu`. `scr_ui_init()` locks the GUI to 320×180. Placeholder fallbacks so a missing import cannot crash. Test plan A1–A12. Not compiled or playtested in GameMaker yet.
+
 ## 2026-11-14 — Greyhaven interiors, Watchtower Basement, and map hookup
 - Merged Lore's docs commit `96882ca` (Chapter 2 draft) into this branch. Chapter 2 lines tagged `[PROPOSED]` are **not** wired.
 - Added `rm_watchtower_basement` (44×32) and five Greyhaven interiors (`rm_greyhaven_varyn_house`, `_tavern`, `_chapel`, `_blacksmith`, `_general_store`) from Design's dataset. Tileset is now 256×800 (rows 0–37 ids unchanged). Door markers link the overworld to each interior.

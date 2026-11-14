@@ -1,3 +1,6 @@
+/// Y-sort the story NPC with everyone else.
+depth = -y;
+
 /// obj_story_npc : Step
 /// Arm after the player has been seen off the tile, then fire once on contact
 /// so FK_01 (on the bandit-camp north exit) cannot be walked past.

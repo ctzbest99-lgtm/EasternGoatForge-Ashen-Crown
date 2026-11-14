@@ -16,7 +16,12 @@ function scr_encounter_start(_enemy_id, _encounter_id = "", _script_id = "") {
         facing_x: _player.facing_x,
         facing_y: _player.facing_y
     };
-    _g.pending_battle = { enemy_id: _enemy_id, encounter_id: _encounter_id, script_id: _script_id };
+    _g.pending_battle = {
+        enemy_id: _enemy_id,
+        encounter_id: _encounter_id,
+        script_id: _script_id,
+        area: scr_ch1_battle_area(_enemy_id, _encounter_id)
+    };
     _g.last_battle_result = undefined;
     _g.last_defeat_penalty = undefined;
     _g.battle_active = true; // locks overworld input immediately, before the room change happens

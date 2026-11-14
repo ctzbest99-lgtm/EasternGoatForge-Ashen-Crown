@@ -126,6 +126,23 @@ Create the rooms in `game/rooms/ROOM_SETUP.md` sections 6a–6b. Use confirmed C
 - [ ] I8 The spider-nest chest adds `item_watchtower_key` to the inventory (`WT_KEY_01`). The mural plays `WB_CARVING_01`–`05` and sets `flag_carvings_seen`. Placeholder chest loot (`watchtower_chest_*`, `hidden_grove_chest`) must **not** invent items; listed loot (camp chests, `basement_chest_hall`) is granted.
 - [ ] I9 With the key, the arena gate opens. Walking in plays `BG_INTRO_01`–`05` once, then the Blackguard fight starts. Victory sets `blackguard_defeated`, grants the Longsword and Crownveil Fragment, and plays `BG_DEFEAT` / `BG_REWARD_01`. Defeat uses the usual town wake-up; the intro flag may already be set, but the boss trigger remains until a victory.
 - [ ] I10 The Crownveil door stays sealed until `blackguard_defeated`, then plays `CV_END_01`–`06` and sets `flag_chapter1_complete`. No Chapter 2 `[PROPOSED]` line appears. A save prompt is not implemented (open).
+
+
+## Chapter 1 art (untested in GameMaker)
+Create `rm_title`, import sprites from `game/sprites/IMPORT.md` (Chapter 1 section), and enable nine-slice / the 640 texture group as documented. Missing sprites must not crash (rectangles, placeholder objects, or the default font). Do not accept Chapter 2 `[PROPOSED]` lines.
+- [ ] A1 Project compiles after `rm_title` exists and is first in Room Order. `scr_ui_init` locks the GUI to 320×180. Interpolation is off.
+- [ ] A2 Title: parallax layers drift at 0 / −0.05 / −0.1 / −0.2, the ember loop plays at 12 fps, the logo fades in, and "Press any key" advances to the menu. Options: New Game, Continue (disabled with no `save1.sav`, skipped by the cursor), Options (placeholder panel), Quit.
+- [ ] A3 New Game enters `rm_overworld`. Kael, NPCs, and chests use the imported 16×24 / chest sprites and y-sort (`depth = -y`). Tomas uses the pallet lying loop and switches to `lying_awake` while his dialogue is open.
+- [ ] A4 Talking to Tomas, Pell, Renn, Hob, Ilse, Marda, Wenna, Dov, Corwin, and the Fallen Knight story NPC shows the correct overworld sprite. Dialogue with Kael / Tomas / Pell / Renn / Fallen Knight shows the 48×48 portrait. Other speakers have no portrait and still render text.
+- [ ] A5 I / Tab opens the inventory overlay with 16×16 item icons (pendant, key, parchment, potions, swords, gold). X / I closes it and returns control. Input stays locked while it is open.
+- [ ] A6 Overworld chests use wood sprites; Watchtower / basement chests use iron. Opening plays the 3-frame strip once and grants the listed loot (or stays a placeholder if the loot is flagged as such).
+- [ ] A7 Encounter triggers and the Watchtower Hunter show the matching overworld enemy (or Blackguard) sprite when imported. A missing sprite still starts the fight.
+- [ ] A8 Battle: area background (Greyhaven / forest / bandit camp / Watchtower / Blackguard arena), party on the right flipped (`xscale = -1`), enemies on the left facing right, nine-slice command / HP windows, gauntlet cursor, bitmap font, HP bars (colour shifts under 50% / 25%), Guard status icon, floating damage digits. Z still skips clips. Missing strips fall back to rectangles and do not stall `ANIMATING`.
+- [ ] A9 New enemies play their battle strips (Wolf howl, Wretch scream, Hunter arrow visual, Spider web + spiderlings visual-only, Hollow Soldier guard). Stats stay the placeholder values.
+- [ ] A10 Blackguard starts in Phase 1 (450 HP). At 270 HP the `p1to2` transition plays once and the Phase 2 set (no shield; Ash Slash / Dark Lunge / Blood Oath) takes over. At 90 HP `p2to3` plays and Phase 3 (Execution) starts. A killing blow plays `p3_death` even if earlier phases were skipped. Victory grants 250 XP, 100 Gold, the Longsword, and the Crownveil Fragment. The Phase 1 death strip is not used in the live fight.
+- [ ] A11 Continue stays disabled (no save writer yet). Options is visual only. A 640 ember strip that was not given a large Texture Group must not crash — skip it or use the 320 fallback.
+- [ ] A12 No Chapter 2 `[PROPOSED]` dialogue appears anywhere in this pass.
+
 ## Menus and saves
 - [ ] Selection and cancel/back work.
 - [ ] Save/load persists after restart; missing/corrupt save fails safely.

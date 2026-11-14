@@ -2,6 +2,8 @@
 /// After a battle: victory/error restore the pre-battle position; defeat places
 /// the player at the town respawn point and opens a short wake-up dialogue.
 if (room == BATTLE_ROOM) exit;
+// rm_title has no player; skip return-from-battle placement.
+if (room == TITLE_ROOM) exit;
 
 var _g = global.game;
 if (_g.transition_active) {
