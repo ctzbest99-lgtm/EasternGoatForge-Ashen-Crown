@@ -1,0 +1,216 @@
+/// scr_enemy_database — prototype values; playtest and rebalance before release.
+///
+/// Fields (feature/battle-upgrade): id, name, short_name (enemy list, 12 chars max), max_hp, attack,
+/// defense, mdef, spd, max_mp, xp_reward, gold_reward (fixed) or gold_min / gold_max (rolled per enemy),
+/// weakness (element id, "" = none; now used in combat via BATTLE_WEAKNESS_MULTIPLIER),
+/// actions [{ skill, weight }] (scr_skill_data ids; the AI skips skills it cannot afford or whose
+/// `cond` fails), optional actions_alone (used when no other enemy on its side is alive),
+/// optional phase_actions [[...], [...], [...]] (Blackguard), is_boss, yields / yield_flag
+/// (yield replaces death), stance_on_adds_fall / stance_buffs (one-time stance when every add falls).
+///
+/// Chapter 1 SPD / MDEF / MP are PLACEHOLDER defaults chosen so Kael (SPD 10, +1 per level) still
+/// usually acts first in Zone 1, and every Chapter 1 kit keeps its old odds (specials stay visual
+/// only, except Shield Wall, which still guards the next hit). Act II stats are Design's
+/// suggestions (2026-11-14) and are not approved.
+function scr_get_enemy_data(_enemy_id) {
+    switch (_enemy_id) {
+        case "bandit":
+            return { id: "bandit", name: "Bandit", max_hp: 18, attack: 5, defense: 1, mdef: 1, spd: 8, max_mp: 0, xp_reward: 6, gold_reward: 4,
+                actions: [{ skill: "attack", weight: 1 }] };
+        case "fallen_knight":
+            return { id: "fallen_knight", name: "Fallen Knight", short_name: "Fallen Kn.", max_hp: 30, attack: 7, defense: 4, mdef: 3, spd: 7, max_mp: 0, xp_reward: 12, gold_reward: 8,
+                actions: [{ skill: "attack", weight: 1 }] };
+        case "ashbound_hunter":
+            // Recommended level 3–5 (CHAPTER1_SCRIPT.md §4.1). PLACEHOLDER stats
+            // a step above Fallen Knight. Weakness now applies in combat (no party ice skill yet).
+            return { id: "ashbound_hunter", name: "Ashbound Hunter", short_name: "Ash. Hunter", max_hp: 42, attack: 9, defense: 5, mdef: 3, spd: 11, max_mp: 0, xp_reward: 20, gold_reward: 12, weakness: "ice",
+                actions: [{ skill: "attack", weight: 1 }] };
+        case "blackguard":
+            // Zone 1 boss (Old Watchtower arena). Canon HP / XP / Gold and phase
+            // thresholds are from STORY_BIBLE.md §5.13 and CHAPTER1_SCRIPT.md §8:
+            // 450 HP, Phase 2 at 60% (270), Phase 3 at 20% (90), 250 XP, 100 Gold.
+            // ATK 12 / DEF 8 / MDEF 6 / SPD 9 remain PLACEHOLDER (not given in those docs).
+            // Phase 3 SPD +30% (canon) now matters: speed_mod 1.3 is applied to turn order.
+            // phase_actions keep the old odds (P1 1/3 Shield Bash; P2 Attack / Lunge / Oath; P3 Attack / Execution).
+            return { id: "blackguard", name: "Blackguard", max_hp: 450, attack: 12, defense: 8, mdef: 6, spd: 9, max_mp: 0, xp_reward: 250, gold_reward: 100, weakness: "holy", is_boss: true,
+                actions: [{ skill: "attack", weight: 1 }],
+                phase_actions: [
+                    [{ skill: "attack", weight: 2 }, { skill: "bg_shieldbash", weight: 1 }],
+                    [{ skill: "attack", weight: 1 }, { skill: "bg_lunge", weight: 1 }, { skill: "bg_oath", weight: 1 }],
+                    [{ skill: "attack", weight: 1 }, { skill: "bg_execution", weight: 1 }]
+                ] };
+        case "ash_wolf":
+            // PLACEHOLDER. Design: Farmlands / Old Road, Lv 1–2 / 2–3. Howl stays visual only (1 in 5).
+            return { id: "ash_wolf", name: "Ash Wolf", max_hp: 16, attack: 6, defense: 1, mdef: 0, spd: 9, max_mp: 0, xp_reward: 7, gold_reward: 3, weakness: "fire", placeholder: true,
+                actions: [{ skill: "attack", weight: 4 }, { skill: "wolf_howl", weight: 1 }] };
+        case "ashen_wretch":
+            // PLACEHOLDER. Design: Old Road / Bandit Camp, Lv 2–4. Scream stays visual only (1 in 5).
+            return { id: "ashen_wretch", name: "Ashen Wretch", short_name: "Ash. Wretch", max_hp: 22, attack: 6, defense: 2, mdef: 2, spd: 6, max_mp: 0, xp_reward: 9, gold_reward: 5, placeholder: true,
+                actions: [{ skill: "attack", weight: 4 }, { skill: "wretch_scream", weight: 1 }] };
+        case "grave_spider":
+            // PLACEHOLDER. Design: Watchtower / Basement, Lv 4–7. Web stays visual only (1 in 4).
+            return { id: "grave_spider", name: "Grave Spider", max_hp: 24, attack: 8, defense: 2, mdef: 2, spd: 8, max_mp: 0, xp_reward: 11, gold_reward: 6, placeholder: true,
+                actions: [{ skill: "attack", weight: 3 }, { skill: "spider_web", weight: 1 }] };
+        case "hollow_soldier":
+            // PLACEHOLDER. Design: Watchtower / Basement, Lv 4–7. Shield Wall guards the next hit (1 in 4).
+            return { id: "hollow_soldier", name: "Hollow Soldier", short_name: "Hollow Sol.", max_hp: 28, attack: 7, defense: 3, mdef: 1, spd: 5, max_mp: 0, xp_reward: 11, gold_reward: 7, placeholder: true,
+                actions: [{ skill: "attack", weight: 3 }, { skill: "shield_wall", weight: 1 }] };
+
+        // ---- Act II: Millhaven Road / Wrenfield (Design batch 6, level 8–10) ----------------
+        // Balance pass (PLACEHOLDER): HP / ATK / DEF were lowered from Design's suggestions so a
+        // solo level-8 Kael can clear 1–2 enemy road fights and Kael + Taren at 9–10 beat Calder
+        // with no in-battle healing (tools/balance_sim.py; table in DECISIONS). XP / gold / SPD /
+        // MDEF are still Design's suggestions. Skill weights are PLACEHOLDER.
+        // Design suggested: Patrolman 90/16/12, Crossbowman 70/18/8, Occupation Soldier 120/17/16,
+        // Bandit Veteran 95/18/11, Grey Ash Wolf 80/20/8, Reeve Calder 320/24/18 (HP/ATK/DEF).
+        case "crown_patrolman":
+            return { id: "crown_patrolman", name: "Crown Patrolman", short_name: "Patrolman", max_hp: 44, attack: 13, defense: 12, mdef: 6, spd: 11, max_mp: 0,
+                xp_reward: 28, gold_min: 12, gold_max: 20, gold_reward: 16, weakness: "lightning", placeholder: true,
+                actions: [{ skill: "attack", weight: 2 }, { skill: "thrust", weight: 2 }, { skill: "brace", weight: 1 }] };
+        case "crown_crossbowman":
+            return { id: "crown_crossbowman", name: "Crown Crossbowman", short_name: "Crossbowman", max_hp: 36, attack: 14, defense: 8, mdef: 6, spd: 13, max_mp: 0,
+                xp_reward: 26, gold_min: 12, gold_max: 18, gold_reward: 15, weakness: "lightning", placeholder: true,
+                actions: [{ skill: "crossbow_bolt", weight: 1 }] };
+        case "occupation_soldier":
+            return { id: "occupation_soldier", name: "Occupation Soldier", short_name: "Occ. Soldier", max_hp: 50, attack: 12, defense: 14, mdef: 8, spd: 8, max_mp: 0,
+                xp_reward: 36, gold_min: 15, gold_max: 25, gold_reward: 20, weakness: "lightning", placeholder: true,
+                actions: [{ skill: "attack", weight: 2 }, { skill: "slash", weight: 2 }, { skill: "soldier_guard", weight: 1 }] };
+        case "bandit_veteran":
+            // Same kit as the bandit (plain attack).
+            return { id: "bandit_veteran", name: "Bandit Veteran", short_name: "Bandit Vet.", max_hp: 42, attack: 13, defense: 10, mdef: 5, spd: 14, max_mp: 0,
+                xp_reward: 32, gold_min: 16, gold_max: 28, gold_reward: 22, placeholder: true,
+                actions: [{ skill: "attack", weight: 1 }] };
+        case "grey_ash_wolf":
+            // Same kit as the ash wolf. MDEF and gold were not in Design's list: PLACEHOLDER 4 and 10–16.
+            return { id: "grey_ash_wolf", name: "Grey Ash Wolf", short_name: "Grey Wolf", max_hp: 36, attack: 13, defense: 8, mdef: 4, spd: 20, max_mp: 0,
+                xp_reward: 28, gold_min: 10, gold_max: 16, gold_reward: 13, weakness: "fire", placeholder: true,
+                actions: [{ skill: "attack", weight: 4 }, { skill: "wolf_howl", weight: 1 }] };
+        case "reeve_calder":
+            // Chapter 2 boss (CHAPTER2_SCRIPT.md §7). Kit is canon: Guard; a shout that buffs his
+            // soldiers; a heavy strike; a harder stance when the detachment falls; he yields and lives.
+            // Numbers are Design's suggestions. Stance (+25% ATK, +15% DEF for the rest of the
+            // battle) is PLACEHOLDER. Fought as group "grp_reeve_calder" with occupation_soldier adds.
+            return { id: "reeve_calder", name: "Reeve Calder", short_name: "Reeve Calder", max_hp: 130, attack: 15, defense: 16, mdef: 12, spd: 10, max_mp: 20,
+                xp_reward: 220, gold_min: 80, gold_max: 120, gold_reward: 100, placeholder: true,
+                is_boss: true, yields: true, yield_flag: "flag_reeve_calder_yielded",
+                stance_on_adds_fall: true,
+                stance_buffs: [{ stat: "atk", pct: 0.25, turns: -1 }, { stat: "def", pct: 0.15, turns: -1 }],
+                actions: [{ skill: "heavy_strike", weight: 3 }, { skill: "calder_guard", weight: 1 }, { skill: "calder_shout", weight: 2 }],
+                actions_alone: [{ skill: "heavy_strike", weight: 3 }, { skill: "calder_guard", weight: 1 }] };
+
+        // ---- Design batch 7: Wrenfield elite, Lower City (Ch 3), Hollow Sanctuary (Ch 4),
+        //      Blackwood Road Garrison (Ch 5). Batch 8: the Blackwood (Act III). -------------
+        // Stats come from scr_enemy_scaled (role + level template calibrated to the Chapter 2
+        // balance pass). Levels follow ACT2_OUTLINE's PROPOSED bands (Ch3 10–13, Ch4 13–16,
+        // Ch5 16–18); the Blackwood (18–20) is a coder placeholder. Everything here is PLACEHOLDER.
+        case "crown_sergeant": // Wrenfield elite (battle enemy; the gate NPC is crown_sergeant_gate)
+            return scr_enemy_scaled("crown_sergeant", "Crown Sergeant", "Sergeant", "elite", 9, 1, { spd: 10, weakness: "lightning",
+                actions: [{ skill: "attack", weight: 3 }, { skill: "sergeant_rally", weight: 2 }] });
+        case "dock_thug":
+            return scr_enemy_scaled("dock_thug", "Dock Thug", "Dock Thug", "common", 11, 1, { spd: 9, actions: [{ skill: "attack", weight: 1 }] });
+        case "cutpurse":
+            return scr_enemy_scaled("cutpurse", "Cutpurse", "Cutpurse", "common", 11, 1, { spd: 18, hp_mult: 0.8,
+                actions: [{ skill: "attack", weight: 2 }, { skill: "cutpurse_steal", weight: 2 }] });
+        case "debt_collector":
+            return scr_enemy_scaled("debt_collector", "Debt Collector", "Collector", "elite", 12, 1, { spd: 10, actions: [{ skill: "attack", weight: 1 }] });
+        case "debtman": // Ch 3 boss (working name; killing fight, has a death strip)
+            return scr_enemy_scaled("debtman", "The Debtman", "Debtman", "boss", 13, 3, { spd: 11,
+                actions: [{ skill: "attack", weight: 3 }, { skill: "debtman_reel", weight: 2 }] });
+        case "ward_sentinel":
+            return scr_enemy_scaled("ward_sentinel", "Ward Sentinel", "Sentinel", "common", 14, 1, { spd: 7, def_add: 3, weakness: "lightning",
+                actions: [{ skill: "attack", weight: 1 }] });
+        case "glyph_wisp":
+            return scr_enemy_scaled("glyph_wisp", "Glyph Wisp", "Wisp", "common", 14, 1, { spd: 15, hp_mult: 0.75,
+                actions: [{ skill: "attack", weight: 1 }, { skill: "wisp_mote", weight: 2 }] });
+        case "aethari_automaton":
+            return scr_enemy_scaled("aethari_automaton", "Aethari Automaton", "Automaton", "elite", 15, 1, { spd: 9, weakness: "lightning",
+                actions: [{ skill: "attack", weight: 1 }] });
+        case "sanctuary_warden": // Ch 4 boss (working name), two phases
+            return scr_enemy_scaled("sanctuary_warden", "Sanctuary Warden", "Warden", "boss", 16, 4, { spd: 8,
+                phase2_at: 0.5, phase2_buffs: [{ stat: "atk", pct: 0.2, turns: -1 }],
+                phase2_line: "The Warden's plates crack. Two more arms unfold!",
+                actions: [{ skill: "attack", weight: 2 }, { skill: "warden_ring", weight: 1 }],
+                phase_actions: [
+                    [{ skill: "attack", weight: 2 }, { skill: "warden_ring", weight: 1 }],
+                    [{ skill: "attack", weight: 2 }, { skill: "warden_ring", weight: 2 }]
+                ] });
+        case "garrison_pikeman":
+            return scr_enemy_scaled("garrison_pikeman", "Garrison Pikeman", "Pikeman", "common", 16, 1, { spd: 10, weakness: "lightning",
+                actions: [{ skill: "attack", weight: 2 }, { skill: "pike_thrust", weight: 2 }] });
+        case "garrison_field_surgeon":
+            return scr_enemy_scaled("garrison_field_surgeon", "Field Surgeon", "Surgeon", "common", 16, 1, { spd: 12, hp_mult: 0.8,
+                actions: [{ skill: "attack", weight: 2 }, { skill: "surgeon_heal", weight: 3 }] });
+        case "garrison_knight":
+            return scr_enemy_scaled("garrison_knight", "Garrison Knight", "Knight", "elite", 17, 1, { spd: 9, weakness: "lightning",
+                actions: [{ skill: "attack", weight: 3 }, { skill: "soldier_guard", weight: 1 }] });
+        case "commander_hailen": // Ch 5 boss: yields if the story flag is set, otherwise falls
+            return scr_enemy_scaled("commander_hailen", "Commander Hailen", "Hailen", "boss", 18, 4, { spd: 12,
+                yields_if_flag: "flag_hailen_yields", yield_flag: "flag_hailen_yielded",
+                actions: [{ skill: "attack", weight: 3 }, { skill: "hailen_glint", weight: 2 }] });
+        case "shade_stalker":
+            return scr_enemy_scaled("shade_stalker", "Shade Stalker", "Stalker", "common", 18, 1, { spd: 19, weakness: "holy",
+                actions: [{ skill: "attack", weight: 3 }, { skill: "shade_fade", weight: 1 }] });
+        case "briar_hulk":
+            return scr_enemy_scaled("briar_hulk", "Briar Hulk", "Briar Hulk", "common", 18, 1, { spd: 5, hp_mult: 1.4, weakness: "fire",
+                actions: [{ skill: "attack", weight: 1 }] });
+        case "lost_one": // id and concept may be revised (DECISIONS)
+            return scr_enemy_scaled("lost_one", "Lost One", "Lost One", "common", 18, 1, { spd: 8, weakness: "holy",
+                actions: [{ skill: "attack", weight: 1 }] });
+        case "night_moth_swarm":
+            return scr_enemy_scaled("night_moth_swarm", "Night Moth Swarm", "Moths", "common", 19, 1, { spd: 16, hp_mult: 0.7, weakness: "fire",
+                actions: [{ skill: "attack", weight: 2 }, { skill: "moth_blind", weight: 2 }, { skill: "moth_sleep", weight: 1 }] });
+        case "door_warden":
+            return scr_enemy_scaled("door_warden", "Door Warden", "Door Warden", "elite", 19, 1, { spd: 6, def_add: 3, weakness: "lightning",
+                actions: [{ skill: "attack", weight: 1 }] });
+        case "blackwood_matriarch": // PLACEHOLDER boss (proposed, not canon), two phases
+            return scr_enemy_scaled("blackwood_matriarch", "Blackwood Matriarch", "Matriarch", "boss", 20, 4, { spd: 13, weakness: "holy",
+                phase2_at: 0.5, phase2_buffs: [{ stat: "atk", pct: 0.25, turns: -1 }, { stat: "spd", pct: 0.2, turns: -1 }],
+                phase2_line: "Her antlers split. Embers wake in the cracks!",
+                actions: [{ skill: "attack", weight: 2 }, { skill: "matriarch_breath", weight: 1 }],
+                phase_actions: [
+                    [{ skill: "attack", weight: 2 }, { skill: "matriarch_breath", weight: 1 }],
+                    [{ skill: "attack", weight: 2 }, { skill: "matriarch_breath", weight: 2 }]
+                ] });
+    }
+    return undefined;
+}
+
+/// PLACEHOLDER stat template for enemies past Chapter 2 (Design batches 7–8). Calibrated so a
+/// "common" at level 9 matches the balance-pass Chapter 2 regulars (≈ 44 HP, 13 ATK, 11 DEF),
+/// then grows with the tiered party growth (+10 HP / +2 ATK / +2 DEF per level) so hits-to-kill
+/// and damage taken stay roughly flat. Roles: "common", "elite" (×2 HP, +2 ATK / DEF, ×2.5 XP),
+/// "boss" (HP × 1.5 × expected party size, +3 ATK / DEF, ×8 XP). `_extra` may set spd, mdef,
+/// weakness, actions, phase data, yields_if_flag, and tweaks hp_mult / def_add. Not approved.
+function scr_enemy_scaled(_id, _name, _short, _role, _level, _party, _extra) {
+    var _d = _level - 9;
+    var _hp = 44 + 7 * _d;
+    var _atk = 13 + 2 * _d;
+    var _def = 11 + 2 * _d;
+    var _mdef = 6 + _d;
+    var _xp = 28 + 8 * _d;
+    var _gmin = 12 + 3 * _d;
+    var _gmax = 20 + 4 * _d;
+    if (_role == "elite") { _hp *= 2; _atk += 2; _def += 2; _xp = round(_xp * 2.5); _gmin *= 2; _gmax *= 2; }
+    if (_role == "boss") { _hp = round(_hp * 1.5 * max(1, _party)); _atk += 3; _def += 3; _xp *= 8; _gmin *= 6; _gmax *= 6; }
+    var _e = { id: _id, name: _name, short_name: _short, max_hp: _hp, attack: _atk, defense: _def, mdef: _mdef, spd: 10, max_mp: 0,
+               xp_reward: _xp, gold_min: _gmin, gold_max: _gmax, gold_reward: round((_gmin + _gmax) / 2), placeholder: true,
+               level: _level, role: _role, is_boss: (_role == "boss") };
+    if (is_struct(_extra)) {
+        var _names = variable_struct_get_names(_extra);
+        for (var _i = 0; _i < array_length(_names); _i++) _e[$ _names[_i]] = _extra[$ _names[_i]];
+    }
+    if (variable_struct_exists(_e, "hp_mult")) _e.max_hp = max(1, round(_e.max_hp * _e.hp_mult));
+    if (variable_struct_exists(_e, "def_add")) _e.defense += _e.def_add;
+    return _e;
+}
+
+/// Battle background area for a batch 7–8 enemy id ("" = decide by room / encounter).
+function scr_enemy_battle_area(_enemy_id) {
+    switch (_enemy_id) {
+        case "dock_thug": case "cutpurse": case "debt_collector": case "debtman": return "lower_city";
+        case "ward_sentinel": case "glyph_wisp": case "aethari_automaton": case "sanctuary_warden": return "sanctuary_hall";
+        case "garrison_pikeman": case "garrison_field_surgeon": case "garrison_knight": case "commander_hailen": return "garrison_yard";
+        case "shade_stalker": case "briar_hulk": case "lost_one": case "night_moth_swarm": case "door_warden": case "blackwood_matriarch": return "blackwood";
+    }
+    return "";
+}
