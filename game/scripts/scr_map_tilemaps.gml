@@ -254,14 +254,16 @@ function scr_map_spawn_markers(_markers) {
             case "boss_spawn":
                 if (scr_map_is_guaranteed_hunter(_m) && _o_story != -1) {
                     var _st = instance_create_layer(_m.tile_x * 16, _m.tile_y * 16, _lay, _o_story);
-                    var _sspr = _st.sprite_index;
-                    if (_sspr != -1 && sprite_exists(_sspr) && sprite_get_width(_sspr) > 0 && sprite_get_height(_sspr) > 0) {
-                        _st.image_xscale = 16 / sprite_get_width(_sspr);
-                        _st.image_yscale = 16 / sprite_get_height(_sspr);
-                    }
                     if (variable_struct_exists(_m, "encounter_id")) _st.encounter_id = _m.encounter_id;
                     if (variable_struct_exists(_m, "enemy_id")) _st.enemy_id = _m.enemy_id;
                     if (variable_struct_exists(_m, "script_id")) _st.script_id = _m.script_id;
+                    var _hid = variable_struct_exists(_m, "enemy_id") ? _m.enemy_id : "ashbound_hunter";
+                    scr_ch1_bind_enemy_ow(_st, _hid, _m);
+                    var _sspr = _st.sprite_index;
+                    if (_sspr != -1 && sprite_exists(_sspr) && sprite_get_width(_sspr) > 24) {
+                        _st.image_xscale = 16 / sprite_get_width(_sspr);
+                        _st.image_yscale = 16 / sprite_get_height(_sspr);
+                    }
                     break;
                 }
                 if (_m.type == "story_encounter") break;
@@ -273,6 +275,7 @@ function scr_map_spawn_markers(_markers) {
                     var _t = scr_map_create_at_feet(_o_trig, _lay, _m.x, _m.y);
                     _t.enemy_id = _eid;
                     _t.encounter_id = _m.encounter_id;
+                    scr_ch1_bind_enemy_ow(_t, _eid, _m);
                 }
                 break;
             case "encounter_zone":
@@ -358,11 +361,22 @@ function scr_map_spawn_markers(_markers) {
                     if (variable_struct_exists(_m, "npc_id")) _s.npc_id = _m.npc_id;
                     if (variable_struct_exists(_m, "shop_id")) _s.shop_id = _m.shop_id;
                     if (_m.type == "item" && variable_struct_exists(_m, "item_id")) {
-                        var _ispr = asset_get_index("spr_" + _m.item_id);
+                        var _ispr = scr_ch1_item_sprite(_m.item_id);
+                        if (!scr_sprite_is_valid(_ispr)) _ispr = asset_get_index("spr_" + _m.item_id);
                         if (_ispr != -1 && sprite_exists(_ispr)) {
                             _s.sprite_index = _ispr;
+                            _s.image_xscale = 1;
+                            _s.image_yscale = 1;
                             scr_map_fit_to_tile(_s, _m.x, _m.y);
                         }
+                    }
+                    if (_m.type == "treasure") {
+                        scr_ch1_bind_chest(_s, _m, false);
+                    }
+                    if (_m.type == "npc") {
+                        var _nid = variable_struct_exists(_m, "npc_id") ? _m.npc_id : "";
+                        var _nm = variable_struct_exists(_m, "name") ? _m.name : "";
+                        scr_ch1_bind_npc_ow(_s, _nid, _nm, _m);
                     }
                     _s.map_marker = _m;
                 }
@@ -373,11 +387,16 @@ function scr_map_spawn_markers(_markers) {
                         break;
                     }
                     var _sn = scr_map_create_at_feet(_o_snpc, _lay, _m.x, _m.y);
-                    scr_map_fit_to_tile(_sn, _m.x, _m.y);
                     if (variable_struct_exists(_m, "script_id")) _sn.script_id = _m.script_id;
                     if (variable_struct_exists(_m, "story_flag")) _sn.story_flag = _m.story_flag;
                     if (variable_struct_exists(_m, "npc_id")) _sn.npc_id = _m.npc_id;
                     _sn.map_marker = _m;
+                    var _sid = variable_struct_exists(_m, "npc_id") ? _m.npc_id : "fallen_knight_story";
+                    var _snm = variable_struct_exists(_m, "name") ? _m.name : "";
+                    scr_ch1_bind_npc_ow(_sn, _sid, _snm, _m);
+                    if (_sn.image_xscale != 1 || !scr_sprite_is_valid(_sn.sprite_index)) {
+                        scr_map_fit_to_tile(_sn, _m.x, _m.y);
+                    }
                     if (scr_flag_get(_sn.story_flag)) instance_destroy(_sn);
                 }
                 break;

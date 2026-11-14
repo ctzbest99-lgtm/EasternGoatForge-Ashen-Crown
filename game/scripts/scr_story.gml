@@ -76,8 +76,8 @@ function scr_area_allows_ashbound_rare() {
 
 
 /// On a Blackguard victory: set blackguard_defeated, grant the canon key items
-/// (Longsword + Crownveil Fragment), and queue BG_DEFEAT / BG_REWARD. XP and gold
-/// still come from the PLACEHOLDER enemy entry, not the script's 250 / 100.
+/// (Longsword + Crownveil Fragment), and queue BG_DEFEAT / BG_REWARD. XP (250)
+/// and gold (100) come from the canon enemy DB entry.
 function scr_blackguard_on_battle_finish(_result, _pending) {
     if (!is_struct(_pending)) return;
     var _is_bg = (_pending.enemy_id == "blackguard");

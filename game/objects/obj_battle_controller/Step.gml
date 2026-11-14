@@ -6,6 +6,8 @@
 if (is_struct(enemy_vis)) scr_battle_vis_update(enemy_vis);
 var _v;
 for (_v = 0; _v < array_length(party_vis); _v++) scr_battle_vis_update(party_vis[_v]);
+scr_battle_fx_step(battle_fx);
+scr_battle_pops_step(dmg_pops);
 
 switch (state) {
 
@@ -77,11 +79,12 @@ switch (state) {
                 queue_message(_actor.name + " has no one to swap with.", BATTLE_STATE.PLAYER_ACTION);
             }
         } else { // "Attack"
-            var _damage = scr_calculate_damage(_actor.attack, enemy.defense);
+            var _defense = enemy.defense;
+            var _damage = scr_calculate_damage(_actor.attack, _defense);
             var _text = _actor.name + " attacks! " + enemy.name + " takes " + string(_damage) + " damage.";
             var _att_vis = party_vis[_action.actor_index];
             // Damage and XP credit run in apply_pending_hit() at the attack's hit frame.
-            begin_attack_anim(_att_vis, enemy_vis, { kind: "player_attack", damage: _damage, party_index: _action.actor_index }, _text, BATTLE_STATE.PLAYER_ACTION);
+            begin_attack_anim(_att_vis, enemy_vis, { kind: "player_attack", damage: _damage, party_index: _action.actor_index }, _text, BATTLE_STATE.PLAYER_ACTION, "attack");
         }
         break;
 
@@ -104,17 +107,71 @@ switch (state) {
         }
         break;
 
+    case BATTLE_STATE.PHASE_SHIFT:
+        if (scr_input_confirm_pressed() && is_struct(enemy_vis)) scr_battle_vis_snap_end(enemy_vis);
+        if (!is_struct(enemy_vis) || enemy_vis.finished) {
+            finish_phase_shift();
+        }
+        break;
+
     case BATTLE_STATE.ENEMY_TURN:
         if (is_struct(enemy) && enemy.hp <= 0) { state = BATTLE_STATE.VICTORY; break; }
         var _target_index = scr_party_random_living_index(party);
         if (_target_index == -1) { state = BATTLE_STATE.DEFEAT; break; }
 
         var _target = party[_target_index];
-        var _enemy_damage = scr_apply_guard(scr_calculate_damage(enemy.attack, _target.defense), _target.is_guarding);
-        var _guard_note = _target.is_guarding ? " (guarded)" : "";
-        var _etext = enemy.name + " attacks " + _target.name + "! " + string(_enemy_damage) + " damage" + _guard_note + ".";
+        var _anim = "attack";
+        var _special = false;
+        var _sets_guard = false;
+        if (enemy.actor_id == "blackguard") {
+            var _ph = variable_struct_exists(enemy, "phase") ? enemy.phase : 1;
+            _anim = scr_blackguard_pick_anim(_ph);
+            if (_anim == "oath") _special = true;
+        } else if (enemy.actor_id == "ash_wolf" && irandom(4) == 0) {
+            _anim = "howl";
+            _special = true;
+        } else if (enemy.actor_id == "ashen_wretch" && irandom(4) == 0) {
+            _anim = "scream";
+            _special = true;
+        } else if (enemy.actor_id == "grave_spider" && irandom(3) == 0) {
+            _anim = "cast";
+            _special = true;
+        } else if (enemy.actor_id == "hollow_soldier" && irandom(3) == 0) {
+            _anim = "guard";
+            _special = true;
+            _sets_guard = true;
+        }
+
+        var _hit_kind = _special ? "enemy_special" : "enemy_attack";
+        var _enemy_damage = 0;
+        var _etext;
+        if (_special) {
+            if (_anim == "oath") _etext = enemy.name + " swears a Blood Oath!";
+            else if (_anim == "howl") _etext = enemy.name + " howls!";
+            else if (_anim == "scream") _etext = enemy.name + " screams!";
+            else if (_anim == "cast") _etext = enemy.name + " casts a web! (visual only)";
+            else if (_anim == "guard") _etext = enemy.name + " raises a Shield Wall!";
+            else _etext = enemy.name + " uses a special!";
+        } else {
+            _enemy_damage = scr_apply_guard(scr_calculate_damage(enemy.attack, _target.defense), _target.is_guarding);
+            var _guard_note = _target.is_guarding ? " (guarded)" : "";
+            var _label = (enemy.actor_id == "blackguard") ? scr_blackguard_anim_label(_anim) : "attacks";
+            if (_label == "attacks") {
+                _etext = enemy.name + " attacks " + _target.name + "! " + string(_enemy_damage) + " damage" + _guard_note + ".";
+            } else {
+                _etext = enemy.name + " uses " + _label + " on " + _target.name + "! " + string(_enemy_damage) + " damage" + _guard_note + ".";
+            }
+        }
+        var _hit = {
+            kind: _hit_kind,
+            damage: _enemy_damage,
+            party_index: _target_index,
+            anim: _anim,
+            enemy_kind: enemy.actor_id,
+            sets_guard: _sets_guard
+        };
         // anim_next_state is corrected in apply_pending_hit after HP is applied (ROUND_START or DEFEAT).
-        begin_attack_anim(enemy_vis, party_vis[_target_index], { kind: "enemy_attack", damage: _enemy_damage, party_index: _target_index }, _etext, BATTLE_STATE.ROUND_START);
+        begin_attack_anim(enemy_vis, party_vis[_target_index], _hit, _etext, BATTLE_STATE.ROUND_START, _anim);
         break;
 
     case BATTLE_STATE.VICTORY:

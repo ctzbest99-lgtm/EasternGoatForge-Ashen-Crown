@@ -129,6 +129,10 @@ function scr_pickup_from_instance(_inst) {
     // Unique story items leave the world; generic chests stay as "[Empty.]" after looted_ flag.
     if (_id == "item_mira_pendant" || _id == "item_watchtower_key") {
         instance_destroy(_inst);
+        return;
+    }
+    if (variable_instance_exists(_inst, "ch1_chest") && _inst.ch1_chest) {
+        scr_ch1_chest_play_open(_inst);
     }
 }
 

@@ -4,6 +4,7 @@
 // Room handles used by the encounter flow (create these rooms in the IDE; names must match).
 #macro OVERWORLD_ROOM rm_overworld
 #macro BATTLE_ROOM rm_battle_test
+#macro TITLE_ROOM rm_title
 
 // Town wake-up after defeat (owner decision 2026-11-14).
 // No separate town room yet. Respawn is Greyhaven town_square
@@ -100,6 +101,13 @@
 #macro BATTLE_ANIM_FPS 10
 #macro BATTLE_IDLE_FPS 6
 #macro BATTLE_SPRITE_SCALE 2
+// GUI is locked to 320×180 in scr_ui_init (FF1 layout, ×4 to 1280×720).
+// BATTLE_SPRITE_SCALE is legacy (2× on a 640 GUI) and is no longer multiplied in draw.
+
+// Blackguard phases (STORY_BIBLE §5.13 / CHAPTER1_SCRIPT.md §8): 60% HP and 20% HP.
+#macro BLACKGUARD_PHASE2_HP_PCT 0.6
+#macro BLACKGUARD_PHASE3_HP_PCT 0.2
+#macro TITLE_EMBER_FPS 12
 
 // Optional camera: if Viewport 0 is enabled (or created by scr_map_enable_camera),
 // the controller follows obj_player. Recommended view is 320×180, displayed at 2×.
@@ -113,6 +121,7 @@ enum BATTLE_STATE {
     COMMAND_SELECT, // each living party member picks Attack or Guard
     PLAYER_ACTION,  // resolve queued party actions one at a time
     ANIMATING,      // play attack / hurt / death clips, then queue the pending message
+    PHASE_SHIFT,    // Blackguard p1to2 / p2to3 transition at 60% / 20% HP
     ENEMY_TURN,     // enemy attacks one living party member
     MESSAGE,        // show `message`, wait for confirm, then go to `next_state`
     VICTORY,        // grant rewards once, then maybe LEVEL_UP

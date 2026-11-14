@@ -9,6 +9,7 @@ function scr_game_state_init() {
         frame: 0,                     // incremented by obj_game_controller : Begin Step
         input_block_until_frame: -1,  // overworld input ignored while frame <= this
         dialogue_open: false,
+        menu_open: false,             // inventory overlay (I / Tab); locks overworld input
         battle_active: false,         // true from encounter start until the battle hands control back
         transition_active: false,     // true while returning from battle, until Room Start restores the player
         pending_battle: undefined,    // { enemy_id, encounter_id } set by scr_encounter_start
@@ -40,7 +41,8 @@ function scr_game_state_init() {
 function scr_input_locked() {
     scr_game_state_init();
     var _g = global.game;
-    return _g.dialogue_open || _g.battle_active || _g.transition_active || (_g.frame <= _g.input_block_until_frame);
+    var _menu = variable_struct_exists(_g, "menu_open") && _g.menu_open;
+    return _g.dialogue_open || _menu || _g.battle_active || _g.transition_active || (_g.frame <= _g.input_block_until_frame);
 }
 
 /// Ignore overworld input for the current frame plus `_frames` more. Used after closing

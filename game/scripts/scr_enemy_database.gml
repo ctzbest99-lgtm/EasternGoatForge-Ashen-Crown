@@ -10,11 +10,12 @@ function scr_get_enemy_data(_enemy_id) {
             // a step above Fallen Knight. Weakness is for the bestiary later, not combat.
             return { id: "ashbound_hunter", name: "Ashbound Hunter", max_hp: 42, attack: 9, defense: 5, xp_reward: 20, gold_reward: 12, weakness: "ice" };
         case "blackguard":
-            // Zone 1 boss (Old Watchtower arena). PLACEHOLDER stats, pending owner
-            // approval. Canon in CHAPTER1_SCRIPT.md §8 is 450 HP with three phases;
-            // those phases and the 250 XP / 100 Gold rewards are not implemented.
-            // Battle sprites fall back to the coloured rectangle if missing.
-            return { id: "blackguard", name: "Blackguard", max_hp: 80, attack: 12, defense: 8, xp_reward: 50, gold_reward: 30 };
+            // Zone 1 boss (Old Watchtower arena). Canon HP / XP / Gold and phase
+            // thresholds are from STORY_BIBLE.md §5.13 and CHAPTER1_SCRIPT.md §8:
+            // 450 HP, Phase 2 at 60% (270), Phase 3 at 20% (90), 250 XP, 100 Gold.
+            // ATK 12 / DEF 8 remain PLACEHOLDER (not given in those docs). Weak
+            // to Holy (bestiary; not used in combat yet).
+            return { id: "blackguard", name: "Blackguard", max_hp: 450, attack: 12, defense: 8, xp_reward: 250, gold_reward: 100, weakness: "holy" };
         case "ash_wolf":
             // PLACEHOLDER. Design: Farmlands / Old Road, Lv 1–2 / 2–3.
             // Weakness "fire" is for the bestiary (Renn's hint); not used in combat.

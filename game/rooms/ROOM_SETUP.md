@@ -8,6 +8,19 @@ The overworld player uses **16×24** Kael sprites on that 16×16 grid (`depth = 
 
 **Sprite import:** follow [`game/sprites/IMPORT.md`](../sprites/IMPORT.md) for every character PNG (asset name, frames, origin, mask, fps). Code uses `asset_get_index` and still compiles if a sprite is missing.
 
+## 0. Title room (`rm_title`) — first in Room Order
+1. Create room `rm_title`. Size 320×180 (or 640×360 if you prefer a 2× room; the menu is drawn in Draw GUI either way). Persistent off. Clear colour black.
+2. **Room Order:** move `rm_title` to the **top** so it is the first room. `rm_overworld` is no longer first.
+3. Place **`obj_title`** and **`obj_game_controller`** (persistent). Do **not** place `obj_player` here.
+4. Views: enable Viewport 0, camera 320×180, visible area 1280×720 (or 2× the camera). `scr_ui_init()` also locks the GUI to 320×180.
+5. Background layers are optional. `obj_title` draws the parallax (`spr_menu_bg0`–`bg3`) in Draw GUI at speeds 0, −0.05, −0.1, −0.2, then the ember loop at 12 fps, the logo, and the menu options (New Game, Continue disabled when `save1.sav` is missing, Options, Quit).
+6. Uncheck **Game Options ▸ Graphics ▸ Interpolate colours between pixels**.
+7. Import the 320 title sprites (and the UI font / nine-slice windows) from `game/sprites/IMPORT.md`. The 640 ember strip needs its own Texture Group (see IMPORT.md); otherwise skip it and the 320 strip is used.
+8. `#macro TITLE_ROOM rm_title` is in `scr_game_constants.gml`. The project will not compile until this room exists.
+9. New Game goes to `rm_overworld`. Continue is visual-only until a save format exists (roadmap step 5). Options opens the placeholder panel (`spr_menu_panel_options_*`).
+
+The Design README called this room `rm_main_menu`. This project uses **`rm_title`**.
+
 ## 1. Project
 1. Create a new GameMaker project (GML, GameMaker 2023.1+).
 2. Create every Script listed in `game/README.md` first, pasting each `game/scripts/*.gml` file into the script of the same name. Scripts reference objects and rooms by name, so the project will not compile until steps 2–4 are done too.
@@ -15,7 +28,9 @@ The overworld player uses **16×24** Kael sprites on that 16×16 grid (`depth = 
 ## 2. Sprites
 
 ### 2a. Character art (required for the new look; optional for a compile test)
-Import the PNGs in `game/sprites/` using the table in [`game/sprites/IMPORT.md`](../sprites/IMPORT.md). At minimum, import Kael's 16×24 overworld set and the battle idle/attack/hurt/death strips for `spr_hero_*`, `spr_bandit_*`, and `spr_fallen_knight_*`. Keep each asset name identical to the filename (including `_stripN`).
+Import the PNGs in `game/sprites/` using the table in [`game/sprites/IMPORT.md`](../sprites/IMPORT.md). At minimum, import Kael's 16×24 overworld set and the battle idle/attack/hurt/death strips for `spr_hero_*`, `spr_bandit_*`, and `spr_fallen_knight_*`. For the Chapter 1 look, also import the enemy / Blackguard / NPC / portrait / UI / item / title sets in the Chapter 1 section of IMPORT.md (origins, frame counts, and fps are listed per asset). Keep each asset name identical to the filename (including `_stripN`).
+
+After import: enable nine-slice on the three `spr_ui_window*` sprites (8 px each side) and put `spr_menu_embers_640_strip24` in a 2048+ Texture Group, or skip that one strip. The font is created in code from `spr_font_main_strip95` via `font_add_sprite_ext` — do not make a Font asset.
 
 Assign `spr_kael_ow16_idle_down` to `obj_player`. Set the manual feet mask (left 0, top 8, right 15, bottom 23) and origin (8, 23) on every Kael 16×24 sprite. The object code also pins `mask_index` to the idle-down sprite.
 
@@ -36,10 +51,12 @@ Record imported assets in docs/ASSET_INVENTORY.md.
 
 ## 3. Objects
 Create each object in the table in `game/README.md` with the listed sprite, flags, and events, then paste the matching `.gml` file into each event:
-- **obj_game_controller:** no sprite, tick **Persistent**, untick Visible. Events: Create, Step ▸ Begin Step, Step ▸ End Step, Other ▸ Room Start.
+- **obj_game_controller:** no sprite, tick **Persistent**, untick Visible. Events: Create, Step ▸ Begin Step, Step ▸ End Step, Other ▸ Room Start. Place in `rm_title` (and a spare in `rm_overworld` is fine — the duplicate destroys itself).
+- **obj_title:** no sprite. Events: Create, Step, Draw ▸ Draw GUI. Place only in `rm_title`.
+- **obj_inventory_menu:** no sprite. Events: Create, Step, Draw ▸ Draw GUI, Clean Up. Do not place in a room; `obj_game_controller` creates it when I or Tab is pressed.
 - **obj_player:** sprite `spr_kael_ow16_idle_down` (or `spr_player_placeholder` if the sheet is not imported yet). Events: Create, Step. The Step event also picks idle/walk by facing, plays the walk at 8 fps, and sets `depth = -y`.
 - **obj_solid:** sprite `spr_solid_placeholder`. No events.
-- **obj_interactable:** sprite `spr_interactable_placeholder` (16×16 Top Left preferred; a larger placeholder is scaled to one tile by the map spawner), **Parent = obj_solid** (blocks movement). Event: Create. The spawner also sets `script_id` / `struck_lines` / item fields from map data.
+- **obj_interactable:** (also add a Step event: `Step.gml` — y-sort, Tomas pallet pose, chest open strip)  sprite `spr_interactable_placeholder` (16×16 Top Left preferred; a larger placeholder is scaled to one tile by the map spawner), **Parent = obj_solid** (blocks movement). Event: Create. The spawner also sets `script_id` / `struck_lines` / item fields from map data.
 - **obj_dialogue_box:** no sprite. Events: Create, Step, Draw ▸ Draw GUI, Clean Up.
 - **obj_encounter_trigger:** sprite `spr_encounter_trigger_placeholder`, no parent. Events: Create, Other ▸ Room Start, Step.
 - **obj_battle_controller:** no sprite. Events: Create, Step, Draw ▸ Draw GUI.
