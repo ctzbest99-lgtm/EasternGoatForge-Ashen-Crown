@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-14 — Generated ready-to-open GameMaker project
+- Added `gamemaker/`: a complete GameMaker project (`AshenCrown.yyp`, 2024.x format) generated from `game/` — 20 scripts, 11 objects with all events wired (Create, Step, Begin/End Step, Room Start, Draw GUI, Clean Up), 55 sprites (all art strips split into per-frame PNGs with the documented origins and collision boxes), the `ts_zone1` tileset, and the 3 rooms with creation code, player/controller placement, and the 320×180 camera view. `datafiles/` are byte-identical copies of `game/game/datafiles/` (86 Included Files). Manual IDE assembly per `game/rooms/ROOM_SETUP.md` is no longer needed — open the `.yyp` and run.
+- Seven flat-color placeholder sprites stand in for missing art (player fallback, solid, interactable, encounter trigger/zone, respawn point, story encounter). Death strips are 48×48 frames by design; battle test room is `rm_battle_test`.
+- Requires GameMaker IDE 2023.1+ (project format is 2024.x). Generated and validated by script: all JSON parses, every resource path resolves, sprite frame PNGs match declared dimensions, scripts byte-identical to source, datafiles byte-identical, instances inside room bounds.
+- `game/` remains the human-readable source of truth; README updated.
+
 ## 2026-11-14 — Character sprites and 16×16 overworld scale
 - Added Kael, Bandit, and Fallen Knight art under `game/sprites/` (battle strips plus 16×24 and 32×48 overworld walk/idle sets for Kael and the Bandit). IDE import table is `game/sprites/IMPORT.md`. Source generators (`src/*.py`) are included because they are small. The Zone 1 tileset and maps now live on `main` and are included in this branch after the merge.
 - `obj_player` uses the 16×24 Kael sheet: idle/walk by facing, walk at 8 fps, `depth = -y`, no `image_xscale` (left is pre-mirrored). `mask_index` is pinned to idle-down (16×16 standing-tile feet box). `asset_get_index` falls back to the IDE placeholder if the sheet is missing. The 32×48 overworld set is a code fallback only.
