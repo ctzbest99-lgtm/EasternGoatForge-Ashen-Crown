@@ -14,15 +14,15 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"1758ebf6-53f9-45bb-994a-c292f2a9adfb",
-      "name":"1758ebf6-53f9-45bb-994a-c292f2a9adfb",
+      "%Name":"bd484990-3784-4a3b-8b17-784b6057f645",
+      "name":"bd484990-3784-4a3b-8b17-784b6057f645",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"c51fd222-9cbe-4260-8036-9f5d9f4a8773",
-      "name":"c51fd222-9cbe-4260-8036-9f5d9f4a8773",
+      "%Name":"57b27a14-7555-4839-adbd-065f1783cb7f",
+      "name":"57b27a14-7555-4839-adbd-065f1783cb7f",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -34,11 +34,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"1abe1f98-41b9-481d-b2ce-f5eb4bb1d57a",
+      "%Name":"01aed8d8-e40e-4ba9-9f0b-0d6915942541",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"1abe1f98-41b9-481d-b2ce-f5eb4bb1d57a",
+      "name":"01aed8d8-e40e-4ba9-9f0b-0d6915942541",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -111,7 +111,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"1758ebf6-53f9-45bb-994a-c292f2a9adfb",
+                    "name":"bd484990-3784-4a3b-8b17-784b6057f645",
                     "path":"sprites/spr_bram_bound_ow16_noose_taut_strip2/spr_bram_bound_ow16_noose_taut_strip2.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -119,7 +119,7 @@
                 },
               },
               "Disabled":false,
-              "id":"004635bd-38f2-4a80-ba1f-f4dddde0bc44",
+              "id":"8d86d3cf-34ff-4e5d-8cbb-9bba54dd8ad7",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -133,7 +133,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"c51fd222-9cbe-4260-8036-9f5d9f4a8773",
+                    "name":"57b27a14-7555-4839-adbd-065f1783cb7f",
                     "path":"sprites/spr_bram_bound_ow16_noose_taut_strip2/spr_bram_bound_ow16_noose_taut_strip2.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -141,7 +141,7 @@
                 },
               },
               "Disabled":false,
-              "id":"06338fd1-e7d8-4f0a-8b63-977d6e3f81e7",
+              "id":"9a4c5214-bb38-4a8f-a383-b73174f554ec",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,

@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"38400ed3-48fa-45e7-b52e-5b3d6edf3a26",
-      "name":"38400ed3-48fa-45e7-b52e-5b3d6edf3a26",
+      "%Name":"fdc94ccb-cef5-4f20-b0d2-9b9af4a5c676",
+      "name":"fdc94ccb-cef5-4f20-b0d2-9b9af4a5c676",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"ce912b6d-bf45-45e8-af4b-b68239ae3953",
+      "%Name":"2fdec71d-3e6b-4301-9ac6-0a5cc5a03f0a",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"ce912b6d-bf45-45e8-af4b-b68239ae3953",
+      "name":"2fdec71d-3e6b-4301-9ac6-0a5cc5a03f0a",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"38400ed3-48fa-45e7-b52e-5b3d6edf3a26",
+                    "name":"fdc94ccb-cef5-4f20-b0d2-9b9af4a5c676",
                     "path":"sprites/spr_taren_ow16_idle_down/spr_taren_ow16_idle_down.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"599222e2-0660-46a8-841a-35aedb0bc220",
+              "id":"a9e3cf50-202b-485b-9d69-8cbc042cf271",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

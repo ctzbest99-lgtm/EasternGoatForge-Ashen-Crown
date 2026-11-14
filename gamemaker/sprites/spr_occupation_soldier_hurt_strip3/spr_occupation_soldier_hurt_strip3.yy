@@ -14,22 +14,22 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"d93538ad-9359-4e07-80b9-55b141d0e8d8",
-      "name":"d93538ad-9359-4e07-80b9-55b141d0e8d8",
+      "%Name":"a99405b2-3c2c-45ed-90b8-e53c58256751",
+      "name":"a99405b2-3c2c-45ed-90b8-e53c58256751",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"4a11c937-f068-4df8-8648-c7cf47e9dc26",
-      "name":"4a11c937-f068-4df8-8648-c7cf47e9dc26",
+      "%Name":"eb565dee-27c7-4fbc-aa86-30a8cd590d6f",
+      "name":"eb565dee-27c7-4fbc-aa86-30a8cd590d6f",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"6e304b7f-fa53-4297-8465-1bde54483c6a",
-      "name":"6e304b7f-fa53-4297-8465-1bde54483c6a",
+      "%Name":"f3f14efe-d4ee-488b-89c8-985bcd30569a",
+      "name":"f3f14efe-d4ee-488b-89c8-985bcd30569a",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -41,11 +41,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"6293471d-0053-4c73-9782-533f4d01d4cd",
+      "%Name":"6eab04e7-502e-43d0-884f-a56e3e48f8da",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"6293471d-0053-4c73-9782-533f4d01d4cd",
+      "name":"6eab04e7-502e-43d0-884f-a56e3e48f8da",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -118,7 +118,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"d93538ad-9359-4e07-80b9-55b141d0e8d8",
+                    "name":"a99405b2-3c2c-45ed-90b8-e53c58256751",
                     "path":"sprites/spr_occupation_soldier_hurt_strip3/spr_occupation_soldier_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -126,7 +126,7 @@
                 },
               },
               "Disabled":false,
-              "id":"a40bdfd2-887a-4a0b-abdc-841a2e37f8f3",
+              "id":"6404a87f-6411-48f3-b001-93982fd42f76",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -140,7 +140,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"4a11c937-f068-4df8-8648-c7cf47e9dc26",
+                    "name":"eb565dee-27c7-4fbc-aa86-30a8cd590d6f",
                     "path":"sprites/spr_occupation_soldier_hurt_strip3/spr_occupation_soldier_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -148,7 +148,7 @@
                 },
               },
               "Disabled":false,
-              "id":"92ac5fe2-100a-438d-b042-067b8b6f17fa",
+              "id":"633e4220-d1ab-46c7-8698-87b81f4fffa5",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -162,7 +162,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"6e304b7f-fa53-4297-8465-1bde54483c6a",
+                    "name":"f3f14efe-d4ee-488b-89c8-985bcd30569a",
                     "path":"sprites/spr_occupation_soldier_hurt_strip3/spr_occupation_soldier_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -170,7 +170,7 @@
                 },
               },
               "Disabled":false,
-              "id":"a85da73f-280d-4c38-91e2-1aa912e8e74d",
+              "id":"d123906a-5d7c-463a-8cb5-c47fdf2eabb6",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,

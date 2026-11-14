@@ -7,11 +7,11 @@
   "inheritLayers":false,
   "instanceCreationOrder":[
     {
-      "name":"inst_76C1B9AB",
+      "name":"inst_2F184816",
       "path":"PLACEHOLDER",
     },
     {
-      "name":"inst_12E41B03",
+      "name":"inst_8108D455",
       "path":"PLACEHOLDER",
     },
   ],
@@ -33,7 +33,7 @@
       "instances":[
         {
           "$GMRInstance":"v4",
-          "%Name":"inst_76C1B9AB",
+          "%Name":"inst_2F184816",
           "colour":4294967295,
           "frozen":false,
           "hasCreationCode":false,
@@ -44,7 +44,7 @@
           "inheritedItemId":null,
           "inheritItemSettings":false,
           "isDnd":false,
-          "name":"inst_76C1B9AB",
+          "name":"inst_2F184816",
           "objectId":{
             "name":"obj_game_controller",
             "path":"objects/obj_game_controller/obj_game_controller.yy",
@@ -60,7 +60,7 @@
         },
         {
           "$GMRInstance":"v4",
-          "%Name":"inst_12E41B03",
+          "%Name":"inst_8108D455",
           "colour":4294967295,
           "frozen":false,
           "hasCreationCode":false,
@@ -71,7 +71,7 @@
           "inheritedItemId":null,
           "inheritItemSettings":false,
           "isDnd":false,
-          "name":"inst_12E41B03",
+          "name":"inst_8108D455",
           "objectId":{
             "name":"obj_title",
             "path":"objects/obj_title/obj_title.yy",

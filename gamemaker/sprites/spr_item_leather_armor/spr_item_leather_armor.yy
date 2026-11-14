@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"46574c3f-2117-4ea7-8305-b51bf41a503b",
-      "name":"46574c3f-2117-4ea7-8305-b51bf41a503b",
+      "%Name":"a27d255f-e8bc-47e7-8c05-45575f813ee5",
+      "name":"a27d255f-e8bc-47e7-8c05-45575f813ee5",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"c5eacf47-88aa-49cb-9de9-1edfb5fd292d",
+      "%Name":"d26b1c34-327a-4107-a3d6-2063230d0792",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"c5eacf47-88aa-49cb-9de9-1edfb5fd292d",
+      "name":"d26b1c34-327a-4107-a3d6-2063230d0792",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"46574c3f-2117-4ea7-8305-b51bf41a503b",
+                    "name":"a27d255f-e8bc-47e7-8c05-45575f813ee5",
                     "path":"sprites/spr_item_leather_armor/spr_item_leather_armor.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"744c3797-90be-4b87-88e5-62d4d91b33a2",
+              "id":"aa24df46-6a0f-4ca5-863a-3f188efde1ba",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

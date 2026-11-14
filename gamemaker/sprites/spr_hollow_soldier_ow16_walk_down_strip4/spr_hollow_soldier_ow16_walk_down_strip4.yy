@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"ee86130e-2b7d-4146-ad73-e90136bea003",
-      "name":"ee86130e-2b7d-4146-ad73-e90136bea003",
+      "%Name":"9924c578-d2ae-43c1-a02a-e801d052d499",
+      "name":"9924c578-d2ae-43c1-a02a-e801d052d499",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"3886b66a-a6c9-4779-b11c-d5b0c51766ba",
-      "name":"3886b66a-a6c9-4779-b11c-d5b0c51766ba",
+      "%Name":"f5fb6ace-32b2-4c0c-b299-4435ca9460da",
+      "name":"f5fb6ace-32b2-4c0c-b299-4435ca9460da",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"49e4d4f0-9da5-47bd-bda1-7e17b027ea5b",
-      "name":"49e4d4f0-9da5-47bd-bda1-7e17b027ea5b",
+      "%Name":"31ab1ded-4dc0-4a3e-8276-026eab607d25",
+      "name":"31ab1ded-4dc0-4a3e-8276-026eab607d25",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"c1f7705e-e08a-4d1e-a7df-80679a4272f9",
-      "name":"c1f7705e-e08a-4d1e-a7df-80679a4272f9",
+      "%Name":"86937b53-9f1c-45d8-88c5-4992d9e465af",
+      "name":"86937b53-9f1c-45d8-88c5-4992d9e465af",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"affc3516-90cc-4c1c-8a37-dffcffbb585d",
+      "%Name":"49652bb7-0de5-4257-a6e4-a5a0b0a93c9e",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"affc3516-90cc-4c1c-8a37-dffcffbb585d",
+      "name":"49652bb7-0de5-4257-a6e4-a5a0b0a93c9e",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ee86130e-2b7d-4146-ad73-e90136bea003",
+                    "name":"9924c578-d2ae-43c1-a02a-e801d052d499",
                     "path":"sprites/spr_hollow_soldier_ow16_walk_down_strip4/spr_hollow_soldier_ow16_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"fef0ca55-31ce-4a52-b848-59e5a7e0ed39",
+              "id":"e0bb0d69-a9ef-4ac2-9a8d-a5aa526e53cd",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"3886b66a-a6c9-4779-b11c-d5b0c51766ba",
+                    "name":"f5fb6ace-32b2-4c0c-b299-4435ca9460da",
                     "path":"sprites/spr_hollow_soldier_ow16_walk_down_strip4/spr_hollow_soldier_ow16_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"1f2fe22f-9017-4f82-b11f-025be0990113",
+              "id":"a087e992-1a6e-47cc-b20b-0f68bcd7a587",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"49e4d4f0-9da5-47bd-bda1-7e17b027ea5b",
+                    "name":"31ab1ded-4dc0-4a3e-8276-026eab607d25",
                     "path":"sprites/spr_hollow_soldier_ow16_walk_down_strip4/spr_hollow_soldier_ow16_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d6afb916-b868-45d2-9085-d7a5f3fb25e9",
+              "id":"6ac3ae69-5756-4b98-967f-c33b99ef2fc0",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"c1f7705e-e08a-4d1e-a7df-80679a4272f9",
+                    "name":"86937b53-9f1c-45d8-88c5-4992d9e465af",
                     "path":"sprites/spr_hollow_soldier_ow16_walk_down_strip4/spr_hollow_soldier_ow16_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f34c3a44-0217-4e5d-9a77-7b19d66a7b9c",
+              "id":"969381a5-6728-41c9-941b-a781b1d3086d",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

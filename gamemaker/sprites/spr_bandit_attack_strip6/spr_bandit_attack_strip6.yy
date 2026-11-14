@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"991ca605-658a-4bcc-ba13-e7465ca2d0fb",
-      "name":"991ca605-658a-4bcc-ba13-e7465ca2d0fb",
+      "%Name":"8e6c5574-c905-41fe-a9f8-a656f981ccf0",
+      "name":"8e6c5574-c905-41fe-a9f8-a656f981ccf0",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"c4f56e32-4096-4651-874f-cd31a12671d1",
-      "name":"c4f56e32-4096-4651-874f-cd31a12671d1",
+      "%Name":"c2c123a1-3202-43a3-a9c2-8226f4a13e48",
+      "name":"c2c123a1-3202-43a3-a9c2-8226f4a13e48",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"91164151-5c7f-4bd2-a2f3-9bccb7d60799",
-      "name":"91164151-5c7f-4bd2-a2f3-9bccb7d60799",
+      "%Name":"9f88e170-7d85-4277-8c23-3a93829bd9a7",
+      "name":"9f88e170-7d85-4277-8c23-3a93829bd9a7",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"69c31e76-c10e-4bfe-a7da-1f9e03a5aeac",
-      "name":"69c31e76-c10e-4bfe-a7da-1f9e03a5aeac",
+      "%Name":"6fa04f74-30a9-4af4-b674-b3cd49b9d210",
+      "name":"6fa04f74-30a9-4af4-b674-b3cd49b9d210",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"e5c64828-9659-45e3-bda4-557ea13682bf",
-      "name":"e5c64828-9659-45e3-bda4-557ea13682bf",
+      "%Name":"3ccafac6-acec-48d8-9021-4ff3114c6635",
+      "name":"3ccafac6-acec-48d8-9021-4ff3114c6635",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"19149c2d-6792-4fae-a84c-071aa6cb1a38",
-      "name":"19149c2d-6792-4fae-a84c-071aa6cb1a38",
+      "%Name":"dc24aaef-8588-4bfc-8606-ddb3636bdfc8",
+      "name":"dc24aaef-8588-4bfc-8606-ddb3636bdfc8",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"45db18a2-96ea-4a4a-8ffe-436900237604",
+      "%Name":"3a21f8c4-c286-4851-96f1-49fd814b6514",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"45db18a2-96ea-4a4a-8ffe-436900237604",
+      "name":"3a21f8c4-c286-4851-96f1-49fd814b6514",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"991ca605-658a-4bcc-ba13-e7465ca2d0fb",
+                    "name":"8e6c5574-c905-41fe-a9f8-a656f981ccf0",
                     "path":"sprites/spr_bandit_attack_strip6/spr_bandit_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d393176b-0129-4334-bf27-a7399b68fa9d",
+              "id":"f1b8e5be-3277-42c8-8e7c-f8fa951a37ad",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"c4f56e32-4096-4651-874f-cd31a12671d1",
+                    "name":"c2c123a1-3202-43a3-a9c2-8226f4a13e48",
                     "path":"sprites/spr_bandit_attack_strip6/spr_bandit_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"38ea8b66-02d0-4ec8-8f79-46ecf6b5b121",
+              "id":"9718be08-e9c1-415c-acf1-ab54d10494eb",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"91164151-5c7f-4bd2-a2f3-9bccb7d60799",
+                    "name":"9f88e170-7d85-4277-8c23-3a93829bd9a7",
                     "path":"sprites/spr_bandit_attack_strip6/spr_bandit_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"3b576aec-a8b1-447e-96d6-403851902439",
+              "id":"19bfbebc-f784-428b-b09f-0a669f2d7997",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"69c31e76-c10e-4bfe-a7da-1f9e03a5aeac",
+                    "name":"6fa04f74-30a9-4af4-b674-b3cd49b9d210",
                     "path":"sprites/spr_bandit_attack_strip6/spr_bandit_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"e5debfb0-41c9-471f-8066-821c91e3244c",
+              "id":"cfae2121-76af-4fc4-95ee-cbd25081d256",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"e5c64828-9659-45e3-bda4-557ea13682bf",
+                    "name":"3ccafac6-acec-48d8-9021-4ff3114c6635",
                     "path":"sprites/spr_bandit_attack_strip6/spr_bandit_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"e0d9b9ca-ab48-44cd-b179-45ba876fbe75",
+              "id":"ff7d8732-fd85-439e-805a-df13f7804d61",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"19149c2d-6792-4fae-a84c-071aa6cb1a38",
+                    "name":"dc24aaef-8588-4bfc-8606-ddb3636bdfc8",
                     "path":"sprites/spr_bandit_attack_strip6/spr_bandit_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"b2ab397a-333e-456c-8267-df7af2c441ea",
+              "id":"3c7644d7-ae7e-44cf-954a-2ea07121a0ec",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

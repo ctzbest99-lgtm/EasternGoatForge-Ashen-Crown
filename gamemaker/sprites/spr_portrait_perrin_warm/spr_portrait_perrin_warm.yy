@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"863ab900-8912-41c2-b44e-f8e0ad2008ce",
-      "name":"863ab900-8912-41c2-b44e-f8e0ad2008ce",
+      "%Name":"60b83eff-9e6f-4037-86e1-a62c401029b8",
+      "name":"60b83eff-9e6f-4037-86e1-a62c401029b8",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"2fae845b-f53f-4de7-9a38-99625f94a5e8",
+      "%Name":"d24215e1-7268-4794-a920-0c75b670b943",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"2fae845b-f53f-4de7-9a38-99625f94a5e8",
+      "name":"d24215e1-7268-4794-a920-0c75b670b943",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"863ab900-8912-41c2-b44e-f8e0ad2008ce",
+                    "name":"60b83eff-9e6f-4037-86e1-a62c401029b8",
                     "path":"sprites/spr_portrait_perrin_warm/spr_portrait_perrin_warm.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"a7487d97-ca8b-42f7-b986-721cc52354fb",
+              "id":"d7764d38-e983-4a69-a5c3-0d9a7990d93b",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"a4581f2e-8682-4394-bbcd-0333d80e134f",
-      "name":"a4581f2e-8682-4394-bbcd-0333d80e134f",
+      "%Name":"942831d7-b67d-4af3-a754-aa605e478598",
+      "name":"942831d7-b67d-4af3-a754-aa605e478598",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"0a09ea5d-8f6e-4266-9788-8eb24ae9766e",
-      "name":"0a09ea5d-8f6e-4266-9788-8eb24ae9766e",
+      "%Name":"19de3543-9a7f-4b12-824b-69459999493d",
+      "name":"19de3543-9a7f-4b12-824b-69459999493d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"ebf65436-be19-4796-8abb-29c1cd8d1d32",
-      "name":"ebf65436-be19-4796-8abb-29c1cd8d1d32",
+      "%Name":"9a93309a-f3d5-47f8-8354-e6fa536d7be9",
+      "name":"9a93309a-f3d5-47f8-8354-e6fa536d7be9",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"a1337dab-140f-4049-80a7-85e810826c4a",
-      "name":"a1337dab-140f-4049-80a7-85e810826c4a",
+      "%Name":"1857386e-1393-4b70-9d1d-6f797ea3d003",
+      "name":"1857386e-1393-4b70-9d1d-6f797ea3d003",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"d01b904c-78bd-4448-9c9f-dacbb243b9d2",
+      "%Name":"3c88e601-6c95-4ee7-b2af-a17c924e0724",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"d01b904c-78bd-4448-9c9f-dacbb243b9d2",
+      "name":"3c88e601-6c95-4ee7-b2af-a17c924e0724",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a4581f2e-8682-4394-bbcd-0333d80e134f",
+                    "name":"942831d7-b67d-4af3-a754-aa605e478598",
                     "path":"sprites/spr_tomas_varyn_ow16_walk_left_strip4/spr_tomas_varyn_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"48a62a97-5b17-4dc6-897f-608b4a0f585b",
+              "id":"48c10474-1a6a-4faa-bede-07c8ddc05674",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0a09ea5d-8f6e-4266-9788-8eb24ae9766e",
+                    "name":"19de3543-9a7f-4b12-824b-69459999493d",
                     "path":"sprites/spr_tomas_varyn_ow16_walk_left_strip4/spr_tomas_varyn_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"26754f5b-7fe3-4fb7-924f-8281b8eb0013",
+              "id":"aa005f4d-65be-4d49-9f50-6c928d08d1fb",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ebf65436-be19-4796-8abb-29c1cd8d1d32",
+                    "name":"9a93309a-f3d5-47f8-8354-e6fa536d7be9",
                     "path":"sprites/spr_tomas_varyn_ow16_walk_left_strip4/spr_tomas_varyn_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"af278c09-3d16-4fe6-9d7d-da4137c202c1",
+              "id":"205f558b-b631-4b9e-a6f5-0795d0cb9614",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a1337dab-140f-4049-80a7-85e810826c4a",
+                    "name":"1857386e-1393-4b70-9d1d-6f797ea3d003",
                     "path":"sprites/spr_tomas_varyn_ow16_walk_left_strip4/spr_tomas_varyn_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"3936375d-c587-44a9-8678-be9520084cd7",
+              "id":"d58eb9d3-04bc-41f6-a45f-d73fe5af5d3e",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

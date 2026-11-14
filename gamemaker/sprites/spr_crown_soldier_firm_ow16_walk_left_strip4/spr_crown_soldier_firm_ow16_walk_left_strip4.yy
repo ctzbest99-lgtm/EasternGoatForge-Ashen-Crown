@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"a444e64f-4517-461f-86bd-4c9de9b1e24f",
-      "name":"a444e64f-4517-461f-86bd-4c9de9b1e24f",
+      "%Name":"3eacb0cb-e988-423a-99d4-980c1a92d5a0",
+      "name":"3eacb0cb-e988-423a-99d4-980c1a92d5a0",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"59f8c55d-e748-45c4-a21c-ed87dae51a35",
-      "name":"59f8c55d-e748-45c4-a21c-ed87dae51a35",
+      "%Name":"157298dc-e3ba-45b5-b89c-d5d60f0e6568",
+      "name":"157298dc-e3ba-45b5-b89c-d5d60f0e6568",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"fbe40a35-1aa4-4326-8276-1a16b2967c77",
-      "name":"fbe40a35-1aa4-4326-8276-1a16b2967c77",
+      "%Name":"20b4bc13-24f2-4e06-a4cf-034dc895e73a",
+      "name":"20b4bc13-24f2-4e06-a4cf-034dc895e73a",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"d16d87dd-fe46-46ba-94b6-a58efa964524",
-      "name":"d16d87dd-fe46-46ba-94b6-a58efa964524",
+      "%Name":"9bf9bad9-276e-4a91-bd13-82eceec63b4d",
+      "name":"9bf9bad9-276e-4a91-bd13-82eceec63b4d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"28388306-38fa-494e-81f5-16a7d7c05c77",
+      "%Name":"07a8dccf-893c-4009-ab37-074fca0e8118",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"28388306-38fa-494e-81f5-16a7d7c05c77",
+      "name":"07a8dccf-893c-4009-ab37-074fca0e8118",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a444e64f-4517-461f-86bd-4c9de9b1e24f",
+                    "name":"3eacb0cb-e988-423a-99d4-980c1a92d5a0",
                     "path":"sprites/spr_crown_soldier_firm_ow16_walk_left_strip4/spr_crown_soldier_firm_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"419ca787-72a2-43d9-9954-630a7eb5c046",
+              "id":"5f506938-db14-4dfb-b745-650f895c6436",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"59f8c55d-e748-45c4-a21c-ed87dae51a35",
+                    "name":"157298dc-e3ba-45b5-b89c-d5d60f0e6568",
                     "path":"sprites/spr_crown_soldier_firm_ow16_walk_left_strip4/spr_crown_soldier_firm_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"db685fff-715f-4589-b25b-c1aee8b23760",
+              "id":"4c3acf0b-d673-4c7c-966f-5df3e7668a06",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"fbe40a35-1aa4-4326-8276-1a16b2967c77",
+                    "name":"20b4bc13-24f2-4e06-a4cf-034dc895e73a",
                     "path":"sprites/spr_crown_soldier_firm_ow16_walk_left_strip4/spr_crown_soldier_firm_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"0bb2c81d-339b-4ec9-a7ca-e6f515bc738a",
+              "id":"859bc090-a708-4a72-ab79-0a2f96831bb8",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"d16d87dd-fe46-46ba-94b6-a58efa964524",
+                    "name":"9bf9bad9-276e-4a91-bd13-82eceec63b4d",
                     "path":"sprites/spr_crown_soldier_firm_ow16_walk_left_strip4/spr_crown_soldier_firm_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"512e3802-38fd-4c49-876d-a491088838d5",
+              "id":"fe9c3ae7-4743-4de2-82e2-60db804f7f9f",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

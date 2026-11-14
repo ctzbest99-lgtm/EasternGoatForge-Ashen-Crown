@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"9e8be2fe-c047-4a13-a5ae-d8c68e8d87ae",
-      "name":"9e8be2fe-c047-4a13-a5ae-d8c68e8d87ae",
+      "%Name":"7c43341a-4cec-402d-9b78-a2bcc59bfd0d",
+      "name":"7c43341a-4cec-402d-9b78-a2bcc59bfd0d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"1f8ada23-52ad-477f-8895-a138eb573b61",
+      "%Name":"d2648bdb-40c6-4a5e-af68-207d0a2abb7c",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"1f8ada23-52ad-477f-8895-a138eb573b61",
+      "name":"d2648bdb-40c6-4a5e-af68-207d0a2abb7c",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"9e8be2fe-c047-4a13-a5ae-d8c68e8d87ae",
+                    "name":"7c43341a-4cec-402d-9b78-a2bcc59bfd0d",
                     "path":"sprites/spr_tomas_varyn_ow16_lying_awake/spr_tomas_varyn_ow16_lying_awake.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"0ccfd587-f547-4c5b-8c01-d5ccf406fec2",
+              "id":"7c76f8b3-df78-40a0-b6a6-fb888d23f670",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

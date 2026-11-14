@@ -115,9 +115,18 @@ function scr_get_enemy_data(_enemy_id) {
                 actions: [{ skill: "attack", weight: 2 }, { skill: "cutpurse_steal", weight: 2 }] });
         case "debt_collector":
             return scr_enemy_scaled("debt_collector", "Debt Collector", "Collector", "elite", 12, 1, { spd: 10, actions: [{ skill: "attack", weight: 1 }] });
-        case "debtman": // Ch 3 boss (working name; killing fight, has a death strip)
-            return scr_enemy_scaled("debtman", "The Debtman", "Debtman", "boss", 13, 3, { spd: 11,
-                actions: [{ skill: "attack", weight: 3 }, { skill: "debtman_reel", weight: 2 }] });
+        case "debtman":
+            // Ch 3 boss (CHAPTER3_SCRIPT.md §6). Kit is canon: a fast knife strike; Collect
+            // (a small HP drain); a bind that Slows one target. When the toughs fall he
+            // fights meaner and faster (the stance). He is beaten and withdraws alive
+            // (Decision 3): yield replaces death, like Reeve Calder. Not Ash-corrupted.
+            // Numbers are PLACEHOLDER (suggested levels 10-13).
+            return scr_enemy_scaled("debtman", "The Debtman", "Debtman", "boss", 12, 3, { spd: 12,
+                is_boss: true, yields: true, yield_flag: "flag_debtman_yielded",
+                stance_on_adds_fall: true, stance_line_node: "DM_PHASE2_01",
+                stance_buffs: [{ stat: "atk", pct: 0.30, turns: -1 }, { stat: "spd", pct: 0.30, turns: -1 }],
+                actions: [{ skill: "attack", weight: 3 }, { skill: "debtman_reel", weight: 2 },
+                    { skill: "debtman_collect", weight: 2 }, { skill: "debtman_bind", weight: 1 }] });
         case "ward_sentinel":
             return scr_enemy_scaled("ward_sentinel", "Ward Sentinel", "Sentinel", "common", 14, 1, { spd: 7, def_add: 3, weakness: "lightning",
                 actions: [{ skill: "attack", weight: 1 }] });

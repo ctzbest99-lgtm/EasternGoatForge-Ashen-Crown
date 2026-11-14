@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"50b86d06-6d7e-478f-a6a2-319fe8f39b04",
-      "name":"50b86d06-6d7e-478f-a6a2-319fe8f39b04",
+      "%Name":"cb3bad56-1363-4fd1-ae34-c89965c823b6",
+      "name":"cb3bad56-1363-4fd1-ae34-c89965c823b6",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"bf153b10-7f97-4f64-8682-6c15fb0c3ac9",
-      "name":"bf153b10-7f97-4f64-8682-6c15fb0c3ac9",
+      "%Name":"afadbdcb-aa20-4984-99c6-1751cc6ee460",
+      "name":"afadbdcb-aa20-4984-99c6-1751cc6ee460",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"57ffacc0-b23b-4ac1-b999-72ec89cda95c",
-      "name":"57ffacc0-b23b-4ac1-b999-72ec89cda95c",
+      "%Name":"8a515a63-23a5-4778-bf3c-43bc20cf2f04",
+      "name":"8a515a63-23a5-4778-bf3c-43bc20cf2f04",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"cf4ce6fe-c598-49b9-88c3-7af76fec2f3c",
-      "name":"cf4ce6fe-c598-49b9-88c3-7af76fec2f3c",
+      "%Name":"d594ddee-7c3a-46dc-a208-a075f1d33823",
+      "name":"d594ddee-7c3a-46dc-a208-a075f1d33823",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"bd40c6ea-83a5-4656-8d4e-9fbf798a2eec",
+      "%Name":"9ec76355-22cc-491e-a06a-ff8c08a3ce7d",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"bd40c6ea-83a5-4656-8d4e-9fbf798a2eec",
+      "name":"9ec76355-22cc-491e-a06a-ff8c08a3ce7d",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"50b86d06-6d7e-478f-a6a2-319fe8f39b04",
+                    "name":"cb3bad56-1363-4fd1-ae34-c89965c823b6",
                     "path":"sprites/spr_grave_spider_ow16_walk_down_strip4/spr_grave_spider_ow16_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"42027fe4-96b9-4f97-baae-bf29317eab4b",
+              "id":"b5a96034-866b-4a39-a15b-4f384bf02d4a",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"bf153b10-7f97-4f64-8682-6c15fb0c3ac9",
+                    "name":"afadbdcb-aa20-4984-99c6-1751cc6ee460",
                     "path":"sprites/spr_grave_spider_ow16_walk_down_strip4/spr_grave_spider_ow16_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"50ae2d91-ac72-4ae7-a4cc-36922d839f79",
+              "id":"c2b37a8b-587b-44bd-b225-18e5ad78510a",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"57ffacc0-b23b-4ac1-b999-72ec89cda95c",
+                    "name":"8a515a63-23a5-4778-bf3c-43bc20cf2f04",
                     "path":"sprites/spr_grave_spider_ow16_walk_down_strip4/spr_grave_spider_ow16_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"4946b1ef-2aa3-4536-8203-f54a59775726",
+              "id":"8b14c696-db44-4b87-85f9-087daaed0e0d",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"cf4ce6fe-c598-49b9-88c3-7af76fec2f3c",
+                    "name":"d594ddee-7c3a-46dc-a208-a075f1d33823",
                     "path":"sprites/spr_grave_spider_ow16_walk_down_strip4/spr_grave_spider_ow16_walk_down_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"efb76ca0-f04b-403c-acd6-164cba9d3b23",
+              "id":"72ebec9d-4539-4086-80b0-3ecfc4282a38",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

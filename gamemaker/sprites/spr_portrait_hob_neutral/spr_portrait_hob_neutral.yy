@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"e09a7858-0d5d-4c7f-b137-75d3bfcb97b6",
-      "name":"e09a7858-0d5d-4c7f-b137-75d3bfcb97b6",
+      "%Name":"1731cd9c-3377-4502-8bcf-2ba4951d9c86",
+      "name":"1731cd9c-3377-4502-8bcf-2ba4951d9c86",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"7b56c9a5-94e6-431f-a94b-502b24d4b54c",
+      "%Name":"1f82cdf8-0281-4c87-9953-061b73133aaf",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"7b56c9a5-94e6-431f-a94b-502b24d4b54c",
+      "name":"1f82cdf8-0281-4c87-9953-061b73133aaf",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"e09a7858-0d5d-4c7f-b137-75d3bfcb97b6",
+                    "name":"1731cd9c-3377-4502-8bcf-2ba4951d9c86",
                     "path":"sprites/spr_portrait_hob_neutral/spr_portrait_hob_neutral.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f3045f8b-4629-4c7f-8d31-7a50cb5f2ca5",
+              "id":"e0fcc432-8d9f-46e9-a0a5-c270d08dc5e3",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

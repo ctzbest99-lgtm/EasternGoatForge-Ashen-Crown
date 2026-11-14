@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"f0c28092-a02d-4b35-8686-93a0ce0548e0",
-      "name":"f0c28092-a02d-4b35-8686-93a0ce0548e0",
+      "%Name":"49748fe5-fbfc-40ed-862a-b73362578cda",
+      "name":"49748fe5-fbfc-40ed-862a-b73362578cda",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"7d451b07-3fb3-473b-82a9-ffe217b36164",
+      "%Name":"93c85837-ee90-4592-af2f-186c31c6d2fd",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"7d451b07-3fb3-473b-82a9-ffe217b36164",
+      "name":"93c85837-ee90-4592-af2f-186c31c6d2fd",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"f0c28092-a02d-4b35-8686-93a0ce0548e0",
+                    "name":"49748fe5-fbfc-40ed-862a-b73362578cda",
                     "path":"sprites/spr_portrait_taren_neutral/spr_portrait_taren_neutral.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"8ee31f8d-b9aa-4043-8b4f-2ce2ac54a383",
+              "id":"f1c323f0-5e4b-40f5-bbf8-9f706dce9672",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

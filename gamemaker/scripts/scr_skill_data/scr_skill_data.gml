@@ -51,6 +51,8 @@ function scr_skill_make(_id, _name, _mp, _target, _effect, _power = 1, _anim = "
         status_chance: 1,
         steal_min: 0,
         steal_max: 0,
+        hits: 1,              // multi-hit skills (Twin Cut) roll damage this many times
+        drain: false,          // damage skills that heal the user by the damage dealt (Collect)
         placeholder: true,
         desc: ""
     };
@@ -91,6 +93,27 @@ function scr_skill_build(_skill_id) {
             _s.resists = ["fear", "stun"]; // canon: resists Fear and Stun (no enemy inflicts either yet)
             _s.placeholder = false;
             _s.desc = "Passive: resists Fear and Stun.";
+            return _s;
+
+        // ---- Lyra Veyne (canon kit text; PLACEHOLDER numbers) ------------------------------
+        case "twin_cut": // CHAPTER3_SCRIPT.md Decision 4: two successive dagger hits
+            _s = scr_skill_make("twin_cut", "Twin Cut", 3, "single", "damage", 0.7, "attack", "strikes twice!");
+            _s.hits = 2;
+            _s.placeholder = false;
+            _s.desc = "Two successive dagger hits.";
+            return _s;
+        case "open_vein": // a strike that applies Bleed
+            _s = scr_skill_make("open_vein", "Open Vein", 4, "single", "damage", 0.9, "attack", "");
+            _s.status = "bleed";
+            _s.status_turns = 3;
+            _s.status_chance = 0.8;
+            _s.placeholder = false;
+            _s.desc = "A strike that applies Bleed.";
+            return _s;
+        case "cutthroat": // passive: critical hits come more often
+            _s = scr_skill_make("cutthroat", "Cutthroat", 0, "self", "passive", 0, "", "");
+            _s.placeholder = false;
+            _s.desc = "Passive: Lyra's critical hits come more often.";
             return _s;
 
         // ---- Chapter 1 enemy kits (keep Chapter 1 behaviour: specials are visual only) -----
@@ -150,6 +173,16 @@ function scr_skill_build(_skill_id) {
             return _s;
         case "debtman_reel": // debtman: hook reel / yank
             return scr_skill_make("debtman_reel", "Hook Reel", 0, "single", "damage", 1.25, "reel", "");
+        case "debtman_collect": // debtman: Collect (a small HP drain)
+            _s = scr_skill_make("debtman_collect", "Collect", 0, "single", "damage", 0.8, "reel", "collects what he's owed!");
+            _s.drain = true;
+            return _s;
+        case "debtman_bind": // debtman: a bind or net that Slows one target
+            _s = scr_skill_make("debtman_bind", "Bind", 0, "single", "status", 0, "cast", "throws a weighted net!");
+            _s.status = "slow";
+            _s.status_turns = 2;
+            _s.status_chance = 0.7;
+            return _s;
         case "wisp_mote": // glyph_wisp: light mote (magic), mote spawns on cast frame 3
             _s = scr_skill_make("wisp_mote", "Mote", 0, "single", "damage", 1.1, "cast", "");
             _s.dmg_type = "mag";

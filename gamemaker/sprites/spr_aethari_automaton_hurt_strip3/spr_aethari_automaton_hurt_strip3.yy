@@ -14,22 +14,22 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"5fc7aa2f-39f3-4340-a3cf-0a6ff7b9e305",
-      "name":"5fc7aa2f-39f3-4340-a3cf-0a6ff7b9e305",
+      "%Name":"ff7420f4-283f-47f5-a37f-87e7a64f77ce",
+      "name":"ff7420f4-283f-47f5-a37f-87e7a64f77ce",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"22a4ff23-52b9-4846-9611-bcdf71f8cf49",
-      "name":"22a4ff23-52b9-4846-9611-bcdf71f8cf49",
+      "%Name":"ff441ffc-6fe3-412d-ae1a-e1c010f0a8b0",
+      "name":"ff441ffc-6fe3-412d-ae1a-e1c010f0a8b0",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"4eb1f245-87b9-424a-93e5-80d60ba5b92b",
-      "name":"4eb1f245-87b9-424a-93e5-80d60ba5b92b",
+      "%Name":"d86716d4-de7b-4fef-bac7-5d6e22abcbc3",
+      "name":"d86716d4-de7b-4fef-bac7-5d6e22abcbc3",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -41,11 +41,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"4cd10add-2cd8-44bc-be33-2b1e0f01b0a3",
+      "%Name":"4cb90db5-d8d7-444e-8c44-f84af1905fd9",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"4cd10add-2cd8-44bc-be33-2b1e0f01b0a3",
+      "name":"4cb90db5-d8d7-444e-8c44-f84af1905fd9",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -118,7 +118,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"5fc7aa2f-39f3-4340-a3cf-0a6ff7b9e305",
+                    "name":"ff7420f4-283f-47f5-a37f-87e7a64f77ce",
                     "path":"sprites/spr_aethari_automaton_hurt_strip3/spr_aethari_automaton_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -126,7 +126,7 @@
                 },
               },
               "Disabled":false,
-              "id":"0cc4a385-6576-4442-be92-6a70b25ee463",
+              "id":"8addf4aa-837a-424f-ada2-c972bba9181c",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -140,7 +140,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"22a4ff23-52b9-4846-9611-bcdf71f8cf49",
+                    "name":"ff441ffc-6fe3-412d-ae1a-e1c010f0a8b0",
                     "path":"sprites/spr_aethari_automaton_hurt_strip3/spr_aethari_automaton_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -148,7 +148,7 @@
                 },
               },
               "Disabled":false,
-              "id":"6c2d798b-0f93-48eb-8f0d-081e188aa767",
+              "id":"4dbc55f3-de9b-48eb-9914-6d4981ee2aff",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -162,7 +162,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"4eb1f245-87b9-424a-93e5-80d60ba5b92b",
+                    "name":"d86716d4-de7b-4fef-bac7-5d6e22abcbc3",
                     "path":"sprites/spr_aethari_automaton_hurt_strip3/spr_aethari_automaton_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -170,7 +170,7 @@
                 },
               },
               "Disabled":false,
-              "id":"fa711097-b7d0-4727-bb26-7680c727c68f",
+              "id":"d95dbde4-6647-438b-92a1-7c1318415513",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,

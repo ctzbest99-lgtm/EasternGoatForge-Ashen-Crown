@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"44627b96-5f89-42bc-854d-99ce00f9f656",
-      "name":"44627b96-5f89-42bc-854d-99ce00f9f656",
+      "%Name":"cfa487fc-7c53-44d8-b8f9-ac3d410de35d",
+      "name":"cfa487fc-7c53-44d8-b8f9-ac3d410de35d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"5bd4c061-f71c-45f6-a8e1-ff8795182808",
-      "name":"5bd4c061-f71c-45f6-a8e1-ff8795182808",
+      "%Name":"cbbdce32-c45e-4b3a-b66f-e65e79713321",
+      "name":"cbbdce32-c45e-4b3a-b66f-e65e79713321",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"ffbccd2a-de6c-4747-b1eb-f3d182576fa8",
-      "name":"ffbccd2a-de6c-4747-b1eb-f3d182576fa8",
+      "%Name":"252bfb35-3fe1-4b82-b5bb-5bd5fd3369b0",
+      "name":"252bfb35-3fe1-4b82-b5bb-5bd5fd3369b0",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"4fa0b068-b873-4620-b202-9dff69d9019f",
-      "name":"4fa0b068-b873-4620-b202-9dff69d9019f",
+      "%Name":"1152d817-8c73-470d-814e-d6a0897d394c",
+      "name":"1152d817-8c73-470d-814e-d6a0897d394c",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"715d06ac-ec76-4576-b491-a26859c04701",
-      "name":"715d06ac-ec76-4576-b491-a26859c04701",
+      "%Name":"3e44df8c-d401-4f45-b632-e514f2230915",
+      "name":"3e44df8c-d401-4f45-b632-e514f2230915",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"6c9bb957-f95d-4cdd-b5eb-1045050ef9e4",
-      "name":"6c9bb957-f95d-4cdd-b5eb-1045050ef9e4",
+      "%Name":"e5afc2cc-4716-4d37-a0b7-97871e7ece99",
+      "name":"e5afc2cc-4716-4d37-a0b7-97871e7ece99",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"2ce9034e-f0f3-4fcb-b33d-ae3efd183fa3",
+      "%Name":"8460cf29-407c-42c5-8619-6542474a3021",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"2ce9034e-f0f3-4fcb-b33d-ae3efd183fa3",
+      "name":"8460cf29-407c-42c5-8619-6542474a3021",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"44627b96-5f89-42bc-854d-99ce00f9f656",
+                    "name":"cfa487fc-7c53-44d8-b8f9-ac3d410de35d",
                     "path":"sprites/spr_taren_skill_cleave_strip6/spr_taren_skill_cleave_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"63fe93de-281d-4669-ba42-5f301e12f15a",
+              "id":"fa6db513-96c9-4fa5-9677-5fc41f4a209e",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"5bd4c061-f71c-45f6-a8e1-ff8795182808",
+                    "name":"cbbdce32-c45e-4b3a-b66f-e65e79713321",
                     "path":"sprites/spr_taren_skill_cleave_strip6/spr_taren_skill_cleave_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"69be65c5-ad86-451a-848b-193561368622",
+              "id":"da205a77-5bb3-4e11-980d-b772b224398b",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ffbccd2a-de6c-4747-b1eb-f3d182576fa8",
+                    "name":"252bfb35-3fe1-4b82-b5bb-5bd5fd3369b0",
                     "path":"sprites/spr_taren_skill_cleave_strip6/spr_taren_skill_cleave_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"ea3c63e4-64ce-4c16-aff3-07fefc12a726",
+              "id":"bcf95246-b199-4024-bed8-3a94a00e6a2f",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"4fa0b068-b873-4620-b202-9dff69d9019f",
+                    "name":"1152d817-8c73-470d-814e-d6a0897d394c",
                     "path":"sprites/spr_taren_skill_cleave_strip6/spr_taren_skill_cleave_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"ac92b02c-66c3-4b46-9133-0d08871af4ad",
+              "id":"a1abfb50-ea68-483d-924e-39b2905099bf",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"715d06ac-ec76-4576-b491-a26859c04701",
+                    "name":"3e44df8c-d401-4f45-b632-e514f2230915",
                     "path":"sprites/spr_taren_skill_cleave_strip6/spr_taren_skill_cleave_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"def026d2-5d17-43ed-a936-8264dd4db84b",
+              "id":"e3116233-5d83-4fa7-a3b5-95fdae91a959",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"6c9bb957-f95d-4cdd-b5eb-1045050ef9e4",
+                    "name":"e5afc2cc-4716-4d37-a0b7-97871e7ece99",
                     "path":"sprites/spr_taren_skill_cleave_strip6/spr_taren_skill_cleave_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"b7492a94-7fa7-4990-9dc8-812cb38613d9",
+              "id":"7860cbef-2f63-4af3-bd26-320a264dd9e4",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

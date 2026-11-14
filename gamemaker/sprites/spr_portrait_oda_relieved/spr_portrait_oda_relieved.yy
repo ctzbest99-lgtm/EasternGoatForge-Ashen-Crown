@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"e0c6ba53-f582-4e40-a4be-527f267fa939",
-      "name":"e0c6ba53-f582-4e40-a4be-527f267fa939",
+      "%Name":"8f4d70a1-0bee-4f0e-b114-481c18d04ced",
+      "name":"8f4d70a1-0bee-4f0e-b114-481c18d04ced",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"1bc88d1d-084e-4fb5-9330-835df54f0bf4",
+      "%Name":"8788efe1-3c04-4d7b-a524-6dd73550ccc4",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"1bc88d1d-084e-4fb5-9330-835df54f0bf4",
+      "name":"8788efe1-3c04-4d7b-a524-6dd73550ccc4",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"e0c6ba53-f582-4e40-a4be-527f267fa939",
+                    "name":"8f4d70a1-0bee-4f0e-b114-481c18d04ced",
                     "path":"sprites/spr_portrait_oda_relieved/spr_portrait_oda_relieved.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"cbc94abf-49db-45f6-abff-983e5b1ab89e",
+              "id":"c10c4537-2f44-4289-ae66-3b3df3af3b38",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

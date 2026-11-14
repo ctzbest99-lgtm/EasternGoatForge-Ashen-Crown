@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"d37dd29a-da1b-458b-aca6-5528906c889c",
-      "name":"d37dd29a-da1b-458b-aca6-5528906c889c",
+      "%Name":"7fd9f54a-b852-415c-8523-308eea01f430",
+      "name":"7fd9f54a-b852-415c-8523-308eea01f430",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"7c47ba16-c000-4669-89a4-e74f5356075d",
-      "name":"7c47ba16-c000-4669-89a4-e74f5356075d",
+      "%Name":"9b5218ac-d3ea-492b-bb96-0317e039dadd",
+      "name":"9b5218ac-d3ea-492b-bb96-0317e039dadd",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"00874726-f91b-4d73-9c8f-fd7951423cc9",
-      "name":"00874726-f91b-4d73-9c8f-fd7951423cc9",
+      "%Name":"053fda32-99bf-4af9-ba08-2b7edd7c6c7c",
+      "name":"053fda32-99bf-4af9-ba08-2b7edd7c6c7c",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"16e70909-d93f-479d-97d5-17d072bb6aac",
-      "name":"16e70909-d93f-479d-97d5-17d072bb6aac",
+      "%Name":"61637bad-077c-4bbc-82e2-a266d321d845",
+      "name":"61637bad-077c-4bbc-82e2-a266d321d845",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"aad3a824-853d-4585-bf3e-43ad290f7b9a",
-      "name":"aad3a824-853d-4585-bf3e-43ad290f7b9a",
+      "%Name":"b2719fab-bf21-4fff-b192-a315af543f6b",
+      "name":"b2719fab-bf21-4fff-b192-a315af543f6b",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"0b2b2f36-97aa-4b8f-a02e-b6ffff1fa73e",
-      "name":"0b2b2f36-97aa-4b8f-a02e-b6ffff1fa73e",
+      "%Name":"cdb09e78-78f5-4398-9283-75e1b1cdd3eb",
+      "name":"cdb09e78-78f5-4398-9283-75e1b1cdd3eb",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"18091595-bd12-4aaa-a366-2ebf4922bdc1",
+      "%Name":"92c9b0e9-5953-433a-b94b-4754937335ce",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"18091595-bd12-4aaa-a366-2ebf4922bdc1",
+      "name":"92c9b0e9-5953-433a-b94b-4754937335ce",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"d37dd29a-da1b-458b-aca6-5528906c889c",
+                    "name":"7fd9f54a-b852-415c-8523-308eea01f430",
                     "path":"sprites/spr_taren_attack_strip6/spr_taren_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"c3827298-6fec-4c07-a229-ae50c61338d5",
+              "id":"bfd65b9b-91f5-437c-9074-65dff11e55df",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"7c47ba16-c000-4669-89a4-e74f5356075d",
+                    "name":"9b5218ac-d3ea-492b-bb96-0317e039dadd",
                     "path":"sprites/spr_taren_attack_strip6/spr_taren_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"fc9c1d90-b50a-4133-8f29-d0775b1c206a",
+              "id":"519cbcb8-24ca-4c61-8356-68d7e8000407",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"00874726-f91b-4d73-9c8f-fd7951423cc9",
+                    "name":"053fda32-99bf-4af9-ba08-2b7edd7c6c7c",
                     "path":"sprites/spr_taren_attack_strip6/spr_taren_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"7d2df5dc-e01d-4701-8d42-780a99a395b7",
+              "id":"3c3cc373-8a23-452b-9fad-616b0b2d7266",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"16e70909-d93f-479d-97d5-17d072bb6aac",
+                    "name":"61637bad-077c-4bbc-82e2-a266d321d845",
                     "path":"sprites/spr_taren_attack_strip6/spr_taren_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f3b5f61c-105d-47f0-9a61-4b44ce6d1bdd",
+              "id":"e1b9434c-7496-4f99-9e3e-cc0791f40554",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"aad3a824-853d-4585-bf3e-43ad290f7b9a",
+                    "name":"b2719fab-bf21-4fff-b192-a315af543f6b",
                     "path":"sprites/spr_taren_attack_strip6/spr_taren_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"3deec582-4ca2-4776-a693-043730cac0b9",
+              "id":"68dcf97c-c6b8-4c0e-9a9f-5d42c038d260",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0b2b2f36-97aa-4b8f-a02e-b6ffff1fa73e",
+                    "name":"cdb09e78-78f5-4398-9283-75e1b1cdd3eb",
                     "path":"sprites/spr_taren_attack_strip6/spr_taren_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"33314fc5-8de6-42ed-93a3-11f1dea17761",
+              "id":"507331e0-9651-496f-a0d0-5e817c24f998",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

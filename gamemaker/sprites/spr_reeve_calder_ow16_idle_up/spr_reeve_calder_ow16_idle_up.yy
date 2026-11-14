@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"074d5869-b51e-494a-9929-64a3ba9bd11e",
-      "name":"074d5869-b51e-494a-9929-64a3ba9bd11e",
+      "%Name":"7a2152fc-49c7-4f28-bb4b-2e0e4102bc1b",
+      "name":"7a2152fc-49c7-4f28-bb4b-2e0e4102bc1b",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"22649640-4127-4de6-81a4-5034521382b0",
+      "%Name":"77e57086-e450-406f-9d46-b091c8b92de7",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"22649640-4127-4de6-81a4-5034521382b0",
+      "name":"77e57086-e450-406f-9d46-b091c8b92de7",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"074d5869-b51e-494a-9929-64a3ba9bd11e",
+                    "name":"7a2152fc-49c7-4f28-bb4b-2e0e4102bc1b",
                     "path":"sprites/spr_reeve_calder_ow16_idle_up/spr_reeve_calder_ow16_idle_up.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"78e0c463-545c-4c6a-a18d-43a5b3a597f0",
+              "id":"58efd797-e637-4ef2-b533-0f8e19fff943",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

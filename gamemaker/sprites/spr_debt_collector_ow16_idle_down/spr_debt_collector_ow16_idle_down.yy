@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"668c8fea-0cfc-439c-ab6e-662c6756057e",
-      "name":"668c8fea-0cfc-439c-ab6e-662c6756057e",
+      "%Name":"df18879e-4dfe-4d52-a9e9-ed21f52b6fc6",
+      "name":"df18879e-4dfe-4d52-a9e9-ed21f52b6fc6",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"2e3aa58c-21c4-4c6d-97e6-4ea94a35f2b3",
+      "%Name":"808f46de-5dec-4745-bfcc-b5bc99e5958f",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"2e3aa58c-21c4-4c6d-97e6-4ea94a35f2b3",
+      "name":"808f46de-5dec-4745-bfcc-b5bc99e5958f",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"668c8fea-0cfc-439c-ab6e-662c6756057e",
+                    "name":"df18879e-4dfe-4d52-a9e9-ed21f52b6fc6",
                     "path":"sprites/spr_debt_collector_ow16_idle_down/spr_debt_collector_ow16_idle_down.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"50be4915-6b7d-4e15-b742-437055c98c21",
+              "id":"779d1e4f-e214-4d14-ad63-9f31a41ac5c4",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

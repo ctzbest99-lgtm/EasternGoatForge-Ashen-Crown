@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"25604f27-cd05-414b-a00a-b1d0c43808c2",
-      "name":"25604f27-cd05-414b-a00a-b1d0c43808c2",
+      "%Name":"21be2218-416d-4c52-b78e-8839bc76b9dc",
+      "name":"21be2218-416d-4c52-b78e-8839bc76b9dc",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"a3251357-0e19-401e-a0ef-dd0a2883ba59",
+      "%Name":"c75ee49e-a402-4587-a0cd-c24413ee7cd5",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"a3251357-0e19-401e-a0ef-dd0a2883ba59",
+      "name":"c75ee49e-a402-4587-a0cd-c24413ee7cd5",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"25604f27-cd05-414b-a00a-b1d0c43808c2",
+                    "name":"21be2218-416d-4c52-b78e-8839bc76b9dc",
                     "path":"sprites/spr_portrait_bram_shaken/spr_portrait_bram_shaken.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"7762d0e8-6722-45bb-b0c9-646d0ea040a1",
+              "id":"9ccc2fa6-6653-4843-842a-cfd5e8092ce8",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

@@ -164,6 +164,11 @@
 #macro BATTLE_BLIND_MISS_CHANCE 0.5      // blind: physical attacks miss this often (PLACEHOLDER, batch 8 moths)
 #macro BATTLE_HEAL_ALLY_THRESHOLD 0.6    // field surgeon heals only when an ally is below this HP fraction (PLACEHOLDER)
 #macro CALDER_ADD_COUNT 2               // occupation_soldier adds in grp_reeve_calder (script says 2–3; Design mockup shows 2)
+#macro BATTLE_BLEED_PCT 0.06            // bleed ticks this fraction of max HP each round; never kills (PLACEHOLDER)
+#macro BATTLE_SLOW_SPD_PCT 0.5           // slow: SPD multiplied by this while the bind holds (PLACEHOLDER)
+#macro BATTLE_CRIT_BASE 0.05            // base critical hit chance (PLACEHOLDER)
+#macro BATTLE_CUTTHROAT_CRIT_BONUS 0.15 // Lyra's Cutthroat passive: crit chance + this (PLACEHOLDER)
+#macro BATTLE_CRIT_MULTIPLIER 1.5        // critical hits deal × this damage (PLACEHOLDER)
 
 // Optional camera: if Viewport 0 is enabled (or created by scr_map_enable_camera),
 // the controller follows obj_player. Recommended view is 320×180, displayed at 2×.
@@ -176,6 +181,7 @@ enum BATTLE_STATE {
     ROUND_START,    // clear Guard, tick buff durations, reset the command queue
     COMMAND_SELECT, // each living party member picks Attack / Skill / Guard / Swap
     SKILL_SELECT,   // pick a skill (MP cost shown; greyed when MP is short)
+    ITEM_SELECT,    // pick a consumable from the inventory (Chapter 3: the Item command)
     TARGET_SELECT,  // pick an enemy (or ally) target for Attack or a single-target skill
     TURN_NEXT,      // build / walk the SPD-sorted turn order for this round
     PLAYER_ACTION,  // resolve the current party turn

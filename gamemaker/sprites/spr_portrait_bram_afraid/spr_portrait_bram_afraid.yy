@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"04ff4e08-a72b-41af-9217-f463cf4a6a98",
-      "name":"04ff4e08-a72b-41af-9217-f463cf4a6a98",
+      "%Name":"886663ee-e397-474e-9a04-0c4f499e673d",
+      "name":"886663ee-e397-474e-9a04-0c4f499e673d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"34ff2f43-90c2-447d-87ea-ca1900130006",
+      "%Name":"d7f95708-a6ee-4235-bc7f-a3856c40f44e",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"34ff2f43-90c2-447d-87ea-ca1900130006",
+      "name":"d7f95708-a6ee-4235-bc7f-a3856c40f44e",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"04ff4e08-a72b-41af-9217-f463cf4a6a98",
+                    "name":"886663ee-e397-474e-9a04-0c4f499e673d",
                     "path":"sprites/spr_portrait_bram_afraid/spr_portrait_bram_afraid.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d37e6f28-480c-42da-9a07-2748578d75b5",
+              "id":"8e73715d-77d1-48e5-b639-aaf01667e6cb",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

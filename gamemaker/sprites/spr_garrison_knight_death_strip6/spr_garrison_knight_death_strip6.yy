@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"f5d10785-7d94-40ec-97a8-58d55a544ad7",
-      "name":"f5d10785-7d94-40ec-97a8-58d55a544ad7",
+      "%Name":"750e0a67-9303-4f40-8916-3fee3cd1116f",
+      "name":"750e0a67-9303-4f40-8916-3fee3cd1116f",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"a0251013-831b-4fde-b544-e336c83ae506",
-      "name":"a0251013-831b-4fde-b544-e336c83ae506",
+      "%Name":"6ce022d8-2526-49ae-9f1c-04c06ff9f48e",
+      "name":"6ce022d8-2526-49ae-9f1c-04c06ff9f48e",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"db688551-08ca-43a3-80cb-bf1f38514b56",
-      "name":"db688551-08ca-43a3-80cb-bf1f38514b56",
+      "%Name":"93eacffd-b59d-4343-a51b-0470d0621263",
+      "name":"93eacffd-b59d-4343-a51b-0470d0621263",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"41f98aff-5644-40eb-a9bb-38dc28eb80b1",
-      "name":"41f98aff-5644-40eb-a9bb-38dc28eb80b1",
+      "%Name":"fce9bc95-4de4-4a71-b9cd-176370ca7644",
+      "name":"fce9bc95-4de4-4a71-b9cd-176370ca7644",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"ad67fa77-aace-4086-84ef-0def40489e05",
-      "name":"ad67fa77-aace-4086-84ef-0def40489e05",
+      "%Name":"bae7e3b2-30d5-4170-ab1a-12a06ada2b88",
+      "name":"bae7e3b2-30d5-4170-ab1a-12a06ada2b88",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"8468bbc4-72b5-4422-8cfa-20df78131ea6",
-      "name":"8468bbc4-72b5-4422-8cfa-20df78131ea6",
+      "%Name":"7246bd23-64e2-426d-9844-1a27c1b5784d",
+      "name":"7246bd23-64e2-426d-9844-1a27c1b5784d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"40f57fd1-99a6-4199-b0ad-23998633d3f9",
+      "%Name":"5c54132f-3d12-42fc-ab1e-8565059dd0e3",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"40f57fd1-99a6-4199-b0ad-23998633d3f9",
+      "name":"5c54132f-3d12-42fc-ab1e-8565059dd0e3",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"f5d10785-7d94-40ec-97a8-58d55a544ad7",
+                    "name":"750e0a67-9303-4f40-8916-3fee3cd1116f",
                     "path":"sprites/spr_garrison_knight_death_strip6/spr_garrison_knight_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"73a4bac6-8d95-4003-a5a5-5f57a0e6668c",
+              "id":"3bec10a9-c6d8-43da-a873-a4fdb73c8a8e",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a0251013-831b-4fde-b544-e336c83ae506",
+                    "name":"6ce022d8-2526-49ae-9f1c-04c06ff9f48e",
                     "path":"sprites/spr_garrison_knight_death_strip6/spr_garrison_knight_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"256ebd7b-380f-4334-9a19-f59c2067d946",
+              "id":"ef6f88b5-4d44-4075-aa2e-e0a99bc4fc5b",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"db688551-08ca-43a3-80cb-bf1f38514b56",
+                    "name":"93eacffd-b59d-4343-a51b-0470d0621263",
                     "path":"sprites/spr_garrison_knight_death_strip6/spr_garrison_knight_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f1431230-18d9-44f9-b16f-47019ed37e48",
+              "id":"a764ca4e-91f1-4af2-a0e8-71dd58c1eb81",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"41f98aff-5644-40eb-a9bb-38dc28eb80b1",
+                    "name":"fce9bc95-4de4-4a71-b9cd-176370ca7644",
                     "path":"sprites/spr_garrison_knight_death_strip6/spr_garrison_knight_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f3e67810-79bc-4298-bf9f-53fd9721fd00",
+              "id":"fde326fb-cbfd-460a-b59b-1f138f125aab",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ad67fa77-aace-4086-84ef-0def40489e05",
+                    "name":"bae7e3b2-30d5-4170-ab1a-12a06ada2b88",
                     "path":"sprites/spr_garrison_knight_death_strip6/spr_garrison_knight_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"3c5fd3c0-67ff-4561-8515-45f7512bfb8d",
+              "id":"cfffdadd-d925-46da-bd42-f3eda883f9b2",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"8468bbc4-72b5-4422-8cfa-20df78131ea6",
+                    "name":"7246bd23-64e2-426d-9844-1a27c1b5784d",
                     "path":"sprites/spr_garrison_knight_death_strip6/spr_garrison_knight_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d1137fc7-e1a8-438d-b035-f2ccee77758f",
+              "id":"8bac3071-02ee-45fd-abea-f0a84c83dc05",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

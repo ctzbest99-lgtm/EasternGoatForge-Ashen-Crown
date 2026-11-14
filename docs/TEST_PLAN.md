@@ -238,4 +238,20 @@ Set up the rooms with `game/rooms/ROOM_SETUP.md` §6c and import the art with `g
 - [ ] C13 Portraits: Taren, Perrin, Len, Oda (worried / pleading / relieved), Bram (shaken) and Calder (stern / weary) show the expression set in the dialogue data.
 - [ ] C14 Save in the Bent Post era (any save point / F5 debug), reload: flags, Taren in the party, room state (before / after) all match.
 
+## Chapter 3 (feature/chapter3; untested in GameMaker)
+
+- [ ] D1 **Handoff.** End Chapter 2 through the Wrenfield west exit: WF_HANDOFF plays, `flag_chapter2_complete` is set, and the party arrives in `rm_valemere_road` (no overworld fallback any more). The Chapter 2 save prompt still opens before the move.
+- [ ] D2 **Valemere Road.** `VR_ENTER` plays once on arrival. The sign (VR_SIGN), the stones, the settler, Derry and the cart driver all talk; Derry sets `flag_derry_spoke` and gets a repeat line. Random encounters use `ch3_valemere_road` (levels 10–13). The third Fallen Knight sighting (FK_03) plays once from the roadside figure and never fights.
+- [ ] D3 **Gates.** Enter `rm_valemere`: VM_GATE_01–08 play once (Taren is not arrested), `flag_entered_valemere` is set, and Q_BV_S3 completes → Q_BV_S4 (Search the Lower City). The gate captain's repeat line is VM_GATE_B1.
+- [ ] D4 **Districts.** Royal, Military, Temple, Merchant, Old Quarter and Lower City barks all play (VM_ROYAL/MIL/TEMPLE/MERCH/CLERK/OLD/LOWER); the temple switches to VM_TEMPLE_B1 after Lyra is recruited.
+- [ ] D5 **Alden.** AD_MEET plays in Weigh-House Square once and sets `flag_alden_met`. Repeat: AD_MEET_R1, and AD_MEET_B1 after the Debtman.
+- [ ] D6 **Salt Lamp.** SL_ENTER plays once. Before Alden: Nim refuses business (SL_NIM_01). After Alden: the full Nim/Lyra scene ends with `flag_lower_city_job`. Lyra at the corner table plays SL_LYRA_R1 once the job is taken.
+- [ ] D7 **Parcel quest.** SL_PARCEL_01 offers (Yes/No). Yes: the parcel is added, Q_SP_S1. Deliver at the Merchant District stall: Q_SP_S2. Return to Nim: 60 Gold + 2 Antidotes, quest completes. No: re-offered later.
+- [ ] D8 **Heist.** Enter the warehouse: LC_HEIST_01–03 play once. The room is dark (night overlay, lantern pools). The side door and the notes desk talk. Taking the notes adds the Scholar's Notes, sets `flag_scholar_notes` (repeat: LC_NOTE_R1/R2).
+- [ ] D9 **Debtman break.** Leave the warehouse with the notes: LC_BREAK_01–05, then the fight. Leaving without the notes (or after the fight) is a plain exit.
+- [ ] D10 **The fight.** Lyra joins at the fight start (3rd slot, Kael's level, twin daggers equipped; DM_SYS_01 notes it). The Debtman's kit: knife, Hook Reel, Collect (drain), bind (Slow). When both toughs fall he plays DM_PHASE2_01 and hits harder and faster. At 0 HP he **yields** (DM_DEFEAT_01, held alive); `flag_debtman_yielded` and `flag_debtman_beaten` are set and the adds withdraw.
+- [ ] D11 **Join talk.** After the win: DM_DEFEAT_02–05, DM_REWARD_01, LY_JOIN_01–08, then `flag_lyra_recruited` and Q_BV_S5. Lyra fights with the placeholder battle strips (idle/walk/attack/hurt/defend/death).
+- [ ] D12 **Item command.** In any battle: select Item — usable items list; use a heal item on an ally (consumes), an MP item, and an item with none left. Greyed-out entries cannot be chosen. Items used in battle are gone after the fight.
+- [ ] D13 **Chapter end.** The west gate before Lyra: VM_HANDOFF_GATE blocks. With Lyra and the notes: VM_HANDOFF_01–05, `flag_chapter3_complete`, save prompt. Leaving is a no-op (Chapter 4 has no room). The gate stays open afterwards.
+
 Record GameMaker version, date, result, and reproducible failures.

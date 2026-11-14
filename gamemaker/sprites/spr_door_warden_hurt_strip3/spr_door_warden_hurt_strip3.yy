@@ -14,22 +14,22 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"40c4576b-c3c8-463b-8dbf-1e5271390e44",
-      "name":"40c4576b-c3c8-463b-8dbf-1e5271390e44",
+      "%Name":"2103c633-b46e-4545-b3c0-9f672e770a8f",
+      "name":"2103c633-b46e-4545-b3c0-9f672e770a8f",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"399ee2e5-5820-4df4-a0a4-d6adf49fd0cb",
-      "name":"399ee2e5-5820-4df4-a0a4-d6adf49fd0cb",
+      "%Name":"342839c3-dd7d-4006-aa28-b55a0ad35e71",
+      "name":"342839c3-dd7d-4006-aa28-b55a0ad35e71",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"99bc10ec-36b7-48ca-8934-6480cf7a8e28",
-      "name":"99bc10ec-36b7-48ca-8934-6480cf7a8e28",
+      "%Name":"4cf02327-66a4-425b-831d-ceb4e413a4b0",
+      "name":"4cf02327-66a4-425b-831d-ceb4e413a4b0",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -41,11 +41,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"fd7c12e7-5cdc-4229-9978-6df59ed31ee9",
+      "%Name":"27485cbf-f33a-496f-a2c3-45a6d441ab80",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"fd7c12e7-5cdc-4229-9978-6df59ed31ee9",
+      "name":"27485cbf-f33a-496f-a2c3-45a6d441ab80",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -118,7 +118,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"40c4576b-c3c8-463b-8dbf-1e5271390e44",
+                    "name":"2103c633-b46e-4545-b3c0-9f672e770a8f",
                     "path":"sprites/spr_door_warden_hurt_strip3/spr_door_warden_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -126,7 +126,7 @@
                 },
               },
               "Disabled":false,
-              "id":"c95aa913-6044-49ec-8610-6e1b7c949cc1",
+              "id":"28e568ff-2bc7-4fbe-9494-37b0db1411d1",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -140,7 +140,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"399ee2e5-5820-4df4-a0a4-d6adf49fd0cb",
+                    "name":"342839c3-dd7d-4006-aa28-b55a0ad35e71",
                     "path":"sprites/spr_door_warden_hurt_strip3/spr_door_warden_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -148,7 +148,7 @@
                 },
               },
               "Disabled":false,
-              "id":"2f8700b7-fb8f-45a5-bf98-fb7d5df98412",
+              "id":"a5505549-1af8-4908-a8a2-30e57bc669d2",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -162,7 +162,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"99bc10ec-36b7-48ca-8934-6480cf7a8e28",
+                    "name":"4cf02327-66a4-425b-831d-ceb4e413a4b0",
                     "path":"sprites/spr_door_warden_hurt_strip3/spr_door_warden_hurt_strip3.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -170,7 +170,7 @@
                 },
               },
               "Disabled":false,
-              "id":"14addd18-ecfe-4685-9d52-d4f68a0e8897",
+              "id":"7c860794-3f57-430a-8a43-dbde753ff906",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,

@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"dd6af91d-8998-4ece-8f42-e422214d46e5",
-      "name":"dd6af91d-8998-4ece-8f42-e422214d46e5",
+      "%Name":"2a2619e5-0ad4-42ab-8bb6-caa3a5e4bfda",
+      "name":"2a2619e5-0ad4-42ab-8bb6-caa3a5e4bfda",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"ea5e7354-e9b6-4aa0-afe5-86b5ef359f47",
-      "name":"ea5e7354-e9b6-4aa0-afe5-86b5ef359f47",
+      "%Name":"222e17e3-a03a-4739-95dc-d501e8499f1d",
+      "name":"222e17e3-a03a-4739-95dc-d501e8499f1d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"709975bd-eb04-4fa0-81ce-66244e3d2953",
-      "name":"709975bd-eb04-4fa0-81ce-66244e3d2953",
+      "%Name":"26b9dc2e-6527-4473-bea2-a09549dc621c",
+      "name":"26b9dc2e-6527-4473-bea2-a09549dc621c",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"28f81f3a-3418-46e7-9221-53dd47d6a217",
-      "name":"28f81f3a-3418-46e7-9221-53dd47d6a217",
+      "%Name":"8c59bf5e-1318-4f2e-850d-81861b21597f",
+      "name":"8c59bf5e-1318-4f2e-850d-81861b21597f",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"62461dfd-1f9d-4835-8b4c-eadb139fb506",
+      "%Name":"99f2caea-82dc-444b-9835-e1958b96c280",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"62461dfd-1f9d-4835-8b4c-eadb139fb506",
+      "name":"99f2caea-82dc-444b-9835-e1958b96c280",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"dd6af91d-8998-4ece-8f42-e422214d46e5",
+                    "name":"2a2619e5-0ad4-42ab-8bb6-caa3a5e4bfda",
                     "path":"sprites/spr_marda_ow16_walk_left_strip4/spr_marda_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"854527ab-d216-4155-a039-942c23a4bfc1",
+              "id":"b5f63f1f-fe5c-4501-bd99-cc38b7a38b38",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ea5e7354-e9b6-4aa0-afe5-86b5ef359f47",
+                    "name":"222e17e3-a03a-4739-95dc-d501e8499f1d",
                     "path":"sprites/spr_marda_ow16_walk_left_strip4/spr_marda_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"24d32568-783e-467f-8405-39cb39aef8fe",
+              "id":"514a8583-8186-4a32-ba22-1770fa7d28c2",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"709975bd-eb04-4fa0-81ce-66244e3d2953",
+                    "name":"26b9dc2e-6527-4473-bea2-a09549dc621c",
                     "path":"sprites/spr_marda_ow16_walk_left_strip4/spr_marda_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"c06ac72f-5afb-420e-8939-e16a21538986",
+              "id":"87430ebc-e0da-4f9e-9a3d-fb8497510fda",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"28f81f3a-3418-46e7-9221-53dd47d6a217",
+                    "name":"8c59bf5e-1318-4f2e-850d-81861b21597f",
                     "path":"sprites/spr_marda_ow16_walk_left_strip4/spr_marda_ow16_walk_left_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"c040dc24-8209-4910-9dd4-84cb9cfc0cc4",
+              "id":"b08e8809-343f-4770-b929-f45cfc2e1cdb",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

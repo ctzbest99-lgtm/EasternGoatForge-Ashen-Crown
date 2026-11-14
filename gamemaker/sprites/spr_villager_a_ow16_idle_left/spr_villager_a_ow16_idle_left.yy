@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"bb2c2ea1-d1f5-410a-9f18-96ce3ff3fb1f",
-      "name":"bb2c2ea1-d1f5-410a-9f18-96ce3ff3fb1f",
+      "%Name":"872b0aa5-54e1-46c1-a313-0f6312f7731d",
+      "name":"872b0aa5-54e1-46c1-a313-0f6312f7731d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"5a731c10-b889-4e23-96c1-3855d1332613",
+      "%Name":"f5640f0b-525c-4587-b86a-24cb1e7cf5c0",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"5a731c10-b889-4e23-96c1-3855d1332613",
+      "name":"f5640f0b-525c-4587-b86a-24cb1e7cf5c0",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"bb2c2ea1-d1f5-410a-9f18-96ce3ff3fb1f",
+                    "name":"872b0aa5-54e1-46c1-a313-0f6312f7731d",
                     "path":"sprites/spr_villager_a_ow16_idle_left/spr_villager_a_ow16_idle_left.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"55df01e8-e3a3-49ed-8b3f-7c84abe733d9",
+              "id":"a675762a-fcd7-427a-b9e6-971dcf829b75",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

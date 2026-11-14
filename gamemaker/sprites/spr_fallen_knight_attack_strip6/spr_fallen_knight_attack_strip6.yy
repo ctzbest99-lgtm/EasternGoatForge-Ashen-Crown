@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"016ae977-23db-4444-97f2-21d0c5f80fb3",
-      "name":"016ae977-23db-4444-97f2-21d0c5f80fb3",
+      "%Name":"252a4a4f-a0ac-4fec-bb30-52a0c09d3b01",
+      "name":"252a4a4f-a0ac-4fec-bb30-52a0c09d3b01",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"0bf59999-1171-4be1-86be-18ff9fcf2b33",
-      "name":"0bf59999-1171-4be1-86be-18ff9fcf2b33",
+      "%Name":"144a7063-99a1-4335-9dfc-8346c5217396",
+      "name":"144a7063-99a1-4335-9dfc-8346c5217396",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"911955b6-dd00-411d-9d01-8f5c084f4ad4",
-      "name":"911955b6-dd00-411d-9d01-8f5c084f4ad4",
+      "%Name":"460f3af4-a347-4628-8910-404a7599bbcf",
+      "name":"460f3af4-a347-4628-8910-404a7599bbcf",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"eb6e5359-33e6-4b40-b314-62d15c7247f7",
-      "name":"eb6e5359-33e6-4b40-b314-62d15c7247f7",
+      "%Name":"188dd4d6-eb7f-4018-bc6e-f05a0aa2c6a3",
+      "name":"188dd4d6-eb7f-4018-bc6e-f05a0aa2c6a3",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"dde45ae8-507f-44e3-9911-d15978ef3697",
-      "name":"dde45ae8-507f-44e3-9911-d15978ef3697",
+      "%Name":"9ab67f92-5871-4f02-ab21-76262c2b6197",
+      "name":"9ab67f92-5871-4f02-ab21-76262c2b6197",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"b16ebc33-28a4-4865-bc3e-17125c570011",
-      "name":"b16ebc33-28a4-4865-bc3e-17125c570011",
+      "%Name":"010505c3-9de6-4d9c-b741-7fef2b9dfd4b",
+      "name":"010505c3-9de6-4d9c-b741-7fef2b9dfd4b",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"608b1763-dab2-4b55-ae33-a4f84f2c6bab",
+      "%Name":"9bf69ef6-4dee-4e53-a966-b395951f9e0c",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"608b1763-dab2-4b55-ae33-a4f84f2c6bab",
+      "name":"9bf69ef6-4dee-4e53-a966-b395951f9e0c",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"016ae977-23db-4444-97f2-21d0c5f80fb3",
+                    "name":"252a4a4f-a0ac-4fec-bb30-52a0c09d3b01",
                     "path":"sprites/spr_fallen_knight_attack_strip6/spr_fallen_knight_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"6a53ecb6-ed40-406e-a31c-dd7d58efbfd3",
+              "id":"c5fe3256-23d5-47fa-a6bd-c018a3d61836",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"0bf59999-1171-4be1-86be-18ff9fcf2b33",
+                    "name":"144a7063-99a1-4335-9dfc-8346c5217396",
                     "path":"sprites/spr_fallen_knight_attack_strip6/spr_fallen_knight_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"1ce6e400-18f1-4dcf-b957-23752f3950a0",
+              "id":"314eb9b8-16db-4272-89d6-4c0731114100",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"911955b6-dd00-411d-9d01-8f5c084f4ad4",
+                    "name":"460f3af4-a347-4628-8910-404a7599bbcf",
                     "path":"sprites/spr_fallen_knight_attack_strip6/spr_fallen_knight_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"c1d96cb2-0e70-4f1e-b8b9-3d7b64c21595",
+              "id":"c73830b0-f992-4601-b6a4-051e09ae1a22",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"eb6e5359-33e6-4b40-b314-62d15c7247f7",
+                    "name":"188dd4d6-eb7f-4018-bc6e-f05a0aa2c6a3",
                     "path":"sprites/spr_fallen_knight_attack_strip6/spr_fallen_knight_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"a8214135-4a44-4628-bbd5-a049ca70c722",
+              "id":"a888aeda-ab45-49d5-82af-99d0c031e19e",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"dde45ae8-507f-44e3-9911-d15978ef3697",
+                    "name":"9ab67f92-5871-4f02-ab21-76262c2b6197",
                     "path":"sprites/spr_fallen_knight_attack_strip6/spr_fallen_knight_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"8ac64a72-b1ee-4aa8-81eb-ffc4d87ff77f",
+              "id":"c42e1155-cb0c-4dd3-a419-acd861f2a95a",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"b16ebc33-28a4-4865-bc3e-17125c570011",
+                    "name":"010505c3-9de6-4d9c-b741-7fef2b9dfd4b",
                     "path":"sprites/spr_fallen_knight_attack_strip6/spr_fallen_knight_attack_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"7207f72a-b67b-4fae-8b7d-965e0ce3ea78",
+              "id":"0d65cd9f-331c-4e19-85e2-8c940597a2af",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

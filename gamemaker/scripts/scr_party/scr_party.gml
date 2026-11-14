@@ -19,7 +19,7 @@ function scr_roster_member_create(_actor_id, _name, _full_name, _class_name, _ro
 function scr_roster_create() {
     var _roster = [
         scr_roster_member_create("kael", "Kael", "Kael Varyn", "Vanguard", "Frontline", KAEL_BASE_HP, KAEL_BASE_ATTACK, KAEL_BASE_DEFENSE, ["longsword"], ""),
-        scr_roster_member_create("lyra", "Lyra", "Lyra Veyne", "Rogue", "Crits / speed", LYRA_BASE_HP, LYRA_BASE_ATTACK, LYRA_BASE_DEFENSE, ["dagger"], ""),
+        scr_roster_member_create("lyra", "Lyra", "Lyra Veyne", "Rogue", "Crits / speed", LYRA_BASE_HP, LYRA_BASE_ATTACK, LYRA_BASE_DEFENSE, ["dagger"], "item_twin_daggers"),
         scr_roster_member_create("caelan", "Caelan", "Caelan Rook", "Arcanist", "Elemental magic", CAELAN_BASE_HP, CAELAN_BASE_ATTACK, CAELAN_BASE_DEFENSE, ["spellbook"], ""),
         scr_roster_member_create("sera", "Sera", "Seraphine Thorn", "Warden", "Healing / holy", SERA_BASE_HP, SERA_BASE_ATTACK, SERA_BASE_DEFENSE, ["holy_sword"], ""),
         // Taren Holt: warrior / frontline, heavy swords; starting weapon stub is a bastard sword.
@@ -43,7 +43,9 @@ function scr_roster_create() {
 function scr_actor_battle_defaults(_actor_id) {
     switch (_actor_id) {
         case "kael":   return { spd: KAEL_BASE_SPD,   mdef: KAEL_BASE_MDEF,   mp: KAEL_BASE_MP,   skills: [], passives: [] };
-        case "lyra":   return { spd: LYRA_BASE_SPD,   mdef: LYRA_BASE_MDEF,   mp: LYRA_BASE_MP,   skills: [], passives: [] };
+        // Lyra's starting skills are canon (CHAPTER3_SCRIPT.md Decision 4): Twin Cut and
+        // Open Vein (active) and Cutthroat (passive). She joins at the Debtman fight (§6).
+        case "lyra":   return { spd: LYRA_BASE_SPD,   mdef: LYRA_BASE_MDEF,   mp: LYRA_BASE_MP,   skills: ["twin_cut", "open_vein"], passives: ["cutthroat"] };
         case "caelan": return { spd: CAELAN_BASE_SPD, mdef: CAELAN_BASE_MDEF, mp: CAELAN_BASE_MP, skills: [], passives: [] };
         case "sera":   return { spd: SERA_BASE_SPD,   mdef: SERA_BASE_MDEF,   mp: SERA_BASE_MP,   skills: [], passives: [] };
         case "taren":  return { spd: TAREN_BASE_SPD,  mdef: TAREN_BASE_MDEF,  mp: TAREN_BASE_MP,  skills: ["rallying_cry", "cleave"], passives: ["unbowed"] };
@@ -209,9 +211,28 @@ function scr_party_battle_commands(_actor = undefined) {
     if (is_struct(_actor) && variable_struct_exists(_actor, "skills") && is_array(_actor.skills) && array_length(_actor.skills) > 0) {
         array_push(_opts, "Skill");
     }
+    if (array_length(scr_party_battle_items()) > 0) array_push(_opts, "Item");
     array_push(_opts, "Guard");
     if (scr_party_has_reserve()) array_push(_opts, "Swap");
     return _opts;
+}
+
+/// Consumables the battle Item command can use (shared bag; counted once per stack).
+/// Anything with a battle effect (heal / MP / cures) is offered; the item itself decides
+/// on use whether it has an effect (scr_item_use_on) and is only consumed when it does.
+function scr_party_battle_items() {
+    scr_game_state_init();
+    var _out = [];
+    var _inv = global.game.inventory;
+    for (var _i = 0; _i < array_length(_inv); _i++) {
+        var _slot = _inv[_i];
+        if (!is_struct(_slot) || !variable_struct_exists(_slot, "item_id") || _slot.qty <= 0) continue;
+        var _it = scr_item_get(_slot.item_id);
+        if (_it.kind != "consumable") continue;
+        if (_it.heal <= 0 && _it.mp_restore <= 0 && !_it.cures_poison) continue;
+        array_push(_out, _slot.item_id);
+    }
+    return _out;
 }
 
 /// Unique members (active first, then reserve, then the rest of the roster) who took

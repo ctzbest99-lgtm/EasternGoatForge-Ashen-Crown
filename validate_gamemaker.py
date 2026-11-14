@@ -111,7 +111,9 @@ for name, rm in rooms.items():
 
 # player present in every field room
 for want in ('rm_overworld','rm_old_watchtower','rm_watchtower_basement','rm_greyhaven_varyn_house',
-             'rm_greyhaven_tavern','rm_greyhaven_chapel','rm_greyhaven_blacksmith','rm_greyhaven_general_store'):
+             'rm_greyhaven_tavern','rm_greyhaven_chapel','rm_greyhaven_blacksmith','rm_greyhaven_general_store',
+             'rm_millhaven_road','rm_wrenfield','rm_wrenfield_bent_post','rm_wrenfield_store',
+             'rm_valemere_road','rm_valemere','rm_salt_lamp','rm_warehouse'):
     rm = rooms[want]
     objs = [i['objectId']['name'] for l in rm['layers'] if l['resourceType']=='GMRInstanceLayer' for i in l['instances']]
     if 'obj_player' not in objs: errors.append(f"{want}: obj_player missing")
@@ -134,6 +136,8 @@ for root, dirs, files in os.walk(OUT):
         if fn.endswith('.gml'):
             refs |= set(re.findall(r'\b((?:spr|obj|ts|rm)_\w+)\b', open(os.path.join(root,fn)).read()))
 missing = refs - sprites - objects - scripts - set(rooms) - {'ts_zone1'}
+# ts_wrenfield: rows 0-49 are ts_zone1; the Chapter 2/3 rooms switch to it at runtime.
+missing.discard('ts_wrenfield')
 missing = {m for m in missing if not m.startswith('scr_')}
 missing = {m for m in missing if not (m.startswith('spr_') and m.endswith(('_',)) )}
 # filter obvious dynamic-concat prefixes (end with _)

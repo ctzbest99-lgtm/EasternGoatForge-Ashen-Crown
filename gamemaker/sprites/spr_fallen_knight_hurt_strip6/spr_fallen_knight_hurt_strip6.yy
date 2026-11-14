@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"024cacc0-4480-4c60-827d-3d7f374cefdc",
-      "name":"024cacc0-4480-4c60-827d-3d7f374cefdc",
+      "%Name":"bf51d0e4-b596-442a-bf7e-b69b2900a8d9",
+      "name":"bf51d0e4-b596-442a-bf7e-b69b2900a8d9",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"4b6da26e-2e7c-4432-841f-ad2428f14161",
-      "name":"4b6da26e-2e7c-4432-841f-ad2428f14161",
+      "%Name":"8273c82e-c6bb-4e4b-b48f-021f75028bcd",
+      "name":"8273c82e-c6bb-4e4b-b48f-021f75028bcd",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"f30a19d4-6349-4f7b-a771-10c73221a3d1",
-      "name":"f30a19d4-6349-4f7b-a771-10c73221a3d1",
+      "%Name":"0a2ed189-5394-4bee-aca3-d28b757e5010",
+      "name":"0a2ed189-5394-4bee-aca3-d28b757e5010",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"d66fbd80-59e2-4a0a-9357-9952148f91b9",
-      "name":"d66fbd80-59e2-4a0a-9357-9952148f91b9",
+      "%Name":"d0849c09-1c0c-43f1-acbf-f4fd3b59fbdf",
+      "name":"d0849c09-1c0c-43f1-acbf-f4fd3b59fbdf",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"857665a4-d0ed-4361-a2e7-854079573ebe",
-      "name":"857665a4-d0ed-4361-a2e7-854079573ebe",
+      "%Name":"5187be9a-4623-46bf-a898-5bd9ade73ba1",
+      "name":"5187be9a-4623-46bf-a898-5bd9ade73ba1",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"912ee77b-da60-4af6-a0ec-5d08dc2d66ed",
-      "name":"912ee77b-da60-4af6-a0ec-5d08dc2d66ed",
+      "%Name":"4572c698-4912-4b4b-97f7-a9f39957072f",
+      "name":"4572c698-4912-4b4b-97f7-a9f39957072f",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"fd95a566-8c9f-4989-9a79-e2187a46a2e7",
+      "%Name":"e43715ae-1dd5-4fa6-8243-47ffca965d45",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"fd95a566-8c9f-4989-9a79-e2187a46a2e7",
+      "name":"e43715ae-1dd5-4fa6-8243-47ffca965d45",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"024cacc0-4480-4c60-827d-3d7f374cefdc",
+                    "name":"bf51d0e4-b596-442a-bf7e-b69b2900a8d9",
                     "path":"sprites/spr_fallen_knight_hurt_strip6/spr_fallen_knight_hurt_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"3897edd8-1c06-4c95-a33e-d16cab6d2ea0",
+              "id":"862ecfe3-f260-4467-8075-95dd2dd13b29",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"4b6da26e-2e7c-4432-841f-ad2428f14161",
+                    "name":"8273c82e-c6bb-4e4b-b48f-021f75028bcd",
                     "path":"sprites/spr_fallen_knight_hurt_strip6/spr_fallen_knight_hurt_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"134e556c-7741-41d2-ba04-1ced9072e317",
+              "id":"9fc59634-95f0-4504-a2de-f398382c1861",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"f30a19d4-6349-4f7b-a771-10c73221a3d1",
+                    "name":"0a2ed189-5394-4bee-aca3-d28b757e5010",
                     "path":"sprites/spr_fallen_knight_hurt_strip6/spr_fallen_knight_hurt_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"88705df0-92d2-4efe-ac64-49e3cb53d925",
+              "id":"bd11f624-4cf3-4752-b143-5800d95b31bd",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"d66fbd80-59e2-4a0a-9357-9952148f91b9",
+                    "name":"d0849c09-1c0c-43f1-acbf-f4fd3b59fbdf",
                     "path":"sprites/spr_fallen_knight_hurt_strip6/spr_fallen_knight_hurt_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"54a032c4-78ff-40db-be9a-70b652e73794",
+              "id":"bf9551e9-7d0b-47b6-821c-7a7700e1fc34",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"857665a4-d0ed-4361-a2e7-854079573ebe",
+                    "name":"5187be9a-4623-46bf-a898-5bd9ade73ba1",
                     "path":"sprites/spr_fallen_knight_hurt_strip6/spr_fallen_knight_hurt_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d23c523e-02ac-48f7-b7b4-80ede9ff1c3f",
+              "id":"6b50a1c0-eba8-48ff-9858-fc7c78d2a7f1",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"912ee77b-da60-4af6-a0ec-5d08dc2d66ed",
+                    "name":"4572c698-4912-4b4b-97f7-a9f39957072f",
                     "path":"sprites/spr_fallen_knight_hurt_strip6/spr_fallen_knight_hurt_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"ed533313-b032-4796-b0e6-8b7ffc5dbefc",
+              "id":"2ab1a82b-4bd2-4ff7-bd9a-0bd450979f23",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

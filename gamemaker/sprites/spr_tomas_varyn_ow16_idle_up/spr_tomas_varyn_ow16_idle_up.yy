@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"f08bd050-7730-4a8a-8f18-21116d6165a8",
-      "name":"f08bd050-7730-4a8a-8f18-21116d6165a8",
+      "%Name":"c76ede8b-5a4b-471a-904f-33dd26a8bfa0",
+      "name":"c76ede8b-5a4b-471a-904f-33dd26a8bfa0",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"7d3ac148-54bc-4dd3-ac5d-7083fdf0c661",
+      "%Name":"cec58d43-f61a-428d-95dc-80c09afba66b",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"7d3ac148-54bc-4dd3-ac5d-7083fdf0c661",
+      "name":"cec58d43-f61a-428d-95dc-80c09afba66b",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"f08bd050-7730-4a8a-8f18-21116d6165a8",
+                    "name":"c76ede8b-5a4b-471a-904f-33dd26a8bfa0",
                     "path":"sprites/spr_tomas_varyn_ow16_idle_up/spr_tomas_varyn_ow16_idle_up.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"09363c89-7454-416c-bc21-cf75de61f37a",
+              "id":"624edf16-ab8c-466f-a385-41d04eb79e3f",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

@@ -25,6 +25,7 @@ function scr_battle_stat(_actor, _stat) {
         case "spd":
             _base = variable_struct_exists(_actor, "spd") ? _actor.spd : 8;
             if (variable_struct_exists(_actor, "speed_mod")) _base = _base * _actor.speed_mod;
+            if (scr_battle_status_has(_actor, "slow")) _base = _base * BATTLE_SLOW_SPD_PCT; // the Debtman's bind
             break;
     }
     var _val = round(_base * (1 + scr_battle_buff_total(_actor, _stat)));
@@ -115,16 +116,36 @@ function scr_battle_tick_statuses(_actor) {
     for (var _i = array_length(_actor.statuses) - 1; _i >= 0; _i--) {
         var _st = _actor.statuses[_i];
         if (!is_struct(_st)) { array_delete(_actor.statuses, _i, 1); continue; }
+        // Bleed (Open Vein) ticks at ROUND_START: damage over time that never kills (PLACEHOLDER rule).
+        if (_st.id == "bleed" && _actor.hp > 1) {
+            var _b = max(1, floor(_actor.max_hp * BATTLE_BLEED_PCT));
+            _actor.hp = max(1, _actor.hp - _b);
+            _actor.bleed_last = _b;
+        }
         _st.turns -= 1;
         if (_st.turns <= 0) array_delete(_actor.statuses, _i, 1);
     }
 }
 
-/// Short tags for the HUD ("Bl", "Sl", "Vl").
+/// Critical hit chance for `_actor`: the base rate plus Cutthroat (Lyra's passive).
+function scr_battle_crit_chance(_actor) {
+    var _c = BATTLE_CRIT_BASE;
+    if (is_struct(_actor) && variable_struct_exists(_actor, "passives") && is_array(_actor.passives)) {
+        for (var _i = 0; _i < array_length(_actor.passives); _i++) {
+            if (_actor.passives[_i] == "cutthroat") _c += BATTLE_CUTTHROAT_CRIT_BONUS;
+        }
+    }
+    return _c;
+}
+
+/// Short tags for the HUD ("Bl", "Sl", "Vl", "Bd", "Sw").
 function scr_battle_status_tags(_actor) {
     var _t = "";
     if (scr_battle_status_has(_actor, "blind")) _t += "Bl";
     if (scr_battle_status_has(_actor, "sleep")) _t += (_t == "" ? "" : " ") + "Sl";
+    if (scr_battle_status_has(_actor, "veiled")) _t += (_t == "" ? "" : " ") + "Vl";
+    if (scr_battle_status_has(_actor, "bleed")) _t += (_t == "" ? "" : " ") + "Bd";
+    if (scr_battle_status_has(_actor, "slow")) _t += (_t == "" ? "" : " ") + "Sw";
     return _t;
 }
 

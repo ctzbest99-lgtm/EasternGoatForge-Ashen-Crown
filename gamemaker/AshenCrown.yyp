@@ -911,6 +911,30 @@
     },
     {
       "id":{
+        "name":"scr_build_salt_lamp",
+        "path":"scripts/scr_build_salt_lamp/scr_build_salt_lamp.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_build_valemere",
+        "path":"scripts/scr_build_valemere/scr_build_valemere.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_build_valemere_road",
+        "path":"scripts/scr_build_valemere_road/scr_build_valemere_road.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_build_warehouse",
+        "path":"scripts/scr_build_warehouse/scr_build_warehouse.yy",
+      },
+    },
+    {
+      "id":{
         "name":"scr_build_watchtower_basement",
         "path":"scripts/scr_build_watchtower_basement/scr_build_watchtower_basement.yy",
       },
@@ -947,6 +971,18 @@
     },
     {
       "id":{
+        "name":"scr_ch3_markers_data",
+        "path":"scripts/scr_ch3_markers_data/scr_ch3_markers_data.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_ch3_story",
+        "path":"scripts/scr_ch3_story/scr_ch3_story.yy",
+      },
+    },
+    {
+      "id":{
         "name":"scr_dialogue",
         "path":"scripts/scr_dialogue/scr_dialogue.yy",
       },
@@ -961,6 +997,12 @@
       "id":{
         "name":"scr_dialogue_data_ch2",
         "path":"scripts/scr_dialogue_data_ch2/scr_dialogue_data_ch2.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_dialogue_data_ch3",
+        "path":"scripts/scr_dialogue_data_ch3/scr_dialogue_data_ch3.yy",
       },
     },
     {
@@ -1141,6 +1183,12 @@
       "id":{
         "name":"obj_inventory_menu",
         "path":"objects/obj_inventory_menu/obj_inventory_menu.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"obj_night_overlay",
+        "path":"objects/obj_night_overlay/obj_night_overlay.yy",
       },
     },
     {
@@ -4049,6 +4097,90 @@
     },
     {
       "id":{
+        "name":"spr_lyra_attack_strip6",
+        "path":"sprites/spr_lyra_attack_strip6/spr_lyra_attack_strip6.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_lyra_death_strip6",
+        "path":"sprites/spr_lyra_death_strip6/spr_lyra_death_strip6.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_lyra_defend_strip3",
+        "path":"sprites/spr_lyra_defend_strip3/spr_lyra_defend_strip3.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_lyra_hurt_strip3",
+        "path":"sprites/spr_lyra_hurt_strip3/spr_lyra_hurt_strip3.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_lyra_idle_strip4",
+        "path":"sprites/spr_lyra_idle_strip4/spr_lyra_idle_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_lyra_ow16_idle_down",
+        "path":"sprites/spr_lyra_ow16_idle_down/spr_lyra_ow16_idle_down.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_lyra_ow16_idle_left",
+        "path":"sprites/spr_lyra_ow16_idle_left/spr_lyra_ow16_idle_left.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_lyra_ow16_idle_right",
+        "path":"sprites/spr_lyra_ow16_idle_right/spr_lyra_ow16_idle_right.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_lyra_ow16_idle_up",
+        "path":"sprites/spr_lyra_ow16_idle_up/spr_lyra_ow16_idle_up.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_lyra_ow16_walk_down_strip4",
+        "path":"sprites/spr_lyra_ow16_walk_down_strip4/spr_lyra_ow16_walk_down_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_lyra_ow16_walk_left_strip4",
+        "path":"sprites/spr_lyra_ow16_walk_left_strip4/spr_lyra_ow16_walk_left_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_lyra_ow16_walk_right_strip4",
+        "path":"sprites/spr_lyra_ow16_walk_right_strip4/spr_lyra_ow16_walk_right_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_lyra_ow16_walk_up_strip4",
+        "path":"sprites/spr_lyra_ow16_walk_up_strip4/spr_lyra_ow16_walk_up_strip4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"spr_lyra_walk_strip8",
+        "path":"sprites/spr_lyra_walk_strip8/spr_lyra_walk_strip8.yy",
+      },
+    },
+    {
+      "id":{
         "name":"spr_marda_ow16_idle_down",
         "path":"sprites/spr_marda_ow16_idle_down/spr_marda_ow16_idle_down.yy",
       },
@@ -5471,6 +5603,12 @@
     },
     {
       "id":{
+        "name":"spr_ts_wrenfield",
+        "path":"sprites/spr_ts_wrenfield/spr_ts_wrenfield.yy",
+      },
+    },
+    {
+      "id":{
         "name":"spr_ts_zone1",
         "path":"sprites/spr_ts_zone1/spr_ts_zone1.yy",
       },
@@ -5975,6 +6113,12 @@
     },
     {
       "id":{
+        "name":"ts_wrenfield",
+        "path":"tilesets/ts_wrenfield/ts_wrenfield.yy",
+      },
+    },
+    {
+      "id":{
         "name":"rm_title",
         "path":"rooms/rm_title/rm_title.yy",
       },
@@ -6031,6 +6175,54 @@
       "id":{
         "name":"rm_battle_test",
         "path":"rooms/rm_battle_test/rm_battle_test.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"rm_millhaven_road",
+        "path":"rooms/rm_millhaven_road/rm_millhaven_road.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"rm_wrenfield",
+        "path":"rooms/rm_wrenfield/rm_wrenfield.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"rm_wrenfield_bent_post",
+        "path":"rooms/rm_wrenfield_bent_post/rm_wrenfield_bent_post.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"rm_wrenfield_store",
+        "path":"rooms/rm_wrenfield_store/rm_wrenfield_store.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"rm_valemere_road",
+        "path":"rooms/rm_valemere_road/rm_valemere_road.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"rm_valemere",
+        "path":"rooms/rm_valemere/rm_valemere.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"rm_salt_lamp",
+        "path":"rooms/rm_salt_lamp/rm_salt_lamp.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"rm_warehouse",
+        "path":"rooms/rm_warehouse/rm_warehouse.yy",
       },
     },
   ],
@@ -6095,6 +6287,54 @@
       "roomId":{
         "name":"rm_battle_test",
         "path":"rooms/rm_battle_test/rm_battle_test.yy",
+      },
+    },
+    {
+      "roomId":{
+        "name":"rm_millhaven_road",
+        "path":"rooms/rm_millhaven_road/rm_millhaven_road.yy",
+      },
+    },
+    {
+      "roomId":{
+        "name":"rm_wrenfield",
+        "path":"rooms/rm_wrenfield/rm_wrenfield.yy",
+      },
+    },
+    {
+      "roomId":{
+        "name":"rm_wrenfield_bent_post",
+        "path":"rooms/rm_wrenfield_bent_post/rm_wrenfield_bent_post.yy",
+      },
+    },
+    {
+      "roomId":{
+        "name":"rm_wrenfield_store",
+        "path":"rooms/rm_wrenfield_store/rm_wrenfield_store.yy",
+      },
+    },
+    {
+      "roomId":{
+        "name":"rm_valemere_road",
+        "path":"rooms/rm_valemere_road/rm_valemere_road.yy",
+      },
+    },
+    {
+      "roomId":{
+        "name":"rm_valemere",
+        "path":"rooms/rm_valemere/rm_valemere.yy",
+      },
+    },
+    {
+      "roomId":{
+        "name":"rm_salt_lamp",
+        "path":"rooms/rm_salt_lamp/rm_salt_lamp.yy",
+      },
+    },
+    {
+      "roomId":{
+        "name":"rm_warehouse",
+        "path":"rooms/rm_warehouse/rm_warehouse.yy",
       },
     },
   ],

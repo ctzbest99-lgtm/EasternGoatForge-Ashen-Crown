@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"b24eed9d-3920-4db8-91e6-81731dcf91a2",
-      "name":"b24eed9d-3920-4db8-91e6-81731dcf91a2",
+      "%Name":"ecc16d94-f398-49a3-82cf-517c19a51762",
+      "name":"ecc16d94-f398-49a3-82cf-517c19a51762",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"e0a4682d-9cf6-468c-9572-03323e057e85",
+      "%Name":"ab38e241-838c-4530-84e3-4409d0d79c47",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"e0a4682d-9cf6-468c-9572-03323e057e85",
+      "name":"ab38e241-838c-4530-84e3-4409d0d79c47",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"b24eed9d-3920-4db8-91e6-81731dcf91a2",
+                    "name":"ecc16d94-f398-49a3-82cf-517c19a51762",
                     "path":"sprites/spr_portrait_oda_pleading/spr_portrait_oda_pleading.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"14ae7bee-8405-4eb8-b690-4f09e30a75b5",
+              "id":"73fdfe92-ac5d-42a7-b2a0-e4b22a5379ae",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

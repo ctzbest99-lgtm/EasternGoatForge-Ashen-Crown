@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"568758a2-3634-4419-870f-ce41ff70bc0e",
-      "name":"568758a2-3634-4419-870f-ce41ff70bc0e",
+      "%Name":"79bdce44-3b88-455d-9090-d9f83f8c5b5b",
+      "name":"79bdce44-3b88-455d-9090-d9f83f8c5b5b",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"b1b4a9f7-b48d-4a1a-8ba7-e2711d02532f",
+      "%Name":"db9772d0-6177-41af-b473-1ef8bd3566d3",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"b1b4a9f7-b48d-4a1a-8ba7-e2711d02532f",
+      "name":"db9772d0-6177-41af-b473-1ef8bd3566d3",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"568758a2-3634-4419-870f-ce41ff70bc0e",
+                    "name":"79bdce44-3b88-455d-9090-d9f83f8c5b5b",
                     "path":"sprites/spr_portrait_perrin_grim/spr_portrait_perrin_grim.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"6c7425b2-a2bb-498f-8765-fc23c7a261f2",
+              "id":"19fa9ce0-68f7-4085-b19a-849db41b4fd9",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

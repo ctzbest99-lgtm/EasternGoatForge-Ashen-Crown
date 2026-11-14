@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"c7e4deb4-0796-4a51-a7d3-8df8b751e478",
-      "name":"c7e4deb4-0796-4a51-a7d3-8df8b751e478",
+      "%Name":"ae5afa08-0ff0-430f-a7a1-9b4f796d7091",
+      "name":"ae5afa08-0ff0-430f-a7a1-9b4f796d7091",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"b72473f4-1a65-4304-9073-54225ec9c509",
+      "%Name":"5e9ef75d-e303-4b77-8aa5-25b76acfa4a9",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"b72473f4-1a65-4304-9073-54225ec9c509",
+      "name":"5e9ef75d-e303-4b77-8aa5-25b76acfa4a9",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"c7e4deb4-0796-4a51-a7d3-8df8b751e478",
+                    "name":"ae5afa08-0ff0-430f-a7a1-9b4f796d7091",
                     "path":"sprites/spr_bg_battle_garrison_yard/spr_bg_battle_garrison_yard.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"160238b6-4976-4bce-b08a-44684ef31a1f",
+              "id":"c2944429-3abf-4616-aa5f-b209484e551a",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

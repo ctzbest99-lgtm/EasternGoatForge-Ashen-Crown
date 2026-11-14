@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"fbca5bde-6208-4617-98db-aea20c0f96d2",
-      "name":"fbca5bde-6208-4617-98db-aea20c0f96d2",
+      "%Name":"e0a734db-f2e0-467b-b665-8607ca6f0a7e",
+      "name":"e0a734db-f2e0-467b-b665-8607ca6f0a7e",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"526606c3-bad2-454c-a6dd-5f9b952e1d2a",
+      "%Name":"1e0ee600-09d2-439a-abbe-b4773e7c41cd",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"526606c3-bad2-454c-a6dd-5f9b952e1d2a",
+      "name":"1e0ee600-09d2-439a-abbe-b4773e7c41cd",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"fbca5bde-6208-4617-98db-aea20c0f96d2",
+                    "name":"e0a734db-f2e0-467b-b665-8607ca6f0a7e",
                     "path":"sprites/spr_item_ashbound_parchment_disabled/spr_item_ashbound_parchment_disabled.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"0d5ab7b3-cd21-4801-a37c-0ccbbd6cd166",
+              "id":"949dc493-118f-4ae6-a86a-be8cc475c110",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

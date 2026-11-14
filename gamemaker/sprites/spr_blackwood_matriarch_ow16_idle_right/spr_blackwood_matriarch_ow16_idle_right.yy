@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"dd1e63f6-d36e-4b5a-ae74-1e88e9c56bfb",
-      "name":"dd1e63f6-d36e-4b5a-ae74-1e88e9c56bfb",
+      "%Name":"c6411e6e-768f-4c80-8f3c-1e0cb92381fd",
+      "name":"c6411e6e-768f-4c80-8f3c-1e0cb92381fd",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"ad2652e2-0d34-4025-b006-d5ed8c44e1d7",
+      "%Name":"c4ef229c-609c-4d40-967f-c6b469c10e1f",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"ad2652e2-0d34-4025-b006-d5ed8c44e1d7",
+      "name":"c4ef229c-609c-4d40-967f-c6b469c10e1f",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"dd1e63f6-d36e-4b5a-ae74-1e88e9c56bfb",
+                    "name":"c6411e6e-768f-4c80-8f3c-1e0cb92381fd",
                     "path":"sprites/spr_blackwood_matriarch_ow16_idle_right/spr_blackwood_matriarch_ow16_idle_right.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"a963d67e-ae11-41ea-a2b7-6b34a4ffca5d",
+              "id":"7adf4ca9-c65b-4472-b368-6331a3ef9802",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
