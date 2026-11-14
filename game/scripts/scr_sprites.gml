@@ -98,6 +98,14 @@ function scr_battle_kind_from_id(_actor_id) {
             return "hollow_soldier";
         case "blackguard":
             return "blackguard";
+        // Act II (Design batch 6)
+        case "crown_patrolman":
+        case "crown_crossbowman":
+        case "occupation_soldier":
+        case "bandit_veteran":
+        case "grey_ash_wolf":
+        case "reeve_calder":
+            return _actor_id;
         default:
             return "";
     }
@@ -164,6 +172,30 @@ function scr_battle_frame_count(_kind, _anim, _phase = 1) {
         if (_anim == "idle" || _anim == "walk") return 4;
         if (_anim == "attack" || _anim == "death") return 6;
         if (_anim == "guard" || _anim == "hurt") return 3;
+    } else if (_kind == "crown_patrolman") {
+        if (_anim == "idle" || _anim == "walk") return 4;
+        if (_anim == "attack" || _anim == "death") return 6;
+        if (_anim == "brace" || _anim == "hurt") return 3;
+    } else if (_kind == "crown_crossbowman") {
+        if (_anim == "idle" || _anim == "walk") return 4;
+        if (_anim == "attack" || _anim == "death") return 6;
+        if (_anim == "hurt" || _anim == "bolt") return 3;
+    } else if (_kind == "occupation_soldier") {
+        if (_anim == "idle" || _anim == "walk") return 4;
+        if (_anim == "attack" || _anim == "death") return 6;
+        if (_anim == "guard" || _anim == "hurt") return 3;
+    } else if (_kind == "bandit_veteran") {
+        if (_anim == "idle" || _anim == "walk" || _anim == "hurt") return 4;
+        if (_anim == "attack" || _anim == "death") return 6;
+    } else if (_kind == "grey_ash_wolf") {
+        if (_anim == "idle" || _anim == "walk" || _anim == "howl") return 4;
+        if (_anim == "attack" || _anim == "death") return 6;
+        if (_anim == "hurt") return 3;
+    } else if (_kind == "reeve_calder") {
+        // idle8 walk8 attack6 guard4 shout6 stance6 hurt4 yield8. No death strip: he yields.
+        if (_anim == "idle" || _anim == "walk" || _anim == "yield") return 8;
+        if (_anim == "attack" || _anim == "shout" || _anim == "stance") return 6;
+        if (_anim == "guard" || _anim == "hurt") return 4;
     }
     return 1;
 }
@@ -180,6 +212,10 @@ function scr_battle_sprite(_kind, _anim, _phase = 1) {
         if (_phase >= 3) _prefix = "spr_blackguard_p3_";
         var _n = scr_battle_frame_count(_kind, _anim, _phase);
         return scr_sprite_index(_prefix + _anim + "_strip" + string(_n));
+    }
+    if (_kind == "reeve_calder" && _anim == "idle" && _phase >= 2) {
+        // After his stance: Design's idle_p2 if imported, otherwise the normal idle.
+        return scr_sprite_index("spr_reeve_calder_idle_p2_strip8", "spr_reeve_calder_idle_strip8");
     }
     var _n2 = scr_battle_frame_count(_kind, _anim, _phase);
     return scr_sprite_index("spr_" + _kind + "_" + _anim + "_strip" + string(_n2));
@@ -265,14 +301,15 @@ function scr_battle_vis_hit_ready(_vis) {
 /// Draw a battle sprite with its own origin at the feet. Returns true if a sprite was drawn.
 /// Fallen Knight attack is 64×48 with origin (32, 47); draw_sprite_ext honours that, so the
 /// feet stay planted while the 32 px of reach extends forward.
-function scr_battle_draw_vis(_vis, _feet_x, _feet_y) {
+function scr_battle_draw_vis(_vis, _feet_x, _feet_y, _alpha = 1) {
     if (!is_struct(_vis) || !scr_sprite_is_valid(_vis.sprite)) return false;
+    if (_alpha <= 0) return true; // faded out (defeated regular): nothing to draw, but the sprite exists
     // GUI is locked to 320×180 (see scr_ui_init). If a project still uses a larger GUI,
     // scale up from the 320 design. BATTLE_SPRITE_SCALE (legacy 2× at 640) is not multiplied on top.
     var _s = scr_ui_scale();
     var _xs = _s * _vis.xscale;
     var _ys = _s;
-    draw_sprite_ext(_vis.sprite, _vis.frame, _feet_x, _feet_y, _xs, _ys, 0, c_white, 1);
+    draw_sprite_ext(_vis.sprite, _vis.frame, _feet_x, _feet_y, _xs, _ys, 0, c_white, clamp(_alpha, 0, 1));
     return true;
 }
 

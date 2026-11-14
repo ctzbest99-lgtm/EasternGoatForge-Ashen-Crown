@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-11-14 — Battle upgrade (`feature/battle-upgrade`)
+- Branched from `feature/save-and-shops` (PR #10, stacked on #9 → #8). This PR depends on #10 and should be merged after it. Chapter 2 dialogue is **not** wired.
+- **Multi-enemy battles:** 1–3 regular enemies, or a boss plus adds (Reeve Calder + 2 Occupation Soldiers). Target cursor (auto-target when one enemy is left, so Chapter 1 fights play as before), per-enemy mini HP bars and A / B / C labels, enemy list window, boss name plate, formations on the left half. Encounter tables accept `group` entries; single entries still work. XP is credited per enemy at its killing hit (owner rule unchanged); gold is summed.
+- **New stats:** SPD (turn order by SPD with a small random tiebreak), MP / max MP, MDEF, with level-up growth (PLACEHOLDER).
+- **Skills:** data-driven skill table (`scr_skill_data`) and a Skill command. Taren: Rallying Cry, Cleave, Unbowed (passive). Timed buffs / debuffs with icons, elemental weakness (×1.5).
+- **Enemy AI:** weighted action lists per enemy. Patrolman Thrust / Brace, Occupation Soldier Slash / Guard, Crossbowman bolt spawned on attack frame 3. Reeve Calder: Guard, Rallying Shout (buffs his soldiers), Heavy Strike, a one-time stance when his soldiers fall, and a yield that replaces death (holds the last frame, ends the battle as a win, sets `flag_reeve_calder_yielded`).
+- **Act II enemies:** Crown Patrolman, Crown Crossbowman, Occupation Soldier, Bandit Veteran, Grey Ash Wolf, Reeve Calder with Design's suggested stats; `ch2_millhaven_road` / `ch2_wrenfield` encounter stubs (level 8–10, data only). Sprites copied to `game/sprites/enemies/`, `portraits/reeve_calder/`, and two battle mockups; IMPORT.md "Act II enemies" section.
+- Chapter 1 enemies got SPD / MDEF defaults; their damage formula and special-move odds are unchanged.
+- **Saves:** schema version 2 stores MP, SPD, MDEF, and skills; v1 saves are migrated on load.
+- Placeholders and open questions: `docs/DECISIONS_AND_OPEN_QUESTIONS.md` ("battle upgrade"). Test plan B1–B11. Not compiled or playtested in GameMaker yet.
+
 ## 2026-11-14 — Chapter 1 art wiring
 - Branched from `feature/zone1-placement-fixes` (PR #8). This PR depends on #8 and should be merged after it. Chapter 2 lines tagged `[PROPOSED]` are **not** wired.
 - Added Design's remaining Chapter 1 sprites under `game/sprites/` (`blackguard/`, `enemies/`, `npcs/`, `portraits/`, `title/`, `ui/`, `items/`). Import tables, origins, frame counts, and fps are in `game/sprites/IMPORT.md`. `README_CH1_ART.md` and `STATUS.md` are copies of Design's notes.

@@ -2,6 +2,9 @@
 /// Decision for this prototype: battles run in a dedicated room (BATTLE_ROOM), not an overlay.
 
 /// Start a battle. Returns false (and does nothing) if a battle or transition is already active.
+/// `_enemy_id` may be one enemy id (Chapter 1 callers), a group id such as "grp_reeve_calder",
+/// or an array of 1–3 enemy ids (random group). pending_battle.enemy_id stays the lead / boss id
+/// so the existing story hooks (Ashbound Hunter, Blackguard) keep working.
 function scr_encounter_start(_enemy_id, _encounter_id = "", _script_id = "") {
     scr_game_state_init();
     var _g = global.game;
@@ -16,11 +19,16 @@ function scr_encounter_start(_enemy_id, _encounter_id = "", _script_id = "") {
         facing_x: _player.facing_x,
         facing_y: _player.facing_y
     };
+    var _resolved = scr_encounter_resolve_ids(_enemy_id);
+    var _lead = (array_length(_resolved.ids) > 0) ? _resolved.ids[0] : (is_string(_enemy_id) ? _enemy_id : "");
     _g.pending_battle = {
-        enemy_id: _enemy_id,
+        enemy_id: _lead,
+        enemy_ids: _resolved.ids,
+        boss_index: _resolved.boss_index,
+        group_id: (is_string(_enemy_id) && is_struct(scr_get_encounter_group(_enemy_id))) ? _enemy_id : "",
         encounter_id: _encounter_id,
         script_id: _script_id,
-        area: scr_ch1_battle_area(_enemy_id, _encounter_id)
+        area: scr_ch1_battle_area(_lead, _encounter_id)
     };
     _g.last_battle_result = undefined;
     _g.last_defeat_penalty = undefined;
@@ -45,6 +53,7 @@ function scr_battle_finish(_result) {
     scr_ashbound_on_battle_finish(_result, _pending);
     scr_blackguard_on_battle_finish(_result, _pending);
     scr_party_clear_guard(_g.party);
+    scr_battle_clear_party_battle_state(_result == "victory");
 
     if (_result == "defeat") {
         // Defeat *check* and XP/gold penalty use the active party only (assumption).
@@ -218,7 +227,7 @@ function scr_random_encounter_tick(_pixels_moved) {
             scr_ashbound_hunter_start("");
             return;
         }
-        var _enemy_id = scr_encounter_table_pick(_table);
+        var _enemy_id = scr_encounter_table_pick(_table); // enemy id, group id, or array of ids
         if (is_undefined(_enemy_id)) continue;
         // Empty encounter_id: random fights are not recorded in cleared_encounters.
         scr_encounter_start(_enemy_id, "");
@@ -250,8 +259,9 @@ function scr_encounter_zone_table(_zone) {
     return undefined;
 }
 
-/// Weighted pick from [{ enemy_id, weight }, ...]. Skips unknown ids and non-positive
-/// weights. Returns an enemy id, or undefined if the table is empty.
+/// Weighted pick from [{ enemy_id | group | group_id, weight }, ...]. Skips unknown ids,
+/// empty groups, and non-positive weights. Returns an enemy id string, a group id string,
+/// or an array of enemy ids (scr_encounter_start accepts all three), or undefined if empty.
 function scr_encounter_table_pick(_table) {
     if (!is_array(_table)) return undefined;
     var _ids = [];
@@ -260,10 +270,14 @@ function scr_encounter_table_pick(_table) {
     for (var _i = 0; _i < array_length(_table); _i++) {
         var _entry = _table[_i];
         if (!is_struct(_entry)) continue;
-        var _id = _entry.enemy_id;
-        var _w = max(0, _entry.weight);
+        var _w = variable_struct_exists(_entry, "weight") ? max(0, _entry.weight) : 1;
         if (_w <= 0) continue;
-        if (is_undefined(scr_get_enemy_data(_id))) continue;
+        var _id = undefined;
+        if (variable_struct_exists(_entry, "group_id")) _id = _entry.group_id;
+        else if (variable_struct_exists(_entry, "group")) _id = _entry.group;
+        else if (variable_struct_exists(_entry, "enemy_id")) _id = _entry.enemy_id;
+        if (is_undefined(_id)) continue;
+        if (array_length(scr_encounter_resolve_ids(_id).ids) == 0) continue;
         array_push(_ids, _id);
         array_push(_weights, _w);
         _total += _w;

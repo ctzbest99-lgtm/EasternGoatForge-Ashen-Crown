@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased — Battle upgrade (`feature/battle-upgrade`)
+
+Multi-enemy battles, SPD / MP / MDEF, skills, enemy AI, and the Act II enemy roster, built on the saves-and-shops branch (PR #10).
+
+- 1–3 enemies or a boss plus adds, target selection, SPD turn order, MP skills (Taren: Rallying Cry, Cleave, Unbowed), timed buffs, elemental weakness, weighted enemy AI, Reeve Calder's shout / stance / yield.
+- Six Act II enemies with Design's suggested stats; Millhaven Road / Wrenfield encounter tables as data only.
+- Save schema 2 (MP, SPD, MDEF, skills) with migration of schema 1 saves.
+- All numbers are PLACEHOLDER (see `docs/DECISIONS_AND_OPEN_QUESTIONS.md`). Chapter 2 dialogue is not wired. Nothing has been compiled or playtested in GameMaker.
+
 ## Unreleased — Saves and shops (`feature/save-and-shops`)
 
 Versioned JSON save / load and data-driven shops, built on the Chapter 1 art branch (PR #9).

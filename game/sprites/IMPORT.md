@@ -392,6 +392,79 @@ All face right (stand on the left of the battle screen). 32×48 humanoids origin
 | `spr_hollow_soldier_idle_strip4` | `enemies/hollow_soldier/spr_hollow_soldier_idle_strip4.png` | 4 | 32×48 | (16, 47) | 8, 16, 23, 47 | 6 |
 | `spr_hollow_soldier_walk_strip4` | `enemies/hollow_soldier/spr_hollow_soldier_walk_strip4.png` | 4 | 32×48 | (16, 47) | 8, 16, 23, 47 | 10 |
 
+### Act II enemies — Millhaven Road / Wrenfield (feature/battle-upgrade)
+Design batch 6 (`/workspace/sprites/README.md`, "Act II" section). All face right. Commons are 32×48, origin (16, 47); their attack strips are 48×48 with origin (24, 47) (bandit_veteran's attack stays 32×48, origin (16, 47)); death strips are 48×48 with origin (16, 47). `grey_ash_wolf` is 48×32, origin (24, 31). Reeve Calder is 48×64, origin (24, 63); his Heavy Strike attack is 96×64, origin (40, 63). Use the **idle bbox as a fixed manual mask** (values below, measured from each idle strip and shifted on the wider attack frames so the box stays on the body) so wider attack / death frames cannot change the hitbox. Battle drawing does not use masks; this only keeps the assets consistent.
+
+- Crossbowman bolt `spr_crown_crossbowman_bolt_strip3` is a 16×8 projectile with origin (15, 4) at the tip; code spawns it on attack frame index 3.
+- Reeve Calder has **no death strip**: `yield` plays once and holds its last frame (he lives). `stance` plays once when his last add falls. `spr_reeve_calder_idle_p2_strip8` arrived after Design's README was written (frames / origin assumed to match `idle`, 48×64, (24, 63)); code uses it after the stance and falls back to `idle` if it is not imported.
+- Playback FPS below is Design's; runtime uses `BATTLE_IDLE_FPS` (loops) and `BATTLE_ANIM_FPS` (one-shots).
+- Every name is looked up with `scr_sprite_index` / `asset_get_index`, so a missing import falls back to a rectangle and never blocks a turn.
+- Do not import `*_preview.*`, `act2_veteran_palettes.png`, or the 4× frame sheets (not copied).
+
+| Asset name | File | Frames | Frame size | Origin | Mask (L,T,R,B) | FPS |
+|---|---|---|---|---|---|---|
+| `spr_crown_patrolman_attack_strip6` | `enemies/crown_patrolman/spr_crown_patrolman_attack_strip6.png` | 6 | 48×48 | (24, 47) | 16, 7, 35, 47 | 10 |
+| `spr_crown_patrolman_brace_strip3` | `enemies/crown_patrolman/spr_crown_patrolman_brace_strip3.png` | 3 | 32×48 | (16, 47) | 8, 7, 27, 47 | 6 |
+| `spr_crown_patrolman_death_strip6` | `enemies/crown_patrolman/spr_crown_patrolman_death_strip6.png` | 6 | 48×48 | (16, 47) | 8, 7, 27, 47 | 8 |
+| `spr_crown_patrolman_hurt_strip3` | `enemies/crown_patrolman/spr_crown_patrolman_hurt_strip3.png` | 3 | 32×48 | (16, 47) | 8, 7, 27, 47 | 12 |
+| `spr_crown_patrolman_idle_strip4` | `enemies/crown_patrolman/spr_crown_patrolman_idle_strip4.png` | 4 | 32×48 | (16, 47) | 8, 7, 27, 47 | 6 |
+| `spr_crown_patrolman_walk_strip4` | `enemies/crown_patrolman/spr_crown_patrolman_walk_strip4.png` | 4 | 32×48 | (16, 47) | 8, 7, 27, 47 | 8 |
+| `spr_crown_crossbowman_attack_strip6` | `enemies/crown_crossbowman/spr_crown_crossbowman_attack_strip6.png` | 6 | 48×48 | (24, 47) | 16, 8, 39, 47 | 10 |
+| `spr_crown_crossbowman_bolt_strip3` | `enemies/crown_crossbowman/spr_crown_crossbowman_bolt_strip3.png` | 3 | 16×8 | (15, 4) | full image | 12 |
+| `spr_crown_crossbowman_death_strip6` | `enemies/crown_crossbowman/spr_crown_crossbowman_death_strip6.png` | 6 | 48×48 | (16, 47) | 8, 8, 31, 47 | 8 |
+| `spr_crown_crossbowman_hurt_strip3` | `enemies/crown_crossbowman/spr_crown_crossbowman_hurt_strip3.png` | 3 | 32×48 | (16, 47) | 8, 8, 31, 47 | 12 |
+| `spr_crown_crossbowman_idle_strip4` | `enemies/crown_crossbowman/spr_crown_crossbowman_idle_strip4.png` | 4 | 32×48 | (16, 47) | 8, 8, 31, 47 | 6 |
+| `spr_crown_crossbowman_walk_strip4` | `enemies/crown_crossbowman/spr_crown_crossbowman_walk_strip4.png` | 4 | 32×48 | (16, 47) | 8, 8, 31, 47 | 8 |
+| `spr_occupation_soldier_attack_strip6` | `enemies/occupation_soldier/spr_occupation_soldier_attack_strip6.png` | 6 | 48×48 | (24, 47) | 16, 6, 37, 47 | 10 |
+| `spr_occupation_soldier_death_strip6` | `enemies/occupation_soldier/spr_occupation_soldier_death_strip6.png` | 6 | 48×48 | (16, 47) | 8, 6, 29, 47 | 8 |
+| `spr_occupation_soldier_guard_strip3` | `enemies/occupation_soldier/spr_occupation_soldier_guard_strip3.png` | 3 | 32×48 | (16, 47) | 8, 6, 29, 47 | 6 |
+| `spr_occupation_soldier_hurt_strip3` | `enemies/occupation_soldier/spr_occupation_soldier_hurt_strip3.png` | 3 | 32×48 | (16, 47) | 8, 6, 29, 47 | 12 |
+| `spr_occupation_soldier_idle_strip4` | `enemies/occupation_soldier/spr_occupation_soldier_idle_strip4.png` | 4 | 32×48 | (16, 47) | 8, 6, 29, 47 | 6 |
+| `spr_occupation_soldier_walk_strip4` | `enemies/occupation_soldier/spr_occupation_soldier_walk_strip4.png` | 4 | 32×48 | (16, 47) | 8, 6, 29, 47 | 8 |
+| `spr_bandit_veteran_attack_strip6` | `enemies/bandit_veteran/spr_bandit_veteran_attack_strip6.png` | 6 | 32×48 | (16, 47) | 3, 4, 29, 47 | 10 |
+| `spr_bandit_veteran_death_strip6` | `enemies/bandit_veteran/spr_bandit_veteran_death_strip6.png` | 6 | 48×48 | (16, 47) | 3, 4, 29, 47 | 8 |
+| `spr_bandit_veteran_hurt_strip4` | `enemies/bandit_veteran/spr_bandit_veteran_hurt_strip4.png` | 4 | 32×48 | (16, 47) | 3, 4, 29, 47 | 12 |
+| `spr_bandit_veteran_idle_strip4` | `enemies/bandit_veteran/spr_bandit_veteran_idle_strip4.png` | 4 | 32×48 | (16, 47) | 3, 4, 29, 47 | 6 |
+| `spr_bandit_veteran_walk_strip4` | `enemies/bandit_veteran/spr_bandit_veteran_walk_strip4.png` | 4 | 32×48 | (16, 47) | 3, 4, 29, 47 | 8 |
+| `spr_grey_ash_wolf_attack_strip6` | `enemies/grey_ash_wolf/spr_grey_ash_wolf_attack_strip6.png` | 6 | 48×32 | (24, 31) | 4, 5, 42, 31 | 10 |
+| `spr_grey_ash_wolf_death_strip6` | `enemies/grey_ash_wolf/spr_grey_ash_wolf_death_strip6.png` | 6 | 48×32 | (24, 31) | 4, 5, 42, 31 | 8 |
+| `spr_grey_ash_wolf_howl_strip4` | `enemies/grey_ash_wolf/spr_grey_ash_wolf_howl_strip4.png` | 4 | 48×32 | (24, 31) | 4, 5, 42, 31 | 8 |
+| `spr_grey_ash_wolf_hurt_strip3` | `enemies/grey_ash_wolf/spr_grey_ash_wolf_hurt_strip3.png` | 3 | 48×32 | (24, 31) | 4, 5, 42, 31 | 12 |
+| `spr_grey_ash_wolf_idle_strip4` | `enemies/grey_ash_wolf/spr_grey_ash_wolf_idle_strip4.png` | 4 | 48×32 | (24, 31) | 4, 5, 42, 31 | 6 |
+| `spr_grey_ash_wolf_walk_strip4` | `enemies/grey_ash_wolf/spr_grey_ash_wolf_walk_strip4.png` | 4 | 48×32 | (24, 31) | 4, 5, 42, 31 | 8 |
+| `spr_reeve_calder_attack_strip6` | `enemies/reeve_calder/spr_reeve_calder_attack_strip6.png` | 6 | 96×64 | (40, 63) | 19, 5, 60, 63 | 10 |
+| `spr_reeve_calder_guard_strip4` | `enemies/reeve_calder/spr_reeve_calder_guard_strip4.png` | 4 | 48×64 | (24, 63) | 3, 5, 44, 63 | 6 |
+| `spr_reeve_calder_hurt_strip4` | `enemies/reeve_calder/spr_reeve_calder_hurt_strip4.png` | 4 | 48×64 | (24, 63) | 3, 5, 44, 63 | 12 |
+| `spr_reeve_calder_idle_p2_strip8` | `enemies/reeve_calder/spr_reeve_calder_idle_p2_strip8.png` | 8 | 48×64 | (24, 63) | 3, 5, 44, 63 | 6 |
+| `spr_reeve_calder_idle_strip8` | `enemies/reeve_calder/spr_reeve_calder_idle_strip8.png` | 8 | 48×64 | (24, 63) | 3, 5, 44, 63 | 6 |
+| `spr_reeve_calder_shout_strip6` | `enemies/reeve_calder/spr_reeve_calder_shout_strip6.png` | 6 | 48×64 | (24, 63) | 3, 5, 44, 63 | 8 |
+| `spr_reeve_calder_stance_strip6` | `enemies/reeve_calder/spr_reeve_calder_stance_strip6.png` | 6 | 48×64 | (24, 63) | 3, 5, 44, 63 | 8 |
+| `spr_reeve_calder_walk_strip8` | `enemies/reeve_calder/spr_reeve_calder_walk_strip8.png` | 8 | 48×64 | (24, 63) | 3, 5, 44, 63 | 8 |
+| `spr_reeve_calder_yield_strip8` | `enemies/reeve_calder/spr_reeve_calder_yield_strip8.png` | 8 | 48×64 | (24, 63) | 3, 5, 44, 63 | 8 |
+
+#### Reeve Calder overworld (16×24, origin (8, 23); left = mirrored right)
+Not wired to an object yet (the Wrenfield rooms do not exist). Names follow the Chapter 1 enemy overworld pattern, so `scr_ch1_bind_enemy_ow(inst, "reeve_calder", marker)` will pick them up.
+
+| Asset name | File | Frames | Frame size | Origin | Mask (L,T,R,B) | FPS |
+|---|---|---|---|---|---|---|
+| `spr_reeve_calder_ow16_idle_down` | `enemies/reeve_calder/overworld/spr_reeve_calder_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_reeve_calder_ow16_idle_left` | `enemies/reeve_calder/overworld/spr_reeve_calder_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_reeve_calder_ow16_idle_right` | `enemies/reeve_calder/overworld/spr_reeve_calder_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_reeve_calder_ow16_idle_up` | `enemies/reeve_calder/overworld/spr_reeve_calder_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_reeve_calder_ow16_walk_down_strip4` | `enemies/reeve_calder/overworld/spr_reeve_calder_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_reeve_calder_ow16_walk_left_strip4` | `enemies/reeve_calder/overworld/spr_reeve_calder_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_reeve_calder_ow16_walk_right_strip4` | `enemies/reeve_calder/overworld/spr_reeve_calder_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_reeve_calder_ow16_walk_up_strip4` | `enemies/reeve_calder/overworld/spr_reeve_calder_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+
+#### Reeve Calder portraits (48×48, origin (0, 0))
+`scr_ch1_portrait("Reeve Calder", "stern")` resolves these. `weary` is the yield face. Chapter 2 dialogue is not wired in this PR.
+
+| Asset name | File | Frames | Frame size | Origin | Mask (L,T,R,B) | FPS |
+|---|---|---|---|---|---|---|
+| `spr_portrait_reeve_calder_neutral` | `portraits/reeve_calder/spr_portrait_reeve_calder_neutral.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_reeve_calder_stern` | `portraits/reeve_calder/spr_portrait_reeve_calder_stern.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+| `spr_portrait_reeve_calder_weary` | `portraits/reeve_calder/spr_portrait_reeve_calder_weary.png` | 1 | 48×48 | (0, 0) | full image | 0 |
+
 ### Chests
 16×16 tiles, origin (0, 0). Wood for the overworld; iron for Watchtower / basement. Play `*_open_strip3` once at ~10 fps, then hold the open frame.
 
