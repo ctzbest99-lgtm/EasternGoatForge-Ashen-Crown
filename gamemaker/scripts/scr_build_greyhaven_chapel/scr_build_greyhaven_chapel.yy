@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_build_greyhaven_chapel",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_build_greyhaven_chapel",
+  "parent":{
+    "name":"scripts",
+    "path":"folders/scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
