@@ -126,7 +126,7 @@ Varyn House · Rusted Boar Tavern · Greyhaven Chapel · Blacksmith · General S
 - **Five playable party members:** Kael (Vanguard), Lyra (Rogue), Caelan (Arcanist), Sera (Warden), Taren (Rebel Captain, heavy swords; starts with a bastard sword). **Four fight at a time.** This overrides the doc's "The party contains four main characters."
 - **[C]** Classic ordered party: formation affects targeting, defense and damage, and the player rearranges the order through the Adventure menu.
 - **Note for Coder:** Party Order must support **4 active slots plus 1 reserve slot**, letting the player swap a reserve member in and out. Battle, the save system and XP rules need to handle a benched member (whether the reserve earns XP is **[O]**).
-- **Note for Coder:** the party now has **two frontline melee fighters, Kael and Taren**. Formation and targeting rules should allow both to hold front slots, and their kits should be distinct. Taren's skills are still open.
+- **Note for Coder:** the party now has **two frontline melee fighters, Kael and Taren**. Formation and targeting rules should allow both to hold front slots, and their kits should be distinct. Taren's skill kit is set in 5.5, with numbers still open.
 - **Note for Coder:** the equipment system needs a **"heavy sword" weapon category**. Taren can equip any weapon in it, and his starting weapon is a bastard sword in that category. Which other characters, if any, can use heavy swords is **[O]**, as is the list of heavy swords.
 - **[O]** Whether the story restricts swapping, e.g. forced or locked members in certain scenes, and when members join.
 
@@ -192,7 +192,15 @@ Varyn House · Rusted Boar Tavern · Greyhaven Chapel · Blacksmith · General S
 - **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Party:** a permanent party member, part of the five-person roster.
 - **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Story weight:** his friendship with Kael and his history with Alden should make the final Alden confrontation one of the most emotional moments in the game. He should be more than a warrior.
 - **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Profile:** full name **Taren Holt**. **Age** 27. **Origin** Millhaven. **Class** Rebel Captain. **Faction** The Broken Yoke. **Role** Warrior / frontline fighter. **Weapon class** heavy swords: he can equip any sword classified as heavy, and his signature and starting weapon is a bastard sword. Childhood friend of Kael and Alden. *(This replaces the earlier Scout/Thief class and knife.)*
-- **[O]** Specific skills, and when and how he joins the party.
+- **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Skill kit.** Theme: a frontline captain who leads the party, where Kael is the lone protector.
+  - **Rallying Cry:** raises the party's Attack for 3 turns.
+  - **Cleave:** a heavy bastard-sword swing that hits all enemies for reduced damage.
+  - **Shield the Line:** for 2 turns, Taren takes hits aimed at the back row (uses the formation system).
+  - **Breaking Blow:** a slow, powerful strike that lowers the target's Defense.
+  - **Unbowed (passive):** resists Fear and Stun.
+  - **Banner of the Yoke (later ability):** when an ally falls, restores some HP to all surviving allies. It mirrors Kael's Ashen Resolve.
+- **[O]** Exact numbers: MP costs, % values, how much damage Cleave loses, how much Defense Breaking Blow removes, and unlock levels. **Note for Coder:** these need balancing values in the skill and character databases. Use placeholders until they're set.
+- **[O]** When and how he joins the party.
 - **[O]** Where the three grew up together. Taren is from Millhaven and Kael from Greyhaven, so was it Millhaven, Greyhaven or somewhere else? Alden's origin is also undefined.
 - **[O]** What a "Rebel Captain" means in the Broken Yoke's structure, and who commands him.
 - Not in Chapter 1. Canon doesn't place him there, so `CHAPTER1_SCRIPT.md` is unchanged.
@@ -346,40 +354,39 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 5. What exactly does Caelan know about the Crownveil and why it broke?
 6. What are Lyra's Black Hand ties?
 7. When and where do Lyra, Caelan, Sera and Taren join the party?
-8. Taren's specific skills. (Class Rebel Captain, frontline warrior role, heavy-sword weapon class with a bastard sword as signature and starting weapon, and age 27 are settled.)
-9. Where did Kael (Greyhaven), Taren (Millhaven) and Alden grow up together: Millhaven, Greyhaven or elsewhere? Where is Alden from? When and how did Alden and Taren split? Where is Millhaven, and what is it like?
-10. Elira's fate: alive, dead or missing after Greyhaven?
-11. What is Tomas's ultimate fate (he passes out in Chapter 1, not dead), and what did he know "was coming"?
-12. Who is the "Forgotten King" in Act 4?
-13. Alden's backstory, his exact role in the Broken Yoke, and who defeats King Aldric IV, and how.
-14. What are Aldric IV's motives for hiding the Crownveil's failure?
+8. Where did Kael (Greyhaven), Taren (Millhaven) and Alden grow up together: Millhaven, Greyhaven or elsewhere? Where is Alden from? When and how did Alden and Taren split? Where is Millhaven, and what is it like?
+9. Elira's fate: alive, dead or missing after Greyhaven?
+10. What is Tomas's ultimate fate (he passes out in Chapter 1, not dead), and what did he know "was coming"?
+11. Who is the "Forgotten King" in Act 4?
+12. Alden's backstory, his exact role in the Broken Yoke, and who defeats King Aldric IV, and how.
+13. What are Aldric IV's motives for hiding the Crownveil's failure?
 
 **Events and world**
-15. What destroyed Greyhaven, and how? (Timing is settled: before Kael arrives, not played.)
-16. What is "the Night of Ash" as an event?
-17. Is the passage beneath Greyhaven that Mira opened the same as the Crownveil Door at the end of Zone 1? Where is the Old Watchtower relative to Greyhaven?
-18. What happened to Mira's black stone?
-19. Why do the Architect carvings resemble Mira?
-20. Who wrote the Ashbound parchment, and who sent the Ashbound Hunter?
-21. What does "Then everything stops" mean in the story? (The on-screen presentation is settled: a hard cut to black.)
-22. What does the pendant's shared symbol look like, and is it the crown around a black sun?
-23. Why does a royal banner carry the Crownveil symbol? What does the crown know?
-24. Where exactly does the Crownveil run? It is believed to protect Eldoria, but the Ashlands lie "beyond" it. What is it keeping in?
-25. What are the answers to the six gradual Crownveil truths, and in which acts are they revealed?
-26. Is the Frostwilds' "ancient northern civilization" the Architects or a separate people?
-27. Which acts map to which regions? Where do Valemere, the Drowned Coast and the Frostwilds fall in the eight acts?
-28. Who leads the Broken Yoke, and how is it structured? (Name settled. Taren is a Rebel Captain.)
-29. Is Greyhaven Chapel part of the Radiant Flame?
-30. What is Mira's age now? The doc gives "twelve when the tragedy began." How much time has passed?
+14. What destroyed Greyhaven, and how? (Timing is settled: before Kael arrives, not played.)
+15. What is "the Night of Ash" as an event?
+16. Is the passage beneath Greyhaven that Mira opened the same as the Crownveil Door at the end of Zone 1? Where is the Old Watchtower relative to Greyhaven?
+17. What happened to Mira's black stone?
+18. Why do the Architect carvings resemble Mira?
+19. Who wrote the Ashbound parchment, and who sent the Ashbound Hunter?
+20. What does "Then everything stops" mean in the story? (The on-screen presentation is settled: a hard cut to black.)
+21. What does the pendant's shared symbol look like, and is it the crown around a black sun?
+22. Why does a royal banner carry the Crownveil symbol? What does the crown know?
+23. Where exactly does the Crownveil run? It is believed to protect Eldoria, but the Ashlands lie "beyond" it. What is it keeping in?
+24. What are the answers to the six gradual Crownveil truths, and in which acts are they revealed?
+25. Is the Frostwilds' "ancient northern civilization" the Architects or a separate people?
+26. Which acts map to which regions? Where do Valemere, the Drowned Coast and the Frostwilds fall in the eight acts?
+27. Who leads the Broken Yoke, and how is it structured? (Name settled. Taren is a Rebel Captain.)
+28. Is Greyhaven Chapel part of the Radiant Flame?
+29. What is Mira's age now? The doc gives "twelve when the tragedy began." How much time has passed?
 
 **Endings and systems that touch lore**
 > **Note for Coder:** the party is **5 members with 4 active** (Kael, Lyra, Caelan, Sera, Taren). The Adventure menu's Party Order needs a reserve slot. Kael and Taren are both frontline melee fighters. See "Party roster" in section 5.
-31. Which ending(s) are final, and what are the branching conditions (choices, relationships)?
-32. How does Alden's Ending C relate to the three Crownveil endings? Is it a separate branch, a step before the finale, or a fourth ending?
-33. What is "the entity" in Endings 2 and 3, and is it the Ash or the Ash King?
-34. Kael's Ashen Resolve says "Ash increases by 1." What is the Ash stat or meter?
-35. Party swapping: does the story restrict it (locked or forced members in certain scenes)? Does the reserve member earn XP?
-36. Battle presentation: are battles FF1-style menu battles (the current assumption)? The doc's "hybrid, varying by encounter" note still needs his final word. (The exploration camera is settled.)
+30. Which ending(s) are final, and what are the branching conditions (choices, relationships)?
+31. How does Alden's Ending C relate to the three Crownveil endings? Is it a separate branch, a step before the finale, or a fourth ending?
+32. What is "the entity" in Endings 2 and 3, and is it the Ash or the Ash King?
+33. Kael's Ashen Resolve says "Ash increases by 1." What is the Ash stat or meter?
+34. Party swapping: does the story restrict it (locked or forced members in certain scenes)? Does the reserve member earn XP?
+35. Battle presentation: are battles FF1-style menu battles (the current assumption)? The doc's "hybrid, varying by encounter" note still needs his final word. (The exploration camera is settled.)
 
 ## 11. Decision log
 
@@ -395,3 +402,4 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 | Nov 14 2026 | ~~Taren's class is Scout/Thief, and he uses a knife or small blade.~~ *(Superseded by the next entry.)* | Taren entry and party roster updated. Open question trimmed to his skills, combat role and age. A [PROPOSED] scouting and utility direction was added so he doesn't overlap with Lyra. |
 | Nov 14 2026 | **Revision, supersedes Scout/Thief:** Taren Holt, age 27, from Millhaven, class Rebel Captain, faction the Broken Yoke (the rebellion's name), role warrior / frontline fighter, childhood friend of Kael and Alden. | Taren entry rewritten. The Scout/Thief class, the knife and the [PROPOSED] Lyra-overlap note were removed, and his weapon is now open. Party roster updated, with a Coder note about two frontline melee fighters. The rebellion row became the Broken Yoke. Millhaven added. Questions resolved: the rebellion's name and Taren's age. |
 | Nov 14 2026 | Taren's weapon is a bastard sword. **Corrected the same day:** his weapon class is heavy swords. He can equip any heavy sword, and the bastard sword is his signature and starting weapon. | Taren entry and party roster updated, plus a Coder note for a "heavy sword" equipment category. The weapon is no longer open, and the open question is trimmed to his skills. |
+| Nov 14 2026 | Approved Taren Holt's skill kit (the captain who leads the party): Rallying Cry, Cleave, Shield the Line, Breaking Blow, Unbowed (passive), Banner of the Yoke (later ability). | Kit added to 5.5. Taren's skills question removed. Exact numbers are open, with a Coder balancing note. |
