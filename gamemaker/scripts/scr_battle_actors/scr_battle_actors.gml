@@ -57,6 +57,9 @@ function scr_actor_from_enemy_data(_data) {
     _actor.gold_reward = _gold;
     _actor.xp_credited = false; // set when this enemy's XP is banked to living participants
     _actor.weakness = (variable_struct_exists(_data, "weakness") && is_string(_data.weakness)) ? _data.weakness : "";
+    // The database's level (every enemy now carries one). Read by the Escape roll and the
+    // Bestiary only — damage, HP and rewards do not use it.
+    _actor.level = variable_struct_exists(_data, "level") ? max(1, _data.level) : 1;
     _actor.actions = (variable_struct_exists(_data, "actions") && is_array(_data.actions)) ? _data.actions : [{ skill: "attack", weight: 1 }];
     _actor.actions_alone = (variable_struct_exists(_data, "actions_alone") && is_array(_data.actions_alone)) ? _data.actions_alone : undefined;
     _actor.phase_actions = (variable_struct_exists(_data, "phase_actions") && is_array(_data.phase_actions)) ? _data.phase_actions : undefined;

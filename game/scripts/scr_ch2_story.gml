@@ -452,7 +452,9 @@ function scr_ch2_on_room_start() {
     var _rn = room_get_name(room);
     if (variable_struct_exists(_g, "ch2_save_prompt_pending") && _g.ch2_save_prompt_pending) {
         _g.ch2_save_prompt_pending = false;
-        scr_save_menu_open("save", false);
+        // Quiet: saving only exists in a town with a church or a tavern (owner decision 2026-11-15),
+        // so this chapter-end prompt simply does not appear at the Watchtower.
+        scr_save_menu_open("save", false, true);
     }
     if (_rn == "rm_old_watchtower" && scr_flag_get("blackguard_defeated") && scr_flag_get("flag_act2_started")) {
         // §1: the Blackguard's empty armor where he fell (boss_spawn tile 29,6). Inspect spot only.

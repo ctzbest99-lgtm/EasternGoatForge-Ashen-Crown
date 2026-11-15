@@ -146,6 +146,8 @@ function scr_save_collect(_slot = 1) {
     if (!is_struct(_flags)) _flags = {};
     var _cleared = is_struct(_g.cleared_encounters) ? scr_save_clone_via_json(_g.cleared_encounters) : {};
     if (!is_struct(_cleared)) _cleared = {};
+    var _bestiary = is_struct(_g.bestiary) ? scr_save_clone_via_json(_g.bestiary) : {};
+    if (!is_struct(_bestiary)) _bestiary = {};
     var _pending = undefined;
     if (variable_struct_exists(_g, "pending_post_dialogue") && is_array(_g.pending_post_dialogue)) {
         _pending = scr_save_clone_via_json(_g.pending_post_dialogue);
@@ -170,6 +172,7 @@ function scr_save_collect(_slot = 1) {
         inventory: _inv,
         flags: _flags,
         cleared_encounters: _cleared,
+        bestiary: _bestiary,
         party_active: scr_party_ids_of(_g.party),
         party_reserve: scr_party_ids_of(_g.reserve),
         roster: _roster,
@@ -183,10 +186,98 @@ function scr_save_collect(_slot = 1) {
     };
 }
 
+// ---------------------------------------------------------------------------------------------
+// Save / load locations (owner decision 2026-11-15)
+// Saving and loading are only available in a town that has a church or a tavern. Each town lists
+// the rooms that belong to it; Greyhaven also lives inside rm_overworld, so that room is resolved
+// by position through scr_save_location_name(). Anything not listed — roads, the Old Watchtower,
+// the battlefield, the title screen — cannot save.
+// Every listed town must have a church or a tavern; add the facility strings as towns are built.
+function scr_save_towns() {
+    return [
+        {
+            id: "greyhaven",
+            name: "Greyhaven",
+            church: "Greyhaven Chapel",
+            tavern: "Greyhaven Tavern",
+            rooms: ["rm_greyhaven_chapel", "rm_greyhaven_tavern", "rm_greyhaven_blacksmith",
+                    "rm_greyhaven_general_store", "rm_greyhaven_varyn_house"]
+        },
+        {
+            id: "wrenfield",
+            name: "Wrenfield",
+            church: "",
+            tavern: "The Bent Post",
+            rooms: ["rm_wrenfield", "rm_wrenfield_bent_post", "rm_wrenfield_store"]
+        },
+        {
+            id: "valemere",
+            name: "Valemere",
+            church: "",
+            tavern: "The Salt Lamp",
+            rooms: ["rm_valemere", "rm_salt_lamp", "rm_warehouse"]
+        }
+    ];
+}
+
+/// The town a room (with position, for rm_overworld) belongs to. `undefined` when it is not
+/// inside a listed town.
+function scr_save_town_of_room(_room_name, _px = 0, _py = 0) {
+    var _towns = scr_save_towns();
+    var _name = string(_room_name);
+    if (_name == "rm_overworld") {
+        var _loc = scr_save_location_name(_name, _px, _py);
+        for (var _t = 0; _t < array_length(_towns); _t++) {
+            if (_towns[_t].name == _loc) return _towns[_t];
+        }
+        return undefined;
+    }
+    for (var _t2 = 0; _t2 < array_length(_towns); _t2++) {
+        var _rooms = _towns[_t2].rooms;
+        for (var _r = 0; _r < array_length(_rooms); _r++) {
+            if (_rooms[_r] == _name) return _towns[_t2];
+        }
+    }
+    return undefined;
+}
+
+/// The town the player is standing in, or `undefined`.
+function scr_save_town_here() {
+    var _px = instance_exists(obj_player) ? obj_player.x : 0;
+    var _py = instance_exists(obj_player) ? obj_player.y : 0;
+    return scr_save_town_of_room(room_get_name(room), _px, _py);
+}
+
+/// True when this town has a church or a tavern (the saving requirement).
+function scr_save_town_allows_save(_town) {
+    if (!is_struct(_town)) return false;
+    var _church = variable_struct_exists(_town, "church") ? string(_town.church) : "";
+    var _tavern = variable_struct_exists(_town, "tavern") ? string(_town.tavern) : "";
+    return (_church != "" || _tavern != "");
+}
+
+/// True when the save / load menu may open at the player's current position.
+/// Title-screen Continue calls scr_save_load() directly and is not affected.
+function scr_save_allowed_here() {
+    if (room == TITLE_ROOM || room == BATTLE_ROOM) return false;
+    if (variable_global_exists("game") && is_struct(global.game) && global.game.battle_active) return false;
+    return scr_save_town_allows_save(scr_save_town_here());
+}
+
+/// Shown when the player deliberately tries to save outside such a town.
+function scr_save_blocked_line() {
+    return "No shrine, no hearth. You can only save in a town with a church or a tavern.";
+}
+
 /// Write `_data` (a struct) to slot `_slot`. Returns true on success.
 function scr_save_write(_slot) {
     if (room == TITLE_ROOM || room == BATTLE_ROOM) return false;
     if (variable_global_exists("game") && is_struct(global.game) && global.game.battle_active) return false;
+    // Owner decision 2026-11-15: only towns with a church or a tavern can save.
+    if (!scr_save_allowed_here()) {
+        show_debug_message("[save] blocked in " + room_get_name(room) + ": not a town with a church or tavern.");
+        return false;
+    }
     var _n = clamp(floor(_slot), 1, SAVE_SLOT_COUNT);
     var _data = scr_save_collect(_n);
     var _json = "";
@@ -366,6 +457,12 @@ function scr_save_migrate(_data) {
         _data.save_schema_version = 2;
         show_debug_message("[save] migrated a v1 save to v2 (MP / SPD / MDEF / skills).");
     }
+    if (_data.save_schema_version < 3) {
+        // v3 -> Bestiary log. An older save simply has not met anything yet.
+        if (!variable_struct_exists(_data, "bestiary") || !is_struct(_data.bestiary)) _data.bestiary = {};
+        _data.save_schema_version = 3;
+        show_debug_message("[save] migrated a pre-v3 save to v3 (bestiary log).");
+    }
     return _data;
 }
 
@@ -377,6 +474,10 @@ function scr_save_apply(_data) {
     if (variable_struct_exists(_data, "flags") && is_struct(_data.flags)) _g.flags = _data.flags;
     if (variable_struct_exists(_data, "cleared_encounters") && is_struct(_data.cleared_encounters)) {
         _g.cleared_encounters = _data.cleared_encounters;
+    }
+    // Schema v3: Bestiary log (empty on pre-v3 saves; the migration above guarantees the field).
+    if (variable_struct_exists(_data, "bestiary") && is_struct(_data.bestiary)) {
+        _g.bestiary = _data.bestiary;
     }
     if (variable_struct_exists(_data, "playtime_seconds")) {
         var _fps = max(1, game_get_speed(gamespeed_fps));
@@ -473,7 +574,14 @@ function scr_save_load(_slot) {
     return scr_save_apply(_data);
 }
 
-function scr_save_menu_open(_mode = "save", _prompt = false) {
+/// Open the save / load panel. `_quiet` suppresses the "no shrine, no hearth" line for the
+/// automatic chapter-end prompts, which simply do not happen outside a qualifying town.
+function scr_save_menu_open(_mode = "save", _prompt = false, _quiet = false) {
+    // Owner decision 2026-11-15: save and load are only available in a town with a church or a tavern.
+    if (!scr_save_allowed_here()) {
+        if (!_quiet) scr_dialogue_open([scr_save_blocked_line()], "");
+        return noone;
+    }
     var _inst = scr_menu_open_object("obj_save_menu");
     if (_inst != noone && instance_exists(_inst)) {
         _inst.mode = (_mode == "load") ? "load" : "save";

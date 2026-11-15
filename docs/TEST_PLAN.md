@@ -266,3 +266,18 @@ Setup: fresh save; walk the farm path to the guaranteed Bandit trigger (overworl
 - [ ] T6 With Kael below 25% HP, FL_TUTORIAL_SYS_05 shows once and his damage taken / dealt reflects ATK +15% / DEF +10%.
 - [ ] T7 A Grave Spider's Venom Bite can poison ("Pn" tag); poison ticks at round start for ~5% max HP (never kills); an Antidote used in battle (Item command) removes it.
 - [ ] T8 An old save with the tutorial already won still rolls random encounters (cleared-encounters fallback).
+
+## Adventure menu, Bestiary, Escape
+Setup: fresh save, overworld. `DEBUG_ADD_FULL_ROSTER` on if the party rows should show more than Kael.
+- [ ] M1 I or Tab opens the Adventure menu (not the inventory directly); I / Tab / X / Backspace closes it, and the overworld does not move while it is open.
+- [ ] M2 Items and Equip open the inventory on the right tab; closing the inventory does not reopen the Adventure menu and does not leave `menu_open` stuck.
+- [ ] M3 Status: the five roster members cycle with left/right (active first, then the reserve); class, role, level, XP to next level, HP/MP, ATK/DEF/MAG/MDF/SPD, the four equipment slots and the skill list match the debugger. A member with no skills shows "(none)".
+- [ ] M4 Party Order: left/right moves the highlighted member within slots 1–4, and the next battle's command / turn order follows the new order; Z on a slot swaps in the reserve member and the message names both. With no reserve, Z says "No one is in reserve." With one active member, left/right does nothing.
+- [ ] M5 Bestiary counter starts at 0/33 on a fresh save; every enemy on the field is marked seen at battle start; `???` entries show "No record yet."
+- [ ] M6 Beat an enemy: its defeated count goes to 1 and it stays 1 after a second battle where it is only met (seen) and not killed. Kill the same enemy twice in one battle (two adds): count goes up by 2.
+- [ ] M7 Save at a save point, reload: the Bestiary log (seen + defeated counts) is restored. Load a save made before this change (schema v1/v2): it loads, the log is empty, and `[save] migrated a pre-v3 save to v3` appears in the debug log.
+- [ ] M8 Escape: an ordinary field fight offers Escape as the last command. Success ("The party breaks away from the fight.") returns to the pre-battle position with no XP/gold change and the encounter not cleared (walking back onto a fixed trigger starts the fight again). Failure ("Couldn't get away!") spends that member's turn and the enemies act.
+- [ ] M9 Escape is absent against a boss (e.g. Blackguard), in a scripted story fight, and in the tutorial Bandit fight.
+- [ ] M10 Save point in the Greyhaven chapel and in the Greyhaven Tavern both open the slot panel and write the file. The same crystal placed by hand in a road room (e.g. `rm_millhaven_road`) opens "No shrine, no hearth. You can only save in a town with a church or a tavern." instead.
+- [ ] M11 Chapter boundaries no longer prompt for a save outside a town: finish Chapter 1 at the Crownveil door, the Chapter 2 handoff and the Chapter 3 west gate — no slot panel appears. Walking into Wrenfield, Valemere or Greyhaven and using a save point still saves.
+- [ ] M12 Title-screen Continue still loads all three slots (the title screen is not a town and is not gated).

@@ -863,6 +863,12 @@
     },
     {
       "id":{
+        "name":"scr_bestiary",
+        "path":"scripts/scr_bestiary/scr_bestiary.yy",
+      },
+    },
+    {
+      "id":{
         "name":"scr_build_greyhaven_blacksmith",
         "path":"scripts/scr_build_greyhaven_blacksmith/scr_build_greyhaven_blacksmith.yy",
       },
@@ -1141,6 +1147,12 @@
       "id":{
         "name":"scr_wf_tilemaps",
         "path":"scripts/scr_wf_tilemaps/scr_wf_tilemaps.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"obj_adventure_menu",
+        "path":"objects/obj_adventure_menu/obj_adventure_menu.yy",
       },
     },
     {

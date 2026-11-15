@@ -7,19 +7,23 @@ scr_ch2_tick(); // Chapter 2 wake-up at the Crownveil door (CV_WAKE)
 scr_ch3_tick(); // Chapter 3 (no per-frame beats yet)
 
 
-// Inventory overlay (I or Tab). Opening is blocked while dialogue / battle / a menu is already up;
-// closing is handled here so I still works while menu_open is true.
+// Adventure menu overlay (I or Tab). Opening is blocked while dialogue / battle / a menu is
+// already up; closing is handled here so I still works while menu_open is true.
 var _title = asset_get_index("rm_title");
 var _on_title = (_title != -1 && room == _title);
 if (!_on_title && room != BATTLE_ROOM && (keyboard_check_pressed(ord("I")) || keyboard_check_pressed(vk_tab))) {
     var _shop = asset_get_index("obj_shop_menu");
     var _save = asset_get_index("obj_save_menu");
-    var _other_menu = (_shop != -1 && instance_exists(_shop)) || (_save != -1 && instance_exists(_save));
+    var _adv = asset_get_index("obj_adventure_menu");
+    var _other_menu = (_shop != -1 && instance_exists(_shop)) || (_save != -1 && instance_exists(_save))
+        || (_adv != -1 && instance_exists(_adv));
     if (instance_exists(obj_inventory_menu)) {
         instance_destroy(obj_inventory_menu);
+    } else if (_adv != -1 && instance_exists(_adv)) {
+        instance_destroy(_adv);
     } else if (!_other_menu && !scr_input_locked()) {
-        var _o = asset_get_index("obj_inventory_menu");
-        if (_o != -1) instance_create_depth(0, 0, -100000, _o);
+        // The Adventure menu is the field-menu shell: Items / Equip / Party Order / Status / Bestiary.
+        if (_adv != -1) instance_create_depth(0, 0, -100000, _adv);
     }
 }
 

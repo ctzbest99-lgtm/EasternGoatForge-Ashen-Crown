@@ -14,9 +14,10 @@ function scr_game_state_init() {
         transition_active: false,     // true while returning from battle, until Room Start restores the player
         pending_battle: undefined,    // { enemy_id, encounter_id } set by scr_encounter_start
         return_point: undefined,      // { room_id, px, py, facing_x, facing_y }
-        last_battle_result: undefined,// "victory" | "defeat" | "error"
+        last_battle_result: undefined,// "victory" | "defeat" | "escape" | "error"
         last_defeat_penalty: undefined, // { gold_lost, xp_lost } set by scr_apply_defeat_penalty
         cleared_encounters: {},       // encounter_id -> true after a victory
+        bestiary: {},                 // enemy_id -> { seen, defeated } (scr_bestiary; saved from schema v3)
         roster: _ps.roster,           // five permanent members (Kael, Lyra, Caelan, Sera, Taren Holt)
         party: _ps.party,             // active battle slots (1–4); this is what battle uses
         reserve: _ps.reserve,         // 0–1 benched member

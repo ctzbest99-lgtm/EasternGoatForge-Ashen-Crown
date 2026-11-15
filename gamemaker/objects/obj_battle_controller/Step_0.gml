@@ -96,7 +96,7 @@ switch (state) {
             commit_action({ actor_index: actor_index, command: "Sleep", skill_id: "", target_side: "", target_index: -1 });
             break;
         }
-        command_options = scr_party_battle_commands(_cur);
+        command_options = scr_party_battle_commands(_cur, can_escape);
         var _command_count = array_length(command_options);
         if (command_index >= _command_count) command_index = 0;
         if (scr_input_up_pressed()) command_index = (command_index - 1 + _command_count) mod _command_count;
@@ -116,6 +116,18 @@ switch (state) {
                 item_list = scr_party_battle_items();
                 item_index = 0;
                 if (array_length(item_list) > 0) state = BATTLE_STATE.ITEM_SELECT;
+            } else if (_cmd == "Escape") {
+                // Rolled the moment it is chosen. Success ends the fight with no rewards and
+                // returns to the map; failure spends this member's turn (the enemies still act).
+                var _esc_plv = scr_battle_party_avg_level(party);
+                var _esc_elv = scr_battle_enemy_avg_level(enemies);
+                if (scr_battle_escape_roll(_esc_plv, _esc_elv)) {
+                    battle_result = "escape";
+                    scr_party_clear_guard(party);
+                    queue_message("The party breaks away from the fight.", BATTLE_STATE.EXIT);
+                } else {
+                    commit_action({ actor_index: actor_index, command: "Escape", skill_id: "", target_side: "", target_index: -1 });
+                }
             } else {
                 commit_action({ actor_index: actor_index, command: _cmd, skill_id: "", target_side: "", target_index: -1 });
             }
@@ -215,6 +227,9 @@ switch (state) {
             } else {
                 queue_message(_actor.name + " has no one to swap with.", BATTLE_STATE.TURN_NEXT);
             }
+        } else if (_action.command == "Escape") {
+            // A failed escape roll (made when the command was chosen) costs the turn.
+            queue_message("Couldn't get away!", BATTLE_STATE.TURN_NEXT);
         } else if (_action.command == "Skill") {
             do_party_skill(_action.actor_index, _action.skill_id, _action.target_index);
         } else if (_action.command == "Item") {
@@ -307,6 +322,11 @@ switch (state) {
                 var _de = enemies[_ve];
                 var _dw = variable_struct_exists(_de, "withdrawn") && _de.withdrawn;
                 if (_de.hp > 0 && !_de.yielded && !_dw) continue;
+                // Bestiary safety net for kills the death branch did not see (e.g. damage over time).
+                if (!_dw && (!variable_struct_exists(_de, "bestiary_marked") || !_de.bestiary_marked)) {
+                    scr_bestiary_mark_defeated(_de.actor_id);
+                    _de.bestiary_marked = true;
+                }
                 victory_gold += _de.gold_reward + _de.stolen_gold; // a beaten cutpurse drops what it stole
                 victory_xp += _de.xp_reward;
                 if (!_de.xp_credited) {

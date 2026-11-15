@@ -208,7 +208,7 @@ function scr_party_has_reserve() {
 
 /// Battle command menu: Attack, Skill (only if `_actor` knows an active skill), Guard,
 /// plus Swap when a reserve member is waiting.
-function scr_party_battle_commands(_actor = undefined) {
+function scr_party_battle_commands(_actor = undefined, _allow_escape = false) {
     var _opts = ["Attack"];
     if (is_struct(_actor) && variable_struct_exists(_actor, "skills") && is_array(_actor.skills) && array_length(_actor.skills) > 0) {
         array_push(_opts, "Skill");
@@ -216,6 +216,9 @@ function scr_party_battle_commands(_actor = undefined) {
     if (array_length(scr_party_battle_items()) > 0) array_push(_opts, "Item");
     array_push(_opts, "Guard");
     if (scr_party_has_reserve()) array_push(_opts, "Swap");
+    // Escape is offered only when obj_battle_controller says the fight is escapable
+    // (no bosses, no scripted / story battle, not the tutorial fight).
+    if (_allow_escape) array_push(_opts, "Escape");
     return _opts;
 }
 

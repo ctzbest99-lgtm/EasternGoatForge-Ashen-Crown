@@ -22,7 +22,7 @@
 #macro DEBUG_SHOW_TRIGGERS true
 
 // Versioned JSON saves (save1.sav–save3.sav). DEBUG_SAVE_ANYWHERE (F5) is off by default.
-#macro SAVE_SCHEMA_VERSION 2 // v2 (feature/battle-upgrade): MP, SPD, MDEF, skills. v1 saves are migrated on load.
+#macro SAVE_SCHEMA_VERSION 3 // v3 (Adventure menu): bestiary seen/defeated log. v1/v2 saves are migrated on load.
 #macro SAVE_SLOT_COUNT 3
 #macro DEBUG_SAVE_ANYWHERE false
 
@@ -32,6 +32,13 @@
 
 // Guard multiplies incoming damage by this value (minimum 1 damage still applies).
 #macro GUARD_DAMAGE_MULTIPLIER 0.5
+
+// Escape (battle command, spec §12). Chance = base + (party level - enemy level) * step,
+// clamped. Level is averaged over the living members on each side. PLACEHOLDER tuning.
+#macro BATTLE_ESCAPE_BASE_CHANCE 0.55
+#macro BATTLE_ESCAPE_LEVEL_STEP 0.06
+#macro BATTLE_ESCAPE_MIN_CHANCE 0.10
+#macro BATTLE_ESCAPE_MAX_CHANCE 0.90
 
 // Defeat penalty (owner decision 2026-11-14; percentages are defaults pending tuning).
 // Gold: floor(current shared gold * DEFEAT_GOLD_LOSS_PCT), never below 0.

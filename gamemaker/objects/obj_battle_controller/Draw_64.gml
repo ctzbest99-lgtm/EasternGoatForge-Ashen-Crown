@@ -171,11 +171,15 @@ if (_choosing) {
             scr_ui_text(300 - string_width(_ct), _iy, _ct, _icol);
         }
     } else {
-        // Commands.
-        scr_ui_window(92, _menu_y, 70, 48, "normal");
+        // Commands. The window keeps its usual footprint for the four/five-command layouts
+        // and grows upward when a sixth row is offered (Escape, with a reserve on the bench).
         var _opts = command_options;
-        for (var _c = 0; _c < array_length(_opts); _c++) {
-            var _oy = _menu_y + 5 + _c * 10;
+        var _opt_n = array_length(_opts);
+        var _cmd_h = max(48, 5 + _opt_n * 10 + 5);
+        var _cmd_y = _menu_y + 48 - _cmd_h;
+        scr_ui_window(92, _cmd_y, 70, _cmd_h, "normal");
+        for (var _c = 0; _c < _opt_n; _c++) {
+            var _oy = _cmd_y + 5 + _c * 10;
             var _col = (_c == command_index) ? _gold_col : c_white;
             if (state == BATTLE_STATE.TARGET_SELECT) _col = (_opts[_c] == pending_command) ? _gold_col : _grey_col;
             if (_c == command_index && state == BATTLE_STATE.COMMAND_SELECT) {

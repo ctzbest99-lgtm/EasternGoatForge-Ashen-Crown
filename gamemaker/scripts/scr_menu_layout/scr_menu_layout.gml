@@ -108,6 +108,25 @@
 #macro MENU_INV_TGT_W 184
 #macro MENU_INV_TGT_ROW 18
 
+// Adventure menu (obj_adventure_menu: Items / Equip / Party Order / Status / Bestiary / Close)
+#macro MENU_ADV_MAIN_X 4
+#macro MENU_ADV_MAIN_Y 4
+#macro MENU_ADV_MAIN_W 104
+#macro MENU_ADV_MAIN_H 172
+#macro MENU_ADV_ROW0 32
+#macro MENU_ADV_ROW_H 16
+#macro MENU_ADV_PANE_X 112
+#macro MENU_ADV_PANE_Y 4
+#macro MENU_ADV_PANE_W 204
+#macro MENU_ADV_PANE_H 172
+#macro MENU_ADV_FULL_X 4
+#macro MENU_ADV_FULL_Y 4
+#macro MENU_ADV_FULL_W 312
+#macro MENU_ADV_FULL_H 172
+#macro MENU_ADV_LIST_W 142
+#macro MENU_ADV_ROWS 8
+#macro MENU_ADV_ROW_H_FULL 15
+
 /// First existing sprite among reserved Design names, then fallbacks.
 function scr_menu_sprite_window(_which) {
     if (_which == "shop" || _which == "inventory" || _which == "normal") {
@@ -356,7 +375,7 @@ function scr_menu_format_playtime_hm(_seconds) {
 }
 
 function scr_menu_close_all() {
-    var _names = ["obj_inventory_menu", "obj_shop_menu", "obj_save_menu"];
+    var _names = ["obj_adventure_menu", "obj_inventory_menu", "obj_shop_menu", "obj_save_menu"];
     for (var _i = 0; _i < array_length(_names); _i++) {
         var _o = asset_get_index(_names[_i]);
         if (_o != -1 && instance_exists(_o)) instance_destroy(_o);

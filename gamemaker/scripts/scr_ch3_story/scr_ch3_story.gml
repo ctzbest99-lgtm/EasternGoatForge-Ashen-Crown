@@ -408,7 +408,8 @@ function scr_ch3_on_room_start() {
     var _rn = room_get_name(room);
     if (variable_struct_exists(_g, "ch3_save_prompt_pending") && _g.ch3_save_prompt_pending) {
         _g.ch3_save_prompt_pending = false;
-        scr_save_menu_open("save", false);
+        // Quiet: saving only exists in a town with a church or a tavern (owner decision 2026-11-15).
+        scr_save_menu_open("save", false, true);
     }
     // §1: the road east of Valemere — one-shot entry scene.
     if (_rn == "rm_valemere_road" && !scr_flag_get("flag_vr_entered") && !_g.dialogue_open) {

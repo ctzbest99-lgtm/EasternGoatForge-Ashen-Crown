@@ -10,6 +10,34 @@
 - No automatic enemy level scaling by default.
 - Planned menu: equipment, party order, items, save/load, status, Bestiary.
 
+## Adventure menu / Bestiary / Escape (implemented 2026-11-15)
+Implements the "planned menu: equipment, party order, items, save/load, status, Bestiary" line above. Open points for the owner:
+- The field menu is `obj_adventure_menu` (Items, Equip, Party Order, Status, Bestiary, Close). **Save / Load are deliberately not rows in it**: saving stays at `obj_save_point` and the post-battle prompt, per the existing save-point decision. Adding a Save row would make the menu save-anywhere and is not done without approval.
+- Party Order edits `global.game.party` directly, so the change applies immediately and survives the next save; the reserve swap uses the same `scr_party_swap_active_reserve` as the in-battle Swap command. Story events that force or lock slots would need to respect (or override) this — still undecided.
+- Escape is allowed only in ordinary field fights. Bosses (`is_boss` / `boss_index >= 0`), scripted / story encounters (`pending_battle.script_id != ""`) and the tutorial fight never offer it. Chance 55% ± 6% per level of difference between the average living party level and the average living enemy level, clamped to 10–90%. **These numbers are PLACEHOLDER.** `scr_actor_from_enemy_data` copies `level` from the enemy database, and every enemy now carries one (see the table below), so the roll is 55% at level parity, about 79% three levels above an enemy and capped at 90% roughly six levels above it.
+- **Chapter 1–2 enemy levels** (data only — nothing in the damage, HP or reward formulas reads `level`; only the Escape roll and the Bestiary pane do). Batch 7–8 enemies already carried the design band from `scr_enemy_scaled`; the hand-written early entries had no level at all, so the escape roll was capped against them.
+
+| Enemy | Level | Basis |
+|---|---|---|
+| Bandit | 1 | Farmlands band 1–2 (`CHAPTER1_SCRIPT.md` §2); the tutorial fight is level 1 |
+| Ash Wolf | 2 | Design note "Lv 1–2 / 2–3" (§2–§4) |
+| Fallen Knight | 3 | Bandit Camp 3–4 (§5) and Watchtower 4–7 (§6) |
+| Ashen Wretch | 3 | Old Road / Bandit Camp 2–4 (§4–§5) |
+| Ashbound Hunter | 4 | Middle of the script's recommended 3–5 (§4) |
+| Grave Spider | 5 | Watchtower 4–7 (§6) |
+| Hollow Soldier | 5 | Watchtower 4–7 (§6) |
+| Blackguard | 6 | End of the 4–7 zone. Coder choice: the script gives no boss level, and Escape is never offered in a boss fight |
+| Crown Patrolman | 8 | Chapter 2 suggested band 8–10 (`CHAPTER2_SCRIPT.md` §2 road) |
+| Crown Crossbowman | 8 | Same band, bottom |
+| Grey Ash Wolf | 8 | Same band, bottom |
+| Occupation Soldier | 9 | Middle of the band |
+| Bandit Veteran | 9 | Middle of the band; it also appears in the Chapter 3 road table (10–13) but keeps the Chapter 2 stat set |
+| Reeve Calder | 10 | Top of 8–10, where the Calder fight is tuned to land |
+
+Crown Sergeant (9), and every Chapter 3+ enemy, already had a level from the `scr_enemy_scaled` template. If the Chapter 1–2 levels later conflict with a per-zone recommendation, change the `level` field only — it cannot move damage or rewards. A successful escape grants no XP or gold, does not mark the encounter cleared, and does not count as a defeat (no penalty).
+- Bestiary: `global.game.bestiary` counts `seen` and `defeated` per enemy. A **yielded boss counts as defeated** (the fight is over for it) and story enemies that withdraw after a yield are not counted. All 33 descriptions are PLACEHOLDER prose written for this feature, deliberately free of new canon; the owner should review or replace them.
+- Save schema is now **v3** (bestiary field). v1/v2 saves migrate on load with an empty log, so an existing save starts with nothing recorded.
+
 ## Owner-decided (2026-11-14)
 - Defeat: when the party loses a battle, they wake up back in town with HP fully restored. Until a town room exists, the respawn target is `TOWN_RESPAWN_ROOM` (currently `rm_overworld`), at `obj_respawn_point` if one is placed (the overworld builder drops one at Greyhaven `town_square`), otherwise at `TOWN_RESPAWN_X` / `TOWN_RESPAWN_Y` (3192, 2832). A short placeholder wake-up dialogue is shown through the existing dialogue box and reports the gold and XP lost.
 - Defeat penalty: lose `DEFEAT_GOLD_LOSS_PCT` of current shared gold (floored) and `DEFEAT_XP_LOSS_PCT` of each member's XP progress toward the next level (`floor((xp - scr_xp_for_level(level)) * 0.1)`), never causing a level-down or a negative total. Defaults are 50% gold and 10% of progress; exact percentages are pending tuning.
@@ -17,6 +45,23 @@
 - Ashbound parchment (Chapter 1, approved 2026-11-14): the first Ashbound Hunter fight in the Old Watchtower is a guaranteed scripted encounter (`enc_ashbound_hunter_wt`), so the parchment cannot be missed. The rare 3–5% random Hunter stays on the Old Road, Bandit Camp, and Watchtower. If the parchment was already obtained from a rare fight (`flag_parchment_found`), the guaranteed fight still happens but the pickup and post-fight lines (`ENC_AH_03`–`05`) are skipped.
 
 - Battle XP (2026-11-14): when an enemy dies, its XP is credited to each party member who has already participated (taken at least one turn: Attack, Guard, or Swap) **and** is not KO'd at that moment. Credit is accumulated per member (`pending_xp`) and applied at victory, including level-up messages. If the party loses, no XP is granted. Gold stays shared. A reserve/bench member who swapped in and has taken a turn counts from then on, but gets no credit for enemies that died before their first turn. A member KO'd before an enemy dies gets no XP for that enemy, but keeps credit for enemies that died while they were still standing. A mid-battle Swap command lets an active member switch with the reserve; it costs that member's turn, and the incoming member acts on later rounds.
+
+## Owner-decided (2026-11-15): save and load only in towns with a church or a tavern
+- **Rule:** saving and loading are only available inside a town that has a church or a tavern. Roads, dungeons, the battlefield, the title screen and the chapter-boundary stops are not save locations.
+- **Implementation:** `scr_save_towns()` / `scr_save_town_of_room()` / `scr_save_allowed_here()` in `scr_save.gml`. `scr_save_write()` refuses outside such a town, and `scr_save_menu_open()` refuses to open the slot panel there.
+- **Towns and their facility** (edit `scr_save_towns()` to add or move a town; nothing else reads it):
+
+| Town | Church | Tavern | Rooms |
+|---|---|---|---|
+| Greyhaven | Greyhaven Chapel | Greyhaven Tavern | `rm_greyhaven_chapel`, `rm_greyhaven_tavern`, `rm_greyhaven_blacksmith`, `rm_greyhaven_general_store`, `rm_greyhaven_varyn_house`, and `rm_overworld` inside the town bounds (resolved by position, `scr_save_location_name() == "Greyhaven"`) |
+| Wrenfield | — | The Bent Post (`CHAPTER2_SCRIPT.md` §“Perrin, the tavern keeper”) | `rm_wrenfield`, `rm_wrenfield_bent_post`, `rm_wrenfield_store` |
+| Valemere | — | The Salt Lamp (`CHAPTER3_SCRIPT.md` §4, a Lower City dive) | `rm_valemere`, `rm_salt_lamp`, `rm_warehouse` |
+
+- **Existing save points are unaffected**: the only two are the Greyhaven chapel and tavern crystals, both qualifying. A save point placed outside a qualifying town in the IDE would show the blocked line instead of the slot panel.
+- **Automatic chapter-end prompts are now silent where they cannot save**: CV_END (Crownveil door), WF_HANDOFF (Chapter 2) and VM_HANDOFF (Chapter 3 west gate) call `scr_save_menu_open("save", false, true)` and therefore do not fire outside a town. The player has to walk back to Greyhaven / Wrenfield / Valemere to save. If a chapter boundary should offer a save again, either move the boundary into a town or make that town the destination.
+- **Title-screen Continue is not affected**: it reads the slot directly through `scr_save_load()`, because the title screen is not a town (and must load the game at all).
+- **Deliberate attempts get a line**, not silence: a save point or the debug F5 key outside a town opens the dialogue box with “No shrine, no hearth. You can only save in a town with a church or a tavern.”
+- Open follow-ups: whether the tavern/chapel interior only (not the whole town) should be the save point, and whether an inn bed should matter. Neither is decided; the current rule is the town, as stated.
 
 ## Still undecided
 GameMaker version; room resolution and whether 640×360 stays (height is not a multiple of 16) or is replaced by a 16-aligned size (e.g. 640×368, 320×180 with a 2× window, or 256×224); camera / view size; input mapping; battle room versus overlay; exact backstory; party members/classes; rare encounter and boss identity/mechanics; license/proprietary status; save-point locations and whether a save-anywhere debug key stays; official item prices and the shop sell rate (defaults below); exact defeat gold/XP percentages (defaults 50% gold / 10% of XP-to-next-level, pending tuning); whether a defeat should also deduct items; exact random-encounter rates and table weights (defaults 8–24 steps, 5 grace, 3:1 Bandit/Fallen Knight); Ashbound Hunter placeholder stats and rare rate (default 4%, midpoint of 3–5%); whether a defeat during the scripted Watchtower Hunter fight should consume the trigger (currently it does not, so the parchment cannot be missed); whether that scripted fight should grant regular XP/gold (currently yes, using the same per-enemy living-participant rule); XP curve, max level, and level-up stat growth (placeholder defaults below); whether the defeat penalty should also hit the reserve; whether story events lock or force party slots. Treat these as open questions, not approved requirements.
@@ -121,25 +166,27 @@ Canon sources: CHAPTER1_SCRIPT.md §2.1 (C-confirmed). Everything else is a PLAC
 - **Stale claims corrected in this file:** the Blackguard entry already carries the canon 450 HP / 250 XP / 100 Gold; the terrace stairs are enforced (barrier marker on `flag_wt_upper_unlocked`); `rm_watchtower_basement` and `rm_valemere` are built; the in-battle Item command exists (Chapter 3); ash_wolf / ashen_wretch / grave_spider / hollow_soldier battle strips exist in the repo (batches landed after the old note).
 ## Enemy batches 7–8 (feature/enemy-batches-7-8; pending owner approval)
 Design batch 7 (Wrenfield elite, Lower City, Hollow Sanctuary, Blackwood Road Garrison) and batch 8 (Act III, the Blackwood) are in the enemy database with sprites and encounter tables. No rooms or story beats use them yet. **Everything below is a PLACEHOLDER.**
-- **Stats come from a template** (`scr_enemy_scaled(id, …, role, level, party, extra)`), calibrated so a level-9 common matches the balance-pass Chapter 2 regulars and grows like the tiered party growth. Elite: ×2 HP, +2 ATK / DEF, ×2.5 XP. Boss: HP × 1.5 × expected party size, +3 ATK / DEF, ×8 XP. Per-enemy tweaks: Cutpurse ×0.8 HP; Wisp ×0.75 HP; Surgeon ×0.8 HP; Briar Hulk ×1.4 HP; Moths ×0.7 HP; Ward Sentinel and Door Warden +3 DEF. SPD is set per enemy.
+- **Stats come from a template** (`scr_enemy_scaled(id, …, role, level, party, extra)`), anchored so a level-9 common matches the balance-pass Chapter 2 regulars. **Rebalanced after the Chapter 4–5 simulation (2026-11-15):** HP now grows **+9 per level** and ATK **+3 per level** (was +7 / +2), because the old curve fell behind the tiered party growth — random fights cost almost nothing and bosses could not kill anyone. A boss now takes its length from **HP × 1.2 × expected party size** and its threat from **+3 ATK / DEF**; elites are unchanged (×2 HP, +2 ATK / DEF, ×2.5 XP). Per-enemy tweaks: Cutpurse ×0.8 HP; Wisp ×0.75 HP; Surgeon ×0.8 HP; Briar Hulk ×1.4 HP; Moths ×0.7 HP; Ward Sentinel and Door Warden +3 DEF; **Commander Hailen +10 ATK** (the only `atk_add`). SPD is set per enemy. XP and gold were left alone — see the open item at the end of this section.
 - **Levels** use ACT2_OUTLINE's PROPOSED bands: Lower City (Ch 3) 10–13, Hollow Sanctuary (Ch 4) 13–16, Garrison (Ch 5) 16–18. The Blackwood (Act III) is 18–20, which is my placeholder. **Open:** `PARTY_MAX_LEVEL` is 20, so Act III will need a higher cap.
 - **Expected party sizes for bosses:** Debtman 3 (after Lyra); Sanctuary Warden, Commander Hailen and the Matriarch 4.
 - **Template check** (Kael at the enemy's level, still in Chapter 2 gear, so later gear makes these easier):
 
 | Enemy level | Role | HP / ATK / DEF | Kael hits to kill (same level, Ch2 gear) | Damage to Kael per hit |
 |---|---|---|---|---|
-| 11 | common | 58 / 17 / 15 | 4 | 8 of 94 HP |
-| 11 | elite | 116 / 19 / 17 | 7 | 10 of 94 HP |
-| 11 | boss (party 4) | 348 / 20 / 18 | 22 | 11 of 94 HP |
-| 14 | common | 79 / 23 / 21 | 4 | 11 of 124 HP |
-| 14 | elite | 158 / 25 / 23 | 8 | 13 of 124 HP |
-| 14 | boss (party 4) | 474 / 26 / 24 | 25 | 14 of 124 HP |
-| 17 | common | 100 / 29 / 27 | 5 | 14 of 154 HP |
-| 17 | elite | 200 / 31 / 29 | 9 | 16 of 154 HP |
-| 17 | boss (party 4) | 600 / 32 / 30 | 28 | 17 of 154 HP |
-| 19 | common | 114 / 33 / 31 | 5 | 16 of 174 HP |
-| 19 | elite | 228 / 35 / 33 | 10 | 18 of 174 HP |
-| 19 | boss (party 4) | 684 / 36 / 34 | 29 | 19 of 174 HP |
+| 11 | common | 62 / 19 / 15 | 4 | 10 of 94 HP |
+| 11 | elite | 124 / 21 / 17 | 8 | 12 of 94 HP |
+| 11 | boss (party 4) | 298 / 22 / 18 | 19 | 13 of 94 HP |
+| 14 | common | 89 / 28 / 21 | 5 | 16 of 124 HP |
+| 14 | elite | 178 / 30 / 23 | 9 | 18 of 124 HP |
+| 14 | boss (party 4) | 427 / 31 / 24 | 23 | 19 of 124 HP |
+| 17 | common | 116 / 37 / 27 | 5 | 22 of 154 HP |
+| 17 | elite | 232 / 39 / 29 | 11 | 24 of 154 HP |
+| 17 | boss (party 4) | 557 / 40 / 30 | 26 | 25 of 154 HP |
+| 19 | common | 134 / 43 / 31 | 6 | 26 of 174 HP |
+| 19 | elite | 268 / 45 / 33 | 11 | 28 of 174 HP |
+| 19 | boss (party 4) | 643 / 46 / 34 | 27 | 29 of 174 HP |
+
+Before the rebalance the same rows read 58–114 HP commons, 8–16 damage a hit and 22–29 Kael hits for a boss — the party outgrew the template by level 14. XP and gold are unchanged (28 + 8 × level above 9), which is now the tightest open item here: the fights cost roughly twice the HP for the same reward.
 
 - **New kit mechanics:**
   - **Steal** (Cutpurse): 60% damage plus 8–20 shared gold. A beaten Cutpurse returns what it took at victory.
@@ -196,6 +243,111 @@ Simulated results, 4,000 runs per row. Policy: Taren opens with Rallying Cry, Cl
 | 10 | 23 / 17 / 84 | 23 / 17 / 90 | 4 | 3 | 2 | 3 | 2 | 9 |
 
 Reading: at level 8 the Calder fight is hard (about 25% for this naive policy); at 9 it is about 94%; at 10 it is reliable. Calder takes about 10–14 party turns, inside the 8–15 target. Occupation Soldiers take 4–5 Kael hits at levels 8–10. Kael alone clears every Millhaven Road group from level 8.
+
+## Chapter 3 balance check (`feature/chapter3`; PLACEHOLDER)
+`python3 tools/balance_sim.py` now also prints these rows (the `c3_tables()` block at the end of the run; the Chapter 2 tables above are unchanged). The sim models the current battle code: criticals (5% base, Cutthroat +15%, ×1.5), Kael's Last Stand below 25% HP, bleed at 6% max HP per round, the Debtman's Bind (Slow, SPD ×0.5, 70% for 2 rounds), Collect drain, his stance when the adds fall (+30% ATK / +30% SPD) and his yield at 0 HP ending the fight with adds still standing (same rule as Calder).
+
+**Assumptions (mine; change freely):**
+- Party on Valemere Road is Kael + Taren. Lyra joins only for the Debtman fight, at Kael's level, with the Twin Daggers (+2 ATK) and **no armour**, as `scr_ch3_lyra_join` does.
+- Chapter 3 gear assumes Len's **Chain Mail** (+4 DEF, 220 g) is bought for both Kael (with the Iron Helm, so DEF +5) and Taren (DEF +4). Without it, knock about 2 DEF off each and expect a few more rounds and a lower win rate.
+- Enemy stats are exactly `scr_enemy_scaled`: Dock Thug common 11 (62 / 19 / 15), Debt Collector elite 12 (142 / 24 / 19), Debtman boss 12 for a party of 3 (**256** HP / 25 ATK / 20 DEF, SPD 12). `grp_debtman` is the Debtman + a Dock Thug + a Debt Collector.
+- Policy: Taren opens with Rallying Cry and Cleaves while 2+ enemies stand; Lyra opens with Open Vein on the Debtman (bleed) then Twin Cuts while MP lasts; everyone focuses the **Debtman first** while he stands, because his stance punishes clearing the adds first. No Guard, no items. 4,000 runs per row.
+
+| Fight | Lv | Party | Win % | Rounds | Party turns | Turns on Debtman | Party HP left |
+|---|---|---|---|---|---|---|---|
+| Valemere Rd: Patrolman | 10 | Kael+Taren | 100% | 2.0 | 3.9 | — | 98% |
+| Valemere Rd: Crossbowman | 10 | Kael+Taren | 100% | 2.0 | 3.0 | — | 97% |
+| Valemere Rd: Bandit Veteran | 10 | Kael+Taren | 100% | 2.0 | 3.0 | — | 98% |
+| Valemere Rd: Patrolman + Crossbowman | 10 | Kael+Taren | 100% | 3.0 | 5.3 | — | 93% |
+| Valemere Rd: Bandit Veteran + Bandit | 10 | Kael+Taren | 100% | 2.0 | 4.0 | — | 98% |
+| Debtman + Dock Thug + Debt Collector | 10 | Kael+Taren+Lyra | 71% | 6.1 | 16.6 | 15.0 | 7% |
+| Valemere Rd: Patrolman | 11 | Kael+Taren | 100% | 2.0 | 3.2 | — | 99% |
+| Valemere Rd: Crossbowman | 11 | Kael+Taren | 100% | 2.0 | 3.0 | — | 98% |
+| Valemere Rd: Bandit Veteran | 11 | Kael+Taren | 100% | 2.0 | 3.0 | — | 98% |
+| Valemere Rd: Patrolman + Crossbowman | 11 | Kael+Taren | 100% | 3.0 | 5.0 | — | 95% |
+| Valemere Rd: Bandit Veteran + Bandit | 11 | Kael+Taren | 100% | 2.0 | 4.0 | — | 98% |
+| Debtman + Dock Thug + Debt Collector | 11 | Kael+Taren+Lyra | 99% | 5.3 | 15.5 | 13.4 | 28% |
+| Valemere Rd: Patrolman | 12 | Kael+Taren | 100% | 2.0 | 3.0 | — | 99% |
+| Valemere Rd: Crossbowman | 12 | Kael+Taren | 100% | 2.0 | 3.0 | — | 99% |
+| Valemere Rd: Bandit Veteran | 12 | Kael+Taren | 100% | 2.0 | 3.0 | — | 99% |
+| Valemere Rd: Patrolman + Crossbowman | 12 | Kael+Taren | 100% | 3.0 | 5.0 | — | 97% |
+| Valemere Rd: Bandit Veteran + Bandit | 12 | Kael+Taren | 100% | 2.0 | 3.9 | — | 99% |
+| Debtman + Dock Thug + Debt Collector | 12 | Kael+Taren+Lyra | 100% | 4.8 | 14.3 | 12.0 | 45% |
+
+| Level | Kael ATK / DEF / HP | Taren ATK / DEF / HP | Lyra ATK / DEF / HP | Hits to kill: Debtman (K/T/L) | Dock Thug (K/T/L) | Debt Collector (K/T/L) |
+|---|---|---|---|---|---|---|
+| 10 | 23 / 19 / 84 | 23 / 19 / 90 | 21 / 13 / 78 | 20/20/24 | 4/4/5 | 11/11/12 |
+| 11 | 25 / 21 / 94 | 25 / 21 / 100 | 23 / 15 / 88 | 18/18/20 | 4/4/4 | 9/9/11 |
+| 12 | 27 / 23 / 104 | 27 / 23 / 110 | 25 / 17 / 98 | 16/16/18 | 4/4/4 | 8/8/9 |
+
+**Reading:**
+- **The Debtman fight works, and the 2026-11-15 template rebalance tightened it.** 71% at level 10 (the party crawls out on 7% HP), 99% at 11 (28%) and 100% at 12 (45%) — the same band-bottom-is-hard, one-level-and-it-flips shape as Calder. He runs 5–6 rounds and about 14–17 party turns, 12–15 of them on him, which is inside the 8–15 Calder target now that his boss HP is 256 rather than 293.
+- **Focusing the Debtman first is correct.** His stance (+30% ATK / +30% SPD) fires when his adds fall, so killing the Dock Thug and Debt Collector first makes the fight strictly harder. Worth a line in the heist's fight text if the intent is for players to learn that.
+- **The Valemere Road is currently harmless.** Every table entry wins 100% in 2–3 rounds with 93–99% HP left at levels 10–12, because Kael and Taren now two- or three-shot the level-11 commons. The road pays 26–32 XP per Crown or Veteran enemy and only 6 for the plain Bandit (54 for a Patrolman + Crossbowman, 38 for a Veteran + Bandit), so going from 10 to 11 (`scr_xp_for_level` 1710 → 2100, 390 XP) takes roughly seven to ten fights. If the road should cost anything, the table needs a three-enemy group, a higher band (11–13), or both — **that is a data change and was not made here.**
+- **Bind and Collect barely register** at these levels: a 2-round Slow on one member and about 13 HP of drain do not change the outcome, so the Debtman's flavour is carried by his HP and Hook Reel rather than by his status.
+- Still unverified in the engine: these are simulation numbers only. The Debtman fight has never been played, and the heist's night-lighting and dialogue timing are untested.
+
+## Chapter 4–5 balance check (Hollow Sanctuary, Blackwood Road Garrison; PLACEHOLDER)
+`python3 tools/balance_sim.py` prints these rows too (`ch45_tables()`), using the same extended model plus magic damage (ATK vs **MDEF** instead of DEF), the two-phase boss shift at 50% HP, and the Field Surgeon's 30 HP heal when an ally is below 60% HP. The Chapter 2 tables are unchanged; the Chapter 3 Debtman rows moved with the template rebalance below.
+
+**Assumptions (mine; change freely):**
+- Party is Kael + Taren + Lyra + **Caelan** — Caelan joins at the Hollow Sanctuary (ACT2_OUTLINE §3, §7.2). Sera is still held as a deserter until the garrison recruitment, so she is **not** in either fight, including Hailen's.
+- Caelan joins at Kael's level with **no weapon and no armour** (his starting-weapon stub is empty) and **no skills**, so he only ever attacks. That is why he does the least damage despite a high ATK base.
+- Gear is unchanged from Chapter 3: there are no Chapter 4/5 shops or gear upgrades in the data yet.
+- Levels simulated: 13–15 for the Sanctuary (PROPOSED band 13–16) and 16–18 for the garrison (PROPOSED band 16–18).
+- Enemy stats are exactly `scr_enemy_scaled` after the 2026-11-15 rebalance: common 14 = 89 / 28 / 21, elite 15 = 196 / 33 / 25, Warden boss 16 for a party of 4 = **600 HP / 37 ATK / 28 DEF / SPD 8**, common 16 = 107 / 34 / 25, elite 17 = 232 / 39 / 29, Hailen boss 18 for 4 = **600 HP / 53 ATK / 32 DEF / SPD 12** (+10 `atk_add`). Hailen does not yield here — nothing sets `flag_hailen_yields` — so he fights to the death.
+- Policy: weakest enemy first (nothing punishes clearing the adds here), Taren opens with Rallying Cry then Cleaves, Lyra opens Open Vein then Twin Cuts, Kael and Caelan attack.
+
+**Hollow Sanctuary (Chapter 4)**
+
+| Fight | Lv | Win % | Rounds | Party turns | Turns on Warden | Party HP left |
+|---|---|---|---|---|---|---|
+| Sanctuary: Sentinel + Wisp | 13 | 100% | 3.0 | 9.6 | — | 87% |
+| Sanctuary: 2 Wisps + Sentinel | 13 | 100% | 3.7 | 12.6 | — | 76% |
+| Sanctuary: Automaton + Wisp | 13 | 100% | 4.0 | 13.7 | — | 80% |
+| Sanctuary Warden + Ward Sentinel | 13 | 27% | 9.0 | 30.4 | 28.0 | 11% |
+| Sanctuary: Sentinel + Wisp | 14 | 100% | 2.8 | 8.8 | — | 90% |
+| Sanctuary: 2 Wisps + Sentinel | 14 | 100% | 3.0 | 11.3 | — | 85% |
+| Sanctuary: Automaton + Wisp | 14 | 100% | 3.8 | 12.8 | — | 84% |
+| Sanctuary Warden + Ward Sentinel | 14 | 61% | 8.2 | 28.7 | 26.2 | 17% |
+| Sanctuary: Sentinel + Wisp | 15 | 100% | 2.3 | 8.1 | — | 95% |
+| Sanctuary: 2 Wisps + Sentinel | 15 | 100% | 3.0 | 10.5 | — | 89% |
+| Sanctuary: Automaton + Wisp | 15 | 100% | 3.2 | 11.4 | — | 90% |
+| Sanctuary Warden + Ward Sentinel | 15 | 89% | 7.5 | 27.2 | 24.6 | 24% |
+
+**Blackwood Road Garrison (Chapter 5)**
+
+| Fight | Lv | Win % | Rounds | Party turns | Turns on Hailen | Party HP left |
+|---|---|---|---|---|---|---|
+| Garrison: Pikeman + Surgeon | 16 | 100% | 2.9 | 8.9 | — | 89% |
+| Garrison: 2 Pikemen + Surgeon | 16 | 100% | 3.7 | 13.3 | — | 78% |
+| Garrison: Knight + Surgeon | 16 | 100% | 4.0 | 13.6 | — | 86% |
+| Hailen + Garrison Pikeman | 16 | 90% | 7.9 | 26.7 | 24.0 | 27% |
+| Garrison: Pikeman + Surgeon | 17 | 100% | 2.7 | 8.7 | — | 91% |
+| Garrison: 2 Pikemen + Surgeon | 17 | 100% | 3.0 | 11.8 | — | 83% |
+| Garrison: Knight + Surgeon | 17 | 100% | 3.8 | 12.9 | — | 89% |
+| Hailen + Garrison Pikeman | 17 | 99% | 7.3 | 25.2 | 22.1 | 38% |
+| Garrison: Pikeman + Surgeon | 18 | 100% | 2.0 | 8.0 | — | 94% |
+| Garrison: 2 Pikemen + Surgeon | 18 | 100% | 3.0 | 11.6 | — | 86% |
+| Garrison: Knight + Surgeon | 18 | 100% | 3.6 | 12.4 | — | 90% |
+| Hailen + Garrison Pikeman | 18 | 100% | 6.6 | 23.9 | 20.7 | 48% |
+
+| Level | Kael ATK/DEF/HP | Taren ATK/DEF/HP | Lyra ATK/DEF/HP | Caelan ATK/DEF/HP | Hits to kill Warden (K/T/L/C) | Hits to kill Hailen (K/T/L/C) |
+|---|---|---|---|---|---|---|
+| 13 | 29 / 25 / 114 | 29 / 25 / 120 | 27 / 19 / 108 | 26 / 19 / 106 | 40/40/47/50 | 47/47/55/60 |
+| 14 | 31 / 27 / 124 | 31 / 27 / 130 | 29 / 21 / 118 | 28 / 21 / 116 | 36/36/40/43 | 40/40/47/50 |
+| 15 | 33 / 29 / 134 | 33 / 29 / 140 | 31 / 23 / 128 | 30 / 23 / 126 | 32/32/36/38 | 36/36/40/43 |
+| 16 | 35 / 31 / 144 | 35 / 31 / 150 | 33 / 25 / 138 | 32 / 25 / 136 | 29/29/32/34 | 32/32/36/38 |
+| 17 | 37 / 33 / 154 | 37 / 33 / 160 | 35 / 27 / 148 | 34 / 27 / 146 | 27/27/29/30 | 29/29/32/34 |
+| 18 | 39 / 35 / 164 | 39 / 35 / 170 | 37 / 29 / 158 | 36 / 29 / 156 | 24/24/27/28 | 27/27/29/30 |
+
+**Reading:**
+- **The Sanctuary Warden is now the hardest fight in the game.** 27% at 13, 61% at 14, 89% at 15; 7.5–9 rounds, 25–30 party turns, 25–28 hits on him, 11–24% HP left. The rebalance moved him from "in band" to a genuine wall at the bottom of his 13–16 band, because his ring hits all four members and phase 2 adds 20% ATK on top. Treat **level 15 (or the in-battle Item command)** as the intended entry point; if that is too strict, the knob is his boss HP multiplier, not his ATK.
+- **Commander Hailen threatens now.** 90% at 16 with 27% of party HP left, 99% at 17 (38%), 100% at 18 (48%) — the Calder shape. The `atk_add: 10` raises him to 53 ATK, about **38 damage** on a 144 HP Kael, while the party still needs roughly 32 Kael hits to drop his 600 HP: the fight is now threat plus length instead of length alone.
+- **Random fights cost something now.** At the bottom of a band a three-enemy group takes **20–25% of party HP** (76–86% left) in 3–4 rounds; two levels later the same table is a 2–3 round formality at 89–95% left, which is what an over-levelled party should see. They are still always winnable, which is the intended random-encounter shape.
+- **The Warden's ring is the only enemy magic in the game**, and it is where MDEF finally does something: about **20 damage** to the whole party per cast, which is now the main source of the HP loss in that fight.
+- **Caelan is dead weight as data stands.** 26–36 ATK, no weapon, no skills: the lowest damage in the party and the smallest HP pool at every level in the table. The Arcanist needs his spells (and a weapon or a spell-power stat) before Chapter 4 is buildable, otherwise the fourth slot is better left empty for the reserve.
+- Simulation only: **no Chapter 4/5 room, script, or art exists yet**, so none of this has been played or even wired.
 
 ## Prototype assumptions (battle upgrade; pending owner approval)
 Built on `feature/battle-upgrade` (depends on PR #10). Every number below is a PLACEHOLDER unless marked canon. Owner-decided rules above (XP per enemy to living participants, defeat penalty, random encounters, Swap) are unchanged.

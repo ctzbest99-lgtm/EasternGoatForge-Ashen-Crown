@@ -116,6 +116,16 @@ boss_index = (_boss_index == 0 && array_length(enemies) > 0 && enemies[0].is_bos
 enemy = (array_length(enemies) > 0) ? enemies[0] : undefined; // lead enemy (kept for older helpers)
 if (array_length(enemies) == 0) state = BATTLE_STATE.ERROR;
 
+// Escape (spec §12) is a field-fight option only: no boss on the field, no scripted /
+// story encounter, and not the tutorial fight. Bestiary: everyone on the field is met.
+can_escape = true;
+if (boss_index >= 0 || tutorial_active) can_escape = false;
+if (is_struct(_pending) && variable_struct_exists(_pending, "script_id") && string(_pending.script_id) != "") can_escape = false;
+for (_i = 0; _i < array_length(enemies); _i++) {
+    if (enemies[_i].is_boss) can_escape = false;
+    scr_bestiary_mark_seen(enemies[_i].actor_id);
+}
+
 scr_battle_label_duplicates(enemies);
 var _formation = scr_battle_formation(array_length(enemies), boss_index);
 enemy_vis = [];
@@ -286,6 +296,11 @@ apply_pending_hit = function() {
                     } else {
                         if (is_struct(_vis) && _vis.kind == "blackguard") _vis.phase = 3; // final death is the p3 strip
                         scr_battle_vis_play(_vis, "death");
+                    }
+                    // Bestiary: a beaten (or yielded) enemy is recorded once per battle.
+                    if (!variable_struct_exists(_tgt, "bestiary_marked") || !_tgt.bestiary_marked) {
+                        scr_bestiary_mark_defeated(_tgt.actor_id);
+                        _tgt.bestiary_marked = true;
                     }
                     if (!_tgt.xp_credited) {
                         scr_party_credit_enemy_xp(_tgt.xp_reward);

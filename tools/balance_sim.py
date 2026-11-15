@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
-"""Ashen Crown balance sim (feature/balance-pass). Mirrors the GML battle formulas:
-damage = max(1, ATK - floor(DEF/2)); skill power floors; Guard halves the next hit (enemy) or
-all hits until next round (party); buffs tick at round start; SPD order with a <1 tiebreak.
-No in-battle healing exists, so a fight is "won" only if the party survives on its own HP.
+"""Ashen Crown balance sim (feature/balance-pass, extended through Chapter 5). Mirrors the GML
+battle formulas: damage = max(1, ATK - floor(DEF/2)); magic uses MDEF instead of DEF; skill power
+floors; Guard halves the next hit (enemy) or all hits until next round (party); buffs tick at round
+start; SPD order with a <1 tiebreak. The extended rows also model criticals (Cutthroat), Kael's
+Last Stand, bleed, the Debtman's bind (Slow) / Collect / stance / yield, the two-phase boss shift at
+50% HP, magic AoE (Warden ring), and the garrison Field Surgeon's heal.
 Run: python3 tools/balance_sim.py   (prints the markdown tables used in DECISIONS)."""
 import random, math, statistics, sys
 
 # ---- party growth (mirrors scr_game_constants / scr_progression) --------------------------
-BASE = {"kael": dict(hp=30, atk=6, df=2, spd=10, mp=6),
-        "taren": dict(hp=36, atk=8, df=3, spd=9, mp=12)}
-LOW = dict(hp=4, atk=1, df=1, mp=2, spd=1)      # level-ups to L2..L7 (Chapter 1, unchanged)
-HIGH = dict(hp=10, atk=2, df=2, mp=3, spd=1)    # level-ups to L8+ (LEVEL_UP_*_GROWTH_HIGH)
+BASE = {"kael": dict(hp=30, atk=6, df=2, mdef=2, spd=10, mp=6),
+        "taren": dict(hp=36, atk=8, df=3, mdef=2, spd=9, mp=12)}
+LOW = dict(hp=4, atk=1, df=1, mdef=1, mp=2, spd=1)      # level-ups to L2..L7 (Chapter 1, unchanged)
+HIGH = dict(hp=10, atk=2, df=2, mdef=1, mp=3, spd=1)    # level-ups to L8+ (LEVEL_UP_*_GROWTH_HIGH)
 TIER_LEVEL = 8
 
 def member(mid, level, weapon, armor):
@@ -18,9 +20,10 @@ def member(mid, level, weapon, armor):
     for L in range(2, level + 1):
         g = HIGH if L >= TIER_LEVEL else LOW
         s["hp"] += g["hp"]; s["atk"] += g["atk"]; s["df"] += g["df"]; s["mp"] += g["mp"]; s["spd"] += g["spd"]
+        s["mdef"] += g["mdef"]
     s["atk"] += weapon; s["df"] += armor
     return dict(id=mid, name=mid.title(), max_hp=s["hp"], hp=s["hp"], atk=s["atk"], df=s["df"],
-                spd=s["spd"], mp=s["mp"], buffs=[], guard=False, side="party")
+                mdef=s["mdef"], spd=s["spd"], mp=s["mp"], buffs=[], guard=False, side="party")
 
 # ---- enemies (mirrors scr_enemy_database after this pass) ---------------------------------
 E = {
@@ -55,14 +58,15 @@ def tick(a):
 
 def mk_enemy(eid):
     e = dict(E[eid]); e.update(id=eid, max_hp=e["hp"], buffs=[], guard=False, side="enemy",
-                               mp=e.get("mp", 0), stance=False, yielded=False)
+                               mp=e.get("mp", 0), stance=False, yielded=False, phase=1)
     return e
 
-def pick(ai, e, allies):
+def pick(ai, e, allies, hurt=False):
     opts = []
     for s, w in ai:
         if s == "shout" and (allies == 0 or e["mp"] < 6): continue
         if s == "brace" and any(b[0] == "df" for b in e["buffs"]): continue
+        if s == "heal" and not hurt: continue      # Field Surgeon only heals a hurt ally
         opts.append((s, w))
     r = random.uniform(0, sum(w for _, w in opts))
     for s, w in opts:
@@ -170,12 +174,268 @@ if __name__ == "__main__":
         print(f"| {L} | {k['atk']} / {k['df']} / {k['max_hp']} | {t['atk']} / {t['df']} / {t['max_hp']} | "
               + " | ".join(str(hits_to_kill(L, "kael", e)) for e in ["occupation_soldier", "crown_patrolman", "crown_crossbowman", "bandit_veteran", "grey_ash_wolf", "reeve_calder"]) + " |")
 
+# ---- Chapter 3: Valemere Road and the Debtman (feature/chapter3) --------------------------
+# Party data mirrors scr_party: Lyra joins at Kael's level with the Twin Daggers (+2 ATK) and no
+# armour. Chapter 3 gear assumes Len's Chain Mail (+4 DEF) has been bought for Kael (+ Iron Helm)
+# and Taren; without it, knock roughly 2 DEF off each and expect a few more rounds.
+# Enemies mirror scr_enemy_scaled (dock_thug common 11, debt_collector elite 12, debtman boss 12
+# for a party of 3) and their kits in scr_skill_data.
+BASE["lyra"] = dict(hp=24, atk=7, df=1, mdef=2, spd=14, mp=6)     # Chapter 3
+BASE["caelan"] = dict(hp=22, atk=8, df=1, mdef=5, spd=9, mp=16)    # Chapter 4, no weapon, no skills
+E.update({
+ "bandit":         dict(hp=18,  atk=5,  df=1,  spd=8,  ai=[("attack", 1)]),
+ "dock_thug":      dict(hp=62,  atk=19, df=15, spd=9,  ai=[("attack", 1)]),
+ "debt_collector": dict(hp=142, atk=24, df=19, spd=10, ai=[("attack", 1)]),
+ "debtman":        dict(hp=256, atk=25, df=20, spd=12, boss=True, yields=True,
+                        ai=[("attack", 3), ("reel", 2), ("collect", 2), ("bind", 1)]),
+})
+POWER.update({"reel": 1.25, "collect": 0.8})
+GEAR_CH3 = {"kael": (5, 5), "taren": (3, 4), "lyra": (2, 0)}
+GEAR_LATE = dict(GEAR_CH3, caelan=(0, 0))   # no Chapter 4/5 gear upgrades exist yet
+
+# Chapter 4 (Hollow Sanctuary) and Chapter 5 (Blackwood Road Garrison) enemies. scr_enemy_scaled:
+# common 14 = 79 / 23 / 21; elite 15 = 172 / 27 / 25; boss 16 for 4 = 558 HP; common 16 = 93/27/25;
+# elite 17 = 200 / 31 / 29; boss 18 for 4 = 642 HP. Extras (def_add, hp_mult, weakness) applied.
+E.update({
+ "ward_sentinel":     dict(hp=89,  atk=28, df=24, mdef=11, spd=7,  ai=[("attack", 1)]),
+ "glyph_wisp":        dict(hp=67,  atk=28, df=21, mdef=11, spd=15, ai=[("attack", 1), ("mote", 2)]),
+ "aethari_automaton": dict(hp=196, atk=33, df=25, mdef=12, spd=9,  ai=[("attack", 1)]),
+ "sanctuary_warden":  dict(hp=600, atk=37, df=28, mdef=13, spd=8, boss=True,
+                           ai=[("attack", 2), ("ring", 1)],
+                           phase_ai={2: [("attack", 2), ("ring", 2)]},
+                           phase2_at=0.5, phase2_atk=0.20),
+ "garrison_pikeman":  dict(hp=107, atk=34, df=25, mdef=13, spd=10, ai=[("attack", 2), ("pike", 2)]),
+ "garrison_field_surgeon": dict(hp=86, atk=34, df=25, mdef=13, spd=12, ai=[("attack", 2), ("heal", 3)]),
+ "garrison_knight":   dict(hp=232, atk=39, df=29, mdef=14, spd=9,  ai=[("attack", 3), ("guard", 1)]),
+ "commander_hailen":  dict(hp=600, atk=53, df=32, mdef=15, spd=12, boss=True,   # boss +10 atk_add
+                           ai=[("attack", 3), ("glint", 2)]),
+})
+POWER.update({"pike": 1.2, "glint": 1.4})
+MAG_POWER = {"mote": 1.1, "ring": 0.7}      # ATK vs MDEF; ring hits the whole party
+HEAL_AMOUNT, HEAL_THRESHOLD = 30, 0.6        # BATTLE_HEAL_ALLY_THRESHOLD
+
+CRIT_BASE, CRIT_CUTTHROAT, CRIT_MULT = 0.05, 0.15, 1.5
+BLEED_PCT, SLOW_PCT, BIND_CHANCE = 0.06, 0.5, 0.7
+LAST_STAND = dict(atk=0.15, df=0.10)
+
+def st3(a, k):
+    """Stat with Last Stand, Slow and buffs, in the GML order (base -> passive -> slow -> buffs)."""
+    base = a[k]
+    if a.get("id") == "kael" and k in ("atk", "df") and 0 < a["hp"] < a["max_hp"] * 0.25:
+        base = base * (1 + LAST_STAND[k])
+    if k == "spd" and a.get("slow", 0) > 0:
+        base = base * SLOW_PCT
+    pct = sum(b[1] for b in a["buffs"] if b[0] == k)
+    v = int(base * (1 + pct) + 0.5)
+    return max(1, v) if k in ("atk", "spd") else max(0, v)
+
+def crit_roll(a):
+    return random.random() < CRIT_BASE + (CRIT_CUTTHROAT if a.get("id") == "lyra" else 0)
+
+def hit(a, tgt, power=1.0, defense="df"):
+    d = max(1, st3(a, "atk") - st3(tgt, defense) // 2)
+    if power != 1:
+        d = max(1, math.floor(d * power))
+    if crit_roll(a):
+        d = max(1, math.floor(d * CRIT_MULT))
+    if tgt["guard"]:
+        d = max(1, d // 2)
+        tgt["guard"] = False
+    return d
+
+def focus(live_e, boss_focus=True):
+    """Party policy. When `boss_focus` (the Debtman, whose stance punishes clearing the adds) the
+    boss is hit first; otherwise the weakest enemy dies first."""
+    bosses = [e for e in live_e if e.get("boss")]
+    if boss_focus and bosses: return bosses[0]
+    return min(live_e, key=lambda e: e["hp"])
+
+def fight_ext(party, eids, boss_focus=True, max_rounds=60):
+    enemies = [mk_enemy(x) for x in eids]
+    boss = enemies[0] if enemies[0].get("boss") else None
+    turns_on = {i: 0 for i in range(len(enemies))}
+    party_turns = 0
+    def damage(a, tgt, power=1.0, weight=1.0):
+        d = hit(a, tgt, power)
+        tgt["hp"] -= d
+        turns_on[enemies.index(tgt)] += weight
+        if tgt["hp"] <= 0 and tgt.get("yields"):
+            tgt["hp"] = 1; tgt["yielded"] = True
+        return d
+    for rnd in range(1, max_rounds + 1):
+        for a in party + enemies:
+            tick(a)
+            if a.get("slow", 0) > 0: a["slow"] -= 1
+            if a.get("bleed", 0) > 0 and a["hp"] > 1:
+                a["hp"] = max(1, a["hp"] - max(1, math.floor(a["max_hp"] * BLEED_PCT)))
+                a["bleed"] -= 1
+        for p in party: p["guard"] = False
+        order = [a for a in party + enemies if a["hp"] > 0]
+        order.sort(key=lambda a: st3(a, "spd") + random.random() * 0.99, reverse=True)
+        for a in order:
+            if a["hp"] <= 0: continue
+            live_e = [e for e in enemies if e["hp"] > 0 and not e["yielded"]]
+            live_p = [p for p in party if p["hp"] > 0]
+            if not live_e or not live_p: break
+            if a["side"] == "party":
+                party_turns += 1
+                if a["id"] == "taren" and rnd == 1 and a["mp"] >= 4 and len(live_p) > 1:
+                    a["mp"] -= 4
+                    for p in live_p:
+                        p["buffs"] = [b for b in p["buffs"] if b[0] != "atk"] + [("atk", .25, 3)]
+                    continue
+                if a["id"] == "taren" and len(live_e) >= 2 and a["mp"] >= 3:
+                    a["mp"] -= 3
+                    for e in live_e: damage(a, e, 0.6, 1.0 / len(live_e))  # Cleave splits one turn
+                    continue
+                tgt = focus(live_e, boss_focus)
+                if a["id"] == "lyra" and a["mp"] >= 4 and not tgt.get("bleed"):
+                    a["mp"] -= 4
+                    damage(a, tgt, 0.9)
+                    if random.random() < 0.8: tgt["bleed"] = 3
+                    continue
+                if a["id"] == "lyra" and a["mp"] >= 3:
+                    a["mp"] -= 3
+                    for _ in range(2):
+                        if tgt["hp"] > 0 and not tgt["yielded"]: damage(a, tgt, 0.7)
+                    continue
+                damage(a, tgt)
+            else:
+                allies = len(live_e) - 1
+                ai = a["ai"]
+                if a.get("phase_ai") and a.get("phase", 1) in a["phase_ai"]: ai = a["phase_ai"][a["phase"]]
+                elif a.get("alone") and allies == 0: ai = a["alone"]
+                hurt = any(p["hp"] < p["max_hp"] * HEAL_THRESHOLD for p in live_p)
+                s = pick(ai, a, allies, hurt)
+                if s == "guard": a["guard"] = True; continue
+                if s == "brace": a["buffs"].append(("df", .5, 2)); continue
+                if s == "flavor": continue
+                if s == "shout":
+                    a["mp"] -= 6
+                    for e in live_e:
+                        e["buffs"] = [b for b in e["buffs"] if b[0] != "atk"] + [("atk", .25, 3)]
+                    continue
+                if s == "heal":
+                    t = min(live_e, key=lambda e: e["hp"] / e["max_hp"])
+                    t["hp"] = min(t["max_hp"], t["hp"] + HEAL_AMOUNT)
+                    continue
+                if s == "ring":                                  # magic, hits every living member
+                    for p in live_p: p["hp"] -= hit(a, p, MAG_POWER[s], defense="mdef")
+                    continue
+                t = random.choice(live_p)
+                if s == "bind":
+                    if random.random() < BIND_CHANCE: t["slow"] = 2
+                    continue
+                if s in MAG_POWER:
+                    t["hp"] -= hit(a, t, MAG_POWER[s], defense="mdef")
+                    continue
+                d = hit(a, t, POWER[s])
+                t["hp"] -= d
+                if s == "collect": a["hp"] = min(a["max_hp"], a["hp"] + d)
+            if a["side"] == "enemy" and a.get("phase2_at") and a.get("phase", 1) == 1 \
+                    and 0 < a["hp"] <= a["max_hp"] * a["phase2_at"]:
+                a["phase"] = 2
+                a["buffs"] += [("atk", a.get("phase2_atk", 0.20), -1)]
+            if boss and boss is not a and boss["hp"] > 0 and not boss.get("stance"):
+                if all(e["hp"] <= 0 or e["yielded"] for e in enemies if e is not boss):
+                    boss["stance"] = True
+                    boss["buffs"] += [("atk", .30, -1), ("spd", .30, -1)]
+        live_e = [e for e in enemies if e["hp"] > 0 and not e["yielded"]]
+        if not live_e or (boss is not None and boss.get("yielded")):
+            # A yielding boss ends the battle as a victory with his adds still standing
+            # (same rule as Reeve Calder).
+            return dict(win=True, rounds=rnd, party_turns=party_turns, turns_on=turns_on,
+                        hp_left=sum(max(0, p["hp"]) for p in party) / sum(p["max_hp"] for p in party))
+        if all(p["hp"] <= 0 for p in party): break
+    return dict(win=False, rounds=rnd, party_turns=party_turns, turns_on=turns_on, hp_left=0)
+
+def run_ext(label, level, members, eids, gear=None, boss_focus=True, n=4000):
+    gear = GEAR_CH3 if gear is None else gear
+    res = [fight_ext([member(m, level, *gear[m]) for m in members], eids, boss_focus=boss_focus)
+           for _ in range(n)]
+    wins = [r for r in res if r["win"]]
+    def avg(f): return statistics.mean(f(r) for r in wins) if wins else float("nan")
+    return dict(label=label, level=level, members="+".join(m.title() for m in members),
+                win=len(wins) / n, rounds=avg(lambda r: r["rounds"]), pturns=avg(lambda r: r["party_turns"]),
+                boss=avg(lambda r: r["turns_on"][0]), hp=avg(lambda r: r["hp_left"]))
+
+def run_c3(label, level, members, eids, n=4000):
+    return run_ext(label, level, members, eids, gear=GEAR_CH3, boss_focus=True, n=n)
+
+def c3_tables():
+    random.seed(11)
+    rows = []
+    for L in (10, 11, 12):
+        rows.append(run_c3("Valemere Rd: Patrolman", L, ["kael", "taren"], ["crown_patrolman"]))
+        rows.append(run_c3("Valemere Rd: Crossbowman", L, ["kael", "taren"], ["crown_crossbowman"]))
+        rows.append(run_c3("Valemere Rd: Bandit Veteran", L, ["kael", "taren"], ["bandit_veteran"]))
+        rows.append(run_c3("Valemere Rd: Patrolman + Crossbowman", L, ["kael", "taren"], ["crown_patrolman", "crown_crossbowman"]))
+        rows.append(run_c3("Valemere Rd: Bandit Veteran + Bandit", L, ["kael", "taren"], ["bandit_veteran", "bandit"]))
+        rows.append(run_c3("Debtman + Dock Thug + Debt Collector", L, ["kael", "taren", "lyra"],
+                           ["debtman", "dock_thug", "debt_collector"]))
+    print()
+    print("| Fight | Lv | Party | Win % | Rounds | Party turns | Turns on Debtman | Party HP left |")
+    print("|---|---|---|---|---|---|---|---|")
+    for r in rows:
+        boss = f"{r['boss']:.1f}" if "Debtman" in r["label"] else "—"
+        print(f"| {r['label']} | {r['level']} | {r['members']} | {r['win']*100:.0f}% | {r['rounds']:.1f} | {r['pturns']:.1f} | {boss} | {r['hp']*100:.0f}% |")
+    print()
+    print("| Level | Kael ATK / DEF / HP | Taren ATK / DEF / HP | Lyra ATK / DEF / HP | Hits to kill: Debtman (K/T/L) | Dock Thug (K/T/L) | Debt Collector (K/T/L) |")
+    print("|---|---|---|---|---|---|---|")
+    for L in (10, 11, 12):
+        members = {m: member(m, L, *GEAR_CH3[m]) for m in ("kael", "taren", "lyra")}
+        cells = {m: f"{members[m]['atk']} / {members[m]['df']} / {members[m]['max_hp']}" for m in members}
+        def kh(eid):
+            e = E[eid]
+            return "/".join(str(math.ceil(e["hp"] / max(1, members[m]["atk"] - e["df"] // 2))) for m in ("kael", "taren", "lyra"))
+        print(f"| {L} | {cells['kael']} | {cells['taren']} | {cells['lyra']} | {kh('debtman')} | {kh('dock_thug')} | {kh('debt_collector')} |")
+
+def ch45_tables():
+    """Chapter 4 (Hollow Sanctuary) and Chapter 5 (Blackwood Road Garrison)."""
+    random.seed(23)
+    PARTY = ["kael", "taren", "lyra", "caelan"]   # Caelan joins in Ch 4; Sera is still held in Ch 5
+    SANCTUARY = [
+        ("Sanctuary: Sentinel + Wisp", ["ward_sentinel", "glyph_wisp"]),
+        ("Sanctuary: 2 Wisps + Sentinel", ["glyph_wisp", "glyph_wisp", "ward_sentinel"]),
+        ("Sanctuary: Automaton + Wisp", ["aethari_automaton", "glyph_wisp"]),
+        ("Sanctuary Warden + Ward Sentinel", ["sanctuary_warden", "ward_sentinel"]),
+    ]
+    GARRISON = [
+        ("Garrison: Pikeman + Surgeon", ["garrison_pikeman", "garrison_field_surgeon"]),
+        ("Garrison: 2 Pikemen + Surgeon", ["garrison_pikeman", "garrison_pikeman", "garrison_field_surgeon"]),
+        ("Garrison: Knight + Surgeon", ["garrison_knight", "garrison_field_surgeon"]),
+        ("Hailen + Garrison Pikeman", ["commander_hailen", "garrison_pikeman"]),
+    ]
+    print()
+    for title, band, fights in (("Hollow Sanctuary (Chapter 4)", (13, 14, 15), SANCTUARY),
+                                ("Blackwood Road Garrison (Chapter 5)", (16, 17, 18), GARRISON)):
+        rows = [run_ext(label, L, PARTY, eids, gear=GEAR_LATE, boss_focus=False)
+                for L in band for label, eids in fights]
+        print(f"**{title}** — {'/'.join(PARTY)}")
+        print()
+        print("| Fight | Lv | Win % | Rounds | Party turns | Turns on boss | Party HP left |")
+        print("|---|---|---|---|---|---|---|")
+        for r in rows:
+            boss = "—"
+            if "Warden +" in r["label"] or "Hailen" in r["label"]: boss = f"{r['boss']:.1f}"
+            print(f"| {r['label']} | {r['level']} | {r['win']*100:.0f}% | {r['rounds']:.1f} | {r['pturns']:.1f} | {boss} | {r['hp']*100:.0f}% |")
+        print()
+    print("| Level | Kael ATK/DEF/HP | Taren ATK/DEF/HP | Lyra ATK/DEF/HP | Caelan ATK/DEF/HP | Hits to kill Warden (K/T/L/C) | Hits to kill Hailen (K/T/L/C) |")
+    print("|---|---|---|---|---|---|---|")
+    for L in (13, 14, 15, 16, 17, 18):
+        ms = {m: member(m, L, *GEAR_LATE[m]) for m in PARTY}
+        def kh(eid):
+            e = E[eid]
+            return "/".join(str(math.ceil(e["hp"] / max(1, ms[m]["atk"] - e["df"] // 2))) for m in PARTY)
+        print(f"| {L} | " + " | ".join(f"{ms[m]['atk']} / {ms[m]['df']} / {ms[m]['max_hp']}" for m in PARTY)
+              + f" | {kh('sanctuary_warden')} | {kh('commander_hailen')} |")
+
 # ---- Batches 7–8 template check (scr_enemy_scaled) ---------------------------------------
 def scaled(role, level, party=1, hp_mult=1.0, def_add=0):
     d = level - 9
-    hp, atk, df = 44 + 7 * d, 13 + 2 * d, 11 + 2 * d
+    hp, atk, df = 44 + 9 * d, 13 + 3 * d, 11 + 2 * d
     if role == "elite": hp *= 2; atk += 2; df += 2
-    if role == "boss": hp = round(hp * 1.5 * max(1, party)); atk += 3; df += 3
+    if role == "boss": hp = round(hp * 1.2 * max(1, party)); atk += 3; df += 3
     return dict(hp=round(hp * hp_mult), atk=atk, df=df + def_add)
 
 def template_table():
@@ -191,3 +451,7 @@ def template_table():
 
 if __name__ == "__main__" and "--templates" in sys.argv:
     template_table()
+
+if __name__ == "__main__":
+    c3_tables()
+    ch45_tables()

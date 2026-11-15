@@ -338,3 +338,47 @@ function scr_battle_clear_party_battle_state(_victory) {
         }
     }
 }
+
+/// ---- Escape (spec §12) ----
+
+/// Average level of the living party members (>= 1).
+function scr_battle_party_avg_level(_party) {
+    if (!is_array(_party)) return 1;
+    var _sum = 0;
+    var _n = 0;
+    for (var _i = 0; _i < array_length(_party); _i++) {
+        var _m = _party[_i];
+        if (!is_struct(_m) || _m.hp <= 0) continue;
+        _sum += variable_struct_exists(_m, "level") ? max(1, _m.level) : 1;
+        _n += 1;
+    }
+    if (_n == 0) return 1;
+    return _sum / _n;
+}
+
+/// Average level of the living enemies (>= 1). Enemies without a level count as 1.
+function scr_battle_enemy_avg_level(_enemies) {
+    if (!is_array(_enemies)) return 1;
+    var _sum = 0;
+    var _n = 0;
+    for (var _i = 0; _i < array_length(_enemies); _i++) {
+        var _e = _enemies[_i];
+        if (!is_struct(_e)) continue;
+        if (_e.hp <= 0 || _e.yielded) continue;
+        _sum += variable_struct_exists(_e, "level") ? max(1, _e.level) : 1;
+        _n += 1;
+    }
+    if (_n == 0) return 1;
+    return _sum / _n;
+}
+
+/// Probability of getting away: base plus a per-level edge, clamped. PLACEHOLDER tuning.
+function scr_battle_escape_chance(_party_level, _enemy_level) {
+    var _c = BATTLE_ESCAPE_BASE_CHANCE + (_party_level - _enemy_level) * BATTLE_ESCAPE_LEVEL_STEP;
+    return clamp(_c, BATTLE_ESCAPE_MIN_CHANCE, BATTLE_ESCAPE_MAX_CHANCE);
+}
+
+/// True when the escape attempt succeeds. Called once, when Escape is chosen.
+function scr_battle_escape_roll(_party_level, _enemy_level) {
+    return (random(1) < scr_battle_escape_chance(_party_level, _enemy_level));
+}
