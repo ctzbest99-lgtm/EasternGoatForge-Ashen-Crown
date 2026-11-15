@@ -148,7 +148,10 @@ function scr_get_enemy_data(_enemy_id) {
             return scr_enemy_scaled("aethari_automaton", "Aethari Automaton", "Automaton", "elite", 15, 1, { spd: 9, weakness: "lightning",
                 actions: [{ skill: "attack", weight: 1 }] });
         case "sanctuary_warden": // Ch 4 boss (working name), two phases
+            // hp_mult 1.25 / atk_add 2 compensate for Caelan's approved elemental kit (Chapter 4
+            // balance pass 2026-11-15; PLACEHOLDER, 35/71/94% wins at party levels 13/14/15).
             return scr_enemy_scaled("sanctuary_warden", "Sanctuary Warden", "Warden", "boss", 16, 4, { spd: 8,
+                hp_mult: 1.25, atk_add: 2,
                 phase2_at: 0.5, phase2_buffs: [{ stat: "atk", pct: 0.2, turns: -1 }],
                 phase2_line: "The Warden's plates crack. Two more arms unfold!",
                 actions: [{ skill: "attack", weight: 2 }, { skill: "warden_ring", weight: 1 }],

@@ -197,10 +197,10 @@ GEAR_LATE = dict(GEAR_CH3, caelan=(0, 0))   # no Chapter 4/5 gear upgrades exist
 # common 14 = 79 / 23 / 21; elite 15 = 172 / 27 / 25; boss 16 for 4 = 558 HP; common 16 = 93/27/25;
 # elite 17 = 200 / 31 / 29; boss 18 for 4 = 642 HP. Extras (def_add, hp_mult, weakness) applied.
 E.update({
- "ward_sentinel":     dict(hp=89,  atk=28, df=24, mdef=11, spd=7,  ai=[("attack", 1)]),
+ "ward_sentinel":     dict(hp=89,  atk=28, df=24, mdef=11, spd=7,  weak="lightning", ai=[("attack", 1)]),
  "glyph_wisp":        dict(hp=67,  atk=28, df=21, mdef=11, spd=15, ai=[("attack", 1), ("mote", 2)]),
- "aethari_automaton": dict(hp=196, atk=33, df=25, mdef=12, spd=9,  ai=[("attack", 1)]),
- "sanctuary_warden":  dict(hp=600, atk=37, df=28, mdef=13, spd=8, boss=True,
+ "aethari_automaton": dict(hp=196, atk=33, df=25, mdef=12, spd=9,  weak="lightning", ai=[("attack", 1)]),
+ "sanctuary_warden":  dict(hp=643, atk=39, df=28, mdef=13, spd=8, boss=True,   # 514 base x1.25, atk_add 2
                            ai=[("attack", 2), ("ring", 1)],
                            phase_ai={2: [("attack", 2), ("ring", 2)]},
                            phase2_at=0.5, phase2_atk=0.20),
@@ -213,6 +213,9 @@ E.update({
 POWER.update({"pike": 1.2, "glint": 1.4})
 MAG_POWER = {"mote": 1.1, "ring": 0.7}      # ATK vs MDEF; ring hits the whole party
 HEAL_AMOUNT, HEAL_THRESHOLD = 30, 0.6        # BATTLE_HEAL_ALLY_THRESHOLD
+WEAK_MULT = 1.5                               # BATTLE_WEAKNESS_MULTIPLIER
+# Caelan (CHAPTER4_SCRIPT.md §6): one spell per element, magic vs MDEF, 4/4/5 MP.
+CAELAN_SPELLS = (("lightning", 1.35, 5, "arc_bolt"), ("ice", 1.2, 4, "frost_lance"), ("fire", 1.2, 4, "ember"))
 
 CRIT_BASE, CRIT_CUTTHROAT, CRIT_MULT = 0.05, 0.15, 1.5
 BLEED_PCT, SLOW_PCT, BIND_CHANCE = 0.06, 0.5, 0.7
@@ -289,6 +292,18 @@ def fight_ext(party, eids, boss_focus=True, max_rounds=60):
                     for e in live_e: damage(a, e, 0.6, 1.0 / len(live_e))  # Cleave splits one turn
                     continue
                 tgt = focus(live_e, boss_focus)
+                if a["id"] == "caelan":
+                    cast = None
+                    for _el, _pw, _cost, _id in CAELAN_SPELLS:
+                        if a["mp"] >= _cost:
+                            cast = (_el, _pw, _cost)
+                            if tgt.get("weak") == _el: break
+                    if cast is not None:
+                        a["mp"] -= cast[2]
+                        d = hit(a, tgt, cast[1], defense="mdef")
+                        if tgt.get("weak") == cast[0]: d = max(1, math.floor(d * WEAK_MULT))
+                        tgt["hp"] -= d; turns_on[enemies.index(tgt)] += 1
+                        continue
                 if a["id"] == "lyra" and a["mp"] >= 4 and not tgt.get("bleed"):
                     a["mp"] -= 4
                     damage(a, tgt, 0.9)
@@ -430,6 +445,28 @@ def ch45_tables():
         print(f"| {L} | " + " | ".join(f"{ms[m]['atk']} / {ms[m]['df']} / {ms[m]['max_hp']}" for m in PARTY)
               + f" | {kh('sanctuary_warden')} | {kh('commander_hailen')} |")
 
+def ch4_prejoin_table():
+    """The sanctuary before Caelan joins: Kael + Taren + Lyra, Chapter 3 gear, no fourth member."""
+    random.seed(31)
+    PARTY3 = ["kael", "taren", "lyra"]
+    fights = [
+        ("Sanctuary: Sentinel + Wisp", ["ward_sentinel", "glyph_wisp"]),
+        ("Sanctuary: 2 Wisps + Sentinel", ["glyph_wisp", "glyph_wisp", "ward_sentinel"]),
+        ("Sanctuary: Automaton + Wisp", ["aethari_automaton", "glyph_wisp"]),
+        ("Sanctuary: 1 Sentinel", ["ward_sentinel"]),
+        ("Sanctuary: 2 Wisps", ["glyph_wisp", "glyph_wisp"]),
+    ]
+    print()
+    print("**Hollow Sanctuary before Caelan (Chapter 4)** — Kael + Taren + Lyra (3 members)")
+    print()
+    print("| Fight | Lv | Win % | Rounds | Party turns | Party HP left |")
+    print("|---|---|---|---|---|---|")
+    for L in (13, 14, 15):
+        for label, eids in fights:
+            r = run_ext(label, L, PARTY3, eids, gear=GEAR_CH3, boss_focus=False)
+            print(f"| {r['label']} | {L} | {r['win']*100:.0f}% | {r['rounds']:.1f} | {r['pturns']:.1f} | {r['hp']*100:.0f}% |")
+    print()
+
 # ---- Batches 7–8 template check (scr_enemy_scaled) ---------------------------------------
 def scaled(role, level, party=1, hp_mult=1.0, def_add=0):
     d = level - 9
@@ -455,3 +492,4 @@ if __name__ == "__main__" and "--templates" in sys.argv:
 if __name__ == "__main__":
     c3_tables()
     ch45_tables()
+    ch4_prejoin_table()
