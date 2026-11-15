@@ -113,7 +113,8 @@ for name, rm in rooms.items():
 for want in ('rm_overworld','rm_old_watchtower','rm_watchtower_basement','rm_greyhaven_varyn_house',
              'rm_greyhaven_tavern','rm_greyhaven_chapel','rm_greyhaven_blacksmith','rm_greyhaven_general_store',
              'rm_millhaven_road','rm_wrenfield','rm_wrenfield_bent_post','rm_wrenfield_store',
-             'rm_valemere_road','rm_valemere','rm_salt_lamp','rm_warehouse'):
+             'rm_valemere_road','rm_valemere','rm_salt_lamp','rm_warehouse',
+             'rm_hollow_approach','rm_hollow_sanctuary'):
     rm = rooms[want]
     objs = [i['objectId']['name'] for l in rm['layers'] if l['resourceType']=='GMRInstanceLayer' for i in l['instances']]
     if 'obj_player' not in objs: errors.append(f"{want}: obj_player missing")

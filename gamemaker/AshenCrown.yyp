@@ -6237,6 +6237,48 @@
         "path":"rooms/rm_warehouse/rm_warehouse.yy",
       },
     },
+    {
+      "id":{
+        "name":"scr_ch4_story",
+        "path":"scripts/scr_ch4_story/scr_ch4_story.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_dialogue_data_ch4",
+        "path":"scripts/scr_dialogue_data_ch4/scr_dialogue_data_ch4.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_ch4_markers_data",
+        "path":"scripts/scr_ch4_markers_data/scr_ch4_markers_data.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_build_hollow_approach",
+        "path":"scripts/scr_build_hollow_approach/scr_build_hollow_approach.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_build_hollow_sanctuary",
+        "path":"scripts/scr_build_hollow_sanctuary/scr_build_hollow_sanctuary.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"rm_hollow_approach",
+        "path":"rooms/rm_hollow_approach/rm_hollow_approach.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"rm_hollow_sanctuary",
+        "path":"rooms/rm_hollow_sanctuary/rm_hollow_sanctuary.yy",
+      },
+    },
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
@@ -6347,6 +6389,18 @@
       "roomId":{
         "name":"rm_warehouse",
         "path":"rooms/rm_warehouse/rm_warehouse.yy",
+      },
+    },
+    {
+      "roomId":{
+        "name":"rm_hollow_approach",
+        "path":"rooms/rm_hollow_approach/rm_hollow_approach.yy",
+      },
+    },
+    {
+      "roomId":{
+        "name":"rm_hollow_sanctuary",
+        "path":"rooms/rm_hollow_sanctuary/rm_hollow_sanctuary.yy",
       },
     },
   ],

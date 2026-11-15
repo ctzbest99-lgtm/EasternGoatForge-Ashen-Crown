@@ -210,6 +210,8 @@ Suggested flags: `flag_entered_valemere`, `flag_alden_met`, `flag_lower_city_job
 ## 7. Chapter 4 — "The Old Name" **[C-confirmed title]**
 
 > **Approved script:** `CHAPTER4_SCRIPT.md` (approved Nov 15 2026) writes this chapter out in the Chapter 2–3 script format: approach, hollow halls, Caelan's records hall, the Aethari reveal, the Sanctuary Warden, the join, and the handoff to Chapter 5. Section 10 records the eight approved decisions, and levels 13–16 are confirmed.
+>
+> **Built (Nov 15 2026, unplaytested):** `rm_hollow_approach` and `rm_hollow_sanctuary`, `scr_ch4_story`, `scr_dialogue_data_ch4` (101 nodes), `scr_ch4_markers_data`, Caelan's three starting skills and spellbook, and the Valemere west-gate link. Nothing has been compiled or playtested.
 
 ### 7.1 The Hollow Sanctuary
 

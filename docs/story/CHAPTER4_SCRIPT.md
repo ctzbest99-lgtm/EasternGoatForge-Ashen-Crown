@@ -285,7 +285,7 @@ Chapter 4 completes stage 5 of the Act II quest plan and opens stage 6.
 
 [STAGE] Caelan takes his spellbook and leads them to the inner door. He does not explain what the sanctuary was for, what he is doing here, or how long he has been here. Do not answer those **[O]**.
 
-**Repeat talk, CA_MEET_R1** · Caelan:
+Repeat talk, **CA_MEET_R1** · Caelan:
 > The inner door first. Questions after, if we're both still standing.
 
 ---
@@ -419,11 +419,11 @@ Chapter 4 completes stage 5 of the Act II quest plan and opens stage 6.
 
 [STAGE] **Naming shift.** From here, every party line says **Aethari**, not Architects. UI, bestiary, item and quest text keep saying Architects. Examples for later chapters: Taren "Aethari doors" not "Architect doors"; Lyra "Aethari rubbish"; the quest text still "the Architect sanctuary."
 
-**Repeat talk, CA_JOIN_R1** · Caelan:
+Repeat talk, **CA_JOIN_R1** · Caelan:
 > I'll want the notes eventually. Not today.
 > Today I'd rather know which road we're taking.
 
-**Repeat talk, HS_R1** · Lyra:
+Repeat talk, **HS_R1** · Lyra:
 > He's quiet, he's broke, and he knows things.
 > Two out of three is better than most of my jobs.
 

@@ -111,6 +111,13 @@ function scr_item_database() {
         sellable: false,
         desc: "Lyra's starting weapon. ATK +2. (PLACEHOLDER.)"
     }));
+    // Caelan's spellbook: CHAPTER4_SCRIPT.md §6 says it is a starting weapon with no stats yet.
+    _add(_db, scr_item_make("item_spellbook", "Spellbook", "weapon", 0, {
+        atk_bonus: 0,
+        weapon_categories: ["spellbook"],
+        sellable: false,
+        desc: "Caelan's spellbook. No combat stats yet. (PLACEHOLDER.)"
+    }));
     // Chapter 3 key items (CHAPTER3_SCRIPT.md §4.1, §5).
     _add(_db, scr_item_make("item_nim_parcel", "Nim's Parcel", "key", 0, {
         sellable: false,
