@@ -15,7 +15,7 @@ The code is a real, generated project, not illustrative snippets, but nothing ha
 - `game/tilesets/ts_zone1.png` → Sprite `spr_ts_zone1`, then Tile Set `ts_zone1` (see `game/tilesets/README.md`).
 - `game/datafiles/overworld/` → Included Files (see `game/datafiles/README.md`).
 
-## Resources (roadmap steps 2–3: exploration + battle prototype)
+## Resources (Chapters 1–3: exploration, battle, party/progression, menus and saves)
 
 ### Scripts (Asset Browser → Create → Script; name must match exactly)
 | Script | Purpose |
@@ -81,6 +81,7 @@ The code is a real, generated project, not illustrative snippets, but nothing ha
 | `obj_save_menu` | none | — | `Create.gml` → Create; `Step.gml` → Step ▸ Step; `Draw_GUI.gml` → Draw ▸ Draw GUI; `Clean_Up.gml` → Clean Up. Created at runtime by `scr_save_menu_open`. |
 | `obj_save_point` | `spr_save_point_idle_strip8` (fallback `spr_interactable_placeholder`) | **Parent: `obj_interactable`** | `Create.gml` → Create; `Step.gml` → Step ▸ Step. Spawned by the map builder in the Greyhaven chapel and tavern, the Wrenfield Bent Post and the Valemere Salt Lamp. |
 | `obj_adventure_menu` | none | — | `Create.gml` → Create; `Step.gml` → Step ▸ Step; `Draw_GUI.gml` → Draw ▸ Draw GUI; `Clean_Up.gml` → Clean Up. Created at runtime on I / Tab (Items, Equip, Party Order, Status, Bestiary). |
+| `obj_night_overlay` | none | — | `Create.gml` → Create; `Draw_GUI.gml` → Draw ▸ Draw GUI. Created by `scr_build_warehouse()`: Chapter 3 heist-night darkness with lantern pools around the player and the warehouse lanterns (PLACEHOLDER until Design's lighting pass). |
 | `obj_save_toast` | none | — | `Create.gml` → Create; `Step.gml` → Step ▸ Step; `Draw_GUI.gml` → Draw ▸ Draw GUI. Created at runtime after a successful save. |
 
 `obj_dialogue_box` and `obj_battle_controller` draw only in Draw GUI. Adding a Draw GUI event does not disable default sprite drawing, but neither object has a sprite, so nothing else is drawn.

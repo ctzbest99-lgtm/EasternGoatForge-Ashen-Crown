@@ -13,8 +13,8 @@ A complete, ready-to-open GameMaker project lives in `gamemaker/AshenCrown.yyp` 
 - Tone: dark, atmospheric, serious, with occasional lighthearted moments.
 - Zone 1 standard enemies: Bandit and Fallen Knight.
 - Menu: the Adventure menu (I / Tab) with Items, Equip, Party Order, Status and Bestiary. Save/load is not a field-menu row — saving stays at the save crystals, inside a town's church or tavern.
-- Character art for Kael, the Bandit, and the Fallen Knight is in `game/sprites/` (16×24 overworld recommended; 32×48 battle strips). Import with `game/sprites/IMPORT.md`. Rare-encounter and Zone 1 boss sprites are still outstanding.
-- Zone 1 overworld and Old Watchtower maps are in `game/tilesets/` and `game/datafiles/`; import per `game/rooms/ROOM_SETUP.md`.
+- Art for Chapters 1–3 is in `game/sprites/`: the party, enemies (including the Ashbound Hunter and the Blackguard's phases), NPCs, portraits, items, the UI kit, the title sets and the Wrenfield / Valemere tilesets. Ten `*_placeholder` sprites remain, Lyra's overworld and battle strips among them. `game/sprites/IMPORT.md` is the full import table, and the generated project already contains every listed sprite.
+- Maps for Chapters 1–3 live in `game/tilesets/`, `game/datafiles/` (overworld chunks) and `game/maps/` (Chapter 2–3 room data); `game/rooms/ROOM_SETUP.md` documents the rooms and the generated project builds them from this data.
 
 ## Start here
 1. Read docs/GAME_DESIGN_DOCUMENT.md and docs/DECISIONS_AND_OPEN_QUESTIONS.md.

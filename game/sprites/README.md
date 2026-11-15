@@ -1,6 +1,6 @@
-# Zone 1 sprites (GameMaker)
+# Ashen Crown sprites (GameMaker)
 
-Art delivered for Ashen Crown. Import these in the IDE by hand; there is no `.yyp` here.
+Art delivered for Ashen Crown. The generated project in `../gamemaker/` already imports every sprite in [`IMPORT.md`](IMPORT.md); this folder is the source art and the manual-import reference if you work in the IDE.
 
 **Start with [`IMPORT.md`](IMPORT.md).** It is the full IDE table: asset name, file, frame count, origin, collision mask, and fps for every sprite the code looks up.
 
@@ -21,7 +21,7 @@ Death strips are 48 wide so the body can fall flat. They fall forward to the rig
 The knight's attack is 64 wide: 16 px of wind-up space behind and 32 px of reach in front.
 Use a fixed collision mask, such as the idle frame bbox, so the wider strips don't change hitboxes.
 
-Source generators (`src/*.py`, Python + Pillow) are included because they are small. Run `python3 src/hero.py` (and the other scripts) from this folder to regenerate. `__pycache__` is not committed. The Zone 1 tileset / overworld map is still being built and is not in this folder.
+Source generators (`src/*.py`, Python + Pillow) are included because they are small. Run `python3 src/hero.py` (and the other scripts) from this folder to regenerate. `__pycache__` is not committed. The tilesets live in `../tilesets/` and the overworld chunks in `../datafiles/`; both are already in the generated project.
 
 ## Overworld (top-down, FF1-style exploration)
 
@@ -40,7 +40,7 @@ Names: `spr_kael_ow_idle_<dir>.png`, `spr_kael_ow_walk_<dir>_strip4.png`, and th
 On a 16 px grid, the 16×24 sprites stand on their tile, and their head overlaps the tile above. Draw them sorted by y (`depth = -y`).
 Kael's longsword is sheathed on his hip in the overworld; the Bandit carries his knife low.
 
-There is no Fallen Knight overworld set yet (battle sprites only).
+The Fallen Knight enemy has battle strips only; the non-combat story sighting uses `spr_fallen_knight_story_ow16_*`. Every other character (party members, Chapter 1–3 NPCs, enemies) follows the same 16×24 / 32×48 conventions — see `IMPORT.md` for the full asset list.
 
 Battle assets are named `spr_hero_*` while overworld Kael assets are named `spr_kael_ow*`. The GML maps `actor_id "kael"` to the hero battle set.
 

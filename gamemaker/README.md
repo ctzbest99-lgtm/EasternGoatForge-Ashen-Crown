@@ -1,6 +1,8 @@
 # Ashen Crown — GameMaker project
 
-This folder is a complete, ready-to-open GameMaker project (`.yyp`), generated from the GML snippets, sprites, tileset, and map data in `../game/`. It replaces the manual IDE assembly described in `game/rooms/ROOM_SETUP.md`.
+This folder is a complete, ready-to-open GameMaker project (`.yyp`), generated from the GML, sprites, tilesets, and map data in `../game/`. It replaces the manual IDE assembly described in `game/rooms/ROOM_SETUP.md`.
+
+**Status:** Chapters 1–3 are built (18 rooms). Chapters 4–5 exist as enemy and encounter data only, Act III onward is design only, and there is no audio. Nothing has been compiled or playtested in GameMaker — `../docs/TEST_PLAN.md` is the manual check list and `../docs/DEVELOPMENT_ROADMAP.md` tracks what is left.
 
 ## How to open
 
