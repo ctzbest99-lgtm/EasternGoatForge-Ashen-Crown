@@ -2,11 +2,36 @@
 
 Do not fabricate .yy/.yyp metadata. Let GameMaker create resources. This document does not prove the project compiles.
 
-Room size, tile size, and resolution are still undecided in a final-design sense, but the Zone 1 maps are **16×16** tile maps: `rm_overworld` is **6400×4800** (400×300), `rm_old_watchtower` is **960×720** (60×45), `rm_watchtower_basement` is **704×512** (44×32), and the five Greyhaven interiors are 320×240 or similar (see the table in section 6a). A camera is required.
+Every built room is a **16×16** tile map and needs a camera (a 320×180 viewport). The 18 rooms are listed in the index below; the sections after it give the per-room setup. Room size and resolution are still undecided in a final-design sense — the sizes here are what the builders and the generated project currently use.
 
 The overworld player uses **16×24** Kael sprites on that 16×16 grid (`depth = -y`). See docs/DECISIONS_AND_OPEN_QUESTIONS.md.
 
 **Sprite import:** follow [`game/sprites/IMPORT.md`](../sprites/IMPORT.md) for every character PNG (asset name, frames, origin, mask, fps). Code uses `asset_get_index` and still compiles if a sprite is missing.
+
+## Room index
+
+| Room | Size (px) | Tiles | Chapter | Creation Code / contents |
+|---|---|---|---|---|
+| `rm_title` | 320×180 | — (GUI) | Title | `obj_title` + `obj_game_controller`; no player, no builder (section 0) |
+| `rm_overworld` | 6400×4800 | 400×300 | 1 | `scr_build_overworld();` |
+| `rm_old_watchtower` | 960×720 | 60×45 | 1 | `scr_build_old_watchtower();` |
+| `rm_watchtower_basement` | 704×512 | 44×32 | 1 | `scr_build_watchtower_basement();` |
+| `rm_greyhaven_varyn_house` | 320×240 | 20×15 | 1 | `scr_build_greyhaven_varyn_house();` |
+| `rm_greyhaven_tavern` | 384×256 | 24×16 | 1 | `scr_build_greyhaven_tavern();` — save crystal at (10, 6) |
+| `rm_greyhaven_chapel` | 320×288 | 20×18 | 1 | `scr_build_greyhaven_chapel();` — save crystal at (10, 7) |
+| `rm_greyhaven_blacksmith` | 320×240 | 20×15 | 1 | `scr_build_greyhaven_blacksmith();` |
+| `rm_greyhaven_general_store` | 320×240 | 20×15 | 1 | `scr_build_greyhaven_general_store();` |
+| `rm_battle_test` | 640×360 | — (battle room) | — | `obj_battle_controller` only (section 7) |
+| `rm_millhaven_road` | 512×960 | 32×60 | 2 | `scr_build_millhaven_road();` |
+| `rm_wrenfield` | 896×704 | 56×44 | 2 | `scr_build_wrenfield();` |
+| `rm_wrenfield_bent_post` | 384×256 | 24×16 | 2 | `scr_build_wrenfield_bent_post();` — closed/open patch, save crystal at (4, 9) |
+| `rm_wrenfield_store` | 320×224 | 20×14 | 2 | `scr_build_wrenfield_store();` |
+| `rm_valemere_road` | 384×704 | 24×44 | 3 | `scr_build_valemere_road();` |
+| `rm_valemere` | 640×480 | 40×30 | 3 | `scr_build_valemere();` |
+| `rm_salt_lamp` | 320×224 | 20×14 | 3 | `scr_build_salt_lamp();` — save crystal at (4, 6) |
+| `rm_warehouse` | 416×288 | 26×18 | 3 | `scr_build_warehouse();` + `obj_night_overlay` |
+
+Chapters 4–5 have no rooms yet: their encounter tables, level bands and boss groups exist in `scr_encounter_tables` / `scr_enemy_database`, but the Hollow Sanctuary and the Blackwood garrison are unbuilt. The 12 overworld entrances still marked `status: "stub"` (Rimehold, Saltreach, the Blackwood doors, the Ironspine and Drowned Coast ruins, the Crownveil breach, …) point at rooms that do not exist and show `[rm_… is not built yet.]`.
 
 ## 0. Title room (`rm_title`) — first in Room Order
 1. Create room `rm_title`. Size 320×180 (or 640×360 if you prefer a 2× room; the menu is drawn in Draw GUI either way). Persistent off. Clear colour black.
@@ -53,11 +78,12 @@ Record imported assets in docs/ASSET_INVENTORY.md.
 Create each object in the table in `game/README.md` with the listed sprite, flags, and events, then paste the matching `.gml` file into each event:
 - **obj_game_controller:** no sprite, tick **Persistent**, untick Visible. Events: Create, Step ▸ Begin Step, Step ▸ End Step, Other ▸ Room Start. Place in `rm_title` (and a spare in `rm_overworld` is fine — the duplicate destroys itself).
 - **obj_title:** no sprite. Events: Create, Step, Draw ▸ Draw GUI. Place only in `rm_title`.
-- **obj_inventory_menu:** no sprite. Events: Create, Step, Draw ▸ Draw GUI, Clean Up. Do not place in a room; `obj_game_controller` creates it when I or Tab is pressed. Tabs: Items / Equip / Key (Q/E). Z uses a consumable or opens the Equip slot list.
+- **obj_adventure_menu:** no sprite. Events: Create, Step, Draw ▸ Draw GUI, Clean Up. Do not place in a room; `obj_game_controller` opens it on I / Tab. Rows: Items, Equip, Party Order, Status, Bestiary, Close — Items and Equip hand off to `obj_inventory_menu`. Saving is deliberately not a row.
+- **obj_inventory_menu:** no sprite. Events: Create, Step, Draw ▸ Draw GUI, Clean Up. Do not place in a room; it is opened from the Adventure menu's Items / Equip rows. Tabs: Items / Equip / Key (Q/E). Z uses a consumable or opens the Equip slot list.
 - **obj_shop_menu:** no sprite. Events: Create, Step, Draw ▸ Draw GUI, Clean Up. Do not place in a room; talking to Marda or (after the pendant) Pell opens it after their dialogue. Tabs Buy / Sell / Exit sit 12px above the list window and are drawn after it.
 - **obj_save_menu:** no sprite. Events: Create, Step, Draw ▸ Draw GUI, Clean Up. Do not place in a room; opened by `obj_save_point`, `CV_END`, or (if `DEBUG_SAVE_ANYWHERE` is true) F5. Overwrite confirm defaults to No. A successful save creates `obj_save_toast`.
 - **obj_save_toast:** no sprite. Events: Create, Step, Draw ▸ Draw GUI. Do not place in a room. Draws `spr_ui_toast_saved` (origin (32, 0)) at (160, 8).
-- **obj_save_point:** parent `obj_interactable`. Events: Create, Step. Sprite: `spr_save_point_idle_strip8` (16×24, origin (8, 23), 8 fps loop); activate uses `spr_save_point_activate_strip8` (32×40, origin (16, 39), 12 fps once) then opens the save menu. Import a feet mask (0, 16, 15, 23). The map builder places one in the chapel and one in the tavern — do not also hand-place them unless you are testing.
+- **obj_save_point:** parent `obj_interactable`. Events: Create, Step. Sprite: `spr_save_point_idle_strip8` (16×24, origin (8, 23), 8 fps loop); activate uses `spr_save_point_activate_strip8` (32×40, origin (16, 39), 12 fps once) then opens the save menu. Import a feet mask (0, 16, 15, 23). The map builder places four: Greyhaven Chapel (10, 7), Greyhaven Tavern (10, 6), the Wrenfield Bent Post (4, 9) and the Valemere Salt Lamp (4, 6) — do not also hand-place them unless you are testing. Saving and loading only work inside a town's church or tavern (`scr_save_allowed_here()`), so a crystal placed anywhere else shows the blocked line instead of the slot panel.
 - **obj_player:** sprite `spr_kael_ow16_idle_down` (or `spr_player_placeholder` if the sheet is not imported yet). Events: Create, Step. The Step event also picks idle/walk by facing, plays the walk at 8 fps, and sets `depth = -y`.
 - **obj_solid:** sprite `spr_solid_placeholder`. No events.
 - **obj_interactable:** (also add a Step event: `Step.gml` — y-sort, Tomas pallet pose, chest open strip)  sprite `spr_interactable_placeholder` (16×16 Top Left preferred; a larger placeholder is scaled to one tile by the map spawner), **Parent = obj_solid** (blocks movement). Event: Create. The spawner also sets `script_id` / `struck_lines` / item fields from map data.
@@ -71,9 +97,10 @@ Create each object in the table in `game/README.md` with the listed sprite, flag
 - **obj_story_trigger:** sprite `spr_story_trigger_placeholder` or `spr_story_encounter_placeholder`. Events: Create, Other ▸ Room Start, Step. **No parent, not solid.** Used for `BG_INTRO` on arena entry. See `game/objects/obj_story_trigger/README.md`.
 - **obj_trap_plate:** sprite `spr_trap_plate_placeholder` or `spr_encounter_trigger_placeholder`. Events: Create, Step. **No parent, not solid.** Basement trap hall + two Watchtower grounds plates. See `game/objects/obj_trap_plate/README.md`.
 - **obj_zone_entrance:** sprite any 16×16 (e.g. `spr_encounter_trigger_placeholder`). Events: Create, Step. No parent, not solid. Honours `requires_flag` / `requires_item` / `sets_flag`. See `game/objects/obj_zone_entrance/README.md`.
+- **obj_night_overlay:** no sprite. Events: Create, Draw ▸ Draw GUI. Do not place in a room; `scr_build_warehouse()` creates it for the Chapter 3 heist-night darkness with lantern pools (PLACEHOLDER lighting until Design's pass). See `game/objects/obj_night_overlay/README.md`.
 
 ## 4. Tileset and Included Files (do this before the rooms)
-1. **Tileset:** follow `game/tilesets/README.md`. You need a Sprite `spr_ts_zone1` (import `game/tilesets/ts_zone1.png`, do not split it) and a Tile Set named exactly **`ts_zone1`**, tile size 16×16, offset 0, separation 0.
+1. **Tileset:** follow `game/tilesets/README.md`. You need a Sprite `spr_ts_zone1` (import `game/tilesets/ts_zone1.png`, do not split it) and a Tile Set named exactly **`ts_zone1`**, tile size 16×16, offset 0, separation 0. The Chapter 2–3 rooms need the second tileset, `ts_wrenfield` (section 6c).
 2. **Included Files:** copy `game/datafiles/overworld/` into the project's Included Files so `overworld/ow_ground.bin` (and the other four `.bin` layers, plus `overworld/chunks/` as a fallback) can be found at runtime. See `game/datafiles/README.md`.
 
 ## 5. rm_overworld (6400×4800, 400×300 tiles)
@@ -140,7 +167,7 @@ Data is embedded in the scripts. The source CSVs, marker JSON and renders are un
    | `rm_wrenfield_store` | 320×224 | `scr_build_wrenfield_store();` |
    Each builder picks the before / after state from `flag_execution_stopped`.
 4. **Overworld:** nothing to add. `scr_build_overworld()` now paints the Millhaven Road branch and spawns its three markers. Ignore the `scr_wf_overworld_patch();` step in Design's README: in the repo that function only returns data. The entrance at tile (303,184) stays shut ("Crown checkpoint. No passage south without the Reeve's leave.") until `flag_act2_started`. That flag is set when Kael wakes at the Crownveil door after the Chapter 1 save prompt.
-5. **West road:** the exit `west_road_to_valemere` targets `rm_valemere_road`, which does not exist yet (Chapter 3). Until it does, the exit plays WF_HANDOFF and "To be continued.", sets `flag_chapter2_complete`, moves the party to the overworld spawn `from_wrenfield_west` (east of Valemere) and opens the save prompt. When `rm_valemere_road` exists, the same exit goes there instead.
+5. **West road:** the exit `west_road_to_valemere` targets `rm_valemere_road` (built in Chapter 3), plays WF_HANDOFF, sets `flag_chapter2_complete` and lands on the road. Its `fallback_room` / `fallback_spawn` (`rm_overworld` / `from_wrenfield_west`) are a safety net only, used if that room ever resolves to nothing.
 6. **Optional object:** `obj_story_npc` is used for the gallows scene (Calder, Taren, Bram and the prisoners). `obj_story_trigger` is used for walk-on beats. Both already exist from Zone 1.
 
 ## 6d. Chapter 3 rooms (feature/chapter3)
@@ -155,7 +182,7 @@ Data is embedded in the scripts (generated by `tools/gen_ch3_rooms.py`; markers 
    | `rm_valemere` | 640×480 | `scr_build_valemere();` |
    | `rm_salt_lamp` | 320×224 | `scr_build_salt_lamp();` |
    | `rm_warehouse` | 416×288 | `scr_build_warehouse();` |
-5. **Wiring:** the Wrenfield west exit now goes to `rm_valemere_road` (its `west_road_to_valemere` marker has no fallback any more — the room exists). `rm_valemere`'s west gate (`west_country_road`) is the Chapter 3 end: `scr_ch3_exit_script` plays VM_HANDOFF, sets `flag_chapter3_complete` and opens the save prompt; `rm_west_country_road` itself is Chapter 4 and does not exist, so leaving is a no-op after the prompt.
+5. **Wiring:** the Wrenfield west exit goes to `rm_valemere_road` (its `west_road_to_valemere` marker is `status: "built"`; the overworld fallback stays only as a safety net). `rm_valemere`'s west gate (`west_country_road`) is the Chapter 3 end: `scr_ch3_exit_script` plays VM_HANDOFF, sets `flag_chapter3_complete` and opens the save prompt; `rm_west_country_road` itself is Chapter 4 and does not exist, so leaving is a no-op after the prompt.
 6. **The generator:** `python3 gen_gamemaker.py` now emits all Chapter 2 + 3 rooms and `ts_wrenfield` into `gamemaker/`; `python3 validate_gamemaker.py` covers them (player present, layers, refs).
 
 ## 7. rm_battle_test (placeholder 640×360)
@@ -168,7 +195,7 @@ Data is embedded in the scripts (generated by `tools/gen_ch3_rooms.py`; markers 
 7. **Quick multi-enemy test without Act II rooms:** in the debugger (or a temporary key in `obj_game_controller`), call `scr_encounter_start("grp_reeve_calder", "test_calder")` or `scr_encounter_start(["crown_patrolman", "crown_crossbowman", "occupation_soldier"], "test_crown")` while standing on the overworld. These are Chapter 2 levels (8–10); turn on `DEBUG_ADD_FULL_ROSTER` and expect a hard fight with a Chapter 1 party.
 
 ## 8. Compile and run
-Run (F5). Expected: the overworld loads (watch the compile / first-room time; 120k tiles × 5 layers), Kael uses the 16×24 idle/walk sprites (or the placeholder if they are not imported) and is y-sorted with `depth = -y`, the camera follows him and stops at the room edges, he starts on the south road outside Greyhaven (199, 186) and `GH_ARRIVAL` plays once, collision tiles block movement, tree tops on the Overhead layer (depth -10000) draw above him, building doors enter the five interiors, the North Gate is barred until the pendant is found in Varyn House, walking a farmlands / Old Road / bandit-camp zone can start a random fight, signs use the confirmed Chapter 1 wording, Tomas and Pell are inside the Blacksmith (`GH_TOMAS`), Wenna, Dov and Corwin can be spoken to, the Fallen Knight story NPC can be met on the camp path, the Watchtower Hunter trigger at (33, 33) is walkable, the basement trap hall / key chest / mural work, Renn is still a placeholder, a Bandit or new PLACEHOLDER enemy battle plays clips or rectangles, victory returns to the exact overworld spot, and defeat wakes the party up at Greyhaven `town_square` (3192, 2832) with the gold/XP penalty dialogue. Then run docs/TEST_PLAN.md, including the Sprites and Zone 1 map cases.
+Run (F5). Expected: the overworld loads (watch the compile / first-room time; 120k tiles × 5 layers), Kael uses the 16×24 idle/walk sprites (or the placeholder if they are not imported) and is y-sorted with `depth = -y`, the camera follows him and stops at the room edges, he starts on the south road outside Greyhaven (199, 186) and `GH_ARRIVAL` plays once, collision tiles block movement, tree tops on the Overhead layer (depth -10000) draw above him, building doors enter the five interiors, the North Gate is barred until the pendant is found in Varyn House, walking a farmlands / Old Road / bandit-camp zone can start a random fight, signs use the confirmed Chapter 1 wording, Tomas and Pell are inside the Blacksmith (`GH_TOMAS`), Wenna, Dov and Corwin can be spoken to, the Fallen Knight story NPC can be met on the camp path, the Watchtower Hunter trigger at (33, 33) is walkable, the basement trap hall / key chest / mural work, Renn is still a placeholder, a Bandit or new PLACEHOLDER enemy battle plays clips or rectangles, victory returns to the exact overworld spot, and defeat wakes the party up at Greyhaven `town_square` (3192, 2832) with the gold/XP penalty dialogue. Then run docs/TEST_PLAN.md, including the Sprites and Zone 1 map cases. For a Chapter 2–3 smoke run: wake at the Crownveil door → optional Greyhaven → Millhaven Road → Wrenfield (gate, gallows, Calder, Taren joins) → west road (WF_HANDOFF) → Valemere Road (the FK_03 sighting) → Valemere (gate scene, Alden) → Salt Lamp (Nim, Lyra) → warehouse (heist night, the notes, the Debtman) → west gate (VM_HANDOFF). Save crystals are in the Greyhaven chapel and tavern, the Bent Post and the Salt Lamp.
 
 If the Included Files are missing, the debug log will print `scr_build_overworld: missing overworld/chunks/...` and the ground will be empty. If `ts_zone1` is not a Tile Set asset, tile layers will be blank or the script will fail.
 
