@@ -7,7 +7,7 @@
   "inheritLayers":false,
   "instanceCreationOrder":[
     {
-      "name":"inst_42D48557",
+      "name":"inst_FC82DDB9",
       "path":"PLACEHOLDER",
     },
   ],
@@ -29,7 +29,7 @@
       "instances":[
         {
           "$GMRInstance":"v4",
-          "%Name":"inst_42D48557",
+          "%Name":"inst_FC82DDB9",
           "colour":4294967295,
           "frozen":false,
           "hasCreationCode":false,
@@ -40,7 +40,7 @@
           "inheritedItemId":null,
           "inheritItemSettings":false,
           "isDnd":false,
-          "name":"inst_42D48557",
+          "name":"inst_FC82DDB9",
           "objectId":{
             "name":"obj_player",
             "path":"objects/obj_player/obj_player.yy",

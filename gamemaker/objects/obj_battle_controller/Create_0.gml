@@ -31,6 +31,8 @@ current_turn = undefined;
 state = BATTLE_STATE.INTRO;
 next_state = BATTLE_STATE.INTRO;
 message = "";
+message_lines = [];
+message_line_i = 0;
 battle_result = "";
 rewards_granted = false;
 finished = false;
@@ -86,6 +88,13 @@ if (is_struct(_pending) && variable_struct_exists(_pending, "area") && is_string
     battle_area = scr_ch1_battle_area(_lead_id, is_struct(_pending) ? _pending.encounter_id : "");
 }
 battle_bg = scr_ch1_battle_bg(battle_area);
+
+// Combat tutorial (CHAPTER1_SCRIPT.md §2.1): the guaranteed first Bandit fight.
+// FL_TUTORIAL_SYS_01-04 play at the intro; SYS_05 the first time Kael drops
+// below 25% HP. flag_tutorial_done / random encounters are handled in scr_story.gml.
+tutorial_active = (is_struct(_pending) && variable_struct_exists(_pending, "encounter_id")
+    && _pending.encounter_id == "zone01_first_bandit");
+tutorial_low_shown = false;
 
 enemies = [];
 var _i;
@@ -179,7 +188,19 @@ state_after_action = function() {
 
 /// Show a message, wait for confirm, then enter _next.
 queue_message = function(_text, _next) {
+    message_lines = [];
+    message_line_i = 0;
     message = _text;
+    next_state = _next;
+    state = BATTLE_STATE.MESSAGE;
+};
+
+/// Show several messages one confirm apart (combat tutorial lines), then enter _next.
+queue_messages = function(_lines, _next) {
+    if (!is_array(_lines) || array_length(_lines) == 0) { queue_message("", _next); return; }
+    message_lines = _lines;
+    message_line_i = 0;
+    message = _lines[0];
     next_state = _next;
     state = BATTLE_STATE.MESSAGE;
 };
@@ -501,7 +522,14 @@ run_skill = function(_side, _idx, _sk, _targets) {
                 _entry.damage = _r.damage;
                 _entry.weak = _r.weak;
                 if (_tgt.is_guarding) {
-                    _entry.damage = scr_apply_guard(_entry.damage, true);
+                    // Cheap Shot (canon Bandit ability, CHAPTER1_SCRIPT.md §2.1 /
+                    // FL_TUTORIAL_SYS_03): hits harder against a defending target
+                    // instead of being reduced by Guard.
+                    if (variable_struct_exists(_sk, "anti_guard") && _sk.anti_guard) {
+                        _entry.damage = max(1, floor(_entry.damage * BATTLE_CHEAP_SHOT_PCT));
+                    } else {
+                        _entry.damage = scr_apply_guard(_entry.damage, true);
+                    }
                     _entry.guarded = true;
                 }
                 // Physical misses: a blind user, or a veiled (faded) target.
@@ -557,7 +585,7 @@ run_skill = function(_side, _idx, _sk, _targets) {
             var _sa = get_actor(_se.side, _se.index);
             var _word = (_sk.status == "blind") ? " is blinded!" : ((_sk.status == "sleep") ? " falls asleep!"
                 : ((_sk.status == "bleed") ? " starts bleeding!" : ((_sk.status == "slow") ? " is slowed!"
-                : (" is afflicted (" + _sk.status + ")!"))));
+                : ((_sk.status == "poison") ? " is poisoned!" : (" is afflicted (" + _sk.status + ")!")))));
             _sp += (_sp == "" ? "" : " ") + _sa.name + (_se.status_ok ? _word : " resists.");
         }
         _text = _user.name + " uses " + _sk.name + "! " + _sp;

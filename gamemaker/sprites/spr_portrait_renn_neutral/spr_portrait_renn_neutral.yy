@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"baf11654-a157-4464-989f-168eee9c0bdb",
-      "name":"baf11654-a157-4464-989f-168eee9c0bdb",
+      "%Name":"c54ccfe1-db35-4119-bd14-8f5604f57296",
+      "name":"c54ccfe1-db35-4119-bd14-8f5604f57296",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"b2f05992-bbf6-4dc3-9ee4-105b567022be",
+      "%Name":"986842cb-515e-478c-a325-03883ad0791d",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"b2f05992-bbf6-4dc3-9ee4-105b567022be",
+      "name":"986842cb-515e-478c-a325-03883ad0791d",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"baf11654-a157-4464-989f-168eee9c0bdb",
+                    "name":"c54ccfe1-db35-4119-bd14-8f5604f57296",
                     "path":"sprites/spr_portrait_renn_neutral/spr_portrait_renn_neutral.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"7df07d0c-2768-4835-9535-59951c82d34f",
+              "id":"65698eca-7723-4d4a-b3e4-2be978363bd4",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

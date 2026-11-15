@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"8c38cf9e-21ca-4137-beb7-ff8a1651c5e6",
-      "name":"8c38cf9e-21ca-4137-beb7-ff8a1651c5e6",
+      "%Name":"699f5d01-bbc1-4ec7-ba61-f737acae8392",
+      "name":"699f5d01-bbc1-4ec7-ba61-f737acae8392",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"8cab6940-ce0a-4e48-bf85-5142bbebb967",
+      "%Name":"2fdd8980-3ece-48de-be16-b977d70ca283",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"8cab6940-ce0a-4e48-bf85-5142bbebb967",
+      "name":"2fdd8980-3ece-48de-be16-b977d70ca283",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"8c38cf9e-21ca-4137-beb7-ff8a1651c5e6",
+                    "name":"699f5d01-bbc1-4ec7-ba61-f737acae8392",
                     "path":"sprites/spr_ts_wrenfield/spr_ts_wrenfield.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"0ef8a229-fbff-4f6f-afc7-af21324ee4a2",
+              "id":"675855c0-79b5-43a9-90d4-a661ab8c1203",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

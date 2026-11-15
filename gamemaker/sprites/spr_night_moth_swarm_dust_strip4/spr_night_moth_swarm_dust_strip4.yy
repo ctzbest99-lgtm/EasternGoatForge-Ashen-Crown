@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"3eb42f88-ceec-44ce-97c7-732f89e6f692",
-      "name":"3eb42f88-ceec-44ce-97c7-732f89e6f692",
+      "%Name":"79bb029a-82b5-493e-9ba5-edba509217ae",
+      "name":"79bb029a-82b5-493e-9ba5-edba509217ae",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"3a2560d3-73c5-4131-b12e-0a600aaca139",
-      "name":"3a2560d3-73c5-4131-b12e-0a600aaca139",
+      "%Name":"555b21df-5a34-4a09-ae43-fa185fddb6a6",
+      "name":"555b21df-5a34-4a09-ae43-fa185fddb6a6",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"66f56bdd-b94f-473e-977a-2179ab35f9a1",
-      "name":"66f56bdd-b94f-473e-977a-2179ab35f9a1",
+      "%Name":"5644f343-93b7-465c-a93e-d2c136f69042",
+      "name":"5644f343-93b7-465c-a93e-d2c136f69042",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"65df6379-bdfb-47ac-a2dc-4dee6dba014c",
-      "name":"65df6379-bdfb-47ac-a2dc-4dee6dba014c",
+      "%Name":"ad4d9d03-3864-4d1e-9580-468c016bc736",
+      "name":"ad4d9d03-3864-4d1e-9580-468c016bc736",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"15f28c57-7a89-4211-ad14-761764c2cb1d",
+      "%Name":"b0a2dfdc-4178-4af7-8571-5410a4e8dbd5",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"15f28c57-7a89-4211-ad14-761764c2cb1d",
+      "name":"b0a2dfdc-4178-4af7-8571-5410a4e8dbd5",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"3eb42f88-ceec-44ce-97c7-732f89e6f692",
+                    "name":"79bb029a-82b5-493e-9ba5-edba509217ae",
                     "path":"sprites/spr_night_moth_swarm_dust_strip4/spr_night_moth_swarm_dust_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"876a869c-6dbe-4501-a5a2-369dd827a27d",
+              "id":"bf2fc949-0879-4e57-9a6f-3149999a6841",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"3a2560d3-73c5-4131-b12e-0a600aaca139",
+                    "name":"555b21df-5a34-4a09-ae43-fa185fddb6a6",
                     "path":"sprites/spr_night_moth_swarm_dust_strip4/spr_night_moth_swarm_dust_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"66900a3e-b4e0-4313-b837-d31e8acb59cf",
+              "id":"18924ae4-0473-46e5-8c43-24caeed43ad4",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"66f56bdd-b94f-473e-977a-2179ab35f9a1",
+                    "name":"5644f343-93b7-465c-a93e-d2c136f69042",
                     "path":"sprites/spr_night_moth_swarm_dust_strip4/spr_night_moth_swarm_dust_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"25514c69-b69b-47a1-8b0d-5e9bae012087",
+              "id":"fe070f16-e353-412f-8e10-ded55904e8b9",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"65df6379-bdfb-47ac-a2dc-4dee6dba014c",
+                    "name":"ad4d9d03-3864-4d1e-9580-468c016bc736",
                     "path":"sprites/spr_night_moth_swarm_dust_strip4/spr_night_moth_swarm_dust_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"9e2054c3-35a5-429b-a05c-91d4ae301a84",
+              "id":"f39197f5-c6a6-4d98-90e8-50f84585777c",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

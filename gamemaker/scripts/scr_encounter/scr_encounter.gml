@@ -54,6 +54,7 @@ function scr_battle_finish(_result) {
     scr_blackguard_on_battle_finish(_result, _pending);
     scr_ch2_on_battle_finish(_result, _pending);
     scr_ch3_on_battle_finish(_result, _pending);
+    scr_ch1_on_battle_finish(_result, _pending);
     scr_party_clear_guard(_g.party);
     scr_battle_clear_party_battle_state(_result == "victory");
 
@@ -192,6 +193,12 @@ function scr_random_encounter_tick(_pixels_moved) {
     if (!RANDOM_ENCOUNTERS_ENABLED || !_g.random_encounters_enabled) return;
     if (_g.battle_active || _g.transition_active || _g.dialogue_open) return;
     if (!instance_exists(obj_player) || _pixels_moved <= 0) return;
+    // CHAPTER1_SCRIPT.md §2.1: no random battles before the guaranteed tutorial
+    // fight; they switch on with flag_tutorial_done (set on the tutorial win).
+    // The cleared-encounters check keeps old saves (tutorial already won before
+    // the flag existed) from losing their random encounters.
+    if (!scr_flag_get("flag_tutorial_done")
+        && !(_g.cleared_encounters[$ "zone01_first_bandit"])) return;
 
     // Fixed story/boss triggers win over a random roll on the same tile.
     var _on_trigger = false;

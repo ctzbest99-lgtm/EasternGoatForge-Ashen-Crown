@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"26e16eec-948f-4d00-8a70-7700d12ebf4b",
-      "name":"26e16eec-948f-4d00-8a70-7700d12ebf4b",
+      "%Name":"8d551a2b-27df-4a7d-8000-3f03016342fd",
+      "name":"8d551a2b-27df-4a7d-8000-3f03016342fd",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"817c41fd-1034-4bd5-8ac6-dfbbb6dd206b",
+      "%Name":"9b31f9b0-febe-4567-a671-9a9d4d47e617",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"817c41fd-1034-4bd5-8ac6-dfbbb6dd206b",
+      "name":"9b31f9b0-febe-4567-a671-9a9d4d47e617",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"26e16eec-948f-4d00-8a70-7700d12ebf4b",
+                    "name":"8d551a2b-27df-4a7d-8000-3f03016342fd",
                     "path":"sprites/spr_ui_tab_sell_normal/spr_ui_tab_sell_normal.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"71c4f306-6481-4df1-917a-157f58e0ff4e",
+              "id":"e5b93ac0-5497-4bb4-b5fe-3027d6b20f96",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

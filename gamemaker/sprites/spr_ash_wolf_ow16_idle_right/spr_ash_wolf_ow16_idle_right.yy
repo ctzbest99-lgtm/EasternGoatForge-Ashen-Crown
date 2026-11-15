@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"5a3e5f8d-ef88-42b0-a012-703c17cf327a",
-      "name":"5a3e5f8d-ef88-42b0-a012-703c17cf327a",
+      "%Name":"6bb22036-9735-46c8-95af-1dd9bf4ccef2",
+      "name":"6bb22036-9735-46c8-95af-1dd9bf4ccef2",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"72e3d460-65ce-4869-85fd-3ae3c3efdda5",
+      "%Name":"c40aaa85-11bb-492d-b1dc-6ef76cba265b",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"72e3d460-65ce-4869-85fd-3ae3c3efdda5",
+      "name":"c40aaa85-11bb-492d-b1dc-6ef76cba265b",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"5a3e5f8d-ef88-42b0-a012-703c17cf327a",
+                    "name":"6bb22036-9735-46c8-95af-1dd9bf4ccef2",
                     "path":"sprites/spr_ash_wolf_ow16_idle_right/spr_ash_wolf_ow16_idle_right.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"ab79bbcb-23a9-49c2-b61f-25ac130b449d",
+              "id":"ee062f2a-b461-4224-8f68-5f9da4647350",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

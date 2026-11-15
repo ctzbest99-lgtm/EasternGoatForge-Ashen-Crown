@@ -14,43 +14,43 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"bef6179c-13d8-4ebd-90fa-0187836c1c6d",
-      "name":"bef6179c-13d8-4ebd-90fa-0187836c1c6d",
+      "%Name":"49a8e1b4-5f8e-4aae-98fb-a7501dda1973",
+      "name":"49a8e1b4-5f8e-4aae-98fb-a7501dda1973",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"4987cbe6-77e8-4820-8733-ddc665344015",
-      "name":"4987cbe6-77e8-4820-8733-ddc665344015",
+      "%Name":"00ac846e-59e4-451f-8bef-b5d33566712b",
+      "name":"00ac846e-59e4-451f-8bef-b5d33566712b",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"a73c03ea-4836-4005-84f0-06a89e33e1fa",
-      "name":"a73c03ea-4836-4005-84f0-06a89e33e1fa",
+      "%Name":"56175276-2891-4a81-9ddf-f8071362b941",
+      "name":"56175276-2891-4a81-9ddf-f8071362b941",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"5c22b969-c41c-455b-9cd8-38a2264dee29",
-      "name":"5c22b969-c41c-455b-9cd8-38a2264dee29",
+      "%Name":"0fce4ba9-9a9c-4e47-ad9f-93e88c334724",
+      "name":"0fce4ba9-9a9c-4e47-ad9f-93e88c334724",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"2ff66713-3baf-40b4-80f8-40af023954ac",
-      "name":"2ff66713-3baf-40b4-80f8-40af023954ac",
+      "%Name":"94043886-f9fc-4659-9b47-36409e91410d",
+      "name":"94043886-f9fc-4659-9b47-36409e91410d",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"ce91f84f-3d05-413c-b59e-6c583b110740",
-      "name":"ce91f84f-3d05-413c-b59e-6c583b110740",
+      "%Name":"1ba370cc-3647-4a26-a617-11a0f1a1094e",
+      "name":"1ba370cc-3647-4a26-a617-11a0f1a1094e",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -62,11 +62,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"443b4f56-8665-4a52-9dcb-2bf2b3fb32a2",
+      "%Name":"e70fe1c8-919b-4560-a717-c5057a0faecf",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"443b4f56-8665-4a52-9dcb-2bf2b3fb32a2",
+      "name":"e70fe1c8-919b-4560-a717-c5057a0faecf",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -139,7 +139,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"bef6179c-13d8-4ebd-90fa-0187836c1c6d",
+                    "name":"49a8e1b4-5f8e-4aae-98fb-a7501dda1973",
                     "path":"sprites/spr_shade_stalker_death_strip6/spr_shade_stalker_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -147,7 +147,7 @@
                 },
               },
               "Disabled":false,
-              "id":"b91fd3c5-1a03-4100-ba78-4daa9c80c4f3",
+              "id":"9119bdcf-14d0-4425-82c0-ae5a76337b3b",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -161,7 +161,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"4987cbe6-77e8-4820-8733-ddc665344015",
+                    "name":"00ac846e-59e4-451f-8bef-b5d33566712b",
                     "path":"sprites/spr_shade_stalker_death_strip6/spr_shade_stalker_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -169,7 +169,7 @@
                 },
               },
               "Disabled":false,
-              "id":"46a41e7d-b32c-4ca6-bfa6-8697688f9119",
+              "id":"dd5baf81-a82d-41ca-9e35-5d5b2add8c03",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -183,7 +183,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a73c03ea-4836-4005-84f0-06a89e33e1fa",
+                    "name":"56175276-2891-4a81-9ddf-f8071362b941",
                     "path":"sprites/spr_shade_stalker_death_strip6/spr_shade_stalker_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -191,7 +191,7 @@
                 },
               },
               "Disabled":false,
-              "id":"1b457ab0-f095-4b40-b201-43b55ff537ef",
+              "id":"023384f9-e675-4855-8e32-21212860096b",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -205,7 +205,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"5c22b969-c41c-455b-9cd8-38a2264dee29",
+                    "name":"0fce4ba9-9a9c-4e47-ad9f-93e88c334724",
                     "path":"sprites/spr_shade_stalker_death_strip6/spr_shade_stalker_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -213,7 +213,7 @@
                 },
               },
               "Disabled":false,
-              "id":"3f25d50e-aed8-42a2-826b-0d664f9267b7",
+              "id":"b432dbe7-3da6-457c-8feb-746ccdc71021",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,
@@ -227,7 +227,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"2ff66713-3baf-40b4-80f8-40af023954ac",
+                    "name":"94043886-f9fc-4659-9b47-36409e91410d",
                     "path":"sprites/spr_shade_stalker_death_strip6/spr_shade_stalker_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -235,7 +235,7 @@
                 },
               },
               "Disabled":false,
-              "id":"43a3301b-e22b-4060-9acd-9f66a2f6c002",
+              "id":"3761dc54-e62b-489e-a4e7-7f8697532eb4",
               "IsCreationKey":false,
               "Key":4.0,
               "Length":1.0,
@@ -249,7 +249,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"ce91f84f-3d05-413c-b59e-6c583b110740",
+                    "name":"1ba370cc-3647-4a26-a617-11a0f1a1094e",
                     "path":"sprites/spr_shade_stalker_death_strip6/spr_shade_stalker_death_strip6.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -257,7 +257,7 @@
                 },
               },
               "Disabled":false,
-              "id":"a20a4cae-ebaa-4d96-9aa8-b2d33c601d1e",
+              "id":"62674966-0ce6-4b3d-bfe2-897e5d4866ca",
               "IsCreationKey":false,
               "Key":5.0,
               "Length":1.0,

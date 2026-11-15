@@ -95,6 +95,29 @@ function scr_skill_build(_skill_id) {
             _s.desc = "Passive: resists Fear and Stun.";
             return _s;
 
+        // ---- Kael (canon passive, CHAPTER1_SCRIPT.md §2.1 / FL_TUTORIAL_SYS_05) -----------
+        case "last_stand": // below 25% HP: ATK +15%, DEF +10% (canon values)
+            _s = scr_skill_make("last_stand", "Last Stand", 0, "self", "passive", 0, "", "");
+            _s.placeholder = false;
+            _s.desc = "Passive: below 25% HP, Attack +15% and Defense +10%.";
+            return _s;
+
+        // ---- Bandit (canon ability, CHAPTER1_SCRIPT.md §2.1 / FL_TUTORIAL_SYS_03) ---------
+        case "cheap_shot": // hits harder against a defending target (multiplier PLACEHOLDER)
+            _s = scr_skill_make("cheap_shot", "Cheap Shot", 0, "single", "damage", 1, "attack", "uses a cheap shot");
+            _s.anti_guard = true;
+            _s.desc = "Deals extra damage to a defending target.";
+            return _s;
+
+        // ---- Grave Spider (PLACEHOLDER inflictor; battle poison) ---------------------------
+        case "venom_bite": // 40% poison chance for 3 rounds; power and chance PLACEHOLDER
+            _s = scr_skill_make("venom_bite", "Venom Bite", 0, "single", "damage", 0.8, "attack", "bites with venom");
+            _s.status = "poison";
+            _s.status_turns = 3;
+            _s.status_chance = 0.4;
+            _s.desc = "May poison the target (damage each round).";
+            return _s;
+
         // ---- Lyra Veyne (canon kit text; PLACEHOLDER numbers) ------------------------------
         case "twin_cut": // CHAPTER3_SCRIPT.md Decision 4: two successive dagger hits
             _s = scr_skill_make("twin_cut", "Twin Cut", 3, "single", "damage", 0.7, "attack", "strikes twice!");

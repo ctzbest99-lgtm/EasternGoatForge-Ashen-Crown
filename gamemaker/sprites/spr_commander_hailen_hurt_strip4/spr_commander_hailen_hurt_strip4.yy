@@ -14,29 +14,29 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"9022ffea-75b7-4ae0-9f7c-6739a0786508",
-      "name":"9022ffea-75b7-4ae0-9f7c-6739a0786508",
+      "%Name":"7b653f15-9039-47bc-ad68-e08267c543dc",
+      "name":"7b653f15-9039-47bc-ad68-e08267c543dc",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"55185437-0ccc-4c57-9b32-ed8c013b2d23",
-      "name":"55185437-0ccc-4c57-9b32-ed8c013b2d23",
+      "%Name":"cb9abfab-c745-4c53-9a47-3b48bcc09196",
+      "name":"cb9abfab-c745-4c53-9a47-3b48bcc09196",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"dce94abd-93a2-4603-9322-04530ff6e14d",
-      "name":"dce94abd-93a2-4603-9322-04530ff6e14d",
+      "%Name":"e6eb4a7d-ad6e-4a95-b36c-1d2185f3db40",
+      "name":"e6eb4a7d-ad6e-4a95-b36c-1d2185f3db40",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"c6920ba1-a237-4977-930f-7002e9782acc",
-      "name":"c6920ba1-a237-4977-930f-7002e9782acc",
+      "%Name":"913643d5-6369-4db8-bae1-ce98564fcb14",
+      "name":"913643d5-6369-4db8-bae1-ce98564fcb14",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -48,11 +48,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"d62d87ad-1f9a-41bc-8524-f7d77c204a22",
+      "%Name":"ea58d96a-57a0-4189-bb29-59c145ff4262",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"d62d87ad-1f9a-41bc-8524-f7d77c204a22",
+      "name":"ea58d96a-57a0-4189-bb29-59c145ff4262",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -125,7 +125,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"9022ffea-75b7-4ae0-9f7c-6739a0786508",
+                    "name":"7b653f15-9039-47bc-ad68-e08267c543dc",
                     "path":"sprites/spr_commander_hailen_hurt_strip4/spr_commander_hailen_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -133,7 +133,7 @@
                 },
               },
               "Disabled":false,
-              "id":"f105e833-d035-470a-b8d9-95ae7556dd2b",
+              "id":"45b1bb74-5c52-4769-839c-bf1c86bee869",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -147,7 +147,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"55185437-0ccc-4c57-9b32-ed8c013b2d23",
+                    "name":"cb9abfab-c745-4c53-9a47-3b48bcc09196",
                     "path":"sprites/spr_commander_hailen_hurt_strip4/spr_commander_hailen_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -155,7 +155,7 @@
                 },
               },
               "Disabled":false,
-              "id":"710f25c7-e821-42e0-8c64-83df8c7257d7",
+              "id":"2abf463a-79e4-4d33-8fa5-c1b6adaac5bb",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,
@@ -169,7 +169,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"dce94abd-93a2-4603-9322-04530ff6e14d",
+                    "name":"e6eb4a7d-ad6e-4a95-b36c-1d2185f3db40",
                     "path":"sprites/spr_commander_hailen_hurt_strip4/spr_commander_hailen_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -177,7 +177,7 @@
                 },
               },
               "Disabled":false,
-              "id":"44f2195c-8609-4b30-b90c-a15749338530",
+              "id":"888e8707-b692-4bb6-b418-313a5118f0a4",
               "IsCreationKey":false,
               "Key":2.0,
               "Length":1.0,
@@ -191,7 +191,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"c6920ba1-a237-4977-930f-7002e9782acc",
+                    "name":"913643d5-6369-4db8-bae1-ce98564fcb14",
                     "path":"sprites/spr_commander_hailen_hurt_strip4/spr_commander_hailen_hurt_strip4.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -199,7 +199,7 @@
                 },
               },
               "Disabled":false,
-              "id":"040768f5-d651-4caa-ae17-7cdc828ff928",
+              "id":"3cb9f691-12d2-45be-9d92-55c2ff44fa62",
               "IsCreationKey":false,
               "Key":3.0,
               "Length":1.0,

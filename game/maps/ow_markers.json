@@ -306,7 +306,12 @@
   "guaranteed": true,
   "hostile": true,
   "script_id": "FL_TUTORIAL",
-  "note": "First guaranteed Bandit encounter (combat tutorial)."
+  "note": "First guaranteed Bandit encounter (combat tutorial). FL_TUTORIAL_01-03 bark first (pre_chain); FL_TUTORIAL_04-05 play after the win. Sets flag_tutorial_done, which switches random encounters on.",
+  "script_chain": [
+   "FL_TUTORIAL_01",
+   "FL_TUTORIAL_02",
+   "FL_TUTORIAL_03"
+  ]
  },
  {
   "type": "bandit_spawn",

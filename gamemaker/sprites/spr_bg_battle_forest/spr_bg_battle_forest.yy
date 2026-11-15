@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"34bb61a6-c5a6-4f3a-9649-aabfc7218429",
-      "name":"34bb61a6-c5a6-4f3a-9649-aabfc7218429",
+      "%Name":"b6d5f212-abf3-4209-abdb-3f29d35173e9",
+      "name":"b6d5f212-abf3-4209-abdb-3f29d35173e9",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"edb30237-20c9-4f65-b403-0ab7b8543572",
+      "%Name":"4ff37590-12d3-4186-ae23-881a65a14dc2",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"edb30237-20c9-4f65-b403-0ab7b8543572",
+      "name":"4ff37590-12d3-4186-ae23-881a65a14dc2",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"34bb61a6-c5a6-4f3a-9649-aabfc7218429",
+                    "name":"b6d5f212-abf3-4209-abdb-3f29d35173e9",
                     "path":"sprites/spr_bg_battle_forest/spr_bg_battle_forest.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"a7edd8c9-30c0-4f20-893c-d06b05a54876",
+              "id":"f209df84-9240-48f3-a382-2ca3e6da5135",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

@@ -255,3 +255,14 @@ Set up the rooms with `game/rooms/ROOM_SETUP.md` §6c and import the art with `g
 - [ ] D13 **Chapter end.** The west gate before Lyra: VM_HANDOFF_GATE blocks. With Lyra and the notes: VM_HANDOFF_01–05, `flag_chapter3_complete`, save prompt. Leaving is a no-op (Chapter 4 has no room). The gate stays open afterwards.
 
 Record GameMaker version, date, result, and reproducible failures.
+
+## Systems pass (combat tutorial, Cheap Shot, Last Stand, battle poison)
+Setup: fresh save; walk the farm path to the guaranteed Bandit trigger (overworld tile 197, 161).
+- [ ] T1 Before the tutorial fight, no random encounters roll anywhere (walk the Farmlands).
+- [ ] T2 Stepping on the Bandit trigger plays FL_TUTORIAL_01-03, then the battle starts (it cannot be avoided).
+- [ ] T3 The battle intro is followed by FL_TUTORIAL_SYS_01-04, one confirm per line.
+- [ ] T4 After the win, FL_TUTORIAL_04-05 play on the map; random encounters now roll.
+- [ ] T5 If Kael guards and the Bandit uses Cheap Shot, damage is higher than a normal hit on a guarding target (x1.5); on a non-guarding target it is a normal hit.
+- [ ] T6 With Kael below 25% HP, FL_TUTORIAL_SYS_05 shows once and his damage taken / dealt reflects ATK +15% / DEF +10%.
+- [ ] T7 A Grave Spider's Venom Bite can poison ("Pn" tag); poison ticks at round start for ~5% max HP (never kills); an Antidote used in battle (Item command) removes it.
+- [ ] T8 An old save with the tutorial already won still rolls random encounters (cleared-encounters fallback).

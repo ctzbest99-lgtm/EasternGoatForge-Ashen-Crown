@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"a690ad71-6425-4956-8045-6a0e46ed21ae",
-      "name":"a690ad71-6425-4956-8045-6a0e46ed21ae",
+      "%Name":"c070bcaa-c84c-401e-8616-2635dc32959b",
+      "name":"c070bcaa-c84c-401e-8616-2635dc32959b",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"d3899a44-8b0f-4489-9998-528c99a73e26",
+      "%Name":"7581ed8b-b2fb-49eb-aedc-2eb2a8a79a0a",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"d3899a44-8b0f-4489-9998-528c99a73e26",
+      "name":"7581ed8b-b2fb-49eb-aedc-2eb2a8a79a0a",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"a690ad71-6425-4956-8045-6a0e46ed21ae",
+                    "name":"c070bcaa-c84c-401e-8616-2635dc32959b",
                     "path":"sprites/spr_portrait_len_smile/spr_portrait_len_smile.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"e6282269-4085-40b7-965d-cec1137fd3f6",
+              "id":"e660cd14-1c78-4efe-9a36-1877d80da531",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,

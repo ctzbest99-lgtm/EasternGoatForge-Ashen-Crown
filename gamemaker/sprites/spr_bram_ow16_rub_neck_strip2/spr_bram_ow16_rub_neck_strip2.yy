@@ -14,15 +14,15 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"63e6780f-2226-4e86-9f26-1171119733ed",
-      "name":"63e6780f-2226-4e86-9f26-1171119733ed",
+      "%Name":"61aa443d-7d32-4a2b-b104-3c6342511eb8",
+      "name":"61aa443d-7d32-4a2b-b104-3c6342511eb8",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
     {
       "$GMSpriteFrame":"",
-      "%Name":"9cb4cf08-0fc5-4432-8957-a98b3d2a5db2",
-      "name":"9cb4cf08-0fc5-4432-8957-a98b3d2a5db2",
+      "%Name":"17542d72-9396-42e6-8dc6-1c4146e45762",
+      "name":"17542d72-9396-42e6-8dc6-1c4146e45762",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -34,11 +34,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"496b0b9a-6de0-471e-900e-715721be188f",
+      "%Name":"818e43c2-2534-4f3f-b2ae-16b8061c7e40",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"496b0b9a-6de0-471e-900e-715721be188f",
+      "name":"818e43c2-2534-4f3f-b2ae-16b8061c7e40",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -111,7 +111,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"63e6780f-2226-4e86-9f26-1171119733ed",
+                    "name":"61aa443d-7d32-4a2b-b104-3c6342511eb8",
                     "path":"sprites/spr_bram_ow16_rub_neck_strip2/spr_bram_ow16_rub_neck_strip2.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -119,7 +119,7 @@
                 },
               },
               "Disabled":false,
-              "id":"742f5556-36b8-4da3-8d0d-2d90254083df",
+              "id":"e1b659bf-34d1-445d-b22a-82b0f21b79b6",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
@@ -133,7 +133,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"9cb4cf08-0fc5-4432-8957-a98b3d2a5db2",
+                    "name":"17542d72-9396-42e6-8dc6-1c4146e45762",
                     "path":"sprites/spr_bram_ow16_rub_neck_strip2/spr_bram_ow16_rub_neck_strip2.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -141,7 +141,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d1119a95-7ec3-4acb-b41b-17283495d9d9",
+              "id":"cc84ff39-b6b4-40dc-a4bb-21891d6667d2",
               "IsCreationKey":false,
               "Key":1.0,
               "Length":1.0,

@@ -14,8 +14,8 @@
   "frames":[
     {
       "$GMSpriteFrame":"",
-      "%Name":"916f1fbc-1e94-41f6-a781-9833abdbd865",
-      "name":"916f1fbc-1e94-41f6-a781-9833abdbd865",
+      "%Name":"b9e98dac-145c-4dab-8264-e052f7fd42f4",
+      "name":"b9e98dac-145c-4dab-8264-e052f7fd42f4",
       "resourceType":"GMSpriteFrame",
       "resourceVersion":"2.0",
     },
@@ -27,11 +27,11 @@
   "layers":[
     {
       "$GMImageLayer":"",
-      "%Name":"23ddc6be-7ab9-4552-9fcd-50a1330691b8",
+      "%Name":"e8099f8d-c5e9-49b8-a2af-f04a8ce1dcd8",
       "blendMode":0,
       "displayName":"default",
       "isLocked":false,
-      "name":"23ddc6be-7ab9-4552-9fcd-50a1330691b8",
+      "name":"e8099f8d-c5e9-49b8-a2af-f04a8ce1dcd8",
       "opacity":100.0,
       "resourceType":"GMImageLayer",
       "resourceVersion":"2.0",
@@ -104,7 +104,7 @@
                 "0":{
                   "$SpriteFrameKeyframe":"",
                   "Id":{
-                    "name":"916f1fbc-1e94-41f6-a781-9833abdbd865",
+                    "name":"b9e98dac-145c-4dab-8264-e052f7fd42f4",
                     "path":"sprites/spr_prisoner_b_ow16_idle_down/spr_prisoner_b_ow16_idle_down.yy",
                   },
                   "resourceType":"SpriteFrameKeyframe",
@@ -112,7 +112,7 @@
                 },
               },
               "Disabled":false,
-              "id":"d8c01468-1361-4fc5-9840-ecc67ce45205",
+              "id":"49462394-2725-4604-bb98-1cc0688a48d6",
               "IsCreationKey":false,
               "Key":0.0,
               "Length":1.0,
