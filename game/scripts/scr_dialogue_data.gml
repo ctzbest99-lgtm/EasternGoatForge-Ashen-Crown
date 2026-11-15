@@ -374,7 +374,7 @@ function scr_dialogue_play_script(_script_id, _source = noone) {
             }
             scr_dialogue_play(["CV_END_01", "CV_END_02", "CV_END_03", "CV_END_04", "CV_END_05", "CV_END_06"], function() {
                 scr_flag_set("flag_chapter1_complete");
-                // Quiet: saving only exists in a town with a church or a tavern (owner decision
+                // Quiet: saving only exists inside a town's church or tavern (owner decision
                 // 2026-11-15). The Crownveil door is not one, so there is no save prompt here.
                 scr_save_menu_open("save", false, true);
             });

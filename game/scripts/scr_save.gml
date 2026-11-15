@@ -187,12 +187,14 @@ function scr_save_collect(_slot = 1) {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Save / load locations (owner decision 2026-11-15)
-// Saving and loading are only available in a town that has a church or a tavern. Each town lists
-// the rooms that belong to it; Greyhaven also lives inside rm_overworld, so that room is resolved
-// by position through scr_save_location_name(). Anything not listed — roads, the Old Watchtower,
-// the battlefield, the title screen — cannot save.
-// Every listed town must have a church or a tavern; add the facility strings as towns are built.
+// Save / load locations (owner decision 2026-11-15, narrowed the same day)
+// Saving and loading happen only at a save crystal inside a town's church or tavern — the room
+// with the shrine or the hearth, not the town around it. Each town lists the rooms that belong to
+// it (town identity, used for location names and the blocked line) and the rooms that may save
+// (`save_rooms`, always the church/tavern interiors). Greyhaven also lives inside rm_overworld,
+// so that room is resolved by position through scr_save_location_name(). Roads, the Old
+// Watchtower, the battlefield, town squares and the title screen cannot save.
+// Every listed town must have a church or a tavern and at least one save room.
 function scr_save_towns() {
     return [
         {
@@ -200,6 +202,7 @@ function scr_save_towns() {
             name: "Greyhaven",
             church: "Greyhaven Chapel",
             tavern: "Greyhaven Tavern",
+            save_rooms: ["rm_greyhaven_chapel", "rm_greyhaven_tavern"],
             rooms: ["rm_greyhaven_chapel", "rm_greyhaven_tavern", "rm_greyhaven_blacksmith",
                     "rm_greyhaven_general_store", "rm_greyhaven_varyn_house"]
         },
@@ -208,6 +211,7 @@ function scr_save_towns() {
             name: "Wrenfield",
             church: "",
             tavern: "The Bent Post",
+            save_rooms: ["rm_wrenfield_bent_post"],
             rooms: ["rm_wrenfield", "rm_wrenfield_bent_post", "rm_wrenfield_store"]
         },
         {
@@ -215,6 +219,7 @@ function scr_save_towns() {
             name: "Valemere",
             church: "",
             tavern: "The Salt Lamp",
+            save_rooms: ["rm_salt_lamp"],
             rooms: ["rm_valemere", "rm_salt_lamp", "rm_warehouse"]
         }
     ];
@@ -248,7 +253,7 @@ function scr_save_town_here() {
     return scr_save_town_of_room(room_get_name(room), _px, _py);
 }
 
-/// True when this town has a church or a tavern (the saving requirement).
+/// True when this town has a church or a tavern (the first half of the saving requirement).
 function scr_save_town_allows_save(_town) {
     if (!is_struct(_town)) return false;
     var _church = variable_struct_exists(_town, "church") ? string(_town.church) : "";
@@ -256,26 +261,41 @@ function scr_save_town_allows_save(_town) {
     return (_church != "" || _tavern != "");
 }
 
-/// True when the save / load menu may open at the player's current position.
+/// True when `_room_name` is one of the town's save rooms (a church or tavern interior).
+/// Second half of the requirement: the town square is not a save location, the crystal is.
+function scr_save_room_allows_save(_town, _room_name) {
+    if (!is_struct(_town)) return false;
+    if (!variable_struct_exists(_town, "save_rooms") || !is_array(_town.save_rooms)) return false;
+    var _here = string(_room_name);
+    for (var _i = 0; _i < array_length(_town.save_rooms); _i++) {
+        if (string(_town.save_rooms[_i]) == _here) return true;
+    }
+    return false;
+}
+
+/// True when the save / load menu may open at the player's current position: the player must be
+/// inside a town's church or tavern (the room that holds its save crystal).
 /// Title-screen Continue calls scr_save_load() directly and is not affected.
 function scr_save_allowed_here() {
     if (room == TITLE_ROOM || room == BATTLE_ROOM) return false;
     if (variable_global_exists("game") && is_struct(global.game) && global.game.battle_active) return false;
-    return scr_save_town_allows_save(scr_save_town_here());
+    var _town = scr_save_town_here();
+    if (!scr_save_town_allows_save(_town)) return false;
+    return scr_save_room_allows_save(_town, room_get_name(room));
 }
 
-/// Shown when the player deliberately tries to save outside such a town.
+/// Shown when the player deliberately tries to save outside a save room (a town's church or tavern).
 function scr_save_blocked_line() {
-    return "No shrine, no hearth. You can only save in a town with a church or a tavern.";
+    return "No shrine, no hearth. Save only at a crystal inside a town's church or tavern.";
 }
 
 /// Write `_data` (a struct) to slot `_slot`. Returns true on success.
 function scr_save_write(_slot) {
     if (room == TITLE_ROOM || room == BATTLE_ROOM) return false;
     if (variable_global_exists("game") && is_struct(global.game) && global.game.battle_active) return false;
-    // Owner decision 2026-11-15: only towns with a church or a tavern can save.
+    // Owner decision 2026-11-15: only a town's church or tavern (its save room) can save.
     if (!scr_save_allowed_here()) {
-        show_debug_message("[save] blocked in " + room_get_name(room) + ": not a town with a church or tavern.");
+        show_debug_message("[save] blocked in " + room_get_name(room) + ": not a town's church or tavern.");
         return false;
     }
     var _n = clamp(floor(_slot), 1, SAVE_SLOT_COUNT);
@@ -575,9 +595,9 @@ function scr_save_load(_slot) {
 }
 
 /// Open the save / load panel. `_quiet` suppresses the "no shrine, no hearth" line for the
-/// automatic chapter-end prompts, which simply do not happen outside a qualifying town.
+/// automatic chapter-end prompts, which simply do not happen outside a save room.
 function scr_save_menu_open(_mode = "save", _prompt = false, _quiet = false) {
-    // Owner decision 2026-11-15: save and load are only available in a town with a church or a tavern.
+    // Owner decision 2026-11-15: save and load are only available inside a town's church or tavern.
     if (!scr_save_allowed_here()) {
         if (!_quiet) scr_dialogue_open([scr_save_blocked_line()], "");
         return noone;

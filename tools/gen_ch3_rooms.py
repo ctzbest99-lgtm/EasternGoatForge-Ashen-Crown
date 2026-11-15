@@ -322,11 +322,11 @@ sl_markers = [
      'note': 'Arrive from rm_valemere door_salt_lamp.'},
     {'type': 'zone_exit', 'name': 'to_valemere', 'tile_x': 9, 'tile_y': 13, 'x': T(9,13)[0], 'y': T(9,13)[1],
      'target_room': 'rm_valemere', 'target_spawn': 'from_salt_lamp', 'w': 2, 'h': 1},
-    # Owner decision 2026-11-15: save crystals in towns with a church or a tavern. Valemere's sits in
-    # the Salt Lamp; tile (4,6) is open floor by the west wall (collision 0 in the grid above, clear of
-    # the bar counter, Nim, Lyra, the parcel crate and the door).
+    # Owner decision 2026-11-15: saving happens at a crystal inside a town's church or tavern, so
+    # Valemere's sits in the Salt Lamp. Tile (4,6) is open floor by the west wall (collision 0 in the
+    # grid above, clear of the bar counter, Nim, Lyra, the parcel crate and the door).
     {'type': 'save_point', 'name': 'salt_lamp_save', 'tile_x': 4, 'tile_y': 6, 'x': T(4,6)[0], 'y': T(4,6)[1],
-     'note': 'Save crystal in the Salt Lamp (Valemere has a tavern, so the town allows saving).'},
+     'note': 'Save crystal in the Salt Lamp. Audited 2026-11-15: open floor, clear of decor, reachable from the door.'},
     npc('nim', 7, 5, 'nim', 'Nim', 'SL_NIM_01', 'spr_marda_ow16_idle_down', facing='down',
         extra={'note': 'Nim, a fence. Sells the lead (gates on Alden having been met). SL_PARCEL_01 offers the parcel run.'}),
     npc('lyra', 13, 8, 'lyra', 'Lyra', 'SL_LYRA_01', 'spr_lyra_ow16_idle_down', facing='down',

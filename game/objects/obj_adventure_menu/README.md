@@ -13,7 +13,7 @@ Rows:
 | Bestiary | All 33 enemies in `scr_enemy_database.gml`. Unmet enemies show as `???`; met ones show level, role, stats, weakness, region, description, and how many times they have been beaten. |
 | Close | Closes the menu. |
 
-Saving and loading are **not** in this menu: saving still happens at `obj_save_point`, and only in a town with a church or a tavern (owner decision 2026-11-15, `scr_save_towns()` in `scr_save.gml`). `scr_menu_close_all()` closes this object with the other menus.
+Saving and loading are **not** in this menu: saving still happens at `obj_save_point`, and only inside a town's church or tavern (owner decision 2026-11-15, `scr_save_towns()` in `scr_save.gml`). `scr_menu_close_all()` closes this object with the other menus.
 
 The Bestiary log lives in `global.game.bestiary` (`enemy_id -> { seen, defeated }`), is marked by `obj_battle_controller` at battle start and on each kill, and is saved from save schema v3 (`scr_bestiary.gml`, `scr_save.gml`). Enemy descriptions are PLACEHOLDER text written for this feature.
 
