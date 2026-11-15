@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased — Documentation accuracy pass
+- Status text now matches the project: the root `README.md`, `docs/GAME_DESIGN_DOCUMENT.md` and `gamemaker/README.md` no longer call the repository a pre-production starter or a snippet package, and their counts are current (51 scripts, 22 objects, 806 sprite resources, 18 rooms, 86 Included Files). Their “intentional stubs” lists now name the real remaining gaps: Chapters 4–5 data only, the 12 stub overworld entrances, placeholder art including Lyra, and no audio.
+- `game/README.md` describes the real `game/` → `gamemaker/` workflow (byte-identical scripts, `validate_gamemaker.py`), and its save, save-point and menu rows describe schema v3, the four crystals, the town church/tavern rule and `obj_adventure_menu`.
+- Marker metadata caught up with the rooms: the overworld's Valemere entrance and Wrenfield's `west_road_to_valemere` are now `status: "built"` (they were still `stub`, with notes saying Chapter 3 was not built, although `rm_valemere` and `rm_valemere_road` exist). The Chapter 2 west-road handoff is now `built`; its overworld fallback stays only as a safety net, and the “Chapter 3 is not built” comments in `scr_ch2_story.gml` and `obj_zone_entrance/README.md` now describe that accurately.
+- `docs/DEVELOPMENT_ROADMAP.md` gained a status table: steps 1–5 done, step 6 playable but unplaytested, step 7 (audio, controller, quest UI, polish) outstanding, plus what exists beyond the slice.
+
 ## Unreleased — Adventure menu shell, Bestiary, Escape
 - **Adventure menu (I / Tab)**: new `obj_adventure_menu` replaces the direct jump into the inventory. Rows: Items, Equip, Party Order, Status, Bestiary, Close. Items/Equip hand off to the existing `obj_inventory_menu` (`scr_menu_open_object`); the object is registered in `scr_menu_close_all`, so save / shop / battle transitions close it too.
 - **Status panel**: name, class, role, level, XP to next level, HP/MP, ATK / DEF / MAG / MDF / SPD, the four equipment slots, and the member's skills. Left/right cycles the active party then the reserve.

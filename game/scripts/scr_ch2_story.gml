@@ -422,7 +422,8 @@ function scr_ch2_exit_script(_door) {
         var _rm = _ok ? door.target_room : -1;
         var _spawn = _ok ? door.target_spawn : "";
         if (_rm == -1 || !room_exists(_rm)) {
-            // Chapter 3's rm_valemere_road is not built: stub to the overworld spawn east of Valemere.
+            // Safety net only: rm_valemere_road is built. If it ever goes missing, use the marker's
+            // fallback (the overworld spawn east of Valemere) instead of silently doing nothing.
             _rm = variable_struct_exists(m, "fallback_room") ? asset_get_index(m.fallback_room) : -1;
             _spawn = variable_struct_exists(m, "fallback_spawn") ? m.fallback_spawn : "";
         }
