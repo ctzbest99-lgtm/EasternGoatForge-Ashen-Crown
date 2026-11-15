@@ -83,7 +83,7 @@ Start fights from the overworld with `scr_encounter_start(<id, group id, or arra
 - [ ] E4 Field Surgeon heals the most-hurt ally (green pop) only when one is below 60% HP.
 - [ ] E5 Crown Sergeant Rally puts ATK-up icons on his allies. He never uses it alone.
 - [ ] E6 `grp_sanctuary_warden` / `grp_blackwood_matriarch`: at 50% HP, `trans` plays once, the phase line shows, then `idle_p2` / `attack_p2` are used and the boss hits harder.
-- [ ] E7 Commander Hailen dies (death strip, battle won) by default. With `scr_flag_set("flag_hailen_yields")` he yields instead (yield holds, `flag_hailen_yielded` set).
+- [ ] E7 Commander Hailen dies (death strip, battle won) by default. With `scr_flag_set("flag_hailen_yields")` he yields instead (yield holds, `flag_hailen_yielded` set). Simulation expects roughly 52 / 78 / 94% wins at party levels 16 / 17 / 18 (900 HP / 57 ATK); a loss at 16 is within tune, not a bug.
 - [ ] E8 Night Moth Swarm: the dust flies on cast frame 3. Blind shows "Bl" and makes about half of physical attacks miss ("miss" pop). Sleep shows "Sl", skips the member's command and turn ("X is asleep."), and ends early when the member takes damage. Statuses wear off after their rounds.
 - [ ] E9 Shade Stalker Fade: it turns translucent and physical attacks on it miss until the next round.
 - [ ] E10 Glyph Wisp Mote flies on cast frame 3 and uses MDEF.

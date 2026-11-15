@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased — Chapter 5 balance pass (simulation only)
+- **Commander Hailen took length, not damage.** Caelan's kit had made the fight 97 / 100 / 100% at party levels 16 / 17 / 18, ending in 6–7 rounds before Hailen's single-target hits added up. `hp_mult: 1.5` + `atk_add: 14` in `scr_enemy_database.gml` gives him **900 HP / 57 ATK** and **52 / 78 / 94%** wins, 8.1–9.1 rounds, 14–30% party HP left. ATK alone was the wrong lever: at 900 HP and 65 ATK, level 16 fell to 16% while level 18 was still 78%.
+- **Garrison random fights were light, so the Pikeman gained `atk_add: 4`** (34 → 38 ATK, 107 HP unchanged). The two-pikeman group costs 21% of party HP at level 16 instead of 18%; the single-pikeman and Knight groups stay at 11–12%. All groups remain 100% wins at 16–18.
+- **The garrison's commander fight is still the "yield" fight** — nothing changed about `flag_hailen_yields`, so he dies by default in this build.
+- **Docs repair:** the Chapter 4 pass commit had accidentally duplicated the whole tail of `DECISIONS_AND_OPEN_QUESTIONS.md` (a section-replacement matched an earlier heading). The file is rebuilt from the last good version, with one Chapter 4–5 section carrying both passes' tables.
+- Numbers are simulated, not played: no GameMaker IDE here. Chapter 5's rooms and script are still unwritten, so Hailen has only ever existed in this model.
+
 ## Unreleased — Chapter 4 balance pass (simulation only)
 - **The Sanctuary Warden was weaker than documented.** `scr_enemy_scaled` gives a level-16 boss for four **514 HP**, not the 600 that `balance_sim.py` and `DECISIONS_AND_OPEN_QUESTIONS.md` had carried since the template pass. The sim now mirrors the real base.
 - **Caelan's approved kit made the boss trivial**, so the Warden gained `hp_mult: 1.25` and `atk_add: 2` in `scr_enemy_database.gml` (~643 HP / 39 ATK). Simulated wins: **35% / 71% / 94%** at party levels 13 / 14 / 15, 6.7–8.2 rounds, 13–29% party HP left — the hard-but-fair shape the earlier pass intended, rather than the 100% at 15 the untuned boss produced.

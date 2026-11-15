@@ -204,10 +204,10 @@ E.update({
                            ai=[("attack", 2), ("ring", 1)],
                            phase_ai={2: [("attack", 2), ("ring", 2)]},
                            phase2_at=0.5, phase2_atk=0.20),
- "garrison_pikeman":  dict(hp=107, atk=34, df=25, mdef=13, spd=10, ai=[("attack", 2), ("pike", 2)]),
+ "garrison_pikeman":  dict(hp=107, atk=38, df=25, mdef=13, spd=10, ai=[("attack", 2), ("pike", 2)]),
  "garrison_field_surgeon": dict(hp=86, atk=34, df=25, mdef=13, spd=12, ai=[("attack", 2), ("heal", 3)]),
  "garrison_knight":   dict(hp=232, atk=39, df=29, mdef=14, spd=9,  ai=[("attack", 3), ("guard", 1)]),
- "commander_hailen":  dict(hp=600, atk=53, df=32, mdef=15, spd=12, boss=True,   # boss +10 atk_add
+ "commander_hailen":  dict(hp=900, atk=57, df=32, mdef=15, spd=12, boss=True,   # 600 base x1.5, atk_add 14
                            ai=[("attack", 3), ("glint", 2)]),
 })
 POWER.update({"pike": 1.2, "glint": 1.4})
