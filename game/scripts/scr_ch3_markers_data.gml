@@ -51,6 +51,7 @@ function scr_salt_lamp_markers() {
     return [
         { type: "player_spawn", name: "from_valemere", tile_x: 9, tile_y: 12, x: 152, y: 208, facing: "up", note: "Arrive from rm_valemere door_salt_lamp." },
         { type: "zone_exit", name: "to_valemere", tile_x: 9, tile_y: 13, x: 152, y: 224, target_room: "rm_valemere", target_spawn: "from_salt_lamp", w: 2, h: 1 },
+        { type: "save_point", name: "salt_lamp_save", tile_x: 4, tile_y: 6, x: 72, y: 112, note: "Save crystal in the Salt Lamp (Valemere has a tavern, so the town allows saving)." },
         { type: "npc", name: "nim", tile_x: 7, tile_y: 5, x: 120, y: 96, npc_id: "nim", speaker: "Nim", script_id: "SL_NIM_01", sprite: "spr_marda_ow16_idle_down", hostile: false, facing: "down", note: "Nim, a fence. Sells the lead (gates on Alden having been met). SL_PARCEL_01 offers the parcel run." },
         { type: "npc", name: "lyra", tile_x: 13, tile_y: 8, x: 216, y: 144, npc_id: "lyra", speaker: "Lyra", script_id: "SL_LYRA_01", sprite: "spr_lyra_ow16_idle_down", hostile: false, facing: "down", note: "Lyra Veyne at a corner table. Joins for the Debtman fight (placeholder sprite)." },
         { type: "lore", name: "parcel_crate", tile_x: 15, tile_y: 11, x: 248, y: 192, script_id: "SL_PARCEL_01", lines: ["A crate by the door, marked for the stall under the blue awning."], note: "Q_SIDE_PARCEL offer point (Nim backs it)." },

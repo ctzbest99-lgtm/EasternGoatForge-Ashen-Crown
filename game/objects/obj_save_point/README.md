@@ -1,6 +1,6 @@
 # obj_save_point
 
-A 16×24 ember-crowned crystal (`spr_save_point_idle_strip8`, origin (8, 23)) that stands in the aisle. The map builder spawns one in the Greyhaven chapel and one in the tavern (exact tiles are still an open decision).
+A 16×24 ember-crowned crystal (`spr_save_point_idle_strip8`, origin (8, 23)) that stands in the aisle. The map builder spawns four: Greyhaven Chapel (`chapel_save`), Greyhaven Tavern (`tavern_save`), the Bent Post in Wrenfield (`bent_post_save`, tile 4,9) and the Salt Lamp in Valemere (`salt_lamp_save`, tile 4,6). The Greyhaven tiles are still an open design decision; the two new ones are by the west wall of each tavern.
 
 **Parent:** `obj_interactable`. Events: Create, Step (inherits y-sort, then plays the activate clip).
 

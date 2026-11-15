@@ -80,6 +80,11 @@ function scr_wrenfield_bent_post_markers() {
     return [
         { type: "player_spawn", name: "from_wrenfield", tile_x: 11, tile_y: 12, x: 184, y: 208, facing: "up", note: "Arrive from the Wrenfield door_bent_post." },
         { type: "zone_exit", name: "to_wrenfield", tile_x: 11, tile_y: 13, x: 184, y: 224, target_room: "rm_wrenfield", target_spawn: "from_bent_post", w: 2, h: 1 },
+        // Added in-repo 2026-11-15 (owner decision: save crystals in towns with a church or a tavern).
+        // wrenfield/src/export_wf.py is not in this repo, so keep this row if the file is ever regenerated.
+        // Tile (4,9) is open floor by the west wall in both the closed and open states (collision 0;
+        // the open patch only touches 5/7,8 and 5/7,11).
+        { type: "save_point", name: "bent_post_save", tile_x: 4, tile_y: 9, x: 72, y: 160, note: "Save crystal in the Bent Post (Wrenfield has a tavern, so the town allows saving)." },
         { type: "npc", name: "perrin", tile_x: 15, tile_y: 4, x: 248, y: 80, npc_id: "perrin", speaker: "Perrin", script_id: "WF_TAVERN_A1", script_chain: ["WF_TAVERN_A1", "WF_TAVERN_A2", "WF_TAVERN_A3"], sprite: "spr_perrin_ow16_idle_down", hostile: false, hide_if_flag: "flag_execution_stopped", note: "Behind the bar, chairs still up on the tables. The bar is closed." },
         { type: "npc", name: "perrin_after", tile_x: 15, tile_y: 4, x: 248, y: 80, npc_id: "perrin", speaker: "Perrin", script_id: "WF_TAVERN_B1", sprite: "spr_perrin_ow16_idle_down", hostile: false, inn_rest: true, rest_price: "first night free (placeholder)", show_if_flag: "flag_execution_stopped", note: "Bar open. Optional inn rest point (WF_TAVERN_B1 stage note). Price is for Coder/Design." },
         { type: "lore", name: "bent_post_notice", tile_x: 11, tile_y: 2, x: 184, y: 48, script_id: "WF_TAVERN_NOTICE", written_by: "art pass (placeholder, not in the script)", lines: ["Chalked on a board: \"Rooms upstairs. Ask Perrin.\""], struck_lines: [] }
