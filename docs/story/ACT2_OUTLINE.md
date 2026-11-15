@@ -209,6 +209,8 @@ Suggested flags: `flag_entered_valemere`, `flag_alden_met`, `flag_lower_city_job
 
 ## 7. Chapter 4 — "The Old Name" **[PROPOSED title]**
 
+> **Draft script:** `CHAPTER4_SCRIPT.md` writes this chapter out in the Chapter 2–3 script format (approach, hollow halls, Caelan's records hall, the Aethari reveal, the Sanctuary Warden, the join, and the handoff to Chapter 5). It is **not approved**; its Decisions section lists what Kevin needs to settle, and every new line is **[PROPOSED]**.
+
 ### 7.1 The Hollow Sanctuary
 
 **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Caelan is recruited at **the Hollow Sanctuary**, the abandoned Aethari sanctuary, a day's travel from Valemere in the countryside. It is a self-contained dungeon.
