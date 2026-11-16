@@ -75,14 +75,14 @@ This act gathers the party, plants Alden as a friend, and gives the player one r
 
 ## 3. Chapter map
 
-Act I was a single chapter (Chapter 1, "The Night of Ash"). **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Act II is four chapters (Chapters 2–5), one recruit and one chapter boss each, ending on the road to the Blackwood. Chapter 2's title, **The Weight of the Yoke**, and its suggested levels (8–10) are **[C-confirmed]**. Chapter 3's title, **Crowns and Alleys**, and its suggested levels (10–13) are **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). **Chapter 4's title, The Old Name, and its suggested levels (13–16) are [C-confirmed]** (Nov 15 2026). Chapter 5's title and suggested levels stay **[PROPOSED]**. All of `CHAPTER2_SCRIPT.md`, `CHAPTER3_SCRIPT.md` and `CHAPTER4_SCRIPT.md` are canon.
+Act I was a single chapter (Chapter 1, "The Night of Ash"). **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Act II is four chapters (Chapters 2–5), one recruit and one chapter boss each, ending on the road to the Blackwood. Chapter 2's title, **The Weight of the Yoke**, and its suggested levels (8–10) are **[C-confirmed]**. Chapter 3's title, **Crowns and Alleys**, and its suggested levels (10–13) are **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). **Chapter 4's title, The Old Name, and its suggested levels (13–16) are [C-confirmed]** (Nov 15 2026). **Chapter 5's title, The Deserted Oath, and its suggested levels (16–18) are [C-confirmed]** (Nov 16 2026). All of `CHAPTER2_SCRIPT.md`, `CHAPTER3_SCRIPT.md`, `CHAPTER4_SCRIPT.md` and `CHAPTER5_SCRIPT.md` are canon.
 
 | Chapter | Title | Main locations | Recruit | Boss | Suggested levels |
 |---|---|---|---|---|---|
 | 2 | The Weight of the Yoke **[C-confirmed]** | Watchtower backtrack; optional Greyhaven; **Millhaven Road**; **Wrenfield** **[C-confirmed]** | Taren Holt | **Reeve Calder**, Crown occupation officer **[C-confirmed]** | 8–10 **[C-confirmed]** |
 | 3 | Crowns and Alleys **[C-confirmed]** | **Valemere Road**; **Valemere** (Weigh-House Square, the Salt Lamp, seized warehouse; Lower City as the story focus; other districts as hub) | Lyra Veyne | **the Debtman**, a human Lower City enforcer tied to the stolen document, not a named Black Hand leader **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). A moniker only; he withdraws alive. | 10–13 **[C-confirmed]** |
 | 4 | The Old Name **[C-confirmed]** | Countryside a day's travel from Valemere; **the Hollow Sanctuary** **[C-confirmed]** | Caelan Rook | An ancient sanctuary guardian-construct **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026), named **the Sanctuary Warden** **[C-confirmed]** (Nov 15 2026) | 13–16 **[C-confirmed]** |
-| 5 | The Deserted Oath **[PROPOSED title]** | **The Blackwood Road Garrison** **[C-confirmed]** | Sera Thorn | **Commander Hailen**, the garrison's commanding officer **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) | 16–18 **[PROPOSED]** |
+| 5 | The Deserted Oath **[C-confirmed]** | **The Blackwood Road Garrison** **[C-confirmed]** | Sera Thorn | **Commander Hailen**, the garrison's commanding officer **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) | 16–18 **[C-confirmed]** |
 
 Region-to-act mapping for the rest of the game stays **[O]** (question 28). **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) This act uses the Kingdom of Eldoria and Valemere as its hub, and hands off to the Blackwood for Act III. It does not claim the Drowned Coast, Ironspine, Frostwilds, or Ashlands.
 
@@ -92,7 +92,7 @@ Region-to-act mapping for the rest of the game stays **[O]** (question 28). **[C
 
 ## 4. Main quest: Beyond the Veil
 
-**[C]** The quest title and the change from Find Mira are canon. The Chapter 1 script leaves stage `Q_BV_S1` as "Find a way beyond the Veil." Stages 1–3 are **[C-confirmed]** in `CHAPTER2_SCRIPT.md`. Stages 4–5 are **[C-confirmed]** in `CHAPTER3_SCRIPT.md`. Stage 6 is **[C-confirmed]** in `CHAPTER4_SCRIPT.md`; stage 7 remains **[PROPOSED]**.
+**[C]** The quest title and the change from Find Mira are canon. The Chapter 1 script leaves stage `Q_BV_S1` as "Find a way beyond the Veil." Stages 1–3 are **[C-confirmed]** in `CHAPTER2_SCRIPT.md`. Stages 4–5 are **[C-confirmed]** in `CHAPTER3_SCRIPT.md`. Stage 6 is **[C-confirmed]** in `CHAPTER4_SCRIPT.md`; stage 7 is **[C-confirmed]** in `CHAPTER5_SCRIPT.md`.
 
 | Stage | ID | Objective text | Completes when |
 |---|---|---|---|
@@ -104,7 +104,7 @@ Region-to-act mapping for the rest of the game stays **[O]** (question 28). **[C
 | 6 | `Q_BV_S6` | Investigate the Blackwood Road Garrison. | Sera is recruited and the Blackwood lead is obtained |
 | 7 | `Q_BV_S7` | Follow the trail into the Blackwood. | The party enters Act III |
 
-Stage IDs and objective text for S1–S5 are **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). S6 is **[C-confirmed]** in `CHAPTER4_SCRIPT.md`; S7 stays **[PROPOSED]**, though the completion events it points at are **[C-confirmed]** where they match the Act II recruitment decisions. `Q_BV_S5` is started at the end of Chapter 3 and completes in Chapter 4.
+Stage IDs and objective text for S1–S5 are **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). S6 is **[C-confirmed]** in `CHAPTER4_SCRIPT.md`; S7 is **[C-confirmed]** in `CHAPTER5_SCRIPT.md` (approved Nov 16 2026). `Q_BV_S5` is started at the end of Chapter 3 and completes in Chapter 4.
 
 Optional side-quest hooks: **The One on the List** (Oda and Bram in Wrenfield) is **[C-confirmed]** in `CHAPTER2_SCRIPT.md`. **A Parcel Unsealed** (Nim at the Salt Lamp) is **[C-confirmed]** in `CHAPTER3_SCRIPT.md`. Still **[PROPOSED]**, not fully designed: a Radiant Flame petition in the Temple District (doctrine details and leaders stay **[O]**); a sanctuary side-chamber with fragmented records that hint, but do not explain, Lumen (not used: the approved Chapter 4 script has no side quest).
 
@@ -250,9 +250,9 @@ Suggested flags: `flag_sanctuary_entered`, `flag_aethari_name_learned`, `flag_ca
 
 ---
 
-## 8. Chapter 5 — "The Deserted Oath" **[PROPOSED title]**
+## 8. Chapter 5 — "The Deserted Oath" **[C-confirmed]** (approved Nov 16 2026)
 
-> **Draft script for approval:** `CHAPTER5_SCRIPT.md` (Nov 15 2026, not canon). It writes this chapter out in the Chapter 4 format — Sera's detention and recruitment, Hailen's arrest attempt and yield branch, the sealed-order Blackwood lead, and the second Fallen Knight sighting. Title, levels, Sera's join timing and her kit are still **[PROPOSED]** until the owner approves.
+> **Canon script:** `CHAPTER5_SCRIPT.md` (approved Nov 16 2026). It writes this chapter out in the Chapter 4 format — Sera's detention and recruitment, Hailen's arrest attempt and pre-battle yield choice, the sealed-order Blackwood lead, and the second Fallen Knight sighting. Title, levels (16–18), Sera joining after the fight, her kit (Mend / Aegis / Smite) and the two-room split were approved with the script. The build has not started.
 
 ### 8.1 The Blackwood Road Garrison
 

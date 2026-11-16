@@ -372,6 +372,29 @@ Reading: at level 8 the Calder fight is hard (about 25% for this naive policy); 
 - **The Warden's ring is the only enemy magic in the game**, and it is where MDEF matters: about 20 damage to the whole party per cast, and the main source of HP loss in that fight. Hailen is the opposite — pure single-target pressure.
 - **Caelan is no longer dead weight.** Magic damage (Arc Bolt 1.35×, Frost Lance / Ember 1.2×) plus ×1.5 on the Sentinel, Automaton, Pikeman and Knight lightning weakness is why both bosses needed tuning at all.
 - Simulation only: the Chapter 5 garrison rooms and script are still unwritten, and **nothing in Chapter 4 or 5 has been played in GameMaker**. These are model numbers.
+
+## Chapter 5 script decisions (approved 2026-11-16)
+
+All eleven items in `docs/story/CHAPTER5_SCRIPT.md` §14 were approved as recommended. The script is canon; the build has not started.
+
+| # | Decision | Approved | Build consequence |
+|---|---|---|---|
+| 1 | Chapter title | **The Deserted Oath** | Title card, quest header, changelog and outline all use it. |
+| 2 | Level band | **16–18** | Matches the `blackwood_garrison` table and Hailen at 18; the simulated curve already assumes it. No tuning needed. |
+| 3 | Sera becomes controllable | **After the Hailen fight** | The boss stays a four-member fight, so 52 / 78 / 94% at 16 / 17 / 18 remains valid. Sera is the first reserve in the roster; the player picks who sits via Party Order, no forced bench. |
+| 4 | Hailen's yield branch | **Pre-battle choice** | Sets `flag_hailen_yields` before initiative, using the existing `yields_if_flag` hook. Would be `scr_dialogue_choice`'s first chapter use; if that UI is not ready, the approved fallback is to set the flag unconditionally (Hailen always yields) rather than ship a dead branch. |
+| 5 | Sera's starting kit | **Mend, Aegis, Smite** | Three new `scr_skill_data.gml` entries with PLACEHOLDER numbers; Smite uses the existing `holy` weakness. |
+| 6 | Why the party gets inside | **They are not let in** | The sergeant's ledger holds Taren Holt's name and the gate closes behind them; the fight is a failed arrest, not an ambush. |
+| 7 | The Blackwood lead | **Sealed Crown order, non-Crown seal** | Tells the post to stop looking; Caelan recognizes the mark and refuses to explain it. Act III inherits an unanswered mystery. |
+| 8 | Fallen Knight's second line | **"The forest has already taken its share. It will want another."** | Names nothing, stays off Mira and the sealed order. |
+| 9 | Chapter ending | **At the treeline** | `Q_BV_S7` active, act-complete card, quiet save prompt (church/tavern rule unchanged). |
+| 10 | Rooms | **Two** (`rm_blackwood_garrison`, `rm_garrison_keep`) | Follows the Chapter 4 two-room build; markers for road, notice board, gate, yard, cells, office, records. |
+| 11 | Sera's detention | **Awaiting transport, not sentenced** | Keeps the Crown's process vague and Hailen a tired officer following orders. |
+
+**Rejected at approval:** Sera joining at the start of the Hailen fight (would invalidate the measured curve and force an unearned bench), Sera as a guest ally outside the four (needs new battle-engine support), Hailen always yielding or always dying, a 17–19 level band, a patrol map or Aethari token as the lead, "She went in further than the trees", a one-room garrison, and an execution sentence.
+
+**Still open after approval:** all skill damage numbers (PLACEHOLDER), whether the reserve earns XP and whether story may force a bench (bible q36), what Sera saw in the palace (q4), the Fallen Knight's identity (q2), and everything the sealed order points at.
+
 ## Prototype assumptions (battle upgrade; pending owner approval)
 Built on `feature/battle-upgrade` (depends on PR #10). Every number below is a PLACEHOLDER unless marked canon. Owner-decided rules above (XP per enemy to living participants, defeat penalty, random encounters, Swap) are unchanged.
 - **Canon used:** Taren's Rallying Cry (raises party Attack for 3 turns), Cleave (hits all enemies for reduced damage), Unbowed (passive, resists Fear and Stun) — STORY_BIBLE.md §5.5 / CHAPTER2_SCRIPT.md WF_CALDER_SYS. Reeve Calder's kit (Guard, a shout that buffs his soldiers, a heavy strike, a harder stance when the detachment falls, he yields and lives). Blackguard 450 HP / phases / Phase 3 SPD +30%.

@@ -20,4 +20,4 @@
 | 6. Zone 1 slice | **Playable, not playtested** — Chapter 1 content, art and balance are in, but there is no audio and the numbers are still provisional. |
 | 7. Polish | **Partly started** — the quest journal UI is in (Adventure menu → Quests). Audio, controller support, real Lyra art and the whole `docs/TEST_PLAN.md` pass are still outstanding. |
 
-Beyond the slice: Chapter 4 is built (rooms, markers, dialogue, story flow and Caelan's kit, unplaytested); Chapter 5 has enemy stats, encounter tables and boss groups but no rooms, markers or dialogue; Act III onward is design only. The 12 remaining `status: "stub"` overworld entrances point at rooms that do not exist.
+Beyond the slice: Chapter 4 is built (rooms, markers, dialogue, story flow and Caelan's kit, unplaytested); Chapter 5 has an approved canon script plus enemy stats, encounter tables and boss groups, but no rooms, markers, dialogue data or story script; Act III onward is design only. The 12 remaining `status: "stub"` overworld entrances point at rooms that do not exist.

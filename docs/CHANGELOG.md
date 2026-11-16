@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased — Chapter 5 script approved (canon)
+- **All eleven decisions in `docs/story/CHAPTER5_SCRIPT.md` §14 were approved as recommended on 2026-11-16**, so "The Deserted Oath" is now a canon script rather than a draft: title, levels **16–18**, Sera controllable **after** the Hailen fight, a **pre-battle yield choice** for Hailen, her starting kit **Mend / Aegis / Smite**, the party entering the garrison **without being let in** (Taren's name is in the sergeant's ledger), the Blackwood lead being a **sealed Crown order carrying a non-Crown seal**, the Fallen Knight's forest line, the chapter closing **at the treeline** with the act-complete card, **two rooms**, and Sera **awaiting transport rather than sentenced**.
+- **What the approvals protect:** Sera stays out of the Hailen battle, so the measured **52 / 78 / 94%** curve at party levels 16 / 17 / 18 still describes the shipped fight; the level band matches the existing `blackwood_garrison` table and Hailen's level 18; and the chapter needs no scene rewrites.
+- **What is still open:** Sera's and Hailen's skill damage numbers are PLACEHOLDER, both need placeholder sprites (neither has overworld or battle art), and the Hailen yield choice would be `scr_dialogue_choice`'s first use in a chapter — if that UI is not ready the approved fallback is "Hailen always yields" rather than a branch that cannot run.
+- **Still unbuilt and unplayed.** No rooms, markers, dialogue data or story script exist for Chapter 5 yet, and there is no GameMaker IDE in this environment.
+
 ## Unreleased — Quest journal (Adventure menu → Quests)
 - **New field-menu page: Quests.** Lists every quest that has been started, with its current objective, `stage n / m`, and `done` once finished. Rows are selectable with up/down; a short list does not scroll. An empty journal explains where quests come from instead of showing a blank panel.
 - **Data, not new save fields.** `scr_quest_data.gml` holds the definitions (Beyond the Veil S1–S7, The One on the List, A Parcel Unsealed) and reads the existing `quest_<QUEST_ID>` flags, which are already saved — so existing saves work and nothing needed a schema bump. Main-quest objective text is the approved Act II wording; the two side-quest objectives are PLACEHOLDER journal text.

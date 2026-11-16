@@ -2,8 +2,9 @@
 
 Route: the Blackwood road out of the hollow → the garrison notice board → the gate → the yard and cell block → the commander's office and records room (Sera) → Commander Hailen → the aftermath and Sera's join → the Blackwood treeline.
 
-> **Status: DRAFT FOR APPROVAL.** Nothing in this file is canon yet. Chapter 5's title and level band are only **[PROPOSED]** in `ACT2_OUTLINE.md` §3 and §8; this script proposes them along with every line below. **[CANON]** items come from the design doc / `STORY_BIBLE.md`. **[C-confirmed]** items are owner decisions from Nov 14–15 2026 that this draft must obey. **[PROPOSED]** items are invented here and need the owner's approval. Open questions stay **[O]**.
-> Working title: **The Deserted Oath** **[PROPOSED]**. Suggested levels: **16–18** **[PROPOSED]** (matches the existing `blackwood_garrison` table and Hailen at level 18). The act title is **The Broken Crown** **[CANON]**.
+> **Status: APPROVED 2026-11-16 — CANON.** The owner approved all eleven decisions in §14 as recommended, so this script is canon in the Chapter 2–4 format and the build may proceed. Line-level **[PROPOSED]** tags stay as provenance (they mark what this script invented rather than inherited), not as open questions; anything still **[O]** is genuinely undecided. **[CANON]** items come from the design doc / `STORY_BIBLE.md`. **[C-confirmed]** items are owner decisions from Nov 14–16 2026.
+> Nothing in this chapter has been built or played yet — the approval is of the script, not of an implementation.
+> Title: **The Deserted Oath** **[C-confirmed 2026-11-16]**. Levels: **16–18** **[C-confirmed 2026-11-16]** (matches the existing `blackwood_garrison` table and Hailen at level 18). The act title is **The Broken Crown** **[CANON]**.
 > Chapter 5 is the fourth and last chapter of Act II: **Sera's recruitment**, **Commander Hailen**, and the handoff into Act III, **The Blackwood** **[CANON]**.
 
 Source of truth: `STORY_BIBLE.md`. Presentation: FF1-style top-down exploration (confirmed). Battles are presumed to be FF1-style menu battles (still open).
@@ -712,77 +713,77 @@ Repeat talk, **BG_R1** · Sergeant:
 
 ---
 
-## 14. Decisions (for the project owner)
+## 14. Decisions — all approved 2026-11-16
 
-Every item is **[PROPOSED]** until approved. Recommended options are first.
+**The owner approved all eleven decisions as recommended (Option A).** The alternatives below are kept as the record of what was considered; struck-through options were already rejected while drafting, and the remaining alternatives are rejected by this approval. The consequences of each approval are recorded in `docs/DECISIONS_AND_OPEN_QUESTIONS.md` under "Chapter 5 script decisions".
 
-### 1. Chapter title
+### 1. Chapter title — **APPROVED: The Deserted Oath**
 
 **Option A (recommended): The Deserted Oath.** Double meaning that the chapter actually earns: Sera deserted a post, and the Crown deserted the oath she thought they shared. Short, matches "The Old Name" and "Crowns and Alleys."
 
 - ~~**Option B:** The Garrison (plain, location-first).~~
 - ~~**Option C:** What the Wax Knows (mystery-forward, spoils the sealed order).~~
 
-### 2. Level band
+### 2. Level band — **APPROVED: 16–18**
 
 **Option A (recommended): 16–18**, matching the existing `blackwood_garrison` table and Hailen's level 18. Chapter 4 ends at 13–16, so a 16 entry is reachable without grinding and 18 is the ceiling.
 
 - ~~**Option B:** 17–19, if Act III should open above the Chapter 4 ceiling.~~ (Would need table and Hailen changes.)
 
-### 3. When Sera becomes controllable
+### 3. When Sera becomes controllable — **APPROVED: after the fight**
 
 **Option A (recommended): After the fight.** Sera joins in the records room aftermath and is available from the road onward. Keeps the Hailen battle as the four members the balance pass measured (52 / 78 / 94% at 16 / 17 / 18), and makes the first reserve decision a quiet one the player makes in Party Order rather than a forced bench at a boss.
 
 - ~~**Option B:** At the start of the Hailen fight, taking the fourth slot and sending Caelan to reserve.~~ Stronger rescue beat, but it changes the measured fight and forces a bench the story has not earned yet; needs a re-sim.
 - ~~**Option C:** A guest ally outside the four-member line.~~ Needs new battle engine support; not worth it here.
 
-### 4. Hailen's yield branch
+### 4. Hailen's yield branch — **APPROVED: pre-battle choice**
 
 **Option A (recommended): A pre-battle choice.** "We're not here to kill Crown soldiers" sets `flag_hailen_yields`; otherwise he fights to the death. This uses the hook already in `scr_enemy_database.gml` and gives the player the outcome the outline leaves open. If the choice UI is not ready, fall back to always setting the flag (he always yields) rather than cutting the branch.
 
 - ~~**Option B:** Always yields; no choice.~~ Simplest, but it decides a story question for the player.
 - ~~**Option C:** No yield; he always dies.~~ Darkest, and wastes the hook the last balance pass added.
 
-### 5. Sera's starting kit
+### 5. Sera's starting kit — **APPROVED: Mend, Aegis, Smite**
 
 **Option A (recommended): Mend, Aegis, Smite.** One heal, one shield, one holy attack — the three things the bible names that a level-16 Warden can plausibly start with, and holy damage already has targets (Shade Stalker, Lost One). Numbers stay **[O]**.
 
 - ~~**Option B:** Mend and Smite only; Aegis comes later.~~
 - ~~**Option C:** Add a passive (for example, reduced damage to allies below half HP) instead of Aegis.~~
 
-### 6. Why the party is let into the garrison at all
+### 6. Why the party is let into the garrison at all — **APPROVED: they are not**
 
 **Option A (recommended): They are not.** The sergeant's ledger has Taren's name, and the gate closes behind them. Hailen's duty is to hold the post, so the fight is an arrest that fails, not an ambush.
 
 - ~~**Option B:** They talk their way in and Hailen turns on them only when Sera is mentioned.~~ Slower, and makes Hailen look duplicitous.
 
-### 7. What the Blackwood lead actually is
+### 7. What the Blackwood lead actually is — **APPROVED: a sealed Crown order, non-Crown seal**
 
 **Option A (recommended): A sealed Crown order, marked with a non-Crown seal, telling the post to stop looking.** It gives the party a direction, an official reason to go, and a mystery the next act can carry without answering.
 
 - ~~**Option B:** A patrol map with the stone door circled.~~ Clearer, less interesting, and says less about the Crown.
 - ~~**Option C:** A prisoner's effects holding an Aethari token.~~ Ties the lead to Caelan too early.
 
-### 8. The Fallen Knight's second line
+### 8. The Fallen Knight's second line — **APPROVED: "The forest has already taken its share."**
 
 **Option A (recommended): "The forest has already taken its share. It will want another."** Cryptic, forest-facing, and consistent with his Chapter 3 line without naming anything.
 
 - ~~**Option B:** "She went in further than the trees."~~ Too close to Mira; risks confirming what the outline protects.
 - ~~**Option C:** No line; he is only seen.~~ Cheap, but wastes the second sighting the outline confirmed.
 
-### 9. Where the chapter ends
+### 9. Where the chapter ends — **APPROVED: at the treeline**
 
 **Option A (recommended): At the treeline, with `Q_BV_S7` active and the act-complete card.** Mirrors Chapter 4's handoff and gives Act III a clean opening image.
 
 - ~~**Option B:** Inside the records room, with the road and act card opening Act III.~~
 
-### 10. Rooms
+### 10. Rooms — **APPROVED: two rooms**
 
 **Option A (recommended): Two rooms** — `rm_blackwood_garrison` (road, gate, yard, cells) and `rm_garrison_keep` (office and records). Matches the Chapter 4 two-room build and keeps the yard's crowd and the records scene from sharing one screen.
 
 - ~~**Option B:** One room, with the office behind a door.~~ Fewer markers, more crowded.
 
-### 11. Sera's detention
+### 11. Sera's detention — **APPROVED: awaiting transport, not sentenced**
 
 **Option A (recommended): Awaiting transport to the capital, not formally sentenced.** It keeps the Crown's process vague (as the bible leaves it), lets Hailen be a man following orders rather than a jailer, and gives the "next wagon" line its weight.
 
@@ -796,4 +797,4 @@ What Sera saw in the palace (q4); the Blackwood's nature, the stone door, and th
 
 ---
 
-*Draft written 2026-11-15 for owner approval. On approval, this file becomes canon in the Chapter 2–4 format, and the build follows the same path as Chapters 3–4: dialogue data → story script → rooms and markers → balance pass → playtest.*
+*Drafted 2026-11-15; approved by the owner 2026-11-16. This file is now canon in the Chapter 2–4 format, and the build follows the same path as Chapters 3–4: dialogue data → story script → rooms and markers → balance pass → playtest. Nothing in it has been compiled or played.*
