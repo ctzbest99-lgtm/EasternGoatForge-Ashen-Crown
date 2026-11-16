@@ -319,6 +319,26 @@ Setup: a save at the end of Chapter 4 (`flag_chapter4_complete`, Q_BV_S6 active)
 
 Record GameMaker version, date, result, and reproducible failures.
 
+## Chapter 6 (feature/chapter6; untested in GameMaker)
+
+Setup: a save at the end of Chapter 5 (`flag_chapter5_complete`, `flag_sera_recruited`, Q_BV_S7), party levels 18–19, Kael / Taren / Lyra / Caelan active (Sera in reserve).
+- [ ] F16 **Treeline in.** The garrison's east door (`to_blackwood`, tile 25,10) lands in `rm_blackwood_deep` at `from_garrison`. BW_HANDOFF_01–04 then BW_DEEP_01–03 play back to back, once; `ch6_entered` and `ch6_deep_seen` are set, Q_MAIN_BEYOND_VEIL reads complete, and Q_MAIN_BLACKWOOD opens at stage 1. Re-entering the room plays nothing.
+- [ ] F17 **Walk back.** The west door (`to_garrison`) returns to `rm_blackwood_garrison` at the new `from_blackwood` spawn in the yard, facing left — not at the road fork.
+- [ ] F18 **Carved stone.** The stone at (9,7) is optional and plays BW_STONE_01–03 once, then BW_STONE_R1; `ch6_stone_seen` is set. Walking past it changes nothing and nothing gates on it.
+- [ ] F19 **Road fights.** The first stretch of road (x < 192) never rolls an encounter. Beyond it the zone rolls only the `blackwood` groups — Shade Stalkers, Lost Ones, and Lost One/Briar Hulk and Shade Stalker/Briar Hulk pairs. No Night Moth Swarm, no Door Warden, in any group.
+- [ ] F20 **Cinderhollow.** The north path (tile 17,0) leads to `rm_blackwood_hollow` at `from_wood`; CH_ARRIVE_01–04 play once and `flag_ch6_hollow_entered` is set. Fire ambience under the forest bed. The south path returns to the deep room at `from_hollow`.
+- [ ] F21 **Berrin.** CH_BERRIN_01–07 play once, then CH_TITHE_01–03 immediately after; `ch6_hollow_met` and `ch6_tithe_hook` are set. Each later visit plays exactly one node — CH_TALK_01, then 02, then 03 — and after that CH_BERRIN_R1, repeatable.
+- [ ] F22 **The camp.** The camp trigger plays PT_CAMP_01–06 once; `Broken Order` appears in the key items with its description, and `ch6_camp_found` and `ch6_seal_seen` are set. Repeat visits give PT_CAMP_R1 only.
+- [ ] F23 **Burn line.** Walking east past x = 400 plays BH_INTRO_01–03 then BH_FIGHT_01–02 and starts `grp_burn_line_hulk` with boss music and the boss bar: `burn_line_hulk` plus one Shade Stalker. The Hulk says nothing.
+- [ ] F24 **Defeat retry.** Lose the Hulk fight: the party returns, and the gate does not fire again until they walk back west of x = 320 and approach again. The second attempt plays the scene again (the trigger is not consumed).
+- [ ] F25 **Victory.** `ch6_hulk_defeated` is set, Q_MBW_S2 opens, and BH_AFTER_01–02 play after the battle. Walking further east finds nothing; the wood is a dead end.
+- [ ] F26 **The share.** Returning to Cinderhollow plays CH_FEED_01–06, CH_END_01 and CH_END_02 once — Berrin's *"We don't pay it. We feed it."* — sets `ch6_feed_revealed` and `chapter6_complete`, and shows **no act-complete card**. Re-entry plays nothing.
+- [ ] F27 **Journal.** The Quests page shows Beyond the Veil complete (7 / 7) and What the Forest Keeps at stage 1 before the Hulk, stage 2 after it, objective "Find out what Cinderhollow pays, and to whom."
+- [ ] F28 **Audio and saves.** The deep room plays `snd_amb_forest`, the hollow `snd_amb_fire`, both under the overworld theme; the chapter offers no save prompt of its own (it contains no save room), and saving at the garrison after the Hulk is not possible either — the save crystals are in town.
+- Not covered here: Berrin and the burners use `spr_story_npc_placeholder`, so F20–F26 are visually wrong until the Blackwood art exists.
+
+Record GameMaker version, date, result, and reproducible failures.
+
 ## Systems pass (combat tutorial, Cheap Shot, Last Stand, battle poison)
 Setup: fresh save; walk the farm path to the guaranteed Bandit trigger (overworld tile 197, 161).
 - [ ] T1 Before the tutorial fight, no random encounters roll anywhere (walk the Farmlands).
@@ -347,6 +367,10 @@ Setup: fresh save, overworld. `DEBUG_ADD_FULL_ROSTER` on if the party rows shoul
 - [ ] M13 Quests page: on a fresh save it lists the main quest only, "Beyond the Veil", at stage 1 / 7, with the objective "Find a way beyond the Veil." Accepting Oda's quest adds "The One on the List" as a second row; completing it marks the row "done" and the detail pane reads "Complete." Every started-but-unfinished quest shows its current objective and "stage n / m."
 - [ ] M14 The journal tracks stage changes without a reload: after Taren joins at Wrenfield the main quest reads stage 3 / 7; after the Valemere gates 4 / 7; after Caelan joins 6 / 7. The parcel quest moves from its first stage to its second when the parcel is delivered to the Merchant District stall, and to "done" at Nim.
 - [ ] M15 Quests survive a save and reload (quest state is stored in the saved flags, so no new save field is involved). Use the debug flag setter to store an unknown stage id for a quest: the row still appears, with "In progress." rather than vanishing.
+- [ ] M16 Title → Options shows Music, Ambience, Sound effects, Mute and Back. Up/down moves the highlight, left/right changes a gain by 5% and the bar and percentage follow, and the music already playing gets quieter or louder while the row is adjusted (ambience and SFX follow when a track or effect next plays).
+- [ ] M17 Set Music to 25%, Mute to On, back out and close the game. Restart: the title screen's Options shows 25% and Mute On, and nothing plays until Mute is turned off — the values come from `ashen_settings.ini`. Delete that file and restart: the compiled defaults (music 55%, ambience 30%, SFX 80%, Mute Off) come back.
+- [ ] M18 Confirm on Back and Cancel both leave Options for the main menu, and no keypress that closes Options also fires New Game or Continue.
+
 
 ## Audio (generated assets; untested in GameMaker)
 - [ ] A1 Sounds → `sounds` lists all 29 resources and each one plays from the Sound editor without an "unsupported format" error.

@@ -158,6 +158,7 @@ Acceptance:
 ### P3 — Audio and polish
 
 #### P3.1 — Establish audio asset standards and add first pass
+**Partly done (2026-11-16):** audio is imported and wired (`scr_audio`, `docs/AUDIO.md`), and the title screen's Options entry now adjusts Music / Ambience / SFX and Mute and saves them to `ashen_settings.ini`. Still missing: an in-game entry, loudness/loop standards for future assets, and any in-engine listen. See `docs/DECISIONS_AND_OPEN_QUESTIONS.md` §"Options screen and saved audio settings".
 Tasks:
 - Define music/SFX naming, format, loudness expectations, loop points, and import settings.
 - Add original or properly licensed title/field/battle music and core UI/interaction/battle SFX.
@@ -209,6 +210,8 @@ Tasks:
 - Develop one act/chapter at a time with explicit story, map, encounter, party, and asset requirements.
 - Keep Alden Marr's locked ending, **Ending C — The Last Usurper**, intact: he begins seeking to free serfs and rebuild Eldoria, grows into a would-be ruler, claims the throne after King Aldric IV's defeat, and must be stopped by Kael and Taren.
 - Do not treat unimplemented narrative plans as shipped game content.
+
+- Chapter 6 *The Green Silence* is approved and built (rooms, dialogue data, story script, quest stages) but unplayed; chapters 7–8 remain outline only. See `docs/DECISIONS_AND_OPEN_QUESTIONS.md` §"Chapter 6 built".
 
 Acceptance:
 - Each act has owner-approved story beats, party recruitment/roles, locations, bosses, and implementation scope before coding.

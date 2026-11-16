@@ -29,8 +29,9 @@ These are built in this repository; see `docs/DECISIONS_AND_OPEN_QUESTIONS.md` f
 | Quest journal, story flags, chapter-complete screens | Built |
 | Audio: 3 music loops, 20 SFX, 6 ambience beds wired through `scr_audio` | Built; never heard in engine |
 | Title screen, main menu, save/slot panel, nine-slice UI kit, bitmap font, damage digits, status icons, battle backgrounds | Built |
+| Title-screen **Options**: Music / Ambience / SFX gains in 5% steps, Mute, Back — persisted to `ashen_settings.ini` | Built; layout never drawn in engine |
 
-Still absent: controller support, an options screen (the audio gains exist without UI), a battle-only item tier, and any in-engine playtest.
+Still absent: controller support, an **in-game** settings entry (the title screen's Options screen works and saves, but the Adventure menu has no settings page, so the mix can only be changed from the title), a battle-only item tier, and any in-engine playtest.
 
 Ordered next tasks with acceptance criteria live in [AI Agent Development Backlog](AI_AGENT_DEVELOPMENT_BACKLOG.md).
 
@@ -42,11 +43,14 @@ Ordered next tasks with acceptance criteria live in [AI Agent Development Backlo
   - **Chapter 3 — Crowns and Alleys** (Valemere, Lyra, the Debtman), levels 10–13.
   - **Chapter 4 — The Old Name** (Hollow Sanctuary, Caelan, the Sanctuary Warden), levels 13–16.
   - **Chapter 5 — The Deserted Oath** (Blackwood Road Garrison, Sera, Commander Hailen), levels 16–18.
-- **Act III — The Blackwood** — [PROPOSED] outline written (`docs/story/ACT3_OUTLINE.md`): three chapters, levels 18–20, ten decisions awaiting the owner. No code, rooms or dialogue exist for it.
-- **Act IV onward** — design only. Thirteen room references (`rm_blackwood_deep`, `rm_ashlands_*`, `rm_ironspine_*`, `rm_frozen_ruins`, `rm_flooded_ruins`, `rm_saltreach*`, `rm_rimehold`, `rm_town`, `rm_shipwreck`) point at rooms that do not exist yet; `validate_gamemaker.py` lists them as the only unresolved refs.
+- **Act III — The Blackwood** — three chapters, levels 18–20, outline in `docs/story/ACT3_OUTLINE.md`:
+  - **Chapter 6 — The Green Silence** (**[C]** approved 2026-11-16): built, not played. `rm_blackwood_deep` and `rm_blackwood_hollow` (both Wrenfield blockouts — there is no Blackwood tileset), `scr_ch6_story`, `scr_dialogue_data_ch6` (51 nodes), `scr_ch6_markers_data`, the `Q_MAIN_BLACKWOOD` quest and the Burn-Line Hulk fight. Cinderhollow's burners use the placeholder NPC sprite.
+  - **Chapters 7 *The Share* and 8 *The Door in the Wood***: [PROPOSED] outline only — the tithe choice, the Matriarch and the Aethari doors are not written or built.
+  - Waiting on: a Blackwood tileset, overworld sets for `shade_stalker` / `lost_one` / `briar_hulk`, and a level cap above 20 for Chapters 7–8 and Act IV.
+- **Act IV onward** — design only. Twelve room references (`rm_blackwood_doors`, `rm_ashlands_*`, `rm_ironspine_*`, `rm_frozen_ruins`, `rm_flooded_ruins`, `rm_saltreach*`, `rm_rimehold`, `rm_town`, `rm_shipwreck`) point at rooms that do not exist yet; `validate_gamemaker.py` lists them as the only unresolved refs.
 
 ## Vertical slice
 
-The original slice — one map, one interaction, one fight, reliable return to exploration — is long past: Chapter 1 is a complete zone with a dungeon, a three-phase boss, rewards, shops, saves and a chapter ending. It is **not playtested**: `gamemaker/AshenCrown.yyp` has never been compiled in an IDE, and the whole `docs/TEST_PLAN.md` pass is unchecked.
+The original slice — one map, one interaction, one fight, reliable return to exploration — is long past: Chapter 1 is a complete zone with a dungeon, a three-phase boss, rewards, shops, saves and a chapter ending. It is **not playtested**: `gamemaker/AshenCrown.yyp` has never been compiled in an IDE, and the whole `docs/TEST_PLAN.md` pass is unchecked — including Chapter 6's F16–F28, so its rooms, dialogue and boss gate are unverified beyond the validator.
 
 See `docs/DEVELOPMENT_ROADMAP.md` for the build state and `CHANGELOG.md` for the feature history.

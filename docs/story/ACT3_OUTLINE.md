@@ -3,6 +3,7 @@
 **Studio:** Eastern Goat Forge · **Engine:** GameMaker Studio (GML) · **Genre:** Dark medieval fantasy RPG, classic turn-based combat · **Platform:** PC
 
 **Status: PROPOSED — nothing in this file is canon.** The act title (*The Blackwood*) is **[CANON]**, and the beats it must carry are fixed by `CHAPTER5_SCRIPT.md` and `STORY_BIBLE.md`. Everything else — chapter count, chapter titles, the hamlet, the tithe, bosses, quest text — is an outline for the owner to accept, change or reject. Section 9 lists the ten decisions that need a yes or no.
+> **Chapter 6 is approved and built** (2026-11-16): `CHAPTER6_SCRIPT.md` (*The Green Silence*) is canon, and `rm_blackwood_deep`, `rm_blackwood_hollow`, `scr_ch6_story` and `scr_dialogue_data_ch6` exist as Wrenfield blockouts. Nothing has been compiled or played. Chapters 7–8 below are still **PROPOSED**.
 
 **Source of canon:** `MASTER_GDD.txt`, `STORY_BIBLE.md`, `CHAPTER5_SCRIPT.md` (approved 2026-11-16). Sibling: `ACT2_OUTLINE.md`.
 
