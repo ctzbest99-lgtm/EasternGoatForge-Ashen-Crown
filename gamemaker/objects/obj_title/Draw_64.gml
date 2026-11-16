@@ -115,7 +115,42 @@ if (mode == "options") {
         scr_menu_draw_window(_px, _py, _pw, _ph, "gold");
     }
     draw_set_halign(fa_center);
-    scr_ui_text(_gw * 0.5, _py + 16, "Options  (placeholder)", c_white);
+    scr_ui_text(_gw * 0.5, _py + 10 * _s, "Options", make_color_rgb(217, 184, 96));
+    draw_set_halign(fa_left);
+
+    var _labels = ["Music", "Ambience", "Sound effects", "Mute", "Back"];
+    var _rx = _px + 14 * _s;
+    for (var _r = 0; _r < array_length(opt_rows); _r++) {
+        var _ry = _py + (30 + _r * 16) * _s;
+        var _sel = (_r == opt_index);
+        var _col = _sel ? make_color_rgb(217, 184, 96) : c_white;
+        scr_ui_text(_rx, _ry, (_sel ? "> " : "  ") + _labels[_r], _col);
+        var _kind = opt_rows[_r];
+        if (_kind == "back") continue;
+        if (_kind == "muted") {
+            draw_set_halign(fa_right);
+            scr_ui_text(_px + _pw - 14 * _s, _ry, global.audio_ctx.muted ? "On" : "Off", _col);
+            draw_set_halign(fa_left);
+        } else {
+            var _v = scr_audio_get_gain(_kind);
+            var _seg = 10;
+            var _on = round(_v * _seg);
+            var _bx = _px + 112 * _s;
+            for (var _k = 0; _k < _seg; _k++) {
+                var _bx2 = _bx + _k * 6 * _s;
+                draw_set_color(_k < _on ? make_color_rgb(217, 184, 96) : make_color_rgb(60, 56, 48));
+                draw_rectangle(_bx2, _ry + _s, _bx2 + 5 * _s, _ry + 6 * _s, false);
+            }
+            draw_set_color(c_white);
+            draw_set_halign(fa_right);
+            scr_ui_text(_px + _pw - 14 * _s, _ry, string(round(_v * 100)) + "%", _col);
+            draw_set_halign(fa_left);
+        }
+    }
+    draw_set_halign(fa_center);
+    if ((blink div 30) mod 2 == 0) {
+        scr_ui_text(_gw * 0.5, _py + _ph - 16 * _s, "Left / right to change", make_color_rgb(150, 146, 138));
+    }
     draw_set_halign(fa_left);
 }
 

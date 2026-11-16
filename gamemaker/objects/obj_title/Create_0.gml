@@ -31,7 +31,7 @@ logo_y = 22 * layout_scale;
 logo_y_target = 22 * layout_scale;
 options_alpha = 0;
 
-// "press" = wait for a key; "menu" = option list; "options" = placeholder; "saves" = load panel.
+// "press" = wait for a key; "menu" = option list; "options" = audio settings; "saves" = load panel.
 mode = "press";
 options = ["new_game", "continue", "options", "quit"];
 index = 0;
@@ -41,3 +41,10 @@ slots = [];
 save_index = 0;
 save_message = "";
 blink = 0;
+
+// Options screen: music / ambience / sfx gains, mute, back. Gains live in
+// global.audio_ctx (scr_audio_set_gain) and persist to AUDIO_SETTINGS_FILE.
+scr_audio_init();
+scr_audio_settings_load();
+opt_rows = ["music", "ambience", "sfx", "muted", "back"];
+opt_index = 0;

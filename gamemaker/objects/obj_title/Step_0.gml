@@ -56,7 +56,37 @@ if (mode == "menu") {
         }
     }
 } else if (mode == "options") {
-    if (scr_input_cancel_pressed() || scr_input_confirm_pressed()) {
+    // Up/down picks a row; left/right changes a gain by 5%, or flips mute.
+    var _rows = opt_rows;
+    var _rn = array_length(_rows);
+    if (scr_input_up_pressed()) {
+        opt_index = (opt_index - 1 + _rn) mod _rn;
+        scr_audio_sfx("menu_move", 0, 0.6);
+    }
+    if (scr_input_down_pressed()) {
+        opt_index = (opt_index + 1) mod _rn;
+        scr_audio_sfx("menu_move", 0, 0.6);
+    }
+    var _row = _rows[opt_index];
+    if (_row == "muted") {
+        if (scr_input_left_pressed() || scr_input_right_pressed() || scr_input_confirm_pressed()) {
+            scr_audio_mute(!global.audio_ctx.muted);
+            scr_audio_settings_save();
+            if (!global.audio_ctx.muted) scr_audio_sfx("menu_confirm", 0, 0.7);
+        }
+    } else if (_row == "back") {
+        if (scr_input_confirm_pressed()) {
+            scr_audio_sfx("menu_cancel", 0, 0.7);
+            mode = "menu";
+        }
+    } else if (scr_input_left_pressed() || scr_input_right_pressed()) {
+        var _step = scr_input_right_pressed() ? 0.05 : -0.05;
+        scr_audio_set_gain(_row, scr_audio_get_gain(_row) + _step);
+        scr_audio_settings_save();
+        scr_audio_sfx("menu_move", 0, 0.6);
+    }
+    if (mode == "options" && scr_input_cancel_pressed()) {
+        scr_audio_sfx("menu_cancel", 0, 0.7);
         mode = "menu";
     }
 } else if (mode == "saves") {
