@@ -11,7 +11,7 @@ Source of truth: `STORY_BIBLE.md` (Alden Marr, Ending C, Aldric IV, the mark), `
 
 - **The engine does not need to change for this act.** Dialogue, flags, quests, scripted bosses, marker-driven rooms, save schema v3 and the audio set all exist. Act IV is content.
 - **The enemy data now exists** (added 2026-11-16 on the decisions below): seven ids at 21–23, the `crown_barrow` table and `grp_magistrate_vell` / `grp_barrow_warden` / `grp_forgotten_king`, with `PARTY_MAX_LEVEL` raised to 24. The Bestiary goes 35 → 42 entries, and the validator reports 42 entries, 42 distinct names, 42 with art. **No chapter uses any of it yet.**
-- **Rooms:** 29 rooms exist in total. `rm_town` and `rm_barrow_gate` are built (Chapters 9–10); `rm_barrow_halls` and `rm_barrow_deep` are names for Chapter 11 and nothing else.
+- **Rooms:** 31 rooms exist in total, and **every Act IV room is built** — `rm_town`, `rm_barrow_gate`, `rm_barrow_halls`, `rm_barrow_deep`. The validator's remaining unresolved references (`rm_ironspine_*`, `rm_ashlands_*`, `rm_saltreach*`, `rm_shipwreck`, `rm_rimehold`, `rm_flooded_ruins`, `rm_frozen_ruins`) all belong to Acts V–VIII.
 - **Art:** 18 enemy kinds still have no 16×24 overworld set, and the act boss would need battle art, a portrait-scale presence and a bestiary row. Nothing in Act IV can ship visually on existing assets except reused common enemies.
 - **Alden has no sprite at all** (measured in `ASSET_INVENTORY.md`), and this act puts him on screen in three chapters.
 
@@ -68,7 +68,9 @@ A fourth chapter would have to invent a recruit or a subplot the bible does not 
 
 ## 5. Chapter 11 — The Forgotten King
 
-**Rooms:** `rm_barrow_halls` (30×20) and `rm_barrow_deep` (26×20).
+**Rooms:** `rm_barrow_halls` (30×20) and `rm_barrow_deep` (26×20) — both built.
+
+**Script: [CHAPTER11_SCRIPT.md](CHAPTER11_SCRIPT.md)** — **built 2026-11-16**: both rooms, `scr_dialogue_data_ch11` (81 nodes), `scr_ch11_story`, quest stages S5–S6 and the seal choice. Not played; the tomb is a blockout and the King borrows the sanctuary warden's strips. The charter names the mark **the Crownveil** — the phrase canon already uses — and explains nothing about it. *The Ashen Crown* stays reserved for the finale.
 
 **What happens (all [PROPOSED]):**
 1. The halls are a royal tomb with the names chiselled off: every inscription has been struck through with the same chisel, in the same hand, at the same time. **The forgetting was an act, not an accident.** This is the act's horror and its history beat.
@@ -131,7 +133,7 @@ Two mechanical gaps the data exposed:
 - The party ends Act III at 20 with Chapter 5 gear and no Act IV equipment. A level-21 common with Act III weapons will feel like a wall unless the act also adds a weapon/armour tier; that is a content decision, not a tuning one.
 - Sera's Smite and Caelan's Ember already define the damage ceiling in the simulation. An act boss with no AoE will be safe at any HP, which is the same lesson Act III's Hulk taught.
 
-## 8. Build plan (when this outline is approved)
+## 8. Build plan (when this outline is approved) — **executed: Chapters 9–11 are built**
 
 1. **Level cap** — raise `PARTY_MAX_LEVEL` to 24 and confirm the XP curve still lands 21–23 at sensible XP totals (decision 8).
 2. **Enemy batch** — seven ids, `crown_barrow` table, boss groups `grp_magistrate_vell`, `grp_barrow_warden`, `grp_forgotten_king`; then extend `tools/balance_sim.py` and tune before writing lines against the numbers.

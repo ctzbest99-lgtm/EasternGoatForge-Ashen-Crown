@@ -61,6 +61,7 @@ function scr_battle_finish(_result) {
     scr_ch8_on_battle_finish(_result, _pending);
     scr_ch9_on_battle_finish(_result, _pending);
     scr_ch10_on_battle_finish(_result, _pending);
+    scr_ch11_on_battle_finish(_result, _pending);
     scr_ch1_on_battle_finish(_result, _pending);
     scr_party_clear_guard(_g.party);
     scr_battle_clear_party_battle_state(_result == "victory");

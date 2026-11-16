@@ -5,6 +5,7 @@
 function scr_barrow_gate_markers() {
     return [
         { type: "player_spawn", name: "from_town", tile_x: 13, tile_y: 18, x: 216, y: 304, facing: "up", note: "Arrive from Coleford." },
+        { type: "player_spawn", name: "from_halls", tile_x: 13, tile_y: 3, x: 216, y: 64, facing: "down", note: "Arrive back up the steps from the barrow halls (Chapter 11)." },
         { type: "zone_exit", name: "to_town", tile_x: 13, tile_y: 19, x: 216, y: 320, target_room: "rm_town", target_spawn: "from_barrow", w: 2, h: 1, note: "Back north to Coleford." },
         { type: "zone_exit", name: "to_halls", tile_x: 13, tile_y: 2, x: 216, y: 48, target_room: "rm_barrow_halls", target_spawn: "from_gate", w: 2, h: 1, script_id: "CH10_EXIT", lines: ["The steps go down into the hill. The Warden is still between the party and them."], note: "Chapter 11 is not built: scr_ch10_exit_script gates this and plays CH10_END once." },
         { type: "lore", name: "survey_post", tile_x: 9, tile_y: 13, x: 152, y: 224, script_id: "SP_POST", lines: ["A squat stone post, cut with the Crown's survey mark. The year has worn to a shape."], note: "SP_POST: the overwritten mark. Optional, sets ch10_post_seen." },

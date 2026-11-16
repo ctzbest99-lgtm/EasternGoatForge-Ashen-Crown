@@ -25,3 +25,9 @@ jobs:
 
       - name: Validate gamemaker/ against game/
         run: python3 validate_gamemaker.py
+
+      # Catches the wiring validate_gamemaker.py cannot see: scripted lines with no dialogue
+      # node, marker hooks with no dispatcher, zone exits naming a spawn the target room does
+      # not define, undefined encounter tables/enemies, quest stages, and rooms with no ambience.
+      - name: Audit chapter wiring
+        run: python3 tools/audit_chapters.py

@@ -191,6 +191,12 @@ function scr_dialogue_node(_id) {
         case "BG_REWARD_01":
             return { id: "BG_REWARD_01", speaker: "SYSTEM", lines: ["Obtained: Blackguard's Longsword. Obtained: Crownveil Fragment."] };
 
+        // CHAPTER1_SCRIPT.md §2.2 — Old Hunter Renn (Hunter's Camp, optional side quest).
+        // The marker carries the hook; scr_ch1_renn_talk picks the lines from quest state.
+        case "HC_RENN":
+            scr_ch1_renn_talk();
+            return true;
+
         // CV_END (§9)
         case "CV_END_01":
             return { id: "CV_END_01", speaker: "Kael", lines: ["The Crownveil. The thing that's supposed to keep us safe.", "...Mira. What did you do?"] };
@@ -205,6 +211,8 @@ function scr_dialogue_node(_id) {
         case "CV_END_06":
             return { id: "CV_END_06", speaker: "SYSTEM", lines: ["Chapter 1 — The Night of Ash — Complete."] };
     }
+    var _ch1x = scr_ch1_extra_dialogue_node(_id); // Chapter 1 script lines (scr_dialogue_data_ch1_extra, generated)
+    if (is_struct(_ch1x)) return _ch1x;
     var _ch2 = scr_ch2_dialogue_node(_id); // Chapter 2 (scr_dialogue_data_ch2, generated)
     if (is_struct(_ch2)) return _ch2;
     var _ch3 = scr_ch3_dialogue_node(_id); // Chapter 3 (scr_dialogue_data_ch3, generated)
@@ -221,7 +229,9 @@ function scr_dialogue_node(_id) {
     if (is_struct(_ch8)) return _ch8;
     var _ch9 = scr_ch9_dialogue_node(_id); // Chapter 9 (scr_dialogue_data_ch9, generated)
     if (is_struct(_ch9)) return _ch9;
-    return scr_ch10_dialogue_node(_id); // Chapter 10 (scr_dialogue_data_ch10, generated)
+    var _ch10 = scr_ch10_dialogue_node(_id); // Chapter 10 (scr_dialogue_data_ch10, generated)
+    if (is_struct(_ch10)) return _ch10;
+    return scr_ch11_dialogue_node(_id); // Chapter 11 (scr_dialogue_data_ch11, generated)
 }
 
 function scr_dialogue_play_script(_script_id, _source = noone) {
@@ -244,6 +254,8 @@ function scr_dialogue_play_script(_script_id, _source = noone) {
     if (scr_ch9_play_script(_script_id, _source)) return true;
     // Chapter 10 (The Barrow Road): the maintained road, the gatehouse and the Barrow Warden.
     if (scr_ch10_play_script(_script_id, _source)) return true;
+    // Chapter 11 (The Forgotten King): the halls, the charter, the King and the seal.
+    if (scr_ch11_play_script(_script_id, _source)) return true;
     switch (_script_id) {
         case "GH_ARRIVAL":
             if (scr_flag_get("flag_arrived_greyhaven")) return true;

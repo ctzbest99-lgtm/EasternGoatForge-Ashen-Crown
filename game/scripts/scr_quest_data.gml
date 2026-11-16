@@ -45,6 +45,17 @@ function scr_quest_definitions() {
             ]
         },
         {
+            id: "Q_SIDE_RENN",
+            title: "Thinning the Pack",
+            kind: "Side quest",
+            // CHAPTER1_SCRIPT.md §2.2 only prints the stages as [STAGE] notes, so this
+            // journal wording is [PROPOSED] (same convention as Q_SIDE_TITHE above).
+            stages: [
+                { id: "Q_SR_S1", text: "Kill five Ash Wolves around the Hunter's Camp." },
+                { id: "Q_SR_S2", text: "Return to Old Hunter Renn." }
+            ]
+        },
+        {
             id: "Q_MAIN_CROWN",
             title: "The King Who Was Forgotten",
             kind: "Main quest",

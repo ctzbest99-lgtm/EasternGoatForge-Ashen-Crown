@@ -205,6 +205,8 @@ function scr_audio_room_enter(_room) {
         case "rm_blackwood_doors":  _amb = "forest"; break;
         case "rm_town":             _amb = "wind"; break; // Act IV: no town bed exists yet
         case "rm_barrow_gate":      _amb = "wind"; break; // the road and the hillside
+        case "rm_barrow_halls":     _amb = "dungeon"; break; // Act IV's tomb
+        case "rm_barrow_deep":      _amb = "dungeon"; break;
         case "rm_old_watchtower":   _amb = "wind"; break;
         case "rm_watchtower_basement": _amb = "dungeon"; break;
         case "rm_warehouse":        _amb = "dungeon"; break;
@@ -212,8 +214,10 @@ function scr_audio_room_enter(_room) {
         case "rm_greyhaven_chapel": _amb = "dungeon"; break;
         case "rm_greyhaven_tavern": _amb = "fire"; break;
         case "rm_greyhaven_blacksmith": _amb = "fire"; break;
+        case "rm_greyhaven_general_store": _amb = "fire"; break; // Marda's store, one stove
         case "rm_greyhaven_varyn_house": _amb = "fire"; break;
         case "rm_wrenfield_bent_post": _amb = "fire"; break;
+        case "rm_wrenfield_store":  _amb = "fire"; break; // Len's store, one lamp and a stove
         case "rm_salt_lamp":        _amb = "fire"; break;
         case "rm_garrison_keep":    _amb = "fire"; break;
         default:                    _amb = "";
