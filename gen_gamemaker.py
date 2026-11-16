@@ -43,7 +43,7 @@ def write_json(path, obj):
 
 _RID_COUNTER = 0
 _INSTANCE_COUNTER = 0
-_UUID_NAMESPACE = uuid.UUID("4d7f1b2a-2c6e-5b8d-9f10-ashencrown0001".replace("ashencrown0001", "a5e3c0de0001"))
+_UUID_NAMESPACE = uuid.UUID("4d7f1b2a-2c6e-5b8d-9f10-a5e3c0de0001")
 
 def rid():
     """Return a reproducible UUID for the current deterministic generation order."""
