@@ -587,20 +587,20 @@ elif _options_backup:
         open(p, 'wb').write(data)
 else:
     raise SystemExit("no options source: set REF or run once with the template")
-# uncheck "Interpolate colours between pixels" on every platform + main
+# uncheck "Interpolate colours between pixels" on every platform + main, and replace
+# the template's product name everywhere an option file carries one.
 for root, dirs, files in os.walk(os.path.join(OUT, 'options')):
     for fn in files:
         if not fn.endswith('.yy'): continue
         p = os.path.join(root, fn)
         s = open(p).read()
-        s2 = re.sub(r'"([a-z]+_interpolate_pixels|nwindows_interpolate_pixels)":\s*true',
-                    r'"\1":false', s)
-        s2 = s2.replace('"nwindows_display_name":"yyp-template"',
-                        '"nwindows_display_name":"Ashen Crown"')
-        s2 = s2.replace('"nwindows_product_info":"yyp-template"',
-                        '"nwindows_product_info":"Ashen Crown"')
+        s2 = re.sub(r'"(\w+_interpolate_pixels)":\s*true', r'"\1":false', s)
+        for key in ('display_name', 'game_name', 'product_info'):
+            s2 = re.sub(r'"(\w+_%s)":"yyp-template"' % key, r'"\1":"Ashen Crown"', s2)
         s2 = s2.replace('"nwindows_company_info":"DecadeDecaf"',
                         '"nwindows_company_info":"Eastern Goat Forge"')
+        s2 = s2.replace('"option_reddit_devvit_project_id":"yyp-template"',
+                        '"option_reddit_devvit_project_id":""')
         if s2 != s: open(p, 'w').write(s2)
 
 # ---------------------------------------------------------------- datafiles

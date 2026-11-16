@@ -41,7 +41,7 @@ if (mode == "list") {
         if (_n <= 0) exit;
         if (tab == 0) {
             var _id = _buy_ids[index];
-            var _price = scr_item_buy_price(_id);
+            var _price = scr_shop_buy_price(_id);
             if (_price > global.game.gold) { buzz_t = 8; exit; }
             if (scr_item_is_consumable(_id)) {
                 qty = 1;
@@ -64,7 +64,7 @@ if (mode == "qty") {
     _buy_ids = is_array(shop.items) ? shop.items : [];
     if (tab != 0 || index < 0 || index >= array_length(_buy_ids)) { mode = "list"; exit; }
     var _item_id = _buy_ids[index];
-    var _price = scr_item_buy_price(_item_id);
+    var _price = scr_shop_buy_price(_item_id);
     var _owned = scr_inventory_count(_item_id);
     var _afford = (_price > 0) ? (global.game.gold div _price) : 1;
     var _max_qty = max(1, min(99 - _owned, _afford));

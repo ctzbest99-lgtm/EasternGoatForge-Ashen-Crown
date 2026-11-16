@@ -82,11 +82,24 @@ function scr_shop_sellable_list() {
     return _out;
 }
 
+/// Chapter 9's copy branch buys the party a standing discount. [PROPOSED] 10%: the chapter only
+/// says "a shop discount", and Coleford has no shop of its own yet, so it applies at every shop.
+function scr_shop_discount_active() {
+    return scr_flag_get("ch9_shop_discount");
+}
+
+/// The price a shop actually charges: base price less the Chapter 9 discount when earned.
+function scr_shop_buy_price(_item_id) {
+    var _base = scr_item_buy_price(_item_id);
+    if (_base <= 0 || !scr_shop_discount_active()) return _base;
+    return max(1, floor(_base * 0.9));
+}
+
 function scr_shop_buy(_item_id, _qty) {
     scr_game_state_init();
     var _n = max(1, floor(_qty));
     var _it = scr_item_get(_item_id);
-    var _price = scr_item_buy_price(_item_id);
+    var _price = scr_shop_buy_price(_item_id);
     if (_price <= 0) { scr_audio_sfx("menu_error", 0, 0.8); return "That isn't for sale."; }
     var _total = _price * _n;
     if (global.game.gold < _total) { scr_audio_sfx("menu_error", 0, 0.8); return "Not enough gold."; }

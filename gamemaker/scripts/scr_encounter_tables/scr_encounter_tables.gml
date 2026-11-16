@@ -150,6 +150,9 @@ function scr_get_encounter_table(_table_id) {
 function scr_encounter_table_level_band(_table_id) {
     switch (_table_id) {
         case "zone01_farmlands": return { min: 1, max: 2 };
+        // Fallback table: weak bandits (L1) mixed with Fallen Knights (L3), used when a room
+        // sets no band of its own. Band covers both so the table is honest.
+        case "zone01_path": return { min: 1, max: 4 };
         case "zone01_old_road": case "old_road": return { min: 2, max: 3 };
         case "zone01_bandit_camp": case "bandit_camp": return { min: 3, max: 4 };
         case "zone01_watchtower": case "watchtower": case "zone01_basement_nest": case "zone01_basement_hall": return { min: 4, max: 7 };
