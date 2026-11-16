@@ -1,5 +1,7 @@
 # Development Roadmap
 
+For ordered tasks with acceptance criteria, see [AI Agent Development Backlog](AI_AGENT_DEVELOPMENT_BACKLOG.md); this file tracks phase state and content.
+
 1. **Project shell:** real GameMaker project, version, room size, tile size, input scheme, an empty room that compiles.
 2. **Exploration:** top-down movement, collision, interactables, dialogue input lock.
 3. **Battle prototype:** triggers, Attack/Guard, explicit battle states, one enemy, victory/defeat, safe overworld return.

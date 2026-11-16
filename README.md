@@ -18,12 +18,13 @@ A complete, ready-to-open GameMaker project lives in `gamemaker/AshenCrown.yyp` 
 
 ## Start here
 1. Read docs/GAME_DESIGN_DOCUMENT.md and docs/DECISIONS_AND_OPEN_QUESTIONS.md.
-2. Open `gamemaker/AshenCrown.yyp` in GameMaker and run it. See `gamemaker/README.md` for what is included and what is intentionally stubbed.
-3. Check docs/DEVELOPMENT_ROADMAP.md for what is built and what is next; docs/CHANGELOG.md has the feature history.
-4. Run docs/TEST_PLAN.md before marking features complete.
+2. Read docs/AI_AGENT_DEVELOPMENT_BACKLOG.md before assigning work to Codex or another AI agent; it is the ordered task list with acceptance criteria.
+3. Open `gamemaker/AshenCrown.yyp` in GameMaker and run it. See `gamemaker/README.md` for what is included and what is intentionally stubbed.
+4. Check docs/DEVELOPMENT_ROADMAP.md for what is built and what is next; docs/CHANGELOG.md has the feature history.
+5. Run docs/TEST_PLAN.md before marking features complete.
 
 ## Folders
-- docs/: design, story, combat, Zone 1, art, asset inventory, roadmap, tests.
+- docs/: design, story, combat, Zone 1, art, asset inventory, roadmap, backlog, tests.
 - prompts/: Codex implementation prompts.
 - game/: human-readable GML snippets, setup notes, `game/sprites/` art, tileset, and overworld Included Files (the source the GameMaker project is generated from).
 - gamemaker/: the generated, ready-to-open GameMaker project (`.yyp`, resources, and datafiles).

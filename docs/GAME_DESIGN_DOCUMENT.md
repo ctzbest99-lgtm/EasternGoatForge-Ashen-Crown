@@ -32,6 +32,8 @@ These are built in this repository; see `docs/DECISIONS_AND_OPEN_QUESTIONS.md` f
 
 Still absent: controller support, an options screen (the audio gains exist without UI), a battle-only item tier, and any in-engine playtest.
 
+Ordered next tasks with acceptance criteria live in [AI Agent Development Backlog](AI_AGENT_DEVELOPMENT_BACKLOG.md).
+
 ## Content state
 
 - **Chapter 1 — The Night of Ash** (Zone 1, Greyhaven → Old Watchtower → Blackguard → Crownveil Door): built.
