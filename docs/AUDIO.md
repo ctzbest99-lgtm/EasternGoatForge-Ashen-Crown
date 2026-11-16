@@ -87,6 +87,14 @@ into the head, so they can sit under a room indefinitely without a seam.
 | `snd_sfx_coin` | 0.30 s | Loot grants gold |
 | `snd_sfx_text` | 0.03 s | A dialogue box opens and each page advance (gain 0.6–0.7, quiet) |
 
+## Settings and the Options screen
+
+Gains live in `global.audio_ctx` (`master`, `music_gain`, `amb_gain`, `sfx_gain`, `muted`) and are changed through `scr_audio_set_gain(kind, value)` or `scr_audio_mute(on)`. `scr_audio_get_gain(kind)` reads one back.
+
+The title screen's **Options** entry is the only UI for them so far: Music, Ambience, Sound effects and Mute, left/right in 5% steps. Every change is written immediately to `ashen_settings.ini` in the game's sandbox save area (`scr_audio_settings_save()`), and `scr_audio_settings_load()` runs once in `obj_title`'s Create, so the mix survives a restart. A missing or unreadable file keeps the compiled-in defaults — the game is never silent on a first run.
+
+There is no in-game Options entry yet: the Adventure menu still has no settings page, so a player who wants to change the mix mid-chapter has to return to the title screen.
+
 ## Code
 
 `game/scripts/scr_audio.gml` (mirrored to `gamemaker/scripts/scr_audio/`):

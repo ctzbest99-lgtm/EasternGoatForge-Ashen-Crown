@@ -66,6 +66,28 @@ Crown Sergeant (9), and every Chapter 3+ enemy, already had a level from the `sc
 - **Deliberate attempts get a line**, not silence: a save point or the debug F5 key outside a save room opens the dialogue box with “No shrine, no hearth. Save only at a crystal inside a town's church or tavern.”
 - **Settled follow-ups (2026-11-15):** the save point is the church/tavern *interior*, not the whole town — this is now implemented, not open. An inn bed is not a separate save rule; the crystal remains the only save interaction. Still open for Design: the two Greyhaven crystal tiles (10,7) chapel and (10,6) tavern.
 
+## Options screen and saved audio settings (implemented 2026-11-16; UNVERIFIED)
+
+- The title screen's Options entry is a real screen: Music, Ambience, Sound effects, Mute, Back. Left/right changes a gain by 5%; confirm/cancel leave. It replaces a panel that read "Options (placeholder)".
+- **Persistence uses `ashen_settings.ini`, not the save file** — a new `ini_open`/`ini_write_real` pair in `scr_audio.gml`. Deliberate: the mix is a client preference, not character state, so it must not bump the save schema to v4 or be lost when a save is deleted. The file sits in the sandbox save area, separate from the three slots.
+- Gains are still applied through the existing `scr_audio_set_gain`, so anything already reading `global.audio_ctx` picks the change up. `scr_audio_settings_load()` runs once in `obj_title` Create; a missing file keeps the compiled defaults.
+- **Not built:** an in-game Options entry. The Adventure menu has no settings page, so changing the mix mid-chapter means returning to the title screen. That is the next step if the owner wants it.
+- **Unverified:** the layout has never been drawn in GameMaker — panel height, row spacing and bar width are arithmetic, not observed. TEST_PLAN M16–M18 are the checks.
+
+## Chapter 6 built (approved 2026-11-16; UNVERIFIED)
+
+The owner approved all eight decisions in §10 of `docs/story/CHAPTER6_SCRIPT.md` as recommended, so **The Green Silence** is canon and built: `scr_dialogue_data_ch6` (51 nodes), `scr_ch6_story`, `scr_ch6_markers_data`, `scr_build_blackwood_deep`, `scr_build_blackwood_hollow`, and the rooms `rm_blackwood_deep` and `rm_blackwood_hollow`.
+
+Implementation choices made while building it, none of which changes a story decision:
+
+- **The boss gate is `scr_ch6_tick`, not a story trigger.** `obj_story_trigger` latches after one attempt, and §5 has to be replayable after a defeat (the Chapter 4 lesson). The check fires when the player crosses into the burnt ground at x = 400 px (tile 25), so the road before it stays quiet as §1 asks. A defeat sets `ch6_boss_cool`, cleared when the party walks back west of x = 320.
+- **The rooms are blockouts on `ts_wrenfield`**, as §9.3 specifies, because there is no Blackwood tileset. Cinderhollow's burners use `spr_story_npc_placeholder`; the act's largest art debt is unchanged and is now visible in-game rather than only in the plan.
+- **`Q_MBW_S2`'s objective is not reworded at the chapter's end.** §6 says the stage stays active with "Find the shrine under the roots."; the journal's stage text is fixed data (`scr_quest_definitions`), so that objective belongs to Chapter 7's stage instead. Recorded rather than silently resolved.
+- **`Q_MAIN_BEYOND_VEIL` is set to `complete`**, keeping Q_BV_S7 as its last stage, rather than gaining an eighth stage — the §0 intent ("the Act II quest closes").
+- **The duplicate-trigger rule was applied to repeat talk**: Berrin's campaign line plays once (`ch6_hollow_met`), then `CH_TALK_01/02/03` one per visit in order, then `CH_BERRIN_R1`. The camp and the hollow arrival each latch on their own flag.
+- **`rm_blackwood_garrison` gained a `from_blackwood` spawn** (tile 24,10) so the deep room's west door lands in the yard instead of falling back to the default spawn. `tools/gen_ch5_rooms.py` was corrected for a later hand edit to Sera's sprite note before regenerating; the only resulting change is that one marker.
+- **Unverified:** nothing compiled or played. TEST_PLAN F16–F28 are the checks.
+
 ## Still undecided
 GameMaker version; room resolution and whether 640×360 stays (height is not a multiple of 16) or is replaced by a 16-aligned size (e.g. 640×368, 320×180 with a 2× window, or 256×224); camera / view size; input mapping; battle room versus overlay; exact backstory; party members/classes; rare encounter and boss identity/mechanics; license/proprietary status; save-point locations and whether a save-anywhere debug key stays; official item prices and the shop sell rate (defaults below); exact defeat gold/XP percentages (defaults 50% gold / 10% of XP-to-next-level, pending tuning); whether a defeat should also deduct items; exact random-encounter rates and table weights (defaults 8–24 steps, 5 grace, 3:1 Bandit/Fallen Knight); Ashbound Hunter placeholder stats and rare rate (default 4%, midpoint of 3–5%); whether a defeat during the scripted Watchtower Hunter fight should consume the trigger (currently it does not, so the parchment cannot be missed); whether that scripted fight should grant regular XP/gold (currently yes, using the same per-enemy living-participant rule); XP curve, max level, and level-up stat growth (placeholder defaults below); whether the defeat penalty should also hit the reserve; whether story events lock or force party slots. Treat these as open questions, not approved requirements.
 

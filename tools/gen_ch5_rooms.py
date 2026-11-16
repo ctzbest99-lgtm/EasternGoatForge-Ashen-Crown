@@ -291,6 +291,8 @@ for (x, y) in [(13, 6), (24, 17)]:
 gar_markers = [
     {'type': 'player_spawn', 'name': 'from_road', 'tile_x': 1, 'tile_y': 11, 'x': T(1, 11)[0], 'y': T(1, 11)[1], 'facing': 'right',
      'note': 'Arrive from rm_valemere_road (the Blackwood road fork).'},
+    {'type': 'player_spawn', 'name': 'from_blackwood', 'tile_x': 24, 'tile_y': 10, 'x': T(24, 10)[0], 'y': T(24, 10)[1], 'facing': 'left',
+     'note': 'Arrive back from the Blackwood road east (Chapter 6\'s return door).'},
     {'type': 'player_spawn', 'name': 'from_keep', 'tile_x': 18, 'tile_y': 3, 'x': T(18, 3)[0], 'y': T(18, 3)[1], 'facing': 'down',
      'note': 'Arrive back out of the commander\'s office.'},
     {'type': 'zone_exit', 'name': 'to_valemere_road', 'tile_x': 0, 'tile_y': 10, 'x': T(0, 10)[0], 'y': T(0, 10)[1],
@@ -311,7 +313,7 @@ gar_markers = [
     npc('hailen', 22, 9, 'commander_hailen', 'Commander Hailen', 'HL_INTRO', 'spr_commander_hailen_ow16_idle_left', facing='left',
         extra={'note': 'Commander Hailen, using his imported overworld set. HL_INTRO, then HL_INTRO_R1.'}),
     npc('sera_prisoner', 15, 17, 'sera', 'Sera', 'SR_MEET', 'spr_sera_ow16_idle_down',
-        extra={'note': 'Sera in the cell block (placeholder prisoner sprite: she has no art yet). SR_MEET, then SR_MEET_R1.'}),
+        extra={'note': 'Sera in the cell block, in her own Silver Guard set (batch 9). SR_MEET, then SR_MEET_R1.'}),
     extra('gate_soldier', 12, 7, 'spr_crown_soldier_firm_ow16_idle_down', 'Silent pikeman by the gate.'),
     extra('yard_soldier', 12, 13, 'spr_crown_soldier_unwilling_ow16_idle_left', 'Silent soldier watching the party.'),
     {'type': 'story', 'name': 'bg_yard', 'tile_x': 12, 'tile_y': 10, 'x': T(12, 10)[0], 'y': T(12, 10)[1],

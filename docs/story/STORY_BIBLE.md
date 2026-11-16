@@ -1,7 +1,7 @@
 # ASHEN CROWN — Story Bible
 
 **Studio:** Eastern Goat Forge · **Engine:** GameMaker Studio (GML) · **Genre:** Dark medieval fantasy RPG, classic turn-based combat · **Platform:** PC
-**Source:** `MASTER_GDD.txt` (master design doc) plus every owner decision through **2026-11-16**, which are recorded in the [Decision log](#11-decision-log). Anything still undecided is marked **Open** and listed in [Open questions for Kevin](#10-open-questions-for-kevin). Chapter scripts `CHAPTER1_SCRIPT.md`–`CHAPTER5_SCRIPT.md` are all approved canon; `ACT2_OUTLINE.md` carries the Act II structure.
+**Source:** `MASTER_GDD.txt` (master design doc) plus every owner decision through **2026-11-16**, which are recorded in the [Decision log](#11-decision-log). Anything still undecided is marked **Open** and listed in [Open questions for Kevin](#10-open-questions-for-kevin). Chapter scripts `CHAPTER1_SCRIPT.md`–`CHAPTER5_SCRIPT.md` are all approved canon; `ACT2_OUTLINE.md` carries the Act II structure. `CHAPTER6_SCRIPT.md` is a **PROPOSED** draft for the owner — nothing in it is canon yet.
 
 ## Canon status legend
 
@@ -488,7 +488,7 @@ Act II is four chapters (Chapters 2–5), each with a recruit and a chapter boss
 
 ### Act III — The Blackwood (outline only) **[PROPOSED]**
 
-`ACT3_OUTLINE.md` sets out a three-chapter act (6 *The Green Silence*, 7 *The Share*, 8 *The Door in the Wood*) built on the nine Act III enemies and the `blackwood` encounter table that already exist, ending at the Aethari stone doors with the pendant answering and no answer given. Chapter titles, Cinderhollow and its tithe, the three bosses, the side quest's choice, the level cap raise and the room list are all **PROPOSED** and listed as ten decisions in its §9. The act answers none of the open questions and keeps the Fallen Knight out of it.
+`ACT3_OUTLINE.md` sets out a three-chapter act (6 *The Green Silence*, 7 *The Share*, 8 *The Door in the Wood*) built on the nine Act III enemies and the `blackwood` encounter table that already exist, ending at the Aethari stone doors with the pendant answering and no answer given. Chapter 6 *The Green Silence* — its title, Cinderhollow, Berrin, the tithe, the stacked armour and the Burn-Line Hulk — was **approved 2026-11-16** and is canon; Chapter 7 *The Share* and Chapter 8 *The Door in the Wood*, their bosses, the side quest's choice, the level cap raise and the rest of the room list are still **PROPOSED** in its §9. The act answers none of the open questions and keeps the Fallen Knight out of it.
 
 - **[O]** The names suggest region links (Blackwood, Ironspine as "Beneath the Mountains", Ashlands), but the doc never assigns regions to acts. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Valemere is the Act II hub; Act II is set in the Kingdom of Eldoria and hands off to the Blackwood for Act III. The Drowned Coast (named village: **Saltreach**) and the Frostwilds (named settlement: **Rimehold**) still have no act assignment. The doc also doesn't name the "Forgotten King."
 
