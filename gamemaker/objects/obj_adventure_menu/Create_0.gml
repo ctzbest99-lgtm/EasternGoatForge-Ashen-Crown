@@ -6,12 +6,15 @@ scr_game_state_init();
 scr_ui_init();
 global.game.menu_open = true;
 
-mode = "list";        // "list" | "status" | "party" | "bestiary"
+mode = "list";        // "list" | "status" | "party" | "bestiary" | "quests"
 index = 0;            // highlighted menu row
 member_index = 0;     // Status: member (active first, then reserve)
 party_index = 0;      // Party Order: 0..active-1 are front-line slots, then the reserve row
 bestiary_index = 0;   // Bestiary: enemy row
 bestiary_scroll = 0;
+quest_index = 0;      // Quests: journal row
+quest_scroll = 0;
+quests = scr_quest_started_list();
 message = "";
 
-entries = ["Items", "Equip", "Party Order", "Status", "Bestiary", "Close"];
+entries = ["Items", "Equip", "Party Order", "Quests", "Status", "Bestiary", "Close"];

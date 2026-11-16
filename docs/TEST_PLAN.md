@@ -83,7 +83,7 @@ Start fights from the overworld with `scr_encounter_start(<id, group id, or arra
 - [ ] E4 Field Surgeon heals the most-hurt ally (green pop) only when one is below 60% HP.
 - [ ] E5 Crown Sergeant Rally puts ATK-up icons on his allies. He never uses it alone.
 - [ ] E6 `grp_sanctuary_warden` / `grp_blackwood_matriarch`: at 50% HP, `trans` plays once, the phase line shows, then `idle_p2` / `attack_p2` are used and the boss hits harder.
-- [ ] E7 Commander Hailen dies (death strip, battle won) by default. With `scr_flag_set("flag_hailen_yields")` he yields instead (yield holds, `flag_hailen_yielded` set).
+- [ ] E7 Commander Hailen dies (death strip, battle won) by default. With `scr_flag_set("flag_hailen_yields")` he yields instead (yield holds, `flag_hailen_yielded` set). Simulation expects roughly 52 / 78 / 94% wins at party levels 16 / 17 / 18 (900 HP / 57 ATK); a loss at 16 is within tune, not a bug.
 - [ ] E8 Night Moth Swarm: the dust flies on cast frame 3. Blind shows "Bl" and makes about half of physical attacks miss ("miss" pop). Sleep shows "Sl", skips the member's command and turn ("X is asleep."), and ends early when the member takes damage. Statuses wear off after their rounds.
 - [ ] E9 Shade Stalker Fade: it turns translucent and physical attacks on it miss until the next round.
 - [ ] E10 Glyph Wisp Mote flies on cast frame 3 and uses MDEF.
@@ -191,7 +191,7 @@ Create the new objects and scripts in `game/README.md`. Menu layout lives in `sc
 - [ ] S7 Pell: shop opens only after `flag_pendant_found` and `GH_SMITH_01_B`. Stock is Iron Sword, Leather Armor, Iron Helm. The info pane shows party icons, new ATK / DEF, and stat arrows (or "Can't use"). Buying and equipping from the Equip tab changes battle stats. Helm is a real slot (Iron Helm); Accessory may be empty.
 - [ ] S8 Sell is 50% (PLACEHOLDER, floored, minimum 1). Key items appear on the Sell list as disabled rows ("--" plus the key icon) and cannot be sold. Selling a non-key item removes it and adds gold.
 - [ ] S9 Quit to the desktop (or restart the game) and Continue: HP, levels, XP, gear, gold, inventory, flags, room, position, facing, and playtime all match the save. A loaded position is un-stuck if it slightly overlaps a solid.
-- [ ] S10 Status, party order, and the Bestiary are still not implemented.
+- [ ] S10 *(historical; superseded)* Status, party order, the Bestiary and the Quests page now exist — M3, M4, M5 and M13 cover them.
 
 ## Chapter 2 (feature/chapter2; untested in GameMaker)
 Set up the rooms with `game/rooms/ROOM_SETUP.md` §6c and import the art with `game/sprites/IMPORT.md` ("Chapter 2"). Every line must match `docs/story/CHAPTER2_SCRIPT.md` word for word.
@@ -256,6 +256,22 @@ Set up the rooms with `game/rooms/ROOM_SETUP.md` §6c and import the art with `g
 
 Record GameMaker version, date, result, and reproducible failures.
 
+## Chapter 4 (feature/chapter4; untested in GameMaker)
+
+Setup: a save at the end of Chapter 3 (`flag_chapter3_complete`, Q_BV_S5 active) or `DEBUG_ADD_FULL_ROSTER` off and Kael/Taren/Lyra in the party. Suggested levels 13–16.
+- [ ] E1 **Handoff in.** The Valemere west gate now lands in `rm_hollow_approach` (`from_valemere`). HS_ENTER_01–06 play once, `flag_hs_entered` is set, and Q_BV_S5 is active (or repaired to S5).
+- [ ] E2 **Approach.** The waystone (HS_SIGN_01), the shepherd (HS_SHEP_01–03, repeat HS_SHEP_R1) and the walk back to `rm_valemere` (`from_hollow`) all work. No random encounters outdoors.
+- [ ] E3 **The doors.** Walking up to the doors plays HS_DOOR_01–09 once: the inscription reads "Here the Aethari set the first stone of the Veil", `flag_sanctuary_entered` is set, and the party still says **Architects**. Repeat inspections give HS_DOOR_05–06 only.
+- [ ] E4 **Hollow halls.** `rm_hollow_sanctuary` loads (28×26); the carved wall (HS_LORE_01, "LUMEN. THE ENGINE. THE VEIL STANDS."), the sealed door (HS_LORE_02) and the lamp (HS_LORE_03) all play. The sealed door never opens. Random encounters use `hollow_sanctuary` (Ward Sentinel, Glyph Wisp, Aethari Automaton, levels 13–16).
+- [ ] E5 **Caelan.** The records-hall NPC plays CA_MEET_01–26 once, including "They called themselves the Aethari." `flag_aethari_name_learned` and `flag_caelan_met` are set; repeat talk is CA_MEET_R1. Prompt text in later party dialogue says Aethari, while UI, bestiary and quest text still say Architects.
+- [ ] E6 **Warden gate.** Approaching the inner door before talking to Caelan shows SW_LOCKED and starts no fight. After CA_MEET, the trigger plays SW_INTRO_01–05, Caelan joins at the start of the fight (4th slot, SW_SYS_01, Kael's level, spellbook equipped), and the battle is `grp_sanctuary_warden` (level 16, two phases, "The Warden's plates crack. Two more arms unfold!"). Simulation expects roughly 35 / 71 / 94% wins at party levels 13 / 14 / 15; a loss at 13 is within tune, not a bug — but check the fight is winnable after one or two level-ups.
+- [ ] E7 **Caelan's kit.** In the fight, his Skill menu lists Ember, Frost Lance and Arc Bolt; each spends MP, uses the cast animation (or draws a rectangle), and rolls magic damage against MDEF. Lightning hits the Ward Sentinel's weakness.
+- [ ] E8 **Defeat retry.** Lose to the Warden once: the party wakes in town, Caelan is still in the party, and re-entering the sanctuary can trigger the fight again (the trigger is not consumed by a defeat).
+- [ ] E9 **Victory.** After the win: SW_DEFEAT_01–06, CA_JOIN_01–12, CA_SYS_01–05, HS_R1. `flag_caelan_recruited` and `flag_sanctuary_warden_beaten` are set, Q_BV_S5 completes and Q_BV_S6 opens.
+- [ ] E10 **Handoff out.** Leaving the sanctuary after the join plays HS_HANDOFF_01–06, sets `flag_chapter4_complete`, offers the quiet save prompt (silent outside a save room) and lands in `rm_hollow_approach`. Afterwards the door is a plain exit. No Fallen Knight appears anywhere in this chapter.
+
+Record GameMaker version, date, result, and reproducible failures.
+
 ## Systems pass (combat tutorial, Cheap Shot, Last Stand, battle poison)
 Setup: fresh save; walk the farm path to the guaranteed Bandit trigger (overworld tile 197, 161).
 - [ ] T1 Before the tutorial fight, no random encounters roll anywhere (walk the Farmlands).
@@ -281,3 +297,6 @@ Setup: fresh save, overworld. `DEBUG_ADD_FULL_ROSTER` on if the party rows shoul
 - [ ] M10 All four save crystals open the slot panel and write the file: Greyhaven Chapel (tile 10,7), Greyhaven Tavern (tile 10,6), the Bent Post (Wrenfield, tile 4,9) and the Salt Lamp (Valemere, tile 4,6). Each crystal stands on open floor and can be reached from the room's door. In the Bent Post, check it in both the closed and open states — the crystal must not be buried in the chairs-up patch and its tile must stay walkable. A crystal placed by hand in a road room (e.g. `rm_millhaven_road`) opens "No shrine, no hearth. Save only at a crystal inside a town's church or tavern." instead.
 - [ ] M11 Saving is gated by the room, not the town: a crystal inside the Bent Post, the Salt Lamp, the Greyhaven chapel or the Greyhaven tavern still saves. Standing in Wrenfield's, Valemere's or Greyhaven's streets (including the Greyhaven overworld pocket) and pressing F5 with `DEBUG_SAVE_ANYWHERE` on shows the blocked line, not the slot panel. Chapter boundaries still prompt for nothing: finish Chapter 1 at the Crownveil door, the Chapter 2 handoff and the Chapter 3 west gate — no slot panel appears.
 - [ ] M12 Title-screen Continue still loads all three slots (the title screen is not a town and is not gated).
+- [ ] M13 Quests page: on a fresh save it lists the main quest only, "Beyond the Veil", at stage 1 / 7, with the objective "Find a way beyond the Veil." Accepting Oda's quest adds "The One on the List" as a second row; completing it marks the row "done" and the detail pane reads "Complete." Every started-but-unfinished quest shows its current objective and "stage n / m."
+- [ ] M14 The journal tracks stage changes without a reload: after Taren joins at Wrenfield the main quest reads stage 3 / 7; after the Valemere gates 4 / 7; after Caelan joins 6 / 7. The parcel quest moves from its first stage to its second when the parcel is delivered to the Merchant District stall, and to "done" at Nim.
+- [ ] M15 Quests survive a save and reload (quest state is stored in the saved flags, so no new save field is involved). Use the debug flag setter to store an unknown stage id for a quest: the row still appears, with "In progress." rather than vanishing.

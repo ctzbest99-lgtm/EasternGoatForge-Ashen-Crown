@@ -207,7 +207,9 @@ function scr_dialogue_node(_id) {
     }
     var _ch2 = scr_ch2_dialogue_node(_id); // Chapter 2 (scr_dialogue_data_ch2, generated)
     if (is_struct(_ch2)) return _ch2;
-    return scr_ch3_dialogue_node(_id); // Chapter 3 (scr_dialogue_data_ch3, generated)
+    var _ch3 = scr_ch3_dialogue_node(_id); // Chapter 3 (scr_dialogue_data_ch3, generated)
+    if (is_struct(_ch3)) return _ch3;
+    return scr_ch4_dialogue_node(_id); // Chapter 4 (scr_dialogue_data_ch4, generated)
 }
 
 function scr_dialogue_play_script(_script_id, _source = noone) {
@@ -216,6 +218,8 @@ function scr_dialogue_play_script(_script_id, _source = noone) {
     if (scr_ch2_play_script(_script_id, _source)) return true;
     // Chapter 3 (Crowns and Alleys). Runs after Chapter 2 so its Wrenfield exits still resolve.
     if (scr_ch3_play_script(_script_id, _source)) return true;
+    // Chapter 4 (The Old Name): the hollow approach, the sanctuary, Caelan, the Warden.
+    if (scr_ch4_play_script(_script_id, _source)) return true;
     switch (_script_id) {
         case "GH_ARRIVAL":
             if (scr_flag_get("flag_arrived_greyhaven")) return true;

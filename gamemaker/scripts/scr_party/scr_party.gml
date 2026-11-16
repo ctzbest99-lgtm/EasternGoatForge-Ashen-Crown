@@ -20,7 +20,7 @@ function scr_roster_create() {
     var _roster = [
         scr_roster_member_create("kael", "Kael", "Kael Varyn", "Vanguard", "Frontline", KAEL_BASE_HP, KAEL_BASE_ATTACK, KAEL_BASE_DEFENSE, ["longsword"], ""),
         scr_roster_member_create("lyra", "Lyra", "Lyra Veyne", "Rogue", "Crits / speed", LYRA_BASE_HP, LYRA_BASE_ATTACK, LYRA_BASE_DEFENSE, ["dagger"], "item_twin_daggers"),
-        scr_roster_member_create("caelan", "Caelan", "Caelan Rook", "Arcanist", "Elemental magic", CAELAN_BASE_HP, CAELAN_BASE_ATTACK, CAELAN_BASE_DEFENSE, ["spellbook"], ""),
+        scr_roster_member_create("caelan", "Caelan", "Caelan Rook", "Arcanist", "Elemental magic", CAELAN_BASE_HP, CAELAN_BASE_ATTACK, CAELAN_BASE_DEFENSE, ["spellbook"], "item_spellbook"),
         scr_roster_member_create("sera", "Sera", "Seraphine Thorn", "Warden", "Healing / holy", SERA_BASE_HP, SERA_BASE_ATTACK, SERA_BASE_DEFENSE, ["holy_sword"], ""),
         // Taren Holt: warrior / frontline, heavy swords; starting weapon stub is a bastard sword.
         // Skills are placeholders; class is Rebel Captain of the Broken Yoke (STORY_BIBLE.md §5.5).
@@ -48,7 +48,7 @@ function scr_actor_battle_defaults(_actor_id) {
         // Lyra's starting skills are canon (CHAPTER3_SCRIPT.md Decision 4): Twin Cut and
         // Open Vein (active) and Cutthroat (passive). She joins at the Debtman fight (§6).
         case "lyra":   return { spd: LYRA_BASE_SPD,   mdef: LYRA_BASE_MDEF,   mp: LYRA_BASE_MP,   skills: ["twin_cut", "open_vein"], passives: ["cutthroat"] };
-        case "caelan": return { spd: CAELAN_BASE_SPD, mdef: CAELAN_BASE_MDEF, mp: CAELAN_BASE_MP, skills: [], passives: [] };
+        case "caelan": return { spd: CAELAN_BASE_SPD, mdef: CAELAN_BASE_MDEF, mp: CAELAN_BASE_MP, skills: ["ember", "frost_lance", "arc_bolt"], passives: [] };
         case "sera":   return { spd: SERA_BASE_SPD,   mdef: SERA_BASE_MDEF,   mp: SERA_BASE_MP,   skills: [], passives: [] };
         case "taren":  return { spd: TAREN_BASE_SPD,  mdef: TAREN_BASE_MDEF,  mp: TAREN_BASE_MP,  skills: ["rallying_cry", "cleave"], passives: ["unbowed"] };
     }

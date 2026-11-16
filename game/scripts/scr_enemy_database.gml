@@ -148,7 +148,10 @@ function scr_get_enemy_data(_enemy_id) {
             return scr_enemy_scaled("aethari_automaton", "Aethari Automaton", "Automaton", "elite", 15, 1, { spd: 9, weakness: "lightning",
                 actions: [{ skill: "attack", weight: 1 }] });
         case "sanctuary_warden": // Ch 4 boss (working name), two phases
+            // hp_mult 1.25 / atk_add 2 compensate for Caelan's approved elemental kit (Chapter 4
+            // balance pass 2026-11-15; PLACEHOLDER, 35/71/94% wins at party levels 13/14/15).
             return scr_enemy_scaled("sanctuary_warden", "Sanctuary Warden", "Warden", "boss", 16, 4, { spd: 8,
+                hp_mult: 1.25, atk_add: 2,
                 phase2_at: 0.5, phase2_buffs: [{ stat: "atk", pct: 0.2, turns: -1 }],
                 phase2_line: "The Warden's plates crack. Two more arms unfold!",
                 actions: [{ skill: "attack", weight: 2 }, { skill: "warden_ring", weight: 1 }],
@@ -157,7 +160,9 @@ function scr_get_enemy_data(_enemy_id) {
                     [{ skill: "attack", weight: 2 }, { skill: "warden_ring", weight: 2 }]
                 ] });
         case "garrison_pikeman":
-            return scr_enemy_scaled("garrison_pikeman", "Garrison Pikeman", "Pikeman", "common", 16, 1, { spd: 10, weakness: "lightning",
+            // atk_add 4: at 34 ATK the two-pikeman group only cost 18% party HP at level 16
+            // (Chapter 5 balance pass 2026-11-15); 38 brings it to ~21%, the band-floor target.
+            return scr_enemy_scaled("garrison_pikeman", "Garrison Pikeman", "Pikeman", "common", 16, 1, { spd: 10, weakness: "lightning", atk_add: 4,
                 actions: [{ skill: "attack", weight: 2 }, { skill: "pike_thrust", weight: 2 }] });
         case "garrison_field_surgeon":
             return scr_enemy_scaled("garrison_field_surgeon", "Field Surgeon", "Surgeon", "common", 16, 1, { spd: 12, hp_mult: 0.8,
@@ -166,9 +171,10 @@ function scr_get_enemy_data(_enemy_id) {
             return scr_enemy_scaled("garrison_knight", "Garrison Knight", "Knight", "elite", 17, 1, { spd: 9, weakness: "lightning",
                 actions: [{ skill: "attack", weight: 3 }, { skill: "soldier_guard", weight: 1 }] });
         case "commander_hailen": // Ch 5 boss: yields if the story flag is set, otherwise falls
-            // atk_add 10: at the flat boss bonus he was long but harmless (100% win, 58–70% party HP
-            // left at levels 16–18). PLACEHOLDER, from the Chapter 5 simulation.
-            return scr_enemy_scaled("commander_hailen", "Commander Hailen", "Hailen", "boss", 18, 4, { spd: 12, atk_add: 10,
+            // Chapter 5 balance pass (2026-11-15): Caelan's kit made him 97/100/100% at 16/17/18,
+            // so he took length (hp_mult 1.5) rather than more ATK alone. PLACEHOLDER:
+            // ~51/81/96% wins, 9.1/8.6/8.1 rounds, 15/22/30% party HP left.
+            return scr_enemy_scaled("commander_hailen", "Commander Hailen", "Hailen", "boss", 18, 4, { spd: 12, hp_mult: 1.5, atk_add: 14,
                 yields_if_flag: "flag_hailen_yields", yield_flag: "flag_hailen_yielded",
                 actions: [{ skill: "attack", weight: 3 }, { skill: "hailen_glint", weight: 2 }] });
         case "shade_stalker":

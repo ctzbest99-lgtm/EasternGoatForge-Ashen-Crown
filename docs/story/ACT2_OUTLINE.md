@@ -1,7 +1,7 @@
 # ASHEN CROWN — Act II Outline: "The Broken Crown"
 
 **Studio:** Eastern Goat Forge · **Engine:** GameMaker Studio (GML) · **Genre:** Dark medieval fantasy RPG, classic turn-based combat · **Platform:** PC
-**Status:** Kevin approved the nine Act II recommendations on Nov 14 2026. Chapter 2 (`CHAPTER2_SCRIPT.md`, approved Nov 14 2026, 3:00 PM ET) and Chapter 3 (`CHAPTER3_SCRIPT.md`, approved Nov 14 2026, 3:53 PM ET) are fully canon. Remaining texture — titles and level bands for Chapters 4–5, later quest stage text, and other connective beats in those chapters — is still **[PROPOSED]**.
+**Status:** Kevin approved the nine Act II recommendations on Nov 14 2026. Chapter 2 (`CHAPTER2_SCRIPT.md`, approved Nov 14 2026, 3:00 PM ET) and Chapter 3 (`CHAPTER3_SCRIPT.md`, approved Nov 14 2026, 3:53 PM ET) are fully canon, and Chapter 4 (`CHAPTER4_SCRIPT.md`, approved Nov 15 2026) is canon too, including its title and levels. Remaining texture — Chapter 5's title and level band, later quest stage text, and other connective beats — is still **[PROPOSED]**.
 **Source of canon:** `MASTER_GDD.txt` and `STORY_BIBLE.md`. Chapter 1 remains `CHAPTER1_SCRIPT.md`. Confirmed Act II material is also recorded in the bible.
 
 The act title is **The Broken Crown** **[C]**. **The Broken Yoke** is the rebellion's name only **[C-confirmed]**. Do not retitle this act.
@@ -75,13 +75,13 @@ This act gathers the party, plants Alden as a friend, and gives the player one r
 
 ## 3. Chapter map
 
-Act I was a single chapter (Chapter 1, "The Night of Ash"). **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Act II is four chapters (Chapters 2–5), one recruit and one chapter boss each, ending on the road to the Blackwood. Chapter 2's title, **The Weight of the Yoke**, and its suggested levels (8–10) are **[C-confirmed]**. Chapter 3's title, **Crowns and Alleys**, and its suggested levels (10–13) are **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Titles for Chapters 4–5 and suggested levels for those chapters stay **[PROPOSED]**. All of `CHAPTER2_SCRIPT.md` and `CHAPTER3_SCRIPT.md` are canon.
+Act I was a single chapter (Chapter 1, "The Night of Ash"). **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Act II is four chapters (Chapters 2–5), one recruit and one chapter boss each, ending on the road to the Blackwood. Chapter 2's title, **The Weight of the Yoke**, and its suggested levels (8–10) are **[C-confirmed]**. Chapter 3's title, **Crowns and Alleys**, and its suggested levels (10–13) are **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). **Chapter 4's title, The Old Name, and its suggested levels (13–16) are [C-confirmed]** (Nov 15 2026). Chapter 5's title and suggested levels stay **[PROPOSED]**. All of `CHAPTER2_SCRIPT.md`, `CHAPTER3_SCRIPT.md` and `CHAPTER4_SCRIPT.md` are canon.
 
 | Chapter | Title | Main locations | Recruit | Boss | Suggested levels |
 |---|---|---|---|---|---|
 | 2 | The Weight of the Yoke **[C-confirmed]** | Watchtower backtrack; optional Greyhaven; **Millhaven Road**; **Wrenfield** **[C-confirmed]** | Taren Holt | **Reeve Calder**, Crown occupation officer **[C-confirmed]** | 8–10 **[C-confirmed]** |
 | 3 | Crowns and Alleys **[C-confirmed]** | **Valemere Road**; **Valemere** (Weigh-House Square, the Salt Lamp, seized warehouse; Lower City as the story focus; other districts as hub) | Lyra Veyne | **the Debtman**, a human Lower City enforcer tied to the stolen document, not a named Black Hand leader **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). A moniker only; he withdraws alive. | 10–13 **[C-confirmed]** |
-| 4 | The Old Name **[PROPOSED title]** | Countryside a day's travel from Valemere; **the Hollow Sanctuary** **[C-confirmed]** | Caelan Rook | An ancient sanctuary guardian-construct **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). Working name **the Sanctuary Warden** is still **[PROPOSED]**. | 13–16 **[PROPOSED]** |
+| 4 | The Old Name **[C-confirmed]** | Countryside a day's travel from Valemere; **the Hollow Sanctuary** **[C-confirmed]** | Caelan Rook | An ancient sanctuary guardian-construct **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026), named **the Sanctuary Warden** **[C-confirmed]** (Nov 15 2026) | 13–16 **[C-confirmed]** |
 | 5 | The Deserted Oath **[PROPOSED title]** | **The Blackwood Road Garrison** **[C-confirmed]** | Sera Thorn | **Commander Hailen**, the garrison's commanding officer **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) | 16–18 **[PROPOSED]** |
 
 Region-to-act mapping for the rest of the game stays **[O]** (question 28). **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) This act uses the Kingdom of Eldoria and Valemere as its hub, and hands off to the Blackwood for Act III. It does not claim the Drowned Coast, Ironspine, Frostwilds, or Ashlands.
@@ -92,7 +92,7 @@ Region-to-act mapping for the rest of the game stays **[O]** (question 28). **[C
 
 ## 4. Main quest: Beyond the Veil
 
-**[C]** The quest title and the change from Find Mira are canon. The Chapter 1 script leaves stage `Q_BV_S1` as "Find a way beyond the Veil." Stages 1–3 are **[C-confirmed]** in `CHAPTER2_SCRIPT.md`. Stages 4–5 are **[C-confirmed]** in `CHAPTER3_SCRIPT.md`. Stages 6–7 remain **[PROPOSED]**.
+**[C]** The quest title and the change from Find Mira are canon. The Chapter 1 script leaves stage `Q_BV_S1` as "Find a way beyond the Veil." Stages 1–3 are **[C-confirmed]** in `CHAPTER2_SCRIPT.md`. Stages 4–5 are **[C-confirmed]** in `CHAPTER3_SCRIPT.md`. Stage 6 is **[C-confirmed]** in `CHAPTER4_SCRIPT.md`; stage 7 remains **[PROPOSED]**.
 
 | Stage | ID | Objective text | Completes when |
 |---|---|---|---|
@@ -104,9 +104,9 @@ Region-to-act mapping for the rest of the game stays **[O]** (question 28). **[C
 | 6 | `Q_BV_S6` | Investigate the Blackwood Road Garrison. | Sera is recruited and the Blackwood lead is obtained |
 | 7 | `Q_BV_S7` | Follow the trail into the Blackwood. | The party enters Act III |
 
-Stage IDs and objective text for S1–S5 are **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). S6–S7 stay **[PROPOSED]**, though the completion events they point at are **[C-confirmed]** where they match the Act II recruitment decisions. `Q_BV_S5` is started at the end of Chapter 3 and completes in Chapter 4.
+Stage IDs and objective text for S1–S5 are **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026). S6 is **[C-confirmed]** in `CHAPTER4_SCRIPT.md`; S7 stays **[PROPOSED]**, though the completion events it points at are **[C-confirmed]** where they match the Act II recruitment decisions. `Q_BV_S5` is started at the end of Chapter 3 and completes in Chapter 4.
 
-Optional side-quest hooks: **The One on the List** (Oda and Bram in Wrenfield) is **[C-confirmed]** in `CHAPTER2_SCRIPT.md`. **A Parcel Unsealed** (Nim at the Salt Lamp) is **[C-confirmed]** in `CHAPTER3_SCRIPT.md`. Still **[PROPOSED]**, not fully designed: a Radiant Flame petition in the Temple District (doctrine details and leaders stay **[O]**); a sanctuary side-chamber with fragmented records that hint, but do not explain, Lumen.
+Optional side-quest hooks: **The One on the List** (Oda and Bram in Wrenfield) is **[C-confirmed]** in `CHAPTER2_SCRIPT.md`. **A Parcel Unsealed** (Nim at the Salt Lamp) is **[C-confirmed]** in `CHAPTER3_SCRIPT.md`. Still **[PROPOSED]**, not fully designed: a Radiant Flame petition in the Temple District (doctrine details and leaders stay **[O]**); a sanctuary side-chamber with fragmented records that hint, but do not explain, Lumen (not used: the approved Chapter 4 script has no side quest).
 
 ---
 
@@ -207,9 +207,11 @@ Suggested flags: `flag_entered_valemere`, `flag_alden_met`, `flag_lower_city_job
 
 ---
 
-## 7. Chapter 4 — "The Old Name" **[PROPOSED title]**
+## 7. Chapter 4 — "The Old Name" **[C-confirmed title]**
 
-> **Draft script:** `CHAPTER4_SCRIPT.md` writes this chapter out in the Chapter 2–3 script format (approach, hollow halls, Caelan's records hall, the Aethari reveal, the Sanctuary Warden, the join, and the handoff to Chapter 5). It is **not approved**; its Decisions section lists what Kevin needs to settle, and every new line is **[PROPOSED]**.
+> **Approved script:** `CHAPTER4_SCRIPT.md` (approved Nov 15 2026) writes this chapter out in the Chapter 2–3 script format: approach, hollow halls, Caelan's records hall, the Aethari reveal, the Sanctuary Warden, the join, and the handoff to Chapter 5. Section 10 records the eight approved decisions, and levels 13–16 are confirmed.
+>
+> **Built (Nov 15 2026, unplaytested):** `rm_hollow_approach` and `rm_hollow_sanctuary`, `scr_ch4_story`, `scr_dialogue_data_ch4` (101 nodes), `scr_ch4_markers_data`, Caelan's three starting skills and spellbook, and the Valemere west-gate link. Nothing has been compiled or playtested.
 
 ### 7.1 The Hollow Sanctuary
 
@@ -217,7 +219,7 @@ Suggested flags: `flag_entered_valemere`, `flag_alden_met`, `flag_lower_city_job
 
 **[O]** What it was for, and why it was abandoned (section 2.5).
 
-**[PROPOSED]** Dungeon texture: stone doors, faded mechanisms, fragmented inscriptions, and enemies that can include hollow remnants or lingering wards. It should feel Aethari, not like a Crown fort and not like the Blackwood.
+**[C-confirmed]** (Nov 15 2026) Dungeon texture: stone doors, faded mechanisms, fragmented inscriptions, and enemies that can include hollow remnants or lingering wards. It should feel Aethari, not like a Crown fort and not like the Blackwood.
 
 The scholar's notes get the party to the door. Kael, Taren, and Lyra still say **Architects** on the way in, in ordinary speech **[C-confirmed]** naming guide).
 
@@ -227,11 +229,11 @@ The scholar's notes get the party to the door. Kael, Taren, and Lyra still say *
 
 Beats:
 
-1. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Interior inscriptions use the old name, **Aethari**. **[PROPOSED]** One may sit in the same family as the confirmed illustration, "Here the Aethari set the first stone of the Veil," without adding new claims about purpose or catastrophe.
-2. **[PROPOSED]** **Caelan Rook** is found in an inner hall, among records and a mechanism that no longer moves. He is wary of Crown pursuit and of anyone who looks like a soldier. He is a former royal scholar **[C]**. He does not give a full confession.
-3. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) He explains that "Architects" is the textbook name, and that they called themselves the Aethari. **[PROPOSED]** Final wording can follow the confirmed example line: "The Architects. That's what the textbooks call them. They called themselves the Aethari."
-4. **[PROPOSED]** He may also name **Lumen** as the magic they understood, and the **Crown Engine** as their greatest achievement, a mechanism associated with maintaining the Crownveil **[C-confirmed]**. He does not say how Lumen works, where the Engine is, what state it is in, or whether its condition is why the Veil is failing **[O]**.
-5. If asked why the Crownveil broke, he knows more than he admits **[C]**. **[PROPOSED]** A deflection in this spirit: "If I told you what I think, you would take it for an answer. It isn't one yet." Question 5 stays open.
+1. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Interior inscriptions use the old name, **Aethari**. **[C-confirmed]** (Nov 15 2026) One may sit in the same family as the confirmed illustration, "Here the Aethari set the first stone of the Veil," without adding new claims about purpose or catastrophe.
+2. **[C-confirmed]** (Nov 15 2026) **Caelan Rook** is found in an inner hall, among records and a mechanism that no longer moves. He is wary of Crown pursuit and of anyone who looks like a soldier. He is a former royal scholar **[C]**. He does not give a full confession.
+3. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) He explains that "Architects" is the textbook name, and that they called themselves the Aethari. **[C-confirmed]** (Nov 15 2026) Final wording can follow the confirmed example line: "The Architects. That's what the textbooks call them. They called themselves the Aethari."
+4. **[C-confirmed]** (Nov 15 2026) He may also name **Lumen** as the magic they understood, and the **Crown Engine** as their greatest achievement, a mechanism associated with maintaining the Crownveil **[C-confirmed]**. He does not say how Lumen works, where the Engine is, what state it is in, or whether its condition is why the Veil is failing **[O]**.
+5. If asked why the Crownveil broke, he knows more than he admits **[C]**. **[C-confirmed]** (Nov 15 2026) A deflection in this spirit: "If I told you what I think, you would take it for an answer. It isn't one yet." Question 5 stays open.
 6. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) After this scene, Kael and the party start saying **Aethari** in dialogue. UI, bestiary, and quest text stay on **Architects** per the naming guide.
 
 This is the act's story revelation. It is a name, and a true identity, not the six Crownveil truths **[O]** (question 26). What happened to the Aethari, why the Veil was created, what it is keeping in, and why Mira's face is in the old carvings remain unanswered.
@@ -240,15 +242,17 @@ This is the act's story revelation. It is a name, and a true identity, not the s
 
 **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) The chapter boss is an ancient sanctuary guardian-construct. It shows Aethari mechanisms without touching or explaining the Crown Engine.
 
-**[PROPOSED]** The sanctuary is not safe. The construct still holds the inner door, or wakes when the records are disturbed. Working name: **the Sanctuary Warden**. After the fight, the sanctuary is no longer a place Caelan can hide.
+**[C-confirmed]** (Nov 15 2026) The sanctuary is not safe. The construct still holds the inner door, or wakes when the records are disturbed. Boss: **the Sanctuary Warden** **[C-confirmed]** (Nov 15 2026). After the fight, the sanctuary is no longer a place Caelan can hide.
 
-**Personal stake.** **[PROPOSED]** Caelan has been alone with knowledge he will not yet spend. The Crown would rather a vanished scholar than a talking one. Greyhaven and the failing Veil are the disaster he feared and did not stop — he can feel that without saying what he knows. He joins because the rest of the answers are not in this stone, and because a party already hunting the Veil is the only place left to stand. He remains reserved. He remains incomplete.
+**Personal stake.** **[C-confirmed]** (Nov 15 2026) Caelan has been alone with knowledge he will not yet spend. The Crown would rather a vanished scholar than a talking one. Greyhaven and the failing Veil are the disaster he feared and did not stop — he can feel that without saying what he knows. He joins because the rest of the answers are not in this stone, and because a party already hunting the Veil is the only place left to stand. He remains reserved. He remains incomplete.
 
-Suggested flags: `flag_sanctuary_entered`, `flag_aethari_name_learned`, `flag_caelan_recruited`. Advance to `Q_BV_S6`. Party size is now 4 (full battle party, no reserve yet).
+Suggested flags: `flag_sanctuary_entered`, `flag_aethari_name_learned`, `flag_caelan_recruited`. Advance to `Q_BV_S6`. Party size is now 4 (active line full; the reserve slot stays empty until the garrison recruit).
 
 ---
 
 ## 8. Chapter 5 — "The Deserted Oath" **[PROPOSED title]**
+
+> **Draft script for approval:** `CHAPTER5_SCRIPT.md` (Nov 15 2026, not canon). It writes this chapter out in the Chapter 4 format — Sera's detention and recruitment, Hailen's arrest attempt and yield branch, the sealed-order Blackwood lead, and the second Fallen Knight sighting. Title, levels, Sera's join timing and her kit are still **[PROPOSED]** until the owner approves.
 
 ### 8.1 The Blackwood Road Garrison
 
@@ -397,4 +401,4 @@ His identity remains **[O]** (question 2). He is never named and never fights, m
 
 ---
 
-*Confirmed Act II material is recorded in `STORY_BIBLE.md`. Chapter 2 and Chapter 3 scripts are fully canon. Remaining [PROPOSED] texture is Chapters 4–5, until Kevin approves those scripts.*
+*Confirmed Act II material is recorded in `STORY_BIBLE.md`. Chapters 2, 3 and 4 scripts are canon (Chapter 4 approved Nov 15 2026). Remaining [PROPOSED] texture is Chapter 5, until Kevin approves that script.*

@@ -296,7 +296,8 @@ Varyn House · Rusted Boar Tavern · Greyhaven Chapel · Blacksmith · General S
 - **Background:** former royal scholar. He knows more about the Crownveil, and why it broke, than he admits at first.
 - **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) **Joins:** third recruit, in Act II, at **the Hollow Sanctuary**, an abandoned **Aethari** sanctuary a day's travel from Valemere in the countryside (see 2.5 and 2.7).
 - **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) At this recruitment the party learns the Aethari name: inscriptions say "Aethari," and Caelan explains that "Architects" is the textbook name. Party dialogue shifts to "Aethari" afterward; UI, bestiary and quest text stay on "Architects."
-- **[O]** What exactly he knows about the Crownveil and why it broke. Finer recruitment texture is still **[PROPOSED]** in `ACT2_OUTLINE.md`.
+- **[C-confirmed]** (Nov 15 2026) **Recruitment texture (`CHAPTER4_SCRIPT.md`):** found in the sanctuary's records hall, lamp lit, spellbook in hand, wary of Crown colors. He names **Lumen** and the **Crown Engine** without explaining either, and deflects questions about why the Veil broke: "If I told you what I think, you would take it for an answer. It isn't one yet." He becomes controllable at the start of the Sanctuary Warden fight (4th slot) and joins permanently after the battle, because the answers are not in the stone. Starting skills: **Ember** (fire), **Frost Lance** (ice), **Arc Bolt** (lightning); dark magic unlocks later. Skill names are approved; numbers stay **[O]**.
+- **[O]** What exactly he knows about the Crownveil and why it broke, and what he was hiding from at the sanctuary.
 
 ### 5.4 Seraphine "Sera" Thorn — Warden [C]
 - **Weapon:** holy sword. **Role:** healing, shields, buffs, resurrection, holy damage.

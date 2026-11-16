@@ -206,6 +206,27 @@ function scr_skill_build(_skill_id) {
             _s.status_turns = 2;
             _s.status_chance = 0.7;
             return _s;
+        // ---- Caelan Rook (Chapter 4, approved Nov 15 2026) -------------------------------
+        // Elements are canon (fire / ice / lightning). MP costs, power, animation and the
+        // message verbs are PLACEHOLDERS; numbers stay [O]. Dark magic unlocks later.
+        case "ember": // Caelan: fire, single target
+            _s = scr_skill_make("ember", "Ember", 4, "single", "damage", 1.2, "cast", "casts Ember!");
+            _s.dmg_type = "mag";
+            _s.element = "fire";
+            _s.desc = "Fire damage to one foe.";
+            return _s;
+        case "frost_lance": // Caelan: ice, single target
+            _s = scr_skill_make("frost_lance", "Frost Lance", 4, "single", "damage", 1.2, "cast", "casts Frost Lance!");
+            _s.dmg_type = "mag";
+            _s.element = "ice";
+            _s.desc = "Ice damage to one foe.";
+            return _s;
+        case "arc_bolt": // Caelan: lightning, single target
+            _s = scr_skill_make("arc_bolt", "Arc Bolt", 5, "single", "damage", 1.35, "cast", "casts Arc Bolt!");
+            _s.dmg_type = "mag";
+            _s.element = "lightning";
+            _s.desc = "Lightning damage to one foe.";
+            return _s;
         case "wisp_mote": // glyph_wisp: light mote (magic), mote spawns on cast frame 3
             _s = scr_skill_make("wisp_mote", "Mote", 0, "single", "damage", 1.1, "cast", "");
             _s.dmg_type = "mag";

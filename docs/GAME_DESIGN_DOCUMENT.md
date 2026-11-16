@@ -17,4 +17,4 @@ Top-down movement and collision; NPC/object interactions; turn-based combat; equ
 ## First vertical slice
 One small overworld map, placeholder player, one interaction, battle against Bandit or Fallen Knight, victory/defeat, and reliable return to exploration.
 
-The repository holds a complete, ready-to-open GameMaker project (`gamemaker/AshenCrown.yyp`) generated from `game/`: Chapters 1–3 are built and playable on paper, Chapters 4–5 exist as enemy and encounter data only, and later acts are design only. See `docs/DEVELOPMENT_ROADMAP.md` for the build state and `docs/CHANGELOG.md` for the feature history. Nothing has been compiled or playtested in GameMaker yet.
+The repository holds a complete, ready-to-open GameMaker project (`gamemaker/AshenCrown.yyp`) generated from `game/`: Chapters 1–4 are built and playable on paper, Chapter 5 exists as enemy and encounter data only, and later acts are design only. See `docs/DEVELOPMENT_ROADMAP.md` for the build state and `docs/CHANGELOG.md` for the feature history. Nothing has been compiled or playtested in GameMaker yet.

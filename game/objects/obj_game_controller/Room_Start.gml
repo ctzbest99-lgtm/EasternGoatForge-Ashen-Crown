@@ -56,3 +56,4 @@ scr_player_unstick();
 // Chapter 2 room hooks: chapter-end save prompt, Blackguard armor inspect spot, Calder fight resume.
 scr_ch2_on_room_start();
 scr_ch3_on_room_start();
+scr_ch4_on_room_start();

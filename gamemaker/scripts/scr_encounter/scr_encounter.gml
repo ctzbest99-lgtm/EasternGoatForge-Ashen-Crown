@@ -54,6 +54,7 @@ function scr_battle_finish(_result) {
     scr_blackguard_on_battle_finish(_result, _pending);
     scr_ch2_on_battle_finish(_result, _pending);
     scr_ch3_on_battle_finish(_result, _pending);
+    scr_ch4_on_battle_finish(_result, _pending);
     scr_ch1_on_battle_finish(_result, _pending);
     scr_party_clear_guard(_g.party);
     scr_battle_clear_party_battle_state(_result == "victory");

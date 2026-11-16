@@ -127,21 +127,24 @@
 #macro MENU_ADV_ROWS 8
 #macro MENU_ADV_ROW_H_FULL 15
 
-/// First existing sprite among reserved Design names, then fallbacks.
+/// Menu window / cursor sprites. These are the imported assets. The old reserved
+/// Design window and cursor names were never delivered, so they are not used as
+/// fallbacks any more. If Design ships dedicated shop/save windows later, prepend
+/// them here.
 function scr_menu_sprite_window(_which) {
     if (_which == "shop" || _which == "inventory" || _which == "normal") {
-        return scr_sprite_index("spr_menu_shop_window", "spr_ui_menu_shop", "spr_ui_window");
+        return scr_sprite_index("spr_ui_window");
     }
     if (_which == "gold") return scr_sprite_index("spr_ui_window_gold", "spr_ui_window");
     if (_which == "dim") return scr_sprite_index("spr_ui_window_dim", "spr_ui_window");
     if (_which == "save" || _which == "save_hires") {
-        return scr_sprite_index("spr_menu_save_window", "spr_ui_menu_saves", "spr_menu_panel_saves_320", "spr_ui_window_gold");
+        return scr_sprite_index("spr_menu_panel_saves_320", "spr_menu_panel_saves_640", "spr_ui_window_gold");
     }
     return scr_sprite_index("spr_ui_window");
 }
 
 function scr_menu_sprite_cursor() {
-    return scr_sprite_index("spr_menu_ui_cursor", "spr_ui_cursor_strip2");
+    return scr_sprite_index("spr_ui_cursor_strip2");
 }
 
 function scr_menu_sprite_row_select(_disabled = false) {
@@ -164,7 +167,7 @@ function scr_menu_sprite_tab(_id, _selected) {
 }
 
 function scr_menu_sprite_save_point_idle() {
-    return scr_sprite_index("spr_save_point_idle_strip8", "spr_save_point", "spr_menu_save_point", "spr_ui_save_point", "spr_interactable_placeholder");
+    return scr_sprite_index("spr_save_point_idle_strip8", "spr_interactable_placeholder");
 }
 
 function scr_menu_sprite_save_point_activate() {

@@ -169,8 +169,8 @@ Canon sources: CHAPTER1_SCRIPT.md §2.1 (C-confirmed). Everything else is a PLAC
 - **Stale claims corrected in this file:** the Blackguard entry already carries the canon 450 HP / 250 XP / 100 Gold; the terrace stairs are enforced (barrier marker on `flag_wt_upper_unlocked`); `rm_watchtower_basement` and `rm_valemere` are built; the in-battle Item command exists (Chapter 3); ash_wolf / ashen_wretch / grave_spider / hollow_soldier battle strips exist in the repo (batches landed after the old note).
 ## Enemy batches 7–8 (feature/enemy-batches-7-8; pending owner approval)
 Design batch 7 (Wrenfield elite, Lower City, Hollow Sanctuary, Blackwood Road Garrison) and batch 8 (Act III, the Blackwood) are in the enemy database with sprites and encounter tables. No rooms or story beats use them yet. **Everything below is a PLACEHOLDER.**
-- **Stats come from a template** (`scr_enemy_scaled(id, …, role, level, party, extra)`), anchored so a level-9 common matches the balance-pass Chapter 2 regulars. **Rebalanced after the Chapter 4–5 simulation (2026-11-15):** HP now grows **+9 per level** and ATK **+3 per level** (was +7 / +2), because the old curve fell behind the tiered party growth — random fights cost almost nothing and bosses could not kill anyone. A boss now takes its length from **HP × 1.2 × expected party size** and its threat from **+3 ATK / DEF**; elites are unchanged (×2 HP, +2 ATK / DEF, ×2.5 XP). Per-enemy tweaks: Cutpurse ×0.8 HP; Wisp ×0.75 HP; Surgeon ×0.8 HP; Briar Hulk ×1.4 HP; Moths ×0.7 HP; Ward Sentinel and Door Warden +3 DEF; **Commander Hailen +10 ATK** (the only `atk_add`). SPD is set per enemy. XP and gold were left alone — see the open item at the end of this section.
-- **Levels** use ACT2_OUTLINE's PROPOSED bands: Lower City (Ch 3) 10–13, Hollow Sanctuary (Ch 4) 13–16, Garrison (Ch 5) 16–18. The Blackwood (Act III) is 18–20, which is my placeholder. **Open:** `PARTY_MAX_LEVEL` is 20, so Act III will need a higher cap.
+- **Stats come from a template** (`scr_enemy_scaled(id, …, role, level, party, extra)`), anchored so a level-9 common matches the balance-pass Chapter 2 regulars. **Rebalanced after the Chapter 4–5 simulation (2026-11-15):** HP now grows **+9 per level** and ATK **+3 per level** (was +7 / +2), because the old curve fell behind the tiered party growth — random fights cost almost nothing and bosses could not kill anyone. A boss now takes its length from **HP × 1.2 × expected party size** and its threat from **+3 ATK / DEF**; elites are unchanged (×2 HP, +2 ATK / DEF, ×2.5 XP). Per-enemy tweaks: Cutpurse ×0.8 HP; Wisp ×0.75 HP; Surgeon ×0.8 HP; Briar Hulk ×1.4 HP; Moths ×0.7 HP; Ward Sentinel and Door Warden +3 DEF; **Commander Hailen** ×1.5 HP and +14 ATK, **Garrison Pikeman** +4 ATK, **Warden** ×1.25 HP and +2 ATK. SPD is set per enemy. XP and gold were left alone — see the open item at the end of this section.
+- **Levels** use ACT2_OUTLINE's bands, approved Nov 15 2026: Lower City (Ch 3) 10–13, Hollow Sanctuary (Ch 4) 13–16, Garrison (Ch 5) 16–18. The Blackwood (Act III) is 18–20, which is my placeholder. **Open:** `PARTY_MAX_LEVEL` is 20, so Act III will need a higher cap.
 - **Expected party sizes for bosses:** Debtman 3 (after Lyra); Sanctuary Warden, Commander Hailen and the Matriarch 4.
 - **Template check** (Kael at the enemy's level, still in Chapter 2 gear, so later gear makes these easier):
 
@@ -291,67 +291,87 @@ Reading: at level 8 the Calder fight is hard (about 25% for this naive policy); 
 - Still unverified in the engine: these are simulation numbers only. The Debtman fight has never been played, and the heist's night-lighting and dialogue timing are untested.
 
 ## Chapter 4–5 balance check (Hollow Sanctuary, Blackwood Road Garrison; PLACEHOLDER)
-`python3 tools/balance_sim.py` prints these rows too (`ch45_tables()`), using the same extended model plus magic damage (ATK vs **MDEF** instead of DEF), the two-phase boss shift at 50% HP, and the Field Surgeon's 30 HP heal when an ally is below 60% HP. The Chapter 2 tables are unchanged; the Chapter 3 Debtman rows moved with the template rebalance below.
+`python3 tools/balance_sim.py` prints these rows too (`ch45_tables()` and `ch4_prejoin_table()`), using the same extended model plus magic damage (ATK vs **MDEF** instead of DEF), the two-phase boss shift at 50% HP, the Field Surgeon's 30 HP heal when an ally is below 60% HP, and Caelan's approved elemental kit (magic 1.2× / 1.35×, ×1.5 on a matching weakness).
 
 **Assumptions (mine; change freely):**
-- Party is Kael + Taren + Lyra + **Caelan** — Caelan joins at the Hollow Sanctuary (ACT2_OUTLINE §3, §7.2). Sera is still held as a deserter until the garrison recruitment, so she is **not** in either fight, including Hailen's.
-- Caelan joins at Kael's level with **no weapon and no armour** (his starting-weapon stub is empty) and **no skills**, so he only ever attacks. That is why he does the least damage despite a high ATK base.
+- Party is Kael + Taren + Lyra + **Caelan** — Caelan joins at the Warden fight (ACT2_OUTLINE §3, CHAPTER4_SCRIPT.md §6). Sera is still held as a deserter until the garrison recruitment, so she is **not** in either fight, including Hailen's.
+- Caelan joins at Kael's level with **no armour** and the statless spellbook (ATK +0), and **casts**: Arc Bolt (5 MP, 1.35× magic), Frost Lance / Ember (4 MP, 1.2×). He picks a spell that matches the target's weakness when one exists, otherwise Arc Bolt. 16 MP is about three casts, then he attacks. The spell names are approved; every number here is a PLACEHOLDER.
 - Gear is unchanged from Chapter 3: there are no Chapter 4/5 shops or gear upgrades in the data yet.
-- Levels simulated: 13–15 for the Sanctuary (PROPOSED band 13–16) and 16–18 for the garrison (PROPOSED band 16–18).
-- Enemy stats are exactly `scr_enemy_scaled` after the 2026-11-15 rebalance: common 14 = 89 / 28 / 21, elite 15 = 196 / 33 / 25, Warden boss 16 for a party of 4 = **600 HP / 37 ATK / 28 DEF / SPD 8**, common 16 = 107 / 34 / 25, elite 17 = 232 / 39 / 29, Hailen boss 18 for 4 = **600 HP / 53 ATK / 32 DEF / SPD 12** (+10 `atk_add`). Hailen does not yield here — nothing sets `flag_hailen_yields` — so he fights to the death.
-- Policy: weakest enemy first (nothing punishes clearing the adds here), Taren opens with Rallying Cry then Cleaves, Lyra opens Open Vein then Twin Cuts, Kael and Caelan attack.
+- Levels simulated: 13–15 for the Sanctuary (approved band 13–16) and 16–18 for the garrison (16–18).
+- Enemy stats are exactly `scr_enemy_scaled` plus the two balance passes below: common 14 = 89 / 28 / 21, elite 15 = 196 / 33 / 25; Warden boss 16 for a party of 4 = **514 HP / 37 ATK / 28 DEF / SPD 8 base**, tuned with `hp_mult: 1.25` and `atk_add: 2` → **~643 HP / 39 ATK**; Garrison Pikeman 16 = **107 / 38 / 25** (`atk_add: 4`); elite Knight 17 = 232 / 39 / 29; Hailen boss 18 for 4 = **600 HP / 43 ATK / 32 DEF / SPD 12 base**, tuned with `hp_mult: 1.5` and `atk_add: 14` → **900 HP / 57 ATK**. Hailen does not yield here — nothing sets `flag_hailen_yields` — so he fights to the death.
+- Policy: weakest enemy first, Taren opens with Rallying Cry then Cleaves, Lyra opens Open Vein then Twin Cuts, Caelan casts (above), Kael attacks.
 
-**Hollow Sanctuary (Chapter 4)**
+**Hollow Sanctuary (Chapter 4)** — four members, Caelan joins at the Warden
 
 | Fight | Lv | Win % | Rounds | Party turns | Turns on Warden | Party HP left |
 |---|---|---|---|---|---|---|
-| Sanctuary: Sentinel + Wisp | 13 | 100% | 3.0 | 9.6 | — | 87% |
-| Sanctuary: 2 Wisps + Sentinel | 13 | 100% | 3.7 | 12.6 | — | 76% |
-| Sanctuary: Automaton + Wisp | 13 | 100% | 4.0 | 13.7 | — | 80% |
-| Sanctuary Warden + Ward Sentinel | 13 | 27% | 9.0 | 30.4 | 28.0 | 11% |
-| Sanctuary: Sentinel + Wisp | 14 | 100% | 2.8 | 8.8 | — | 90% |
-| Sanctuary: 2 Wisps + Sentinel | 14 | 100% | 3.0 | 11.3 | — | 85% |
-| Sanctuary: Automaton + Wisp | 14 | 100% | 3.8 | 12.8 | — | 84% |
-| Sanctuary Warden + Ward Sentinel | 14 | 61% | 8.2 | 28.7 | 26.2 | 17% |
-| Sanctuary: Sentinel + Wisp | 15 | 100% | 2.3 | 8.1 | — | 95% |
-| Sanctuary: 2 Wisps + Sentinel | 15 | 100% | 3.0 | 10.5 | — | 89% |
-| Sanctuary: Automaton + Wisp | 15 | 100% | 3.2 | 11.4 | — | 90% |
-| Sanctuary Warden + Ward Sentinel | 15 | 89% | 7.5 | 27.2 | 24.6 | 24% |
+| Sanctuary: Sentinel + Wisp | 13 | 100% | 2.0 | 7.7 | — | 94% |
+| Sanctuary: 2 Wisps + Sentinel | 13 | 100% | 3.0 | 11.1 | — | 85% |
+| Sanctuary: Automaton + Wisp | 13 | 100% | 3.0 | 11.1 | — | 88% |
+| Sanctuary Warden + Ward Sentinel | 13 | 35% | 8.2 | 27.8 | 26.1 | 13% |
+| Sanctuary: Sentinel + Wisp | 14 | 100% | 2.0 | 7.7 | — | 95% |
+| Sanctuary: 2 Wisps + Sentinel | 14 | 100% | 3.0 | 10.3 | — | 87% |
+| Sanctuary: Automaton + Wisp | 14 | 100% | 3.0 | 10.5 | — | 89% |
+| Sanctuary Warden + Ward Sentinel | 14 | 71% | 7.4 | 26.0 | 24.3 | 20% |
+| Sanctuary: Sentinel + Wisp | 15 | 100% | 2.0 | 7.4 | — | 97% |
+| Sanctuary: 2 Wisps + Sentinel | 15 | 100% | 2.7 | 9.4 | — | 91% |
+| Sanctuary: Automaton + Wisp | 15 | 100% | 3.0 | 9.5 | — | 92% |
+| Sanctuary Warden + Ward Sentinel | 15 | 94% | 6.7 | 24.6 | 22.7 | 29% |
 
 **Blackwood Road Garrison (Chapter 5)**
 
 | Fight | Lv | Win % | Rounds | Party turns | Turns on Hailen | Party HP left |
 |---|---|---|---|---|---|---|
-| Garrison: Pikeman + Surgeon | 16 | 100% | 2.9 | 8.9 | — | 89% |
-| Garrison: 2 Pikemen + Surgeon | 16 | 100% | 3.7 | 13.3 | — | 78% |
-| Garrison: Knight + Surgeon | 16 | 100% | 4.0 | 13.6 | — | 86% |
-| Hailen + Garrison Pikeman | 16 | 90% | 7.9 | 26.7 | 24.0 | 27% |
-| Garrison: Pikeman + Surgeon | 17 | 100% | 2.7 | 8.7 | — | 91% |
-| Garrison: 2 Pikemen + Surgeon | 17 | 100% | 3.0 | 11.8 | — | 83% |
-| Garrison: Knight + Surgeon | 17 | 100% | 3.8 | 12.9 | — | 89% |
-| Hailen + Garrison Pikeman | 17 | 99% | 7.3 | 25.2 | 22.1 | 38% |
-| Garrison: Pikeman + Surgeon | 18 | 100% | 2.0 | 8.0 | — | 94% |
-| Garrison: 2 Pikemen + Surgeon | 18 | 100% | 3.0 | 11.6 | — | 86% |
-| Garrison: Knight + Surgeon | 18 | 100% | 3.6 | 12.4 | — | 90% |
-| Hailen + Garrison Pikeman | 18 | 100% | 6.6 | 23.9 | 20.7 | 48% |
+| Garrison: Pikeman + Surgeon | 16 | 100% | 2.7 | 8.7 | — | 89% |
+| Garrison: 2 Pikemen + Surgeon | 16 | 100% | 3.0 | 11.7 | — | 79% |
+| Garrison: Knight + Surgeon | 16 | 100% | 3.6 | 12.6 | — | 88% |
+| Hailen + Garrison Pikeman | 16 | 52% | 9.1 | 29.7 | 28.0 | 14% |
+| Garrison: Pikeman + Surgeon | 17 | 100% | 2.0 | 7.8 | — | 94% |
+| Garrison: 2 Pikemen + Surgeon | 17 | 100% | 3.0 | 11.3 | — | 84% |
+| Garrison: Knight + Surgeon | 17 | 100% | 3.1 | 11.4 | — | 92% |
+| Hailen + Garrison Pikeman | 17 | 78% | 8.7 | 28.5 | 26.6 | 21% |
+| Garrison: Pikeman + Surgeon | 18 | 100% | 2.0 | 7.6 | — | 95% |
+| Garrison: 2 Pikemen + Surgeon | 18 | 100% | 3.0 | 11.1 | — | 86% |
+| Garrison: Knight + Surgeon | 18 | 100% | 3.0 | 10.9 | — | 93% |
+| Hailen + Garrison Pikeman | 18 | 94% | 8.1 | 27.9 | 25.6 | 30% |
+
+**Hollow Sanctuary before Caelan (Chapter 4)** — Kael + Taren + Lyra, three members
+
+| Fight | Lv | Win % | Rounds | Party turns | Party HP left |
+|---|---|---|---|---|---|
+| Sanctuary: Sentinel + Wisp | 13 | 100% | 3.0 | 8.2 | 84% |
+| Sanctuary: 2 Wisps + Sentinel | 13 | 100% | 4.5 | 12.3 | 63% |
+| Sanctuary: Automaton + Wisp | 13 | 100% | 4.9 | 13.2 | 68% |
+| Sanctuary: 1 Sentinel | 13 | 100% | 2.0 | 5.2 | 95% |
+| Sanctuary: 2 Wisps | 13 | 100% | 3.0 | 7.2 | 81% |
+| Sanctuary: Sentinel + Wisp | 14 | 100% | 3.0 | 8.1 | 86% |
+| Sanctuary: 2 Wisps + Sentinel | 14 | 100% | 4.0 | 10.8 | 70% |
+| Sanctuary: Automaton + Wisp | 14 | 100% | 4.3 | 12.2 | 75% |
+| Sanctuary: 1 Sentinel | 14 | 100% | 2.0 | 5.1 | 96% |
+| Sanctuary: 2 Wisps | 14 | 100% | 2.9 | 7.0 | 83% |
+| Sanctuary: Sentinel + Wisp | 15 | 100% | 3.0 | 7.7 | 87% |
+| Sanctuary: 2 Wisps + Sentinel | 15 | 100% | 3.9 | 9.9 | 74% |
+| Sanctuary: Automaton + Wisp | 15 | 100% | 4.0 | 11.1 | 80% |
+| Sanctuary: 1 Sentinel | 15 | 100% | 2.0 | 4.9 | 96% |
+| Sanctuary: 2 Wisps | 15 | 100% | 2.9 | 6.9 | 85% |
 
 | Level | Kael ATK/DEF/HP | Taren ATK/DEF/HP | Lyra ATK/DEF/HP | Caelan ATK/DEF/HP | Hits to kill Warden (K/T/L/C) | Hits to kill Hailen (K/T/L/C) |
 |---|---|---|---|---|---|---|
-| 13 | 29 / 25 / 114 | 29 / 25 / 120 | 27 / 19 / 108 | 26 / 19 / 106 | 40/40/47/50 | 47/47/55/60 |
-| 14 | 31 / 27 / 124 | 31 / 27 / 130 | 29 / 21 / 118 | 28 / 21 / 116 | 36/36/40/43 | 40/40/47/50 |
-| 15 | 33 / 29 / 134 | 33 / 29 / 140 | 31 / 23 / 128 | 30 / 23 / 126 | 32/32/36/38 | 36/36/40/43 |
-| 16 | 35 / 31 / 144 | 35 / 31 / 150 | 33 / 25 / 138 | 32 / 25 / 136 | 29/29/32/34 | 32/32/36/38 |
-| 17 | 37 / 33 / 154 | 37 / 33 / 160 | 35 / 27 / 148 | 34 / 27 / 146 | 27/27/29/30 | 29/29/32/34 |
-| 18 | 39 / 35 / 164 | 39 / 35 / 170 | 37 / 29 / 158 | 36 / 29 / 156 | 24/24/27/28 | 27/27/29/30 |
+| 13 | 29 / 25 / 114 | 29 / 25 / 120 | 27 / 19 / 108 | 26 / 19 / 106 | 43/43/50/54 | 70/70/82/90 |
+| 14 | 31 / 27 / 124 | 31 / 27 / 130 | 29 / 21 / 118 | 28 / 21 / 116 | 38/38/43/46 | 60/60/70/75 |
+| 15 | 33 / 29 / 134 | 33 / 29 / 140 | 31 / 23 / 128 | 30 / 23 / 126 | 34/34/38/41 | 53/53/60/65 |
+| 16 | 35 / 31 / 144 | 35 / 31 / 150 | 33 / 25 / 138 | 32 / 25 / 136 | 31/31/34/36 | 48/48/53/57 |
+| 17 | 37 / 33 / 154 | 37 / 33 / 160 | 35 / 27 / 148 | 34 / 27 / 146 | 28/28/31/33 | 43/43/48/50 |
+| 18 | 39 / 35 / 164 | 39 / 35 / 170 | 37 / 29 / 158 | 36 / 29 / 156 | 26/26/28/30 | 40/40/43/45 |
 
 **Reading:**
-- **The Sanctuary Warden is now the hardest fight in the game.** 27% at 13, 61% at 14, 89% at 15; 7.5–9 rounds, 25–30 party turns, 25–28 hits on him, 11–24% HP left. The rebalance moved him from "in band" to a genuine wall at the bottom of his 13–16 band, because his ring hits all four members and phase 2 adds 20% ATK on top. Treat **level 15 (or the in-battle Item command)** as the intended entry point; if that is too strict, the knob is his boss HP multiplier, not his ATK.
-- **Commander Hailen threatens now.** 90% at 16 with 27% of party HP left, 99% at 17 (38%), 100% at 18 (48%) — the Calder shape. The `atk_add: 10` raises him to 53 ATK, about **38 damage** on a 144 HP Kael, while the party still needs roughly 32 Kael hits to drop his 600 HP: the fight is now threat plus length instead of length alone.
-- **Random fights cost something now.** At the bottom of a band a three-enemy group takes **20–25% of party HP** (76–86% left) in 3–4 rounds; two levels later the same table is a 2–3 round formality at 89–95% left, which is what an over-levelled party should see. They are still always winnable, which is the intended random-encounter shape.
-- **The Warden's ring is the only enemy magic in the game**, and it is where MDEF finally does something: about **20 damage** to the whole party per cast, which is now the main source of the HP loss in that fight.
-- **Caelan is dead weight as data stands.** 26–36 ATK, no weapon, no skills: the lowest damage in the party and the smallest HP pool at every level in the table. The Arcanist needs his spells (and a weapon or a spell-power stat) before Chapter 4 is buildable, otherwise the fourth slot is better left empty for the reserve.
-- Simulation only: **no Chapter 4/5 room, script, or art exists yet**, so none of this has been played or even wired.
-
+- **The Warden is a wall again, tuned for Caelan's kit.** 35% at 13, 71% at 14, 94% at 15; 6.7–8.2 rounds, 24–28 party turns, 13–29% HP left. That is close to the shape recorded before Caelan could cast (27/61/89), without restoring the 27% floor — a mandatory story boss at level 13 should be dangerous, not a coin flip. The knob is `hp_mult`; `atk_add: 2` only keeps his ring relevant.
+- **The three-member stretch is safe at the band floor.** All five groups at levels 13–15 are 100% wins; a two-enemy group costs 13–16% of party HP and the three-enemy group 26–37% (63–68% left), which is in the intended 20–25% random-fight shape. At level 11 the same groups still win but leave 40–72% HP, and at 10 the three-enemy group drops to 88% with 21% left — so the halls punish only a party that arrives two levels under the approved band. No pre-join table split was needed.
+- **Hailen was the Chapter 5 problem, and he took length rather than damage.** With Caelan casting he was 97/100/100% at 16/17/18 — the fight ended in 6–7 rounds before his single-target hits added up. `hp_mult: 1.5` + `atk_add: 14` (**900 HP / 57 ATK**) gives **52 / 78 / 94%** at 16/17/18, 8.1–9.1 rounds and 14–30% party HP left. Pushing ATK instead was much less useful: at 900 HP, ATK 65 still won 78% at 18 but crashed level 16 to 16%, which is the wrong shape — HP moves the level-16 row without making the fight a coin flip at 18.
+- **The garrison's random fights were slightly light, so the Pikeman got +4 ATK** (34 → 38). The two-pikeman group now costs 21% of party HP at level 16 instead of 18%; the single-pikeman and Knight groups stay at 11–12%, which is fine for a two-enemy draw. Nothing here can wipe the party (100% at every level).
+- **The Warden's ring is the only enemy magic in the game**, and it is where MDEF matters: about 20 damage to the whole party per cast, and the main source of HP loss in that fight. Hailen is the opposite — pure single-target pressure.
+- **Caelan is no longer dead weight.** Magic damage (Arc Bolt 1.35×, Frost Lance / Ember 1.2×) plus ×1.5 on the Sentinel, Automaton, Pikeman and Knight lightning weakness is why both bosses needed tuning at all.
+- Simulation only: the Chapter 5 garrison rooms and script are still unwritten, and **nothing in Chapter 4 or 5 has been played in GameMaker**. These are model numbers.
 ## Prototype assumptions (battle upgrade; pending owner approval)
 Built on `feature/battle-upgrade` (depends on PR #10). Every number below is a PLACEHOLDER unless marked canon. Owner-decided rules above (XP per enemy to living participants, defeat penalty, random encounters, Swap) are unchanged.
 - **Canon used:** Taren's Rallying Cry (raises party Attack for 3 turns), Cleave (hits all enemies for reduced damage), Unbowed (passive, resists Fear and Stun) — STORY_BIBLE.md §5.5 / CHAPTER2_SCRIPT.md WF_CALDER_SYS. Reeve Calder's kit (Guard, a shout that buffs his soldiers, a heavy strike, a harder stance when the detachment falls, he yields and lives). Blackguard 450 HP / phases / Phase 3 SPD +30%.
