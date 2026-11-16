@@ -80,12 +80,17 @@ function scr_actor_from_enemy_data(_data) {
     // Batches 7–8 (generic kit support):
     // yields_if_flag — yield instead of dying only while this story flag is set (Commander Hailen:
     //                   "he can live, yield, or fall"); otherwise the normal death clip plays.
-    // phase2_at      — HP fraction that triggers a one-time phase shift: play `trans`, then idle_p2 /
+    // phase2_at      — HP fraction that triggers a phase shift: play `trans`, then idle_p2 /
     //                   attack_p2, apply phase2_buffs, show phase2_line, use phase_actions[1].
+    // phase3_at      — optional second threshold (generic bosses only): shifts again to
+    //                   phase_actions[2] with phase3_buffs / phase3_line. 0 = no third phase.
     _actor.yields_if_flag = variable_struct_exists(_data, "yields_if_flag") ? _data.yields_if_flag : "";
     _actor.phase2_at = variable_struct_exists(_data, "phase2_at") ? _data.phase2_at : 0;
     _actor.phase2_buffs = (variable_struct_exists(_data, "phase2_buffs") && is_array(_data.phase2_buffs)) ? _data.phase2_buffs : [];
     _actor.phase2_line = variable_struct_exists(_data, "phase2_line") ? _data.phase2_line : "";
+    _actor.phase3_at = variable_struct_exists(_data, "phase3_at") ? _data.phase3_at : 0;
+    _actor.phase3_buffs = (variable_struct_exists(_data, "phase3_buffs") && is_array(_data.phase3_buffs)) ? _data.phase3_buffs : [];
+    _actor.phase3_line = variable_struct_exists(_data, "phase3_line") ? _data.phase3_line : "";
     _actor.stolen_gold = 0; // cutpurse: gold taken this battle; returned at victory if it falls
     // Story barks (dialogue node ids) shown in battle instead of the system line, e.g. Calder's
     // stance bark WF_CALDER_PHASE2_01 and yield line WF_CALDER_DEFEAT_01. "" = system line.

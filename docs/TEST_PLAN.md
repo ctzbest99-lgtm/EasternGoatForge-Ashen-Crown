@@ -399,7 +399,7 @@ Setup: a save from the end of Chapter 6 (`chapter6_complete`, `ch6_hulk_defeated
 - [ ] J4 **The last chamber.** `rm_barrow_deep` is entered at `from_halls`; FD_ARRIVE_01–08 play once and set `fd_entered`.
 - [ ] J5 **The charter is required.** Walking to the dais without reading the lectern does nothing. Reading it plays BK_CHARTER_01–14, sets `ch11_charter_read`, and the line "The mark of the Crownveil" appears as a name with no explanation.
 - [ ] J6 **The King wakes.** The charter's last line plays the waking immediately, then FK_INTRO_01–06 and `grp_forgotten_king` (`forgotten_king`, level 23, 1714 HP, solo) with boss music and the boss bar.
-- [ ] J7 **Two phases.** At 60% HP the King shifts: ATK and SPD +20%, phase line "The oath breaks. Something underneath it does not." No third mechanical phase appears.
+- [ ] J7 **Three phases.** At 60% HP the King shifts: ATK and SPD +20%, phase line "The oath breaks. Something underneath it does not.", boss plate reads P2. At 30% HP it shifts again: ATK a further +15%, a heavier attack row, phase line "The oath lets go. What is left was always a man.", plate reads P3. A single big hit may cross both thresholds — both shifts must still play in order, without skipping the second line.
 - [ ] J8 **Defeat retry.** Losing sets `ch11_boss_cool`; walking back south of y > 224 re-arms and the next approach plays `FK_RETRY_01` + FK_INTRO_03–06.
 - [ ] J9 **Victory.** FK_AFTER_01–11 play, `ch11_king_defeated` and `Q_MC_S6` are set, and the body stays on the dais.
 - [ ] J10 **The seal choice.** Once the aftermath's queued lines finish, SL_CHOICE_01–05 lead to a two-option choice. There is no third option and no stated consequence.

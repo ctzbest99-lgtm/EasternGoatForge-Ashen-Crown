@@ -88,7 +88,8 @@ if (boss_index == 0 && array_length(enemies) > 0) {
     var _boss = enemies[0];
     scr_ui_window(8, 6, 120, 22, "gold");
     var _bn = _boss.full_name;
-    if (_boss.actor_id == "blackguard" && _boss.phase > 1) _bn += "  P" + string(_boss.phase);
+    // Any boss past its first phase shows which one it is (Blackguard P2/P3, the King P3).
+    if (_boss.phase > 1) _bn += "  P" + string(_boss.phase);
     scr_ui_text(14, 11, _bn, c_white);
 }
 

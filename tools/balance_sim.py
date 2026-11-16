@@ -392,10 +392,15 @@ def fight_ext(party, eids, boss_focus=True, max_rounds=60, boss_hp_mult=1.0):
                 t["hp"] -= d
                 if t.get("sleep", 0) > 0: t["sleep"] = 0      # a hit wakes a sleeper
                 if s == "collect": a["hp"] = min(a["max_hp"], a["hp"] + d)
-            if a["side"] == "enemy" and a.get("phase2_at") and a.get("phase", 1) == 1 \
-                    and 0 < a["hp"] <= a["max_hp"] * a["phase2_at"]:
-                a["phase"] = 2
-                a["buffs"] += [("atk", a.get("phase2_atk", 0.20), -1)]
+            if a["side"] == "enemy" and 0 < a["hp"]:
+                if a.get("phase2_at") and a.get("phase", 1) == 1 \
+                        and a["hp"] <= a["max_hp"] * a["phase2_at"]:
+                    a["phase"] = 2
+                    a["buffs"] += [("atk", a.get("phase2_atk", 0.20), -1)]
+                if a.get("phase3_at") and a.get("phase", 1) == 2 \
+                        and a["hp"] <= a["max_hp"] * a["phase3_at"]:
+                    a["phase"] = 3
+                    a["buffs"] += [("atk", a.get("phase3_atk", 0.15), -1)]
             if boss and boss is not a and boss["hp"] > 0 and not boss.get("stance"):
                 if all(e["hp"] <= 0 or e["yielded"] for e in enemies if e is not boss):
                     boss["stance"] = True
@@ -655,7 +660,8 @@ E.update({
                            phase_ai={2: [("attack", 1), ("heavy", 1)]}, phase2_at=0.5, phase2_atk=0.15),
  "forgotten_king":    dict(hp=1714, atk=61, df=45, mdef=20, spd=7, boss=True,
                            ai=[("attack", 2), ("heavy", 1)],
-                           phase_ai={2: [("attack", 1), ("heavy", 2)]}, phase2_at=0.6, phase2_atk=0.20),
+                           phase_ai={2: [("attack", 1), ("heavy", 2)], 3: [("attack", 1), ("heavy", 3)]},
+                           phase2_at=0.6, phase2_atk=0.20, phase3_at=0.3, phase3_atk=0.15),
 })
 
 def act4_tables():
