@@ -3,7 +3,7 @@
 Route: the Blackwood road out of the hollow → the garrison notice board → the gate → the yard and cell block → the commander's office and records room (Sera) → Commander Hailen → the aftermath and Sera's join → the Blackwood treeline.
 
 > **Status: APPROVED 2026-11-16 — CANON.** The owner approved all eleven decisions in §14 as recommended, so this script is canon in the Chapter 2–4 format and the build may proceed. Line-level **[PROPOSED]** tags stay as provenance (they mark what this script invented rather than inherited), not as open questions; anything still **[O]** is genuinely undecided. **[CANON]** items come from the design doc / `STORY_BIBLE.md`. **[C-confirmed]** items are owner decisions from Nov 14–16 2026.
-> Nothing in this chapter has been built or played yet — the approval is of the script, not of an implementation.
+> **Built 2026-11-16, not played.** `rm_blackwood_garrison`, `rm_garrison_keep`, `scr_ch5_story`, `scr_dialogue_data_ch5` and Sera's kit now exist; `python3 validate_gamemaker.py` passes. Nothing has been compiled or playtested in GameMaker, the rooms are blockouts, and TEST_PLAN F1–F15 is unchecked.
 > Title: **The Deserted Oath** **[C-confirmed 2026-11-16]**. Levels: **16–18** **[C-confirmed 2026-11-16]** (matches the existing `blackwood_garrison` table and Hailen at level 18). The act title is **The Broken Crown** **[CANON]**.
 > Chapter 5 is the fourth and last chapter of Act II: **Sera's recruitment**, **Commander Hailen**, and the handoff into Act III, **The Blackwood** **[CANON]**.
 

@@ -252,7 +252,9 @@ Suggested flags: `flag_sanctuary_entered`, `flag_aethari_name_learned`, `flag_ca
 
 ## 8. Chapter 5 — "The Deserted Oath" **[C-confirmed]** (approved Nov 16 2026)
 
-> **Canon script:** `CHAPTER5_SCRIPT.md` (approved Nov 16 2026). It writes this chapter out in the Chapter 4 format — Sera's detention and recruitment, Hailen's arrest attempt and pre-battle yield choice, the sealed-order Blackwood lead, and the second Fallen Knight sighting. Title, levels (16–18), Sera joining after the fight, her kit (Mend / Aegis / Smite) and the two-room split were approved with the script. The build has not started.
+> **Canon script:** `CHAPTER5_SCRIPT.md` (approved Nov 16 2026). It writes this chapter out in the Chapter 4 format — Sera's detention and recruitment, Hailen's arrest attempt and pre-battle yield choice, the sealed-order Blackwood lead, and the second Fallen Knight sighting. Title, levels (16–18), Sera joining after the fight, her kit (Mend / Aegis / Smite) and the two-room split were approved with the script.
+>
+> **Built (Nov 16 2026, unplaytested):** `rm_blackwood_garrison` and `rm_garrison_keep`, `scr_ch5_story`, `scr_dialogue_data_ch5` (151 nodes), `scr_ch5_markers_data`, Sera's three starting skills, `item_holy_sword`, and the `rm_valemere_road` east fork that reaches the garrison. Nothing has been compiled or playtested.
 
 ### 8.1 The Blackwood Road Garrison
 
