@@ -1,0 +1,3 @@
+# Prompt 03 — World interaction and dialogue
+
+Inspect the actual project before coding; do not assume obj_solid, obj_npc, or a dialogue object already exist. Implement one interactable in front of the player, chosen from the facing direction rather than from overlap alone, so the player talks to what they are looking at. Drive dialogue from data (a list of lines with a speaker), lock exploration input while it is open, advance and close on discrete key presses so key repeat cannot skip lines, and always return control on close. Include IDE setup steps and manual tests for approach, repeat interaction, input lock, and walking away mid-scene.

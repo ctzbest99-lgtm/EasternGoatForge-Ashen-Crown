@@ -1,0 +1,3 @@
+# Prompt 10 — The ruin interior and the first boss
+
+Inspect the rooms, transitions and battle overlay before editing; do not assume an interior room, door or entry marker exists. Make the ruin door a real entrance gated on the Hermit's check-off flag, with a spoken reason when it is locked and a fade to a named entry marker instead of a teleport. Fill Zone 1 with the existing Bandit and Fallen Knight encounters plus a rare-encounter placeholder, ending in a boss started through the current battle system; victory sets a flag, and defeat returns the party to safety. Save/load restores the room, the flags and the party, never a half-finished battle. Update README, ROOM_SETUP and TEST_PLAN, and test the locked door, a full run, a defeat and an interior save.
