@@ -28,3 +28,14 @@ Used by rm_millhaven_road, rm_wrenfield, rm_wrenfield_bent_post, rm_wrenfield_st
 rm_valemere_road, rm_valemere, rm_salt_lamp and rm_warehouse; their build scripts switch the five layers to it
 (`scr_wf_prepare_layers`). The overworld keeps `ts_zone1` (its Chapter 2 patch only uses ids < 800).
 Source data: `game/maps/chapter2/` (copied from Design's `/workspace/wrenfield`) and `tools/gen_ch3_rooms.py`.
+
+## How the built rooms use this atlas
+
+Rooms do not store tiles in their `.yy`. Each room's Creation Code calls `scr_build_<room>()`, which fills the five named layers from the arrays in `scr_<room>_data()` (see `game/rooms/ROOM_SETUP.md` §12). `python3 tools/render_built_maps.py` composites those arrays so a room can be checked without the IDE.
+
+Notes on the atlas itself, measured from the PNG:
+
+- Each material row is a ramp over the grass base: `road_0`, `mud_0`, `water_0` and `stone_0` are plain grass, and the index climbs towards the material. The authored maps use the ramp indices deliberately, so treat these as authored data, not as a simple autotile lookup.
+- The grass decals (`flowers_*`, `clover`, `tallgrass_*`, `mushrooms`, `dig_spot`) are drawn on a grass background.
+- `canopy_*` and `bwcanopy_*` are transparent tree tops and belong on the Overhead layer, where they draw over the player.
+- `ts_zone1` already carries the Blackwood material (`bwcanopy_0..15`, `mud_*`, `ash_*`), so there is no separate biome sheet.
