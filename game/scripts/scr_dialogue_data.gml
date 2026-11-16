@@ -213,7 +213,15 @@ function scr_dialogue_node(_id) {
     if (is_struct(_ch4)) return _ch4;
     var _ch5 = scr_ch5_dialogue_node(_id); // Chapter 5 (scr_dialogue_data_ch5, generated)
     if (is_struct(_ch5)) return _ch5;
-    return scr_ch6_dialogue_node(_id); // Chapter 6 (scr_dialogue_data_ch6, generated)
+    var _ch6 = scr_ch6_dialogue_node(_id); // Chapter 6 (scr_dialogue_data_ch6, generated)
+    if (is_struct(_ch6)) return _ch6;
+    var _ch7 = scr_ch7_dialogue_node(_id); // Chapter 7 (scr_dialogue_data_ch7, generated)
+    if (is_struct(_ch7)) return _ch7;
+    var _ch8 = scr_ch8_dialogue_node(_id); // Chapter 8 (scr_dialogue_data_ch8, generated)
+    if (is_struct(_ch8)) return _ch8;
+    var _ch9 = scr_ch9_dialogue_node(_id); // Chapter 9 (scr_dialogue_data_ch9, generated)
+    if (is_struct(_ch9)) return _ch9;
+    return scr_ch10_dialogue_node(_id); // Chapter 10 (scr_dialogue_data_ch10, generated)
 }
 
 function scr_dialogue_play_script(_script_id, _source = noone) {
@@ -228,6 +236,14 @@ function scr_dialogue_play_script(_script_id, _source = noone) {
     if (scr_ch5_play_script(_script_id, _source)) return true;
     // Chapter 6 (The Green Silence): the Blackwood road, Cinderhollow, the camp and the burn line.
     if (scr_ch6_play_script(_script_id, _source)) return true;
+    // Chapter 7 (The Share): the shrine, the tithe choice, the Lost Ones, the Matriarch.
+    if (scr_ch7_play_script(_script_id, _source)) return true;
+    // Chapter 8 (The Door in the Wood): the clearing, the Warden, the pendant and the act card.
+    if (scr_ch8_play_script(_script_id, _source)) return true;
+    // Chapter 9 (The Crown's Ledger): Coleford, Vell's survey, Nessa's copy and Alden.
+    if (scr_ch9_play_script(_script_id, _source)) return true;
+    // Chapter 10 (The Barrow Road): the maintained road, the gatehouse and the Barrow Warden.
+    if (scr_ch10_play_script(_script_id, _source)) return true;
     switch (_script_id) {
         case "GH_ARRIVAL":
             if (scr_flag_get("flag_arrived_greyhaven")) return true;

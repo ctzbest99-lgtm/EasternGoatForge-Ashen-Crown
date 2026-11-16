@@ -61,3 +61,5 @@ scr_ch3_on_room_start();
 scr_ch4_on_room_start();
 scr_ch5_on_room_start();
 scr_ch6_on_room_start();
+scr_ch7_on_room_start();
+scr_ch8_on_room_start();

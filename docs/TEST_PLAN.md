@@ -89,7 +89,7 @@ XP curve: total XP to be level L is `20*(L-1)^2 + 10*(L-1)` (L2=30, L3=100, L4=2
 - [ ] P4 Battle HUD shows `Lv` for each member. Command select still walks only living members; cancel still steps back to the previous member's command when more than one member is present.
 - [ ] P5 Multi-member: set `DEBUG_ADD_FULL_ROSTER` (or `DEBUG_ADD_PLACEHOLDER_ALLY`) true and recompile. Active members pick Attack/Guard in party order; the enemy attacks a random *active* living member (name in the message). A KO'd active member is skipped in command select and cannot act. If they are KO'd before the enemy dies, they receive no XP for that enemy (even if they already acted); they keep credit only for enemies that died while they were still standing. If an active member is KO'd and later levels up from earlier credit, they stay at 0 HP. The reserve member does not appear in the command menu or as a target unless swapped in.
 - [ ] P6 Four active members fit the battle HUD (four rows) and command order. `scr_party_add_member` returns false for a fifth *active* member. A fifth *joined* member goes to `global.game.reserve` (`scr_party_join`); a sixth join fails.
-- [ ] P7 At `PARTY_MAX_LEVEL` (20), further XP does not raise the level or stats; XP stays at the level-20 floor (7410).
+- [ ] P7 At `PARTY_MAX_LEVEL` (24), further XP does not raise the level or stats; XP stays at the level-24 floor (10810).
 - [ ] P8 `global.game.inventory` starts empty. Equipment slots do not affect combat yet. Taren Holt's roster entry has `weapon_categories = ["heavy_sword"]` and `equipment.weapon = "bastard_sword"`; the others have empty weapon stubs and category lists matching their kit (longsword, dagger, spellbook, holy_sword).
 - [ ] P9 `DEBUG_ADD_FULL_ROSTER`: active ids are kael, lyra, caelan, sera; reserve is taren. `scr_party_swap_active_reserve(0)` puts Taren in active slot 0 and Kael in reserve; swap again restores the original. `scr_save_state_collect()` reports those id lists and `save_schema_version` 0.
 - [ ] P10 Participation XP and defeat (with `DEBUG_ADD_FULL_ROSTER`): if Taren stays on the bench the whole fight, a victory grants him **no** XP (check `reserve[0].xp`). If the party is wiped, no one receives the banked (or unbanked) XP — including members who had already acted. A defeat does **not** deduct Taren's XP, but does restore his HP if it was not full. If all four active members are KO'd, the battle is lost even if the reserve still has HP. Gold is still shared on a victory (and not granted on a defeat).
@@ -339,6 +339,60 @@ Setup: a save at the end of Chapter 5 (`flag_chapter5_complete`, `flag_sera_recr
 
 Record GameMaker version, date, result, and reproducible failures.
 
+## Chapters 7 and 8 (Act III; untested in GameMaker)
+
+Setup: a save from the end of Chapter 6 (`chapter6_complete`, `ch6_hulk_defeated`), levels 19–20, party of four.
+- [ ] G1 **Into the shrine.** The east end of the burnt ground in `rm_blackwood_deep` (`to_shrine`, tile 33,9) lands at the shrine's `from_wood`; SH_ARRIVE_01–05 play once, `ch7_entered` is set and Q_MAIN_BLACKWOOD moves to stage 3. Night ambience plays under the forest bed.
+- [ ] G2 **The basin.** Inspecting it plays SH_BASIN_01–03 once then SH_BASIN_R1. Nothing is gated on it.
+- [ ] G3 **Berrin at the trees.** TT_MEET_01–06 play once, ending in the two-option choice; the glade path (`to_glade`) refuses with CH7_LOCKED_GLADE until the choice has been made.
+- [ ] G4 **Refusing.** "Don't pay it" plays TT_REFUSE_01–03, sets `ch7_tithe_refused`, completes Q_SIDE_TITHE, and grants no gold or item.
+- [ ] G5 **Paying.** "Then choose a name from outside" plays TT_PAY_01–04, sets `ch7_tithe_paid`, completes Q_SIDE_TITHE, adds 120 Gold and the Cinderhollow Charm (DEF +2, accessory).
+- [ ] G6 **The Lost Ones.** First entry to the glade plays LT_MEET_01–06 then GL_ARRIVE_01–03, sets `ch7_lost_seen` and `ch7_glade_seen`, and nothing in either scene explains them.
+- [ ] G7 **The glade's fights.** The encounter zone rolls only lost_one / night_moth_swarm groups; the clearing's north half is where the Matriarch triggers.
+- [ ] G8 **The Matriarch.** Crossing into the far half plays MT_INTRO_01–05 then MT_FIGHT_01–02 and starts `grp_blackwood_matriarch` (Matriarch + 1 Stalker) with boss music and the boss bar. Her phase shift at half HP plays MT_PHASE_01.
+- [ ] G9 **Defeat retry.** Losing re-arms the gate after the party walks back south of y = 224; the second approach plays the scene again.
+- [ ] G10 **Victory.** MT_AFTER_01–04 play, `ch7_matriarch_defeated` is set, Q_MBW_S4 opens, and the Lost Ones are still standing at the shrine when the party looks back.
+- [ ] G11 **Chapter 7 ends.** Walking to the north-east far edge after victory plays CH7_END_01–02, sets `ch7_glade_crossed` and `chapter7_complete`. The `to_doors` exit refuses with CH7_LOCKED_DOORS before the Matriarch dies and works after.
+- [ ] G12 **The Warden.** DW_ARRIVE_01–05 play once on entry (Q_MBW_S5); the sentinel lore plays DW_SENT_01–03 then DW_SENT_R1; crossing y < 144 plays DW_INTRO_01–05 and starts `grp_door_warden_boss` (Warden + 2 level-20 Sentinels) with boss music.
+- [ ] G13 **The pendant.** After the Warden dies, walking to the threshold plays PD_SCENE_01–11 then ACT3_END_01–03: the mark matches the pendant, the pendant warms, the seam lights, one sound answers, silence, and the door is still shut. `ch8_pendant_answered`, `chapter8_complete`, `flag_act3_complete` are set and Q_MBW_S6 is active. No Fallen Knight appears anywhere in the chapter.
+- Not covered: the Lost Ones, sentinels and Berrin use `spr_story_npc_placeholder`, and the doors themselves are two stone tiles — G6, G12 and G13 will look wrong until the Blackwood art exists.
+
+### Chapter 9 — The Crown's Ledger (Act IV)
+
+- [ ] H1 **The way out of the wood.** The doors clearing now has an eastern opening; walking through it enters `rm_town` at `from_wood`, and the road back returns to the doors at `from_town`. Both directions work without a scene.
+- [ ] H2 **Chapter entry.** Entering `rm_town` with `flag_act3_complete` plays TN_ROAD_01–09 once, then sets `ch9_entered`, `ch9_town_seen`, closes `Q_MAIN_BLACKWOOD` at `complete` and opens `Q_MAIN_CROWN` at `Q_MC_S1`.
+- [ ] H3 **The levy board.** The board plays TN_BOARD_01–03 once, sets `ch9_board_read` and thereafter plays `TN_BOARD_R1`.
+- [ ] H4 **Vell's scene.** Talking to Vell plays VG_MEET_01–16, sets `ch9_ledger_seen`, then VG_FIGHT_01–05 and starts `grp_magistrate_vell`.
+- [ ] H5 **The yielding magistrate.** The fight has Vell plus two `crown_guard_elite` at level 21, with boss music and the boss bar. At 0 HP Vell **yields** (`flag_vell_yielded`), the adds stop, and the battle ends as a victory with both guards alive. He cannot be killed through normal play.
+- [ ] H6 **Defeat retry.** Losing does not set `ch9_page_taken`; talking to Vell again goes straight to VG_FIGHT_01–05 and the fight, without replaying the ledger scene.
+- [ ] H7 **The page.** On victory, VG_YIELD_01–03 and VG_PAGE_01–11 play; `ch9_vell_yielded`, `ch9_page_taken`, `Q_MC_S2` and `Q_SL_S1` are set. Talking to him again plays `VG_MEET_R1`.
+- [ ] H8 **Nessa gating.** Before the page she plays CL_WAIT_01–02; afterwards her scene CL_CHOICE_01–04 leads to the choice; once the side quest is complete she plays `CL_CHOICE_R1`.
+- [ ] H9 **Copy branch.** Choosing "Copy it. An hour." plays CL_COPY_01–04, sets `ch9_page_copied` and `ch9_shop_discount`, and completes `Q_SIDE_LEDGER`. The discount is **not** applied by the shop yet — expected.
+- [ ] H10 **Keep branch.** Choosing "No. The page doesn't leave our hands." plays CL_TAKE_01–04, sets `ch9_page_kept` and completes `Q_SIDE_LEDGER`, with no reward.
+- [ ] H11 **Alden gating.** Before the page Alden plays AL_WAIT_01–02; afterwards AL_MEET_01–21 set `ch9_alden_met` and `ch9_alden_pact`; talking again plays `AL_MEET_R1`. Nothing in the scene frames him as a traitor, and Taren answers before Kael.
+- [ ] H12 **The road south.** Before the page, stepping on the south exit plays CH9_ROAD_01–03 and refuses. With the page it plays CH9_END_01–09 and sets `chapter9_complete`; stepping on it again lets the engine report that `rm_barrow_gate` is not built yet.
+- [ ] H13 **Encounters.** The `crown_barrow` zone covers the southern outskirts only; the square and the ledger house are safe, and the boss is scripted rather than walked into.
+- [ ] H14 **Quests.** The journal lists *The King Who Was Forgotten* at S1→S2 and *The Page Nobody Asked For* at S1→complete, and *What the Forest Keeps* as Complete.
+- Not covered: Vell, Nessa and Alden are all `spr_story_npc_placeholder` (Alden has no sprite), Coleford is a Wrenfield blockout with no town tileset, and nothing here has been compiled or played. H5's yield, H7's post-battle queue and H12's exit gating are the three behaviours most likely to need a real IDE pass.
+
+### Chapter 10 — The Barrow Road (Act IV)
+
+- [ ] I1 **The road.** Coleford's south exit leads to `rm_barrow_gate` at `from_town`, and the road back returns to Coleford at `from_barrow`. Both directions work without a scene.
+- [ ] I2 **Chapter entry.** Entering the gatehouse room plays RG_ARRIVE_01–07 once, sets `ch10_entered` and opens `Q_MAIN_CROWN` at `Q_MC_S3`.
+- [ ] I3 **The survey post.** The post plays SP_POST_01–03 once, sets `ch10_post_seen`, then plays `SP_POST_R1`.
+- [ ] I4 **The gatehouse scene.** Crossing into the forecourt (y < 192) plays RG_GATE_01–10 once, sets `ch10_gate_seen`, and the mark above the arch is named as the same mark as the banner, the carvings, the pendant and the doors — without being explained.
+- [ ] I5 **The Warden gate.** Continuing to y < 176 starts BW_INTRO_01–07 and `grp_barrow_warden` (`barrow_warden`, level 22, solo) with boss music and the boss bar.
+- [ ] I6 **Two phases.** At 50% HP the Warden shifts: DEF +20% / ATK +15%, and the phase line "The iron remembers the oath it was given." shows.
+- [ ] I7 **Defeat retry.** Losing sets `ch10_boss_cool`; walking back south of y > 240 re-arms, and the next approach plays `BW_RETRY_01` + BW_INTRO_04–06 before the fight.
+- [ ] I8 **Victory.** BW_AFTER_01–08 play, `ch10_warden_defeated` and `Q_MC_S4` are set, and the gate stands open.
+- [ ] I9 **The steps.** With the Warden alive the north exit plays `CH10_LOCKED` and refuses. After victory it plays CH10_END_01–09 and sets `chapter10_complete`; stepping on it again lets the engine report `rm_barrow_halls` is not built yet.
+- [ ] I10 **Encounters.** The `crown_barrow` zone covers the road approach only; the forecourt and the arch are safe, so the Warden is never walked into tired.
+- [ ] I11 **Alden.** He is present in the arrival, the gate scene and the aftermath, holds the outer gate during the fight, and does **not** appear in the battle line. Nothing in the chapter frames him as a traitor.
+- [ ] I12 **Quests.** The journal lists *The King Who Was Forgotten* at S3→S4 with S5–S6 visible in the definition (the journal shows the current stage only), and no other quest changes.
+- Not covered: the Warden reuses `sanctuary_warden`'s strips, Alden is a placeholder sprite, the gatehouse is a Wrenfield blockout, and nothing has been compiled or played. I5–I7 (the y-threshold gate, the shift and the retry) are the behaviours most likely to need a real IDE pass.
+
+Record GameMaker version, date, result, and reproducible failures.
+
 ## Systems pass (combat tutorial, Cheap Shot, Last Stand, battle poison)
 Setup: fresh save; walk the farm path to the guaranteed Bandit trigger (overworld tile 197, 161).
 - [ ] T1 Before the tutorial fight, no random encounters roll anywhere (walk the Farmlands).
@@ -392,7 +446,7 @@ Setup: fresh save, overworld. `DEBUG_ADD_FULL_ROSTER` on if the party rows shoul
 - [ ] B2 Win a fight against a Bandit, then open the Bestiary: its plate shows the bandit idle frame on the lighter background, upright and centred, with the contact shadow under its feet and nothing clipped by the pane border.
 - [ ] B3 Check the large-art entries — Blackwood Matriarch and Sanctuary Warden (96x96 sheets) and Blackguard / Reeve Calder / Debtman / Commander Hailen (48x64): each is scaled to fit inside the 60x64 plate without touching the frame.
 - [ ] B4 Move the cursor down the list: the plate follows the selection on every row, including rows reached by scrolling, and stays in step with the name and stats.
-- [ ] B5 Every one of the 35 entries shows art — the "?" plate should never appear for a shipped enemy, only for an enemy added without a battle sheet.
+- [ ] B5 Every one of the 42 entries shows art — the "?" plate should never appear for a shipped enemy, only for an enemy added without a battle sheet.
 - [ ] B6 Descriptions never run into the "Weak" row: check the longest ones (Bandit, Reeve Calder, Fallen Knight, Blackwood Matriarch). Temporarily lengthen one past 72 characters and confirm `scr_bestiary_desc_fit` cuts at a word and adds "..." instead of overlapping.
 - [ ] B7 Weak / Found / the six stats are still readable on the narrow columns (x192 and x244) with four-digit values (e.g. the Matriarch's HP).
 - [ ] B8 `burn_line_hulk` and `door_warden_boss` (listed as **The Door Warden**) appear after `briar_hulk` and `door_warden` with descriptions, at 33 → 35 entries. Beating a `ward_sentinel_late` marks the **Ward Sentinel** row rather than adding one, and no two rows share a name.

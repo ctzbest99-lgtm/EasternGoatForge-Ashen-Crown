@@ -21,7 +21,7 @@ These are built in this repository; see `docs/DECISIONS_AND_OPEN_QUESTIONS.md` f
 | Top-down movement, collision, interaction, dialogue with portraits and per-line expressions, dialogue input lock | Built |
 | Random walking encounters with per-area tables, plus fixed `obj_encounter_trigger` fights and story encounters | Built; rates PLACEHOLDER |
 | Turn-based battle: Attack, Skill, Guard, Swap, Item, Escape; SPD turn order; criticals; weaknesses; bleed, poison, blind, sleep; two- and three-phase bosses; steal, ally-heal, party buff, yield branches | Built |
-| Five-person roster, 4 active + 1 reserve, Party Order, XP with participation rule, tiered level growth, level cap 20 | Built |
+| Five-person roster, 4 active + 1 reserve, Party Order, XP with participation rule, tiered level growth, level cap 24 | Built |
 | Equipment (weapon / armor / accessory), inventory and key items, gold, shops with buy/sell and equipment preview | Built; prices PLACEHOLDER |
 | Save schema v3 at save crystals inside a town's church or tavern; title-screen Continue; v1/v2 migration | Built |
 | Defeat → wake in town with HP restored, gold and XP-progress penalty | Built; percentages PLACEHOLDER |
@@ -45,9 +45,11 @@ Ordered next tasks with acceptance criteria live in [AI Agent Development Backlo
   - **Chapter 5 — The Deserted Oath** (Blackwood Road Garrison, Sera, Commander Hailen), levels 16–18.
 - **Act III — The Blackwood** — three chapters, levels 18–20, outline in `docs/story/ACT3_OUTLINE.md`:
   - **Chapter 6 — The Green Silence** (**[C]** approved 2026-11-16): built, not played. `rm_blackwood_deep` and `rm_blackwood_hollow` (both Wrenfield blockouts — there is no Blackwood tileset), `scr_ch6_story`, `scr_dialogue_data_ch6` (51 nodes), `scr_ch6_markers_data`, the `Q_MAIN_BLACKWOOD` quest and the Burn-Line Hulk fight. Cinderhollow's burners use the placeholder NPC sprite.
-  - **Chapters 7 *The Share* and 8 *The Door in the Wood***: [PROPOSED] outline only — the tithe choice, the Matriarch and the Aethari doors are not written or built.
-  - Waiting on: a Blackwood tileset, overworld sets for `shade_stalker` / `lost_one` / `briar_hulk`, and a level cap above 20 for Chapters 7–8 and Act IV.
-- **Act IV onward** — design only. Twelve room references (`rm_blackwood_doors`, `rm_ashlands_*`, `rm_ironspine_*`, `rm_frozen_ruins`, `rm_flooded_ruins`, `rm_saltreach*`, `rm_rimehold`, `rm_town`, `rm_shipwreck`) point at rooms that do not exist yet; `validate_gamemaker.py` lists them as the only unresolved refs.
+  - **Chapter 7 — The Share**: built from the outline's recommended decisions, awaiting individual approval. The shrine and its dry basin, Berrin's tithe scene and the `Q_SIDE_TITHE` choice (120 Gold and a charm, or refuse), the Lost Ones, the **Blackwood Matriarch**, and the chapter handoff at the glade's far edge. Rooms: `rm_blackwood_shrine`, `rm_blackwood_glade`.
+  - **Chapter 8 — The Door in the Wood**: built the same way. The cleared step, the ward sentinels, the **Door Warden**, and the act's beat — the pendant answers the mark, the seam lights, and the door does not open. Act III's card follows. Room: `rm_blackwood_doors`.
+  - **Nothing in the act is played.** All five rooms are Wrenfield blockouts; the lost ones, sentinels and burners are the placeholder NPC sprite.
+  - Waiting on: a Blackwood tileset and overworld sets for `shade_stalker` / `lost_one` / `briar_hulk` / `night_moth_swarm` / `ward_sentinel`. The level cap is now 24.
+- **Act IV — The Forgotten King** — approved outline; **Chapters 9–10 built**. Seven enemies (21–23), the `crown_barrow` table and three boss groups are in the data and simulated; two rooms (`rm_town`, `rm_barrow_gate`), 154 dialogue nodes, two story scripts, two quests and their wiring. Chapter 11 is unbuilt, and Alden, Vell, Nessa and the gatehouse are placeholders until art exists. Eleven room references (`rm_ashlands_*`, `rm_ironspine_*`, `rm_frozen_ruins`, `rm_flooded_ruins`, `rm_saltreach*`, `rm_rimehold`, `rm_town`, `rm_shipwreck`) point at rooms that do not exist yet; `validate_gamemaker.py` lists them as the only unresolved refs.
 
 ## Vertical slice
 

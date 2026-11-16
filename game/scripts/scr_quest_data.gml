@@ -28,7 +28,42 @@ function scr_quest_definitions() {
             kind: "Main quest",
             stages: [
                 { id: "Q_MBW_S1", text: "Follow the Crown's order into the Blackwood." },
-                { id: "Q_MBW_S2", text: "Find out what Cinderhollow pays, and to whom." }
+                { id: "Q_MBW_S2", text: "Find out what Cinderhollow pays, and to whom." },
+                { id: "Q_MBW_S3", text: "Reach the shrine under the roots." },
+                { id: "Q_MBW_S4", text: "Face what holds the glade." },
+                { id: "Q_MBW_S5", text: "Find the stone doors." },
+                { id: "Q_MBW_S6", text: "Learn what the doors want." }
+            ]
+        },
+        {
+            id: "Q_SIDE_TITHE",
+            title: "The Next Name",
+            kind: "Side quest",
+            stages: [
+                { id: "Q_ST_S1", text: "Berrin's household is on this autumn's list." },
+                { id: "Q_ST_S2", text: "Decide what to tell Berrin." }
+            ]
+        },
+        {
+            id: "Q_MAIN_CROWN",
+            title: "The King Who Was Forgotten",
+            kind: "Main quest",
+            stages: [
+                { id: "Q_MC_S1", text: "Find the Crown's record of what it built." },
+                { id: "Q_MC_S2", text: "Take the torn page to the barrow field." },
+                { id: "Q_MC_S3", text: "Get past the barrow's warden." },
+                { id: "Q_MC_S4", text: "Open the tomb of the forgotten king." },
+                { id: "Q_MC_S5", text: "Learn what the charter names." },
+                { id: "Q_MC_S6", text: "Decide who carries the seal." }
+            ]
+        },
+        {
+            id: "Q_SIDE_LEDGER",
+            title: "The Page Nobody Asked For",
+            kind: "Side quest",
+            stages: [
+                { id: "Q_SL_S1", text: "Vell's clerk wants the page copied before it leaves." },
+                { id: "Q_SL_S2", text: "Decide whether the clerk gets her copy." }
             ]
         },
         {

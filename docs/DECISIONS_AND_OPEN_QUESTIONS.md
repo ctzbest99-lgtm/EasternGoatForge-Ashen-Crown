@@ -88,6 +88,48 @@ Implementation choices made while building it, none of which changes a story dec
 - **`rm_blackwood_garrison` gained a `from_blackwood` spawn** (tile 24,10) so the deep room's west door lands in the yard instead of falling back to the default spawn. `tools/gen_ch5_rooms.py` was corrected for a later hand edit to Sera's sprite note before regenerating; the only resulting change is that one marker.
 - **Unverified:** nothing compiled or played. TEST_PLAN F16–F28 are the checks.
 
+## Act III completed — Chapters 7 and 8 built (2026-11-16; UNVERIFIED)
+
+Built under the standing instruction to keep building the story, with `ACT3_OUTLINE.md` §9's decisions taken as recommended. **They have not been individually approved**, unlike Chapter 6's eight decisions; they are canon only in the sense that the build now exists and can be reviewed.
+
+- **The door does not open** (decision 6). The pendant answers, a seam lights, one sound comes from the far side, and the scene stops. Nothing explains the sound: Caelan offers "not yet" as a guess and no one confirms it.
+- **The Fallen Knight is absent** (decision 7), and nothing in Chapters 7–8 names or implies him.
+- **The Lost Ones are never explained** (decisions 4 and 11). They stand, they are recognized by their boots, and killing the Matriarch frees none of them; the script says so out loud rather than implying a rescue.
+- **The tithe choice has no correct answer** (decision 8). Refusing costs the hollow Berrin's household with no mechanical gain; paying buys the year with a stranger's name for 120 Gold and an accessory. With no named villager in the hamlet, the "loses a Cinderhollow NPC" consequence is dialogue and a flag only — recorded, not implemented.
+- **The level cap was raised to 24** (2026-11-16, with the Act IV decisions). Chapters 6–8 are still written at 18–20; Act IV's band is 21–23 and now reachable. The Act III outline's recommendation and the Act IV decision were the same call, made once.
+- **Rooms** (decision 10): all five Blackwood rooms exist. Three are Wrenfield blockouts and the act's art debt is unchanged.
+
+## Act IV outline (PROPOSED 2026-11-16)
+
+`docs/story/ACT4_OUTLINE.md` proposes the act after the doors. **All ten of its decisions were approved as recommended on 2026-11-16**, and the enemy half of the act is now in the data: seven ids at 21–23, the `crown_barrow` table and three boss groups. No chapter, room or line of dialogue exists yet, so the act itself is still unbuilt. Its ten decisions are its §9; the load-bearing ones are **where the act happens** (recommended: the Crown heartland), **who the Forgotten King is** (recommended: the king before the Crown's line, his name chiselled off on purpose), **Alden on screen in all three chapters without a split** (recommended, and it needs his sprite, which does not exist), and **level band 21–23 with `PARTY_MAX_LEVEL` raised to 24** (recommended, and it is a hard blocker — the cap is 20).
+
+Two things make Act IV different from Act III and worth saying plainly:
+
+- **Its enemies were added before its story, and the simulation changed them.** Seven ids, three of them bosses, were simulated first (`tools/balance_sim.py --act4`) and the first numbers were too soft: every boss was won 100%. The Warden went to ×2.2 HP and +4 ATK, the King to ×2.1 HP and +3 ATK. As shipped the King is 97% at level 23 in 8.6 rounds with about one death, and 81% at 21.
+- **The King has two phases, not three.** The battle system supports one shift, so the approved three-phase fight is two mechanical phases plus scripted third-act dialogue until the engine can shift twice. This is the one approved decision the build does not fully satisfy.
+- **It is the first act whose story depends on an art asset.** Alden has no sprite at all and appears in every chapter of it. Reusing someone else's silhouette for the game's second most important character would be visible in every scene he is in.
+
+## Chapter 9 built (2026-11-16)
+
+*The Crown's Ledger* is built to the approved Act IV decisions: `rm_town` (Coleford, 34×20 blockout), 106 dialogue nodes, `scr_ch9_story`, `Q_MAIN_CROWN` S1–S2 and `Q_SIDE_LEDGER` S1–S2, and the wiring through the dialogue chain, battle-finish hook, controller room start, exit script and audio set. `Q_MAIN_BLACKWOOD` closes at `complete` on entry. Vell is a **yielding** boss (`grp_magistrate_vell` + 2 `crown_guard_elite`, level 21, `flag_vell_yielded`), Nessa's copy is the chapter's only choice, and Alden's scene stops at "whoever sits the throne next will need a reason" — Ending C is untouched.
+
+Recorded gaps, not hidden:
+
+- **Every NPC is a placeholder.** Alden has no sprite anywhere, and Vell and Nessa use `spr_story_npc_placeholder`.
+- **The copy branch's shop discount is a flag only** (`ch9_shop_discount`); the shop does not read it.
+- **The town has no encounters in its square** — the `crown_barrow` zone covers the southern outskirts only — and the ledger fight is scripted, so the boss is never walked into tired.
+- **The chapter is unplayed and uncompiled.** `validate_gamemaker.py` passes and every referenced line id and quest stage resolves, but no battle, room or conversation has been run in an IDE.
+
+## Chapter 10 built (2026-11-16)
+
+*The Barrow Road* is built: `rm_barrow_gate` (28×20 blockout), 48 dialogue nodes, `scr_ch10_story`, `Q_MAIN_CROWN` S3–S4 (S5–S6 already defined), and wiring through the dialogue chain, battle-finish hook, controller step/room-start, exit script and audio. The Warden is `enc_barrow_warden` on `grp_barrow_warden` (level 22, 1701 HP, two phases); the gate is a per-frame check, so a lost fight is replayable by walking back down the road.
+
+Three deviations from the approved outline, recorded:
+
+- **Alden has no battle slot.** The battle system has no ally slot, so his "fights beside the party" is scripted — he holds the outer gate in the scene and is still standing afterwards. This is the one approved decision not mechanically implemented.
+- **No damage-type resistance.** The Warden's outline "physical resistance in phase two" ships as DEF +20% / ATK +15% at the shift, because the engine has no resistance system.
+- **The phase line is data, not dialogue.** The shift narration is the enemy's `phase2_line`, shown by the battle system, rather than a queued dialogue node.
+
 ## Still undecided
 GameMaker version; room resolution and whether 640×360 stays (height is not a multiple of 16) or is replaced by a 16-aligned size (e.g. 640×368, 320×180 with a 2× window, or 256×224); camera / view size; input mapping; battle room versus overlay; exact backstory; party members/classes; rare encounter and boss identity/mechanics; license/proprietary status; save-point locations and whether a save-anywhere debug key stays; official item prices and the shop sell rate (defaults below); exact defeat gold/XP percentages (defaults 50% gold / 10% of XP-to-next-level, pending tuning); whether a defeat should also deduct items; exact random-encounter rates and table weights (defaults 8–24 steps, 5 grace, 3:1 Bandit/Fallen Knight); Ashbound Hunter placeholder stats and rare rate (default 4%, midpoint of 3–5%); whether a defeat during the scripted Watchtower Hunter fight should consume the trigger (currently it does not, so the parchment cannot be missed); whether that scripted fight should grant regular XP/gold (currently yes, using the same per-enemy living-participant rule); XP curve, max level, and level-up stat growth (placeholder defaults below); whether the defeat penalty should also hit the reserve; whether story events lock or force party slots. Treat these as open questions, not approved requirements.
 
@@ -192,7 +234,7 @@ Canon sources: CHAPTER1_SCRIPT.md §2.1 (C-confirmed). Everything else is a PLAC
 ## Enemy batches 7–8 (feature/enemy-batches-7-8; pending owner approval)
 Design batch 7 (Wrenfield elite, Lower City, Hollow Sanctuary, Blackwood Road Garrison) and batch 8 (Act III, the Blackwood) are in the enemy database with sprites and encounter tables. No rooms or story beats use them yet. **Everything below is a PLACEHOLDER.**
 - **Stats come from a template** (`scr_enemy_scaled(id, …, role, level, party, extra)`), anchored so a level-9 common matches the balance-pass Chapter 2 regulars. **Rebalanced after the Chapter 4–5 simulation (2026-11-15):** HP now grows **+9 per level** and ATK **+3 per level** (was +7 / +2), because the old curve fell behind the tiered party growth — random fights cost almost nothing and bosses could not kill anyone. A boss now takes its length from **HP × 1.2 × expected party size** and its threat from **+3 ATK / DEF**; elites are unchanged (×2 HP, +2 ATK / DEF, ×2.5 XP). Per-enemy tweaks: Cutpurse ×0.8 HP; Wisp ×0.75 HP; Surgeon ×0.8 HP; Briar Hulk ×1.4 HP; Moths ×0.7 HP; Ward Sentinel and Door Warden +3 DEF; **Commander Hailen** ×1.5 HP and +14 ATK, **Garrison Pikeman** +4 ATK, **Warden** ×1.25 HP and +2 ATK. **Act III (2026-11-16, tuned by the simulation and applied):** `burn_line_hulk` ×2.1 HP and +12 ATK (the Hulk's ×1.4 and the boss ×1.2 × 4), `blackwood_matriarch` ×1.5 HP, `door_warden_boss` ×2.0 HP, and `ward_sentinel_late` as the level-20 Sentinel the Chapter 8 adds need. SPD is set per enemy. XP and gold were left alone — see the open item at the end of this section.
-- **Levels** use ACT2_OUTLINE's bands, approved Nov 15 2026: Lower City (Ch 3) 10–13, Hollow Sanctuary (Ch 4) 13–16, Garrison (Ch 5) 16–18. The Blackwood (Act III) is 18–20, which is my placeholder. **Open:** `PARTY_MAX_LEVEL` is 20, so Act III will need a higher cap.
+- **Levels** use ACT2_OUTLINE's bands, approved Nov 15 2026: Lower City (Ch 3) 10–13, Hollow Sanctuary (Ch 4) 13–16, Garrison (Ch 5) 16–18. The Blackwood (Act III) is 18–20, which is my placeholder. **Resolved 2026-11-16:** `PARTY_MAX_LEVEL` is 24, so Act IV's 21–23 band is reachable; Act III never needed more than 20.
 - **Expected party sizes for bosses:** Debtman 3 (after Lyra); Sanctuary Warden, Commander Hailen and the Matriarch 4.
 - **Template check** (Kael at the enemy's level, still in Chapter 2 gear, so later gear makes these easier):
 

@@ -200,6 +200,11 @@ function scr_audio_room_enter(_room) {
         case "rm_blackwood_garrison": _amb = "forest"; break;
         case "rm_blackwood_deep":   _amb = "forest"; break;
         case "rm_blackwood_hollow": _amb = "fire"; break;
+        case "rm_blackwood_shrine": _amb = "night"; break;
+        case "rm_blackwood_glade":  _amb = "night"; break;
+        case "rm_blackwood_doors":  _amb = "forest"; break;
+        case "rm_town":             _amb = "wind"; break; // Act IV: no town bed exists yet
+        case "rm_barrow_gate":      _amb = "wind"; break; // the road and the hillside
         case "rm_old_watchtower":   _amb = "wind"; break;
         case "rm_watchtower_basement": _amb = "dungeon"; break;
         case "rm_warehouse":        _amb = "dungeon"; break;

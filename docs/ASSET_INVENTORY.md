@@ -2,7 +2,7 @@
 
 Measured 2026-11-16. Source art lives under `game/sprites/`, `game/audio/` and `game/tilesets/`; the GameMaker resources under `gamemaker/` are generated from it. Import settings (asset name, frames, origin, mask, fps) are in `game/sprites/IMPORT.md` and `game/sprites/README.md`.
 
-**Totals:** 843 sprite resources and 29 sound resources in `gamemaker/`, 22 rooms, 2 tilesets, 63 scripts. **Nothing here has been compiled or playtested in GameMaker.** All assets are the property of Eastern Goat Forge (see LICENSE).
+**Totals:** 843 sprite resources and 29 sound resources in `gamemaker/`, 29 rooms, 2 tilesets, 85 scripts. **Nothing here has been compiled or playtested in GameMaker.** All assets are the property of Eastern Goat Forge (see LICENSE).
 
 ## Characters
 
@@ -20,7 +20,7 @@ Measured 2026-11-16. Source art lives under `game/sprites/`, `game/audio/` and `
 
 | Asset | Status | Notes |
 |---|---|---|
-| Enemy battle art (31 folders) | In repo | Idle 4 / walk / attack 6 / hurt / death per kind; 32×48, with bosses at 48×64 and two at 96×96. All 35 bestiary entries resolve to art (the Act III boss ids reuse the base creature's strips). |
+| Enemy battle art (31 folders) | In repo | Idle 4 / walk / attack 6 / hurt / death per kind; 32×48, with bosses at 48×64 and two at 96×96. All 42 bestiary entries resolve to art (the Act III and Act IV boss ids reuse the base creature's strips; no Act IV enemy has its own art yet). |
 | Blackguard | In repo | Three phases plus both transitions in `game/sprites/blackguard/phases/`. |
 | Bandit | In repo | Overworld 16×24 and 32×48 sets, battle strips. The overworld set is not wired (no overworld Bandit object). |
 | Fallen Knight (enemy) | Battle only | 64×48 attack, 48×48 death; **no overworld set**. |
@@ -54,7 +54,7 @@ Measured 2026-11-16. Source art lives under `game/sprites/`, `game/audio/` and `
 | Asset | Status | Notes |
 |---|---|---|
 | Music (3 loops) | In repo, original | `snd_mus_overworld.wav` 40.0 s, `snd_mus_battle.wav` 37.9 s, `snd_mus_boss.wav` 34.3 s; 22050 Hz mono 16-bit, synthesised by `tools/audio/tracks.py`. |
-| Ambience (6 beds) | In repo, original | `snd_amb_wind/forest/dungeon/fire/water/night.wav`, 9.6–11.5 s loop-safe. `water` and `night` are not yet assigned to a room. |
+| Ambience (6 beds) | In repo, original | `snd_amb_wind/forest/dungeon/fire/water/night.wav`, 9.6–11.5 s loop-safe. `night` now plays in the Blackwood shrine and glade (Chapters 7); `water` is still unassigned. |
 | Effects (20) | In repo, original | Character, menu and UI cues; four are generated but unhooked (`arrow`, `enemy_fall`, `party_hurt`, `menu_open`), and `step` is deliberately unused. Names, durations and hook points are in `docs/AUDIO.md`. |
 | Sound resources | In repo | 29 `GMSound` resources. Never heard in GameMaker. |
 
@@ -72,4 +72,4 @@ Measured 2026-11-16. Source art lives under `game/sprites/`, `game/audio/` and `
 - No Guard battle pose; no left-facing battle strips (the party is flipped with `image_xscale`).
 - Status icon strip has no frames for blind or sleep (they show as "Bl" / "Sl" text).
 - Kael's hurt clip is 3 frames (Bandit 4, Fallen Knight 6), and the battle vs overworld naming mismatch (`spr_hero_*` / `spr_kael_ow*`) still stands.
-- Chapters 3–5 rooms use Wrenfield tiles as blockouts; only two tilesets exist.
+- Chapters 3–10 rooms use Wrenfield tiles as blockouts — every Act III room among them; only two tilesets exist. The Aethari doors and the shrine's stone face are three stone tiles each.

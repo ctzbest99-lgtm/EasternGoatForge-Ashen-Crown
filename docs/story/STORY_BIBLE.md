@@ -467,7 +467,7 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 | 1 | The Night of Ash | **[C]** Zone 1 detailed (section 6) |
 | 2 | The Broken Crown | **[C-confirmed]** — recruitment act, four chapters (2–5), all four scripts approved and built. Detail in `ACT2_OUTLINE.md`, summarized below. |
 | 3 | The Blackwood | **[O]** Title canon; the rest is not. A [PROPOSED] outline exists in `ACT3_OUTLINE.md` (three chapters, ten decisions for the owner) |
-| 4 | The Forgotten King | **[O]** Not yet detailed |
+| 4 | The Forgotten King | **[O]** Title canon only. A [PROPOSED] outline exists in `ACT4_OUTLINE.md` (three chapters, ten decisions, a proposed answer to question 13) |
 | 5 | The Fallen Knight | **[O]** Not yet detailed |
 | 6 | Beneath the Mountains | **[O]** Not yet detailed |
 | 7 | The Ashlands | **[O]** Not yet detailed |
@@ -486,9 +486,13 @@ Act II is four chapters (Chapters 2–5), each with a recruit and a chapter boss
 5. **Chapter 5, The Deserted Oath (the Blackwood Road Garrison).** **[C-confirmed]** (approved Nov 16 2026), levels 16–18. **Sera** is held there as a deserter, awaiting transport to the capital and not formally sentenced. The gate closes behind the party; the lead is a sealed Crown order bearing a non-Crown seal. Sera will not say what she saw in the palace (that stays **[O]**). Boss: **Commander Hailen**, an honorable officer who tries to arrest the party and may be allowed to yield. Sera joins after the fight. The chapter ends at the Blackwood treeline, handing Act III its opening. All of `CHAPTER5_SCRIPT.md` is canon.
 6. **Fallen Knight.** Two brief non-combat sightings, never named: one on the road to Valemere after Taren joins (*“You cannot cross where she did. Not yet.”*); one after the garrison, at the first trees: *“The forest has already taken its share. It will want another.”* **[C-confirmed]** (Nov 16 2026). He never blocks the road, never draws and is gone by the time anyone reaches the treeline. His identity stays **[O]**.
 
-### Act III — The Blackwood (outline only) **[PROPOSED]**
+### Act IV — The Forgotten King (outline only) **[PROPOSED]**
 
-`ACT3_OUTLINE.md` sets out a three-chapter act (6 *The Green Silence*, 7 *The Share*, 8 *The Door in the Wood*) built on the nine Act III enemies and the `blackwood` encounter table that already exist, ending at the Aethari stone doors with the pendant answering and no answer given. Chapter 6 *The Green Silence* — its title, Cinderhollow, Berrin, the tithe, the stacked armour and the Burn-Line Hulk — was **approved 2026-11-16** and is canon; Chapter 7 *The Share* and Chapter 8 *The Door in the Wood*, their bosses, the side quest's choice, the level cap raise and the rest of the room list are still **PROPOSED** in its §9. The act answers none of the open questions and keeps the Fallen Knight out of it.
+`ACT4_OUTLINE.md` proposes the act that follows the doors: a Crown market town, a barrow field the Crown has quietly maintained for a century, and a tomb whose inscriptions were chiselled off on purpose. Its one revelation is a **name** for the mark, never a meaning. **Alden Marr is on screen in all three chapters**, sincere and fighting beside the party, and the act deliberately does not split him from Taren — Ending C stays untouched. Its seven enemies now exist and were simulated (levels 21–23, `crown_barrow` table, three boss groups; `PARTY_MAX_LEVEL` is 24), and **Chapters 9–10 are built** — Coleford and the barrow gatehouse, 154 dialogue nodes, quests and wiring; the gate is open and Chapter 11's tomb is next. **Alden's sprite does not exist**, he has no battle slot, and both rooms are blockouts.
+
+### Act III — The Blackwood (built 2026-11-16, unplayed) **[C-confirmed for Ch 6; PROPOSED for Ch 7–8]**
+
+`ACT3_OUTLINE.md` sets out a three-chapter act (6 *The Green Silence*, 7 *The Share*, 8 *The Door in the Wood*) built on the nine Act III enemies and the `blackwood` encounter table that already exist, ending at the Aethari stone doors with the pendant answering and no answer given. **All three chapters are built as of 2026-11-16** — dialogue, story flow and the five rooms — but none of it has been compiled or played, and Chapters 7–8's decisions are still awaiting the owner's individual approval. Chapter 6 *The Green Silence* — its title, Cinderhollow, Berrin, the tithe, the stacked armour and the Burn-Line Hulk — was **approved 2026-11-16** and is canon; Chapter 7 *The Share* and Chapter 8 *The Door in the Wood*, their bosses, the side quest's choice, the level cap raise and the rest of the room list are still **PROPOSED** in its §9. The act answers none of the open questions and keeps the Fallen Knight out of it.
 
 - **[O]** The names suggest region links (Blackwood, Ironspine as "Beneath the Mountains", Ashlands), but the doc never assigns regions to acts. **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Valemere is the Act II hub; Act II is set in the Kingdom of Eldoria and hands off to the Blackwood for Act III. The Drowned Coast (named village: **Saltreach**) and the Frostwilds (named settlement: **Rimehold**) still have no act assignment. The doc also doesn't name the "Forgotten King."
 
@@ -537,7 +541,7 @@ Act II is four chapters (Chapters 2–5), each with a recruit and a chapter boss
 10. Where did Kael (Greyhaven), Taren (Millhaven) and Alden grow up together: Millhaven, Greyhaven or elsewhere? Where is Alden from? When and how did Alden and Taren split? Where is Millhaven, and what is it like? **(Partly resolved, Nov 14 2026:** they do not split in Act II. Taren speaks of Alden with warmth at Wrenfield; the party meets him in Weigh-House Square in Valemere as a friend, before the Lower City job. Childhood setting, Alden's origin, Millhaven's details, and when they later split are still open.)
 11. Elira's fate: alive, dead or missing after Greyhaven?
 12. What is Tomas's ultimate fate (he passes out in Chapter 1, not dead), and what did he know "was coming"?
-13. Who is the "Forgotten King" in Act 4?
+13. Who is the "Forgotten King" in Act 4? **(Proposed, not confirmed:** the king before the Crown's line, his name chiselled off on purpose, buried with the seal and charter that legitimised his house — see `ACT4_OUTLINE.md` §5 and §9.3.**)**
 14. Alden's backstory, his exact role in the Broken Yoke, and who defeats King Aldric IV, and how. *(Act II appearance settled, Nov 14 2026: met in Weigh-House Square as a friend, with one line that thinks ahead to "when we hold the city." Backstory, rank, and Aldric's defeat are still open.)*
 15. What are Aldric IV's motives for hiding the Crownveil's failure? *(A Chapter 3 rumor says the king has been closed up in the Royal District. Motives are still open.)*
 
