@@ -5,6 +5,7 @@
 /// @desc Create any global the game expects, without clobbering values that already exist.
 function scr_game_ensure_globals() {
     scr_party_ensure_global();
+    scr_flags_ensure_global();
     if (!variable_global_exists("battle_active")) global.battle_active = false;
     if (!variable_global_exists("autosave_reason")) global.autosave_reason = "";
     if (!variable_global_exists("last_save_message")) global.last_save_message = "";
@@ -32,6 +33,9 @@ function scr_game_begin_session() {
 /// @desc Load the save into the world and record the result. Returns the status line.
 function scr_game_load_into(_player = noone) {
     global.load_message = scr_save_load(_player);
+    /// A save made before quest payouts existed can hold a finished quest with nothing collected yet;
+    /// the paid flag makes this a no-op for saves that already have their reward.
+    if (global.load_message == "loaded") scr_quest_pay_out(scr_flags_ensure_global(), scr_party_ensure_global());
     return global.load_message;
 }
 

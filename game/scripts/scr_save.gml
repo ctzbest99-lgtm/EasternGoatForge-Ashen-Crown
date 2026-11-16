@@ -40,9 +40,11 @@ function scr_save_build(_party, _player = noone) {
     var _count = array_length(_party.members);
     for (var _i = 0; _i < _count; _i++) array_push(_members, scr_save_actor(_party.members[_i]));
     var _items = variable_struct_exists(_party, "items") ? scr_save_inventory(_party.items) : [];
+    var _flags = variable_global_exists("flags") ? scr_flags_copy(global.flags) : [];
     return {
         version: SAVE_VERSION,
         party: { gold: _party.gold, members: _members, items: _items },
+        flags: _flags,
         player: scr_save_capture_player(_player)
     };
 }
@@ -65,6 +67,16 @@ function scr_save_validate(_data) {
             return { ok: false, reason: "save has a member with an invalid level" };
         }
         if (!variable_struct_exists(_member, "hp")) return { ok: false, reason: "save has a member without HP" };
+    }
+    /// flags is optional for the same reason as items: an older save simply has none set.
+    if (variable_struct_exists(_data, "flags")) {
+        if (!is_array(_data.flags)) return { ok: false, reason: "save flags are not a list" };
+        var _flag_count = array_length(_data.flags);
+        for (var _i = 0; _i < _flag_count; _i++) {
+            if (!is_string(_data.flags[_i]) || _data.flags[_i] == "") {
+                return { ok: false, reason: "save has an invalid flag" };
+            }
+        }
     }
     /// items is optional: a save written before the inventory existed loads as an empty inventory.
     if (variable_struct_exists(_data.party, "items")) {
@@ -115,6 +127,12 @@ function scr_save_apply(_data, _player = noone) {
         }
     }
     global.party = { members: _members, gold: max(0, floor(_gold)), items: _items };
+
+    global.flags = scr_flags_create();
+    if (variable_struct_exists(_data, "flags")) {
+        var _saved_flags = _data.flags;
+        for (var _i = 0; _i < array_length(_saved_flags); _i++) scr_flags_set(global.flags, _saved_flags[_i]);
+    }
 
     if (_player != noone && instance_exists(_player) && variable_struct_exists(_data, "player")) {
         var _p = _data.player;

@@ -10,6 +10,14 @@ Run tests in GameMaker after integration; static review is not a substitute for 
 - [ ] Player cannot pass walls or leave intended map.
 - [ ] Input locks during dialogue, menus, and battle.
 - [ ] Dialogue closes and returns control; key repeat does not duplicate interaction.
+- [ ] Walking past an NPC does not start a conversation; facing it and pressing Z does, and the prompt only shows when facing it.
+- [ ] Dialogue lines advance one press at a time, ESC closes early, and the conversation does not reopen from the press that closed it.
+- [ ] Dialogue text reveals character by character without the paragraph reflowing; a press completes the line and the next press advances.
+- [ ] Finishing the Hermit's first scene starts the quest and a second conversation appears on the next visit; ESC out of the first scene leaves the second conversation locked.
+- [ ] Story flags survive save and load, and a save without flags loads with none set.
+- [ ] Finishing the Hermit's follow-up grants exactly one Hi-Potion, and a Reward page announces it before the box closes.
+- [ ] The corner HUD names the current quest stage and updates as each flag is set; it shows no quest line before the quest starts, clears the line once the quest is checked off, and stays compact (no empty row) in both of those states.
+- [ ] Replaying the scene grants nothing more and shows no Reward page; the reward survives a reload without being granted again.
 
 ## Battle
 - [ ] Encounter starts once only: walking onto an enemy opens exactly one battle, and a second battle cannot start while one is active.

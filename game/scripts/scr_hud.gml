@@ -34,3 +34,17 @@ function scr_hud_xp_fraction(_actor) {
     if (_actor.xp_to_next <= 0) return 0;
     return clamp(_actor.xp / _actor.xp_to_next, 0, 1);
 }
+
+/// @desc The quest line for the panel, or "" when no stage is active. The stage itself comes from the
+/// story flags, so this only owns the label.
+function scr_hud_quest_line(_flags) {
+    var _stage = scr_quest_stage(_flags);
+    if (_stage == "") return "";
+    return "Quest: " + _stage;
+}
+
+/// @desc Panel height. The quest row is only reserved when there is a line to put in it, so a quest that
+/// has not started (or has been checked off) leaves the compact panel rather than a blank strip.
+function scr_hud_panel_height(_has_quest_line) {
+    return _has_quest_line ? 88 : 68;
+}

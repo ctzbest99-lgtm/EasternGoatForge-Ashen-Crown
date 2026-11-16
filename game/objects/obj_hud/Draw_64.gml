@@ -11,8 +11,11 @@ if (!scr_hud_has_actor(_actor)) exit;
 
 var _left = 16;
 var _top = 16;
-var _width = 220;
-var _height = 68;
+var _width = 240;
+/// The quest row is measured first, because the panel only grows to hold it.
+var _quest_flags = (variable_global_exists("flags") ? global.flags : undefined);
+var _quest_line = scr_hud_quest_line(_quest_flags);
+var _height = scr_hud_panel_height(_quest_line != "");
 var _bar_x = _left + 12;
 var _bar_w = _width - 24;
 
@@ -40,5 +43,12 @@ draw_set_colour(c_dkgray);
 draw_rectangle(_bar_x, _top + 60, _bar_x + _bar_w, _top + 64, false);
 draw_set_colour(c_aqua);
 draw_rectangle(_bar_x, _top + 60, _bar_x + _bar_w * scr_hud_xp_fraction(_actor), _top + 64, false);
+
+/// Quest stage: the flags decide it, and nothing is drawn until one is active.
+if (_quest_line != "") {
+    draw_set_colour(c_silver);
+    draw_text(_left + 12, _top + 72, _quest_line);
+    draw_set_colour(c_white);
+}
 
 draw_set_colour(c_white);

@@ -2,7 +2,7 @@
 
 This folder contains illustrative GML snippets and setup notes, not a complete GameMaker project. No .yyp or IDE-generated .yy resources are included. Create resources in GameMaker and copy/adapt snippets into matching events/scripts.
 
-Suggested resources: scr_game_constants, scr_game, scr_hud, scr_items, scr_status_menu, scr_battle_math, scr_battle_ui, scr_battle_core, scr_battle_start, scr_encounter, scr_enemy_database, scr_party, scr_save, scr_player_animation, obj_game_controller, obj_hud, obj_status_menu, obj_player, obj_enemy, obj_battle_controller, rm_overworld, and optionally rm_battle_test.
+Suggested resources: scr_game_constants, scr_game, scr_hud, scr_items, scr_flags, scr_quest, scr_dialogue, scr_interaction, scr_status_menu, scr_battle_math, scr_battle_ui, scr_battle_core, scr_battle_start, scr_encounter, scr_enemy_database, scr_party, scr_save, scr_player_animation, obj_game_controller, obj_hud, obj_status_menu, obj_npc, obj_dialogue_box, obj_player, obj_enemy, obj_battle_controller, rm_overworld, and optionally rm_battle_test.
 
 Snippets are prototypes, not verified production code. Compile in the selected GameMaker version after adding each resource. Create missing objects/sprites/rooms or adjust code to match the actual project.
 
@@ -31,7 +31,7 @@ Not implemented yet: a four-character party with populated members, flee, enemy 
 
 ## Saves (roadmap step 5, save schema)
 
-- `scr_save` writes `{ version, party: { gold, members }, player: { x, y, facing_x, facing_y } }` to `ashen_crown_save.json`.
+- `scr_save` writes `{ version, party: { gold, members, items }, flags, player: { x, y, facing_x, facing_y } }` to `ashen_crown_save.json`.
 - Build, validate and apply are pure; only `scr_save_game`, `scr_save_read` and `scr_save_load` touch the filesystem.
 - Member stats are derived from level on load, so rebalancing applies to existing saves. HP is clamped to the max and XP is capped below the next threshold; a fallen member stays fallen.
 - Writes go to a temp file and are copied over the real save, so a crash mid-write cannot leave half a document.
@@ -72,4 +72,23 @@ Not implemented yet: a four-character party with populated members, flee, enemy 
 - Healing clamps at max HP and reports the actual amount restored, so a Hi-Potion on 25/30 HP heals 5.
 - The inventory is saved as `party.items`. The field is optional on load, so a save written before the inventory existed still loads with an empty bag.
 
-Not implemented yet: equipment, buying or finding items, item descriptions in the menu, reviving a fallen member, save points, save slots, and autosave on anything other than victory (using an item in the field does not trigger one).
+## Interaction and dialogue (prompts 02-03)
+
+- `scr_interaction` picks a target by facing, not by overlap: a candidate must be within range and inside roughly 60 degrees of straight ahead, and the nearest one wins. Standing exactly on a sign still counts.
+- `obj_npc` carries a `dialogue_id` and a `talk_range`. Face it and press **Z** to talk; the prompt only appears when it is the NPC the player is facing.
+- `scr_dialogue` holds the scripts as data (`speaker` plus ordered lines), and the playback state: open, current line, advance, close. `obj_dialogue_box` draws the panel and translates keys.
+- Lines type themselves out at 45 characters per second (`DIALOGUE_CHARS_PER_SECOND`), driven by `delta_time`. The first press completes the line, the second moves on, so a fast reader never waits for the text; ESC closes the whole conversation.
+- The panel lays out the full line and paints the revealed prefix on top, so the paragraph does not reflow as letters appear.
+- Every key is `keyboard_check_pressed`, so holding it cannot skim a scene or skip two lines.
+- The box locks exploration input while open and restores exactly what it locked, including through ESC and manual removal.
+- Closing sets a 250 ms cooldown: the closing press is the same key the NPC listens for, so without it the conversation would reopen instantly.
+- Dialogue refuses to start during a battle, over another dialogue, or while the status menu is open.
+- `scr_flags` holds story flags as a list of set names. A script may declare `set_flag` (applied when the scene reaches its own end) and `requires` (locked until that flag is set).
+- An NPC lists its scenes as a chain (`dialogue_id`, `dialogue_id_after`, `dialogue_id_final`), and `scr_dialogue_pick_chain` plays the furthest one whose flags allow it. Scenes may declare `requires` (one flag) or `requires_all` (several), so a check-off conversation cannot play until every half of the quest is true.
+- The worked chain: `npc_hermit` sets `npc_hermit_met`; `npc_hermit_after` requires it and sets `npc_hermit_quest` (the payout); examining the ruin door sets `ruin_door_found`; `npc_hermit_checkoff` requires both and sets `npc_hermit_quest_done`, which is the Hermit checking the follow-up off.
+- The corner HUD shows the current stage of that quest (`scr_quest_stage`), derived from the flags: *Hear the Hermit out* → *Find the ruin door* → *Tell the Hermit*, and nothing once the quest is checked off. It reads `global.flags` without creating it, so the line appears when the quest starts and clears when it ends rather than staying on "Complete", and the panel is 68px tall without a quest line and 88px with one, so the cleared row leaves no gap.
+- ESC closes a scene without setting its flag, so abandoning a conversation cannot complete a quest.
+- Flags are saved with the game (optional `flags` list), so quest state survives a restart.
+- `scr_quest` pays quests out: finishing the Hermit's follow-up grants one Hi-Potion, and the dialogue box then shows a final **Reward** page ("Received Hi-Potion.") that needs one more press to dismiss. The payout is guarded by a `<flag>_paid` flag, so replaying the scene or reloading cannot grant a second one. It scans for unpaid rewards rather than firing once, which is why calling it twice is harmless and why an older save that finished the quest still gets its reward on load.
+
+Not implemented yet: equipment, buying or finding items, item descriptions in the menu, reviving a fallen member, dialogue portraits or branching choices, a quest log, the ruin interior behind the door, save points, save slots, and autosave on anything other than victory (using an item in the field does not trigger one).

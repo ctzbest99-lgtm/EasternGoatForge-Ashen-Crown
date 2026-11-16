@@ -13,6 +13,7 @@ is in `assets/characters/README.md`.
 | Bandit sprite | Placeholder, included | `assets/characters/spr_bandit_walk.png`, 128×192, same generator and settings; Zone 1 standard enemy |
 | Fallen Knight sprite | Placeholder, included | `assets/characters/spr_fallen_knight_walk.png`, 128×192, same generator and settings; Zone 1 standard enemy |
 | Ground shadow | Placeholder, included | `assets/characters/spr_shadow.png`, 16×4, drawn under characters |
+| NPC / sign sprites | Planned | `obj_npc` draws a code placeholder body and a talk prompt so interaction can be tested; no image file exists yet |
 | Rare encounter sprite | Planned | Concept not finalized |
 | Zone 1 boss sprite | Planned | Concept not finalized |
 | Zone 1 tileset | Planned | Grass, road, blocking terrain, ruins |
