@@ -25,6 +25,7 @@ if (confirming_overwrite) {
         confirming_overwrite = false;
         if (scr_save_write(index + 1)) {
             scr_menu_toast_saved();
+            scr_audio_sfx("save", 0);
             instance_destroy();
         } else {
             message = "Couldn't save.";
@@ -65,6 +66,8 @@ if (scr_input_confirm_pressed()) {
         } else {
             if (scr_save_write(index + 1)) {
                 scr_menu_toast_saved();
+            scr_audio_sfx("save", 0);
+            scr_audio_sfx("save", 0);
                 instance_destroy();
             } else {
                 message = "Couldn't save.";

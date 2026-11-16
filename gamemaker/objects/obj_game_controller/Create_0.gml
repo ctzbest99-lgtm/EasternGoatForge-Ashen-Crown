@@ -9,3 +9,4 @@ persistent = true;
 randomize();
 scr_game_state_init();
 scr_ui_init();
+scr_audio_init();

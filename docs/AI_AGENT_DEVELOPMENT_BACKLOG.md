@@ -1,6 +1,7 @@
 # AI Agent Development Backlog — ASHEN CROWN
 
 **Last reconciled:** 2026-11-15  
+**Updated 2026-11-16:** Act II is complete. Chapter 5 is built (rooms, markers, dialogue, story flow), audio is wired through `scr_audio`, and the Act III outline exists as [PROPOSED](story/ACT3_OUTLINE.md). Items below that call Chapter 5 data-only or audio absent are done — check `docs/CHANGELOG.md` and `docs/DEVELOPMENT_ROADMAP.md` for current state. Also prefer the targeted importers in `tools/` over re-running `gen_gamemaker.py` wholesale, which churns resource UUIDs.  
 **Purpose:** single actionable handoff for Codex or another coding agent. Work top-to-bottom, one item at a time.  
 **Project:** GameMaker / GML. Open `gamemaker/AshenCrown.yyp`; edit human-readable source in `game/` unless a task specifically concerns project metadata.
 

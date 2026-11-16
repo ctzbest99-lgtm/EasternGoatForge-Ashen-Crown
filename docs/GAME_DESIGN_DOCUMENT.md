@@ -1,38 +1,52 @@
 # ASHEN CROWN — Game Design Document
 
-A dark medieval fantasy RPG by Eastern Goat Forge. The game follows Kael Varyn through a fractured realm shaped by the Ash Veil, the crown, and rebellion. The intended tone is dark and atmospheric, serious without excluding occasional lighthearted character moments.
+A dark medieval fantasy RPG about Kael Varyn, a man marked by tragedy, travelling through a fractured realm. The atmosphere is serious and moody, with occasional lighthearted character moments.
 
-## Core design pillars
-
-- **Viewpoint:** classic top-down JRPG exploration inspired by the original Final Fantasy (1987); not side-view.
-- **Combat:** classic menu-driven, turn-based battles with a four-character active party and a reserve member.
-- **Preparation matters:** levels, equipment, party order, and tactics should matter. No automatic enemy level scaling by default.
-- **Presentation:** readable pixel art, evocative medieval-fantasy locations, strong silhouettes, and clear UI.
-- **Structure:** exploration, dialogue, encounters, rewards, equipment/progression, and route/story unlocks.
+## Pillars
+- Classic top-down JRPG exploration in the style of the original Final Fantasy (1987), not side-view.
+- Menu-driven turn-based battles; five-person roster with four active slots and one reserve.
+- Preparation matters: levels, equipment, party order, and tactics matter. No automatic enemy scaling.
+- Pixel art, evocative locations, strong silhouettes, readable UI. Every asset is original to Eastern Goat Forge.
+- The mystery of the Crownveil and the Ash is preserved: revelations are paced across the acts.
 
 ## Core loop
+Explore → interact → encounter → choose commands → resolve turns → earn rewards → recover/upgrade → unlock a route.
 
-Explore → interact → encounter → choose commands → resolve turns → earn rewards → recover or upgrade → unlock the next route.
+## Implemented systems
 
-## Current implementation status (2026-11-15)
+These are built in this repository; see `docs/DECISIONS_AND_OPEN_QUESTIONS.md` for the per-feature detail and every placeholder value.
 
-The repository contains a generated, ready-to-open GameMaker project at `gamemaker/AshenCrown.yyp`, generated from the human-readable source in `game/`.
+| System | State |
+|---|---|
+| Top-down movement, collision, interaction, dialogue with portraits and per-line expressions, dialogue input lock | Built |
+| Random walking encounters with per-area tables, plus fixed `obj_encounter_trigger` fights and story encounters | Built; rates PLACEHOLDER |
+| Turn-based battle: Attack, Skill, Guard, Swap, Item, Escape; SPD turn order; criticals; weaknesses; bleed, poison, blind, sleep; two- and three-phase bosses; steal, ally-heal, party buff, yield branches | Built |
+| Five-person roster, 4 active + 1 reserve, Party Order, XP with participation rule, tiered level growth, level cap 20 | Built |
+| Equipment (weapon / armor / accessory), inventory and key items, gold, shops with buy/sell and equipment preview | Built; prices PLACEHOLDER |
+| Save schema v3 at save crystals inside a town's church or tavern; title-screen Continue; v1/v2 migration | Built |
+| Defeat → wake in town with HP restored, gold and XP-progress penalty | Built; percentages PLACEHOLDER |
+| Adventure menu: Items, Equip, Party Order, Status, Bestiary (with monster illustrations), Quests, Close | Built |
+| Quest journal, story flags, chapter-complete screens | Built |
+| Audio: 3 music loops, 20 SFX, 6 ambience beds wired through `scr_audio` | Built; never heard in engine |
+| Title screen, main menu, save/slot panel, nine-slice UI kit, bitmap font, damage digits, status icons, battle backgrounds | Built |
 
-- Chapters 1–4 have rooms, maps, story flow, and implemented systems/content.
-- Chapter 5 currently has enemy and encounter data only; it does not yet have its rooms, markers, or dialogue.
-- Act III onward remains design work.
-- Core systems present include top-down exploration and interaction, dialogue, menu-driven turn-based combat, skills/statuses/weaknesses/boss phases, party progression, equipment, inventory, shops, save/load, and the Adventure menu (Items, Equip, Party Order, Status, Bestiary).
-- Save/load is restricted to save crystals inside a town church or tavern. It is not a save-anywhere system.
-- The Bestiary currently tracks seen/defeated enemies and displays information, but its descriptions are placeholder prose and the requested monster-sprite presentation still needs implementation/verification.
-- There is no authored audio yet. Lyra's art still includes placeholders.
-- **The project has not been compiled or playtested in the GameMaker IDE.** A ready-to-open project and passing structural validation do not prove runtime correctness.
+Still absent: controller support, an options screen (the audio gains exist without UI), a battle-only item tier, and any in-engine playtest.
 
-For exact current gaps and task order, use `docs/AI_AGENT_DEVELOPMENT_BACKLOG.md` as the active implementation checklist, `docs/DEVELOPMENT_ROADMAP.md` for phase status, and `docs/TEST_PLAN.md` for manual verification.
+Ordered next tasks with acceptance criteria live in [AI Agent Development Backlog](AI_AGENT_DEVELOPMENT_BACKLOG.md).
 
-## First playable milestone
+## Content state
 
-The initial vertical-slice goal has been surpassed in code/content scope: the project now contains multiple chapters and core systems. The next milestone is not another broad feature expansion; it is to open the generated project in the target GameMaker IDE, compile it, and complete a controlled manual playtest. Fix runtime/build blockers before adding more systems.
+- **Chapter 1 — The Night of Ash** (Zone 1, Greyhaven → Old Watchtower → Blackguard → Crownveil Door): built.
+- **Act II — The Broken Crown**, four chapters, all scripted, approved and built:
+  - **Chapter 2 — The Weight of the Yoke** (Wrenfield, Taren, Reeve Calder), levels 8–10.
+  - **Chapter 3 — Crowns and Alleys** (Valemere, Lyra, the Debtman), levels 10–13.
+  - **Chapter 4 — The Old Name** (Hollow Sanctuary, Caelan, the Sanctuary Warden), levels 13–16.
+  - **Chapter 5 — The Deserted Oath** (Blackwood Road Garrison, Sera, Commander Hailen), levels 16–18.
+- **Act III — The Blackwood** — [PROPOSED] outline written (`docs/story/ACT3_OUTLINE.md`): three chapters, levels 18–20, ten decisions awaiting the owner. No code, rooms or dialogue exist for it.
+- **Act IV onward** — design only. Thirteen room references (`rm_blackwood_deep`, `rm_ashlands_*`, `rm_ironspine_*`, `rm_frozen_ruins`, `rm_flooded_ruins`, `rm_saltreach*`, `rm_rimehold`, `rm_town`, `rm_shipwreck`) point at rooms that do not exist yet; `validate_gamemaker.py` lists them as the only unresolved refs.
 
-## Canon and decision discipline
+## Vertical slice
 
-Use `docs/DECISIONS_AND_OPEN_QUESTIONS.md` and the approved chapter scripts as the decision record. Do not silently convert prototype values, placeholder descriptions, implementation shortcuts, or open questions into canon. Ask before changing story-critical decisions, save rules, battle rules, party membership, or progression assumptions.
+The original slice — one map, one interaction, one fight, reliable return to exploration — is long past: Chapter 1 is a complete zone with a dungeon, a three-phase boss, rewards, shops, saves and a chapter ending. It is **not playtested**: `gamemaker/AshenCrown.yyp` has never been compiled in an IDE, and the whole `docs/TEST_PLAN.md` pass is unchecked.
+
+See `docs/DEVELOPMENT_ROADMAP.md` for the build state and `CHANGELOG.md` for the feature history.

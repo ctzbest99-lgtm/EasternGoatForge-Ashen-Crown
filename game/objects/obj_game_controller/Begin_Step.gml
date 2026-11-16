@@ -6,6 +6,7 @@ scr_dialogue_try_advance_queue();
 scr_ch2_tick(); // Chapter 2 wake-up at the Crownveil door (CV_WAKE)
 scr_ch3_tick(); // Chapter 3 (no per-frame beats yet)
 scr_ch4_tick(); // Chapter 4 (no per-frame beats yet)
+scr_ch5_tick(); // Chapter 5 (no per-frame beats yet)
 
 
 // Adventure menu overlay (I or Tab). Opening is blocked while dialogue / battle / a menu is

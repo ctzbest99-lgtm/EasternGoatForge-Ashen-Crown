@@ -209,6 +209,10 @@ function scr_ch1_portrait(_speaker, _expr = "neutral") {
     else if (_who == "perrin") _stem = "perrin";
     else if (_who == "len") _stem = "len";
     else if (_who == "taren" || _who == "taren holt") _stem = "taren";
+    // Chapters 3-5 party. Lyra gained portraits; Caelan and Sera are new sets (batch 9).
+    else if (_who == "lyra" || _who == "lyra veyne") _stem = "lyra";
+    else if (_who == "caelan" || _who == "caelan rook") _stem = "caelan";
+    else if (_who == "sera" || _who == "seraphine thorn" || _who == "sera thorn") _stem = "sera";
     if (_stem == "") return -1;
     var _spr = scr_sprite_index("spr_portrait_" + _stem + "_" + _expr);
     if (!scr_sprite_is_valid(_spr)) _spr = scr_sprite_index("spr_portrait_" + _stem + "_neutral");

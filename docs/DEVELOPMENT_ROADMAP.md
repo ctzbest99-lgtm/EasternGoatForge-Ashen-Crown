@@ -1,61 +1,37 @@
 # Development Roadmap
 
-This roadmap reflects the repository state recorded on **2026-11-15**. The project is no longer an empty starter: it has a substantial GameMaker project and Chapters 1–4 implemented in source/project data. The next priority is runtime verification, not rebuilding the project shell.
+For ordered tasks with acceptance criteria, see [AI Agent Development Backlog](AI_AGENT_DEVELOPMENT_BACKLOG.md); this file tracks phase state and content.
 
-For actionable, ordered tasks and acceptance criteria, see [AI Agent Development Backlog](AI_AGENT_DEVELOPMENT_BACKLOG.md).
+1. **Project shell:** real GameMaker project, version, room size, tile size, input scheme, an empty room that compiles.
+2. **Exploration:** top-down movement, collision, interactables, dialogue input lock.
+3. **Battle prototype:** triggers, Attack/Guard, explicit battle states, one enemy, victory/defeat, safe overworld return.
+4. **Party / progression:** roster, party order, status, XP, levels, currency, equipment, inventory.
+5. **Menus / saves:** versioned save schema; equipment, party order, items, save/load, status, Bestiary.
+6. **Zone 1 slice:** final encounters and boss, approved art/audio/UI, playtest difficulty.
+7. **Polish:** readability, controller support, performance, save migration, regression tests.
 
-## Current status
+## Status (2026-11-16)
 
-| Area | State |
+| Step | State |
 |---|---|
-| GameMaker project shell | Generated project exists at `gamemaker/AshenCrown.yyp`; structural validation exists. Runtime compilation/playtesting has **not** been performed. |
-| Top-down exploration | Implemented in source/project data; requires IDE runtime verification. |
-| Dialogue and interactions | Implemented for current chapters; requires manual regression testing. |
-| Turn-based battle | Implemented beyond prototype: skills, statuses, weaknesses, boss phases, Escape, defeat/respawn; requires runtime/balance testing. |
-| Party and progression | Five-person roster data, four active plus reserve, XP/levels, equipment, inventory, gold and shops are implemented; some values remain placeholders/open. |
-| Menus and saves | Adventure menu includes Items, Equip, Party Order, Status and Bestiary. Versioned save schema v3. Save/load only at crystals inside town churches/taverns. |
-| Chapters 1–4 | Built in the project; README reports 20 rooms. Content has not been runtime playtested. |
-| Chapter 5 | Enemy stats, encounter tables and boss groups exist; rooms, markers and dialogue are not implemented. |
-| Act III onward | Design only. |
-| Art | Large sprite inventory exists; ten placeholder sprites remain, including Lyra's overworld and battle strips. See `game/sprites/IMPORT.md` and `docs/ASSET_INVENTORY.md`. |
-| Bestiary | Tracking and information pane exist; descriptions are placeholder prose and monster-sprite display is still a required follow-up. |
-| Audio | No authored music or sound effects are currently included. |
-| Controller support | Not complete/verified; keyboard input is the current baseline. |
-| Platform readiness | Windows/macOS/Linux project options exist. Xbox is not a configured target in the current project; console release requires separate feasibility/platform work. |
+| 1. Project shell | **Done** — `gamemaker/AshenCrown.yyp` is generated from `game/` with 22 rooms, 63 scripts, 22 objects, 843 sprite resources and 29 sounds. The exact GameMaker version is still nominally open, and **nothing has been compiled in an IDE**. |
+| 2. Exploration | **Done** — movement, collision, interaction with sprite-driven markers, dialogue lock, portraits with per-line expressions, night overlay, 320×180 camera. |
+| 3. Battle prototype | **Done, well past prototype** — skills, six statuses (bleed, poison, blind, sleep, slow, buffs), weaknesses, Guard, Swap, in-battle Item, Escape, two- and three-phase bosses, steal, ally-heal, party buffs, yield branches, defeat and respawn. |
+| 4. Party / progression | **Done** — five-person roster with four active plus one reserve, Party Order, per-member XP and levels (cap 20, tiered growth), equipment, inventory, gold, shops. |
+| 5. Menus / saves | **Done** — Adventure menu (Items, Equip, Party Order, Status, Bestiary, Quests), shops, versioned saves (schema v3) at save crystals inside a town's church or tavern, title-screen Continue with slot details. |
+| 6. Zone 1 slice | **Playable on paper, not playtested** — Chapter 1 content, art, audio and balance numbers are in; the numbers are provisional and the whole `docs/TEST_PLAN.md` pass is unchecked. |
+| 7. Polish | **Partly started** — quest journal, bestiary illustrations, audio wiring and a full art pass are in. Controller support, an options screen for the existing audio gains, and performance/save-migration work are outstanding. |
 
-## Development phases
+## Content
 
-1. **P0 — Build and runtime verification**
-   - Open `gamemaker/AshenCrown.yyp` in GameMaker IDE 2023.1 or newer (project format is 2024.x).
-   - Run `python3 validate_gamemaker.py` from the repository root.
-   - Press F5, compile, and record the exact IDE/runtime version and any errors.
-   - Complete the smoke tests in `docs/TEST_PLAN.md`; fix blockers before feature work.
-2. **P1 — Finish and verify existing systems**
-   - Add the requested monster sprite to each Bestiary entry and verify list/detail navigation.
-   - Replace placeholder Lyra art and review remaining placeholder sprites.
-   - Check all party, menu, save migration, battle, map-transition, and story-event edge cases.
-   - Reconcile asset inventory and implementation docs with the actual project.
-3. **P2 — Input and accessibility**
-   - Add a centralized input abstraction for keyboard and gamepad.
-   - Support D-pad and analog movement, confirm/cancel, menu navigation, battle commands, and disconnect/reconnect behavior.
-   - Keep keyboard controls functional and remappable/documented where feasible.
-4. **P3 — Audio and presentation**
-   - Add original or properly licensed music, battle/field UI sounds, interaction sounds, and environmental ambience.
-   - Document source, license, import settings, and implementation for every audio asset.
-5. **P4 — Complete the next story content**
-   - Build Chapter 5 rooms, markers, dialogue, encounters, and boss flow.
-   - Then plan and implement Act III onward in small approved chapter-sized increments.
-   - Resolve the 12 currently reported stub overworld entrances only when their destination content is ready; do not point players into nonexistent rooms.
-6. **P5 — Release/platform preparation**
-   - Stabilize Windows first, then verify macOS/Linux builds if those remain targets.
-   - Treat Xbox as a separate feasibility and platform-integration effort; do not claim Xbox support until the required export access, controller behavior, save integration, and certification work are verified.
-   - Complete performance, accessibility, save compatibility, regression, and release packaging checks.
+- **Chapter 1 — The Night of Ash:** built (Greyhaven, farmlands, Old Road, Bandit Camp, Old Watchtower, Basement, Blackguard, Crownveil Door).
+- **Act II — The Broken Crown:** complete. All four chapter scripts are approved and built — Chapter 2 *The Weight of the Yoke* (Wrenfield, Taren, Reeve Calder, levels 8–10), Chapter 3 *Crowns and Alleys* (Valemere, Lyra, the Debtman, 10–13), Chapter 4 *The Old Name* (Hollow Sanctuary, Caelan, the Sanctuary Warden, 13–16), Chapter 5 *The Deserted Oath* (Blackwood Road Garrison, Sera, Commander Hailen, 16–18). Chapter 5 ends at the Blackwood treeline.
+- **Act III onward:** design only. Thirteen unresolved room references remain in the room data — `rm_blackwood_deep`, `rm_blackwood_doors`, `rm_ashlands_breach`, `rm_ashlands_ruins`, `rm_ironspine_mine`, `rm_ironspine_ruins`, `rm_frozen_ruins`, `rm_flooded_ruins`, `rm_saltreach`, `rm_saltreach_pier`, `rm_shipwreck`, `rm_rimehold`, `rm_town` — which `validate_gamemaker.py` reports and which must not be "fixed" by inventing rooms.
 
-## Definition of done for each task
+## Next work, in order
 
-- One coherent change per branch/PR where practical.
-- GML and project resources are consistent with the generator/source-of-truth workflow.
-- Relevant docs, asset inventory, changelog, and manual tests are updated.
-- Static validation passes.
-- GameMaker IDE compile/runtime checks are recorded when available; otherwise mark them explicitly **NOT RUN**.
-- No task is called complete merely because files were generated or CI passed.
+1. **Playtest.** Open the project in GameMaker and work `docs/TEST_PLAN.md` top to bottom. Nothing else can be called done before this.
+2. **Fix what the playtest finds**, starting with the Chapter 5 blockouts (`rm_blackwood_garrison`, `rm_garrison_keep` are tiles-only rooms) and the Chapter 3 blockouts (`rm_valemere`, `rm_salt_lamp`, `rm_warehouse` still use Wrenfield tiles).
+3. **Options screen** for the audio gains that already exist, and controller support.
+4. **Chapter 6 / Act III**: the Blackwood. A [PROPOSED] outline now exists — `docs/story/ACT3_OUTLINE.md`, three chapters and ten decisions for the owner — and it is waiting on approval, a Blackwood tileset, rooms, and a level cap above 20 (`PARTY_MAX_LEVEL`).
+5. **Art debt:** 18 enemy kinds still lack 16×24 overworld sets (listed in `docs/ASSET_INVENTORY.md`), Alden has no sprite, and Nim and Derry have no portrait.

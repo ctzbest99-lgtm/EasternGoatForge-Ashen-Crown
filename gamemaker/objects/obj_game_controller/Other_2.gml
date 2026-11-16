@@ -1,6 +1,8 @@
 /// obj_game_controller : Room Start   (Other > Room Start)
 /// After a battle: victory/error restore the pre-battle position; defeat places
 /// the player at the town respawn point and opens a short wake-up dialogue.
+scr_audio_room_enter(room); // music + ambience for this room (battle/boss handled inside)
+
 if (room == BATTLE_ROOM) exit;
 // rm_title has no player; skip return-from-battle placement.
 if (room == TITLE_ROOM) exit;
@@ -57,3 +59,4 @@ scr_player_unstick();
 scr_ch2_on_room_start();
 scr_ch3_on_room_start();
 scr_ch4_on_room_start();
+scr_ch5_on_room_start();

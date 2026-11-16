@@ -97,11 +97,13 @@ function scr_get_encounter_table(_table_id) {
         // ---- Chapter 3: the road east of Wrenfield (weights PLACEHOLDER). ----
         case "ch3_valemere_road":
             return [
-                { enemy_id: "crown_patrolman", weight: 3 },
-                { enemy_id: "crown_crossbowman", weight: 1 },
-                { enemy_id: "bandit_veteran", weight: 2 },
-                { group: ["crown_patrolman", "crown_crossbowman"], weight: 2 },
-                { group: ["bandit_veteran", "bandit"], weight: 1 }
+                // Levels 10-11 to match the table's 10-13 band (CHAPTER3_SCRIPT.md §1). The Act II
+                // crown/bandit ids are level 8, which left this road fighting under the party.
+                { enemy_id: "crown_patrolman_road", weight: 3 },
+                { enemy_id: "crown_crossbowman_road", weight: 1 },
+                { enemy_id: "bandit_veteran_road", weight: 2 },
+                { group: ["crown_patrolman_road", "crown_crossbowman_road"], weight: 2 },
+                { group: ["bandit_veteran_road", "crown_patrolman_road"], weight: 1 }
             ];
 
         // ---- Design batches 7–8 (data only; no rooms or zones yet). Weights PLACEHOLDER. ----
@@ -172,6 +174,11 @@ function scr_get_encounter_group(_group_id) {
         case "grp_sanctuary_warden": return { boss: "sanctuary_warden", adds: ["ward_sentinel"] };
         case "grp_commander_hailen": return { boss: "commander_hailen", adds: ["garrison_pikeman"] };
         case "grp_blackwood_matriarch": return { boss: "blackwood_matriarch", adds: ["shade_stalker"] };
+        // Act III bosses (ACT3_OUTLINE.md §7; the numbers come from the balance simulation).
+        // One Stalker, not two: with two the act's first boss was harder than its second (89% wins,
+        // 7.6 rounds at 18) than the Matriarch (96%). A second Stalker is the Act IV escalation.
+        case "grp_burn_line_hulk": return { boss: "burn_line_hulk", adds: ["shade_stalker"] };
+        case "grp_door_warden_boss": return { boss: "door_warden_boss", adds: ["ward_sentinel_late", "ward_sentinel_late"] };
         case "grp_crown_patrol":
             return { enemies: ["crown_crossbowman", "crown_patrolman", "occupation_soldier"] };
     }

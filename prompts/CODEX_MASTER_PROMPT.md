@@ -1,55 +1,43 @@
 # Codex Master Prompt — ASHEN CROWN
 
-You are helping develop **ASHEN CROWN**, a dark medieval fantasy JRPG by Eastern Goat Forge, built with GameMaker and GML.
+You are helping implement ASHEN CROWN, a dark medieval fantasy RPG by Eastern Goat Forge, made in GameMaker/GML.
 
-## Repository orientation
+## Project facts (verified 2026-11-16)
+- Classic top-down JRPG exploration in the style of the original Final Fantasy (1987), not side-view. Camera 320×180, GUI scaled to 640×360.
+- Protagonist Kael Varyn; five-person roster (Kael, Lyra, Caelan, Sera, Taren Holt) with four active and one reserve.
+- Serious atmospheric tone with occasional lighthearted moments.
+- Classic menu-driven turn-based combat. No automatic enemy level scaling.
+- **The repository is a full GameMaker project**, not a starter package: `gamemaker/AshenCrown.yyp` opens with 22 rooms, 63 scripts, 22 objects, 843 sprite resources and 29 sound resources, all generated from `game/`.
+- **Chapters 1–5 are built** (Act II is four chapters: *The Weight of the Yoke*, *Crowns and Alleys*, *The Old Name*, *The Deserted Oath*). Act III onward is design only.
+- Implemented systems: movement/collision, interaction, dialogue with portraits and expressions, encounter zones and fixed triggers, turn-based battle (skills, Guard, Swap, Escape, statuses, weaknesses, two- and three-phase bosses, steal, ally-heal, buffs, yield branches), XP/levels, equipment, inventory, gold, shops, save schema v3 at save crystals inside a town's church or tavern, defeat → town respawn with penalty, Adventure menu (Items, Equip, Party Order, Status, Bestiary, Quests), bestiary with monster illustrations, quest journal, audio (3 music loops, 20 SFX, 6 ambience), title screen and menus, night overlay.
+- **Nothing has been compiled or playtested in GameMaker.** There is no GameMaker IDE in this environment; never claim a compile, a playtest or in-engine visual confirmation.
 
-- The GameMaker project to open is `gamemaker/AshenCrown.yyp`.
-- The human-readable source of truth for GML, sprites, and map data is in `game/`.
-- `gen_gamemaker.py` generates the GameMaker project from the source tree.
-- `validate_gamemaker.py` checks structural consistency between source and generated project.
-- Read `README.md`, `docs/GAME_DESIGN_DOCUMENT.md`, `docs/DECISIONS_AND_OPEN_QUESTIONS.md`, and `docs/AI_AGENT_DEVELOPMENT_BACKLOG.md` before making changes.
-- This is **not** an empty starter package. Chapters 1–4 and substantial game systems are already present. Chapter 5 is data-only; Act III onward is design-only.
-- The repository status says the project has **not** been compiled or playtested in GameMaker. Never imply otherwise.
-
-## Confirmed direction
-
-- Classic top-down JRPG exploration inspired by the original Final Fantasy (1987), not side-view.
-- Dark, atmospheric medieval fantasy with occasional lighthearted character moments.
-- Classic menu-driven turn-based combat; four active party members and a reserve slot.
-- Preparation matters: levels, equipment, party order, and tactics; no automatic enemy level scaling by default.
-- The Adventure menu includes Items, Equip, Party Order, Status, and Bestiary.
-- Save/load is deliberately restricted to save crystals inside a town church or tavern. Do not add save-anywhere or a Save row to the field menu without explicit approval.
-- Zone 1 standard enemies include Bandit and Fallen Knight.
-- Some story, stat, price, art, and encounter values are placeholders. Consult the decisions document and chapter scripts; do not promote placeholders to canon.
+## Canon and document index
+- `README.md` and `docs/AI_AGENT_DEVELOPMENT_BACKLOG.md` — the repository overview and the ordered task list with acceptance criteria. Read both before picking up work.
+- `docs/story/STORY_BIBLE.md` — canon status of every story fact. Tags: [C] canon, [C-confirmed] owner-approved, [PROPOSED] unapproved, [O] open.
+- `docs/story/CHAPTER1_SCRIPT.md` … `CHAPTER5_SCRIPT.md` — approved scripts, all canon, keyed by stable dialogue node ids.
+- `docs/story/ACT2_OUTLINE.md` — Act II structure and quest stages.
+- `docs/DECISIONS_AND_OPEN_QUESTIONS.md` — every implementation decision, placeholder and open item per feature.
+- `docs/GAME_DESIGN_DOCUMENT.md`, `docs/DEVELOPMENT_ROADMAP.md`, `docs/ASSET_INVENTORY.md`, `docs/AUDIO.md`, `docs/TEST_PLAN.md`, `docs/ART_DIRECTION.md`, `CHANGELOG.md`.
 
 ## Canon and open decisions
+- Kael Varyn is the protagonist. His exact tragic backstory stays open in `docs/DECISIONS_AND_OPEN_QUESTIONS.md` until the owner locks it.
+- Alden Marr's ending is locked as **Ending C — The Last Usurper**: he begins wanting to free the serfs and rebuild Eldoria, his ambition grows, and he claims the throne after King Aldric IV's defeat; Kael and Taren must stop him. Check the latest story source before inventing scene detail.
+- The owner approved an eight-act overall story structure. Do not present invented detail for unbuilt acts as implemented content.
+- The roster is Kael, Lyra, Caelan, Sera and Taren Holt; recruitment order and some stat and class detail are still assumptions in places, so do not rewrite them without checking the approved scripts.
+- Save/load is deliberately restricted to save crystals inside a town's church or tavern. Do not add save-anywhere or a Save row to the field menu without explicit approval.
+- Do not promote a placeholder value, price, rate or description to canon without approval.
 
-- Follow approved chapter scripts and `docs/DECISIONS_AND_OPEN_QUESTIONS.md`.
-- Kael Varyn is the protagonist. His exact tragic backstory remains open in the repository decision log until the owner explicitly locks it.
-- The five-person roster currently represented in data is Kael, Lyra, Caelan, Sera, and Taren Holt; some roster/stat/class details are still marked as assumptions or placeholders. Do not rewrite their story or recruitment order without checking the approved scripts.
-- The owner has separately established Alden Marr's tragic antagonist ending as **Ending C — The Last Usurper**: Alden begins wanting to free the serfs and rebuild Eldoria, but his ambition grows until he claims the throne after King Aldric IV's defeat; Kael and Taren must stop him. Treat that ending as locked story direction, while checking the latest story source before inventing missing scene details.
-- The owner approved an eight-act overall story structure. Do not invent details for unbuilt acts and present them as implemented content.
-
-## Required workflow
-
-1. Inspect the relevant GML, object events, data, generated resource, and related tests before editing.
-2. Identify the actual source-of-truth file. Prefer editing `game/` and regenerating with `gen_gamemaker.py` when the change affects generated resources.
-3. Summarize current behavior and the smallest proposed change before a broad or risky edit.
-4. Implement **one small, coherent backlog item at a time**. Do not bundle unrelated features.
-5. Preserve existing gameplay and story behavior unless the task explicitly changes it.
-6. Ask before changing major story decisions, party recruitment, combat rules, save restrictions, progression formulas, or other owner decisions.
-7. Use GML compatible with the project's actual GameMaker version. Do not invent fake `.yy` or `.yyp` metadata.
-8. Prevent duplicate actions, invalid state transitions, negative/over-max HP, broken save migration, softlocks, and inaccessible map exits.
-9. Update the relevant docs, changelog, asset inventory, and manual test plan with each implementation.
-10. Run `python3 validate_gamemaker.py` after generated-project changes. Run any other repository checks relevant to the task.
-11. Do not claim compilation, runtime verification, or playtesting unless actually run in GameMaker. If unavailable, report **NOT RUN** and provide exact manual steps.
-12. Report: files changed, behavior added/fixed, tests run and results, tests not run, known risks, and the next single backlog item.
-
-## Hard constraints
-
-- Never replace existing source with a new starter template.
-- Never overwrite or discard user work to make files match an outdated document.
-- Never implement a placeholder value as approved canon without owner approval.
-- Never close, merge, or rewrite an existing pull request without reviewing its diff and confirming it is still relevant.
-- Prefer a focused branch and pull request for each meaningful task.
+## Build rules
+1. `game/` is the source of truth; `gamemaker/` is generated output. Every `game/scripts/*.gml` must stay byte-identical to `gamemaker/scripts/<name>/<name>.gml`.
+2. Run `python3 validate_gamemaker.py` after changes; it must print `ALL CHECKS PASSED`. Unresolved refs must stay limited to the unbuilt Act III+ rooms. Since 2026-11-16 it also validates the Bestiary (every listed id exists in `scr_get_enemy_data`, display names are unique, an id aliased by `scr_bestiary_alias` has no row of its own, every entry resolves to a `spr_<kind>_idle*` sprite) and the encounters (every table and `grp_` group names real enemies and groups, no table rolls a boss as a regular encounter, a group's `boss` is a real boss that is not also listed among its adds, and every table's enemies are compared with the level band it declares — out-of-band enemies are reported as WARNINGS, inverted or orphan bands are errors).
+3. Do not re-run `gen_gamemaker.py` wholesale and do not regenerate existing rooms — it churns resource UUIDs. Add resources through the targeted importers in `tools/`.
+4. Sprite and sound art is generated by the Python tools in `game/sprites/src/` and `tools/audio/`; keep it deterministic and flat-colour, with one dark outline and no anti-aliasing.
+5. Work out tough state transitions before writing them: prevent duplicate actions, invalid transitions, negative HP, broken save migration, softlocks and inaccessible map exits.
+6. Update the docs, changelog, asset inventory and manual tests with the change.
+7. Report changed files, checks actually run, and anything unverified. Mark invented numbers or art as PLACEHOLDER and unapproved story as PROPOSED. If GameMaker is unavailable, report the compile and playtest as NOT RUN with the manual steps.
+8. Never write a credential, token or key into a file, a command or a reply.
+9. Work one backlog item at a time; keep unrelated features out of the same change.
+10. Never replace this project with a starter template, and never discard user work to make files match an outdated document.
+11. Ask before changing story decisions, party recruitment, combat rules, save restrictions or progression formulas.
+12. Never close, merge or rewrite an existing pull request without reviewing its diff; prefer a focused branch and PR for each task.

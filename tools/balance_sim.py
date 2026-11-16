@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Ashen Crown balance sim (feature/balance-pass, extended through Chapter 5). Mirrors the GML
+"""Ashen Crown balance sim (feature/balance-pass, extended through Act III). Mirrors the GML
 battle formulas: damage = max(1, ATK - floor(DEF/2)); magic uses MDEF instead of DEF; skill power
 floors; Guard halves the next hit (enemy) or all hits until next round (party); buffs tick at round
 start; SPD order with a <1 tiebreak. The extended rows also model criticals (Cutthroat), Kael's
 Last Stand, bleed, the Debtman's bind (Slow) / Collect / stance / yield, the two-phase boss shift at
-50% HP, magic AoE (Warden ring), and the garrison Field Surgeon's heal.
+50% HP, magic AoE (Warden ring), Sera's Mend / Smite, the wood's Fade / Blinding Dust / Drowsy Dust,
+the Matriarch's Ash Breath, and the garrison Field Surgeon's heal.
 Run: python3 tools/balance_sim.py   (prints the markdown tables used in DECISIONS)."""
 import random, math, statistics, sys
 
@@ -67,6 +68,7 @@ def pick(ai, e, allies, hurt=False):
         if s == "shout" and (allies == 0 or e["mp"] < 6): continue
         if s == "brace" and any(b[0] == "df" for b in e["buffs"]): continue
         if s == "heal" and not hurt: continue      # Field Surgeon only heals a hurt ally
+        if s == "fade" and e.get("veiled", 0) > 0: continue  # skill cond "not_veiled"
         opts.append((s, w))
     r = random.uniform(0, sum(w for _, w in opts))
     for s, w in opts:
@@ -176,6 +178,14 @@ if __name__ == "__main__":
 
 # ---- Chapter 3: Valemere Road and the Debtman (feature/chapter3) --------------------------
 # Party data mirrors scr_party: Lyra joins at Kael's level with the Twin Daggers (+2 ATK) and no
+# Chapter 3 road patrols (scr_enemy_scaled at 10/10/11, band 10-13): the Act II crown and bandit
+# entries are level 8 and were too weak for the road, so the table spawns these instead.
+E.update({
+ "crown_patrolman_road":   dict(hp=53, atk=16, df=13, mdef=7, spd=11, weak="lightning",
+                                ai=[("attack", 2), ("thrust", 2), ("brace", 1)]),
+ "crown_crossbowman_road": dict(hp=42, atk=18, df=13, mdef=7, spd=13, weak="lightning", ai=[("attack", 1)]),
+ "bandit_veteran_road":    dict(hp=62, atk=19, df=15, mdef=8, spd=14, ai=[("attack", 1)]),
+})
 # armour. Chapter 3 gear assumes Len's Chain Mail (+4 DEF) has been bought for Kael (+ Iron Helm)
 # and Taren; without it, knock roughly 2 DEF off each and expect a few more rounds.
 # Enemies mirror scr_enemy_scaled (dock_thug common 11, debt_collector elite 12, debtman boss 12
@@ -218,6 +228,7 @@ WEAK_MULT = 1.5                               # BATTLE_WEAKNESS_MULTIPLIER
 CAELAN_SPELLS = (("lightning", 1.35, 5, "arc_bolt"), ("ice", 1.2, 4, "frost_lance"), ("fire", 1.2, 4, "ember"))
 
 CRIT_BASE, CRIT_CUTTHROAT, CRIT_MULT = 0.05, 0.15, 1.5
+BLIND_MISS = 0.5                              # BATTLE_BLIND_MISS_CHANCE
 BLEED_PCT, SLOW_PCT, BIND_CHANCE = 0.06, 0.5, 0.7
 LAST_STAND = dict(atk=0.15, df=0.10)
 
@@ -253,13 +264,21 @@ def focus(live_e, boss_focus=True):
     if boss_focus and bosses: return bosses[0]
     return min(live_e, key=lambda e: e["hp"])
 
-def fight_ext(party, eids, boss_focus=True, max_rounds=60):
+def fight_ext(party, eids, boss_focus=True, max_rounds=60, boss_hp_mult=1.0):
     enemies = [mk_enemy(x) for x in eids]
+    if boss_hp_mult != 1.0:                     # a what-if lever for tuning passes
+        for e in enemies:
+            if e.get("boss"):
+                e["max_hp"] = round(e["max_hp"] * boss_hp_mult)
+                e["hp"] = e["max_hp"]
     boss = enemies[0] if enemies[0].get("boss") else None
     turns_on = {i: 0 for i in range(len(enemies))}
     party_turns = 0
-    def damage(a, tgt, power=1.0, weight=1.0):
-        d = hit(a, tgt, power)
+    def damage(a, tgt, power=1.0, weight=1.0, defense="df", element=None):
+        if tgt.get("veiled", 0) > 0: return 0            # Fade: attacks miss it
+        if defense == "df" and a.get("blind", 0) > 0 and random.random() < BLIND_MISS: return 0
+        d = hit(a, tgt, power, defense)
+        if element and tgt.get("weak") == element: d = max(1, math.floor(d * WEAK_MULT))
         tgt["hp"] -= d
         turns_on[enemies.index(tgt)] += weight
         if tgt["hp"] <= 0 and tgt.get("yields"):
@@ -269,6 +288,8 @@ def fight_ext(party, eids, boss_focus=True, max_rounds=60):
         for a in party + enemies:
             tick(a)
             if a.get("slow", 0) > 0: a["slow"] -= 1
+            if a.get("blind", 0) > 0: a["blind"] -= 1
+            if a.get("veiled", 0) > 0: a["veiled"] -= 1   # Fade lasts until the next round
             if a.get("bleed", 0) > 0 and a["hp"] > 1:
                 a["hp"] = max(1, a["hp"] - max(1, math.floor(a["max_hp"] * BLEED_PCT)))
                 a["bleed"] -= 1
@@ -281,6 +302,9 @@ def fight_ext(party, eids, boss_focus=True, max_rounds=60):
             live_p = [p for p in party if p["hp"] > 0]
             if not live_e or not live_p: break
             if a["side"] == "party":
+                if a.get("sleep", 0) > 0:
+                    a["sleep"] -= 1
+                    continue                                  # asleep: the turn is skipped
                 party_turns += 1
                 if a["id"] == "taren" and rnd == 1 and a["mp"] >= 4 and len(live_p) > 1:
                     a["mp"] -= 4
@@ -300,9 +324,17 @@ def fight_ext(party, eids, boss_focus=True, max_rounds=60):
                             if tgt.get("weak") == _el: break
                     if cast is not None:
                         a["mp"] -= cast[2]
-                        d = hit(a, tgt, cast[1], defense="mdef")
-                        if tgt.get("weak") == cast[0]: d = max(1, math.floor(d * WEAK_MULT))
-                        tgt["hp"] -= d; turns_on[enemies.index(tgt)] += 1
+                        damage(a, tgt, cast[1], 1.0, "mdef", cast[0])
+                        continue
+                if a["id"] == "sera":
+                    hurt = min(live_p, key=lambda p: p["hp"] / p["max_hp"])
+                    if a["mp"] >= 4 and hurt["hp"] < hurt["max_hp"] * HEAL_THRESHOLD:
+                        a["mp"] -= 4                        # Mend: +30 to the most-hurt ally
+                        hurt["hp"] = min(hurt["max_hp"], hurt["hp"] + HEAL_AMOUNT)
+                        continue
+                    if a["mp"] >= 5 and tgt.get("weak") == "holy":
+                        a["mp"] -= 5                        # Smite: 1.3 holy, x1.5 on the holy-weak
+                        damage(a, tgt, 1.3, 1.0, "df", "holy")
                         continue
                 if a["id"] == "lyra" and a["mp"] >= 4 and not tgt.get("bleed"):
                     a["mp"] -= 4
@@ -337,6 +369,18 @@ def fight_ext(party, eids, boss_focus=True, max_rounds=60):
                 if s == "ring":                                  # magic, hits every living member
                     for p in live_p: p["hp"] -= hit(a, p, MAG_POWER[s], defense="mdef")
                     continue
+                if s == "breath":                                # Matriarch: 0.8 physical, whole party
+                    for p in live_p: p["hp"] -= hit(a, p, POWER[s])
+                    continue
+                if s == "fade":
+                    a["veiled"] = 1
+                    continue
+                if s in ("blind", "sleep"):
+                    t = random.choice(live_p)
+                    chance = 0.7 if s == "blind" else 0.5
+                    if random.random() < chance:
+                        t[s] = 3 if s == "blind" else 2
+                    continue
                 t = random.choice(live_p)
                 if s == "bind":
                     if random.random() < BIND_CHANCE: t["slow"] = 2
@@ -346,6 +390,7 @@ def fight_ext(party, eids, boss_focus=True, max_rounds=60):
                     continue
                 d = hit(a, t, POWER[s])
                 t["hp"] -= d
+                if t.get("sleep", 0) > 0: t["sleep"] = 0      # a hit wakes a sleeper
                 if s == "collect": a["hp"] = min(a["max_hp"], a["hp"] + d)
             if a["side"] == "enemy" and a.get("phase2_at") and a.get("phase", 1) == 1 \
                     and 0 < a["hp"] <= a["max_hp"] * a["phase2_at"]:
@@ -360,19 +405,23 @@ def fight_ext(party, eids, boss_focus=True, max_rounds=60):
             # A yielding boss ends the battle as a victory with his adds still standing
             # (same rule as Reeve Calder).
             return dict(win=True, rounds=rnd, party_turns=party_turns, turns_on=turns_on,
-                        hp_left=sum(max(0, p["hp"]) for p in party) / sum(p["max_hp"] for p in party))
+                        hp_left=sum(max(0, p["hp"]) for p in party) / sum(p["max_hp"] for p in party),
+                        deaths=sum(1 for p in party if p["hp"] <= 0))
         if all(p["hp"] <= 0 for p in party): break
-    return dict(win=False, rounds=rnd, party_turns=party_turns, turns_on=turns_on, hp_left=0)
+    return dict(win=False, rounds=rnd, party_turns=party_turns, turns_on=turns_on, hp_left=0,
+                deaths=sum(1 for p in party if p["hp"] <= 0))
 
-def run_ext(label, level, members, eids, gear=None, boss_focus=True, n=4000):
+def run_ext(label, level, members, eids, gear=None, boss_focus=True, n=4000, boss_hp_mult=1.0):
     gear = GEAR_CH3 if gear is None else gear
-    res = [fight_ext([member(m, level, *gear[m]) for m in members], eids, boss_focus=boss_focus)
+    res = [fight_ext([member(m, level, *gear[m]) for m in members], eids, boss_focus=boss_focus,
+                     boss_hp_mult=boss_hp_mult)
            for _ in range(n)]
     wins = [r for r in res if r["win"]]
     def avg(f): return statistics.mean(f(r) for r in wins) if wins else float("nan")
     return dict(label=label, level=level, members="+".join(m.title() for m in members),
                 win=len(wins) / n, rounds=avg(lambda r: r["rounds"]), pturns=avg(lambda r: r["party_turns"]),
-                boss=avg(lambda r: r["turns_on"][0]), hp=avg(lambda r: r["hp_left"]))
+                boss=avg(lambda r: r["turns_on"][0]), hp=avg(lambda r: r["hp_left"]),
+                deaths=avg(lambda r: r["deaths"]))
 
 def run_c3(label, level, members, eids, n=4000):
     return run_ext(label, level, members, eids, gear=GEAR_CH3, boss_focus=True, n=n)
@@ -381,11 +430,11 @@ def c3_tables():
     random.seed(11)
     rows = []
     for L in (10, 11, 12):
-        rows.append(run_c3("Valemere Rd: Patrolman", L, ["kael", "taren"], ["crown_patrolman"]))
-        rows.append(run_c3("Valemere Rd: Crossbowman", L, ["kael", "taren"], ["crown_crossbowman"]))
-        rows.append(run_c3("Valemere Rd: Bandit Veteran", L, ["kael", "taren"], ["bandit_veteran"]))
-        rows.append(run_c3("Valemere Rd: Patrolman + Crossbowman", L, ["kael", "taren"], ["crown_patrolman", "crown_crossbowman"]))
-        rows.append(run_c3("Valemere Rd: Bandit Veteran + Bandit", L, ["kael", "taren"], ["bandit_veteran", "bandit"]))
+        rows.append(run_c3("Valemere Rd: Patrolman", L, ["kael", "taren"], ["crown_patrolman_road"]))
+        rows.append(run_c3("Valemere Rd: Crossbowman", L, ["kael", "taren"], ["crown_crossbowman_road"]))
+        rows.append(run_c3("Valemere Rd: Bandit Veteran", L, ["kael", "taren"], ["bandit_veteran_road"]))
+        rows.append(run_c3("Valemere Rd: Patrolman + Crossbowman", L, ["kael", "taren"], ["crown_patrolman_road", "crown_crossbowman_road"]))
+        rows.append(run_c3("Valemere Rd: Veteran + Patrolman", L, ["kael", "taren"], ["bandit_veteran_road", "crown_patrolman_road"]))
         rows.append(run_c3("Debtman + Dock Thug + Debt Collector", L, ["kael", "taren", "lyra"],
                            ["debtman", "dock_thug", "debt_collector"]))
     print()
@@ -467,6 +516,108 @@ def ch4_prejoin_table():
             print(f"| {r['label']} | {L} | {r['win']*100:.0f}% | {r['rounds']:.1f} | {r['pturns']:.1f} | {r['hp']*100:.0f}% |")
     print()
 
+# ---- Act III: the Blackwood (Chapters 6–8, docs/story/ACT3_OUTLINE.md, PROPOSED) ----------
+# Party data mirrors scr_party: Sera joins for Act III (28 HP / 4 ATK / 4 DEF, MDEF 5, SPD 8,
+# MP 12) carrying the Holy Sword, which has no stats yet (atk_bonus 0). Gear is unchanged from
+# Chapter 5 — there are no Act III weapons or armour in the item data.
+BASE["sera"] = dict(hp=28, atk=4, df=4, mdef=5, spd=8, mp=12)
+GEAR_LATE["sera"] = (0, 0)
+# scr_enemy_scaled: level 18 = 125 / 40 / 29 / MDEF 15; 19 = 134 / 43 / 31 / 16; 20 = 143 / 46 /
+# 33 / 17. Role (elite x2 HP, boss x1.2 x party size) then hp_mult / def_add applied.
+E.update({
+ "shade_stalker":   dict(hp=125, atk=40, df=29, mdef=15, spd=19, weak="holy",
+                         ai=[("attack", 3), ("fade", 1)]),
+ "briar_hulk":      dict(hp=175, atk=40, df=29, mdef=15, spd=5, weak="fire", ai=[("attack", 1)]),
+ "lost_one":        dict(hp=125, atk=40, df=29, mdef=15, spd=8, weak="holy", ai=[("attack", 1)]),
+ "night_moth_swarm":dict(hp=94,  atk=43, df=31, mdef=16, spd=16, weak="fire",
+                         ai=[("attack", 2), ("blind", 2), ("sleep", 1)]),
+ # The Act III bosses as they are now in scr_enemy_database (ACT3_OUTLINE.md §7, tuned here):
+ # burn_line_hulk = briar_hulk at boss scale, hp_mult 2.1 (the Hulk's x1.4 and the boss x1.2 x 4)
+ # and atk_add 12; door_warden_boss = the elite at boss scale with hp_mult 2.0 and +3 DEF;
+ # blackwood_matriarch carries hp_mult 1.5. ward_sentinel_late is the level-20 Sentinel the
+ # Chapter 8 adds need (the level-14 one dies in a single hit at 20).
+ "burn_line_hulk":  dict(hp=1260, atk=55, df=32,  mdef=15, spd=5,  weak="fire", boss=True,
+                         ai=[("attack", 1)]),
+ "blackwood_matriarch": dict(hp=1029, atk=49, df=36, mdef=17, spd=13, weak="holy", boss=True,
+                         ai=[("attack", 2), ("breath", 1)],
+                         phase_ai={2: [("attack", 2), ("breath", 2)]},
+                         phase2_at=0.5, phase2_atk=0.25),
+ "door_warden":     dict(hp=268, atk=45, df=36, mdef=16, spd=6, weak="lightning", ai=[("attack", 1)]),
+ "door_warden_boss":dict(hp=1286, atk=46, df=37, mdef=16, spd=6, weak="lightning", boss=True,
+                         ai=[("attack", 1)]),
+ "ward_sentinel_late": dict(hp=143, atk=46, df=36, mdef=17, spd=7, weak="lightning", ai=[("attack", 1)]),
+})
+POWER.update({"breath": 0.8})
+
+def ch6_tables():
+    """Act III (Chapters 6-8, Blackwood). PROPOSED numbers from docs/story/ACT3_OUTLINE.md §7."""
+    random.seed(41)
+    WITH_CAELAN = ["kael", "taren", "lyra", "caelan"]
+    WITH_SERA = ["kael", "taren", "lyra", "sera"]
+    BAND = [
+        ("Wood: 2 Shade Stalkers", ["shade_stalker", "shade_stalker"]),
+        ("Wood: Lost One + Briar Hulk", ["lost_one", "briar_hulk"]),
+        ("Wood: 2 Moth Swarms + Lost One", ["night_moth_swarm", "night_moth_swarm", "lost_one"]),
+        ("Doors: Door Warden + 2 Moths", ["door_warden", "night_moth_swarm", "night_moth_swarm"]),
+    ]
+    # The groups that ship in scr_encounter_tables: grp_burn_line_hulk, grp_blackwood_matriarch
+    # (the Matriarch's existing one Stalker add) and grp_door_warden_boss.
+    BOSSES = [
+        ("Ch 6: Burn-Line Hulk + Stalker", ["burn_line_hulk", "shade_stalker"]),
+        ("Ch 7: Matriarch + Stalker", ["blackwood_matriarch", "shade_stalker"]),
+        ("Ch 8: Door Warden + 2 Sentinels", ["door_warden_boss", "ward_sentinel_late", "ward_sentinel_late"]),
+    ]
+    print()
+    print("**Blackwood band sanity (Chapter 6, level 18)** — Kael / Taren / Lyra / Caelan")
+    print()
+    print("| Fight | Win % | Rounds | Party turns | Party HP left |")
+    print("|---|---|---|---|---|")
+    for label, eids in BAND:
+        r = run_ext(label, 18, WITH_CAELAN, eids, gear=GEAR_LATE, boss_focus=False)
+        print(f"| {r['label']} | {r['win']*100:.0f}% | {r['rounds']:.1f} | {r['pturns']:.1f} | {r['hp']*100:.0f}% |")
+    print()
+    print("**Act III bosses** — win % and rounds. \"Hits on boss\" counts party hits, so Lyra's")
+    print("Twin Cut (two hits per turn) scores 2. \"Deaths\" is the average party members down at the win.")
+    print()
+    print("| Fight | Lv | Party | Win % | Rounds | Party turns | Hits on boss | Deaths | Party HP left |")
+    print("|---|---|---|---|---|---|---|---|---|")
+    CHAPTER_LEVEL = {"Ch 6": 18, "Ch 7": 19, "Ch 8": 20}
+    for label, eids in BOSSES:
+        for L in sorted({CHAPTER_LEVEL[label.split(":")[0]], 20}):
+            for members in (WITH_CAELAN, WITH_SERA):
+                r = run_ext(label, L, members, eids, gear=GEAR_LATE, boss_focus=True)
+                print(f"| {r['label']} | {L} | {r['members']} | {r['win']*100:.0f}% | {r['rounds']:.1f} | "
+                      f"{r['pturns']:.1f} | {r['boss']:.1f} | {r['deaths']:.2f} | {r['hp']*100:.0f}% |")
+    print()
+    print("| Level | Kael ATK/DEF/HP | Taren ATK/DEF/HP | Lyra ATK/DEF/HP | Caelan ATK/DEF/HP | Sera ATK/DEF/HP | Hits to kill Hulk (K/T/L) | Matriarch (K/T) | Door Warden (K/T/L) |")
+    print("|---|---|---|---|---|---|---|---|---|")
+    for L in (18, 19, 20):
+        ms = {m: member(m, L, *GEAR_LATE[m]) for m in ("kael", "taren", "lyra", "caelan", "sera")}
+        def kh(eid, who):
+            e = E[eid]
+            return "/".join(str(math.ceil(e["hp"] / max(1, ms[m]["atk"] - e["df"] // 2))) for m in who)
+        print(f"| {L} | " + " | ".join(f"{ms[m]['atk']} / {ms[m]['df']} / {ms[m]['max_hp']}"
+                                       for m in ("kael", "taren", "lyra", "caelan", "sera"))
+              + f" | {kh('burn_line_hulk', ('kael','taren','lyra'))} | {kh('blackwood_matriarch', ('kael','taren'))}"
+              + f" | {kh('door_warden_boss', ('kael','taren','lyra'))} |")
+    print()
+    print("**HP lever** (x boss HP only, chapter level, party of four with Caelan): what a future")
+    print("pass would buy, and the record of why the shipped numbers sit where they do.")
+    print()
+    print("**What if the bosses had more HP?** (x boss HP only, chapter level, party of four)")
+    print()
+    print("| Fight | Lv | HP x | Win % | Rounds | Deaths | Party HP left |")
+    print("|---|---|---|---|---|---|---|")
+    for label, level, eids in (("Ch 6: Hulk + 2 Stalkers", 18, BOSSES[0][1]),
+                               ("Ch 7: Matriarch + Stalker", 19, BOSSES[1][1]),
+                               ("Ch 8: Warden + 2 Sentinels", 20, BOSSES[2][1])):
+        for mult in (1.0, 1.25, 1.5):
+            r = run_ext(label, level, WITH_CAELAN, eids, gear=GEAR_LATE, boss_focus=True,
+                        n=2000, boss_hp_mult=mult)
+            print(f"| {r['label']} | {level} | {mult:.1f} | {r['win']*100:.0f}% | {r['rounds']:.1f} | "
+                  f"{r['deaths']:.2f} | {r['hp']*100:.0f}% |")
+    print()
+
 # ---- Batches 7–8 template check (scr_enemy_scaled) ---------------------------------------
 def scaled(role, level, party=1, hp_mult=1.0, def_add=0):
     d = level - 9
@@ -493,3 +644,4 @@ if __name__ == "__main__":
     c3_tables()
     ch45_tables()
     ch4_prejoin_table()
+    ch6_tables()

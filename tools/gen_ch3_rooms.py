@@ -170,6 +170,12 @@ vr_markers = [
      'note': 'Arrive from rm_valemere east gate.'},
     {'type': 'zone_exit', 'name': 'to_valemere', 'tile_x': 0, 'tile_y': 14, 'x': T(0,14)[0], 'y': T(0,14)[1],
      'target_room': 'rm_valemere', 'target_spawn': 'from_road', 'w': 1, 'h': 3},
+    # Chapter 5 (approved 2026-11-16): the Blackwood road fork on the east edge.
+    {'type': 'player_spawn', 'name': 'from_blackwood', 'tile_x': 22, 'tile_y': 12, 'x': T(22,12)[0], 'y': T(22,12)[1], 'facing': 'left',
+     'note': 'Arrive back from rm_blackwood_garrison (Chapter 5).'},
+    {'type': 'zone_exit', 'name': 'to_blackwood_road', 'tile_x': 23, 'tile_y': 11, 'x': T(23,11)[0], 'y': T(23,11)[1],
+     'target_room': 'rm_blackwood_garrison', 'target_spawn': 'from_road', 'w': 1, 'h': 3,
+     'note': 'Chapter 5: the Blackwood road fork, east edge. Does not need Chapter 4 finished.'},
     {'type': 'sign', 'name': 'vr_sign', 'tile_x': 12, 'tile_y': 33, 'x': T(12,33)[0], 'y': T(12,33)[1], 'sign_tile': 'signpost',
      'script_id': 'VR_SIGN_01', 'text': 'Valemere: 8 miles. Crown Patrol on the road. Show your papers.',
      'lines': ['Valemere: 8 miles. Crown Patrol on the road.', 'Show your papers.']},

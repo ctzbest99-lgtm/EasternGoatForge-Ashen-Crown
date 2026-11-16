@@ -10,3 +10,4 @@ choices = [];       // optional choice on the last line (scr_dialogue_choice)
 choice_index = 0;
 on_choice = undefined;
 portrait_expr = "neutral"; // set per node (Chapter 2 `expr`); falls back to neutral / the speaker default
+scr_audio_sfx("text", 0, 0.7); // quiet page-open blip
