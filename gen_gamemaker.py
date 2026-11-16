@@ -123,6 +123,7 @@ OBJ_META = {
     'obj_respawn_point':      ('spr_respawn_point_placeholder', None, False, True),
     'obj_game_controller':    (None, None, True, False),
     'obj_title':              (None, None, False, True),
+    'obj_adventure_menu':    (None, None, False, True),
     'obj_battle_controller':  (None, None, False, True),
     'obj_dialogue_box':       (None, None, False, True),
     'obj_inventory_menu':     (None, None, False, True),
