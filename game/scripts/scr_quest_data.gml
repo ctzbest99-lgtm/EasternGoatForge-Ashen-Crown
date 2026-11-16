@@ -23,6 +23,15 @@ function scr_quest_definitions() {
             ]
         },
         {
+            id: "Q_MAIN_BLACKWOOD",
+            title: "What the Forest Keeps",
+            kind: "Main quest",
+            stages: [
+                { id: "Q_MBW_S1", text: "Follow the Crown's order into the Blackwood." },
+                { id: "Q_MBW_S2", text: "Find out what Cinderhollow pays, and to whom." }
+            ]
+        },
+        {
             id: "Q_SIDE_ODA",
             title: "The One on the List",
             kind: "Side quest",

@@ -211,7 +211,9 @@ function scr_dialogue_node(_id) {
     if (is_struct(_ch3)) return _ch3;
     var _ch4 = scr_ch4_dialogue_node(_id); // Chapter 4 (scr_dialogue_data_ch4, generated)
     if (is_struct(_ch4)) return _ch4;
-    return scr_ch5_dialogue_node(_id); // Chapter 5 (scr_dialogue_data_ch5, generated)
+    var _ch5 = scr_ch5_dialogue_node(_id); // Chapter 5 (scr_dialogue_data_ch5, generated)
+    if (is_struct(_ch5)) return _ch5;
+    return scr_ch6_dialogue_node(_id); // Chapter 6 (scr_dialogue_data_ch6, generated)
 }
 
 function scr_dialogue_play_script(_script_id, _source = noone) {
@@ -224,6 +226,8 @@ function scr_dialogue_play_script(_script_id, _source = noone) {
     if (scr_ch4_play_script(_script_id, _source)) return true;
     // Chapter 5 (The Deserted Oath): the garrison road, Hailen, and Sera.
     if (scr_ch5_play_script(_script_id, _source)) return true;
+    // Chapter 6 (The Green Silence): the Blackwood road, Cinderhollow, the camp and the burn line.
+    if (scr_ch6_play_script(_script_id, _source)) return true;
     switch (_script_id) {
         case "GH_ARRIVAL":
             if (scr_flag_get("flag_arrived_greyhaven")) return true;

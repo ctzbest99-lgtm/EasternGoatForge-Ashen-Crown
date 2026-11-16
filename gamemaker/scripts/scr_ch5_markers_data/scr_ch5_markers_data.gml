@@ -5,6 +5,7 @@
 function scr_blackwood_garrison_markers() {
     return [
         { type: "player_spawn", name: "from_road", tile_x: 1, tile_y: 11, x: 24, y: 192, facing: "right", note: "Arrive from rm_valemere_road (the Blackwood road fork)." },
+        { type: "player_spawn", name: "from_blackwood", tile_x: 24, tile_y: 10, x: 392, y: 176, facing: "left", note: "Arrive back from the Blackwood road east (Chapter 6's return door)." },
         { type: "player_spawn", name: "from_keep", tile_x: 18, tile_y: 3, x: 296, y: 64, facing: "down", note: "Arrive back out of the commander's office." },
         { type: "zone_exit", name: "to_valemere_road", tile_x: 0, tile_y: 10, x: 8, y: 176, target_room: "rm_valemere_road", target_spawn: "from_blackwood", w: 1, h: 3, note: "Back west down the road (Chapter 5 opens here)." },
         { type: "zone_exit", name: "to_keep", tile_x: 17, tile_y: 2, x: 280, y: 48, target_room: "rm_garrison_keep", target_spawn: "from_yard", w: 2, h: 1, script_id: "CH5_KEEP_DOOR", note: "The commander's office and records room. Barred until Hailen is beaten (scr_ch5_exit_script)." },

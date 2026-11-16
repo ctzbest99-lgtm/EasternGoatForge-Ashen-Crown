@@ -7,6 +7,7 @@ scr_ch2_tick(); // Chapter 2 wake-up at the Crownveil door (CV_WAKE)
 scr_ch3_tick(); // Chapter 3 (no per-frame beats yet)
 scr_ch4_tick(); // Chapter 4 (no per-frame beats yet)
 scr_ch5_tick(); // Chapter 5 (no per-frame beats yet)
+scr_ch6_tick(); // Chapter 6 (the burn-line boss gate)
 
 
 // Adventure menu overlay (I or Tab). Opening is blocked while dialogue / battle / a menu is
