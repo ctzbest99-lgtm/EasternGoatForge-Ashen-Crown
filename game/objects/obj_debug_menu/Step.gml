@@ -4,6 +4,17 @@ if (keyboard_check_pressed(vk_f10)) {
     visible_debug = !visible_debug;
     keyboard_string = "";
 }
+/// Saving works with the overlay closed; a real game saves at save points instead of on a key.
+var _player_obj = asset_get_index("obj_player");
+var _player = (_player_obj >= 0 && instance_number(_player_obj) > 0) ? instance_find(_player_obj, 0) : noone;
+if (keyboard_check_pressed(vk_f5)) {
+    message = "save: " + scr_save_game(_player);
+    exit;
+}
+if (keyboard_check_pressed(vk_f9)) {
+    message = "load: " + scr_save_load(_player);
+    exit;
+}
 if (!visible_debug) exit;
 /// Battle prototype trigger: B starts a Bandit fight through the overlay controller.
 if (keyboard_check_pressed(ord("B"))) {

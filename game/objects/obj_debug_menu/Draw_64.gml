@@ -11,7 +11,7 @@ draw_rectangle(_left, _top, _left + _width, _top + _height, false);
 draw_set_alpha(1);
 draw_set_halign(fa_left);
 draw_set_colour(c_white);
-draw_text(_left + 8, _top + 6, "DEBUG — [F10] close  [TAB] switch  [B] battle");
+draw_text(_left + 8, _top + 6, "DEBUG — [F10] close  [TAB] switch  [B] battle  [F5] save  [F9] load");
 if (debug_mode == 0) {
     draw_text(_left + 8, _top + 26, "Spawn enemy ahead of player — [ENTER]");
     for (var _i = 0; _i < _count; _i++) {

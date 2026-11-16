@@ -10,6 +10,7 @@
 enum BATTLE_PHASE {
     INTRO,
     COMMAND,
+    ITEM,
     PLAYER_RESULT,
     ENEMY_RESULT,
     VICTORY,
@@ -18,16 +19,18 @@ enum BATTLE_PHASE {
 
 enum BATTLE_COMMAND {
     ATTACK,
-    GUARD
+    GUARD,
+    ITEM
 }
 
-#macro BATTLE_COMMAND_COUNT 2
+#macro BATTLE_COMMAND_COUNT 3
 
 /// @desc Display name of a command id.
 function scr_battle_command_name(_command) {
     switch (_command) {
         case BATTLE_COMMAND.ATTACK: return "Attack";
         case BATTLE_COMMAND.GUARD: return "Guard";
+        case BATTLE_COMMAND.ITEM: return "Item";
     }
     return "?";
 }
@@ -50,11 +53,14 @@ function scr_battle_is_alive(_actor) {
 }
 
 /// @desc Start a battle against _enemy_id. Returns undefined for an unknown id so callers can report it.
-/// _player_name is optional; the placeholder player stats are deliberately simple until equipment exists.
-function scr_battle_create(_enemy_id, _player_name = "Kael") {
+/// Pass a party member as _player and the battle fights with it by reference, so damage and levelling
+/// carry back to the party. Leaving it undefined uses the placeholder actor (30 HP, 6 attack, 2 defense).
+/// _items is the party inventory the Item command draws from; a battle always has one, even when empty.
+function scr_battle_create(_enemy_id, _player = undefined, _items = undefined) {
     var _data = scr_get_enemy_data(_enemy_id);
     if (is_undefined(_data) || _data == undefined) return undefined;
-    var _player = scr_battle_actor(_player_name, 30, 6, 2);
+    if (is_undefined(_player) || _player == undefined) _player = scr_battle_actor("Kael", 30, 6, 2);
+    if (is_undefined(_items) || _items == undefined) _items = scr_inventory_create();
     var _enemy = scr_battle_actor(_data.name, _data.max_hp, _data.attack, _data.defense);
     _enemy.id = _data.id;
     _enemy.xp_reward = _data.xp_reward;
@@ -66,6 +72,8 @@ function scr_battle_create(_enemy_id, _player_name = "Kael") {
         turn: 1,
         player: _player,
         party: [_player],
+        inventory: _items,
+        item_cursor: 0,
         active_actor: 0,
         enemy: _enemy,
         last_damage: 0,
@@ -115,6 +123,54 @@ function scr_battle_player_command(_battle, _command) {
     return false;
 }
 
+/// @desc Enter the item submenu from the command menu. Returns false and says so when nothing is usable.
+function scr_battle_open_items(_battle) {
+    if (_battle.state != BATTLE_PHASE.COMMAND) return false;
+    if (array_length(scr_inventory_usable(_battle.inventory)) == 0) {
+        _battle.message = "No items.";
+        return false;
+    }
+    _battle.state = BATTLE_PHASE.ITEM;
+    _battle.item_cursor = 0;
+    _battle.message = "Use which item?";
+    return true;
+}
+
+/// @desc Move inside the item submenu, wrapping. Does nothing outside that submenu.
+function scr_battle_move_item_cursor(_battle, _delta) {
+    if (_battle.state != BATTLE_PHASE.ITEM || _delta == 0) return false;
+    var _count = array_length(scr_inventory_usable(_battle.inventory));
+    if (_count <= 0) return false;
+    _battle.item_cursor = (_battle.item_cursor + _delta + _count) mod _count;
+    return true;
+}
+
+/// @desc Back out of the item submenu without spending the turn.
+function scr_battle_close_items(_battle) {
+    if (_battle.state != BATTLE_PHASE.ITEM) return false;
+    _battle.state = BATTLE_PHASE.COMMAND;
+    _battle.message = "Choose a command.";
+    return true;
+}
+
+/// @desc Use the selected item on the active actor. A refusal (full HP, empty stack) keeps the submenu
+/// open and spends nothing, so a wasted turn is impossible.
+function scr_battle_use_selected_item(_battle) {
+    if (_battle.state != BATTLE_PHASE.ITEM) return false;
+    var _usable = scr_inventory_usable(_battle.inventory);
+    if (array_length(_usable) == 0) return scr_battle_close_items(_battle);
+    var _index = min(_battle.item_cursor, array_length(_usable) - 1);
+    var _item_id = _usable[_index].id;
+    var _result = scr_inventory_use(_battle.inventory, _battle.player, _item_id);
+    if (!_result.used) {
+        _battle.message = scr_item_data(_item_id).name + ": " + _result.message + ".";
+        return false;
+    }
+    _battle.state = BATTLE_PHASE.PLAYER_RESULT;
+    _battle.message = _battle.player.name + " uses " + scr_item_data(_item_id).name + " and recovers " + string(_result.healed) + " HP.";
+    return true;
+}
+
 /// @desc One enemy action. Halves incoming damage while the player guards. Returns false when the
 /// enemy cannot act, so a defeated enemy never attacks.
 function scr_battle_enemy_turn(_battle) {
@@ -143,7 +199,10 @@ function scr_battle_advance(_battle) {
             _battle.message = "Choose a command.";
             return true;
         case BATTLE_PHASE.COMMAND:
+            if (_battle.cursor == BATTLE_COMMAND.ITEM) return scr_battle_open_items(_battle);
             return scr_battle_player_command(_battle, _battle.cursor);
+        case BATTLE_PHASE.ITEM:
+            return scr_battle_use_selected_item(_battle);
         case BATTLE_PHASE.PLAYER_RESULT:
             return scr_battle_enemy_turn(_battle);
         case BATTLE_PHASE.ENEMY_RESULT:

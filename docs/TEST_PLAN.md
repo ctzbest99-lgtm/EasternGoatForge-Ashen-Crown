@@ -15,14 +15,27 @@ Run tests in GameMaker after integration; static review is not a substitute for 
 - [ ] Encounter starts once only: walking onto an enemy opens exactly one battle, and a second battle cannot start while one is active.
 - [ ] Victory removes the overworld enemy; after a defeat the player must step off the enemy before it triggers again.
 - [ ] Attack resolves once per confirmation; Guard works and resets as documented.
+- [ ] The Item command lists the bag, heals the active member, decrements the stack, lets the enemy act afterwards, and refuses at full HP without wasting the turn.
 - [ ] Battle locks exploration input on start and restores it after victory, defeat, or removal of the controller.
 - [ ] HP stays between zero and max HP; defeated actors cannot act.
 - [ ] Rewards are granted once; victory and defeat return to valid states.
+- [ ] Victory grants XP and gold exactly once, and a level-up raises the member's stats before the next battle.
+- [ ] Gold never goes negative and cannot be spent beyond the purse.
+- [ ] Battle damage persists on the party member, and the lead is the first member with HP above zero.
 - [ ] Unknown enemy ID is handled safely.
 
 ## Menus and saves
+- [ ] The overworld HUD shows the lead member's level, current/max HP, XP toward the next level and the party gold, and updates after a battle.
+- [ ] The HUD hides during battle and comes back on return to exploration.
 - [ ] Selection and cancel/back work.
+- [ ] The status menu lists every member with level, HP, XP, attack and defense; UP/DOWN wraps, and ESC closes it and returns control.
+- [ ] ENTER in the status menu opens the item list; using a potion heals the selected member, decrements the stack, and refuses at full HP without consuming anything.
+- [ ] The status menu cannot open during a battle, and the HUD hides while it is open.
 - [ ] Save/load persists after restart; missing/corrupt save fails safely.
+- [ ] A save from an unsupported version is refused with a message and leaves the current party untouched.
+- [ ] Loading restores level, XP, HP, gold and player position; HP is clamped and a fallen member stays fallen.
+- [ ] The startup load happens once per launch: changing rooms does not reload the save or move the player.
+- [ ] A victory autosaves once, after the battle closes, and the saved file already contains the reward XP and gold.
 - [ ] Bestiary displays correct sprite and description.
 
 Record GameMaker version, date, result, and reproducible failures.

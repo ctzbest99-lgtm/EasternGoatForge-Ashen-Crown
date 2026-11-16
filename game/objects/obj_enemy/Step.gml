@@ -6,6 +6,9 @@ if (_player_obj < 0) {
     exit;
 }
 
+/// A menu pauses contact: the player cannot move, so no new encounter should start behind it.
+if (variable_global_exists("menu_open") && global.menu_open) exit;
+
 var _touching = place_meeting(x, y, _player_obj);
 var _battle_active = global.battle_active;
 
