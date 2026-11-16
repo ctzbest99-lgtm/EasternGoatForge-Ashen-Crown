@@ -13,8 +13,8 @@
 /// neither touches the main quest, as with the tithe in Chapter 7.
 ///
 /// Recorded deviations:
-/// - `ch9_shop_discount` is a flag only. The shop does not read it yet, so the copy branch's
-///   discount is not implemented mechanically — the flag is there for the shop pass.
+/// - `ch9_shop_discount` is read by `scr_shop_buy_price` (10% off, [PROPOSED] percentage,
+///   applies at every shop until Coleford has one of its own).
 /// - The south exit targets `rm_barrow_gate`, which Chapter 10 will build. Until then the exit
 ///   script plays the chapter's end scene and the engine's own "[rm_barrow_gate is not built
 ///   yet.]" line after it.
@@ -149,7 +149,7 @@ function scr_ch9_nessa_choice() {
             function(_idx) {
                 if (_idx == 0) {
                     scr_flag_set("ch9_page_copied");
-                    // Flag only: the shop does not read it yet (see the header).
+                    // Read by scr_shop_buy_price: 10% off at every shop (see the header).
                     scr_flag_set("ch9_shop_discount");
                     scr_dialogue_play(["CL_COPY_01", "CL_COPY_02", "CL_COPY_03", "CL_COPY_04"],
                         function() {

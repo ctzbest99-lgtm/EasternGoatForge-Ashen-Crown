@@ -53,7 +53,7 @@ if (tab < 2 && _ids_n > 0) {
         var _row_y = scr_menu_shop_row_y(_shown);
         var _here = (_i == index);
         var _disabled = false;
-        if (tab == 0) _disabled = (scr_item_buy_price(_item_id) > global.game.gold);
+        if (tab == 0) _disabled = (scr_shop_buy_price(_item_id) > global.game.gold);
         if (tab == 1) _disabled = _sell_list[_i].unsellable;
         if (_here) {
             scr_menu_draw_row_select(22, _row_y, 172, _disabled);
@@ -66,7 +66,7 @@ if (tab < 2 && _ids_n > 0) {
             scr_menu_text_right(180, _row_y + 4, "--", MENU_COL_A);
             scr_menu_draw_icon("spr_ui_icon_key", 184, _row_y + 4);
         } else {
-            var _price = (tab == 0) ? scr_item_buy_price(_item_id) : scr_item_sell_price(_item_id);
+            var _price = (tab == 0) ? scr_shop_buy_price(_item_id) : scr_item_sell_price(_item_id);
             scr_menu_text_right(180, _row_y + 4, string(_price), _col);
             scr_menu_draw_icon("spr_ui_icon_coin", 184, _row_y + 4);
         }
@@ -130,7 +130,7 @@ if (_sel_id != "") {
 
 // Quantity selector (Buy, consumables only)
 if (mode == "qty" && tab == 0 && _sel_id != "") {
-    var _unit = scr_item_buy_price(_sel_id);
+    var _unit = scr_shop_buy_price(_sel_id);
     var _total = _unit * qty;
     var _owned = scr_inventory_count(_sel_id);
     var _afford = (_unit > 0) ? (global.game.gold div _unit) : 1;
