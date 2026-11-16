@@ -1,7 +1,7 @@
 # AI Agent Development Backlog — ASHEN CROWN
 
 **Last reconciled:** 2026-11-15  
-**Updated 2026-11-16:** Act II is complete. Chapter 5 is built (rooms, markers, dialogue, story flow), audio is wired through `scr_audio`, and the Act III outline exists as [PROPOSED](story/ACT3_OUTLINE.md). Items below that call Chapter 5 data-only or audio absent are done — check `docs/CHANGELOG.md` and `docs/DEVELOPMENT_ROADMAP.md` for current state. Also prefer the targeted importers in `tools/` over re-running `gen_gamemaker.py` wholesale, which churns resource UUIDs.  
+**Updated 2026-11-16:** Acts I–IV are built and unplayed (Chapters 1–11, 31 rooms, 91 scripts), audio is wired through `scr_audio`, and Act V is approved in outline only. Items below that call any of that data-only, design-only or audio-absent are done — check `docs/CHANGELOG.md` and `docs/DEVELOPMENT_ROADMAP.md` for current state. Also prefer the targeted importers in `tools/` over re-running `gen_gamemaker.py` wholesale, which churns resource UUIDs.  
 **Purpose:** single actionable handoff for Codex or another coding agent. Work top-to-bottom, one item at a time.  
 **Project:** GameMaker / GML. Open `gamemaker/AshenCrown.yyp`; edit human-readable source in `game/` unless a task specifically concerns project metadata.
 
@@ -25,9 +25,9 @@
 - Core combat: menu-driven turn-based battles; four active party members plus one reserve; no automatic enemy level scaling by default.
 - Adventure menu: Items, Equip, Party Order, Status, Bestiary.
 - Save/load: only at save crystals inside a town church or tavern. No save-anywhere and no Save row in the field menu.
-- Chapters 1–4: built in source/project data; README reports 20 rooms. They are not yet verified by an IDE playtest.
-- Chapter 5: enemy stats, encounter tables, and boss groups only; no rooms, markers, or dialogue yet.
-- Act III onward: design only.
+- Chapters 1–11: built in source/project data; README reports 31 rooms. They are not yet verified by an IDE playtest — `docs/PLAYTEST_RUNBOOK.md` is the order to check them in.
+- Act V: outline and approvals only — no chapter script, dialogue, rooms, enemies or code.
+- Acts VI–VIII: titles only.
 - Bestiary: seen/defeated tracking and information pane exist; all 33 descriptions are placeholder prose. The monster sprite is not currently shown in the Bestiary UI, despite being part of the requested feature.
 - Art: ten placeholder sprites remain, including Lyra's overworld and battle strips. Check `game/sprites/IMPORT.md` and `docs/ASSET_INVENTORY.md`.
 - Audio: no authored music or sound effects yet.
@@ -211,7 +211,7 @@ Tasks:
 - Keep Alden Marr's locked ending, **Ending C — The Last Usurper**, intact: he begins seeking to free serfs and rebuild Eldoria, grows into a would-be ruler, claims the throne after King Aldric IV's defeat, and must be stopped by Kael and Taren.
 - Do not treat unimplemented narrative plans as shipped game content.
 
-- Act III is fully built — Chapters 6–8, five Blackwood rooms, dialogue data, story scripts and quest stages — but unplayed, and Chapters 7–8's decisions await individual approval. Act IV (*The Forgotten King*) has a title and nothing else, so it needs an outline before a script. See `docs/DECISIONS_AND_OPEN_QUESTIONS.md` §"Act III completed".
+- Acts III and IV are fully built and unplayed — Chapters 6–11, the Blackwood and barrow rooms, dialogue data, story scripts and quest stages; Chapters 7–8's decisions still await individual approval. Act V is approved in outline only (`docs/story/ACT5_OUTLINE.md`), with no chapter written and nothing built. See `docs/DECISIONS_AND_OPEN_QUESTIONS.md`.
 
 Acceptance:
 - Each act has owner-approved story beats, party recruitment/roles, locations, bosses, and implementation scope before coding.
@@ -242,12 +242,12 @@ Acceptance:
 ## Known repository follow-ups
 
 - `prompts/CODEX_MASTER_PROMPT.md`, `docs/GAME_DESIGN_DOCUMENT.md`, and `docs/DEVELOPMENT_ROADMAP.md` have been updated to point agents to this backlog and reflect current build state.
-- `docs/ASSET_INVENTORY.md` needs reconciliation against the current assets: it reports the Zone 1 tileset as 256×608 although `game/tilesets/README.md` and the generated sprite metadata say 256×800; it lists UI panels/cursor as planned although 54 `spr_ui_*` resources are present. Verify each row against the actual import table before changing status.
-- `game/README.md` is still titled “GameMaker Starter Code” and labels its resource inventory Chapters 1–3, while the repository contains 57 scripts and Chapter 4 source/project content. `gamemaker/README.md` says 56 scripts; update both counts/scope.
-- `gamemaker/README.md` says pixel interpolation is unchecked on every platform, but the current platform option files set `option_*_interpolate_pixels` to `true`. Decide the intended pixel-art setting and make the project options and documentation agree.
+- ~~`docs/ASSET_INVENTORY.md` needs reconciliation against the current assets~~ — resolved: the Zone 1 tileset row now says 256×800, matching `game/tilesets/README.md` and the PNG. Keep verifying rows against the import table when art changes.
+- ~~README counts and titles~~ — resolved: both READMEs now report the current 31 rooms / 91 scripts / 843 sprites and the Act I–IV build state.
+- ~~Pixel interpolation disagreement~~ — resolved: every platform option file has `interpolate_pixels` set to `false`, and `gen_gamemaker.py` now normalises it (and the product name) on regeneration.
 - Battle-presentation documentation is inconsistent: `docs/story/STORY_BIBLE.md` still calls it open and `docs/DECISIONS_AND_OPEN_QUESTIONS.md` records the dedicated-room prototype assumption. The owner-approved direction from prior planning is hybrid presentation varying by encounter; reconcile the decision log, GDD, story bible and implementation without changing battle behavior silently.
 - The README is the current project snapshot; keep its status synchronized when build/content state changes.
-- The Story Bible exists at `docs/story/STORY_BIBLE.md`. Its header cites `MASTER_GDD.txt` as its source, but `MASTER_GDD.txt` is not present in the repository tree. Restore that source document or revise the provenance note to identify the current canonical sources; do not invent missing source material.
+- ~~Story Bible provenance cites a missing `MASTER_GDD.txt`~~ — resolved: the header now names the chapter scripts and act outlines as its sources and states plainly that the old master document is not in the repository.
 - The old open PR #1 contains a debug-menu change and may reference outdated objects. Review its diff against current source before deciding whether to close, update, or merge it.
 - The old generic Windows branding values noted in the audit should be replaced before release packaging.
 - Pixel interpolation settings must be checked against the actual GameMaker options and README; the current project README says interpolation is disabled. Keep generated project options consistent.

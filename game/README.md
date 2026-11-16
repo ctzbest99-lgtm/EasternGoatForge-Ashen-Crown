@@ -1,10 +1,10 @@
-# GameMaker Starter Code
+# ASHEN CROWN — game source
 
 This folder is the human-readable source of truth for the game: one `.gml` file per script and per object event, plus sprite art, the tileset and map data. The generated, ready-to-open GameMaker project lives in `../gamemaker/` (`AshenCrown.yyp`) and is rebuilt from this folder by `gen_gamemaker.py`.
 
 `game/scripts/*.gml` is copied verbatim into `gamemaker/scripts/`, so the two copies must stay byte-identical — `python3 validate_gamemaker.py` checks that, along with resource paths, sprite dimensions and the room / layer expectations. Edit `game/` (or the IDE once the project is open) and re-sync rather than editing only one copy.
 
-The code is a real, generated project, not illustrative snippets, but nothing has been compiled or playtested in GameMaker yet. `docs/TEST_PLAN.md` is the manual check list; `docs/DEVELOPMENT_ROADMAP.md` tracks what is built.
+The code is a real, generated project, not illustrative snippets, but nothing has been compiled or playtested in GameMaker yet. `docs/PLAYTEST_RUNBOOK.md` is the order to run the first IDE session in, `docs/TEST_PLAN.md` is the manual check list, and `docs/DEVELOPMENT_ROADMAP.md` tracks what is built.
 
 **Target syntax:** GameMaker 2023.1 or newer (structs, methods, `function` scripts, default arguments, arrays of objects/tilemaps in `place_meeting`). The final GameMaker version is still an open question.
 
@@ -15,7 +15,7 @@ The code is a real, generated project, not illustrative snippets, but nothing ha
 - `game/tilesets/ts_zone1.png` → Sprite `spr_ts_zone1`, then Tile Set `ts_zone1` (see `game/tilesets/README.md`).
 - `game/datafiles/overworld/` → Included Files (see `game/datafiles/README.md`).
 
-## Resources (Chapters 1–3: exploration, battle, party/progression, menus and saves)
+## Resources (Chapters 1–11: exploration, battle, party/progression, menus, saves and story)
 
 ### Scripts (Asset Browser → Create → Script; name must match exactly)
 | Script | Purpose |

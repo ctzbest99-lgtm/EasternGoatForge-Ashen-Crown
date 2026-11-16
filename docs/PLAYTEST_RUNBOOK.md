@@ -66,7 +66,7 @@ If the compiler names a **script that exists but is "not defined"**, the script 
 2. **Options** — Music / Ambience / SFX adjust and **Mute** works. Change a value, quit, relaunch: it must persist (`ashen_settings.ini` is written next to the executable). This is unverified in engine.
 3. **Continue** is disabled or empty with no save file. No crash on selecting it.
 4. **New Game** starts. Expected: `rm_overworld`, camera at 320×180 shown 2×, Kael at the south-road `player_start` (tile 199,186).
-5. **Look at the pixels.** `option_windows_interpolate_pixels` is **true** in `gamemaker/options/windows/options_windows.yy`, so the art will probably look soft when scaled. Decide now whether that is intended; if not, it is a one-line options fix plus the README note, not a bug to chase per sprite. Also note the window title currently says **"yyp-template"** (known, cosmetic).
+5. **Look at the pixels and the title bar.** Every platform option file now has `interpolate_pixels` set to **false** and the product name set to **"Ashen Crown"**, so scaled art should be crisp and the window should not say "yyp-template". If either is wrong, the options tree has drifted again — re-run the options block of `gen_gamemaker.py` rather than fixing sprites one by one.
 
 **Gate 2:** New Game reaches the overworld and the player moves.
 
@@ -155,7 +155,7 @@ Test each chapter's **gate and its boss**, not every line. The chapter-specific 
 ## Phase 6 — Act IV (Coleford to the King) (1.5 h)
 
 - **Ch 9 Coleford:** Vell yields (`flag_vell_yielded`); Nessa's copy choice; Alden's first scene (he has **no sprite** — expect a placeholder, this is known).
-- `Q_SIDE_LEDGER` completes and sets `ch9_shop_discount`. **Known gap:** no shop reads that flag yet, so expect no discount. Do not report it as new.
+- `Q_SIDE_LEDGER` completes and sets `ch9_shop_discount`. **Test the discount:** in a shop, a buy price should now be 10% lower than its base (rounded down, minimum 1 gold), and buying should charge that shown price — check the displayed row and the gold actually deducted agree. Before the flag it must charge full price.
 - **Ch 10 barrow gate:** the Warden, the replayable gate, the road.
 - **Ch 11 halls/deep:** the charter names the mark (**Crownveil**); the King fight; **the King has two mechanical phases of the scripted three** — the third beat is dialogue. Known and recorded.
 - **The seal choice**: pick one, confirm `ch11_seal_alden` or `ch11_seal_party` persists through a save/reload. Act IV completes with `flag_act4_complete`.
@@ -225,10 +225,8 @@ For each failure, record: **phase/step number, room name, exact steps, expected,
 | Every Act III/IV room is a Wrenfield-tileset blockout; Act III–IV enemies borrow strips | Known art debt (18 enemy kinds lack overworld sets) |
 | Alden has no sprite and no battle slot | Known; he appears as a placeholder |
 | The Forgotten King has two mechanical phases of three | Known engine limit (one phase shift) |
-| `ch9_shop_discount` is set but read by no shop | Known; Act IV quest hook only |
 | Twelve overworld entrances are `status: "stub"` (Frostwilds, Ironspine, Ashlands, Rimehold…) | Intentional; they show a placeholder line |
-| Four encounter tables can roll an enemy outside their band (`zone01_old_road`, `zone01_bandit_camp`, `zone01_watchtower`, `zone01_basement_hall`), and `zone01_path` declares no band | Known warnings from the validator; balance pass pending |
-| Window title reads "yyp-template"; `interpolate_pixels` is on | Known options/branding debt |
+| Four encounter tables can roll an enemy outside their band (`zone01_old_road`, `zone01_bandit_camp`, `zone01_watchtower`, `zone01_basement_hall`) | Known warnings from the validator; balance pass pending |
 | Nothing after Act IV exists | Acts V–VIII are outline-only; the board ends at `flag_act4_complete` |
 
 ## What "done" looks like
