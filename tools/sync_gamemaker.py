@@ -17,13 +17,13 @@ IGNORED = shutil.ignore_patterns(
     ".git", ".venv", "venv", "__pycache__", ".pytest_cache",
     ".mypy_cache", ".ruff_cache", ".DS_Store",
 )
-UUID_RE = re.compile(r"\\b[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\\b", re.I)
-INSTANCE_RE = re.compile(r"\\binst_[0-9A-F]{8}\\b")
+UUID_RE = re.compile(r"\b[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\b", re.I)
+INSTANCE_RE = re.compile(r"\binst_[0-9A-F]{8}\b")
 
 
 def normalize_json(data: bytes) -> bytes:
     text = data.decode("utf-8")
-    value = json.loads(re.sub(r",(\\s*[}\\]])", r"\\1", text))
+    value = json.loads(re.sub(r",(\s*[}\]])", r"\1", text))
 
     def visit(item):
         if isinstance(item, str):
@@ -48,7 +48,7 @@ def inventory(root: Path) -> dict[str, tuple[Path, bytes]]:
             if meta.parent.parent != sprite_root:
                 continue
             try:
-                raw = re.sub(r",(\\s*[}\\]])", r"\\1", meta.read_text(encoding="utf-8"))
+                raw = re.sub(r",(\s*[}\]])", r"\1", meta.read_text(encoding="utf-8"))
                 obj = json.loads(raw)
                 frames = [frame.get("name") for frame in obj.get("frames", [])]
                 layers = [layer.get("name") for layer in obj.get("layers", [])]
