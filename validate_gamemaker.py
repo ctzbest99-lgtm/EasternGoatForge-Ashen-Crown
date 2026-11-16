@@ -1,162 +1,248 @@
-import json, os, re, sys
-from PIL import Image
-ROOT = os.path.abspath(os.path.dirname(__file__))
-OUT = os.path.join(ROOT, 'gamemaker')
-SRC = os.path.join(ROOT, 'game')
-def load(p):
-    s = open(p).read()
-    s = re.sub(r',(\s*[}\]])', r'\1', s)
-    return json.loads(s)
+#!/usr/bin/env python3
+"""Validate the generated ASHEN CROWN GameMaker project against its sources."""
+from __future__ import annotations
+import json, re, sys
+from pathlib import Path
+try:
+    from PIL import Image
+except ImportError:
+    print("ERROR: Pillow is required: python -m pip install Pillow", file=sys.stderr)
+    raise SystemExit(2)
 
-errors, warns = [], []
-yys = 0
-for root, dirs, files in os.walk(OUT):
-    for fn in files:
-        if fn.endswith(('.yyp','.yy','.resource_order')):
-            try: load(os.path.join(root, fn)); yys += 1
-            except Exception as e: errors.append(f"PARSE {fn}: {e}")
-print(f"parsed {yys} json files")
+ROOT = Path(__file__).resolve().parent
+SRC, OUT = ROOT / "game", ROOT / "gamemaker"
+errors = []
+counts = {"json": 0, "resources": 0, "scripts": 0, "datafiles": 0, "rooms": 0}
 
-def check_refs(obj, base):
-    if isinstance(obj, dict):
-        for k, v in obj.items():
-            if k == 'path' and isinstance(v, str) and v.startswith(('sprites/','objects/','scripts/','rooms/','folders/','texturegroups/','tilesets/')):
-                if not v.startswith(('folders/','texturegroups/')) and not os.path.exists(os.path.join(OUT, v)):
-                    errors.append(f"MISSING PATH {v} ({base})")
-            else: check_refs(v, base)
-    elif isinstance(obj, list):
-        for v in obj: check_refs(v, base)
+def fail(message): errors.append(message)
+def rel(path):
+    try: return path.relative_to(ROOT).as_posix()
+    except ValueError: return str(path)
+def load_json(path):
+    try:
+        raw = path.read_text(encoding="utf-8")
+        value = json.loads(re.sub(r",(\s*[}\]])", r"\1", raw))
+        counts["json"] += 1
+        return value
+    except FileNotFoundError:
+        fail(f"MISSING FILE: {rel(path)}")
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        fail(f"INVALID JSON: {rel(path)}: {exc}")
+    return None
+def safe_load(path, context):
+    value = load_json(path)
+    if value is None: fail(f"UNREADABLE RESOURCE: {context}")
+    return value
+def report():
+    if errors:
+        print(f"VALIDATION FAILED ({len(errors)} issue(s))")
+        for error in errors: print(f" - {error}")
+        return 1
+    print("ALL CHECKS PASSED")
+    return 0
+def check_paths(value, source):
+    if isinstance(value, dict):
+        for key, child in value.items():
+            if key == "path" and isinstance(child, str) and child.startswith(
+                ("sprites/", "objects/", "scripts/", "rooms/", "folders/", "texturegroups/", "tilesets/")
+            ):
+                if not child.startswith(("folders/", "texturegroups/")) and not (OUT / child).exists():
+                    fail(f"MISSING PATH: {child} (referenced by {rel(source)})")
+            else: check_paths(child, source)
+    elif isinstance(value, list):
+        for child in value: check_paths(child, source)
 
-yyp = load(os.path.join(OUT,'AshenCrown.yyp'))
-check_refs(yyp, 'yyp')
-for root, dirs, files in os.walk(OUT):
-    for fn in files:
-        if fn.endswith('.yy'): check_refs(load(os.path.join(root,fn)), fn)
+EVENT_NAMES = {
+    (0, 0): "Create_0", (3, 0): "Step_0", (3, 1): "Step_1",
+    (3, 2): "Step_2", (7, 2): "Other_2", (8, 64): "Draw_64",
+    (12, 0): "CleanUp_0",
+}
+def check_object(name, path):
+    obj = safe_load(path, name)
+    if not isinstance(obj, dict): return
+    expected = set()
+    for event in obj.get("eventList", []):
+        if not isinstance(event, dict):
+            fail(f"{name}: malformed event entry"); continue
+        key = (event.get("eventType"), event.get("eventNum"))
+        if key not in EVENT_NAMES: fail(f"{name}: unsupported event {key}")
+        else: expected.add(EVENT_NAMES[key])
+    actual = {p.stem for p in path.parent.glob("*.gml")}
+    if expected != actual:
+        fail(f"{name}: event files differ; expected {sorted(expected)}, found {sorted(actual)}")
 
-names = {r['id']['name'] for r in yyp['resources']}
-paths = {r['id']['path'] for r in yyp['resources']}
-assert len(names) == len(paths) == len(yyp['resources']), "duplicate resources!"
+def check_sprite(name, path):
+    sp = safe_load(path, name)
+    if not isinstance(sp, dict): return
+    frames, layers = sp.get("frames"), sp.get("layers")
+    if not isinstance(frames, list) or not isinstance(layers, list):
+        fail(f"{name}: frames/layers must be arrays"); return
+    width, height = sp.get("width"), sp.get("height")
+    if not isinstance(width, int) or not isinstance(height, int) or width <= 0 or height <= 0:
+        fail(f"{name}: invalid dimensions")
+    layer_names = [layer.get("name") for layer in layers if isinstance(layer, dict)]
+    if not layer_names or len(layer_names) != len(layers): fail(f"{name}: malformed or missing layers")
+    for frame in frames:
+        if not isinstance(frame, dict) or not isinstance(frame.get("name"), str):
+            fail(f"{name}: malformed frame"); continue
+        frame_name = frame["name"]
+        png = path.parent / f"{frame_name}.png"
+        if not png.is_file(): fail(f"{name}: frame PNG missing: {rel(png)}")
+        else:
+            try:
+                with Image.open(png) as im:
+                    if isinstance(width, int) and isinstance(height, int) and im.size != (width, height):
+                        fail(f"{name}: {png.name} size {im.size}, expected {(width, height)}")
+                    im.verify()
+            except Exception as exc: fail(f"{name}: invalid image {png.name}: {exc}")
+        for layer_name in layer_names:
+            layer_png = path.parent / "layers" / frame_name / f"{layer_name}.png"
+            if not layer_png.is_file(): fail(f"{name}: layer PNG missing: {rel(layer_png)}")
+    sequence = sp.get("sequence")
+    if not isinstance(sequence, dict): fail(f"{name}: sequence missing"); return
+    try:
+        keyframes = sequence["tracks"][0]["keyframes"]["Keyframes"]
+        if len(keyframes) != len(frames): fail(f"{name}: keyframe count differs from frame count")
+    except (KeyError, IndexError, TypeError): fail(f"{name}: malformed sequence keyframes")
+    try:
+        if float(sequence.get("length")) != float(len(frames)): fail(f"{name}: sequence length differs from frame count")
+    except (TypeError, ValueError): fail(f"{name}: invalid sequence length")
+    required = {
+        "spr_ui_window", "spr_ui_window_dim", "spr_ui_window_gold", "spr_ui_select_bar",
+        "spr_ui_slider_track", "spr_ui_row_select", "spr_ui_row_select_disabled",
+        "spr_ui_tab_blank_strip2", "spr_ui_portrait_frame", "spr_ui_leader_frame", "spr_ui_qty_field",
+    }
+    if name in required and not (isinstance(sp.get("nineSlice"), dict) and sp["nineSlice"].get("enabled")):
+        fail(f"{name}: nine-slice not enabled")
 
-for r in yyp['resources']:
-    p, n = r['id']['path'], r['id']['name']
-    if not os.path.exists(os.path.join(OUT, p)): errors.append(f"resource file missing {p}")
-    if p.startswith('sprites/'):
-        sp = load(os.path.join(OUT, p)); d = os.path.dirname(os.path.join(OUT, p))
-        if sp['frames']:
-            im = Image.open(os.path.join(d, sp['frames'][0]['name'] + '.png'))
-            if im.size != (sp['width'], sp['height']):
-                errors.append(f"{n}: png {im.size} != ({sp['width']},{sp['height']})")
-        for fr in sp['frames']:
-            if not os.path.exists(os.path.join(d, fr['name'] + '.png')):
-                errors.append(f"{n}: frame png missing")
-            lay = sp['layers'][0]['name']
-            if not os.path.exists(os.path.join(d, 'layers', fr['name'], lay + '.png')):
-                errors.append(f"{n}: layer png missing")
-        kf = sp['sequence']['tracks'][0]['keyframes']['Keyframes']
-        if len(kf) != len(sp['frames']): errors.append(f"{n}: keyframe count")
-        if sp['sequence']['length'] != float(len(sp['frames'])): errors.append(f"{n}: seq length")
-        # nine-slice present where required
-        if n in ('spr_ui_window','spr_ui_window_dim','spr_ui_window_gold','spr_ui_select_bar',
-                 'spr_ui_slider_track','spr_ui_row_select','spr_ui_row_select_disabled',
-                 'spr_ui_tab_blank_strip2','spr_ui_portrait_frame','spr_ui_leader_frame','spr_ui_qty_field'):
-            if not (sp.get('nineSlice') and sp['nineSlice'].get('enabled')):
-                errors.append(f"{n}: nine-slice not enabled")
-    if p.startswith('objects/'):
-        o = load(os.path.join(OUT, p)); dd = os.path.dirname(os.path.join(OUT, p))
-        MAP = {(0,0):'Create_0',(3,0):'Step_0',(3,1):'Step_1',(3,2):'Step_2',(7,2):'Other_2',(8,64):'Draw_64',(12,0):'CleanUp_0'}
-        want = set(MAP[(e['eventType'], e['eventNum'])] for e in o['eventList'])
-        have = set(f[:-4] for f in os.listdir(dd) if f.endswith('.gml'))
-        if want != have: errors.append(f"{n}: events {sorted(want)} != files {sorted(have)}")
+def main():
+    if not SRC.is_dir(): fail("SOURCE DIRECTORY MISSING: game/")
+    if not OUT.is_dir(): fail("GENERATED PROJECT DIRECTORY MISSING: gamemaker/")
+    if errors: return report()
+    project = safe_load(OUT / "AshenCrown.yyp", "AshenCrown.yyp")
+    if not isinstance(project, dict): return report()
 
-# scripts byte-identical
-for fn in os.listdir(os.path.join(SRC, 'scripts')):
-    a = open(os.path.join(SRC,'scripts',fn)).read()
-    b = open(os.path.join(OUT,'scripts',fn[:-4],fn[:-4]+'.gml')).read()
-    if a != b: errors.append(f"script {fn} differs")
+    parsed = []
+    for path in OUT.rglob("*"):
+        if path.is_file() and path.suffix in {".yyp", ".yy", ".resource_order"}:
+            data = load_json(path)
+            if isinstance(data, dict): parsed.append((path, data)); check_paths(data, path)
 
-# datafiles identical
-n = 0
-for root, dirs, files in os.walk(os.path.join(SRC,'datafiles')):
-    for fn in files:
-        a = open(os.path.join(root,fn),'rb').read()
-        rel = os.path.relpath(os.path.join(root,fn), os.path.join(SRC,'datafiles'))
-        b = open(os.path.join(OUT,'datafiles',rel),'rb').read()
-        if a != b: errors.append(f"datafile differs {rel}")
-        n += 1
-print(f"datafiles checked: {n}")
-files_on_disk = set()
-for root, dirs, files in os.walk(os.path.join(OUT,'datafiles')):
-    for fn in files:
-        files_on_disk.add(os.path.relpath(os.path.join(root,fn), os.path.join(OUT,'datafiles')))
-files_in_yyp = set(i['name'] for i in yyp['IncludedFiles'])
-if files_on_disk != files_in_yyp:
-    errors.append(f"IncludedFiles mismatch {files_on_disk ^ files_in_yyp}")
+    resources = project.get("resources")
+    if not isinstance(resources, list):
+        fail("AshenCrown.yyp: resources must be an array"); resources = []
+    names, paths, by_name = [], [], {}
+    for entry in resources:
+        try: name, resource = entry["id"]["name"], entry["id"]["path"]
+        except (KeyError, TypeError): fail("AshenCrown.yyp: malformed resource entry"); continue
+        if not isinstance(name, str) or not isinstance(resource, str):
+            fail("AshenCrown.yyp: resource name/path must be strings"); continue
+        names.append(name); paths.append(resource); by_name[name] = resource
+        file = OUT / resource
+        if not file.is_file(): fail(f"RESOURCE FILE MISSING: {resource}"); continue
+        counts["resources"] += 1
+        if resource.startswith("sprites/"): check_sprite(name, file)
+        elif resource.startswith("objects/"): check_object(name, file)
+    if len(names) != len(set(names)): fail("AshenCrown.yyp: duplicate resource names")
+    if len(paths) != len(set(paths)): fail("AshenCrown.yyp: duplicate resource paths")
 
-# rooms: instances in bounds, tile layers present, creation code
-rooms = {r['id']['name']: load(os.path.join(OUT, r['id']['path'])) for r in yyp['resources'] if r['id']['path'].startswith('rooms/')}
-for name, rm in rooms.items():
-    w, h = rm['roomSettings']['Width'], rm['roomSettings']['Height']
-    lnames = [l['name'] for l in rm['layers']]
-    for want in ('Instances','Ground','Decoration','Overhead','Collision','Markers'):
-        if want not in lnames: errors.append(f"{name}: layer {want} missing")
-    for l in rm['layers']:
-        if l['resourceType'] == 'GMRTileLayer':
-            if l['tilesetId']['name'] != 'ts_zone1': errors.append(f"{name}: wrong tileset")
-        if l['resourceType'] == 'GMRInstanceLayer':
-            for i in l['instances']:
-                if not (0 <= i['x'] <= w and 0 <= i['y'] <= h):
-                    errors.append(f"{name}: instance out of bounds ({i['x']},{i['y']})")
-    v = rm['views'][0]
-    if v['wview'] > w or v['hview'] > h: errors.append(f"{name}: view exceeds room")
+    source_scripts = SRC / "scripts"
+    if source_scripts.is_dir():
+        expected = {f"{p.stem}/{p.name}" for p in source_scripts.glob("*.gml")}
+        actual = {p.relative_to(OUT / "scripts").as_posix() for p in (OUT / "scripts").rglob("*.gml")} if (OUT / "scripts").is_dir() else set()
+        if expected != actual: fail(f"SCRIPT SET DIFFERS: {sorted(expected ^ actual)}")
+        for source in sorted(source_scripts.glob("*.gml")):
+            target = OUT / "scripts" / source.stem / source.name
+            if not target.is_file(): fail(f"GENERATED SCRIPT MISSING: {rel(target)}")
+            elif source.read_bytes() != target.read_bytes(): fail(f"SCRIPT DIFFERS: {source.name}")
+            counts["scripts"] += 1
 
-# player present in every field room
-for want in ('rm_overworld','rm_old_watchtower','rm_watchtower_basement','rm_greyhaven_varyn_house',
-             'rm_greyhaven_tavern','rm_greyhaven_chapel','rm_greyhaven_blacksmith','rm_greyhaven_general_store',
-             'rm_millhaven_road','rm_wrenfield','rm_wrenfield_bent_post','rm_wrenfield_store',
-             'rm_valemere_road','rm_valemere','rm_salt_lamp','rm_warehouse',
-             'rm_hollow_approach','rm_hollow_sanctuary'):
-    rm = rooms[want]
-    objs = [i['objectId']['name'] for l in rm['layers'] if l['resourceType']=='GMRInstanceLayer' for i in l['instances']]
-    if 'obj_player' not in objs: errors.append(f"{want}: obj_player missing")
-rm = rooms['rm_title']
-objs = [i['objectId']['name'] for l in rm['layers'] if l['resourceType']=='GMRInstanceLayer' for i in l['instances']]
-if 'obj_title' not in objs or 'obj_game_controller' not in objs: errors.append("rm_title: title/controller missing")
-if 'obj_player' in objs: errors.append("rm_title: player should not be placed")
-# room order: rm_title first, rm_overworld second
-ro = [n['roomId']['name'] for n in yyp['RoomOrderNodes']]
-if ro[0] != 'rm_title' or ro[1] != 'rm_overworld': errors.append(f"room order wrong: {ro}")
-print("room order:", ro)
+    source_data, generated_data = SRC / "datafiles", OUT / "datafiles"
+    if source_data.is_dir():
+        src_files = {p.relative_to(source_data).as_posix(): p for p in source_data.rglob("*") if p.is_file()}
+        out_files = {p.relative_to(generated_data).as_posix(): p for p in generated_data.rglob("*") if p.is_file()} if generated_data.is_dir() else {}
+        if set(src_files) != set(out_files): fail(f"DATAFILE SET DIFFERS: {sorted(set(src_files) ^ set(out_files))}")
+        for name in sorted(set(src_files) & set(out_files)):
+            if src_files[name].read_bytes() != out_files[name].read_bytes(): fail(f"DATAFILE DIFFERS: {name}")
+            counts["datafiles"] += 1
+    included = {item.get("name") for item in project.get("IncludedFiles", []) if isinstance(item, dict)}
+    on_disk = {p.relative_to(generated_data).as_posix() for p in generated_data.rglob("*") if p.is_file()} if generated_data.is_dir() else set()
+    if included != on_disk: fail(f"INCLUDED FILES DIFFER: {sorted(included ^ on_disk)}")
 
-# every GML-referenced asset name exists
-sprites = {r['id']['name'] for r in yyp['resources'] if r['id']['path'].startswith('sprites/')}
-objects = {r['id']['name'] for r in yyp['resources'] if r['id']['path'].startswith('objects/')}
-scripts = {r['id']['name'] for r in yyp['resources'] if r['id']['path'].startswith('scripts/')}
-refs = set()
-for root, dirs, files in os.walk(OUT):
-    for fn in files:
-        if fn.endswith('.gml'):
-            refs |= set(re.findall(r'\b((?:spr|obj|ts|rm)_\w+)\b', open(os.path.join(root,fn)).read()))
-missing = refs - sprites - objects - scripts - set(rooms) - {'ts_zone1'}
-# ts_wrenfield: rows 0-49 are ts_zone1; the Chapter 2/3 rooms switch to it at runtime.
-missing.discard('ts_wrenfield')
-missing = {m for m in missing if not m.startswith('scr_')}
-missing = {m for m in missing if not (m.startswith('spr_') and m.endswith(('_',)) )}
-# filter obvious dynamic-concat prefixes (end with _)
-missing = {m for m in missing if not m.endswith('_')}
-print("unresolved refs:", sorted(missing) if missing else "none")
+    rooms = {}
+    for entry in resources:
+        try: name, resource = entry["id"]["name"], entry["id"]["path"]
+        except (KeyError, TypeError): continue
+        if not resource.startswith("rooms/"): continue
+        room = safe_load(OUT / resource, name)
+        if not isinstance(room, dict): continue
+        rooms[name] = room; counts["rooms"] += 1
+        settings = room.get("roomSettings", {})
+        width, height = settings.get("Width"), settings.get("Height")
+        if not isinstance(width, int) or not isinstance(height, int):
+            fail(f"{name}: invalid dimensions"); continue
+        layers = room.get("layers", [])
+        layer_names = {layer.get("name") for layer in layers if isinstance(layer, dict)}
+        for required in ("Instances", "Ground", "Decoration", "Overhead", "Collision", "Markers"):
+            if required not in layer_names: fail(f"{name}: layer {required} missing")
+        for layer in layers:
+            if not isinstance(layer, dict): continue
+            if layer.get("resourceType") == "GMRTileLayer":
+                tile = layer.get("tilesetId", {}).get("name")
+                if tile not in {"ts_zone1", "ts_wrenfield"}: fail(f"{name}: unknown tileset {tile}")
+            if layer.get("resourceType") == "GMRInstanceLayer":
+                for inst in layer.get("instances", []):
+                    x, y = inst.get("x"), inst.get("y")
+                    if not isinstance(x, (int, float)) or not isinstance(y, (int, float)) or not (0 <= x <= width and 0 <= y <= height):
+                        fail(f"{name}: instance out of bounds ({x}, {y})")
+        views = room.get("views", [])
+        if views and (views[0].get("wview", 0) > width or views[0].get("hview", 0) > height):
+            fail(f"{name}: view exceeds room dimensions")
 
-# 640 title set: present and in tex_title_640
-tg_names = {t['name'] for t in yyp['TextureGroups']}
-if 'tex_title_640' not in tg_names: errors.append('tex_title_640 group missing from yyp')
-for r in yyp['resources']:
-    if r['id']['path'].startswith('sprites/'):
-        sp = load(os.path.join(OUT, r['id']['path']))
-        grp = sp['textureGroupId']['name']
-        is640 = '640' in r['id']['name'] and ('menu' in r['id']['name'] or 'title' in r['id']['name'] or 'logo' in r['id']['name'])
-        if is640 and grp != 'tex_title_640': errors.append(f"{r['id']['name']}: expected tex_title_640, got {grp}")
-        if not is640 and grp != 'Default': errors.append(f"{r['id']['name']}: expected Default, got {grp}")
-if 'spr_menu_embers_640_strip24' not in sprites: errors.append('ember 640 strip missing')
+    field_rooms = (
+        "rm_overworld", "rm_old_watchtower", "rm_watchtower_basement", "rm_greyhaven_varyn_house",
+        "rm_greyhaven_tavern", "rm_greyhaven_chapel", "rm_greyhaven_blacksmith", "rm_greyhaven_general_store",
+        "rm_millhaven_road", "rm_wrenfield", "rm_wrenfield_bent_post", "rm_wrenfield_store",
+        "rm_valemere_road", "rm_valemere", "rm_salt_lamp", "rm_warehouse", "rm_hollow_approach", "rm_hollow_sanctuary",
+    )
+    for name in field_rooms:
+        room = rooms.get(name)
+        if room is None: fail(f"REQUIRED ROOM MISSING: {name}"); continue
+        objs = [i.get("objectId", {}).get("name") for layer in room.get("layers", []) if layer.get("resourceType") == "GMRInstanceLayer" for i in layer.get("instances", [])]
+        if "obj_player" not in objs: fail(f"{name}: obj_player missing")
+    title = rooms.get("rm_title")
+    if title is None: fail("REQUIRED ROOM MISSING: rm_title")
+    else:
+        objs = [i.get("objectId", {}).get("name") for layer in title.get("layers", []) if layer.get("resourceType") == "GMRInstanceLayer" for i in layer.get("instances", [])]
+        if "obj_title" not in objs or "obj_game_controller" not in objs: fail("rm_title: title/controller missing")
+        if "obj_player" in objs: fail("rm_title: player should not be placed")
+    order = [node.get("roomId", {}).get("name") for node in project.get("RoomOrderNodes", [])]
+    if order[:2] != ["rm_title", "rm_overworld"]: fail(f"ROOM ORDER WRONG: {order}")
 
-print("ERRORS:" if errors else "ALL CHECKS PASSED")
-for e in errors: print(" -", e)
-sys.exit(1 if errors else 0)
+    known = set(by_name) | {"ts_zone1", "ts_wrenfield"}
+    refs = set()
+    for file in OUT.rglob("*.gml"):
+        try: refs.update(re.findall(r"\b((?:spr|obj|ts|rm)_\w+)\b", file.read_text(encoding="utf-8")))
+        except (OSError, UnicodeError) as exc: fail(f"UNREADABLE GML {rel(file)}: {exc}")
+    missing = {ref for ref in refs - known if not ref.endswith("_")}
+    if missing: fail(f"UNRESOLVED GML REFERENCES: {sorted(missing)}")
+
+    groups = {item.get("name") for item in project.get("TextureGroups", []) if isinstance(item, dict)}
+    if "tex_title_640" not in groups: fail("tex_title_640 group missing from project")
+    for entry in resources:
+        try: name, resource = entry["id"]["name"], entry["id"]["path"]
+        except (KeyError, TypeError): continue
+        if resource.startswith("sprites/"):
+            sprite = load_json(OUT / resource)
+            if not isinstance(sprite, dict): continue
+            group = sprite.get("textureGroupId", {}).get("name")
+            is_640 = "640" in name and any(token in name for token in ("menu", "title", "logo"))
+            expected = "tex_title_640" if is_640 else "Default"
+            if group != expected: fail(f"{name}: expected {expected}, got {group}")
+    if "spr_menu_embers_640_strip24" not in by_name: fail("640 title ember strip missing")
+
+    print(f"Validated {counts['json']} JSON files, {counts['resources']} resources, {counts['scripts']} scripts, {counts['datafiles']} datafiles, {counts['rooms']} rooms")
+    return report()
+
+if __name__ == "__main__":
+    raise SystemExit(main())
