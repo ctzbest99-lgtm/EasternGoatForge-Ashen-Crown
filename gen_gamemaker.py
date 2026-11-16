@@ -9,7 +9,7 @@ Data-driven: reads the repo's own import tables (game/sprites/IMPORT.md,
 game/rooms/ROOM_SETUP.md facts baked in) and game/ source tree.
 Format: GameMaker 2024.x project format.
 """
-import json, os, re, shutil, uuid, random, sys
+import json, os, re, shutil, uuid, sys
 from PIL import Image
 
 ROOT = os.path.abspath(os.path.dirname(__file__))   # repo root
@@ -41,9 +41,23 @@ def write_json(path, obj):
     with open(path, 'w', newline='\n') as f:
         f.write(gm(obj) + "\n")
 
-def rid(): return str(uuid.uuid4())
+_RID_COUNTER = 0
+_INSTANCE_COUNTER = 0
+_UUID_NAMESPACE = uuid.UUID("4d7f1b2a-2c6e-5b8d-9f10-ashencrown0001".replace("ashencrown0001", "a5e3c0de0001"))
+
+def rid():
+    """Return a reproducible UUID for the current deterministic generation order."""
+    global _RID_COUNTER
+    value = uuid.uuid5(_UUID_NAMESPACE, f"resource:{_RID_COUNTER}")
+    _RID_COUNTER += 1
+    return str(value)
+
 def inst_name():
-    return "inst_" + ''.join(random.choice("0123456789ABCDEF") for _ in range(8))
+    """Return a reproducible room-instance name."""
+    global _INSTANCE_COUNTER
+    value = f"inst_{_INSTANCE_COUNTER:08X}"
+    _INSTANCE_COUNTER += 1
+    return value
 
 FOLDERS = ["objects", "rooms", "scripts", "sprites", "tilesets"]
 RESOURCES = []
