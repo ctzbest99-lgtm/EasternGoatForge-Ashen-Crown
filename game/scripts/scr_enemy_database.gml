@@ -223,6 +223,52 @@ function scr_get_enemy_data(_enemy_id) {
             // common 20 = 143 / 46 / 33, +3 DEF. The level-14 ward_sentinel dies in one hit at 20.
             return scr_enemy_scaled("ward_sentinel_late", "Ward Sentinel", "Sentinel", "common", 20, 1, { spd: 7, def_add: 3, weakness: "lightning",
                 actions: [{ skill: "attack", weight: 1 }] });
+        // ---- Act IV: The Forgotten King (docs/story/ACT4_OUTLINE.md §7; decisions approved 2026-11-16) ----
+        // scr_enemy_scaled bases: level 21 = 152 / 49 / 35 / MDEF 18, 22 = 161 / 52 / 37 / 19,
+        // 23 = 170 / 55 / 39 / 20. hp_mult and def_add apply after the role multiplier.
+        // There is still no Act IV equipment tier, so these are tuned against Chapter 5 gear.
+        case "crown_guard_elite": // common 21 = 152 / 49 / 37 (+2 DEF)
+            return scr_enemy_scaled("crown_guard_elite", "Crown Guard Elite", "Guard Elite", "common", 21, 1, { spd: 9, def_add: 2,
+                actions: [{ skill: "attack", weight: 2 }, { skill: "slash", weight: 1 }, { skill: "soldier_guard", weight: 1 }] });
+        case "barrow_husk": // common 21 = 175 / 49 / 35 (x1.15 HP), slow, holy
+            return scr_enemy_scaled("barrow_husk", "Barrow Husk", "Barrow Husk", "common", 21, 1, { spd: 6, hp_mult: 1.15, weakness: "holy",
+                actions: [{ skill: "attack", weight: 1 }] });
+        case "oath_iron": // common 22 = 193 / 52 / 41 (x1.2 HP, +4 DEF), slow, lightning
+            return scr_enemy_scaled("oath_iron", "Oath Iron", "Oath Iron", "common", 22, 1, { spd: 5, hp_mult: 1.2, def_add: 4, weakness: "lightning",
+                actions: [{ skill: "attack", weight: 1 }] });
+        case "grave_moth": // common 22 = 129 / 52 / 37 (x0.8 HP), fast, fire
+            return scr_enemy_scaled("grave_moth", "Grave Moth", "Grave Moth", "common", 22, 1, { spd: 14, hp_mult: 0.8, weakness: "fire",
+                actions: [{ skill: "attack", weight: 2 }, { skill: "moth_blind", weight: 1 }, { skill: "moth_sleep", weight: 1 }] });
+        case "magistrate_vell": // Chapter 9 boss: 1022 HP (152 x 1.2 x 4, then x1.4), 52 ATK / 38 DEF
+            // He yields rather than dies (the Calder pattern); the flag is set by the battle system.
+            return scr_enemy_scaled("magistrate_vell", "Magistrate Vell", "Vell", "boss", 21, 4, { spd: 11, hp_mult: 1.4,
+                yields: true, yield_flag: "flag_vell_yielded",
+                actions: [{ skill: "attack", weight: 2 }, { skill: "heavy_strike", weight: 2 }, { skill: "calder_guard", weight: 1 }] });
+        case "barrow_warden": // Chapter 10 boss: 1701 HP (161 x 1.2 x 4, then x2.2), 59 ATK / 42 DEF
+            // Simulated 98-99% wins in 7.4-9.9 rounds with about half a death; at x1.7 it was 100%.
+            return scr_enemy_scaled("barrow_warden", "Barrow Warden", "Barrow Warden", "boss", 22, 4, { spd: 8, hp_mult: 2.2, atk_add: 4, def_add: 2, weakness: "lightning",
+                phase2_at: 0.5,
+                phase2_buffs: [{ stat: "def", pct: 0.2, turns: -1 }, { stat: "atk", pct: 0.15, turns: -1 }],
+                phase2_line: "The iron remembers the oath it was given.",
+                actions: [{ skill: "attack", weight: 2 }, { skill: "heavy_strike", weight: 1 }],
+                phase_actions: [
+                    [{ skill: "attack", weight: 2 }, { skill: "heavy_strike", weight: 1 }],
+                    [{ skill: "attack", weight: 1 }, { skill: "heavy_strike", weight: 1 }]
+                ] });
+        case "forgotten_king": // Act boss: 1714 HP (170 x 1.2 x 4, then x2.1), 61 ATK / 45 DEF
+            // At level 23 simulated 96-97% wins in 8.6-9.9 rounds with about one death; the same
+            // numbers at level 21 are 81-83%, so arriving early is felt. ACT4_OUTLINE.md asks for
+            // three phases, but scr_battle supports ONE shift (phase2_at -> phase_actions[1]);
+            // phase three is narrative until the battle system can shift twice.
+            return scr_enemy_scaled("forgotten_king", "The Forgotten King", "Forg. King", "boss", 23, 4, { spd: 7, hp_mult: 2.1, atk_add: 3, def_add: 3,
+                phase2_at: 0.6,
+                phase2_buffs: [{ stat: "atk", pct: 0.2, turns: -1 }, { stat: "spd", pct: 0.2, turns: -1 }],
+                phase2_line: "The oath breaks. Something underneath it does not.",
+                actions: [{ skill: "attack", weight: 2 }, { skill: "heavy_strike", weight: 1 }],
+                phase_actions: [
+                    [{ skill: "attack", weight: 2 }, { skill: "heavy_strike", weight: 1 }],
+                    [{ skill: "attack", weight: 1 }, { skill: "heavy_strike", weight: 2 }]
+                ] });
         case "blackwood_matriarch": // PLACEHOLDER boss (proposed, not canon), two phases
             // hp_mult 1.5 (686 -> 1029 HP) is the Act III tuning: as written she was won 100% of the
             // time in 5.0 rounds; at x1.5 it is 91-92% in 6.7-7.6 rounds with about one death.

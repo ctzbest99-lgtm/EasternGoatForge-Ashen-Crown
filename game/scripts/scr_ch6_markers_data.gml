@@ -6,6 +6,8 @@ function scr_blackwood_deep_markers() {
     return [
         { type: "player_spawn", name: "from_garrison", tile_x: 2, tile_y: 9, x: 40, y: 160, facing: "right", note: "Arrive from the garrison road (Chapter 5 handoff)." },
         { type: "player_spawn", name: "from_hollow", tile_x: 17, tile_y: 3, x: 280, y: 64, facing: "down", note: "Arrive back down the path from Cinderhollow." },
+        { type: "player_spawn", name: "from_shrine", tile_x: 32, tile_y: 9, x: 520, y: 160, facing: "left", note: "Arrive back from the shrine under the roots (Chapter 7)." },
+        { type: "zone_exit", name: "to_shrine", tile_x: 33, tile_y: 9, x: 536, y: 160, target_room: "rm_blackwood_shrine", target_spawn: "from_wood", w: 1, h: 3, note: "The east end of the burnt ground, past the burn line. Chapter 7 begins here." },
         { type: "zone_exit", name: "to_garrison", tile_x: 0, tile_y: 9, x: 8, y: 160, target_room: "rm_blackwood_garrison", target_spawn: "from_blackwood", w: 1, h: 3, note: "Back west to the Blackwood Road Garrison." },
         { type: "zone_exit", name: "to_hollow", tile_x: 17, tile_y: 0, x: 280, y: 16, target_room: "rm_blackwood_hollow", target_spawn: "from_wood", w: 3, h: 1, note: "The path north into Cinderhollow." },
         { type: "lore", name: "carved_stone", tile_x: 9, tile_y: 7, x: 152, y: 128, script_id: "BW_STONE", lines: ["A stone half-buried at the road edge, a shallow crown cut around a black sun.", "The cut is old. The road was built around it."], note: "BW_STONE: the carved stone. Optional, never required." },

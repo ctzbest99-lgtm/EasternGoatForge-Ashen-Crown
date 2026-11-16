@@ -16,7 +16,9 @@ function scr_bestiary_ids() {
         "ward_sentinel", "glyph_wisp", "aethari_automaton", "sanctuary_warden",
         "garrison_pikeman", "garrison_field_surgeon", "garrison_knight", "commander_hailen",
         "shade_stalker", "briar_hulk", "burn_line_hulk", "lost_one", "night_moth_swarm", "door_warden",
-        "door_warden_boss", "blackwood_matriarch"
+        "door_warden_boss", "blackwood_matriarch",
+        "crown_guard_elite", "barrow_husk", "oath_iron", "grave_moth",
+        "magistrate_vell", "barrow_warden", "forgotten_king"
     ];
 }
 
@@ -258,6 +260,13 @@ function scr_bestiary_desc(_enemy_id) {
         case "night_moth_swarm":        return "A cloud of wings and dust. Hard to strike, easy to burn.";
         case "door_warden":             return "The last lock on the Blackwood door.";
         case "blackwood_matriarch":     return "The wood's own answer to trespass. It does not yield.";
+        case "crown_guard_elite":       return "Crown plate, kept clean. Guards a ledger, not a wall.";
+        case "barrow_husk":             return "What the tomb would not let go. Slow, and hard to keep down.";
+        case "oath_iron":               return "Crown oath-work. It holds a door shut and remembers why.";
+        case "grave_moth":              return "The barrow's moths. Their dust takes the light out of a room.";
+        case "magistrate_vell":         return "A career clerk with a guard detail. He yields; the page does not.";
+        case "barrow_warden":           return "Iron and oath, built to keep a door shut from this side.";
+        case "forgotten_king":          return "A king kept rather than buried. His name was taken off the stone.";
         case "burn_line_hulk":          return "A briar hulk grown along the burners' firebreak, and fed on it.";
         case "door_warden_boss":        return "The lock on the Aethari doors. It has waited a long time.";
     }

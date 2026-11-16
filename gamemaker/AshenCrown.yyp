@@ -6564,6 +6564,108 @@
     },
     {
       "id":{
+        "name":"scr_dialogue_data_ch7",
+        "path":"scripts/scr_dialogue_data_ch7/scr_dialogue_data_ch7.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_dialogue_data_ch8",
+        "path":"scripts/scr_dialogue_data_ch8/scr_dialogue_data_ch8.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_build_blackwood_shrine",
+        "path":"scripts/scr_build_blackwood_shrine/scr_build_blackwood_shrine.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_build_blackwood_glade",
+        "path":"scripts/scr_build_blackwood_glade/scr_build_blackwood_glade.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_build_blackwood_doors",
+        "path":"scripts/scr_build_blackwood_doors/scr_build_blackwood_doors.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_ch7_markers_data",
+        "path":"scripts/scr_ch7_markers_data/scr_ch7_markers_data.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_ch8_markers_data",
+        "path":"scripts/scr_ch8_markers_data/scr_ch8_markers_data.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_ch7_story",
+        "path":"scripts/scr_ch7_story/scr_ch7_story.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_ch8_story",
+        "path":"scripts/scr_ch8_story/scr_ch8_story.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_dialogue_data_ch9",
+        "path":"scripts/scr_dialogue_data_ch9/scr_dialogue_data_ch9.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_build_town",
+        "path":"scripts/scr_build_town/scr_build_town.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_ch9_markers_data",
+        "path":"scripts/scr_ch9_markers_data/scr_ch9_markers_data.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_ch9_story",
+        "path":"scripts/scr_ch9_story/scr_ch9_story.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_dialogue_data_ch10",
+        "path":"scripts/scr_dialogue_data_ch10/scr_dialogue_data_ch10.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_build_barrow_gate",
+        "path":"scripts/scr_build_barrow_gate/scr_build_barrow_gate.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_ch10_markers_data",
+        "path":"scripts/scr_ch10_markers_data/scr_ch10_markers_data.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_ch10_story",
+        "path":"scripts/scr_ch10_story/scr_ch10_story.yy",
+      },
+    },
+    {
+      "id":{
         "name":"rm_hollow_approach",
         "path":"rooms/rm_hollow_approach/rm_hollow_approach.yy",
       },
@@ -6572,6 +6674,36 @@
       "id":{
         "name":"rm_hollow_sanctuary",
         "path":"rooms/rm_hollow_sanctuary/rm_hollow_sanctuary.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"rm_barrow_gate",
+        "path":"rooms/rm_barrow_gate/rm_barrow_gate.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"rm_town",
+        "path":"rooms/rm_town/rm_town.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"rm_blackwood_doors",
+        "path":"rooms/rm_blackwood_doors/rm_blackwood_doors.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"rm_blackwood_glade",
+        "path":"rooms/rm_blackwood_glade/rm_blackwood_glade.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"rm_blackwood_shrine",
+        "path":"rooms/rm_blackwood_shrine/rm_blackwood_shrine.yy",
       },
     },
     {
@@ -6923,6 +7055,36 @@
       "roomId":{
         "name":"rm_blackwood_hollow",
         "path":"rooms/rm_blackwood_hollow/rm_blackwood_hollow.yy",
+      },
+    },
+    {
+      "roomId":{
+        "name":"rm_blackwood_shrine",
+        "path":"rooms/rm_blackwood_shrine/rm_blackwood_shrine.yy",
+      },
+    },
+    {
+      "roomId":{
+        "name":"rm_blackwood_glade",
+        "path":"rooms/rm_blackwood_glade/rm_blackwood_glade.yy",
+      },
+    },
+    {
+      "roomId":{
+        "name":"rm_blackwood_doors",
+        "path":"rooms/rm_blackwood_doors/rm_blackwood_doors.yy",
+      },
+    },
+    {
+      "roomId":{
+        "name":"rm_town",
+        "path":"rooms/rm_town/rm_town.yy",
+      },
+    },
+    {
+      "roomId":{
+        "name":"rm_barrow_gate",
+        "path":"rooms/rm_barrow_gate/rm_barrow_gate.yy",
       },
     },
   ],

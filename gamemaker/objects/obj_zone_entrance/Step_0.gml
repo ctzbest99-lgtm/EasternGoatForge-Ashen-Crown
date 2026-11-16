@@ -17,6 +17,9 @@ if (is_struct(map_marker) && variable_struct_exists(map_marker, "script_id") && 
 if (is_struct(map_marker) && variable_struct_exists(map_marker, "script_id") && scr_ch3_exit_script(id)) exit;
 if (is_struct(map_marker) && variable_struct_exists(map_marker, "script_id") && scr_ch4_exit_script(id)) exit;
 if (is_struct(map_marker) && variable_struct_exists(map_marker, "script_id") && scr_ch5_exit_script(id)) exit;
+if (is_struct(map_marker) && variable_struct_exists(map_marker, "script_id") && scr_ch7_exit_script(id)) exit;
+if (is_struct(map_marker) && variable_struct_exists(map_marker, "script_id") && scr_ch9_exit_script(id)) exit;
+if (is_struct(map_marker) && variable_struct_exists(map_marker, "script_id") && scr_ch10_exit_script(id)) exit;
 if (sets_flag != "") scr_flag_set(sets_flag);
 if (target_room == -1) {
     scr_dialogue_open(["[" + target_room_name + " is not built yet.]"], "");

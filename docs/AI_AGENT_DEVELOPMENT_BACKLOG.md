@@ -211,7 +211,7 @@ Tasks:
 - Keep Alden Marr's locked ending, **Ending C — The Last Usurper**, intact: he begins seeking to free serfs and rebuild Eldoria, grows into a would-be ruler, claims the throne after King Aldric IV's defeat, and must be stopped by Kael and Taren.
 - Do not treat unimplemented narrative plans as shipped game content.
 
-- Chapter 6 *The Green Silence* is approved and built (rooms, dialogue data, story script, quest stages) but unplayed; chapters 7–8 remain outline only. See `docs/DECISIONS_AND_OPEN_QUESTIONS.md` §"Chapter 6 built".
+- Act III is fully built — Chapters 6–8, five Blackwood rooms, dialogue data, story scripts and quest stages — but unplayed, and Chapters 7–8's decisions await individual approval. Act IV (*The Forgotten King*) has a title and nothing else, so it needs an outline before a script. See `docs/DECISIONS_AND_OPEN_QUESTIONS.md` §"Act III completed".
 
 Acceptance:
 - Each act has owner-approved story beats, party recruitment/roles, locations, bosses, and implementation scope before coding.

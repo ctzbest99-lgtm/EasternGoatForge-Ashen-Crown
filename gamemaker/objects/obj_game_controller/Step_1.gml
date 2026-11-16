@@ -8,6 +8,9 @@ scr_ch3_tick(); // Chapter 3 (no per-frame beats yet)
 scr_ch4_tick(); // Chapter 4 (no per-frame beats yet)
 scr_ch5_tick(); // Chapter 5 (no per-frame beats yet)
 scr_ch6_tick(); // Chapter 6 (the burn-line boss gate)
+scr_ch7_tick(); // Chapter 7 (the Matriarch gate, the chapter handoff)
+scr_ch8_tick(); // Chapter 8 (the Warden gate, the pendant scene)
+scr_ch10_tick(); // Chapter 10 (the Barrow Warden gate)
 
 
 // Adventure menu overlay (I or Tab). Opening is blocked while dialogue / battle / a menu is
