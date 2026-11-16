@@ -71,11 +71,11 @@ def inventory(root: Path) -> dict[str, tuple[Path, bytes]]:
             if maps:
                 frame_map, layer_map = maps
                 parts = relative.parts[2:]
-                if len(parts) == 3:
+                if len(parts) == 1:
                     frame = frame_map.get(path.stem)
                     if frame is not None:
                         key = f"sprites/{sprite_dir.name}/@frame/{frame:05d}.png"
-                elif len(parts) == 4 and parts[0] == "layers":
+                elif len(parts) == 3 and parts[0] == "layers":
                     frame = frame_map.get(parts[1])
                     layer = layer_map.get(path.stem)
                     if frame is not None and layer is not None:
