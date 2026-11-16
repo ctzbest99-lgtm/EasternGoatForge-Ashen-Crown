@@ -534,6 +534,11 @@ ROOMS = [
      'scr_build_salt_lamp();', (320, 180, 640, 360)),
     ('rm_warehouse', 416, 288, [('obj_player', 200, 224)],
      'scr_build_warehouse();', (320, 180, 640, 360)),
+    # ---- Chapter 4: Hollow Approach and Hollow Sanctuary ----
+    ('rm_hollow_approach', 384, 320, [('obj_player', 40, 176)],
+     'scr_build_hollow_approach();', (320, 180, 640, 360)),
+    ('rm_hollow_sanctuary', 448, 416, [('obj_player', 216, 384)],
+     'scr_build_hollow_sanctuary();', (320, 180, 640, 360)),
 ]
 
 room_order = []
