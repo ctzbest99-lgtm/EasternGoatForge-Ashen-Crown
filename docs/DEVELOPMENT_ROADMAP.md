@@ -18,6 +18,6 @@
 | 4. Party / progression | **Done** — five-person roster, four active plus reserve, XP / levels, equipment, inventory, gold, shops. |
 | 5. Menus / saves | **Done** — Adventure menu (Items, Equip, Party Order, Status, Bestiary), shops, versioned saves (schema v3) at save crystals inside a town's church or tavern. |
 | 6. Zone 1 slice | **Playable, not playtested** — Chapter 1 content, art and balance are in, but there is no audio and the numbers are still provisional. |
-| 7. Polish | **Not started** — audio, controller support, real Lyra art, a quest UI, and the whole `docs/TEST_PLAN.md` pass are outstanding. |
+| 7. Polish | **Partly started** — the quest journal UI is in (Adventure menu → Quests). Audio, controller support, real Lyra art and the whole `docs/TEST_PLAN.md` pass are still outstanding. |
 
 Beyond the slice: Chapter 4 is built (rooms, markers, dialogue, story flow and Caelan's kit, unplaytested); Chapter 5 has enemy stats, encounter tables and boss groups but no rooms, markers or dialogue; Act III onward is design only. The 12 remaining `status: "stub"` overworld entrances point at rooms that do not exist.

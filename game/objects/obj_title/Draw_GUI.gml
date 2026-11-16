@@ -21,26 +21,26 @@ var _draw_layer = function(_spr, _scroll) {
     draw_sprite(_spr, 0, _x + _w, 0);
 };
 
-_draw_layer(spr_bg0, scroll0);
-_draw_layer(spr_bg1, scroll1);
-_draw_layer(spr_bg2, scroll2);
-_draw_layer(spr_bg3, scroll3);
+_draw_layer(t_bg0, scroll0);
+_draw_layer(t_bg1, scroll1);
+_draw_layer(t_bg2, scroll2);
+_draw_layer(t_bg3, scroll3);
 
-if (scr_sprite_is_valid(spr_embers)) {
+if (scr_sprite_is_valid(t_embers)) {
     var _ef = floor(ember_f) mod 24;
-    draw_sprite(spr_embers, _ef, 0, 0);
+    draw_sprite(t_embers, _ef, 0, 0);
     // Second pass, 50% alpha, offset 12 frames, mirrored, for depth.
     draw_set_alpha(0.5);
-    draw_sprite_ext(spr_embers, (_ef + 12) mod 24, _bw, 0, -1, 1, 0, c_white, 0.5);
+    draw_sprite_ext(t_embers, (_ef + 12) mod 24, _bw, 0, -1, 1, 0, c_white, 0.5);
     draw_set_alpha(1);
 }
 
 var _lx = 160 * _s;
-if (scr_sprite_is_valid(spr_logo)) {
+if (scr_sprite_is_valid(t_logo)) {
     // Place the top-centre of the logo at (160, logo_y) even if the origin was left at 0,0.
-    var _lx2 = _lx + sprite_get_width(spr_logo) * 0.5 - sprite_get_xoffset(spr_logo);
-    var _ly2 = logo_y - sprite_get_yoffset(spr_logo);
-    draw_sprite_ext(spr_logo, 0, _lx2, _ly2, 1, 1, 0, c_white, logo_alpha);
+    var _lx2 = _lx + sprite_get_width(t_logo) * 0.5 - sprite_get_xoffset(t_logo);
+    var _ly2 = logo_y - sprite_get_yoffset(t_logo);
+    draw_sprite_ext(t_logo, 0, _lx2, _ly2, 1, 1, 0, c_white, logo_alpha);
 } else {
     draw_set_halign(fa_center);
     scr_ui_text(_lx, logo_y, "ASHEN CROWN", make_color_rgb(217, 184, 96));
@@ -85,11 +85,11 @@ if (mode == "menu" || mode == "options" || mode == "saves") {
             draw_set_alpha(1);
             draw_set_halign(fa_left);
         }
-        if (_i == index && mode == "menu" && scr_sprite_is_valid(spr_cursor) && options_alpha > 0.4) {
+        if (_i == index && mode == "menu" && scr_sprite_is_valid(t_cursor) && options_alpha > 0.4) {
             var _ow = scr_sprite_is_valid(_spr) ? sprite_get_width(_spr) : 80;
             var _cx = _lx - _ow * 0.5 + 2;
             var _cf = floor(current_time * 0.001 * 8) mod 4;
-            draw_sprite(spr_cursor, _cf, _cx, cursor_y);
+            draw_sprite(t_cursor, _cf, _cx, cursor_y);
         }
     }
 }
@@ -99,7 +99,7 @@ if (mode == "options") {
     draw_set_alpha(0.5);
     draw_rectangle(0, 0, _gw, _gh, false);
     draw_set_alpha(1);
-    var _panel = spr_panel_options;
+    var _panel = t_panel_options;
     var _px, _py, _pw, _ph;
     if (scr_sprite_is_valid(_panel)) {
         _pw = sprite_get_width(_panel);

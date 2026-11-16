@@ -37,15 +37,21 @@ if (mode == "list") {
                 party_index = 0;
                 break;
             case 3:
+                mode = "quests";
+                quest_index = 0;
+                quest_scroll = 0;
+                quests = scr_quest_started_list();
+                break;
+            case 4:
                 mode = "status";
                 member_index = 0;
                 break;
-            case 4:
+            case 5:
                 mode = "bestiary";
                 bestiary_index = 0;
                 bestiary_scroll = 0;
                 break;
-            case 5:
+            case 6:
                 instance_destroy();
                 break;
         }
@@ -102,6 +108,19 @@ if (mode == "party") {
         }
     } else if (scr_input_confirm_pressed()) {
         message = "Pick an active slot to swap with the reserve.";
+    }
+    exit;
+}
+
+if (mode == "quests") {
+    quests = scr_quest_started_list();
+    var _qn = array_length(quests);
+    if (_qn > 0) {
+        if (quest_index >= _qn) quest_index = 0;
+        if (scr_input_up_pressed()) quest_index = (quest_index - 1 + _qn) mod _qn;
+        if (scr_input_down_pressed()) quest_index = (quest_index + 1) mod _qn;
+        if (quest_index < quest_scroll) quest_scroll = quest_index;
+        if (quest_index >= quest_scroll + MENU_ADV_ROWS) quest_scroll = quest_index - MENU_ADV_ROWS + 1;
     }
     exit;
 }

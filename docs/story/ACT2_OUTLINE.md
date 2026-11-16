@@ -252,6 +252,8 @@ Suggested flags: `flag_sanctuary_entered`, `flag_aethari_name_learned`, `flag_ca
 
 ## 8. Chapter 5 — "The Deserted Oath" **[PROPOSED title]**
 
+> **Draft script for approval:** `CHAPTER5_SCRIPT.md` (Nov 15 2026, not canon). It writes this chapter out in the Chapter 4 format — Sera's detention and recruitment, Hailen's arrest attempt and yield branch, the sealed-order Blackwood lead, and the second Fallen Knight sighting. Title, levels, Sera's join timing and her kit are still **[PROPOSED]** until the owner approves.
+
 ### 8.1 The Blackwood Road Garrison
 
 **[C-confirmed]** (Confirmed by Kevin, Nov 14 2026) Sera joins at **the Blackwood Road Garrison**, a royal post on the forest road. She is detained there as a deserter. The party comes for a Blackwood lead and finds her. She will not say what she saw in the palace. What she saw stays **[O]** (question 4).

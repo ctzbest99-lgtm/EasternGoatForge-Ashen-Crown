@@ -180,6 +180,47 @@ if (mode == "party") {
 
 // ---------------------------------------------------------------------------------------------
 // Bestiary
+// ---------------------------------------------------------------------------------------------
+// Quests
+if (mode == "quests") {
+    scr_menu_draw_window(MENU_ADV_FULL_X, MENU_ADV_FULL_Y, MENU_ADV_FULL_W, MENU_ADV_FULL_H, "normal");
+    scr_menu_text(MENU_ADV_FULL_X + 8, 10, "QUESTS", MENU_COL_Y);
+    var _qn = array_length(quests);
+    scr_menu_text_right(MENU_ADV_FULL_X + MENU_ADV_FULL_W - 8, 10, string(scr_quest_open_count()) + " open", MENU_COL_G);
+    if (_qn == 0) {
+        scr_menu_text(12, 34, "(no quests yet)", MENU_COL_A);
+        scr_menu_text_wrap(12, 50, "Talk to people: side quests and the main quest appear here once they start.", 292, 11, MENU_COL_DESC);
+        exit;
+    }
+    if (quest_index >= _qn) quest_index = 0;
+
+    for (var _qi = quest_scroll; _qi < _qn && _qi < quest_scroll + MENU_ADV_ROWS; _qi++) {
+        var _qy = 30 + (_qi - quest_scroll) * MENU_ADV_ROW_H_FULL;
+        var _qsel = (_qi == quest_index);
+        var _q = quests[_qi];
+        if (_qsel) {
+            scr_menu_draw_row_select(8, _qy, MENU_ADV_LIST_W - 4, false);
+            scr_menu_draw_cursor_tip(9, _qy + 8);
+        }
+        scr_menu_text(20, _qy + 2, _q.title, _qsel ? MENU_COL_Y : (_q.complete ? MENU_COL_G : MENU_COL_W));
+        if (_q.complete) scr_menu_text_right(MENU_ADV_LIST_W + 2, _qy + 2, "done", MENU_COL_G);
+    }
+    if (quest_scroll > 0) scr_menu_draw_arrow(0, MENU_ADV_LIST_W - 6, 18, true);
+    if (quest_scroll + MENU_ADV_ROWS < _qn) scr_menu_draw_arrow(1, MENU_ADV_LIST_W - 6, 158, true);
+
+    var _qj = quests[quest_index];
+    var _qx = MENU_ADV_LIST_W + 12;
+    scr_menu_text(_qx, 30, _qj.title, MENU_COL_Y);
+    scr_menu_text(_qx, 44, _qj.kind, MENU_COL_G);
+    scr_menu_text_wrap(_qx, 60, _qj.text, 148, 11, MENU_COL_DESC);
+    scr_menu_text(_qx, 126, "Stage", MENU_COL_G);
+    scr_menu_text_right(MENU_ADV_FULL_X + MENU_ADV_FULL_W - 8, 126,
+        _qj.complete ? "complete" : (string(_qj.stage) + " / " + string(_qj.total)), MENU_COL_W);
+    exit;
+}
+
+// ---------------------------------------------------------------------------------------------
+// Bestiary
 if (mode == "bestiary") {
     scr_menu_draw_window(MENU_ADV_FULL_X, MENU_ADV_FULL_Y, MENU_ADV_FULL_W, MENU_ADV_FULL_H, "normal");
     scr_menu_text(MENU_ADV_FULL_X + 8, 10, "BESTIARY", MENU_COL_Y);

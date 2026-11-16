@@ -1,5 +1,22 @@
 # Changelog
 
+## Unreleased — Quest journal (Adventure menu → Quests)
+- **New field-menu page: Quests.** Lists every quest that has been started, with its current objective, `stage n / m`, and `done` once finished. Rows are selectable with up/down; a short list does not scroll. An empty journal explains where quests come from instead of showing a blank panel.
+- **Data, not new save fields.** `scr_quest_data.gml` holds the definitions (Beyond the Veil S1–S7, The One on the List, A Parcel Unsealed) and reads the existing `quest_<QUEST_ID>` flags, which are already saved — so existing saves work and nothing needed a schema bump. Main-quest objective text is the approved Act II wording; the two side-quest objectives are PLACEHOLDER journal text.
+- **Menu wiring:** the Adventure list gained a row (`Items, Equip, Party Order, Quests, Status, Bestiary, Close`) in both `game/objects/obj_adventure_menu` and the generated copy; `scr_quest_data` is registered in `AshenCrown.yyp` and mirrored under `gamemaker/scripts/`.
+- Not compiled or viewed: static validation only. The page still needs a run in GameMaker (TEST_PLAN M13–M15).
+
+## Unreleased — Title and menu sprite references cleaned up
+- **The title screen's sprite handles were named like assets** (`spr_bg0`, `spr_logo`, `spr_cursor`, `spr_panel_options`…). They are local variables, not resource ids, and they were the reason `validate_gamemaker.py` reported title sprites as unresolved. Renamed to `t_bg0`…`t_title_flat` in `obj_title` (Create and Draw GUI, source and generated copy).
+- **`scr_menu_layout.gml` no longer chains to sprite names that were never delivered** (`spr_menu_shop_window`, `spr_ui_menu_shop`, `spr_menu_save_window`, `spr_ui_menu_saves`, `spr_menu_ui_cursor`, `spr_save_point`, `spr_menu_save_point`, `spr_ui_save_point`). Shop and inventory windows use `spr_ui_window`; the save panel uses `spr_menu_panel_saves_320` (640 as fallback); the cursor uses `spr_ui_cursor_strip2`; the save point uses `spr_save_point_idle_strip8`. A comment records that dedicated Design windows can be prepended if they ship.
+- **Zero unresolved sprite references remain.** The validator now reports only the 13 unbuilt rooms. Every title asset was checked at both resolutions (320 and 640): backgrounds, embers, logo, cursor, options/saves panels, title still and option art.
+- Not compiled or viewed: these are static checks only. The screens still need a run in GameMaker before anyone calls them verified.
+
+## Unreleased — Chapter 5 script draft (not canon)
+- **`docs/story/CHAPTER5_SCRIPT.md` written for approval.** "The Deserted Oath" [PROPOSED], levels 16–18 [PROPOSED]: the garrison approach and notice board, Sera's detention and refusal to discuss the palace, Commander Hailen's arrest attempt, a pre-battle spare/take-down choice wired to the existing `flag_hailen_yields` hook, both aftermath branches, the sealed-order Blackwood lead, Sera's join as the first fifth roster member, and the second Fallen Knight sighting at the treeline.
+- Sera's kit is proposed as **Mend / Aegis / Smite**; numbers stay open, and nothing is built yet. Eleven decisions are listed in the script's §14 with recommendations — Sera's join timing, the yield branch, her kit, the lead's form and the Fallen Knight line are the ones that change the build.
+- The Hailen fight is unchanged from the Chapter 5 balance pass (900 HP / 57 ATK, 52/78/94% at 16/17/18) because the draft keeps Sera out of that battle by default. Choosing "Sera joins at the fight" invalidates those numbers until the sim is re-run.
+
 ## Unreleased — Chapter 5 balance pass (simulation only)
 - **Commander Hailen took length, not damage.** Caelan's kit had made the fight 97 / 100 / 100% at party levels 16 / 17 / 18, ending in 6–7 rounds before Hailen's single-target hits added up. `hp_mult: 1.5` + `atk_add: 14` in `scr_enemy_database.gml` gives him **900 HP / 57 ATK** and **52 / 78 / 94%** wins, 8.1–9.1 rounds, 14–30% party HP left. ATK alone was the wrong lever: at 900 HP and 65 ATK, level 16 fell to 16% while level 18 was still 78%.
 - **Garrison random fights were light, so the Pikeman gained `atk_add: 4`** (34 → 38 ATK, 107 HP unchanged). The two-pikeman group costs 21% of party HP at level 16 instead of 18%; the single-pikeman and Knight groups stay at 11–12%. All groups remain 100% wins at 16–18.
