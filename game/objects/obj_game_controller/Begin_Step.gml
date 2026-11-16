@@ -10,11 +10,11 @@ scr_ch5_tick(); // Chapter 5 (no per-frame beats yet)
 scr_ch6_tick(); // Chapter 6 (the burn-line boss gate)
 
 
-// Adventure menu overlay (I or Tab). Opening is blocked while dialogue / battle / a menu is
-// already up; closing is handled here so I still works while menu_open is true.
+// Adventure menu overlay (I / Tab / controller Start). Opening is blocked while dialogue / battle / a menu
+// is already up; closing is handled here so the same input works while menu_open is true.
 var _title = asset_get_index("rm_title");
 var _on_title = (_title != -1 && room == _title);
-if (!_on_title && room != BATTLE_ROOM && (keyboard_check_pressed(ord("I")) || keyboard_check_pressed(vk_tab))) {
+if (!_on_title && room != BATTLE_ROOM && scr_input_menu_pressed()) {
     var _shop = asset_get_index("obj_shop_menu");
     var _save = asset_get_index("obj_save_menu");
     var _adv = asset_get_index("obj_adventure_menu");
