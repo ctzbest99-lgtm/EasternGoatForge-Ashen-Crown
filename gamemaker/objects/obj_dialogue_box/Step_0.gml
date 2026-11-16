@@ -21,6 +21,7 @@ if (_n_choices > 0 && line_index >= array_length(lines) - 1) {
 }
 
 if (scr_input_confirm_pressed()) {
+    scr_audio_sfx("text", 0, 0.6);
     line_index += 1;
     if (line_index >= array_length(lines)) instance_destroy();
 }

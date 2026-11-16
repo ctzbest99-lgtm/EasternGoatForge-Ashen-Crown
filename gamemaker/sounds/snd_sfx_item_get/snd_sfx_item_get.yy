@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"snd_sfx_item_get",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":0.45,
+  "name":"snd_sfx_item_get",
+  "parent":{
+    "name":"sounds",
+    "path":"folders/sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":22050,
+  "soundFile":"snd_sfx_item_get.wav",
+  "type":0,
+  "volume":1.0,
+}

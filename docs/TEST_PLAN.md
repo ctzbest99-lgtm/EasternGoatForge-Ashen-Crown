@@ -2,6 +2,29 @@
 
 Run tests in GameMaker after integration; static review is not a substitute for running the game.
 
+## Automatic checks (no IDE needed)
+`python3 validate_gamemaker.py` must print `ALL CHECKS PASSED`. Beyond the JSON, path, room, sprite-size and script-mirror checks, it now verifies the Bestiary and fails on any of these:
+- an id listed by `scr_bestiary_ids()` that `scr_get_enemy_data()` does not define;
+- two enemies whose display names are identical (the list would show two indistinguishable rows);
+- an id that `scr_bestiary_alias()` already maps onto another creature but still has a row of its own;
+- an id that resolves to no `spr_<kind>_idle*` sprite (the pane would draw the "?" plate instead of a monster).
+
+It checks the encounters the same way:
+- a random encounter table that names an enemy or `grp_` group that does not exist;
+- a table that rolls a boss as an ordinary encounter (the boss slot would never be set);
+- a named group whose `boss` is not a boss (it would get no boss bar, no escape lock and no phase);
+- a group that lists a boss among its adds, or names an enemy that does not exist.
+
+It also compares each table with the level band it declares and **lists every table whose enemies fall outside it** (warnings, not failures, because a deliberate weak filler enemy is a design choice):
+
+- `zone01_path` has no band at all;
+- `zone01_old_road` / `bandit_camp` / `zone01_watchtower` / `zone01_basement_hall` are one level under their band (`bandit` L1, `fallen_knight` L3), which is accepted as weak filler;
+- `ch3_valemere_road` used to roll level-1/8/9 enemies against a 10–13 band; it now spawns `crown_patrolman_road` (L10), `crown_crossbowman_road` (L10) and `bandit_veteran_road` (L11) and is in band.
+
+An inverted band (`min` above `max`), a band declared for an id that is not a table, and a table enemy whose level cannot be read are errors.
+
+`python3 tools/sim_ch5_flow.py` and `python3 tools/balance_sim.py` cover story reachability and fight maths; neither replaces play.
+
 ## Movement and interaction
 - [ ] Project opens and compiles.
 - [ ] Four-direction movement works; diagonal movement, if enabled, is normalized.
@@ -77,7 +100,7 @@ XP curve: total XP to be level L is `20*(L-1)^2 + 10*(L-1)` (L2=30, L3=100, L4=2
 
 ## Enemy batches 7–8 (feature/enemy-batches-7-8; untested in GameMaker)
 Start fights from the overworld with `scr_encounter_start(<id, group id, or array>, "test_x")`.
-- [ ] E1 Each new id (`crown_sergeant`, `dock_thug`, `cutpurse`, `debt_collector`, `debtman`, `ward_sentinel`, `glyph_wisp`, `aethari_automaton`, `sanctuary_warden`, `garrison_pikeman`, `garrison_field_surgeon`, `garrison_knight`, `commander_hailen`, `shade_stalker`, `briar_hulk`, `lost_one`, `night_moth_swarm`, `door_warden`, `blackwood_matriarch`) starts a battle. Imported strips animate (idle, attack, hurt, death); missing ones draw a rectangle without stalling.
+- [ ] E1 Each new id (`crown_sergeant`, `dock_thug`, `cutpurse`, `debt_collector`, `debtman`, `ward_sentinel`, `glyph_wisp`, `aethari_automaton`, `sanctuary_warden`, `garrison_pikeman`, `garrison_field_surgeon`, `garrison_knight`, `commander_hailen`, `shade_stalker`, `briar_hulk`, `lost_one`, `night_moth_swarm`, `door_warden`, `blackwood_matriarch`, `burn_line_hulk`, `ward_sentinel_late`, `door_warden_boss`) starts a battle. Imported strips animate (idle, attack, hurt, death); missing ones draw a rectangle without stalling.
 - [ ] E2 Backgrounds: Lower City, Sanctuary, Garrison and Blackwood enemies get their new backgrounds (or forest if not imported).
 - [ ] E3 Cutpurse Steal takes gold (never below 0) and says how much. Beating the Cutpurse adds the stolen gold to the victory total.
 - [ ] E4 Field Surgeon heals the most-hurt ally (green pop) only when one is below 60% HP.
@@ -88,6 +111,9 @@ Start fights from the overworld with `scr_encounter_start(<id, group id, or arra
 - [ ] E9 Shade Stalker Fade: it turns translucent and physical attacks on it miss until the next round.
 - [ ] E10 Glyph Wisp Mote flies on cast frame 3 and uses MDEF.
 - [ ] E11 Chapter 1 and Chapter 2 fights are unchanged (B1–B8, BP1–BP7).
+- [ ] E12 `grp_burn_line_hulk` resolves to `burn_line_hulk` + 1 Shade Stalker, and `grp_door_warden_boss` to `door_warden_boss` + 2 `ward_sentinel_late`, boss first. "The Door Warden"'s bar reads 1286 HP and each Sentinel 143.
+- [ ] E14 **Valemere road fights at band.** On the road out of Wrenfield the encounters are Crown Patrolmen, Crossbowmen and Bandit Veterans drawn from the level-10/11 ids (`crown_patrolman_road` and friends), not the Act II level-8 ones: their damage and HP should match the party at level 10, and beating one credits the Act II Bestiary row (no new entries appear).
+- [ ] E13 `burn_line_hulk`, `door_warden_boss` and `ward_sentinel_late` draw the base creature's strips (briar hulk, door warden, ward sentinel) and never the missing-art plate.
 
 ## Balance pass (feature/balance-pass; untested in GameMaker)
 - [ ] BP1 Chapter 1 is unchanged: level-ups from 2 to 7 still show +4 HP / +1 ATK / +1 DEF, Chapter 1 enemy stats are unchanged, and a Blackguard run feels the same.
@@ -272,6 +298,27 @@ Setup: a save at the end of Chapter 3 (`flag_chapter3_complete`, Q_BV_S5 active)
 
 Record GameMaker version, date, result, and reproducible failures.
 
+## Chapter 5 (feature/chapter5; untested in GameMaker)
+
+Setup: a save at the end of Chapter 4 (`flag_chapter4_complete`, Q_BV_S6 active), party levels 16–18, and Kael / Taren / Lyra / Caelan in the party.
+- [ ] F1 **Handoff in.** `rm_valemere_road` has an east fork (`to_blackwood_road`, tile 23,11) that lands in `rm_blackwood_garrison` (`from_road`). BG_ENTER_01–07 play once, `flag_garrison_entered` is set and Q_BV_S6 is active (or repaired to S6). The road back west returns to the fork.
+- [ ] F2 **Notice board.** The board at the bend plays BG_NOTICE_01–06 once (the deserter notice names THORN, S. — no party member recognizes the name), repeat is BG_NOTICE_R1.
+- [ ] F3 **Gate.** The sergeant plays BG_GATE_01–10: Taren's name stops the pen, the party is escorted in, `flag_bg_gate_seen` is set, and no battle starts. Repeat is BG_GATE_R1.
+- [ ] F4 **Yard.** Walking through the gate into the yard plays BG_YARD_01–14 once (`flag_bg_yard_seen`). Sera is visibly in the cell block, not free.
+- [ ] F5 **Sera.** The prisoner NPC plays SR_MEET_01–17 once; she names the sealed order and refuses the palace question exactly once. Repeat is SR_MEET_R1. `flag_sera_met` is set.
+- [ ] F6 **Hailen.** Talking to the commander before the yard scene gives only BG_YARD_R1; after it, HL_INTRO_01–19 play and `flag_hailen_intro_seen` is set. He is courteous and holds the post; the office door (`to_keep`, tile 17,2) is barred with BG_KEEP_LOCKED.
+- [ ] F7 **The choice.** The pre-battle box offers "We're not here to kill Crown soldiers." and "He chose this." The first sets `flag_hailen_yields`, plays HL_CHOICE_04 and lets him yield at 0 HP; the second clears the flag, plays HL_CHOICE_05 and he dies. Up/down and confirm/cancel all work (`scr_dialogue_choice`'s first chapter use).
+- [ ] F8 **The fight.** `grp_commander_hailen` starts after HL_FIGHT_01–02 (Hailen level 18, ~900 HP / 57 ATK, plus one Garrison Pikeman). Simulation expects roughly 52 / 78 / 94% wins at party levels 16 / 17 / 18, 8–9 rounds; a loss at 16 is within tune.
+- [ ] F9 **Defeat retry.** Lose the fight once: the party wakes in town, and returning to Hailen shows HL_INTRO_R1, then re-offers the choice and starts the fight again (the trigger is not consumed by a defeat).
+- [ ] F10 **Aftermath.** A yield victory plays HL_YIELD_01–07 and leaves Hailen standing in the yard; a death victory plays HL_DEATH_01–05 and his yard NPC is gone (no body left as an interactable). Either way `flag_hailen_beaten` is set and the office door is unlocked.
+- [ ] F11 **Records.** Inside `rm_garrison_keep`, the desk trigger plays BW_LEAD_01–11 once and sets `flag_blackwood_lead`; the ledger, map table and dispatch chest give their inspect text. SR_STAKE_01–09 play once on the walk back and set `flag_sera_stake_done`; repeat is SR_STAKE_R1.
+- [ ] F12 **Sera joins.** Leaving the keep after the stake plays SR_JOIN_01–09 and SR_SYS_01–04 on the doorstep, then moves to the yard. She is the fifth roster member (four active, one reserve), joins at Kael's level, has the Holy Sword equipped, and the cell-block NPC is gone. Party Order can swap her into the active line.
+- [ ] F13 **Sera's kit.** In battle her Skill menu lists Mend, Aegis and Smite. Mend heals the most-hurt ally, Aegis raises one ally's DEF for 3 turns, and Smite deals holy damage (×1.5 against Shade Stalker and Lost One). All three spend MP and their numbers are PLACEHOLDER.
+- [ ] F14 **Treeline handoff.** The east exit (`to_blackwood`, tile 25,10) before the join only says CH5_HANDOFF_LOCKED. After the join it plays BG_HANDOFF_01–08 then FK4_01–05 once, sets `flag_fk_seen_4`, `flag_chapter5_complete` and `flag_act2_complete`, moves the quest to Q_BV_S7 and offers the quiet save prompt. Afterwards the same door is the unbuilt `rm_blackwood_deep` stub. No Mira sighting, no forest.
+- [ ] F15 **Journal.** After F14 the Quests page reads stage 7 / 7 for Beyond the Veil, objective "Follow the trail into the Blackwood."
+
+Record GameMaker version, date, result, and reproducible failures.
+
 ## Systems pass (combat tutorial, Cheap Shot, Last Stand, battle poison)
 Setup: fresh save; walk the farm path to the guaranteed Bandit trigger (overworld tile 197, 161).
 - [ ] T1 Before the tutorial fight, no random encounters roll anywhere (walk the Farmlands).
@@ -300,3 +347,36 @@ Setup: fresh save, overworld. `DEBUG_ADD_FULL_ROSTER` on if the party rows shoul
 - [ ] M13 Quests page: on a fresh save it lists the main quest only, "Beyond the Veil", at stage 1 / 7, with the objective "Find a way beyond the Veil." Accepting Oda's quest adds "The One on the List" as a second row; completing it marks the row "done" and the detail pane reads "Complete." Every started-but-unfinished quest shows its current objective and "stage n / m."
 - [ ] M14 The journal tracks stage changes without a reload: after Taren joins at Wrenfield the main quest reads stage 3 / 7; after the Valemere gates 4 / 7; after Caelan joins 6 / 7. The parcel quest moves from its first stage to its second when the parcel is delivered to the Merchant District stall, and to "done" at Nim.
 - [ ] M15 Quests survive a save and reload (quest state is stored in the saved flags, so no new save field is involved). Use the debug flag setter to store an unknown stage id for a quest: the row still appears, with "In progress." rather than vanishing.
+
+## Audio (generated assets; untested in GameMaker)
+- [ ] A1 Sounds → `sounds` lists all 29 resources and each one plays from the Sound editor without an "unsupported format" error.
+- [ ] A2 Enter the overworld from the title: "The Ashen Road" starts, loops without a click at the 40 s seam, and does not restart when walking through a door back into the same room.
+- [ ] A3 Ambience matches the room: wind outdoors (`rm_overworld`, `rm_millhaven_road`, `rm_valemere`), forest in Wrenfield and the Blackwood garrison, dungeon in the watchtower basement / warehouse / Hollow sanctuary / chapel, fire in the tavern, blacksmith, Bent Post, Salt Lamp and keep.
+- [ ] A4 An ordinary encounter switches to "Steel and Ash"; the Blackguard (or any fight with `boss_index >= 0`) switches to "Crown of Black Sun"; leaving the battle restores the field track and the ambience bed.
+- [ ] A5 Battle cues: Attack plays a swing then a hit; a crit plays the sharper crit hit; Guard clanks; a heal chimes; a status skill plays the cast rise; a victory with a level-up plays the level-up fanfare once, not once per level.
+- [ ] A6 Adventure menu: moving the cursor blips, confirm chirps, cancel drops a step — one sound per press, no double-trigger when holding the key.
+- [ ] A7 Dialogue: opening a box and each page advance give one quiet blip; no blip when closing.
+- [ ] A8 Saving at a crystal plays the chime once per slot written; loot plays `item_get` for items and `coin` for gold, and neither fires on an already-looted chest.
+- [ ] A9 Nothing plays at master mute, and lowering music gain through `scr_audio_set_gain("music", v)` immediately changes the running loop.
+- [ ] A11 Ranged cue: the Ashbound Hunter's attack plays `arrow` instead of a sword swing, and the Crown Crossbowman's Bolt does the same. A normal Bandit or Fallen Knight attack still plays `attack_swing`.
+- [ ] A12 `enemy_fall` plays when a regular enemy's death clip starts, but not when a boss yields; `party_hurt` plays when a party member is hit and not when an enemy is. Both land on the hit frame, with the damage numbers, not on the command.
+- [ ] A13 `menu_open` plays once when the Adventure menu opens (not on every cursor move), and `menu_error` plays when a shop refuses for gold, for a key item, or for having nothing to sell.
+- [ ] A10 No crackle or gap at any loop point after 10 minutes on the overworld theme (listens for the 40 s seam and the ambience crossfade).
+
+## Bestiary monster illustrations (untested in GameMaker)
+- [ ] B1 On a fresh save, Adventure menu → Bestiary shows "No record yet." and a black silhouette on a near-black plate; no name, level or stats leak for an unseen entry.
+- [ ] B2 Win a fight against a Bandit, then open the Bestiary: its plate shows the bandit idle frame on the lighter background, upright and centred, with the contact shadow under its feet and nothing clipped by the pane border.
+- [ ] B3 Check the large-art entries — Blackwood Matriarch and Sanctuary Warden (96x96 sheets) and Blackguard / Reeve Calder / Debtman / Commander Hailen (48x64): each is scaled to fit inside the 60x64 plate without touching the frame.
+- [ ] B4 Move the cursor down the list: the plate follows the selection on every row, including rows reached by scrolling, and stays in step with the name and stats.
+- [ ] B5 Every one of the 35 entries shows art — the "?" plate should never appear for a shipped enemy, only for an enemy added without a battle sheet.
+- [ ] B6 Descriptions never run into the "Weak" row: check the longest ones (Bandit, Reeve Calder, Fallen Knight, Blackwood Matriarch). Temporarily lengthen one past 72 characters and confirm `scr_bestiary_desc_fit` cuts at a word and adds "..." instead of overlapping.
+- [ ] B7 Weak / Found / the six stats are still readable on the narrow columns (x192 and x244) with four-digit values (e.g. the Matriarch's HP).
+- [ ] B8 `burn_line_hulk` and `door_warden_boss` (listed as **The Door Warden**) appear after `briar_hulk` and `door_warden` with descriptions, at 33 → 35 entries. Beating a `ward_sentinel_late` marks the **Ward Sentinel** row rather than adding one, and no two rows share a name.
+
+## Character art: Lyra and the marker sprites (untested in GameMaker)
+- [ ] C1 Walk Lyra through Valemere and the Lower City in all four directions: the 16×24 set animates idle and a 4-frame walk, her feet sit on the tile (origin 8,23) and she is visually in the same style as Sera and Caelan.
+- [ ] C2 Sera, Caelan and Lyra in battle: the 8-frame walk visibly steps (the front leg swings with a 1px foot lift), and the idle / defend / hurt / death clips still read at 32x48.
+- [ ] C2b Lyra's battle clips: idle 4, walk 8, attack 6, hurt 3, defend 3, death 6 all exist and play; the daggers read as short blades, not a sword, and the attack frame does not clip outside the 48×48 cell.
+- [ ] C3 Lyra's portrait appears in dialogue with neutral / determined / pained expressions and is not the old flat placeholder.
+- [ ] C4 Turn `DEBUG_SHOW_TRIGGERS` on and walk the maps: the ten marker sprites are distinguishable at a glance — brick hatch (solid), chest (interactable), hooded villager (story NPC), rune (respawn), crossed swords (encounter trigger), dashed zone (encounter zone), pennant (story trigger), skull (story encounter), spike plate (trap).
+- [ ] C5 With `DEBUG_SHOW_TRIGGERS` off, none of the marker art is visible in normal play, and the Kael sprite still loads (the 16×24 `spr_player_placeholder` is only a fallback).

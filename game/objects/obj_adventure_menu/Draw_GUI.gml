@@ -244,29 +244,36 @@ if (mode == "bestiary") {
     if (bestiary_scroll > 0) scr_menu_draw_arrow(0, MENU_ADV_LIST_W - 6, 18, true);
     if (bestiary_scroll + MENU_ADV_ROWS < _bn) scr_menu_draw_arrow(1, MENU_ADV_LIST_W - 6, 158, true);
 
+    // Detail pane: text on the left, the monster plate on the bottom right.
     var _de = scr_bestiary_entry(_ids[bestiary_index]);
     var _dx = MENU_ADV_LIST_W + 12;
+    var _ix = MENU_ADV_FULL_X + MENU_ADV_FULL_W - 60; // 60x64 monster plate, flush with the pane edge
+    var _iy = 112;
+    var _iw = 60;
+    var _ih = 64;
     if (!_de.seen) {
-        scr_menu_text(_dx, 30, "No record yet.", MENU_COL_A);
-        scr_menu_text_wrap(_dx, 46, "Meet this enemy in battle and its entry fills in.", 150, 11, MENU_COL_DESC);
+        scr_menu_text(_dx, 26, "No record yet.", MENU_COL_A);
+        scr_menu_text_wrap(_dx, 42, "Meet this enemy in battle and its entry fills in.", 84, 11, MENU_COL_DESC);
+        scr_bestiary_draw_illustration(_de.id, false, _ix, _iy, _iw, _ih);
         exit;
     }
-    scr_menu_text(_dx, 30, _de.name, MENU_COL_Y);
-    scr_menu_text(_dx, 44, "Lv " + string(_de.level) + "   " + _de.role, MENU_COL_G);
-    scr_menu_text_wrap(_dx, 58, _de.desc, 148, 11, MENU_COL_DESC);
+    scr_menu_text(_dx, 26, _de.name, MENU_COL_Y);
+    scr_menu_text(_dx, 40, "Lv " + string(_de.level) + "   " + _de.role, MENU_COL_G);
+    scr_menu_text_wrap(_dx, 52, scr_bestiary_desc_fit(_de.desc), 148, 11, MENU_COL_DESC);
 
-    scr_menu_text(_dx, 96, "Weak", MENU_COL_G);
-    scr_menu_text_right(MENU_ADV_FULL_X + MENU_ADV_FULL_W - 8, 96, (_de.weakness != "") ? _de.weakness : "-", MENU_COL_W);
-    scr_menu_text(_dx, 110, "Found", MENU_COL_G);
-    scr_menu_text_right(MENU_ADV_FULL_X + MENU_ADV_FULL_W - 8, 110, scr_bestiary_area_label(_de.area), MENU_COL_W);
+    scr_menu_text(_dx, 88, "Weak", MENU_COL_G);
+    scr_menu_text_right(_ix - 4, 88, (_de.weakness != "") ? _de.weakness : "-", MENU_COL_W);
+    scr_menu_text(_dx, 100, "Found", MENU_COL_G);
+    scr_menu_text_right(_ix - 4, 110, scr_bestiary_area_label(_de.area), MENU_COL_W);
 
     var _rows = [["HP", _de.hp, "MDF", _de.mdef], ["ATK", _de.attack, "SPD", _de.spd], ["DEF", _de.defense, "Gold", _de.gold]];
     for (var _rr = 0; _rr < 3; _rr++) {
-        var _rry2 = 128 + 16 * _rr;
+        var _rry2 = 124 + 16 * _rr;
         scr_menu_text(_dx, _rry2, _rows[_rr][0], MENU_COL_G);
-        scr_menu_text_right(224, _rry2, string(_rows[_rr][1]), MENU_COL_W);
-        scr_menu_text(236, _rry2, _rows[_rr][2], MENU_COL_G);
-        scr_menu_text_right(MENU_ADV_FULL_X + MENU_ADV_FULL_W - 8, _rry2, string(_rows[_rr][3]), MENU_COL_W);
+        scr_menu_text_right(_dx + 38, _rry2, string(_rows[_rr][1]), MENU_COL_W);
+        scr_menu_text(_dx + 46, _rry2, _rows[_rr][2], MENU_COL_G);
+        scr_menu_text_right(_ix - 4, _rry2, string(_rows[_rr][3]), MENU_COL_W);
     }
+    scr_bestiary_draw_illustration(_de.id, true, _ix, _iy, _iw, _ih);
     exit;
 }

@@ -95,6 +95,23 @@ function scr_skill_build(_skill_id) {
             _s.desc = "Passive: resists Fear and Stun.";
             return _s;
 
+        // ---- Sera Thorn (approved kit 2026-11-16; numbers PLACEHOLDER) --------------------
+        case "mend":
+            _s = scr_skill_make("mend", "Mend", 4, "ally_lowest", "heal", 30, "skill_rally", "mends");
+            _s.element = "holy";
+            _s.desc = "Restores HP to the most-hurt ally.";
+            return _s;
+        case "aegis":
+            _s = scr_skill_make("aegis", "Aegis", 4, "ally", "buff", 0, "skill_rally", "raises Aegis");
+            _s.buffs = [{ stat: "def", pct: 0.3, turns: 3 }]; // 3 turns and +30% are PLACEHOLDER
+            _s.desc = "Raises one ally's DEF for 3 turns.";
+            return _s;
+        case "smite":
+            _s = scr_skill_make("smite", "Smite", 5, "single", "damage", 1.3, "attack", "smites");
+            _s.element = "holy"; // Shade Stalker, Lost One and the Matriarch are already holy-weak
+            _s.desc = "Holy damage. The restless fear it.";
+            return _s;
+
         // ---- Kael (canon passive, CHAPTER1_SCRIPT.md §2.1 / FL_TUTORIAL_SYS_05) -----------
         case "last_stand": // below 25% HP: ATK +15%, DEF +10% (canon values)
             _s = scr_skill_make("last_stand", "Last Stand", 0, "self", "passive", 0, "", "");

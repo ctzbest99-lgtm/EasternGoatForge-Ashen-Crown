@@ -1,5 +1,11 @@
 /// obj_adventure_menu : Step
 scr_game_state_init();
+// Menu cues fire once per press; scr_input_*_pressed() is a read-only check.
+if (scr_input_up_pressed() || scr_input_down_pressed() || scr_input_left_pressed() || scr_input_right_pressed()) {
+    scr_audio_sfx("menu_move", 0.02, 0.8);
+}
+if (scr_input_confirm_pressed()) scr_audio_sfx("menu_confirm", 0.02, 0.9);
+if (scr_input_cancel_pressed()) scr_audio_sfx("menu_cancel", 0.02, 0.9);
 
 // I / Tab / X / Backspace: back out one level, then close.
 var _close_key = keyboard_check_pressed(ord("I")) || keyboard_check_pressed(vk_tab);

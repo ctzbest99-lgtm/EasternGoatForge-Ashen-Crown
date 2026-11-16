@@ -210,6 +210,7 @@ switch (state) {
 
         if (_action.command == "Guard") {
             _actor.is_guarding = true;
+            scr_audio_sfx("guard", 0.02, 0.9);
             // Hold a defend pose while guarding when the member has one (Taren: spr_taren_defend_strip3).
             var _gv = get_vis("party", _action.actor_index);
             if (is_struct(_gv) && scr_sprite_is_valid(scr_battle_sprite(_gv.kind, "defend", 1))) scr_battle_vis_play(_gv, "defend");
@@ -336,6 +337,7 @@ switch (state) {
             }
             global.game.gold += victory_gold;
             level_ups = scr_party_apply_pending_xp();
+            if (array_length(level_ups) > 0) scr_audio_sfx("level_up", 0);
             level_up_index = 0;
             if (array_length(party) > 0 && is_struct(party[0])) global.game.xp = party[0].xp;
         }

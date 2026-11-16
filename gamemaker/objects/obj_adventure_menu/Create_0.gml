@@ -5,6 +5,7 @@
 scr_game_state_init();
 scr_ui_init();
 global.game.menu_open = true;
+scr_audio_sfx("menu_open", 0, 0.8); // the field menu opening
 
 mode = "list";        // "list" | "status" | "party" | "bestiary" | "quests"
 index = 0;            // highlighted menu row

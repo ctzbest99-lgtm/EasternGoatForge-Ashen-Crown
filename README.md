@@ -2,9 +2,9 @@
 
 A dark medieval fantasy RPG by Eastern Goat Forge, built with GameMaker and GML.
 
-**Direction:** classic top-down JRPG exploration inspired by the original Final Fantasy (1987), not side-view. Planned combat is classic menu-driven turn-based with a four-character party.
+**Direction:** classic top-down JRPG exploration inspired by the original Final Fantasy (1987), not side-view. Combat is classic menu-driven turn-based with a five-person roster (four active, one reserve).
 
-**Status (2026-11-15):** playable slice through Chapter 4. All the core systems are implemented — top-down exploration and interaction, turn-based battle (skills, statuses, weakness, boss phases, Escape), a four-person party plus reserve with XP / levels / gold, equipment, inventory, shops, three-slot versioned saves (schema v3) at save crystals, random encounters, the Adventure menu (Items, Equip, Party Order, Status, Bestiary) and the story flow for Chapters 1–4 (20 rooms). Chapter 5 exists as enemy and encounter data only; Act III onward is design only. There is no audio yet, Lyra's art is still a placeholder, and **nothing has been compiled or playtested in GameMaker** — `docs/TEST_PLAN.md` is the manual check list.
+**Status (2026-11-16):** Act II is complete. All the core systems are implemented — top-down exploration and interaction, turn-based battle (skills, six statuses, weakness, two- and three-phase bosses, Guard, Swap, Item, Escape), a five-person roster with four active and one reserve, XP / levels / gold, equipment, inventory, shops, three-slot versioned saves (schema v3) at save crystals inside a town's church or tavern, random encounters, defeat-and-respawn, the Adventure menu (Items, Equip, Party Order, Status, Bestiary, Quests), the audio system (3 music loops, 20 SFX, 6 ambience beds) and the story flow for Chapters 1–5 (22 rooms), ending at the Blackwood treeline. Chapter titles: *The Night of Ash* (Act I), then *The Weight of the Yoke*, *Crowns and Alleys*, *The Old Name* and *The Deserted Oath*. Act III onward is design only. **Nothing has been compiled or playtested in GameMaker** — `docs/TEST_PLAN.md` is the manual check list.
 
 A complete, ready-to-open GameMaker project lives in `gamemaker/AshenCrown.yyp` — open it and press F5. The `game/` folder remains the human-readable source of truth for the same GML, sprites, and map data; `python3 validate_gamemaker.py` checks that the two stay byte-identical.
 
@@ -13,8 +13,8 @@ A complete, ready-to-open GameMaker project lives in `gamemaker/AshenCrown.yyp` 
 - Tone: dark, atmospheric, serious, with occasional lighthearted moments.
 - Zone 1 standard enemies: Bandit and Fallen Knight.
 - Menu: the Adventure menu (I / Tab) with Items, Equip, Party Order, Status and Bestiary. Save/load is not a field-menu row — saving stays at the save crystals, inside a town's church or tavern.
-- Art for Chapters 1–3 is in `game/sprites/`: the party, enemies (including the Ashbound Hunter and the Blackguard's phases), NPCs, portraits, items, the UI kit, the title sets and the Wrenfield / Valemere tilesets. Ten `*_placeholder` sprites remain, Lyra's overworld and battle strips among them. `game/sprites/IMPORT.md` is the full import table, and the generated project already contains every listed sprite.
-- Maps for Chapters 1–3 live in `game/tilesets/`, `game/datafiles/` (overworld chunks) and `game/maps/` (Chapter 2–3 room data); `game/rooms/ROOM_SETUP.md` documents the rooms and the generated project builds them from this data.
+- Art for all five chapters is in `game/sprites/`: the five-person party (overworld, battle strips and portraits, all drawn by the same generator), 31 enemy and boss sets (including the Ashbound Hunter and the Blackguard's phases), 27 NPC overworld sets, 19 portrait sets, 17 item icons with chests, the UI kit, the title sets, the ten marker sprites and the Zone 1 and Wrenfield tilesets. Remainder: 18 enemy kinds still have no 16×24 overworld set, and Alden has no sprite (see `docs/ASSET_INVENTORY.md`). `game/sprites/IMPORT.md` is the full import table, and the generated project already contains every listed sprite.
+- Maps live in `game/tilesets/`, `game/datafiles/` (overworld chunks) and `game/maps/` (Chapter 2 rooms plus the interiors and Watchtower CSV data); the Chapter 3–5 rooms are built at runtime from `scr_build_*` arrays. `game/rooms/ROOM_SETUP.md` documents the rooms, and the generated project builds them from this data.
 
 ## Start here
 1. Read docs/GAME_DESIGN_DOCUMENT.md and docs/DECISIONS_AND_OPEN_QUESTIONS.md.

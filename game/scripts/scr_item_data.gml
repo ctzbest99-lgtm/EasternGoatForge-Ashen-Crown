@@ -118,6 +118,13 @@ function scr_item_database() {
         sellable: false,
         desc: "Caelan's spellbook. No combat stats yet. (PLACEHOLDER.)"
     }));
+    // Sera's holy sword: canon weapon (STORY_BIBLE.md §5.4) with no stats yet (approved 2026-11-16).
+    _add(_db, scr_item_make("item_holy_sword", "Holy Sword", "weapon", 0, {
+        atk_bonus: 0,
+        weapon_categories: ["holy_sword"],
+        sellable: false,
+        desc: "Sera's Silver Guard blade. No combat stats yet. (PLACEHOLDER.)"
+    }));
     // Chapter 3 key items (CHAPTER3_SCRIPT.md §4.1, §5).
     _add(_db, scr_item_make("item_nim_parcel", "Nim's Parcel", "key", 0, {
         sellable: false,

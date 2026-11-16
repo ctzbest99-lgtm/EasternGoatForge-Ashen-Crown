@@ -87,10 +87,10 @@ function scr_shop_buy(_item_id, _qty) {
     var _n = max(1, floor(_qty));
     var _it = scr_item_get(_item_id);
     var _price = scr_item_buy_price(_item_id);
-    if (_price <= 0) return "That isn't for sale.";
+    if (_price <= 0) { scr_audio_sfx("menu_error", 0, 0.8); return "That isn't for sale."; }
     var _total = _price * _n;
-    if (global.game.gold < _total) return "Not enough gold.";
-    if (_it.key_item && scr_inventory_has(_item_id)) return "You already have that.";
+    if (global.game.gold < _total) { scr_audio_sfx("menu_error", 0, 0.8); return "Not enough gold."; }
+    if (_it.key_item && scr_inventory_has(_item_id)) { scr_audio_sfx("menu_error", 0, 0.8); return "You already have that."; }
     global.game.gold -= _total;
     scr_inventory_add(_it.item_id, _it.name, _n, _it.key_item);
     return "Bought " + _it.name + " x" + string(_n) + ".";
@@ -99,13 +99,13 @@ function scr_shop_buy(_item_id, _qty) {
 function scr_shop_sell(_item_id, _qty) {
     scr_game_state_init();
     var _it = scr_item_get(_item_id);
-    if (_it.key_item || !_it.sellable) return "You can't sell that.";
+    if (_it.key_item || !_it.sellable) { scr_audio_sfx("menu_error", 0, 0.8); return "You can't sell that."; }
     var _have = scr_inventory_count(_item_id);
     var _n = clamp(floor(_qty), 1, _have);
-    if (_n <= 0) return "You don't have that.";
+    if (_n <= 0) { scr_audio_sfx("menu_error", 0, 0.8); return "You don't have that."; }
     var _unit = scr_item_sell_price(_item_id);
-    if (_unit <= 0) return "You can't sell that.";
-    if (!scr_inventory_remove(_item_id, _n, false)) return "You can't sell that.";
+    if (_unit <= 0) { scr_audio_sfx("menu_error", 0, 0.8); return "You can't sell that."; }
+    if (!scr_inventory_remove(_item_id, _n, false)) { scr_audio_sfx("menu_error", 0, 0.8); return "You can't sell that."; }
     global.game.gold += _unit * _n;
     return "Sold " + _it.name + " x" + string(_n) + ".";
 }

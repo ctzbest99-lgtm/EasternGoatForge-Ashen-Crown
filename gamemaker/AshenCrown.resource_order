@@ -24,8 +24,12 @@
       "name":"tilesets",
       "order":4,
       "path":"folders/tilesets.yy",
+    },    {
+      "name":"sounds",
+      "order":5,
+      "path":"folders/sounds.yy",
     },
-  ],
+],
   "ResourceOrderSettings":[
     {
       "name":"scr_battle_actors",
@@ -4511,6 +4515,155 @@
       "name":"rm_warehouse",
       "order":896,
       "path":"rooms/rm_warehouse/rm_warehouse.yy",
+    },    {
+      "name":"snd_amb_dungeon",
+      "order":897,
+      "path":"sounds/snd_amb_dungeon/snd_amb_dungeon.yy",
     },
-  ],
+    {
+      "name":"snd_amb_fire",
+      "order":898,
+      "path":"sounds/snd_amb_fire/snd_amb_fire.yy",
+    },
+    {
+      "name":"snd_amb_forest",
+      "order":899,
+      "path":"sounds/snd_amb_forest/snd_amb_forest.yy",
+    },
+    {
+      "name":"snd_amb_night",
+      "order":900,
+      "path":"sounds/snd_amb_night/snd_amb_night.yy",
+    },
+    {
+      "name":"snd_amb_water",
+      "order":901,
+      "path":"sounds/snd_amb_water/snd_amb_water.yy",
+    },
+    {
+      "name":"snd_amb_wind",
+      "order":902,
+      "path":"sounds/snd_amb_wind/snd_amb_wind.yy",
+    },
+    {
+      "name":"snd_mus_battle",
+      "order":903,
+      "path":"sounds/snd_mus_battle/snd_mus_battle.yy",
+    },
+    {
+      "name":"snd_mus_boss",
+      "order":904,
+      "path":"sounds/snd_mus_boss/snd_mus_boss.yy",
+    },
+    {
+      "name":"snd_mus_overworld",
+      "order":905,
+      "path":"sounds/snd_mus_overworld/snd_mus_overworld.yy",
+    },
+    {
+      "name":"snd_sfx_arrow",
+      "order":906,
+      "path":"sounds/snd_sfx_arrow/snd_sfx_arrow.yy",
+    },
+    {
+      "name":"snd_sfx_attack_swing",
+      "order":907,
+      "path":"sounds/snd_sfx_attack_swing/snd_sfx_attack_swing.yy",
+    },
+    {
+      "name":"snd_sfx_cast",
+      "order":908,
+      "path":"sounds/snd_sfx_cast/snd_sfx_cast.yy",
+    },
+    {
+      "name":"snd_sfx_coin",
+      "order":909,
+      "path":"sounds/snd_sfx_coin/snd_sfx_coin.yy",
+    },
+    {
+      "name":"snd_sfx_enemy_fall",
+      "order":910,
+      "path":"sounds/snd_sfx_enemy_fall/snd_sfx_enemy_fall.yy",
+    },
+    {
+      "name":"snd_sfx_guard",
+      "order":911,
+      "path":"sounds/snd_sfx_guard/snd_sfx_guard.yy",
+    },
+    {
+      "name":"snd_sfx_heal",
+      "order":912,
+      "path":"sounds/snd_sfx_heal/snd_sfx_heal.yy",
+    },
+    {
+      "name":"snd_sfx_hit",
+      "order":913,
+      "path":"sounds/snd_sfx_hit/snd_sfx_hit.yy",
+    },
+    {
+      "name":"snd_sfx_hit_crit",
+      "order":914,
+      "path":"sounds/snd_sfx_hit_crit/snd_sfx_hit_crit.yy",
+    },
+    {
+      "name":"snd_sfx_item_get",
+      "order":915,
+      "path":"sounds/snd_sfx_item_get/snd_sfx_item_get.yy",
+    },
+    {
+      "name":"snd_sfx_level_up",
+      "order":916,
+      "path":"sounds/snd_sfx_level_up/snd_sfx_level_up.yy",
+    },
+    {
+      "name":"snd_sfx_menu_cancel",
+      "order":917,
+      "path":"sounds/snd_sfx_menu_cancel/snd_sfx_menu_cancel.yy",
+    },
+    {
+      "name":"snd_sfx_menu_confirm",
+      "order":918,
+      "path":"sounds/snd_sfx_menu_confirm/snd_sfx_menu_confirm.yy",
+    },
+    {
+      "name":"snd_sfx_menu_error",
+      "order":919,
+      "path":"sounds/snd_sfx_menu_error/snd_sfx_menu_error.yy",
+    },
+    {
+      "name":"snd_sfx_menu_move",
+      "order":920,
+      "path":"sounds/snd_sfx_menu_move/snd_sfx_menu_move.yy",
+    },
+    {
+      "name":"snd_sfx_menu_open",
+      "order":921,
+      "path":"sounds/snd_sfx_menu_open/snd_sfx_menu_open.yy",
+    },
+    {
+      "name":"snd_sfx_party_hurt",
+      "order":922,
+      "path":"sounds/snd_sfx_party_hurt/snd_sfx_party_hurt.yy",
+    },
+    {
+      "name":"snd_sfx_save",
+      "order":923,
+      "path":"sounds/snd_sfx_save/snd_sfx_save.yy",
+    },
+    {
+      "name":"snd_sfx_step",
+      "order":924,
+      "path":"sounds/snd_sfx_step/snd_sfx_step.yy",
+    },
+    {
+      "name":"snd_sfx_text",
+      "order":925,
+      "path":"sounds/snd_sfx_text/snd_sfx_text.yy",
+    },
+    {
+      "name":"scr_audio",
+      "order":926,
+      "path":"scripts/scr_audio/scr_audio.yy",
+    },
+],
 }

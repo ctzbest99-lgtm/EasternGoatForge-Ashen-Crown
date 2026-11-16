@@ -49,7 +49,8 @@ function scr_actor_battle_defaults(_actor_id) {
         // Open Vein (active) and Cutthroat (passive). She joins at the Debtman fight (§6).
         case "lyra":   return { spd: LYRA_BASE_SPD,   mdef: LYRA_BASE_MDEF,   mp: LYRA_BASE_MP,   skills: ["twin_cut", "open_vein"], passives: ["cutthroat"] };
         case "caelan": return { spd: CAELAN_BASE_SPD, mdef: CAELAN_BASE_MDEF, mp: CAELAN_BASE_MP, skills: ["ember", "frost_lance", "arc_bolt"], passives: [] };
-        case "sera":   return { spd: SERA_BASE_SPD,   mdef: SERA_BASE_MDEF,   mp: SERA_BASE_MP,   skills: [], passives: [] };
+        // Sera's starting kit is Mend / Aegis / Smite (approved 2026-11-16). Numbers PLACEHOLDER.
+        case "sera":   return { spd: SERA_BASE_SPD,   mdef: SERA_BASE_MDEF,   mp: SERA_BASE_MP,   skills: ["mend", "aegis", "smite"], passives: [] };
         case "taren":  return { spd: TAREN_BASE_SPD,  mdef: TAREN_BASE_MDEF,  mp: TAREN_BASE_MP,  skills: ["rallying_cry", "cleave"], passives: ["unbowed"] };
     }
     return { spd: 8, mdef: 0, mp: 0, skills: [], passives: [] };

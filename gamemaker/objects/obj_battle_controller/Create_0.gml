@@ -237,6 +237,7 @@ apply_pending_hit = function() {
     if (!is_struct(anim_hit)) return;
     var _h = anim_hit;
     var _sk = scr_skill_get(_h.skill_id);
+    var _party_hurt_played = false; // one hurt cue per action, not one per target
 
     for (var _t = 0; _t < array_length(_h.targets); _t++) {
         var _e = _h.targets[_t];
@@ -296,6 +297,7 @@ apply_pending_hit = function() {
                     } else {
                         if (is_struct(_vis) && _vis.kind == "blackguard") _vis.phase = 3; // final death is the p3 strip
                         scr_battle_vis_play(_vis, "death");
+                        scr_audio_sfx("enemy_fall", 0.05, 0.8); // a body hits the ground
                     }
                     // Bestiary: a beaten (or yielded) enemy is recorded once per battle.
                     if (!variable_struct_exists(_tgt, "bestiary_marked") || !_tgt.bestiary_marked) {
@@ -310,6 +312,12 @@ apply_pending_hit = function() {
                     scr_battle_vis_play(_vis, "hurt");
                 }
             } else if (_e.damage > 0) {
+                // The party taking a hit sounds different, but only once per action: an area
+                // attack on four members must not stack four copies of the cue.
+                if (!_party_hurt_played) {
+                    _party_hurt_played = true;
+                    scr_audio_sfx("party_hurt", 0.06, 0.75);
+                }
                 scr_battle_vis_play(_vis, (_tgt.hp <= 0) ? "death" : "hurt");
             }
         } else if (_h.effect == "heal") {
@@ -657,6 +665,7 @@ run_skill = function(_side, _idx, _sk, _targets) {
         if (_dr > 0) _text += "\nHe collects " + string(_dr) + " HP.";
     }
 
+    scr_audio_skill_cue(_sk, _hit, _side, _user.actor_id);
     begin_anim(get_vis(_side, _idx), _vises, _hit, _text, _sk.anim);
 };
 

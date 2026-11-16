@@ -55,6 +55,7 @@ function scr_loot_grant(_loot = undefined, _item_id = "", _item_name = "") {
         var _nm = _item_name;
         if (_nm == "") _nm = scr_item_display_name(_item_id);
         scr_inventory_add(_item_id, _nm, 1, _key);
+        scr_audio_sfx("item_get", 0.02);
     }
     if (!is_array(_loot)) return;
     if (scr_loot_is_placeholder(_loot)) return;
@@ -116,7 +117,10 @@ function scr_loot_grant_entry(_text) {
             if (_ch >= "0" && _ch <= "9") _digits += _ch;
         }
         if (_digits != "") _amt = real(_digits);
-        if (_amt > 0) global.game.gold += _amt;
+        if (_amt > 0) {
+            global.game.gold += _amt;
+            scr_audio_sfx("coin", 0.03);
+        }
         return;
     }
     var _qty = 1;
@@ -139,6 +143,7 @@ function scr_loot_grant_entry(_text) {
         default: _id = "item_" + string_replace_all(string_lower(_name), " ", "_"); break;
     }
     scr_inventory_add(_id, _name, _qty, _key);
+    scr_audio_sfx("item_get", 0.02);
 }
 
 /// Apply this interactable's item_id / loot and mark it looted. Destroys unique pickups.

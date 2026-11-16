@@ -119,6 +119,20 @@ function scr_get_enemy_data(_enemy_id) {
         case "crown_sergeant": // Wrenfield elite (battle enemy; the gate NPC is crown_sergeant_gate)
             return scr_enemy_scaled("crown_sergeant", "Crown Sergeant", "Sergeant", "elite", 9, 1, { spd: 10, weakness: "lightning",
                 actions: [{ skill: "attack", weight: 3 }, { skill: "sergeant_rally", weight: 2 }] });
+        // CHAPTER3_SCRIPT.md §1: Crown patrols and bandits on the Valemere road, band 10-13. The
+        // Act II entries are level 8 (their own band), so the road needs its own level-10/11
+        // versions or it fights two to nine levels under the party. Same names; the Bestiary
+        // aliases them onto the Act II rows (scr_bestiary_alias), as it does for the level-20
+        // Ward Sentinel.
+        case "crown_patrolman_road":
+            return scr_enemy_scaled("crown_patrolman_road", "Crown Patrolman", "Patrolman", "common", 10, 1, { spd: 11, weakness: "lightning",
+                actions: [{ skill: "attack", weight: 2 }, { skill: "thrust", weight: 2 }, { skill: "brace", weight: 1 }] });
+        case "crown_crossbowman_road":
+            return scr_enemy_scaled("crown_crossbowman_road", "Crown Crossbowman", "Crossbowman", "common", 10, 1, { spd: 13, hp_mult: 0.8, atk_add: 2, weakness: "lightning",
+                actions: [{ skill: "crossbow_bolt", weight: 1 }] });
+        case "bandit_veteran_road":
+            return scr_enemy_scaled("bandit_veteran_road", "Bandit Veteran", "Bandit Vet.", "common", 11, 1, { spd: 14,
+                actions: [{ skill: "attack", weight: 1 }] });
         case "dock_thug":
             return scr_enemy_scaled("dock_thug", "Dock Thug", "Dock Thug", "common", 11, 1, { spd: 9, actions: [{ skill: "attack", weight: 1 }] });
         case "cutpurse":
@@ -183,6 +197,13 @@ function scr_get_enemy_data(_enemy_id) {
         case "briar_hulk":
             return scr_enemy_scaled("briar_hulk", "Briar Hulk", "Briar Hulk", "common", 18, 1, { spd: 5, hp_mult: 1.4, weakness: "fire",
                 actions: [{ skill: "attack", weight: 1 }] });
+        case "burn_line_hulk": // ACT3_OUTLINE.md §7: the briar_hulk at boss scale (Chapter 6 boss).
+            // Tuned by the Act III simulation: 1260 HP (600 x 2.1, i.e. the Hulk's own x1.4 and the
+            // boss x1.2 x party of 4) and 55 ATK, with one Shade Stalker in grp_burn_line_hulk.
+            // Simulated 100% wins, 7.6 rounds, 0.42 deaths, 42% party HP at level 18. A second
+            // Stalker drops that to 89% at 8.4 rounds, which is the Act IV escalation.
+            return scr_enemy_scaled("burn_line_hulk", "Burn-Line Hulk", "Burn-Line Hulk", "boss", 18, 4, { spd: 5, hp_mult: 2.1, atk_add: 12, weakness: "fire",
+                actions: [{ skill: "attack", weight: 1 }] });
         case "lost_one": // id and concept may be revised (DECISIONS)
             return scr_enemy_scaled("lost_one", "Lost One", "Lost One", "common", 18, 1, { spd: 8, weakness: "holy",
                 actions: [{ skill: "attack", weight: 1 }] });
@@ -192,8 +213,20 @@ function scr_get_enemy_data(_enemy_id) {
         case "door_warden":
             return scr_enemy_scaled("door_warden", "Door Warden", "Door Warden", "elite", 19, 1, { spd: 6, def_add: 3, weakness: "lightning",
                 actions: [{ skill: "attack", weight: 1 }] });
+        case "door_warden_boss": // ACT3_OUTLINE.md §7: the Door Warden at boss scale (Chapter 8 boss).
+            // 1286 HP (134 x 1.2 x 4, then x2.0) / 46 ATK / 37 DEF, with two level-20 Sentinels.
+            // Simulated 96-99% wins, 8.2-10.3 rounds, ~1 death. The elite door_warden stays in the
+            // blackwood random table; this is the fight at the doors.
+            return scr_enemy_scaled("door_warden_boss", "The Door Warden", "Door Warden", "boss", 19, 4, { spd: 6, hp_mult: 2.0, def_add: 3, weakness: "lightning",
+                actions: [{ skill: "attack", weight: 1 }] });
+        case "ward_sentinel_late": // ACT3_OUTLINE.md §7: the Sentinel that guards the doors at 19-20.
+            // common 20 = 143 / 46 / 33, +3 DEF. The level-14 ward_sentinel dies in one hit at 20.
+            return scr_enemy_scaled("ward_sentinel_late", "Ward Sentinel", "Sentinel", "common", 20, 1, { spd: 7, def_add: 3, weakness: "lightning",
+                actions: [{ skill: "attack", weight: 1 }] });
         case "blackwood_matriarch": // PLACEHOLDER boss (proposed, not canon), two phases
-            return scr_enemy_scaled("blackwood_matriarch", "Blackwood Matriarch", "Matriarch", "boss", 20, 4, { spd: 13, weakness: "holy",
+            // hp_mult 1.5 (686 -> 1029 HP) is the Act III tuning: as written she was won 100% of the
+            // time in 5.0 rounds; at x1.5 it is 91-92% in 6.7-7.6 rounds with about one death.
+            return scr_enemy_scaled("blackwood_matriarch", "Blackwood Matriarch", "Matriarch", "boss", 20, 4, { spd: 13, hp_mult: 1.5, weakness: "holy",
                 phase2_at: 0.5, phase2_buffs: [{ stat: "atk", pct: 0.25, turns: -1 }, { stat: "spd", pct: 0.2, turns: -1 }],
                 phase2_line: "Her antlers split. Embers wake in the cracks!",
                 actions: [{ skill: "attack", weight: 2 }, { skill: "matriarch_breath", weight: 1 }],
@@ -244,7 +277,8 @@ function scr_enemy_battle_area(_enemy_id) {
         case "dock_thug": case "cutpurse": case "debt_collector": case "debtman": return "lower_city";
         case "ward_sentinel": case "glyph_wisp": case "aethari_automaton": case "sanctuary_warden": return "sanctuary_hall";
         case "garrison_pikeman": case "garrison_field_surgeon": case "garrison_knight": case "commander_hailen": return "garrison_yard";
-        case "shade_stalker": case "briar_hulk": case "lost_one": case "night_moth_swarm": case "door_warden": case "blackwood_matriarch": return "blackwood";
+        case "shade_stalker": case "briar_hulk": case "burn_line_hulk": case "lost_one": case "night_moth_swarm":
+        case "door_warden": case "door_warden_boss": case "ward_sentinel_late": case "blackwood_matriarch": return "blackwood";
     }
     return "";
 }

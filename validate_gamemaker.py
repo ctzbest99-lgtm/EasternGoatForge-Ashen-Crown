@@ -157,6 +157,199 @@ for r in yyp['resources']:
         if not is640 and grp != 'Default': errors.append(f"{r['id']['name']}: expected Default, got {grp}")
 if 'spr_menu_embers_640_strip24' not in sprites: errors.append('ember 640 strip missing')
 
+# bestiary: every listed id exists, display names are unique, and each resolves to a battle sprite
+def read_script(name):
+    return open(os.path.join(SRC, 'scripts', name)).read()
+
+bestiary_src = read_script('scr_bestiary.gml')
+enemy_src = read_script('scr_enemy_database.gml')
+sprite_src = read_script('scr_sprites.gml')
+
+m = re.search(r'function scr_bestiary_ids\(\)\s*\{\s*return\s*\[(.*?)\]\s*;', bestiary_src, re.S)
+bestiary_ids = re.findall(r'"([a-z0-9_]+)"', m.group(1)) if m else []
+if not bestiary_ids:
+    errors.append("bestiary: scr_bestiary_ids() not found or empty")
+
+# Enemy ids and display names: scr_get_enemy_data() only (the battle-area switch below it is a
+# different mapping and must not be read as enemy definitions).
+data_src = enemy_src[:enemy_src.index('function scr_enemy_battle_area')]
+enemy_ids = set(re.findall(r'case\s+"([a-z0-9_]+)"\s*:', data_src))
+enemy_names = dict(re.findall(r'scr_enemy_scaled\(\s*"([a-z0-9_]+)"\s*,\s*"([^"]+)"', data_src))
+for lit in re.finditer(r'id:\s*"([a-z0-9_]+)"\s*,', data_src):
+    nm = re.search(r'name:\s*"([^"]+)"', data_src[lit.end():lit.end() + 700])
+    if nm:
+        enemy_names.setdefault(lit.group(1), nm.group(1))
+
+# Battle art kind per id: the explicit cases in scr_battle_kind_from_id(); ids it does not name
+# fall through to scr_battle_kind_is_generic(), i.e. their own id, and scr_bestiary_sprite()
+# falls back to the id as well. Both resolve to spr_<kind>_idle*.
+kind_src = sprite_src[sprite_src.index('function scr_battle_kind_from_id'):]
+kind_src = kind_src[:kind_src.index('default:')]
+kind_of, pending = {}, []
+for tok in re.finditer(r'case "([a-z0-9_]+)":|return "([a-z0-9_]*)";|return _actor_id;', kind_src):
+    if tok.group(1):
+        pending.append(tok.group(1))
+    else:
+        target = tok.group(2) if tok.group(2) is not None else None
+        for p in pending:
+            kind_of[p] = target if target is not None else p
+        pending = []
+IDLE_CANDIDATES = ('idle_strip4', 'idle_strip8', 'idle_strip6', 'idle_strip2', 'idle_p2_strip8', 'idle')
+alias_at = bestiary_src.index('function scr_bestiary_alias')
+alias_src = bestiary_src[alias_at:bestiary_src.index('function ', alias_at + 10)]
+aliases = dict(re.findall(r'case\s+"([a-z0-9_]+)"\s*:\s*return\s+"([a-z0-9_]+)"\s*;', alias_src))
+aliases.update(dict(re.findall(r'==\s*"([a-z0-9_]+)"\s*\)\s*\?\s*"([a-z0-9_]+)"', alias_src)))
+
+name_owner, art_ok = {}, 0
+for eid in bestiary_ids:
+    if eid not in enemy_ids:
+        errors.append(f"bestiary: '{eid}' is listed but scr_get_enemy_data() has no such enemy")
+        continue
+    nm = enemy_names.get(eid)
+    if nm is None:
+        errors.append(f"bestiary: '{eid}' has no display name in scr_enemy_database.gml")
+    else:
+        name_owner.setdefault(nm, []).append(eid)
+    if eid in aliases:
+        errors.append(f"bestiary: '{eid}' is aliased to '{aliases[eid]}' and must not be a row of its own")
+    kind = kind_of.get(eid, eid)
+    if any(f"spr_{kind}_{c}" in sprites for c in IDLE_CANDIDATES):
+        art_ok += 1
+    else:
+        errors.append(f"bestiary: '{eid}' resolves to no battle sprite (looked for spr_{kind}_idle*)")
+for nm, owners in name_owner.items():
+    if len(owners) > 1:
+        errors.append(f"bestiary: display name '{nm}' is shared by {owners}")
+for alias_id, target in aliases.items():
+    if target not in enemy_ids:
+        errors.append(f"bestiary: alias '{alias_id}' points at unknown '{target}'")
+print(f"bestiary: {len(bestiary_ids)} entries, {len(name_owner)} distinct names, "
+      f"{art_ok} with art, {len(aliases)} aliased")
+
+# encounters: every group and table entry names a real enemy, and boss groups lead with a boss
+encounter_src = read_script('scr_encounter_tables.gml')
+table_src = encounter_src[encounter_src.index('function scr_get_encounter_table'):
+                          encounter_src.index('function scr_encounter_table_level_band')]
+group_src = encounter_src[encounter_src.index('function scr_get_encounter_group'):]
+
+# Boss ids: the "boss" role in scr_enemy_scaled(), plus any literal entry carrying is_boss: true.
+boss_ids = set(re.findall(r'scr_enemy_scaled\(\s*"([a-z0-9_]+)"\s*,\s*"[^"]*"\s*,\s*"[^"]*"\s*,\s*"boss"', data_src))
+lit_ids = [(m.start(), m.group(1)) for m in re.finditer(r'id:\s*"([a-z0-9_]+)"', data_src)]
+for i, (start, eid) in enumerate(lit_ids):
+    end = lit_ids[i + 1][0] if i + 1 < len(lit_ids) else len(data_src)
+    if re.search(r'is_boss:\s*true', data_src[start:end]):
+        boss_ids.add(eid)
+
+def encounter_ids(block):
+    """Enemy ids a table entry or group body mentions."""
+    out = []
+    out += re.findall(r'enemy_id:\s*"([a-z0-9_]+)"', block)
+    for grp in re.findall(r'group:\s*\[([^\]]*)\]', block):
+        out += re.findall(r'"([a-z0-9_]+)"', grp)
+    for lst in re.findall(r'(?:adds|enemies):\s*\[([^\]]*)\]', block):
+        out += re.findall(r'"([a-z0-9_]+)"', lst)
+    out += re.findall(r'array_push\(\s*_adds\s*,\s*"([a-z0-9_]+)"\)', block)
+    return out
+
+# Random tables: enemy_id / group / group_id entries, per table id (aliased case labels share one).
+def labels_before(src, pos):
+    """The case labels that share the return at `pos` (comments and blank lines allowed)."""
+    start = max(src.rfind('return', 0, pos), src.rfind('function', 0, pos)) + 1
+    return re.findall(r'case\s+"([a-z0-9_]+)"', src[start:pos])
+
+tables, table_blocks, table_refs, group_refs = {}, [], 0, set()
+for m in re.finditer(r'return\s*\[(.*?)\];', table_src, re.S):
+    labels = labels_before(table_src, m.start())
+    body = m.group(1)
+    if not labels:
+        continue
+    ids = encounter_ids(body)
+    group_refs |= set(re.findall(r'group_id:\s*"([a-z0-9_]+)"', body))
+    for tid in labels:
+        tables[tid] = ids
+    table_blocks.append((labels, ids))
+    table_refs += len(ids)
+    for eid in ids:
+        if eid not in enemy_ids:
+            errors.append(f"encounter table '{labels[0]}' references unknown enemy '{eid}'")
+        elif eid in boss_ids:
+            errors.append(f"encounter table '{labels[0]}' rolls boss '{eid}' as a regular encounter")
+
+# Named groups: boss slot must be a boss, adds must be regular enemies, ids must exist.
+groups, group_count = {}, 0
+for m in re.finditer(r'return\s*\{(.*?)\};', group_src, re.S):
+    labels = [g for g in labels_before(group_src, m.start()) if g.startswith('grp_')]
+    body = m.group(1)
+    if not labels:
+        continue
+    boss = re.search(r'boss:\s*"([a-z0-9_]+)"', body)
+    boss_id = boss.group(1) if boss else None
+    for gid in labels:
+        groups[gid] = boss_id
+    group_count += 1
+    for eid in encounter_ids(body):
+        if eid not in enemy_ids:
+            errors.append(f"encounter group '{labels[0]}' references unknown enemy '{eid}'")
+    if boss_id is not None:
+        if boss_id not in enemy_ids:
+            errors.append(f"encounter group '{labels[0]}' boss '{boss_id}' is not in scr_get_enemy_data()")
+        elif boss_id not in boss_ids:
+            errors.append(f"encounter group '{labels[0]}' puts '{boss_id}' in the boss slot but it is not a boss")
+        for eid in encounter_ids(body):
+            if eid in boss_ids:
+                errors.append(f"encounter group '{labels[0]}' adds boss '{eid}' as a regular add")
+
+for gid in sorted(group_refs):
+    if gid not in groups:
+        errors.append(f"encounter table references unknown group '{gid}'")
+print(f"encounters: {len(tables)} tables, {group_count} groups, {table_refs} table refs, "
+      f"{len([g for g, b in groups.items() if b])} boss groups")
+
+# Level bands: an enemy rolling in a table should sit inside the band that table declares.
+band_src = encounter_src[encounter_src.index('function scr_encounter_table_level_band'):
+                         encounter_src.index('function scr_get_encounter_group')]
+bands = {}
+for m in re.finditer(r'return\s*\{\s*min:\s*(\d+)\s*,\s*max:\s*(\d+)\s*\}', band_src):
+    for tid in labels_before(band_src, m.start()):
+        bands[tid] = (int(m.group(1)), int(m.group(2)))
+
+# Enemy levels: the level argument of scr_enemy_scaled(), and `level:` in the literal entries.
+enemy_level = dict((eid, int(lvl)) for eid, lvl in
+                   re.findall(r'scr_enemy_scaled\(\s*"([a-z0-9_]+)"\s*,\s*"[^"]*"\s*,\s*"[^"]*"'
+                              r'\s*,\s*"[a-z]+"\s*,\s*(\d+)', data_src))
+for i, (start, eid) in enumerate(lit_ids):
+    end = lit_ids[i + 1][0] if i + 1 < len(lit_ids) else len(data_src)
+    lvl = re.search(r'level:\s*(\d+)', data_src[start:end])
+    if lvl:
+        enemy_level.setdefault(eid, int(lvl.group(1)))
+
+out_of_band = 0
+for labels, ids in table_blocks:
+    band = bands.get(labels[0])
+    if band is None:
+        warns.append(f"encounter table '{labels[0]}' declares no level band")
+        continue
+    if band[0] > band[1]:
+        errors.append(f"encounter table '{labels[0]}' has an inverted band {band[0]}-{band[1]}")
+    missing = sorted({eid for eid in ids if eid not in enemy_level})
+    for eid in missing:
+        errors.append(f"encounter table '{labels[0]}' uses '{eid}', whose level is unknown")
+    bad = sorted({(eid, enemy_level[eid]) for eid in ids
+                  if eid in enemy_level and not band[0] <= enemy_level[eid] <= band[1]})
+    if bad:
+        out_of_band += 1
+        alias = f" (also '{', '.join(labels[1:])}')" if len(labels) > 1 else ""
+        listing = ", ".join(f"{eid} L{lvl}" for eid, lvl in bad)
+        warns.append(f"encounter table '{labels[0]}'{alias} band {band[0]}-{band[1]} rolls "
+                     f"out-of-band enemies: {listing}")
+for tid in sorted(set(bands) - set(tables)):
+    errors.append(f"level band declared for '{tid}', which is not an encounter table")
+print(f"levels: {len(table_blocks)} tables checked against their bands, {out_of_band} out of band")
+
+if warns:
+    print(f"WARNINGS ({len(warns)}):")
+    for w in warns:
+        print(" -", w)
 print("ERRORS:" if errors else "ALL CHECKS PASSED")
 for e in errors: print(" -", e)
 sys.exit(1 if errors else 0)

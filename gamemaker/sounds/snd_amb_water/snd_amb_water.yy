@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"snd_amb_water",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":9.6,
+  "name":"snd_amb_water",
+  "parent":{
+    "name":"sounds",
+    "path":"folders/sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":22050,
+  "soundFile":"snd_amb_water.wav",
+  "type":0,
+  "volume":1.0,
+}
