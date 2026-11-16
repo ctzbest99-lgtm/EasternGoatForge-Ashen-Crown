@@ -331,10 +331,14 @@ function scr_blackguard_anim_label(_anim) {
     }
 }
 
+/// Phase narration from CHAPTER1_SCRIPT.md §8 (BG_PHASE2_01 / BG_PHASE3_01) rather than a
+/// second, drifting copy of the text.
 function scr_blackguard_phase_line(_to) {
-    if (_to == 2) return "The Blackguard's helmet cracks. Ash pours from the armour!";
-    if (_to == 3) return "The Blackguard is engulfed in Ash!";
-    return "";
+    var _n = scr_dialogue_node((_to == 2) ? "BG_PHASE2_01" : ((_to == 3) ? "BG_PHASE3_01" : ""));
+    if (!is_struct(_n) || !is_array(_n.lines) || array_length(_n.lines) <= 0) return "";
+    var _s = "";
+    for (var _i = 0; _i < array_length(_n.lines); _i++) _s += ((_i > 0) ? " " : "") + _n.lines[_i];
+    return _s;
 }
 
 

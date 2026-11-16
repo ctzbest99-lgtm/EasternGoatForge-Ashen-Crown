@@ -19,14 +19,69 @@ function scr_ashbound_begin_battle() {
     scr_encounter_start("ashbound_hunter", _id, "ENC_ASHBOUND_HUNTER");
 }
 
-/// Tutorial aftermath (CHAPTER1_SCRIPT.md §2.1). Victory in the guaranteed first
-/// Bandit fight switches random encounters on (flag_tutorial_done) and plays the
-/// post-battle lines FL_TUTORIAL_04-05 back on the map. Called from scr_battle_finish.
+/// Tutorial aftermath (CHAPTER1_SCRIPT.md §2.1) and the Hunter's Camp hunt counter.
+/// Victory in the guaranteed first Bandit fight switches random encounters on
+/// (flag_tutorial_done) and plays the post-battle lines FL_TUTORIAL_04-05 back on the map.
+/// Called from scr_battle_finish.
 function scr_ch1_on_battle_finish(_result, _pending) {
     if (!is_struct(_pending) || _result != "victory") return;
+    scr_ch1_renn_count_wolves(_pending);
     if (!variable_struct_exists(_pending, "encounter_id") || _pending.encounter_id != "zone01_first_bandit") return;
     scr_flag_set("flag_tutorial_done");
     global.game.pending_post_dialogue = ["FL_TUTORIAL_04", "FL_TUTORIAL_05"];
+}
+
+/// Q_SIDE_RENN stage 1: every Ash Wolf killed while the hunt is open counts, five close it.
+/// Uses the battle's resolved enemy list, so a pack of three counts as three.
+function scr_ch1_renn_count_wolves(_pending) {
+    if (scr_flag_get("quest_Q_SIDE_RENN") != "Q_SR_S1") return;
+    var _ids = variable_struct_exists(_pending, "enemy_ids") ? _pending.enemy_ids : [_pending.enemy_id];
+    var _kills = 0;
+    for (var _i = 0; _i < array_length(_ids); _i++) {
+        if (_ids[_i] == "ash_wolf") _kills++;
+    }
+    if (_kills <= 0) return;
+    var _n = scr_flag_get("renn_wolves");
+    if (!is_numeric(_n)) _n = 0;
+    _n += _kills;
+    scr_flag_set("renn_wolves", _n);
+    if (_n >= 5) scr_flag_set("quest_Q_SIDE_RENN", "Q_SR_S2");
+}
+
+/// CHAPTER1_SCRIPT.md §2.2 — Old Hunter Renn at the Hunter's Camp.
+/// First talk offers Q_SIDE_RENN; five Ash Wolves finish stage 1; turning in at stage 2
+/// grants the Hunter's Charm and sets flag_renn_done.
+function scr_ch1_renn_talk() {
+    var _q = scr_flag_get("quest_Q_SIDE_RENN");
+    if (!is_string(_q)) _q = "";
+    if (scr_flag_get("flag_renn_done") || _q == "complete") {
+        scr_dialogue_play(["HC_RENN_11"]);
+        return;
+    }
+    if (_q == "Q_SR_S2") {
+        scr_dialogue_play(["HC_RENN_08", "HC_RENN_09", "HC_RENN_10", "HC_RENN_11"], function() {
+            scr_inventory_add("item_hunters_charm", "Hunter's Charm", 1, false);
+            scr_flag_set("quest_Q_SIDE_RENN", "complete");
+            scr_flag_set("flag_renn_done", true);
+        });
+        return;
+    }
+    if (_q == "Q_SR_S1") {
+        scr_dialogue_play(["HC_RENN_07"]);
+        return;
+    }
+    scr_dialogue_play(["HC_RENN_01", "HC_RENN_02", "HC_RENN_03", "HC_RENN_04"], function() {
+        var _ask = scr_dialogue_node("HC_RENN_05");
+        scr_dialogue_choice(_ask.lines, _ask.speaker, ["Yes.", "No."], function(_idx) {
+            if (_idx == 0) {
+                scr_flag_set("quest_Q_SIDE_RENN", "Q_SR_S1");
+                scr_flag_set("renn_wolves", 0);
+                scr_dialogue_play(["HC_RENN_06_YES"]);
+            } else {
+                scr_dialogue_play(["HC_RENN_06_NO"]);
+            }
+        });
+    });
 }
 
 /// Called from scr_battle_finish. On a Hunter victory, grant the parchment the

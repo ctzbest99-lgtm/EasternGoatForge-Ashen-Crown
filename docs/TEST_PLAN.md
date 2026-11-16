@@ -391,6 +391,25 @@ Setup: a save from the end of Chapter 6 (`chapter6_complete`, `ch6_hulk_defeated
 - [ ] I12 **Quests.** The journal lists *The King Who Was Forgotten* at S3→S4 with S5–S6 visible in the definition (the journal shows the current stage only), and no other quest changes.
 - Not covered: the Warden reuses `sanctuary_warden`'s strips, Alden is a placeholder sprite, the gatehouse is a Wrenfield blockout, and nothing has been compiled or played. I5–I7 (the y-threshold gate, the shift and the retry) are the behaviours most likely to need a real IDE pass.
 
+### Chapter 11 — The Forgotten King (Act IV)
+
+- [ ] J1 **The halls.** The steps from `rm_barrow_gate` enter `rm_barrow_halls` at `from_gate`; BH_ARRIVE_01–10 play once, `ch11_entered` and `Q_MC_S5` are set, and the road back up returns to the gatehouse at `from_halls`.
+- [ ] J2 **The erasure.** The struck-name niche plays BH_NAMES_01–03 once, then `BH_NAMES_R1`, and sets `ch11_names_seen`. The same hand crossing out every name is the point of the scene.
+- [ ] J3 **The offerings.** The grave-goods niche plays BH_NICHE_01–03 once, then `BH_NICHE_R1`.
+- [ ] J4 **The last chamber.** `rm_barrow_deep` is entered at `from_halls`; FD_ARRIVE_01–08 play once and set `fd_entered`.
+- [ ] J5 **The charter is required.** Walking to the dais without reading the lectern does nothing. Reading it plays BK_CHARTER_01–14, sets `ch11_charter_read`, and the line "The mark of the Crownveil" appears as a name with no explanation.
+- [ ] J6 **The King wakes.** The charter's last line plays the waking immediately, then FK_INTRO_01–06 and `grp_forgotten_king` (`forgotten_king`, level 23, 1714 HP, solo) with boss music and the boss bar.
+- [ ] J7 **Two phases.** At 60% HP the King shifts: ATK and SPD +20%, phase line "The oath breaks. Something underneath it does not." No third mechanical phase appears.
+- [ ] J8 **Defeat retry.** Losing sets `ch11_boss_cool`; walking back south of y > 224 re-arms and the next approach plays `FK_RETRY_01` + FK_INTRO_03–06.
+- [ ] J9 **Victory.** FK_AFTER_01–11 play, `ch11_king_defeated` and `Q_MC_S6` are set, and the body stays on the dais.
+- [ ] J10 **The seal choice.** Once the aftermath's queued lines finish, SL_CHOICE_01–05 lead to a two-option choice. There is no third option and no stated consequence.
+- [ ] J11 **Alden carries it.** Choosing "Let Alden carry it." plays SL_ALDEN_01–06 and sets `ch11_seal_alden`; nothing frames him as a traitor, and Taren's only response is the ellipsis and the walk back.
+- [ ] J12 **The party keeps it.** Choosing "No. It stays with us." plays SL_PARTY_01–05 and sets `ch11_seal_party`.
+- [ ] J13 **The act card.** Either branch plays ACT4_END_01–06, completes `Q_MAIN_CROWN`, and sets `chapter11_complete` and `flag_act4_complete`.
+- [ ] J14 **Re-entry.** A save that leaves and re-enters the last chamber after the fight still gets the seal choice exactly once; after it, nothing replays.
+- [ ] J15 **What must not happen.** The King never speaks in sentences, never names Mira, the Fallen Knight or Alden; the Fallen Knight never appears; the mark is given the name *the Crownveil* and never defined, and *the Ashen Crown* is not used for it.
+- Not covered: both rooms are Wrenfield blockouts, the King reuses `sanctuary_warden`'s strips, and the placeholder standing in for him on the dais is `spr_story_npc_placeholder`. Nothing has been compiled or played. J6–J10 (the charter gate, the shift, the queued aftermath and the choice race guard) are the behaviours most likely to need a real IDE pass.
+
 Record GameMaker version, date, result, and reproducible failures.
 
 ## Systems pass (combat tutorial, Cheap Shot, Last Stand, battle poison)
@@ -458,3 +477,13 @@ Setup: fresh save, overworld. `DEBUG_ADD_FULL_ROSTER` on if the party rows shoul
 - [ ] C3 Lyra's portrait appears in dialogue with neutral / determined / pained expressions and is not the old flat placeholder.
 - [ ] C4 Turn `DEBUG_SHOW_TRIGGERS` on and walk the maps: the ten marker sprites are distinguishable at a glance — brick hatch (solid), chest (interactable), hooded villager (story NPC), rune (respawn), crossed swords (encounter trigger), dashed zone (encounter zone), pennant (story trigger), skull (story encounter), spike plate (trap).
 - [ ] C5 With `DEBUG_SHOW_TRIGGERS` off, none of the marker art is visible in normal play, and the Kael sprite still loads (the 16×24 `spr_player_placeholder` is only a fallback).
+
+## Chapter-wide audit fixes (untested in GameMaker)
+- [ ] K1 `python3 tools/audit_chapters.py` prints "No wiring problems found." and exits 0; delete a node from a data file and confirm it reports the missing id and exits 1.
+- [ ] K2 Walk the Hunter's Camp and talk to Renn: he has a sprite and speaker name, first talk plays `HC_RENN_01`–`04`, and the prompt offers Yes/No.
+- [ ] K3 Accept the hunt: `Q_SIDE_RENN` appears in the journal at "Kill five Ash Wolves". Kill one wolf — the journal stays, and Renn's repeat line is `HC_RENN_07`.
+- [ ] K4 Kill five Ash Wolves (any mix of packs; a three-wolf pack counts three), then return: stage 2 shows, Renn plays `HC_RENN_08`–`11`, Hunter's Charm lands in the inventory, and the quest reads complete. Talk again for `HC_RENN_11` only.
+- [ ] K5 Decline the hunt: `HC_RENN_06_NO` plays, no quest appears, and talking again re-offers it.
+- [ ] K6 `rm_valemere_road` → Wrenfield: the player arrives at the west road mouth facing right, not on the town spawn.
+- [ ] K7 Walk into Len's store and Marda's store: the fire ambience starts on entry and stops on exit, like the Bent Post.
+- [ ] K8 Blackguard fight: at 60% and 20% HP the shift message reads "His helmet cracks. Ash pours from the seams of his armor." and "The armor is swallowed in Ash. What's inside no longer moves like a man."

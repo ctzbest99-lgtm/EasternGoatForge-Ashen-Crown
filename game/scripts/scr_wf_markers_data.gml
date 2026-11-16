@@ -24,6 +24,7 @@ function scr_millhaven_road_markers() {
 function scr_wrenfield_markers() {
     return [
         { type: "player_spawn", name: "from_millhaven_road", tile_x: 12, tile_y: 1, x: 200, y: 32, facing: "down", note: "Arrive from rm_millhaven_road (south exit)." },
+        { type: "player_spawn", name: "from_valemere_road", tile_x: 2, tile_y: 27, x: 40, y: 448, facing: "right", note: "Arrive from rm_valemere_road at the west road mouth (west_road_to_valemere is tile 0,27)." },
         { type: "zone_exit", name: "to_millhaven_road", tile_x: 11, tile_y: 0, x: 184, y: 16, target_room: "rm_millhaven_road", target_spawn: "from_wrenfield", w: 3, h: 1 },
         { type: "story", name: "wf_enter", tile_x: 12, tile_y: 2, x: 200, y: 48, trigger: "on_enter_once", story_flag: "flag_wrenfield_entered", rect_px: [160, 16, 240, 48], note: "Sets flag_wrenfield_entered on first entry (no line)." },
         { type: "story", name: "wf_gate", tile_x: 12, tile_y: 5, x: 200, y: 96, trigger: "on_enter_once", script_id: "WF_GATE_01", script_chain: ["WF_GATE_01", "WF_GATE_02", "WF_GATE_03"], story_flag: "flag_wf_gate_seen", rect_px: [160, 80, 240, 96], speaker_npc: "crown_sergeant_gate", hide_if_flag: "flag_execution_stopped", note: "The sergeant stops Kael at the checkpoint gap the first time through." },

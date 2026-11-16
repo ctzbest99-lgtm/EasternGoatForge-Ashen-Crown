@@ -2,7 +2,7 @@
 
 Measured 2026-11-16. Source art lives under `game/sprites/`, `game/audio/` and `game/tilesets/`; the GameMaker resources under `gamemaker/` are generated from it. Import settings (asset name, frames, origin, mask, fps) are in `game/sprites/IMPORT.md` and `game/sprites/README.md`.
 
-**Totals:** 843 sprite resources and 29 sound resources in `gamemaker/`, 29 rooms, 2 tilesets, 85 scripts. **Nothing here has been compiled or playtested in GameMaker.** All assets are the property of Eastern Goat Forge (see LICENSE).
+**Totals:** 843 sprite resources and 29 sound resources in `gamemaker/`, 31 rooms, 2 tilesets, 90 scripts. **Nothing here has been compiled or playtested in GameMaker.** All assets are the property of Eastern Goat Forge (see LICENSE).
 
 ## Characters
 
@@ -72,4 +72,4 @@ Measured 2026-11-16. Source art lives under `game/sprites/`, `game/audio/` and `
 - No Guard battle pose; no left-facing battle strips (the party is flipped with `image_xscale`).
 - Status icon strip has no frames for blind or sleep (they show as "Bl" / "Sl" text).
 - Kael's hurt clip is 3 frames (Bandit 4, Fallen Knight 6), and the battle vs overworld naming mismatch (`spr_hero_*` / `spr_kael_ow*`) still stands.
-- Chapters 3–10 rooms use Wrenfield tiles as blockouts — every Act III room among them; only two tilesets exist. The Aethari doors and the shrine's stone face are three stone tiles each.
+- Chapters 3–11 rooms use Wrenfield tiles as blockouts — every Act III room among them; only two tilesets exist. The Aethari doors and the shrine's stone face are three stone tiles each.
