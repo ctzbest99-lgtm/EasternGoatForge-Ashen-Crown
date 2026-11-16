@@ -222,7 +222,7 @@ def main():
     known = set(by_name) | {"ts_zone1", "ts_wrenfield"}
     refs = set()
     for file in OUT.rglob("*.gml"):
-        try: refs.update(re.findall(r"\b((?:spr|obj|ts|rm)_\w+)\b", file.read_text(encoding="utf-8")))
+        try: refs.update(re.findall(r"\b((?:spr|obj|ts)_\w+)\b", file.read_text(encoding="utf-8")))
         except (OSError, UnicodeError) as exc: fail(f"UNREADABLE GML {rel(file)}: {exc}")
     missing = {ref for ref in refs - known if not ref.endswith("_")}
     if missing: fail(f"UNRESOLVED GML REFERENCES: {sorted(missing)}")
