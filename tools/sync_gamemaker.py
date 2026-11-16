@@ -28,15 +28,26 @@ def normalize_json(data: bytes) -> bytes:
     def visit(item):
         if isinstance(item, str):
             item = UUID_RE.sub("<generated-uuid>", item)
+            if re.fullmatch(r"inst_[A-Za-z0-9_]+", item):
+                return "<generated-instance>"
             return INSTANCE_RE.sub("<generated-instance>", item)
         if isinstance(item, list):
             return [visit(child) for child in item]
         if isinstance(item, dict):
-            return {key: visit(child) for key, child in item.items()}
+            normalized = {}
+            for key, child in item.items():
+                # GameMaker has emitted both spellings for the same DnD flag.
+                canonical_key = "isDnD" if key in {"isDnD", "isDnd"} else key
+                normalized[canonical_key] = visit(child)
+            # These arrays are IDE resource listings, not runtime room order.
+            if isinstance(normalized.get("resources"), list):
+                normalized["resources"].sort(key=lambda entry: entry.get("id", {}).get("name", ""))
+            if isinstance(normalized.get("ResourceOrderSettings"), list):
+                normalized["ResourceOrderSettings"].sort(key=lambda entry: entry.get("name", ""))
+            return normalized
         return item
 
     return json.dumps(visit(value), sort_keys=True, separators=(",", ":")).encode("utf-8")
-
 
 def inventory(root: Path) -> dict[str, tuple[Path, bytes]]:
     """Build a stable inventory that ignores generator-only random identifiers."""
