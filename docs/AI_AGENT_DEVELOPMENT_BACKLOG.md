@@ -238,9 +238,12 @@ Acceptance:
 ## Known repository follow-ups
 
 - `prompts/CODEX_MASTER_PROMPT.md`, `docs/GAME_DESIGN_DOCUMENT.md`, and `docs/DEVELOPMENT_ROADMAP.md` have been updated to point agents to this backlog and reflect current build state.
-- `docs/ASSET_INVENTORY.md` still needs a detailed reconciliation against the latest sprite import table.
+- `docs/ASSET_INVENTORY.md` needs reconciliation against the current assets: it reports the Zone 1 tileset as 256×608 although `game/tilesets/README.md` and the generated sprite metadata say 256×800; it lists UI panels/cursor as planned although 54 `spr_ui_*` resources are present. Verify each row against the actual import table before changing status.
+- `game/README.md` is still titled “GameMaker Starter Code” and labels its resource inventory Chapters 1–3, while the repository contains 57 scripts and Chapter 4 source/project content. `gamemaker/README.md` says 56 scripts; update both counts/scope.
+- `gamemaker/README.md` says pixel interpolation is unchecked on every platform, but the current platform option files set `option_*_interpolate_pixels` to `true`. Decide the intended pixel-art setting and make the project options and documentation agree.
+- Battle-presentation documentation is inconsistent: `docs/story/STORY_BIBLE.md` still calls it open and `docs/DECISIONS_AND_OPEN_QUESTIONS.md` records the dedicated-room prototype assumption. The owner-approved direction from prior planning is hybrid presentation varying by encounter; reconcile the decision log, GDD, story bible and implementation without changing battle behavior silently.
 - The README is the current project snapshot; keep its status synchronized when build/content state changes.
-- `docs/STORY_BIBLE.md` was not found at the repository path checked during the audit. Locate the actual canonical story source or restore a clearly named story bible; do not create a replacement by guessing.
+- The Story Bible exists at `docs/story/STORY_BIBLE.md`. Its header cites `MASTER_GDD.txt` as its source, but `MASTER_GDD.txt` is not present in the repository tree. Restore that source document or revise the provenance note to identify the current canonical sources; do not invent missing source material.
 - The old open PR #1 contains a debug-menu change and may reference outdated objects. Review its diff against current source before deciding whether to close, update, or merge it.
 - The old generic Windows branding values noted in the audit should be replaced before release packaging.
 - Pixel interpolation settings must be checked against the actual GameMaker options and README; the current project README says interpolation is disabled. Keep generated project options consistent.
