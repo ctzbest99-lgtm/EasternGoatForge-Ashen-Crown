@@ -5,6 +5,11 @@ if (keyboard_check_pressed(vk_f10)) {
     keyboard_string = "";
 }
 if (!visible_debug) exit;
+/// Battle prototype trigger: B starts a Bandit fight through the overlay controller.
+if (keyboard_check_pressed(ord("B"))) {
+    message = (scr_battle_start("bandit") == noone) ? "battle not started: controller missing or already active" : "battle started: bandit";
+    exit;
+}
 if (keyboard_check_pressed(vk_tab)) {
     debug_mode = 1 - debug_mode;
     keyboard_string = "";

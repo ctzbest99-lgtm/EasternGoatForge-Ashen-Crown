@@ -5,6 +5,15 @@ function scr_get_enemy_ids() {
     return ["bandit", "fallen_knight"];
 }
 
+/// @desc Sprite asset name for an enemy, or "" when there is no sheet (asset_get_index then gives -1).
+function scr_enemy_sprite_name(_enemy_id) {
+    switch (_enemy_id) {
+        case "bandit": return "spr_bandit_walk";
+        case "fallen_knight": return "spr_fallen_knight_walk";
+    }
+    return "";
+}
+
 function scr_get_enemy_data(_enemy_id) {
     switch (_enemy_id) {
         case "bandit":

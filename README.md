@@ -23,5 +23,7 @@ A dark medieval fantasy RPG by Eastern Goat Forge, built with GameMaker and GML.
 - docs/: design, story, combat, Zone 1, art, asset inventory, roadmap, tests.
 - prompts/: Codex implementation prompts.
 - game/: illustrative GML snippets and setup notes.
+- assets/characters/: generated placeholder walk sheets (see its README).
+- tools/: the sprite generator script.
 
-No license is selected; see LICENSE-PLACEHOLDER.md. No original art/audio or complete GameMaker project is included.
+No license is selected; see LICENSE-PLACEHOLDER.md. No original audio or complete GameMaker project is included. Character sprites in assets/characters/ are code-generated placeholders for testing, not final art.

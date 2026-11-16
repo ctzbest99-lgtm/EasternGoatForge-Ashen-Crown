@@ -45,14 +45,8 @@ function scr_debug_spawn_enemy(_enemy_id, _x, _y) {
     if (is_undefined(_data)) return "unknown enemy id: " + string(_enemy_id);
     var _obj = asset_get_index("obj_enemy");
     if (_obj < 0) return "obj_enemy is not in this project — create it to spawn enemies";
-    var _inst = instance_create_depth(_x, _y, 0, _obj);
-    /// obj_enemy's Create runs before this line, so seed the fields combat reads directly.
-    _inst.enemy_id = _enemy_id;
-    _inst.enemy_data = _data;
-    _inst.max_hp = _data.max_hp;
-    _inst.hp = _data.max_hp;
-    _inst.attack = _data.attack;
-    _inst.defense = _data.defense;
+    /// The struct is applied before Create runs, so obj_enemy sets up its own stats and sprite.
+    instance_create_depth(_x, _y, 0, _obj, { enemy_id: _enemy_id });
     return "spawned " + _data.name + " at " + string(_x) + "," + string(_y);
 }
 

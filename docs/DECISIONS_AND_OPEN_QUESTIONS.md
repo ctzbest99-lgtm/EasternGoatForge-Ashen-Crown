@@ -9,6 +9,7 @@
 - Zone 1 standard enemies: Bandit and Fallen Knight.
 - No automatic enemy level scaling by default.
 - Planned menu: equipment, party order, items, save/load, status, Bestiary.
+- Battle prototype runs as an overlay in the current room rather than a room transition, so the overworld position and encounter locks survive without save/restore. Revisit if the final presentation needs a dedicated battle screen.
 
 ## Still undecided
 GameMaker version; room resolution and tile size; input mapping; battle room versus overlay; exact backstory; party members/classes; rare encounter and boss identity/mechanics; save schema; license/proprietary status. Treat these as open questions, not approved requirements.
