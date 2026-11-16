@@ -637,11 +637,89 @@ def template_table():
             print(f"| {L} | {role}{' (party 4)' if role == 'boss' else ''} | {e['hp']} / {e['atk']} / {e['df']} | "
                   f"{math.ceil(e['hp'] / dmg(k['atk'], e['df']))} | {dmg(e['atk'], k['df'])} of {k['max_hp']} HP |")
 
+# ---- Act IV: The Forgotten King (docs/story/ACT4_OUTLINE.md §7; decisions approved 2026-11-16) --
+# scr_enemy_scaled bases: level 21 = 152 / 49 / 35 / MDEF 18, 22 = 161 / 52 / 37 / 19,
+# 23 = 170 / 55 / 39 / 20. The values below are the shipped stats after hp_mult / def_add.
+# The party wears Chapter 5 gear: there is still no Act IV equipment tier.
+E.update({
+ "crown_guard_elite": dict(hp=152, atk=49, df=37, mdef=18, spd=9,
+                           ai=[("attack", 2), ("slash", 1), ("guard", 1)]),
+ "barrow_husk":       dict(hp=175, atk=49, df=35, mdef=18, spd=6, weak="holy", ai=[("attack", 1)]),
+ "oath_iron":         dict(hp=193, atk=52, df=41, mdef=19, spd=5, weak="lightning", ai=[("attack", 1)]),
+ "grave_moth":        dict(hp=129, atk=52, df=37, mdef=19, spd=14, weak="fire",
+                          ai=[("attack", 2), ("blind", 1), ("sleep", 1)]),
+ "magistrate_vell":   dict(hp=1022, atk=52, df=38, mdef=18, spd=11, boss=True, yields=True,
+                           ai=[("attack", 2), ("heavy", 2), ("guard", 1)]),
+ "barrow_warden":     dict(hp=1701, atk=59, df=42, mdef=19, spd=8, weak="lightning", boss=True,
+                           ai=[("attack", 2), ("heavy", 1)],
+                           phase_ai={2: [("attack", 1), ("heavy", 1)]}, phase2_at=0.5, phase2_atk=0.15),
+ "forgotten_king":    dict(hp=1714, atk=61, df=45, mdef=20, spd=7, boss=True,
+                           ai=[("attack", 2), ("heavy", 1)],
+                           phase_ai={2: [("attack", 1), ("heavy", 2)]}, phase2_at=0.6, phase2_atk=0.20),
+})
+
+def act4_tables():
+    """Act IV (Chapters 9-11, the Crown heartland and the barrow). PROPOSED numbers, §7."""
+    random.seed(47)
+    WITH_CAELAN = ["kael", "taren", "lyra", "caelan"]
+    WITH_SERA = ["kael", "taren", "lyra", "sera"]
+    BAND = [
+        ("Town: Guard Elite + Barrow Husk", ["crown_guard_elite", "barrow_husk"]),
+        ("Town: 2 Guard Elites + Oath Iron", ["crown_guard_elite", "crown_guard_elite", "oath_iron"]),
+        ("Barrow: 2 Husks + Grave Moth", ["barrow_husk", "barrow_husk", "grave_moth"]),
+        ("Barrow: Oath Iron + Barrow Husk", ["oath_iron", "barrow_husk"]),
+    ]
+    BOSSES = [
+        ("Ch 9: Vell + 2 Guard Elites", ["magistrate_vell", "crown_guard_elite", "crown_guard_elite"]),
+        ("Ch 10: Barrow Warden", ["barrow_warden"]),
+        ("Ch 11: the Forgotten King", ["forgotten_king"]),
+    ]
+    print()
+    print("**Crown barrow band sanity (Chapter 9, level 21)** — Kael / Taren / Lyra + Caelan or Sera")
+    print()
+    print("| Fight | Party | Win % | Rounds | Party turns | Party HP left |")
+    print("|---|---|---|---|---|---|")
+    for label, eids in BAND:
+        for members in (WITH_CAELAN, WITH_SERA):
+            r = run_ext(label, 21, members, eids, gear=GEAR_LATE, boss_focus=False)
+            print(f"| {r['label']} | {r['members']} | {r['win']*100:.0f}% | {r['rounds']:.1f} | "
+                  f"{r['pturns']:.1f} | {r['hp']*100:.0f}% |")
+    print()
+    print("**Act IV bosses** — the act's own bands (Vell 21, Warden 22, King 23) and the band edge.")
+    print()
+    print("| Fight | Lv | Party | Win % | Rounds | Party turns | Hits on boss | Deaths | Party HP left |")
+    print("|---|---|---|---|---|---|---|---|---|")
+    CHAPTER_LEVEL = {"Ch 9": 21, "Ch 10": 22, "Ch 11": 23}
+    for label, eids in BOSSES:
+        own = CHAPTER_LEVEL[label.split(":")[0]]
+        for L in sorted({own, 23}):
+            for members in (WITH_CAELAN, WITH_SERA):
+                r = run_ext(label, L, members, eids, gear=GEAR_LATE, boss_focus=True)
+                print(f"| {r['label']} | {L} | {r['members']} | {r['win']*100:.0f}% | {r['rounds']:.1f} | "
+                      f"{r['pturns']:.1f} | {r['boss']:.1f} | {r['deaths']:.2f} | {r['hp']*100:.0f}% |")
+    print()
+    print("| Level | Kael ATK/DEF/HP | Taren ATK/DEF/HP | Lyra ATK/DEF/HP | Caelan ATK/DEF/HP | Sera ATK/DEF/HP | Hits to kill Guard Elite (K/T/L) | Warden (K/T/L) | King (K/T/L) |")
+    print("|---|---|---|---|---|---|---|---|---|---|")
+    for L in (21, 22, 23):
+        ms = {m: member(m, L, *GEAR_LATE[m]) for m in ("kael", "taren", "lyra", "caelan", "sera")}
+        def kh(eid, who):
+            e = E[eid]
+            return "/".join(str(math.ceil(e["hp"] / max(1, ms[m]["atk"] - e["df"] // 2))) for m in who)
+        print(f"| {L} | " + " | ".join(f"{ms[m]['atk']} / {ms[m]['df']} / {ms[m]['max_hp']}"
+                                       for m in ("kael", "taren", "lyra", "caelan", "sera"))
+              + f" | {kh('crown_guard_elite', ('kael','taren','lyra'))} | {kh('barrow_warden', ('kael','taren','lyra'))}"
+              + f" | {kh('forgotten_king', ('kael','taren','lyra'))} |")
+    print()
+
 if __name__ == "__main__" and "--templates" in sys.argv:
     template_table()
+
+if __name__ == "__main__" and "--act4" in sys.argv:
+    act4_tables()
 
 if __name__ == "__main__":
     c3_tables()
     ch45_tables()
     ch4_prejoin_table()
     ch6_tables()
+    act4_tables()

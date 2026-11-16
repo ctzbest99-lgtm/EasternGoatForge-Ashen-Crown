@@ -134,6 +134,14 @@ function scr_get_encounter_table(_table_id) {
                 { group: ["night_moth_swarm", "lost_one"], weight: 2 },
                 { group: ["door_warden", "night_moth_swarm"], weight: 1 }
             ];
+        case "crown_barrow": // Act IV (ACT4_OUTLINE.md §7, decisions approved 2026-11-16)
+            return [
+                { group: ["crown_guard_elite", "barrow_husk"], weight: 2 },
+                { group: ["crown_guard_elite", "oath_iron"], weight: 2 },
+                { group: ["barrow_husk", "barrow_husk", "grave_moth"], weight: 2 },
+                { group: ["oath_iron", "barrow_husk"], weight: 1 },
+                { group: ["grave_moth", "grave_moth", "crown_guard_elite"], weight: 1 }
+            ];
     }
     return undefined;
 }
@@ -151,6 +159,7 @@ function scr_encounter_table_level_band(_table_id) {
         case "hollow_sanctuary": return { min: 13, max: 16 };
         case "blackwood_garrison": return { min: 16, max: 18 };
         case "blackwood": return { min: 18, max: 20 };
+        case "crown_barrow": return { min: 21, max: 23 };
     }
     return undefined;
 }
@@ -173,6 +182,10 @@ function scr_get_encounter_group(_group_id) {
         case "grp_debtman": return { boss: "debtman", adds: ["dock_thug", "debt_collector"] };
         case "grp_sanctuary_warden": return { boss: "sanctuary_warden", adds: ["ward_sentinel"] };
         case "grp_commander_hailen": return { boss: "commander_hailen", adds: ["garrison_pikeman"] };
+        // Act IV boss groups (ACT4_OUTLINE.md §7, decisions approved 2026-11-16).
+        case "grp_magistrate_vell": return { boss: "magistrate_vell", adds: ["crown_guard_elite", "crown_guard_elite"] };
+        case "grp_barrow_warden": return { boss: "barrow_warden", adds: [] };
+        case "grp_forgotten_king": return { boss: "forgotten_king", adds: [] };
         case "grp_blackwood_matriarch": return { boss: "blackwood_matriarch", adds: ["shade_stalker"] };
         // Act III bosses (ACT3_OUTLINE.md §7; the numbers come from the balance simulation).
         // One Stalker, not two: with two the act's first boss was harder than its second (89% wins,

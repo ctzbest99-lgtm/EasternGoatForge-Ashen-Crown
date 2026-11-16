@@ -120,6 +120,21 @@ function scr_battle_kind_from_id(_actor_id) {
             return "door_warden";
         case "ward_sentinel_late":
             return "ward_sentinel";
+        // Act IV (The Forgotten King): no new strips yet — each id borrows the closest existing set.
+        case "crown_guard_elite":
+            return "occupation_soldier";
+        case "barrow_husk":
+            return "lost_one";
+        case "oath_iron":
+            return "aethari_automaton";
+        case "grave_moth":
+            return "night_moth_swarm";
+        case "magistrate_vell":
+            return "crown_sergeant";
+        case "barrow_warden":
+            return "sanctuary_warden";
+        case "forgotten_king":
+            return "door_warden";
         default:
             // Batches 7–8 and later: strips are found by name (scr_battle_auto_strip).
             if (scr_battle_kind_is_generic(_actor_id)) return _actor_id;
