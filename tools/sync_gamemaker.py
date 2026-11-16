@@ -43,6 +43,10 @@ def normalize_json(data: bytes) -> bytes:
             if isinstance(normalized.get("resources"), list):
                 normalized["resources"].sort(key=lambda entry: entry.get("id", {}).get("name", ""))
             if isinstance(normalized.get("ResourceOrderSettings"), list):
+                # IDE display order is user preference, not generated game content.
+                for entry in normalized["ResourceOrderSettings"]:
+                    if isinstance(entry, dict):
+                        entry.pop("order", None)
                 normalized["ResourceOrderSettings"].sort(key=lambda entry: entry.get("name", ""))
             return normalized
         return item
