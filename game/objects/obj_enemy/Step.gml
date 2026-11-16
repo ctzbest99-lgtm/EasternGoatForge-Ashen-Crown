@@ -10,6 +10,14 @@ if (_player_obj < 0) {
 /// behind either one.
 if (variable_global_exists("menu_open") && global.menu_open) exit;
 if (variable_global_exists("dialogue_open") && global.dialogue_open) exit;
+if (variable_global_exists("shop_open") && global.shop_open) exit;
+
+/// A boss that has fallen stays fallen: a reloaded save re-creates the room's placed instances, so the
+/// flag is checked every step rather than once at Create, because the save loads after they exist.
+if (enemy_id == RUIN_BOSS_ID && scr_ruin_boss_defeated(scr_flags_ensure_global())) {
+    instance_destroy();
+    exit;
+}
 
 var _touching = place_meeting(x, y, _player_obj);
 var _battle_active = global.battle_active;

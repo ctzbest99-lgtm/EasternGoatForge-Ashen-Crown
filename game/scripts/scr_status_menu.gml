@@ -103,7 +103,8 @@ function scr_status_menu_use_item(_menu, _party, _actor) {
         _menu.message = _data.name + ": " + _result.message + ".";
         return false;
     }
-    _menu.message = _actor.name + " uses " + _data.name + " and recovers " + string(_result.healed) + " HP.";
+    if (scr_item_is_revive(_item_id)) _menu.message = _actor.name + " is revived with " + _data.name + ".";
+    else _menu.message = _actor.name + " uses " + _data.name + " and recovers " + string(_result.healed) + " HP.";
     /// An empty bag leaves no list to show, so drop back to the members but keep the message.
     if (array_length(scr_inventory_usable(_inventory)) == 0) {
         var _kept = _menu.message;

@@ -5,6 +5,10 @@
 if (battle.state == BATTLE_PHASE.VICTORY && !battle.rewarded) {
     if (scr_battle_grant_rewards(battle)) {
         level_ups = scr_party_apply_rewards(scr_party_ensure_global(), battle.rewards);
+        /// A boss win records a story flag, so the slice knows it has been finished and a later save
+        /// keeps it that way. Ordinary encounters return "" and set nothing.
+        var _flag = scr_ruin_victory_flag(enemy_id);
+        if (_flag != "") scr_flags_set(scr_flags_ensure_global(), _flag);
         /// The game controller writes the save once this battle has closed, so rewards are on disk.
         scr_game_request_autosave("victory");
     }
@@ -21,6 +25,13 @@ if (battle.finished) {
         else {
             if (_up) scr_battle_move_item_cursor(battle, -1);
             if (_down) scr_battle_move_item_cursor(battle, 1);
+        }
+    } else if (battle.state == BATTLE_PHASE.SWITCH) {
+        /// Same rule for the member list: ESC returns to the commands and costs nothing.
+        if (keyboard_check_pressed(vk_escape)) scr_battle_close_switch(battle);
+        else {
+            if (_up) scr_battle_move_member_cursor(battle, -1);
+            if (_down) scr_battle_move_member_cursor(battle, 1);
         }
     } else {
         if (_up) scr_battle_move_cursor(battle, -1);

@@ -9,6 +9,11 @@ global.battle_active = false;
 /// The battle fights with a party member by reference, so a mid-battle destroy must not leave it guarding.
 if (battle != undefined && battle.player != undefined) battle.player.guarding = false;
 
+/// A defeat returns the party to the last safe room with the lead revived, instead of leaving them standing
+/// on the fight they lost with 0 HP. No safe room (a test room) leaves them where they are, still able to
+/// move, so there is no softlock either way.
+if (battle != undefined && battle.state == BATTLE_PHASE.DEFEAT) scr_game_defeat_recovery();
+
 /// A trigger that supplied itself as _source_instance disappears on victory, so it cannot be re-entered.
 if (battle != undefined && battle.state == BATTLE_PHASE.VICTORY && source_instance != noone && instance_exists(source_instance)) {
     with (source_instance) instance_destroy();

@@ -8,7 +8,7 @@ if (keyboard_check_pressed(vk_f10)) {
 var _player_obj = asset_get_index("obj_player");
 var _player = (_player_obj >= 0 && instance_number(_player_obj) > 0) ? instance_find(_player_obj, 0) : noone;
 if (keyboard_check_pressed(vk_f5)) {
-    message = "save: " + scr_save_game(_player);
+    message = "save: " + scr_save_game(_player, room_get_name(room));
     exit;
 }
 if (keyboard_check_pressed(vk_f9)) {
@@ -19,6 +19,12 @@ if (!visible_debug) exit;
 /// Battle prototype trigger: B starts a Bandit fight through the overlay controller.
 if (keyboard_check_pressed(ord("B"))) {
     message = (scr_battle_start("bandit") == noone) ? "battle not started: controller missing or already active" : "battle started: bandit";
+    exit;
+}
+/// Fills the party with placeholder members so four-person battles can be tried from one save.
+if (keyboard_check_pressed(ord("P"))) {
+    var _added = scr_party_fill_placeholders(scr_party_ensure_global(), 4);
+    message = (_added > 0) ? "party +" + string(_added) : "party already full";
     exit;
 }
 if (keyboard_check_pressed(vk_tab)) {

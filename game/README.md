@@ -29,6 +29,23 @@ Not implemented yet: a four-character party with populated members, flee, enemy 
 - Victory pays out once through `scr_battle_grant_rewards` + `scr_party_apply_rewards`, and the battle panel lists any level-ups before you leave.
 - `global.party` is created on first use by `scr_party_ensure_global`, so no bootstrap object is needed yet.
 
+## Battle party (four members)
+
+- `scr_battle_create` takes one actor or an array; `obj_battle_controller` passes `party.members`, and only members still standing take the field. A party with nobody standing yields no battle at all rather than a one-sided fight.
+- A round is one command from each standing member, then one enemy action. `active_actor` is whose command is being chosen and `acting_slot` is whose action it is: a switch moves the first without moving the second, which is what stops a switch from buying a second action.
+- The enemy strikes the **front standing member** (first in party order), so party order matters in combat and a fight stays reproducible.
+- **Switch** is a command: it lists the standing members, spends the acting member's turn, and continues the round from the acting slot. It is refused when only one member can fight, skips downed members, and ESC backs out for free.
+- **Flee** is a command too. The odds are `0.5 + 0.08 × (party levels − enemy power)`, clamped to 10–90%, where enemy power is derived from its HP and attack (`scr_battle_enemy_power`). Only standing members count, so a party carrying two downed members flees worse. A failed escape ends the round in the enemy's favour rather than letting each member try in turn, and an enemy marked `no_flee` (the Ruin Warden) refuses the command without costing anything. Escaping grants no rewards and leaves the enemy in the room.
+- Guard covers exactly one enemy turn and clears for every member after it. The battle ends in defeat only when the whole party is down, and the active slot can never be a downed member.
+- `scr_party_fill_placeholders` fills a party for testing (**P** in the debug overlay). Those names are placeholders, not canon: the real companions, their classes and how they join are still open questions.
+
+## The merchant (shops)
+
+- `scr_shop` holds the wares and the rules: `scr_shop_stock()` is `potion`, `hi_potion`, `ember_draught`, and every price is read from `scr_item_data`, so the shop cannot drift out of step with the items. `scr_shop_buy` re-checks the gold itself and returns `{ ok, message }`; a refusal spends and grants nothing, so a doubled confirm cannot buy twice.
+- `obj_merchant` is the shopkeeper you face and press **Z** on. It draws a code placeholder stall. Trading opens `obj_shop`, created by `scr_shop_begin`, which owns the "may a shop open right now" rule: one at a time, never during a battle, a conversation or the status menu.
+- The panel locks exploration input, remembers exactly which players it locked, and restores them in Destroy through every exit path. UP/DOWN choose, ENTER buys one unit, ESC leaves. Rows show name, price and how many you already carry, and an unaffordable row is drawn dimmed.
+- While a shop is open, enemies do not start encounters and NPCs and the ruin door do not react, so a panel cannot be hidden behind by a battle.
+
 ## Saves (roadmap step 5, save schema)
 
 - `scr_save` writes `{ version, party: { gold, members, items }, flags, player: { x, y, facing_x, facing_y } }` to `ashen_crown_save.json`.
@@ -70,6 +87,8 @@ Not implemented yet: a four-character party with populated members, flee, enemy 
 - The battle command menu has a third entry, **Item**. It opens a submenu (UP/DOWN to pick, ENTER to use, ESC to back out); using an item spends the turn and then the enemy acts.
 - A heal that would do nothing (HP already full, empty stack) is refused in place: the submenu stays open, nothing is consumed and the turn is not wasted.
 - Healing clamps at max HP and reports the actual amount restored, so a Hi-Potion on 25/30 HP heals 5.
+- Items carry either `heal` or `revive`. The **Ember Draught** is the revive: it brings a fallen member back at 30% of max HP. A healing item refuses a member who is down ("they are down"), so a Potion can never quietly do a revive's job, and a revive refuses a member who is standing.
+- In battle a revive lands on the first fallen member, because the acting member is standing by definition; in the field menu it lands on the member you have selected. Either way it spends the turn or one item.
 - The inventory is saved as `party.items`. The field is optional on load, so a save written before the inventory existed still loads with an empty bag.
 
 ## Interaction and dialogue (prompts 02-03)
@@ -91,4 +110,14 @@ Not implemented yet: a four-character party with populated members, flee, enemy 
 - Flags are saved with the game (optional `flags` list), so quest state survives a restart.
 - `scr_quest` pays quests out: finishing the Hermit's follow-up grants one Hi-Potion, and the dialogue box then shows a final **Reward** page ("Received Hi-Potion.") that needs one more press to dismiss. The payout is guarded by a `<flag>_paid` flag, so replaying the scene or reloading cannot grant a second one. It scans for unpaid rewards rather than firing once, which is why calling it twice is harmless and why an older save that finished the quest still gets its reward on load.
 
-Not implemented yet: equipment, buying or finding items, item descriptions in the menu, reviving a fallen member, dialogue portraits or branching choices, a quest log, the ruin interior behind the door, save points, save slots, and autosave on anything other than victory (using an item in the field does not trigger one).
+## Rooms, the ruin gate and Zone 1 (prompt 10)
+
+- `scr_rooms` owns room changes: `scr_room_transition_request(room_name, marker_id)` refuses an unknown room, refuses a second request while a fade is running, and creates `obj_room_transition`, which fades to black over `ROOM_FADE_MS` (300) and then calls `room_goto`.
+- Arrival is a marker, not a coordinate: `obj_room_marker` instances carry a unique `marker_id`, and the room's single `obj_room_entry` places the player on the requested one on its first step, then forgets the request. A save made away from a marker falls back to its exact saved position. A missing marker logs the reason and leaves the room's own placement alone rather than dropping the player at 0,0.
+- `obj_ruin_door` is the gate for the slice. Barred, it speaks (`ruin_door` the first time, recording `ruin_door_found`; `ruin_door_locked` after that). Once the Hermit's check-off scene has set `npc_hermit_quest_done`, the same press remembers the current room as the safe room and fades into Zone 1.
+- `scr_ruin` holds the slice as data: `RUIN_ROOM`, the entry marker, the boss id and flag, and `scr_ruin_encounters()` — two Bandits, a Fallen Knight, and the rare `pale_shade` placeholder, each naming the marker it stands on.
+- The boss is `ruin_warden`, fought through the same battle system as everything else. A victory sets `ruin_boss_defeated`, and `obj_enemy` checks that flag every step, so a reloaded save re-creating the room's placed instances cannot put the Warden back on his feet. A defeat revives every fallen member to 1 HP and sends the party back to the remembered safe room, so a lost fight costs progress and position, never the run — and never leaves three of four members permanently downed.
+- The battle fields everyone still standing, one command each per round, then one enemy action. The enemy hits the front member, so party order is meaningful, and switching members costs that member's turn.
+- The save records the room name as an optional `room` field. Loading into a different room fades to it and places the player from the saved position; a save with no `room` loads in place. A battle never saves mid-fight, so a half-resolved turn cannot be persisted.
+
+Not implemented yet: equipment, buying or finding items, item descriptions in the menu, reviving a fallen member outside a defeat recovery, dialogue portraits or branching choices, a quest log, a boss sprite or rare-encounter sprite, save points, save slots, and autosave on anything other than victory (using an item in the field does not trigger one).

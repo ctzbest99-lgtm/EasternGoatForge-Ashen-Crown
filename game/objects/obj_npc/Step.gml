@@ -4,6 +4,7 @@
 if (!variable_global_exists("dialogue_open")) global.dialogue_open = false;
 if (global.dialogue_open || global.battle_active) exit;
 if (variable_global_exists("menu_open") && global.menu_open) exit;
+if (variable_global_exists("shop_open") && global.shop_open) exit;
 
 var _player_obj = asset_get_index("obj_player");
 if (_player_obj < 0 || instance_number(_player_obj) == 0) exit;

@@ -58,6 +58,15 @@ function scr_dialogue_data(_script_id) {
                 ],
                 set_flag: "ruin_door_found"
             };
+        case "ruin_door_locked":
+            return {
+                id: "ruin_door_locked",
+                speaker: "Ruin Door",
+                lines: [
+                    "The door will not move. Something on the far side is holding it.",
+                    "The Hermit knew about this before you did. Ask him what he is not saying."
+                ]
+            };
         case "sign_ruins":
             return {
                 id: "sign_ruins",
@@ -72,7 +81,7 @@ function scr_dialogue_data(_script_id) {
 
 /// @desc Every dialogue id, in menu order.
 function scr_dialogue_ids() {
-    return ["npc_hermit", "npc_hermit_after", "npc_hermit_checkoff", "ruin_door", "sign_ruins"];
+    return ["npc_hermit", "npc_hermit_after", "npc_hermit_checkoff", "ruin_door", "ruin_door_locked", "sign_ruins"];
 }
 
 /// @desc True when the script exists and its `requires` flag (if any) is set.

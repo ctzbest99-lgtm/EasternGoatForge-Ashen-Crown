@@ -19,6 +19,34 @@ Run tests in GameMaker after integration; static review is not a substitute for 
 - [ ] The corner HUD names the current quest stage and updates as each flag is set; it shows no quest line before the quest starts, clears the line once the quest is checked off, and stays compact (no empty row) in both of those states.
 - [ ] Replaying the scene grants nothing more and shows no Reward page; the reward survives a reload without being granted again.
 
+## Ruin gate and Zone 1
+- [ ] The door refuses to open before the Hermit checks the quest off, and says so in character rather than doing nothing.
+- [ ] After the check-off, the door fades to rm_dungeon1 and the player arrives on the `ruin_start` marker, not at 0,0 and not in a wall.
+- [ ] Leaving and re-entering the ruin places the player once; no second player instance appears and the fade does not repeat.
+- [ ] Each encounter marker holds the enemy named in `scr_ruin_encounters()`, and the rare placeholder can be fought without a sprite.
+- [ ] Beating the Ruin Warden sets `ruin_boss_defeated`, and a save made afterwards keeps it set.
+- [ ] Losing to the Warden revives every fallen member at 1 HP and returns the party to the safe room with the game playable, never stuck on the battle screen.
+- [ ] A save made inside the ruin loads back into the ruin in the same position; a save made outside it loads back outside.
+
+## Four-person party
+- [ ] With four members, each one gets a command in party order and the enemy acts once per round.
+- [ ] The panel lists all four with HP, marks whoever is acting, and shows a downed member as down.
+- [ ] Switch lists only standing members, costs the acting member's turn, and refusing it with ESC costs nothing.
+- [ ] A member falling mid-battle does not end the fight; only the last one falling does.
+- [ ] Guard halves the enemy hit for every member who guarded, and clears when the enemy turn ends.
+- [ ] Victory awards XP to every standing member, not just the front one.
+- [ ] A Potion refused on a fallen member, and an Ember Draught brings them back at 30% HP; both messages name the reason.
+- [ ] A revive used in battle spends the acting member's turn and shows the revived member standing again.
+- [ ] Flee shows the odds by success and failure: a strong party escapes a Bandit more often than a level-1 party escapes the Warden, and a failed escape lets the enemy strike immediately.
+- [ ] Flee against the Ruin Warden is refused with no turn spent, and an escape grants no XP or gold and leaves the enemy standing.
+
+## Shop
+- [ ] Facing the merchant and pressing Z opens the panel; walking past does not.
+- [ ] Buying deducts exactly the listed price and adds one item; the row's "have" count goes up.
+- [ ] A purchase with too little gold is refused, says so, and changes neither gold nor inventory.
+- [ ] Holding ENTER buys one unit, not several.
+- [ ] ESC closes the panel and the player can move again; no second shop opens while one is shown, and none during a battle, conversation or the status menu.
+
 ## Battle
 - [ ] Encounter starts once only: walking onto an enemy opens exactly one battle, and a second battle cannot start while one is active.
 - [ ] Victory removes the overworld enemy; after a defeat the player must step off the enemy before it triggers again.

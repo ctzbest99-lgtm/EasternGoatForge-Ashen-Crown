@@ -1,6 +1,7 @@
 /// scr_save — versioned save data for the party, gold and player position.
-/// Build, validate and apply are pure so they can be tested; only scr_save_game / scr_save_read /
-/// scr_save_load touch the filesystem. Requires GameMaker 2.3+.
+/// Build, validate and apply are pure so they can be tested — apply reads the current room name only to
+/// decide whether a saved position belongs here, and touches no file. Only scr_save_game /
+/// scr_save_read / scr_save_load touch the filesystem. Requires GameMaker 2.3+.
 ///
 /// Stats are derived from level on load, so a saved copy of attack/defense is ignored: rebalancing
 /// applies to existing saves instead of restoring stale numbers. Bump SAVE_VERSION when the schema
@@ -34,8 +35,9 @@ function scr_save_inventory(_inventory) {
     return _rows;
 }
 
-/// @desc Build a save document from the live party and player.
-function scr_save_build(_party, _player = noone) {
+/// @desc Build a save document from the live party, player and room. The room name is passed in rather
+/// than read here, so this stays testable and a load can tell whether it needs to change rooms.
+function scr_save_build(_party, _player = noone, _room_name = "") {
     var _members = [];
     var _count = array_length(_party.members);
     for (var _i = 0; _i < _count; _i++) array_push(_members, scr_save_actor(_party.members[_i]));
@@ -45,6 +47,7 @@ function scr_save_build(_party, _player = noone) {
         version: SAVE_VERSION,
         party: { gold: _party.gold, members: _members, items: _items },
         flags: _flags,
+        room: _room_name,
         player: scr_save_capture_player(_player)
     };
 }
@@ -77,6 +80,10 @@ function scr_save_validate(_data) {
                 return { ok: false, reason: "save has an invalid flag" };
             }
         }
+    }
+    /// room is optional for the same reason: a save written before rooms were recorded loads in place.
+    if (variable_struct_exists(_data, "room") && !is_string(_data.room)) {
+        return { ok: false, reason: "save room is not a name" };
     }
     /// items is optional: a save written before the inventory existed loads as an empty inventory.
     if (variable_struct_exists(_data.party, "items")) {
@@ -134,19 +141,32 @@ function scr_save_apply(_data, _player = noone) {
         for (var _i = 0; _i < array_length(_saved_flags); _i++) scr_flags_set(global.flags, _saved_flags[_i]);
     }
 
+    global.saved_room = "";
+    if (variable_struct_exists(_data, "room") && is_string(_data.room)) global.saved_room = _data.room;
+    global.saved_player = undefined;
+    var _other_room = (global.saved_room != "" && global.saved_room != room_get_name(room));
+
     if (_player != noone && instance_exists(_player) && variable_struct_exists(_data, "player")) {
         var _p = _data.player;
-        if (variable_struct_exists(_p, "x")) _player.x = _p.x;
-        if (variable_struct_exists(_p, "y")) _player.y = _p.y;
-        if (variable_struct_exists(_p, "facing_x")) _player.facing_x = _p.facing_x;
-        if (variable_struct_exists(_p, "facing_y")) _player.facing_y = _p.facing_y;
+        if (_other_room) {
+            /// The saved position belongs to another room: hand it to the room change instead of applying
+            /// it to this room's player, which would put them at a coordinate that means nothing here.
+            if (variable_struct_exists(_p, "x") && variable_struct_exists(_p, "y")) {
+                global.saved_player = { x: _p.x, y: _p.y };
+            }
+        } else {
+            if (variable_struct_exists(_p, "x")) _player.x = _p.x;
+            if (variable_struct_exists(_p, "y")) _player.y = _p.y;
+            if (variable_struct_exists(_p, "facing_x")) _player.facing_x = _p.facing_x;
+            if (variable_struct_exists(_p, "facing_y")) _player.facing_y = _p.facing_y;
+        }
     }
     return true;
 }
 
-/// @desc Save the live party and player position. Returns a status line.
-function scr_save_game(_player = noone) {
-    var _data = scr_save_build(scr_party_ensure_global(), _player);
+/// @desc Save the live party, player position and room. Returns a status line.
+function scr_save_game(_player = noone, _room_name = "") {
+    var _data = scr_save_build(scr_party_ensure_global(), _player, _room_name);
     var _text = json_stringify(_data);
 
     /// Write to a temp file and copy over the real save, so a crash mid-write cannot replace a working

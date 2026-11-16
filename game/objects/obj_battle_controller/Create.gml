@@ -7,9 +7,10 @@ if (instance_number(object_index) > 1) {
     exit;
 }
 
-/// The party lead fights, by reference: battle damage and victory XP land on the real member.
+/// Every standing member takes the field, by reference: battle damage and victory XP land on the real
+/// party. Members already down stay out of the fight.
 var _party = scr_party_ensure_global();
-battle = scr_battle_create(enemy_id, scr_party_lead(_party), _party.items);
+battle = scr_battle_create(enemy_id, _party.members, _party.items);
 if (is_undefined(battle) || battle == undefined) {
     show_debug_message("obj_battle_controller: unknown enemy id " + string(enemy_id));
     instance_destroy();

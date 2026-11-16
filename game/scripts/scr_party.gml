@@ -45,7 +45,30 @@ function scr_party_create(_lead_name = "Kael") {
     };
     /// Two potions: enough to survive the first Bandit without grinding.
     scr_inventory_add(_party.items, "potion", 2);
+    /// One Ember Draught, so the revive path can be tried without a shop that does not exist yet.
+    scr_inventory_add(_party.items, "ember_draught", 1);
     return _party;
+}
+
+/// @desc Names used to fill a party for testing. Placeholders, not canon: the real companions, their
+/// classes and how they join are still open questions in docs/DECISIONS_AND_OPEN_QUESTIONS.md.
+function scr_party_placeholder_names() {
+    return ["Kael", "Lira", "Bran", "Sable"];
+}
+
+/// @desc Fill the party up to _size (max 4) with placeholder members. Debug and tests only; the game's
+/// real party is built from story events that do not exist yet.
+function scr_party_fill_placeholders(_party, _size = 4) {
+    var _names = scr_party_placeholder_names();
+    var _target = clamp(floor(_size), 1, 4);
+    var _added = 0;
+    while (array_length(_party.members) < _target) {
+        var _slot = array_length(_party.members);
+        var _name = _names[min(_slot, array_length(_names) - 1)];
+        array_push(_party.members, scr_party_make_actor(_name, 1));
+        _added += 1;
+    }
+    return _added;
 }
 
 /// @desc The active member: the first one still standing, or the first slot if everyone is down.
