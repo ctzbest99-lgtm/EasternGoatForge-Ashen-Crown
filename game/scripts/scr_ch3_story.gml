@@ -98,7 +98,8 @@ function scr_ch3_play_script(_sid, _src = noone) {
             else scr_dialogue_play(["VM_TEMPLE_01", "VM_TEMPLE_02", "VM_TEMPLE_03"]);
             return true;
         case "VM_MERCH_01":
-            scr_dialogue_play(["VM_MERCH_01"]);
+            // Valemere's stall under the blue awning: the Act III tier merchant.
+            scr_dialogue_play(["VM_MERCH_01"], function() { scr_shop_open("shop_valemere_arms"); });
             return true;
         case "VM_CLERK_01":
             scr_dialogue_play(["VM_CLERK_01", "VM_CLERK_02", "VM_CLERK_03", "VM_CLERK_04"]);

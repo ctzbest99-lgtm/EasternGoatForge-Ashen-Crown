@@ -195,7 +195,7 @@
   "x": 744,
   "y": 384,
   "loot": [
-   "placeholder"
+   "Hunter's Knife"
   ],
   "note": "Was watchtower_chest_key; the Watchtower Key now lies in the Basement."
  },
@@ -207,7 +207,7 @@
   "x": 200,
   "y": 560,
   "loot": [
-   "placeholder"
+   "Iron Helm"
   ]
  },
  {
@@ -218,7 +218,8 @@
   "x": 488,
   "y": 272,
   "loot": [
-   "placeholder"
+   "50 Gold",
+   "Ash Shard x2"
   ]
  },
  {

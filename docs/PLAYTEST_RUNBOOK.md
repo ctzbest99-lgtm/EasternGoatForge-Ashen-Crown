@@ -31,7 +31,7 @@ The project's `MetaData.IDEVersion` is **2024.14.4.222** (`gamemaker/AshenCrown.
 Record the exact IDE/runtime pair. This is the value that makes every later bug report reproducible.
 
 ### 1.2 Project loads without resource errors
-Open `gamemaker/AshenCrown.yyp`. The resource tree should show **31 rooms, 843 sprites, 91 scripts, 22 objects, 29 sounds**, with `rm_title` first in the room order.
+Open `gamemaker/AshenCrown.yyp`. The resource tree should show **34 rooms, 844 sprites, 95 scripts, 22 objects, 29 sounds**, with `rm_title` first in the room order.
 
 Most likely failures here, in order:
 
@@ -224,9 +224,9 @@ For each failure, record: **phase/step number, room name, exact steps, expected,
 |---|---|
 | Every Act III/IV room is a Wrenfield-tileset blockout; Act III–IV enemies borrow strips | Known art debt (18 enemy kinds lack overworld sets) |
 | Alden has no sprite and no battle slot | Known; he appears as a placeholder |
-| Twelve overworld entrances are `status: "stub"` (Frostwilds, Ironspine, Ashlands, Rimehold…) | Intentional; they show a placeholder line |
+| Eleven overworld entrances are `status: "stub"` (Frostwilds, Ironspine, Rimehold…) | Intentional; they show a placeholder line |
 | Four encounter tables can roll an enemy outside their band (`zone01_old_road`, `zone01_bandit_camp`, `zone01_watchtower`, `zone01_basement_hall`) | Known warnings from the validator; balance pass pending |
-| Nothing after Act IV exists | Acts V–VIII are outline-only; the board ends at `flag_act4_complete` |
+| Nothing after Act IV exists | Acts V–VIII are outline-only; the board ends at `flag_act4_complete` (the Ashlands has three standalone rooms: the breach outpost, the ruins beyond it and the undercroft behind the ruin wall) |
 
 ## What "done" looks like
 

@@ -103,7 +103,9 @@ function scr_get_encounter_table(_table_id) {
                 { enemy_id: "crown_crossbowman_road", weight: 1 },
                 { enemy_id: "bandit_veteran_road", weight: 2 },
                 { group: ["crown_patrolman_road", "crown_crossbowman_road"], weight: 2 },
-                { group: ["bandit_veteran_road", "crown_patrolman_road"], weight: 1 }
+                { group: ["bandit_veteran_road", "crown_patrolman_road"], weight: 1 },
+                // Emberwake, no longer a boss: one bird per fight, rarely two of anything else.
+                { enemy_id: "emberwake", weight: 1 }
             ];
 
         // ---- Design batches 7–8 (data only; no rooms or zones yet). Weights PLACEHOLDER. ----
@@ -140,7 +142,9 @@ function scr_get_encounter_table(_table_id) {
                 { group: ["crown_guard_elite", "oath_iron"], weight: 2 },
                 { group: ["barrow_husk", "barrow_husk", "grave_moth"], weight: 2 },
                 { group: ["oath_iron", "barrow_husk"], weight: 1 },
-                { group: ["grave_moth", "grave_moth", "crown_guard_elite"], weight: 1 }
+                { group: ["grave_moth", "grave_moth", "crown_guard_elite"], weight: 1 },
+                // Emberwake again, at the barrow road's scale (Act IV).
+                { enemy_id: "emberwake_late", weight: 1 }
             ];
     }
     return undefined;

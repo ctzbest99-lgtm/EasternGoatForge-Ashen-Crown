@@ -14,7 +14,7 @@ For ordered tasks with acceptance criteria, see [AI Agent Development Backlog](A
 
 | Step | State |
 |---|---|
-| 1. Project shell | **Done** — `gamemaker/AshenCrown.yyp` is generated from `game/` with 31 rooms, 91 scripts, 22 objects, 843 sprite resources and 29 sounds. The exact GameMaker version is still nominally open, and **nothing has been compiled in an IDE**. |
+| 1. Project shell | **Done** — `gamemaker/AshenCrown.yyp` is generated from `game/` with 34 rooms, 95 scripts, 22 objects, 844 sprite resources and 29 sounds. The exact GameMaker version is still nominally open, and **nothing has been compiled in an IDE**. |
 | 2. Exploration | **Done** — movement, collision, interaction with sprite-driven markers, dialogue lock, portraits with per-line expressions, night overlay, 320×180 camera. |
 | 3. Battle prototype | **Done, well past prototype** — skills, six statuses (bleed, poison, blind, sleep, slow, buffs), weaknesses, Guard, Swap, in-battle Item, Escape, two- and three-phase bosses, steal, ally-heal, party buffs, yield branches, defeat and respawn. |
 | 4. Party / progression | **Done** — five-person roster with four active plus one reserve, Party Order, per-member XP and levels (cap 20, tiered growth), equipment, inventory, gold, shops. |
@@ -26,7 +26,7 @@ For ordered tasks with acceptance criteria, see [AI Agent Development Backlog](A
 
 - **Chapter 1 — The Night of Ash:** built (Greyhaven, farmlands, Old Road, Bandit Camp, Old Watchtower, Basement, Blackguard, Crownveil Door).
 - **Act II — The Broken Crown:** complete. All four chapter scripts are approved and built — Chapter 2 *The Weight of the Yoke* (Wrenfield, Taren, Reeve Calder, levels 8–10), Chapter 3 *Crowns and Alleys* (Valemere, Lyra, the Debtman, 10–13), Chapter 4 *The Old Name* (Hollow Sanctuary, Caelan, the Sanctuary Warden, 13–16), Chapter 5 *The Deserted Oath* (Blackwood Road Garrison, Sera, Commander Hailen, 16–18). Chapter 5 ends at the Blackwood treeline.
-- **Act III — The Blackwood:** complete and built, unplayed. All three chapters exist — Chapter 6 *The Green Silence* (approved), Chapter 7 *The Share* and Chapter 8 *The Door in the Wood* (built from the outline's recommended decisions, awaiting individual approval). Five Blackwood rooms: deep, hollow, shrine, glade, doors, plus the eastern side path Chapter 9 added. Ten unresolved room references remain — `rm_ashlands_breach`, `rm_ashlands_ruins`, `rm_ironspine_mine`, `rm_ironspine_ruins`, `rm_frozen_ruins`, `rm_flooded_ruins`, `rm_saltreach`, `rm_saltreach_pier`, `rm_shipwreck`, `rm_rimehold` and the Act V–VIII rooms — none of them Act IV's any more, and none may be "fixed" by inventing rooms.
+- **Act III — The Blackwood:** complete and built, unplayed. All three chapters exist — Chapter 6 *The Green Silence* (approved), Chapter 7 *The Share* and Chapter 8 *The Door in the Wood* (built from the outline's recommended decisions, awaiting individual approval). Five Blackwood rooms: deep, hollow, shrine, glade, doors, plus the eastern side path Chapter 9 added. Eight unresolved room references remain — `rm_ironspine_mine`, `rm_ironspine_ruins`, `rm_frozen_ruins`, `rm_flooded_ruins`, `rm_saltreach`, `rm_saltreach_pier`, `rm_shipwreck`, `rm_rimehold` — none of them Act IV's any more, and none may be "fixed" by inventing rooms. The Ashlands outpost, the ruins beyond it and the undercroft behind the ruin wall (`rm_ashlands_breach`, `rm_ashlands_ruins`, `rm_ashlands_depths`) are the standalone rooms built ahead of their act.
 
 ## Next work, in order
 

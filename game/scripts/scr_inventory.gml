@@ -13,13 +13,16 @@ function scr_inventory_has(_item_id) {
     return scr_inventory_find(_item_id) != -1;
 }
 
-/// Add an item. Key items are unique: a second add does nothing and returns false.
+/// Add an item. Key items and unique equipment are one-per-party: a second add does nothing
+/// and returns false. Unique equipment is stored key-like so it cannot be sold by accident.
 function scr_inventory_add(_item_id, _name, _qty = 1, _key_item = false) {
     scr_game_state_init();
     var _inv = global.game.inventory;
+    var _it = scr_item_get(_item_id);
+    var _unique = _key_item || _it.key_item || _it.unique;
     var _index = scr_inventory_find(_item_id);
     if (_index != -1) {
-        if (_inv[_index].key_item || _key_item) return false;
+        if (_inv[_index].key_item || _unique) return false;
         _inv[_index].qty += max(1, _qty);
         return true;
     }
@@ -27,7 +30,7 @@ function scr_inventory_add(_item_id, _name, _qty = 1, _key_item = false) {
         item_id: _item_id,
         name: _name,
         qty: max(1, _qty),
-        key_item: _key_item
+        key_item: _unique
     });
     return true;
 }
@@ -140,7 +143,11 @@ function scr_loot_grant_entry(_text) {
         case "watchtower key": _id = "item_watchtower_key"; _key = true; break;
         case "mira's wooden pendant":
         case "mira's pendant": _id = "item_mira_pendant"; _key = true; break;
-        default: _id = "item_" + string_replace_all(string_lower(_name), " ", "_"); break;
+        default:
+            // Prefer the item DB's display name so chest loot can name any item (gear included).
+            _id = scr_item_id_for_name(_name);
+            if (_id == "") _id = "item_" + string_replace_all(string_lower(_name), " ", "_");
+            break;
     }
     scr_inventory_add(_id, _name, _qty, _key);
     scr_audio_sfx("item_get", 0.02);

@@ -339,6 +339,37 @@ function scr_battle_clear_party_battle_state(_victory) {
     }
 }
 
+/// Roll `_enemy`'s item drops (enemy data `drops: [{ item: "item_id", chance: 0..1 }]`), add
+/// each one that falls to the party bag, and return their display names in roll order. An empty
+/// array means nothing dropped. Chances live in scr_enemy_database and are PLACEHOLDER tuning.
+/// Called once per defeated enemy, at VICTORY; a boss that yielded (or withdrew) drops nothing.
+/// Roll an enemy's `drops`. Entries: { item, chance (0-1, default 1), qty (default 1),
+/// once (true = only ever awarded once per save, for boss legendaries) }.
+/// Unique items are additionally refused by the inventory, so a repeated boss cannot duplicate one.
+function scr_battle_roll_drops(_enemy) {
+    var _found = [];
+    if (!is_struct(_enemy) || !variable_struct_exists(_enemy, "drops") || !is_array(_enemy.drops)) return _found;
+    for (var _i = 0; _i < array_length(_enemy.drops); _i++) {
+        var _d = _enemy.drops[_i];
+        if (!is_struct(_d)) continue;
+        var _id = variable_struct_exists(_d, "item") ? string(_d.item) : "";
+        if (_id == "") continue;
+        var _once = variable_struct_exists(_d, "once") && _d.once;
+        var _flag = "drop_" + scr_item_id_norm(_id);
+        if (_once && scr_flag_get(_flag)) continue;
+        var _chance = variable_struct_exists(_d, "chance") ? clamp(_d.chance, 0, 1) : 1;
+        if (random(1) >= _chance) continue;
+        var _qty = variable_struct_exists(_d, "qty") ? max(1, floor(_d.qty)) : 1;
+        var _it = scr_item_get(_id);
+        if (scr_inventory_add(_it.item_id, _it.name, _qty, _it.key_item) || _it.unique) {
+            if (_once) scr_flag_set(_flag);
+        }
+        array_push(_found, _qty > 1 ? _it.name + " x" + string(_qty) : _it.name);
+        scr_audio_sfx("item_get", 0.02);
+    }
+    return _found;
+}
+
 /// ---- Escape (spec §12) ----
 
 /// Average level of the living party members (>= 1).

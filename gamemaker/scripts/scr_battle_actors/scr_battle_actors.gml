@@ -55,6 +55,8 @@ function scr_actor_from_enemy_data(_data) {
         _gold = irandom_range(min(_data.gold_min, _data.gold_max), max(_data.gold_min, _data.gold_max));
     }
     _actor.gold_reward = _gold;
+    // Item drops: [{ item: "item_id", chance: 0..1 }] rolled at victory by scr_battle_roll_drops.
+    _actor.drops = (variable_struct_exists(_data, "drops") && is_array(_data.drops)) ? _data.drops : [];
     _actor.xp_credited = false; // set when this enemy's XP is banked to living participants
     _actor.weakness = (variable_struct_exists(_data, "weakness") && is_string(_data.weakness)) ? _data.weakness : "";
     // The database's level (every enemy now carries one). Read by the Escape roll and the

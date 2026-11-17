@@ -19,6 +19,9 @@ SCRIPTS = os.path.join(ROOT, 'game', 'scripts')
 # ts_wrenfield rows 0-49 are ts_zone1 unchanged, so it renders every room (and its extra rows
 # matter for the Chapter 2-5 rooms, which build against ts_wrenfield).
 ATLAS = os.path.join(ROOT, 'game', 'tilesets', 'ts_wrenfield.png')
+# The Chapter 6 rooms build against ts_blackwood (rows 0-49 are ts_zone1, rows 50-64 are the
+# Blackwood's own dark material), so they need that atlas to render correctly.
+BLACKWOOD_ATLAS = os.path.join(ROOT, 'game', 'tilesets', 'ts_blackwood.png')
 
 
 def parse_room(builder):
@@ -39,7 +42,7 @@ def parse_room(builder):
 
 
 def render(name, w, h, layers, scale=1):
-    atlas = Image.open(ATLAS).convert('RGBA')
+    atlas = Image.open(BLACKWOOD_ATLAS if name.startswith(('blackwood_', 'ashlands_')) else ATLAS).convert('RGBA')
     across = atlas.width // 16
     im = Image.new('RGBA', (w * 16, h * 16), (12, 12, 14, 255))
     for key in ('ground', 'decor', 'overhead'):

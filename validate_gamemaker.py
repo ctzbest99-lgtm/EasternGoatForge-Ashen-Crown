@@ -131,14 +131,17 @@ print("room order:", ro)
 sprites = {r['id']['name'] for r in yyp['resources'] if r['id']['path'].startswith('sprites/')}
 objects = {r['id']['name'] for r in yyp['resources'] if r['id']['path'].startswith('objects/')}
 scripts = {r['id']['name'] for r in yyp['resources'] if r['id']['path'].startswith('scripts/')}
+tilesets = {r['id']['name'] for r in yyp['resources'] if r['id']['path'].startswith('tilesets/')}
 refs = set()
 for root, dirs, files in os.walk(OUT):
     for fn in files:
         if fn.endswith('.gml'):
             refs |= set(re.findall(r'\b((?:spr|obj|ts|rm)_\w+)\b', open(os.path.join(root,fn)).read()))
-missing = refs - sprites - objects - scripts - set(rooms) - {'ts_zone1'}
-# ts_wrenfield: rows 0-49 are ts_zone1; the Chapter 2/3 rooms switch to it at runtime.
+missing = refs - sprites - objects - scripts - set(rooms) - tilesets
+# ts_wrenfield and ts_blackwood are real tileset resources (rows 0-49 are ts_zone1): the
+# Chapter 2-6 rooms switch to them at runtime, so a GML reference to them is not unresolved.
 missing.discard('ts_wrenfield')
+missing.discard('ts_blackwood')
 missing = {m for m in missing if not m.startswith('scr_')}
 missing = {m for m in missing if not (m.startswith('spr_') and m.endswith(('_',)) )}
 # filter obvious dynamic-concat prefixes (end with _)

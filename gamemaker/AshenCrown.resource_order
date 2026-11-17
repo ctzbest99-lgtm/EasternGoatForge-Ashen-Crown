@@ -4665,5 +4665,15 @@
       "order":926,
       "path":"scripts/scr_audio/scr_audio.yy",
     },
+    {
+      "name":"spr_ts_blackwood",
+      "order":927,
+      "path":"sprites/spr_ts_blackwood/spr_ts_blackwood.yy",
+    },
+    {
+      "name":"ts_blackwood",
+      "order":928,
+      "path":"tilesets/ts_blackwood/ts_blackwood.yy",
+    },
 ],
 }

@@ -3,7 +3,7 @@
 Route: the Blackwood treeline → `rm_blackwood_deep` (the road under the trees, the burn lines, the first carved stone) → `rm_blackwood_hollow` (Cinderhollow, the burners' hamlet) → the patrol's last camp → the burn line and its keeper → back to Cinderhollow's edge.
 
 > **Status: APPROVED 2026-11-16 — CANON.** The owner approved all eight decisions in §10 as recommended, so this script is canon in the Chapter 1–5 format and the build may proceed. Line-level **[PROPOSED]** tags stay as provenance (they mark what this script invented rather than inherited), not as open questions. The act title, **The Blackwood**, is **[CANON]**; the chapter title *The Green Silence* is **[CANON, approved 2026-11-16]**.
-> **Built 2026-11-16, not played.** `rm_blackwood_deep`, `rm_blackwood_hollow`, `scr_ch6_story`, `scr_dialogue_data_ch6` and the chapter's markers now exist; `python3 validate_gamemaker.py` passes and closes one of the unresolved room references (thirteen became twelve). Nothing has been compiled or playtested in GameMaker: the rooms are blockouts on the Wrenfield tileset (there is no Blackwood tileset), the burners use the placeholder NPC sprite, and TEST_PLAN F16–F28 are unchecked.
+> **Built 2026-11-16, not played.** `rm_blackwood_deep`, `rm_blackwood_hollow`, `scr_ch6_story`, `scr_dialogue_data_ch6` and the chapter's markers now exist; `python3 validate_gamemaker.py` passes and closes one of the unresolved room references (thirteen became twelve). Nothing has been compiled or playtested in GameMaker: the rooms are blockouts on `ts_blackwood`, the wood's own placeholder atlas (`tools/gen_blackwood_tileset.py`), the burners use the placeholder NPC sprite, and TEST_PLAN F16–F28 are unchecked.
 > Levels: **18–19** **[PLACEHOLDER]** — the band the `blackwood` encounter table and the Act III enemy batch already assume.
 > Chapter 6 is the first of Act III's three chapters: the road ends, the forest's people are met, and the word *tithe* is heard for the first time.
 
@@ -315,8 +315,8 @@ Berrin's household is on this autumn's list. Chapter 6 only plants the hook — 
 
 1. **Dialogue data** — `scr_dialogue_data_ch6`, nodes exactly as above (`BW_*`, `CH_*`, `PT_*`, `BH_*`).
 2. **Story script** — `scr_ch6_story`: entry after `BG_HANDOFF`, the camp, the boss gate, Berrin's last scene, and the south path.
-3. **Rooms** — `rm_blackwood_deep` and `rm_blackwood_hollow` as blockouts from `ts_wrenfield` (there is no Blackwood tileset — the act's largest art debt), markers for the treeline, the carved stone, the camp and the burn line.
-4. **Art** — Blackwood tileset; 16×24 overworld sets for `shade_stalker`, `lost_one`, `briar_hulk`; the carved stone as scenery; the briar wall.
+3. **Rooms** — `rm_blackwood_deep` and `rm_blackwood_hollow` as blockouts on `ts_blackwood`, the wood's own placeholder atlas (rows 0–49 are `ts_zone1`, rows 50–64 are the dark material), markers for the treeline, the carved stone, the camp and the burn line.
+4. **Art** — Blackwood art (a placeholder `ts_blackwood` atlas exists; Design's real tileset is still the act's largest art debt); 16×24 overworld sets for `shade_stalker`, `lost_one`, `briar_hulk`; the carved stone as scenery; the briar wall.
 5. **Audio** — `snd_amb_forest` on entry, `snd_amb_fire` in the hollow, `snd_mus_boss` for the Hulk.
 6. **Docs/tests** — CHANGELOG, TEST_PLAN rows, DECISIONS entry, and this file's status header once approved.
 

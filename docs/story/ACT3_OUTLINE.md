@@ -155,8 +155,8 @@ Four things came out of the sweep:
 
 1. **Dialogue data** — `scr_dialogue_data_ch6`; prefixes `BW_` (the wood), `CH_` (Cinderhollow), `MT_` (the Matriarch), `DW_` (the Door Warden, if it speaks at all — recommended: it does not).
 2. **Story script** — `scr_ch6_story` covering handoff → Chapter 6 → Chapter 7 → Chapter 8, flags for the tithe choice, and the door scene.
-3. **Rooms** — three blockouts from `ts_wrenfield` as an interim (there is **no Blackwood tileset**; this is the act's largest art debt), plus the two referenced rooms so the validator's unresolved list shrinks.
-4. **Art** — Blackwood tileset; overworld sets for the nine Act III enemies (all on the gap list); the Matriarch's overworld set; the Aethari door as scenery.
+3. **Rooms** — three blockouts on the `ts_blackwood` placeholder atlas as an interim (rows 0–49 are `ts_zone1`, rows 50–64 are dark wood material), plus the two referenced rooms so the validator's unresolved list shrinks.
+4. **Art** — Design's real Blackwood tileset (only a placeholder atlas exists); overworld sets for the nine Act III enemies (all on the gap list); the Matriarch's overworld set; the Aethari door as scenery.
 5. **Audio** — `snd_amb_night` finally assigned (Chapter 7 on), `snd_amb_forest` for the approach, boss music for two of the three fights.
 6. **Balance** — done for the outline: `tools/balance_sim.py` has the Act III block and §7 carries the tuned numbers. What remains is the engine-side side of it — the four data entries (`burn_line_hulk`, a level-20 `ward_sentinel`, and the `hp_mult` / `atk_add` on the Matriarch and Door Warden) and then a played pass.
 7. **Playtest** — last, and only in an IDE.

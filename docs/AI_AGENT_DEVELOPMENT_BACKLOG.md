@@ -1,7 +1,7 @@
 # AI Agent Development Backlog — ASHEN CROWN
 
 **Last reconciled:** 2026-11-15  
-**Updated 2026-11-16:** Acts I–IV are built and unplayed (Chapters 1–11, 31 rooms, 91 scripts), audio is wired through `scr_audio`, and Act V is approved in outline only. Items below that call any of that data-only, design-only or audio-absent are done — check `docs/CHANGELOG.md` and `docs/DEVELOPMENT_ROADMAP.md` for current state. Also prefer the targeted importers in `tools/` over re-running `gen_gamemaker.py` wholesale, which churns resource UUIDs.  
+**Updated 2026-11-16:** Acts I–IV are built and unplayed (Chapters 1–11 plus the three standalone Ashlands rooms, 34 rooms, 95 scripts), audio is wired through `scr_audio`, and Act V is approved in outline only. Items below that call any of that data-only, design-only or audio-absent are done — check `docs/CHANGELOG.md` and `docs/DEVELOPMENT_ROADMAP.md` for current state. Also prefer the targeted importers in `tools/` over re-running `gen_gamemaker.py` wholesale, which churns resource UUIDs.  
 **Purpose:** single actionable handoff for Codex or another coding agent. Work top-to-bottom, one item at a time.  
 **Project:** GameMaker / GML. Open `gamemaker/AshenCrown.yyp`; edit human-readable source in `game/` unless a task specifically concerns project metadata.
 
@@ -25,7 +25,7 @@
 - Core combat: menu-driven turn-based battles; four active party members plus one reserve; no automatic enemy level scaling by default.
 - Adventure menu: Items, Equip, Party Order, Status, Bestiary.
 - Save/load: only at save crystals inside a town church or tavern. No save-anywhere and no Save row in the field menu.
-- Chapters 1–11: built in source/project data; README reports 31 rooms. They are not yet verified by an IDE playtest — `docs/PLAYTEST_RUNBOOK.md` is the order to check them in.
+- Chapters 1–11 plus `rm_ashlands_breach`, `rm_ashlands_ruins` and `rm_ashlands_depths`: built in source/project data; README reports 34 rooms. They are not yet verified by an IDE playtest — `docs/PLAYTEST_RUNBOOK.md` is the order to check them in.
 - Act V: outline and approvals only — no chapter script, dialogue, rooms, enemies or code.
 - Acts VI–VIII: titles only.
 - Bestiary: seen/defeated tracking and information pane exist; all 33 descriptions are placeholder prose. The monster sprite is not currently shown in the Bestiary UI, despite being part of the requested feature.

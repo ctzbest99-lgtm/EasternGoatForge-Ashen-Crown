@@ -26,7 +26,7 @@ No manual resource creation, sprite import, or event wiring is required.
 - The ten `*_placeholder` sprites are flat colors (Lyra's overworld and battle strips among them); swap them when real art lands.
 - The 640 title set (19 sprites, including `spr_menu_embers_640_strip24`) is imported and assigned to its own `tex_title_640` texture group, per IMPORT.md; every platform uses 2048×2048 texture pages.
 - The Act III and Act IV rooms are Wrenfield-tileset blockouts; their enemies reuse existing strips, and Alden, Vell and Nessa are placeholder sprites.
-- Future regions referenced in overworld marker data (`rm_saltreach`, `rm_saltreach_pier`, `rm_rimehold`, `rm_ironspine_mine`, `rm_ironspine_ruins`, `rm_flooded_ruins`, `rm_frozen_ruins`, `rm_ashlands_breach`, `rm_ashlands_ruins`, `rm_shipwreck`) are string stubs — those rooms do not exist and the entrances are marked `status: "stub"`.
+- Future regions referenced in overworld marker data (`rm_saltreach`, `rm_saltreach_pier`, `rm_rimehold`, `rm_ironspine_mine`, `rm_ironspine_ruins`, `rm_flooded_ruins`, `rm_frozen_ruins`, `rm_shipwreck`) are string stubs — those rooms do not exist and the entrances are marked `status: "stub"`. `rm_ashlands_breach` (the outpost) and `rm_ashlands_ruins` (the ruin beyond it) are built.
 - Act V is approved in outline only; no chapter, room, enemy or line exists for it.
 
 ## Regenerating
