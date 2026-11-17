@@ -15,7 +15,7 @@ Source of truth: `STORY_BIBLE.md` §3 (the Drowned Coast, Saltreach) and §5.12 
 
 ## How to read this file (for Coder)
 
-- Prefixes: `CR_` for the coast road, `SV_` for Saltreach, `RV_` for the reeve and the levy house, `BT_` for the bell tower, `TK_` for the Toll-Keeper, `LG_` for the ledger, `TS_` for the slate choice, `ADL_` for Alden's letter, `KT_` for the knight on the pier, `CH12_` for the chapter's own beats.
+- Prefixes: `CR_` for the coast road, `SV_` for Saltreach (the bell tower is `SV_BELL_`), `RV_` for the reeve and the levy house, `TK_` for the Toll-Keeper, `LG_` for the ledger, `TS_` for the slate choice, `ADL_` for Alden's letter, `KT_` for the knight on the pier, `CH12_` for the chapter's own beats.
 - Format: `**ID** · Speaker`, each `>` line one box line. `NARRATION` = no speaker; `SYSTEM` = UI; `[STAGE]` = direction, not shown.
 - **What this chapter must not do:** let the reeve explain the crossings; let anyone in Saltreach recognise the knight; name the knight; say Mira crossed, or that Kael's father did; explain what "returned" means; confirm the drowned civilisation is Aethari; name the Toll-Keeper; grade the slate choice; show Alden on screen.
 
@@ -57,7 +57,7 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 
 ## 1. The coast road — `CR_ARRIVE`
 
-[STAGE] South of the barrow field the road stops pretending to be a road: it narrows, turns, and comes out on a shelf of black rock above the sea. Salt pans step down toward the water on the left. Ahead, a village of grey stone and low roofs, one bell tower with an empty arch, and one boat in the harbour. `snd_amb_water` — the first room to use it. The tide is out further than it should be. Sets `ch12_entered`, `Q_MF_S1`, `Q_ST_S1`.
+[STAGE] South of the barrow field the road stops pretending to be a road: it narrows, turns, and comes out on a shelf of black rock above the sea. The last stretch is the room's outer approach, where the `drowned_coast` table runs; room entry sets `ch12_entered`, `Q_MF_S1`, `Q_ST_S1`, and the village edge triggers `CR_ARRIVE`. Salt pans step down toward the water on the left. Ahead, a village of grey stone and low roofs, one bell tower with an empty arch, and one boat in the harbour. `snd_amb_water` — the first room to use it. The tide is out further than it should be.
 
 **CR_ARRIVE_01** · NARRATION
 > The road comes out above the sea and stops being a road. Black rock, salt wind, and a line of flat pans stepping down to the water.
@@ -181,7 +181,7 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 
 ### 2.1 The salt pans — `SV_PANS` (optional)
 
-[STAGE] A pan above the tide line, raked into ridges, white at the edges. Sets `ch12_pans_seen`. Repeat look plays `SV_PANS_R1`.
+[STAGE] A pan above the tide line, raked into ridges, white at the edges. Sets `ch12_pans_seen`. Repeat look plays `SV_PANS_R1` (wiring-only; see §11).
 
 **SV_PANS_01** · NARRATION
 > The pan is raked into shallow ridges. Salt crusts the stone where the water has been let out.
@@ -643,7 +643,7 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 > Side quest complete: One Name a Tide.
 > Received 200 gold.
 
-[STAGE] Sets `q_side_toll_complete`. Same reward either way. Do not add a judgment line to the journal.
+[STAGE] Calls `scr_ch12_quest_set("Q_SIDE_TOLL", "complete")`. Same reward either way. Do not add a judgment line to the journal.
 
 ---
 
@@ -704,7 +704,7 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 
 ## 9. The pier — `KT_PIER`
 
-[STAGE] Night. The tide is in. The village is dark except for the levy house. The harbour pier goes out past the boats, further than the boats need, and there is a figure at the end of it. No lantern. The sea is loud enough to cover a conversation. Sets `ch12_pier`.
+[STAGE] Night. The tide is in. The village is dark except for the levy house. The harbour pier goes out past the boats, further than the boats need, and there is a figure at the end of it. No lantern. The sea is loud enough to cover a conversation. Sets `ch12_pier`, `ch12_knight_seen`.
 
 **KT_PIER_01** · NARRATION
 > The pier is older than the village. It goes out past the last mooring and keeps going.
@@ -833,15 +833,23 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 | `ch12_ledger_seen` | §6 | The crossings ledger read |
 | `ch12_slate_choice` | §7 | The choice opened |
 | `ch12_toll_kept` / `ch12_toll_broken` | §7.1 / §7.2 | The side quest's branch |
-| `q_side_toll_complete` | §7.3 | Side quest complete |
+| `quest_Q_SIDE_TOLL` = `"complete"` | §7.3 | Side quest complete |
 | `ch12_letter_read` / `ch12_no_letter` | §8.1 / §8.2 | Alden's letter branch |
 | `ch12_pier` | §9 | The pier scene |
 | `ch12_knight_seen` | §9 | The knight's fifth sighting |
 | `chapter12_complete` | §10 | Chapter done |
 
+### Wiring-only repeat looks
+
+These are not scripted nodes. `gen_ch12_dialogue.py` carries them in its `EXTRA` block, the way Chapter 11's generator carries `BH_NAMES_R1` and the other repeat looks.
+
+| ID | Speaker | Line | Used by |
+|---|---|---|---|
+| `SV_PANS_R1` | NARRATION | "The pan is still raked. The shovel has not moved." | §2.1 repeat look |
+
 ### Encounters and balance
 
-- **Table:** `drowned_coast` [PROPOSED, not in data] on the coast road only, using `drowned_husk`, `salt_wretch` and `tide_crawler` [PROPOSED ids]. Saltreach itself has no random encounters; the village must not become a fight.
+- **Table:** `drowned_coast` [PROPOSED, not in data] on the coast-road approach inside `rm_saltreach` — the outer strip before the village edge — using `drowned_husk`, `salt_wretch` and `tide_crawler` [PROPOSED ids]. `CR_ARRIVE` triggers at the village edge. Saltreach itself has no random encounters; the village must not become a fight.
 - **Boss:** `grp_toll_keeper` — solo `toll_keeper`, level 24, two phases, no dialogue. **No HP, ATK, DEF, XP or gold number is set here.** The outline requires the enemy batch and `balance_sim.py --act5` first; this script should be tuned against the simulation before `gen_ch12_dialogue.py` is written. The dialogue does not depend on the numbers, but the gate does.
 - **Reeve Fen is not a battle.** She yields the key and the ledger under pressure; the chapter's only fight is the keeper. This is the same non-lethal resolution Vell and Calder get, without inventing a new boss group.
 - **The knight does not fight here.** His sighting is a scene, not an encounter.
@@ -850,10 +858,10 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 
 1. **This script** — draft, 2026-11-17. Awaiting owner review.
 2. **Enemy batch + simulation** — add the Act V ids, the `drowned_coast` table and `grp_toll_keeper`; extend `balance_sim.py` with `--act5`; tune the keeper at level 24 before generating dialogue.
-3. **Dialogue data** — `scr_dialogue_data_ch12` via a new `tools/gen_ch12_dialogue.py`, following the Chapter 10–11 generators.
+3. **Dialogue data** — `scr_dialogue_data_ch12` via a new `tools/gen_ch12_dialogue.py`, following the Chapter 10–11 generators. `SV_PANS_R1` is wiring-only; put it in the generator's `EXTRA` block as the narration line in the table above.
 4. **Story script** — `scr_ch12_story`: coast entry, village, reeve, keeper gate with retry, aftermath, ledger, slate choice, letter branch, pier, chapter end.
-5. **Room** — `rm_saltreach`, a blockout first; marker table; the overworld's `saltreach` entrance flipped to `status: "built"`; the harbour pier is inside this room, not `rm_saltreach_pier`. `rm_saltreach_pier` stays Chapter 13's.
-6. **Quests** — `Q_MAIN_FALLEN` S1–S6 and `Q_SIDE_TOLL` S1–S2; the side quest completes at §7.
+5. **Room** — `rm_saltreach`, a blockout first; the coast-road approach is the room's outer strip with the `drowned_coast` zone, and `CR_ARRIVE` triggers at the village edge; marker table; the overworld's `saltreach` entrance flipped to `status: "built"`; the harbour pier is inside this room, not `rm_saltreach_pier`. `rm_saltreach_pier` stays Chapter 13's.
+6. **Quests** — `Q_MAIN_FALLEN` S1–S6 and `Q_SIDE_TOLL` S1–S2, all through `scr_ch12_quest_set`; complete the side quest with `scr_ch12_quest_set("Q_SIDE_TOLL", "complete")` at §7, following Chapter 9's helper.
 7. **Art and audio** — a coast/stone-and-water blockout until a tileset exists; the keeper's battle art; `snd_amb_water` for the village and harbour.
 8. **Playtest** — last, and only in an IDE.
 
