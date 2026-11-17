@@ -1,15 +1,15 @@
 # ASHEN CROWN — Chapter 12 Script: "The Salt Toll" (Act V: The Fallen Knight)
-<!-- audit-skip: draft chapter; dialogue data is not generated yet -->
+<!-- audit-skip: approved script; dialogue data is not generated yet -->
 
-Route: the barrow road south → the coast road → **`rm_saltreach`** (new; blockout first): a village on a shelf of black rock, salt pans above the tide line, a bell tower with no bell, and the slate at the harbour where one name is written each tide.
+Route: the barrow road south → the coast road → **`rm_saltreach`** (new; blockout first): a village on a shelf of black rock, salt pans above the tide line, a bell tower with no bell, and the slate at the harbour where one name is written each season, at the turning tide.
 
-> **Status: DRAFT 2026-11-17 from the approved Act V outline — not individually approved, not built, not played.**
-> This is the first chapter script of Act V. No dialogue data, story script, room, marker table, enemy id or quest row exists. It is written for review and then generation; it deliberately carries no combat numbers, because `ACT5_OUTLINE.md` §7 requires the `--act5` simulation before any line is written against them.
-> **Level band 24** [PROPOSED, blocked on the approved `PARTY_MAX_LEVEL` rise to 27; the cap is still 24]. Five in the party, four active; no recruit.
+> **Status: APPROVED 2026-11-17 — not built, not played.**
+> This is the first chapter script of Act V. No dialogue data, story script, room, marker table or quest row exists; the Act V enemy batch now exists as data. The script carries no combat numbers; the Toll-Keeper's stats are in that batch and simulated with `--act5`.
+> **Level band 24** (the approved `PARTY_MAX_LEVEL` rise to 27 is not applied; the cap is still 24). Five in the party, four active; no recruit.
 > **Alden is off-screen for the whole act.** He appears only as one letter, and only if Chapter 11 ended with `ch11_seal_alden`.
 > **Not played.** Saltreach is a Wrenfield blockout until a coast tileset exists, the Toll-Keeper has no art, and every villager is a placeholder.
 > **This chapter's one job:** show the toll, put the ledger of crossings in the party's hands, and end with the knight on the pier. It does not explain the crossings, the knight, Mira, the Crownveil or the drowned civilisation.
-> **Draft decisions 2026-11-17:** the reeve is Ilsa Fen; the half-cut name is hers; Alden's letter stays conditional; she is not a battle. See §11. The chapter itself is still not individually approved, built or played.
+> **Approved decisions 2026-11-17:** the reeve is Ilsa Fen; the half-cut name is hers; Alden's letter stays conditional; she is not a battle. See §11. The chapter is approved as story; it is not built or played.
 
 Source of truth: `STORY_BIBLE.md` §3 (the Drowned Coast, Saltreach) and §5.12 (the Fallen Knight), plus `ACT5_OUTLINE.md` §3. Presentation: FF1-style top-down exploration; menu battles.
 
@@ -30,7 +30,7 @@ Act IV's `Q_MAIN_CROWN` closes at S6 (complete) when the seal choice resolves. A
 | Stage | ID | Objective text | Set when |
 |---|---|---|---|
 | 1 | `Q_MF_S1` | "Follow the coast road to Saltreach." | Chapter 12 entry |
-| 2 | `Q_MF_S2` | "Find out what the village pays the tide." | the Toll-Keeper is defeated |
+| 2 | `Q_MF_S2` | "Find out what the village pays the tide." | Saltreach is reached (§1) |
 
 S3–S6 belong to Chapters 13–14 and should be defined in `scr_quest_data.gml` at the same time so the journal never has a gap:
 
@@ -47,7 +47,7 @@ Opens on arrival and closes at the slate in §7, in the same chapter. Both endin
 
 | Stage | ID | Objective text | Set when |
 |---|---|---|---|
-| 1 | `Q_ST_S1` | "Find out what the village pays the tide." | Chapter 12 entry |
+| 1 | `Q_ST_S1` | "Ask in Saltreach about the slate." | Chapter 12 entry |
 | 2 | `Q_ST_S2` | "Decide what happens to the slate." | the Toll-Keeper is defeated |
 | — | complete | — | the slate choice resolves (§7) |
 
@@ -57,7 +57,7 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 
 ## 1. The coast road — `CR_ARRIVE`
 
-[STAGE] South of the barrow field the road stops pretending to be a road: it narrows, turns, and comes out on a shelf of black rock above the sea. The last stretch is the room's outer approach, where the `drowned_coast` table runs; room entry sets `ch12_entered`, `Q_MF_S1`, `Q_ST_S1`, and the village edge triggers `CR_ARRIVE`. Salt pans step down toward the water on the left. Ahead, a village of grey stone and low roofs, one bell tower with an empty arch, and one boat in the harbour. `snd_amb_water` — the first room to use it. The tide is out further than it should be.
+[STAGE] South of the barrow field the road stops pretending to be a road: it narrows, turns, and comes out on a shelf of black rock above the sea. The last stretch is the room's outer approach, where the `drowned_coast` table runs; room entry sets `ch12_entered`, `Q_MF_S1`, `Q_ST_S1`; the village edge sets `Q_MF_S2` and triggers `CR_ARRIVE`. Salt pans step down toward the water on the left. Ahead, a village of grey stone and low roofs, one bell tower with an empty arch, and one boat in the harbour. `snd_amb_water` — the first room to use it. The tide is out further than it should be.
 
 **CR_ARRIVE_01** · NARRATION
 > The road comes out above the sea and stops being a road. Black rock, salt wind, and a line of flat pans stepping down to the water.
@@ -161,7 +161,7 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 > About whose name goes on the slate.
 
 **SV_ARRIVE_17** · Reeve Fen
-> One a tide. One name a season, when the tide turns.
+> One a tide, they call it. One name a season, when the tide turns.
 > The village agrees on one. I write it.
 
 **SV_ARRIVE_18** · Taren
@@ -282,7 +282,7 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 > That's enough.
 
 **RV_OFFICE_08** · Taren
-> You write a name every tide.
+> You write a name every season.
 
 **RV_OFFICE_09** · Reeve Fen
 > The name the village gives me. I've never chosen one.
@@ -409,7 +409,7 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 
 [STAGE] Fight: `grp_toll_keeper`, level 24, two phases. Boss music and boss bar. The keeper has no dialogue and no name beyond what the village calls it. Its second phase is the data's shift: the water in it goes still, then moves against the tide, and the hook comes up. No stat block is set here; §11 explains why.
 
-[STAGE] On victory: the keeper comes apart into brine and rope. The tablet falls from the hook onto the stones. The tide begins to turn. Sets `ch12_keeper_defeated`, `Q_MF_S2`, `Q_ST_S2`.
+[STAGE] On victory: the keeper comes apart into brine and rope. The tablet falls from the hook onto the stones. The tide begins to turn. Sets `ch12_keeper_defeated`, `Q_ST_S2`.
 
 ---
 
@@ -508,14 +508,14 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 > It doesn't say. There is no reason column.
 
 **LG_LEDGER_10** · NARRATION
-> Near the back, one page is different. The name has been scraped out with a chisel: one diagonal, then another, the same depth, the same angle, the same hand as the names in the barrow.
-> The *returned* mark is still there.
+> Near the back, one page is different. The name has been scraped out with a chisel: one diagonal, then another, the same depth, the same angle.
+> The *returned* column is blank.
 
 **LG_LEDGER_11** · Lyra
-> Someone came back, and someone didn't want the name in the book.
+> Someone didn't come back, and someone didn't want the name in the book.
 
 **LG_LEDGER_12** · Caelan
-> Or someone didn't come back, and the name was taken out so the count would balance.
+> Or someone came back, and the mark was taken out with the name.
 > I don't know which. I'm not going to guess.
 
 **LG_LEDGER_13** · Sera
@@ -836,7 +836,7 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 | `ch12_reeve_met` | §3 | The reeve's account heard |
 | `ch12_tide_wait` | §4 | The late tide and the keeper's arrival |
 | `ch12_keeper_fight` | §4 | The fight happened |
-| `ch12_keeper_defeated` | §4 | The keeper is down; `Q_MF_S2`, `Q_ST_S2` |
+| `ch12_keeper_defeated` | §4 | The keeper is down; `Q_ST_S2` |
 | `ch12_after_keeper` | §5 | The reeve yields the key |
 | `ch12_ledger_seen` | §6 | The crossings ledger read |
 | `ch12_slate_choice` | §7 | The choice opened |
@@ -857,15 +857,15 @@ These are not scripted nodes. `gen_ch12_dialogue.py` carries them in its `EXTRA`
 
 ### Encounters and balance
 
-- **Table:** `drowned_coast` [PROPOSED, not in data] on the coast-road approach inside `rm_saltreach` — the outer strip before the village edge — using `drowned_husk`, `salt_wretch` and `tide_crawler` [PROPOSED ids]. `CR_ARRIVE` triggers at the village edge. Saltreach itself has no random encounters; the village must not become a fight.
-- **Boss:** `grp_toll_keeper` — solo `toll_keeper`, level 24, two phases, no dialogue. **No HP, ATK, DEF, XP or gold number is set here.** The outline requires the enemy batch and `balance_sim.py --act5` first; this script should be tuned against the simulation before `gen_ch12_dialogue.py` is written. The dialogue does not depend on the numbers, but the gate does.
+- **Table:** `drowned_coast` on the coast-road approach inside `rm_saltreach` — the outer strip before the village edge — using `drowned_husk`, `salt_wretch`, `tide_crawler` and `wreck_shade`; the ids and table are now in data. `CR_ARRIVE` triggers at the village edge. Saltreach itself has no random encounters; the village must not become a fight.
+- **Boss:** `grp_toll_keeper` — solo `toll_keeper`, level 24, two phases, no dialogue. Its HP/ATK/DEF, XP and gold are in `scr_enemy_database.gml`; the tuning run is `tools/balance_sim.py --act5`. The dialogue does not depend on the numbers, but the gate does.
 - **Reeve Fen is not a battle.** She yields the key and the ledger under pressure; the chapter's only fight is the keeper. This is the same non-lethal resolution Vell and Calder get, without inventing a new boss group.
 - **The knight does not fight here.** His sighting is a scene, not an encounter.
 
 ### Build plan
 
-1. **This script** — draft, 2026-11-17. Awaiting owner review.
-2. **Enemy batch + simulation** — add the Act V ids, the `drowned_coast` table and `grp_toll_keeper`; extend `balance_sim.py` with `--act5`; tune the keeper at level 24 before generating dialogue.
+1. **This script** — approved 2026-11-17.
+2. **Enemy batch + simulation** — done 2026-11-17: the seven Act V ids, the `drowned_coast` table, three boss groups and `balance_sim.py --act5` exist and are tuned. The next content step is art, then rooms and dialogue.
 3. **Dialogue data** — `scr_dialogue_data_ch12` via a new `tools/gen_ch12_dialogue.py`, following the Chapter 10–11 generators. `SV_PANS_R1` is wiring-only; put it in the generator's `EXTRA` block as the narration line in the table above.
 4. **Story script** — `scr_ch12_story`: coast entry, village, reeve, keeper gate with retry, aftermath, ledger, slate choice, letter branch, pier, chapter end.
 5. **Room** — `rm_saltreach`, a blockout first; the coast-road approach is the room's outer strip with the `drowned_coast` zone, and `CR_ARRIVE` triggers at the village edge; marker table; the overworld's `saltreach` entrance flipped to `status: "built"`; the harbour pier is inside this room, not `rm_saltreach_pier`. `rm_saltreach_pier` stays Chapter 13's.
@@ -873,7 +873,7 @@ These are not scripted nodes. `gen_ch12_dialogue.py` carries them in its `EXTRA`
 7. **Art and audio** — a coast/stone-and-water blockout until a tileset exists; the keeper's battle art; `snd_amb_water` for the village and harbour.
 8. **Playtest** — last, and only in an IDE.
 
-### Decisions on the draft (2026-11-17)
+### Decisions (approved 2026-11-17)
 
 - **The reeve is Ilsa Fen.** The outline left her unnamed; the draft names her so the chapter has a person rather than a function. Speaker tags use "Reeve Fen"; her first name is given once, when she introduces herself.
 - **The half-cut name is hers.** The slate choice is to finish Ilsa's name and keep the bargain, or break the slate and end it. The village believes the sea takes the slate and never a person; the script does not say whether that belief is true. This keeps the choice from becoming a menu of villagers and keeps the sacrifice symbolic rather than a hidden execution. The tablet is single-use: the niche is the worn thing, the current tablet is a fresh blank, and the ritual runs once a season at the turning tide.
@@ -886,10 +886,9 @@ These are not scripted nodes. `gen_ch12_dialogue.py` carries them in its `EXTRA`
 
 ### Still open
 
-- **Combat numbers.** The Toll-Keeper's level is 24 from the outline; HP/ATK/DEF, XP/gold and the phase threshold await `balance_sim.py --act5`.
+- **Playtest.** The Toll-Keeper's numbers are in the enemy batch and the `--act5` simulation, but no battle has been compiled or played.
 - **The ship's name** in the ledger's last entry is left for Chapter 14.
-- **The scraped page's surviving *returned* mark** is a draft addition; the owner can remove it without touching the rest.
-- **Owner approval of the chapter as a whole** is still outstanding.
+- **The level cap.** `PARTY_MAX_LEVEL` is still 24; the approved rise to 27 is not applied.
 
 ### What this chapter must not do
 

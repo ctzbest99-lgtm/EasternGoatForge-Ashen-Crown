@@ -1,9 +1,9 @@
 # ASHEN CROWN — Act V Outline: "The Fallen Knight"
 
-> **Status: DECISIONS APPROVED 2026-11-16 (all ten as recommended); no chapter is built and nothing in the act is implemented.**
-> **Update 2026-11-17:** `CHAPTER12_SCRIPT.md` drafts Chapter 12 from §3. It is not individually approved, not built, and carries no combat numbers; its draft-level open points are decided in the script's §11. The rest of this outline's status is unchanged. §9 records the approvals; the alternatives are kept beneath it as the record of what was considered. **Approval changed no code and no data:** the level cap is still 24 (decision 7 recommends 27 and is not applied), no Act V enemy id or encounter table exists, the four coast rooms are still stub entrances, and no dialogue data has been written. This is the outline Act V needs before a chapter script can be built, in the same shape as `ACT3_OUTLINE.md` and `ACT4_OUTLINE.md`. The act title **The Fallen Knight** is **[C]** (bible §7). Bible question 2 — who the knight is, whether he is one of the Fallen Knight enemies, and whether he is Act V's subject — is answered here only as a proposal, and partly left open on purpose.
+> **Status: DECISIONS APPROVED 2026-11-16; CHAPTER 12 APPROVED 2026-11-17; CHAPTERS 13–14 DRAFTED 2026-11-17 (NOT APPROVED); the Act V enemy batch and `--act5` simulation exist as data. No chapter is built or played.**
+> **Update 2026-11-17:** `CHAPTER12_SCRIPT.md` is approved from §3; `CHAPTER13_SCRIPT.md` and `CHAPTER14_SCRIPT.md` are drafted and await owner review. The Act V enemy batch (seven ids), the `drowned_coast` table and three boss groups are in `scr_enemy_database.gml` / `scr_encounter_tables.gml`, and `tools/balance_sim.py --act5` prints the tuning. No room, story script, quest row or dialogue data exists. The level cap is still 24 (decision 7 recommends 27 and is not applied), the four coast rooms are still stub entrances, and no chapter has been compiled or played. §9 records the approvals; the alternatives are kept beneath it as the record of what was considered. The act title **The Fallen Knight** is **[C]** (bible §7). Bible question 2 — who the knight is, whether he is one of the Fallen Knight enemies, and whether he is Act V's subject — is answered here only as a proposal, and partly left open on purpose.
 > **Level band: 24–26 [PROPOSED], blocked on the level cap.** `PARTY_MAX_LEVEL` is 24 and Act IV's band is 21–23, so the party ends Act IV at most two levels into this act's floor. §9.7 recommends 27. Without the raise the act cannot be played at its own band, exactly as Act IV could not before its own cap decision.
-> **No code, room, enemy, item or dialogue data exists for this act.** Every number below is a proposal to be simulated before anything is written against it.
+> **No code, room, item or dialogue data exists for this act.** The enemy batch is data only, and every number in it has been simulated, not playtested.
 
 Source of truth: `STORY_BIBLE.md` (§2.2 Aethari, §2.3 the Ash, §2.4 the Crownveil, §3 regions, §5.12 the Fallen Knight, §7 the eight acts), `ACT4_OUTLINE.md` §5 and the built Chapters 1–11. Where canon is silent this outline says so and lists the choice.
 
@@ -11,7 +11,7 @@ Source of truth: `STORY_BIBLE.md` (§2.2 Aethari, §2.3 the Ash, §2.4 the Crown
 
 ## 0. What is already in the build
 
-- **Nothing of Act V is built.** No room, no marker table, no story script, no dialogue data, no enemy. This document is the first artifact.
+- **Nothing of Act V is built.** No room, marker table, story script or dialogue data exists; the seven-enemy batch and its table/groups are data only. This document is the first artifact.
 - **The four rooms already exist as names, and only as names.** `rm_saltreach`, `rm_saltreach_pier`, `rm_flooded_ruins` and `rm_shipwreck` are referenced by stub entrances in `rm_overworld` (tiles 200,243 · 200,276 · 97,245 · 291,272) and are four of the eight unresolved references the validator reports. Building this act removes four of them; the other four (`rm_rimehold`, `rm_frozen_ruins`, `rm_ironspine_mine`, `rm_ironspine_ruins`) belong to Acts VI–VIII.
 - **The water bed is already in the project and unused.** `snd_amb_water` has been generated since the audio pass and no room assigns it. This act is its natural home.
 - **The engine needs no change for the act's shape**, with three limits worth naming up front: a boss shifts phase once (`phase2_at`), there is no ally battle slot (Act IV's Alden workaround was scripted damage), and damage-type resistance does not exist. Boss #3 below is written to fit all three.
@@ -44,10 +44,10 @@ Assigning the coast answers bible question 28's open half for this act alone —
 
 ## 3. Chapter 12 — *The Salt Toll*
 
-**Room:** `rm_saltreach` (new; blockout first). A village on a shelf of black rock, salt pans above the tide line, a bell tower with no bell, and a slate at the harbour where one name is written each tide.
+**Room:** `rm_saltreach` (new; blockout first). A village on a shelf of black rock, salt pans above the tide line, a bell tower with no bell, and a slate at the harbour where one name is written each season, at the turning tide.
 
 **What happens (all [PROPOSED]):**
-1. Saltreach pays the sea. One name a tide, written on the slate by the reeve; the tide takes the slate, and the village believes the sea takes nothing else. It has done this for as long as anyone will say, and the Crown taxes the salt it produces.
+1. Saltreach pays the sea. One name a season, at the turning tide, written on the slate by the reeve; the tide takes the slate, and the village believes the sea takes nothing else. It has done this for as long as anyone will say, and the Crown taxes the salt it produces.
 2. The party arrives to find the tide late, the slate unwritten, and the village arguing about whose name goes on it. **The Crown's salt reeve is not a villain**: she is a clerk enforcing a levy she did not set, in a village whose custom she does not believe in. She yields rather than dies, like Vell and Calder before her (§9.6).
 3. **Beneath the reeve's house is the office**: a ledger of crossings — knights sent across the Crownveil, one line each, most marked *returned*, one page with the name scraped off. It is the act's first fact and its only one this chapter: **the Crown has been sending people across, for a very long time, and it counts the ones who come back.**
 4. The chapter's horror is the toll itself: the party can end it (§6) and the village will not thank them for it. There is no correct answer and the act does not grade it.
@@ -58,6 +58,8 @@ Assigning the coast answers bible question 28's open half for this act alone —
 **What the chapter must not do:** let the reeve explain the crossings, or let anyone in Saltreach recognise the knight.
 
 ## 4. Chapter 13 — *What the Tide Kept*
+
+**Script:** `CHAPTER13_SCRIPT.md` (draft 2026-11-17; not approved, not built).
 
 **Room:** `rm_flooded_ruins` (new; blockout first). The tide leaves the upper structure dry for about an hour; the rest is under water and walkable as shallow ruin.
 
@@ -72,6 +74,8 @@ Assigning the coast answers bible question 28's open half for this act alone —
 **What the chapter must not do:** let Caelan translate the scraped names, let the party follow the knight, or confirm the drowned civilisation is Aethari.
 
 ## 5. Chapter 14 — *The Knight Who Came Back*
+
+**Script:** `CHAPTER14_SCRIPT.md` (draft 2026-11-17; not approved, not built).
 
 **Room:** `rm_shipwreck` (new; blockout first). The hull the ledger names, grounded on a reef at low tide, still holding the fittings of a ship that carried something official.
 
@@ -92,7 +96,7 @@ Assigning the coast answers bible question 28's open half for this act alone —
 | Stage | Objective text | Set by |
 |---|---|---|
 | `S1` | "Follow the coast road to Saltreach." | Chapter 12 entry |
-| `S2` | "Find out what the village pays the tide." | the Toll-Keeper defeated |
+| `S2` | "Find out what the village pays the tide." | Saltreach is reached (Chapter 12 §1) |
 | `S3` | "Find the record of the crossings." | Chapter 13 entry |
 | `S4` | "Reach the wreck the ledger names." | the Leviathan defeated |
 | `S5` | "Face the knight who has been following you." | Chapter 14 entry |
@@ -102,7 +106,7 @@ Assigning the coast answers bible question 28's open half for this act alone —
 
 ## 7. Encounters, bosses and balance
 
-**Proposed batch — nothing of this exists in the data.** No level, HP, XP or gold number below has been simulated; Act IV's lesson was that unsimulated numbers are wrong numbers.
+**The batch is in data.** `scr_enemy_database.gml` has the seven ids, `scr_encounter_tables.gml` has `drowned_coast` and the three boss groups, and `tools/balance_sim.py --act5` prints the tuning. The table and weights are PLACEHOLDER; the numbers are simulated, not playtested.
 
 | Id | Role | Level | Notes |
 |---|---|---|---|
@@ -114,16 +118,16 @@ Assigning the coast answers bible question 28's open half for this act alone —
 | `salt_leviathan` | boss | 25 | Ch 13, two phases, act set-piece. New art required. |
 | `fallen_knight_last` | boss | 26 | Ch 14, two phases, yields, no kill credit. Reuses the Fallen Knight strip. |
 
-**Where the numbers come from:** Act IV's pattern — write the ids into `scr_enemy_database.gml`, add the `drowned_coast` table and three boss groups (`grp_toll_keeper`, `grp_salt_leviathan`, `grp_fallen_knight_last`), extend `tools/balance_sim.py` with `--act5`, and tune **before** writing a line of dialogue against them. The band edges to hit are the same as Act IV's: 3–5 rounds at 77–89% party HP with no deaths for commons, and the act boss winnable at the band floor but punishing.
+**Where the numbers come from:** Act IV's pattern — the ids in `scr_enemy_database.gml`, the `drowned_coast` table and three boss groups (`grp_toll_keeper`, `grp_salt_leviathan`, `grp_fallen_knight_last`) in `scr_encounter_tables.gml`, and `tools/balance_sim.py --act5` for the tuning. The band edges are Act IV's: 3–5 rounds at 77–89% party HP with no deaths for commons, and the act boss winnable at the band floor but punishing. The commons run 3–4 rounds at 87–90% HP; the Toll-Keeper is 100% at 7–8 rounds and 53–55% HP; the Leviathan is 91/73% at level 25 (79/52% at 24); the Fallen Knight is 100%/99% at 26 (98–99% at 24) and yields.
 
 **Two constraints worth stating now:**
-- **A level-24 common with Act IV gear will feel like a wall** unless the act adds a weapon and armour tier. That is a content decision (§9.10), not tuning.
+- **The Act V tier is the expected path.** Tidesteel Blade / Drowned Coat is approved in §9.10 and reachable from Mott's cart; without it the leviathan drops to 33–34% wins. This is a gear check, not a second difficulty mode.
 - **The leviathan cannot reuse anything.** A boss whose art is a recoloured wretch reads as unfinished in a way a blockout room does not.
 
 ## 8. Build plan (the act is approved; this is the order to build it in)
 
 1. **Level cap** — raise `PARTY_MAX_LEVEL` to 27 and confirm the XP curve lands 24–26 at sensible totals (decision 7).
-2. **Enemy batch** — seven ids, the `drowned_coast` table and three boss groups; extend `balance_sim.py` with `--act5` and tune before writing lines.
+2. **Enemy batch + simulation — done 2026-11-17.** Seven ids, the `drowned_coast` table and three boss groups; `--act5` prints the tuning. The next step is art.
 3. **Art** — the leviathan's battle sheet, the coast's tileset or a stone-and-water blockout, Saltreach's village dressing, the crossing token icon. Alden's sprite is not this act's dependency; the coast's water is.
 4. **Rooms** — `rm_saltreach`, `rm_saltreach_pier`, `rm_flooded_ruins`, `rm_shipwreck`, all blockouts first, with their marker tables and the four stub entrances flipped to `status: "built"`.
 5. **Dialogue data + story scripts** — `scr_dialogue_data_ch12..14` and `scr_ch12_story..scr_ch14_story`, generated from `CHAPTER12_SCRIPT.md..CHAPTER14_SCRIPT.md` by the existing generators.
@@ -133,13 +137,13 @@ Assigning the coast answers bible question 28's open half for this act alone —
 
 ## 9. Decisions for the owner — **APPROVED 2026-11-16, all ten as recommended**
 
-**The owner approved all ten as recommended on 2026-11-16.** The consequences are recorded in `docs/DECISIONS_AND_OPEN_QUESTIONS.md` under "Act V outline (decisions approved 2026-11-16)", including the region map this fixes for Acts V–VIII. Approval is story and scope only: no enemy, room, quest row, tile or line exists yet, and every number in §7 still has to be simulated before it is used.
+**The owner approved all ten as recommended on 2026-11-16.** The consequences are recorded in `docs/DECISIONS_AND_OPEN_QUESTIONS.md` under "Act V outline (decisions approved 2026-11-16)", including the region map this fixes for Acts V–VIII. Approval is story and scope only: the enemy batch now exists and is simulated, but no room, quest row, tile or line exists yet, and the numbers in §7 are balance placeholders rather than a playtest.
 
 1. **Where Act V happens.** *Recommended: the **Drowned Coast** — Saltreach, its pier, the flooded ruins and the wreck.* It is south of Act IV's road, it uses four room names that already exist, and it assigns the region bible question 28 leaves open. Alternative: the **Frostwilds** (Rimehold, frozen ruins), which is canonically northern and late-game and would reorder Acts VI–VIII.
 2. **Three chapters (12–14)?** *Recommended: yes.* No recruit; the length is the village, the ruin and the wreck.
 3. **Is the knight Act V's subject?** *Recommended: yes — and he is fought once, as the act boss, and yields at 0 HP without dying.* The title promises him; canon never says he cannot fight, only that he has not. Alternative: he never fights and the act boss is the leviathan, which keeps him purely a witness and costs the act its title beat.
 4. **What the act reveals.** *Recommended: the office, not the man — the Crown has sent knights across for a century, some came back, and that is what they are called.* It does **not** say which one he is, that he was sent, or that Kael's father crossed. Alternative: reveal nothing, which makes Act V a coast chapter with a cameo.
-5. **The toll.** *Recommended: keep it — one name a tide, a village that believes it is buying safety, and a choice with no correct answer.* It is the act's human cost and its only branch. Alternative: cut it and the village becomes scenery.
+5. **The toll.** *Recommended: keep it — one name a tide (once a season, at the turning tide), a village that believes it is buying safety, and a choice with no correct answer.* It is the act's human cost and its only branch. Alternative: cut it and the village becomes scenery.
 6. **The bosses.** *Recommended as written:* the Toll-Keeper (silent, drowned), the Leviathan (beast, set-piece), the Fallen Knight (yields). Alternative: drop the Toll-Keeper and open the act on the pier, which loses the village's hold on the player.
 7. **Level band 24–26 and `PARTY_MAX_LEVEL` 27.** *Recommended: yes to both.* Act IV's band tops at 23 against a cap of 24; without the raise this act starts at its own ceiling.
 8. **Alden.** *Recommended: off-screen for the whole act, present only as one letter whose existence depends on Chapter 11's seal choice — and no split.* He is in the capital doing what the party let him do. Alternative: bring him to Saltreach, which repeats Act IV and spends a beat the split will need.

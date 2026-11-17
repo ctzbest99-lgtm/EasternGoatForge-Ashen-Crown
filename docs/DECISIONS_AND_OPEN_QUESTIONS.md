@@ -589,13 +589,13 @@ These were chosen so roadmap steps 2–3 could be built. None is a locked design
 - Chapter 1 overworld / Watchtower sign wording is C-confirmed (see CHAPTER1_SCRIPT.md). Battle messages and remaining inspect text (chests, Renn, unbuilt rooms) are still placeholders.
 
 ## Act V outline (decisions approved 2026-11-16)
-`docs/story/ACT5_OUTLINE.md` proposes *The Fallen Knight*: three chapters (12–14) on the **Drowned Coast**, at levels 24–26 with `PARTY_MAX_LEVEL` 27. **All ten of its decisions were approved as recommended on 2026-11-16.** The act is still unbuilt: no chapter, room, enemy, quest row or item is built, and no dialogue data exists. No number in its §7 has been simulated. A Chapter 12 draft exists (2026-11-17) but is not approved, generated or played.
+`docs/story/ACT5_OUTLINE.md` proposes *The Fallen Knight*: three chapters (12–14) on the **Drowned Coast**, at levels 24–26 with `PARTY_MAX_LEVEL` 27. **All ten of its decisions were approved as recommended on 2026-11-16.** Chapter 12 is approved as story (2026-11-17), and Chapters 13–14 are drafted (2026-11-17) for owner review. The act is still unbuilt: no room, quest row, story script or dialogue data exists. The seven-enemy batch, the `drowned_coast` table and three boss groups are data only, and `--act5` has simulated them; nothing has been compiled or played.
 
 What the approval actually fixes:
 - **The region map for the rest of the game.** Act V is the Drowned Coast (`rm_saltreach`, `rm_saltreach_pier`, `rm_flooded_ruins`, `rm_shipwreck`); Act VI *Beneath the Mountains* takes the Ironspine; Act VII *The Ashlands* takes the ash side of the Crownveil; Act VIII *The Truth* takes the Frostwilds (`rm_rimehold`, `rm_frozen_ruins`) and the final questions. Building Act V takes the validator's unresolved references from ten to six.
 - **The knight is the act's subject and is fought once, yielding.** He is never named, never killed, and gets no bestiary kill credit; the act's revelation is the office, not the man.
 - **The Drowned Coast gets Saltreach, the toll and the leviathan**, so the region the bible named in 2026 has content for the first time — as a proposal, not canon story.
-- **The level cap must move to 27** before Chapter 12 can be played at its band. This is approved in scope but **not applied**: `PARTY_MAX_LEVEL` is still 24.
+- **The level cap must move to 27** before Act V can be played at its band. This is approved in scope but **not applied**: `PARTY_MAX_LEVEL` is still 24.
 - **Alden stays off-screen**, reachable only through a letter gated on Chapter 11's seal flags. No split, and Ending C is untouched.
 
 Open points the approval does not settle are listed in the outline's §10; nothing there was approved by implication.
@@ -606,10 +606,10 @@ Open points the approval does not settle are listed in the outline's §10; nothi
 - **Rooms are the four names the overworld already references** — `rm_saltreach`, `rm_saltreach_pier`, `rm_flooded_ruins`, `rm_shipwreck` — so building the act takes the validator's unresolved list from ten to six. The remaining six belong to Acts VI–VIII.
 - **Alden is off-screen**, present only as one letter whose existence depends on Chapter 11's `ch11_seal_alden` / `ch11_seal_party` choice. No split.
 - **`snd_amb_water` finally has a room.** It has been in the project since the audio pass and assigned to nothing.
-- **No numbers are proposed as balanced.** Act IV's lesson was that unsimulated numbers are wrong numbers, so §7 lists ids and roles only, with the simulation work as an explicit build step before any chapter is written.
+- **No numbers are proposed as playtested.** Act IV's lesson was that unsimulated numbers are wrong numbers; §7 now lists the simulated batch, and its numbers are balance placeholders rather than an IDE result.
 
-### Chapter 12 draft (decisions 2026-11-17)
-`docs/story/CHAPTER12_SCRIPT.md` drafts Chapter 12, *The Salt Toll*, from the approved outline. Four open points are decided at draft level:
+### Chapter 12 (approved 2026-11-17)
+`docs/story/CHAPTER12_SCRIPT.md` is approved as Chapter 12, *The Salt Toll*, from the approved outline. Four open points are decided at draft level:
 - **The reeve is Ilsa Fen.** The outline left her unnamed; the draft names her so the chapter has a person rather than a function. Speaker tags use "Reeve Fen."
 - **The half-cut name is hers.** The slate choice is to finish Ilsa's name and keep the bargain, or break the slate and end it. The village believes the sea takes the slate and never a person; the script does not say whether that belief is true.
 - **Alden's letter stays conditional.** It exists only on `ch11_seal_alden`; on `ch11_seal_party` there is no letter and no second-hand message. He stays off-screen and there is no split.
@@ -617,7 +617,23 @@ Open points the approval does not settle are listed in the outline's §10; nothi
 
 A story pass on 2026-11-17 made the slate single-use with a once-a-season ritual, staged the keeper taking the tablet before the fight, replaced the outline's original proposed pier line with "You're early. She didn't wait.", added Alden's north-road transition and exact tomb quote, and gave the 200-gold payment a motive.
 
-The chapter is still not individually approved, built or played. The Toll-Keeper has no stat block until `balance_sim.py --act5` runs, and `PARTY_MAX_LEVEL` is still 24.
+The chapter is approved as story; it is not built or played. The Toll-Keeper's stat block is in the Act V batch and simulated, and `PARTY_MAX_LEVEL` is still 24.
+
+### Chapters 13–14 drafts (2026-11-17)
+`docs/story/CHAPTER13_SCRIPT.md` drafts *What the Tide Kept*: the outer pier, the reef, an Aethari-built record room the Crown used, a bronze list of eleven crossings with ten names chiselled away, the legible name **Maelin Orr**, the slate midden below, the knight's second line ("Eleven went. Ten came back wrong. I am not the wrong one."), the Saltreach Leviathan, and the *Patient Crown* on the reef. `docs/story/CHAPTER14_SCRIPT.md` drafts *The Knight Who Came Back*: the wreck, the log that stops at "No further crossings" with no reason, the knight's test, his yield at 0 HP, the office reveal, the crossing token, and the act end toward the Ironspine.
+
+The drafts leave the ten unexplained, the knight unnamed and unclassified, Kael's father and Mira exactly where canon leaves them, and the token without a stated function. Neither has dialogue data, rooms, markers, quest rows, story scripts or art; both await owner approval. `audit_chapters.py` skips them through their `audit-skip` markers, and no duplicate node ids exist across the chapter scripts.
+
+### Act V enemy batch and simulation (2026-11-17)
+Seven ids are in `game/scripts/scr_enemy_database.gml`: `drowned_husk`, `salt_wretch`, `tide_crawler`, `wreck_shade`, `toll_keeper`, `salt_leviathan` and `fallen_knight_last`. `scr_encounter_tables.gml` has the `drowned_coast` table (five two-enemy groups, band 24–25) and the three solo boss groups. `leviathan_tide` is the act's one new boss skill, an all-party 0.8 tide surge; the Leviathan drops **The Drowned Crown** once.
+
+The simulator uses the Act V tier (Tidesteel Blade / Drowned Coat), reachable from Mott's cart:
+- **Commons:** 100% wins, 3.0–4.0 rounds, 87–90% party HP, no deaths.
+- **Toll-Keeper (L24):** 100%, 7.1–8.1 rounds, 53–55% HP, 0.16–0.34 deaths.
+- **Leviathan:** 91% Caelan / 73% Sera at L25, 7.2–8.4 rounds, 18–21% HP, about one death; 79% / 52% at L24.
+- **Fallen Knight:** 99% Caelan / 98% Sera at L24, 8.0–9.5 rounds, 39–41% HP; 100% at L26, 7.3–8.6 rounds, 51% HP. It yields.
+
+Without the Act V tier the commons still clear, but the Leviathan falls to 33–34% wins at 13% HP — the tier is the expected path, not optional polish. All of this is simulation; no battle has been compiled or played, and the cap is still 24.
 
 ## Chapter-wide audit (2026-11-16)
 `tools/audit_chapters.py` cross-checks the things `validate_gamemaker.py` cannot: story-script line ids against dialogue data, marker hooks against the `scr_*_play_script` dispatchers, every `zone_exit` against the target room's marker names, encounter groups/tables/enemy ids, quest stages, ambience beds, and every `**ID** · Speaker` header in `docs/story/CHAPTER*_SCRIPT.md` against a node. It is read-only, exits non-zero on a problem, and currently reports none.
