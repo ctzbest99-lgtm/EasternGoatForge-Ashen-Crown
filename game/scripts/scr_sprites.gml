@@ -135,6 +135,12 @@ function scr_battle_kind_from_id(_actor_id) {
             return "sanctuary_warden";
         case "forgotten_king":
             return "door_warden";
+        // Emberwake (early Zone 1 boss) and its later ordinary appearances: no dedicated strips
+        // yet, so all three borrow the night moth swarm's wings — the closest fire-brushed set.
+        case "emberwake":
+        case "emberwake_boss":
+        case "emberwake_late":
+            return "night_moth_swarm";
         default:
             // Batches 7–8 and later: strips are found by name (scr_battle_auto_strip).
             if (scr_battle_kind_is_generic(_actor_id)) return _actor_id;

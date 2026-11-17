@@ -5856,6 +5856,12 @@
     },
     {
       "id":{
+        "name":"spr_ts_blackwood",
+        "path":"sprites/spr_ts_blackwood/spr_ts_blackwood.yy",
+      },
+    },
+    {
+      "id":{
         "name":"spr_ts_zone1",
         "path":"sprites/spr_ts_zone1/spr_ts_zone1.yy",
       },
@@ -6366,6 +6372,12 @@
     },
     {
       "id":{
+        "name":"ts_blackwood",
+        "path":"tilesets/ts_blackwood/ts_blackwood.yy",
+      },
+    },
+    {
+      "id":{
         "name":"rm_title",
         "path":"rooms/rm_title/rm_title.yy",
       },
@@ -6702,6 +6714,30 @@
     },
     {
       "id":{
+        "name":"scr_build_ashlands_breach",
+        "path":"scripts/scr_build_ashlands_breach/scr_build_ashlands_breach.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_ashlands_markers_data",
+        "path":"scripts/scr_ashlands_markers_data/scr_ashlands_markers_data.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_build_ashlands_ruins",
+        "path":"scripts/scr_build_ashlands_ruins/scr_build_ashlands_ruins.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"scr_build_ashlands_depths",
+        "path":"scripts/scr_build_ashlands_depths/scr_build_ashlands_depths.yy",
+      },
+    },
+    {
+      "id":{
         "name":"rm_hollow_approach",
         "path":"rooms/rm_hollow_approach/rm_hollow_approach.yy",
       },
@@ -6710,6 +6746,24 @@
       "id":{
         "name":"rm_hollow_sanctuary",
         "path":"rooms/rm_hollow_sanctuary/rm_hollow_sanctuary.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"rm_ashlands_depths",
+        "path":"rooms/rm_ashlands_depths/rm_ashlands_depths.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"rm_ashlands_ruins",
+        "path":"rooms/rm_ashlands_ruins/rm_ashlands_ruins.yy",
+      },
+    },
+    {
+      "id":{
+        "name":"rm_ashlands_breach",
+        "path":"rooms/rm_ashlands_breach/rm_ashlands_breach.yy",
       },
     },
     {
@@ -7145,6 +7199,24 @@
       "roomId":{
         "name":"rm_barrow_deep",
         "path":"rooms/rm_barrow_deep/rm_barrow_deep.yy",
+      },
+    },
+    {
+      "roomId":{
+        "name":"rm_ashlands_breach",
+        "path":"rooms/rm_ashlands_breach/rm_ashlands_breach.yy",
+      },
+    },
+    {
+      "roomId":{
+        "name":"rm_ashlands_ruins",
+        "path":"rooms/rm_ashlands_ruins/rm_ashlands_ruins.yy",
+      },
+    },
+    {
+      "roomId":{
+        "name":"rm_ashlands_depths",
+        "path":"rooms/rm_ashlands_depths/rm_ashlands_depths.yy",
       },
     },
   ],

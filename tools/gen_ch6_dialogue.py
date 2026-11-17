@@ -51,6 +51,18 @@ EXTRA = [
     {"id": "CH_END_02", "speaker": "SYSTEM",
      "lines": ["Quest updated: Find out what Cinderhollow pays, and to whom.",
                "Chapter 6 — The Green Silence — Complete."]},
+    # Mott, the stranded carter on the road. Not in the script: the Act V-VI merchant is a wiring
+    # character, so his greeting and his two repeat lines live here. Repeats are act-aware
+    # (scr_ch6_carter_talk): R1 while the mine crates are still shut, R2 once they open.
+    {"id": "BW_CARTER_01", "speaker": "Mott",
+     "lines": ["The cart's been off the road since the spring rain. Wheels are down to the axles in moss, and the horse went before that."]},
+    {"id": "BW_CARTER_02", "speaker": "Mott",
+     "lines": ["So I sell off the tailboard. Coast glass out of Saltreach, mine steel out of Ironspine.",
+               "Both came up the road with me. Neither went back."]},
+    {"id": "BW_CARTER_R1", "speaker": "Mott",
+     "lines": ["The mine crates stay under the tarp till the garrison road is worth the name. Coast stock's on the tailboard."]},
+    {"id": "BW_CARTER_R2", "speaker": "Mott",
+     "lines": ["Crates are open. Coast glass, mine steel, and whatever the road left me."]},
 ]
 
 

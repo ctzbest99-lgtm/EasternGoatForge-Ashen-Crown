@@ -29,6 +29,37 @@ rm_valemere_road, rm_valemere, rm_salt_lamp and rm_warehouse; their build script
 (`scr_wf_prepare_layers`). The overworld keeps `ts_zone1` (its Chapter 2 patch only uses ids < 800).
 Source data: `game/maps/chapter2/` (copied from Design's `/workspace/wrenfield`) and `tools/gen_ch3_rooms.py`.
 
+## Chapter 6–8 tileset: `ts_blackwood`
+| File | Use |
+|---|---|
+| `ts_blackwood.png` | 256×1040, 16 columns × 65 rows. **Rows 0–49 are `ts_zone1`, unchanged (same ids)**; rows 50–64 are the Blackwood's own placeholder material. |
+| `ts_blackwood_preview_4x.png` | Labelled preview of rows 50–64. Do not import. |
+
+IDE: Sprite `spr_ts_blackwood` (one image) → Tile Set named exactly **`ts_blackwood`**, 16×16, offset 0, separation 0.
+Used by `rm_blackwood_deep` and `rm_blackwood_hollow` (Chapter 6), and by the three Ashlands blockouts
+(`rm_ashlands_breach`, `rm_ashlands_ruins`, `rm_ashlands_depths`), through `scr_bw_prepare_layers`, which points the five
+layers at it before `scr_map_build_from_arrays` fills them. `python3 tools/gen_blackwood_tileset.py` builds the
+PNG, the preview and both GameMaker resources (GUIDs are derived from the resource names, so re-running is stable).
+
+| Ids | Name | Use |
+|---|---|---|
+| 800–807 | `bwmoss_*` | understory floor (the wood's walkable ground) |
+| 816–821 | `bwearth_*` | packed black road |
+| 832–838 | `bwchar_*` | charcoal / burn-line ground |
+| 848–863 | `bwbog_*` | standing bog water |
+| 864–879 | `bwthorn_*` | thorn wall (blocking) |
+| 880–895 | `bwtop_*` | dead canopy tops, transparent (Overhead layer) |
+| 896–911 | props | brambles, bones, ash, embers, spores, web, kiln 904, vine, thorn post, brazier 907, fallen stone, carved crown stone 909, rune stone, black pool |
+| 912–927 | props 2 | roots, standing stone 913, stump, charred beam, skull, moths, thorn snag, smoking kiln, rack, rest, stone, log, fungus |
+| 928–943 | `bwtrunk_*` | dead trunk columns (Decor layer) |
+| 944–959 | `bwbranch_*` | trunk tops and branches, transparent |
+| 960–975 | `bwhut_*` | charred hut planks |
+| 976–1007 | `bwcrown_cap_*`, `bwcrown_face_*` | dark stone walls; one face carries the black-sun crown |
+| 1008–1023 | `bwroot_arch_*` | root arches and hanging thorns |
+| 1024–1039 | `bwspare_*` | mist and spare tiles |
+
+These are placeholder art (flat dark material, drawn by the generator), not Design's Blackwood pass.
+
 ## How the built rooms use this atlas
 
 Rooms do not store tiles in their `.yy`. Each room's Creation Code calls `scr_build_<room>()`, which fills the five named layers from the arrays in `scr_<room>_data()` (see `game/rooms/ROOM_SETUP.md` §12). `python3 tools/render_built_maps.py` composites those arrays so a room can be checked without the IDE.

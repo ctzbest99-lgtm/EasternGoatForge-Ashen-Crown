@@ -366,6 +366,18 @@
   "hostile": true
  },
  {
+  "type": "boss_spawn",
+  "name": "emberwake",
+  "tile_x": 194,
+  "tile_y": 141,
+  "x": 3112,
+  "y": 2272,
+  "enemy_id": "emberwake_boss",
+  "fallback_enemy_id": "bandit",
+  "encounter_id": "zone01_boss_emberwake",
+  "note": "Emberwake, the Old Road's optional early boss (Level 4, 70 HP, weak to ice). Fought alone; the same creature roams later acts as an ordinary enemy. Drops an Emberwake Feather 35% of the time."
+ },
+ {
   "type": "bandit_spawn",
   "name": "bandit_camp_1",
   "tile_x": 169,
@@ -450,7 +462,8 @@
   "x": 2536,
   "y": 1936,
   "loot": [
-   "placeholder"
+   "Ash Pendant",
+   "Ash Shard x2"
   ],
   "note": "Hidden grove: end of the overgrown trail NW of the bandit camp; the last bushes are walk-through."
  },
@@ -606,9 +619,11 @@
   "x": 5336,
   "y": 2752,
   "target_room": "rm_ashlands_breach",
+  "target_spawn": "from_overworld",
   "region": "Ashlands",
-  "status": "stub",
-  "note": "Breach in the Crownveil; lock behind story progress."
+  "status": "built",
+  "requires_flag": "flag_act4_complete",
+  "note": "The Crownveil breach and the Ashlands outpost (rm_ashlands_breach). Provisional Act VII lock: opens after Chapter 11 until the act has a story."
  },
  {
   "type": "entrance",
@@ -618,9 +633,11 @@
   "x": 6008,
   "y": 3040,
   "target_room": "rm_ashlands_ruins",
+  "target_spawn": "from_overworld",
   "region": "Ashlands",
-  "status": "stub",
-  "note": "Broken ancient structures beyond the Crownveil."
+  "status": "built",
+  "requires_flag": "flag_act4_complete",
+  "note": "Broken ancient structures beyond the Crownveil, built as rm_ashlands_ruins (40x28). The ruin's east gap returns here; provisional Act VII lock, as at the breach."
  },
  {
   "type": "region",

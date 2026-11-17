@@ -2,7 +2,7 @@
 
 Do not fabricate .yy/.yyp metadata. Let GameMaker create resources. This document does not prove the project compiles.
 
-Every built room is a **16×16** tile map and needs a camera (a 320×180 viewport). The 20 rooms are listed in the index below; the sections after it give the per-room setup. Room size and resolution are still undecided in a final-design sense — the sizes here are what the builders and the generated project currently use.
+Every built room is a **16×16** tile map and needs a camera (a 320×180 viewport). The rooms in the project are listed in the index below; the sections after it give the per-room setup. Room size and resolution are still undecided in a final-design sense — the sizes here are what the builders and the generated project currently use.
 
 The overworld player uses **16×24** Kael sprites on that 16×16 grid (`depth = -y`). See docs/DECISIONS_AND_OPEN_QUESTIONS.md.
 
@@ -32,8 +32,11 @@ The overworld player uses **16×24** Kael sprites on that 16×16 grid (`depth = 
 | `rm_warehouse` | 416×288 | 26×18 | 3 | `scr_build_warehouse();` + `obj_night_overlay` |
 | `rm_hollow_approach` | 384×320 | 24×20 | 4 | `scr_build_hollow_approach();` — the doors and the waystone |
 | `rm_hollow_sanctuary` | 448×416 | 28×26 | 4 | `scr_build_hollow_sanctuary();` — records hall, sealed door, inner door |
+| `rm_ashlands_breach` | 512×320 | 32×20 | — (Act VII region) | `scr_build_ashlands_breach();` — the Crownveil breach, the ash field and Sarn's outpost |
+| `rm_ashlands_ruins` | 640×448 | 40×28 | — (Act VII region) | `scr_build_ashlands_ruins();` — the walled ruin up the black road: gated outer wall, pillared court, two side halls and the north sanctum |
+| `rm_ashlands_depths` | 576×384 | 36×24 | — (Act VII region) | `scr_build_ashlands_depths();` — the undercroft behind the sanctum wall: stair down, pillared hall, four burial niches and the black-sun shrine |
 
-Chapters 4–5 have no rooms yet: their encounter tables, level bands and boss groups exist in `scr_encounter_tables` / `scr_enemy_database`, but the Hollow Sanctuary and the Blackwood garrison are unbuilt. The 12 overworld entrances still marked `status: "stub"` (Rimehold, Saltreach, the Blackwood doors, the Ironspine and Drowned Coast ruins, the Crownveil breach, …) point at rooms that do not exist and show `[rm_… is not built yet.]`.
+Chapters 4–5 have no rooms yet: their encounter tables, level bands and boss groups exist in `scr_encounter_tables` / `scr_enemy_database`, but the Hollow Sanctuary and the Blackwood garrison are unbuilt. The 10 overworld entrances still marked `status: "stub"` (Rimehold, Saltreach, the Blackwood doors, the Ironspine and Drowned Coast ruins, …) point at rooms that do not exist and show `[rm_… is not built yet.]`. `rm_ashlands_breach` and `rm_ashlands_ruins` are built, so the Crownveil and broken-structure entrances open (both after `flag_act4_complete`); `rm_ashlands_depths` has no overworld entrance and is reached through the ruin's sanctum stair.
 
 ## 0. Title room (`rm_title`) — first in Room Order
 1. Create room `rm_title`. Size 320×180 (or 640×360 if you prefer a 2× room; the menu is drawn in Draw GUI either way). Persistent off. Clear colour black.

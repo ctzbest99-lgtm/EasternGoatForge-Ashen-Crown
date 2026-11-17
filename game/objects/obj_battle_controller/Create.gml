@@ -40,6 +40,7 @@ level_ups = [];         // queued level-up structs from scr_party_apply_pending_
 level_up_index = 0;
 victory_xp = 0;
 victory_gold = 0;
+victory_loot = "";      // "\nFound X!" lines for items that dropped (scr_battle_roll_drops)
 
 // Pending action used by BATTLE_STATE.ANIMATING (applied at the attack's hit frame).
 anim_message = "";

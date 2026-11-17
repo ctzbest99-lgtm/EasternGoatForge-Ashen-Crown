@@ -2,13 +2,21 @@
 /// Tileset asset: ts_wrenfield (from ts_wrenfield.png, 16x16, no offset/spacing). Its rows 0-49 are ts_zone1, unchanged,
 /// so every Zone 1 tile index means the same tile in both sets.
 
-/// Create the five map layers (or reuse the Room Editor ones) and point them at ts_wrenfield before any tile is set.
-function scr_wf_prepare_layers(_w, _h) {
+/// Create the five map layers (or reuse the Room Editor ones) and point them at a tileset before
+/// any tile is set. Defaults to ts_wrenfield; Chapter 6 passes ts_blackwood (scr_bw_prepare_layers),
+/// whose rows 0-49 are ts_zone1 too, so shared tile ids keep their meaning.
+function scr_wf_prepare_layers(_w, _h, _tileset = ts_wrenfield) {
     var _defs = scr_map_layer_defs();
     for (var _i = 0; _i < array_length(_defs); _i++) {
         var _tm = scr_map_get_tilemap(_defs[_i].name, _defs[_i].depth, _w, _h);
-        tilemap_tileset(_tm, ts_wrenfield);
+        tilemap_tileset(_tm, _tileset);
     }
+}
+
+/// The Blackwood's own atlas (Chapter 6 rooms): ts_blackwood, rows 0-49 == ts_zone1 plus the
+/// dark wood's own material in rows 50-64 (ids 800-1039, see game/tilesets/README.md).
+function scr_bw_prepare_layers(_w, _h) {
+    scr_wf_prepare_layers(_w, _h, ts_blackwood);
 }
 
 /// _patch = array of [layer key, x, y, tile] (layer key as in scr_map_layer_defs: ground/decor/overhead/collision/markers).

@@ -10,7 +10,7 @@
 function scr_bestiary_ids() {
     return [
         "bandit", "fallen_knight", "ash_wolf", "ashen_wretch", "grave_spider", "hollow_soldier",
-        "ashbound_hunter", "crown_patrolman", "crown_crossbowman", "bandit_veteran", "grey_ash_wolf",
+        "ashbound_hunter", "emberwake", "crown_patrolman", "crown_crossbowman", "bandit_veteran", "grey_ash_wolf",
         "occupation_soldier", "crown_sergeant", "blackguard", "reeve_calder",
         "dock_thug", "cutpurse", "debt_collector", "debtman",
         "ward_sentinel", "glyph_wisp", "aethari_automaton", "sanctuary_warden",
@@ -47,6 +47,9 @@ function scr_bestiary_alias(_enemy_id) {
         case "crown_patrolman_road":    return "crown_patrolman";
         case "crown_crossbowman_road":  return "crown_crossbowman";
         case "bandit_veteran_road":     return "bandit_veteran";
+        // Emberwake's early boss fight and its later ordinary appearances are one creature.
+        case "emberwake_boss":          return "emberwake";
+        case "emberwake_late":          return "emberwake";
     }
     return _enemy_id;
 }
@@ -234,6 +237,7 @@ function scr_bestiary_desc(_enemy_id) {
         case "grave_spider":            return "Nests in disturbed graves. Fast, frail, and venomous.";
         case "hollow_soldier":          return "A soldier's shape with the oath still stuck in it.";
         case "ashbound_hunter":         return "Tracks the party through ashfall. Fears the cold.";
+        case "emberwake":              return "A firebird off the Old Road. Fast, frail, and still warm to the touch.";
         case "crown_patrolman":         return "Crown levy on patrol. Spear, shield, and a short temper.";
         case "crown_crossbowman":       return "Holds the back rank. Its bolts punish anyone standing still.";
         case "occupation_soldier":      return "Calder's garrison. Fights in formation and shouts for help.";

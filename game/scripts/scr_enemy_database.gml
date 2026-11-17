@@ -20,10 +20,12 @@ function scr_get_enemy_data(_enemy_id) {
             // FL_TUTORIAL_SYS_03): hits harder against a defending target. Weight PLACEHOLDER.
             // Level 1: the Farmlands is the level 1–2 band and the tutorial fight is level 1.
             return { id: "bandit", level: 1, name: "Bandit", max_hp: 18, attack: 5, defense: 1, mdef: 1, spd: 8, max_mp: 0, xp_reward: 6, gold_reward: 4,
+                drops: [{ item: "item_ash_shard", chance: 0.30 }],
                 actions: [{ skill: "attack", weight: 3 }, { skill: "cheap_shot", weight: 1 }] };
         case "fallen_knight":
             // Level 3: first appears in the Bandit Camp (3–4) and the Watchtower (4–7).
             return { id: "fallen_knight", level: 3, name: "Fallen Knight", short_name: "Fallen Kn.", max_hp: 30, attack: 7, defense: 4, mdef: 3, spd: 7, max_mp: 0, xp_reward: 12, gold_reward: 8,
+                drops: [{ item: "item_ash_shard", chance: 0.35 }],
                 actions: [{ skill: "attack", weight: 1 }] };
         case "ashbound_hunter":
             // Recommended level 3–5 (CHAPTER1_SCRIPT.md §4.1). PLACEHOLDER stats
@@ -41,6 +43,7 @@ function scr_get_enemy_data(_enemy_id) {
             // Level 6: end-of-zone boss (the Watchtower band is 4–7). Coder choice — the script
             // gives no boss level, and Escape is never offered in a boss fight.
             return { id: "blackguard", level: 6, name: "Blackguard", max_hp: 450, attack: 12, defense: 8, mdef: 6, spd: 9, max_mp: 0, xp_reward: 250, gold_reward: 100, weakness: "holy", is_boss: true,
+                drops: [{ item: "item_blackguards_longsword", chance: 1, once: true }],
                 actions: [{ skill: "attack", weight: 1 }],
                 phase_actions: [
                     [{ skill: "attack", weight: 2 }, { skill: "bg_shieldbash", weight: 1 }],
@@ -50,10 +53,12 @@ function scr_get_enemy_data(_enemy_id) {
         case "ash_wolf":
             // PLACEHOLDER. Design: Farmlands / Old Road, Lv 1–2 / 2–3. Howl stays visual only (1 in 5).
             return { id: "ash_wolf", level: 2, name: "Ash Wolf", max_hp: 16, attack: 6, defense: 1, mdef: 0, spd: 9, max_mp: 0, xp_reward: 7, gold_reward: 3, weakness: "fire", placeholder: true,
+                drops: [{ item: "item_ash_shard", chance: 0.20 }],
                 actions: [{ skill: "attack", weight: 4 }, { skill: "wolf_howl", weight: 1 }] };
         case "ashen_wretch":
             // PLACEHOLDER. Design: Old Road / Bandit Camp, Lv 2–4. Scream stays visual only (1 in 5).
             return { id: "ashen_wretch", level: 3, name: "Ashen Wretch", short_name: "Ash. Wretch", max_hp: 22, attack: 6, defense: 2, mdef: 2, spd: 6, max_mp: 0, xp_reward: 9, gold_reward: 5, placeholder: true,
+                drops: [{ item: "item_ash_shard", chance: 0.25 }],
                 actions: [{ skill: "attack", weight: 4 }, { skill: "wretch_scream", weight: 1 }] };
         case "grave_spider":
             // PLACEHOLDER. Design: Watchtower / Basement, Lv 4–7. Web stays visual only (1 in 4).
@@ -64,6 +69,18 @@ function scr_get_enemy_data(_enemy_id) {
             // PLACEHOLDER. Design: Watchtower / Basement, Lv 4–7. Shield Wall guards the next hit (1 in 4).
             return { id: "hollow_soldier", level: 5, name: "Hollow Soldier", short_name: "Hollow Sol.", max_hp: 28, attack: 7, defense: 3, mdef: 1, spd: 5, max_mp: 0, xp_reward: 11, gold_reward: 7, placeholder: true,
                 actions: [{ skill: "attack", weight: 3 }, { skill: "shield_wall", weight: 1 }] };
+        case "emberwake_boss":
+            // Early Zone 1 boss (the Old Road, optional; boss_spawn marker zone01_boss_emberwake).
+            // PLACEHOLDER numbers, tuned against a level 4–5 Kael alone: 70 HP is about six rounds
+            // of his sword and about 30 HP of incoming damage, well under the Blackguard's 450.
+            // Weak to ice, as a firebird should be. level 4 sits a step above the Old Road band
+            // (2–3) and below the Watchtower's Fallen Knights (3–5): an early boss, not the zone boss.
+            // The feather drops here at 35% (the top of the 10–35% range); see the ordinary
+            // Emberwakes below for the 10% end. Fought alone — no adds.
+            return { id: "emberwake_boss", level: 4, name: "Emberwake", short_name: "Emberwake", max_hp: 70, attack: 6, defense: 3, mdef: 3, spd: 12, max_mp: 20,
+                xp_reward: 70, gold_reward: 35, weakness: "ice", is_boss: true, placeholder: true,
+                drops: [{ item: "item_emberwake_feather", chance: 0.35 }],
+                actions: [{ skill: "attack", weight: 3 }, { skill: "ember", weight: 2 }] };
 
         // ---- Act II: Millhaven Road / Wrenfield (Design batch 6, level 8–10) ----------------
         // Balance pass (PLACEHOLDER): HP / ATK / DEF were lowered from Design's suggestions so a
@@ -76,6 +93,7 @@ function scr_get_enemy_data(_enemy_id) {
             // Chapter 2 is the script's suggested level 8–10 band; road enemies sit at its bottom.
             return { id: "crown_patrolman", level: 8, name: "Crown Patrolman", short_name: "Patrolman", max_hp: 44, attack: 13, defense: 12, mdef: 6, spd: 11, max_mp: 0,
                 xp_reward: 28, gold_min: 12, gold_max: 20, gold_reward: 16, weakness: "lightning", placeholder: true,
+                drops: [{ item: "item_iron_scale", chance: 0.30 }],
                 actions: [{ skill: "attack", weight: 2 }, { skill: "thrust", weight: 2 }, { skill: "brace", weight: 1 }] };
         case "crown_crossbowman":
             return { id: "crown_crossbowman", level: 8, name: "Crown Crossbowman", short_name: "Crossbowman", max_hp: 36, attack: 14, defense: 8, mdef: 6, spd: 13, max_mp: 0,
@@ -84,16 +102,19 @@ function scr_get_enemy_data(_enemy_id) {
         case "occupation_soldier":
             return { id: "occupation_soldier", level: 9, name: "Occupation Soldier", short_name: "Occ. Soldier", max_hp: 50, attack: 12, defense: 14, mdef: 8, spd: 8, max_mp: 0,
                 xp_reward: 36, gold_min: 15, gold_max: 25, gold_reward: 20, weakness: "lightning", placeholder: true,
+                drops: [{ item: "item_iron_scale", chance: 0.30 }],
                 actions: [{ skill: "attack", weight: 2 }, { skill: "slash", weight: 2 }, { skill: "soldier_guard", weight: 1 }] };
         case "bandit_veteran":
             // Same kit as the bandit (plain attack).
             return { id: "bandit_veteran", level: 9, name: "Bandit Veteran", short_name: "Bandit Vet.", max_hp: 42, attack: 13, defense: 10, mdef: 5, spd: 14, max_mp: 0,
                 xp_reward: 32, gold_min: 16, gold_max: 28, gold_reward: 22, placeholder: true,
+                drops: [{ item: "item_iron_scale", chance: 0.25 }],
                 actions: [{ skill: "attack", weight: 1 }] };
         case "grey_ash_wolf":
             // Same kit as the ash wolf. MDEF and gold were not in Design's list: PLACEHOLDER 4 and 10–16.
             return { id: "grey_ash_wolf", level: 8, name: "Grey Ash Wolf", short_name: "Grey Wolf", max_hp: 36, attack: 13, defense: 8, mdef: 4, spd: 20, max_mp: 0,
                 xp_reward: 28, gold_min: 10, gold_max: 16, gold_reward: 13, weakness: "fire", placeholder: true,
+                drops: [{ item: "item_ash_shard", chance: 0.20 }],
                 actions: [{ skill: "attack", weight: 4 }, { skill: "wolf_howl", weight: 1 }] };
         case "reeve_calder":
             // Chapter 2 boss (CHAPTER2_SCRIPT.md §7). Kit is canon: Guard; a shout that buffs his
@@ -108,6 +129,7 @@ function scr_get_enemy_data(_enemy_id) {
                 // Chapter 2 barks replace the system lines: stance (§7.1) and yield (§7.2).
                 stance_line_node: "WF_CALDER_PHASE2_01", yield_line_node: "WF_CALDER_DEFEAT_01",
                 stance_buffs: [{ stat: "atk", pct: 0.25, turns: -1 }, { stat: "def", pct: 0.15, turns: -1 }],
+                drops: [{ item: "item_calders_greatsword", chance: 1, once: true }],
                 actions: [{ skill: "heavy_strike", weight: 3 }, { skill: "calder_guard", weight: 1 }, { skill: "calder_shout", weight: 2 }],
                 actions_alone: [{ skill: "heavy_strike", weight: 3 }, { skill: "calder_guard", weight: 1 }] };
 
@@ -136,35 +158,35 @@ function scr_get_enemy_data(_enemy_id) {
         case "dock_thug":
             return scr_enemy_scaled("dock_thug", "Dock Thug", "Dock Thug", "common", 11, 1, { spd: 9, actions: [{ skill: "attack", weight: 1 }] });
         case "cutpurse":
-            return scr_enemy_scaled("cutpurse", "Cutpurse", "Cutpurse", "common", 11, 1, { spd: 18, hp_mult: 0.8,
+            return scr_enemy_scaled("cutpurse", "Cutpurse", "Cutpurse", "common", 11, 1, { drops: [{ item: "item_valemere_steel", chance: 0.30 }], spd: 18, hp_mult: 0.8,
                 actions: [{ skill: "attack", weight: 2 }, { skill: "cutpurse_steal", weight: 2 }] });
         case "debt_collector":
-            return scr_enemy_scaled("debt_collector", "Debt Collector", "Collector", "elite", 12, 1, { spd: 10, actions: [{ skill: "attack", weight: 1 }] });
+            return scr_enemy_scaled("debt_collector", "Debt Collector", "Collector", "elite", 12, 1, { drops: [{ item: "item_valemere_steel", chance: 0.30 }], spd: 10, actions: [{ skill: "attack", weight: 1 }] });
         case "debtman":
             // Ch 3 boss (CHAPTER3_SCRIPT.md §6). Kit is canon: a fast knife strike; Collect
             // (a small HP drain); a bind that Slows one target. When the toughs fall he
             // fights meaner and faster (the stance). He is beaten and withdraws alive
             // (Decision 3): yield replaces death, like Reeve Calder. Not Ash-corrupted.
             // Numbers are PLACEHOLDER (suggested levels 10-13).
-            return scr_enemy_scaled("debtman", "The Debtman", "Debtman", "boss", 12, 3, { spd: 12,
+            return scr_enemy_scaled("debtman", "The Debtman", "Debtman", "boss", 12, 3, { drops: [{ item: "item_debtmans_chain", chance: 1, once: true }], spd: 12,
                 is_boss: true, yields: true, yield_flag: "flag_debtman_yielded",
                 stance_on_adds_fall: true, stance_line_node: "DM_PHASE2_01",
                 stance_buffs: [{ stat: "atk", pct: 0.30, turns: -1 }, { stat: "spd", pct: 0.30, turns: -1 }],
                 actions: [{ skill: "attack", weight: 3 }, { skill: "debtman_reel", weight: 2 },
                     { skill: "debtman_collect", weight: 2 }, { skill: "debtman_bind", weight: 1 }] });
         case "ward_sentinel":
-            return scr_enemy_scaled("ward_sentinel", "Ward Sentinel", "Sentinel", "common", 14, 1, { spd: 7, def_add: 3, weakness: "lightning",
+            return scr_enemy_scaled("ward_sentinel", "Ward Sentinel", "Sentinel", "common", 14, 1, { drops: [{ item: "item_barrow_iron", chance: 0.30 }], spd: 7, def_add: 3, weakness: "lightning",
                 actions: [{ skill: "attack", weight: 1 }] });
         case "glyph_wisp":
-            return scr_enemy_scaled("glyph_wisp", "Glyph Wisp", "Wisp", "common", 14, 1, { spd: 15, hp_mult: 0.75,
+            return scr_enemy_scaled("glyph_wisp", "Glyph Wisp", "Wisp", "common", 14, 1, { drops: [{ item: "item_barrow_iron", chance: 0.25 }], spd: 15, hp_mult: 0.75,
                 actions: [{ skill: "attack", weight: 1 }, { skill: "wisp_mote", weight: 2 }] });
         case "aethari_automaton":
-            return scr_enemy_scaled("aethari_automaton", "Aethari Automaton", "Automaton", "elite", 15, 1, { spd: 9, weakness: "lightning",
+            return scr_enemy_scaled("aethari_automaton", "Aethari Automaton", "Automaton", "elite", 15, 1, { drops: [{ item: "item_architect_alloy", chance: 0.35 }], spd: 9, weakness: "lightning",
                 actions: [{ skill: "attack", weight: 1 }] });
         case "sanctuary_warden": // Ch 4 boss (working name), two phases
             // hp_mult 1.25 / atk_add 2 compensate for Caelan's approved elemental kit (Chapter 4
             // balance pass 2026-11-15; PLACEHOLDER, 35/71/94% wins at party levels 13/14/15).
-            return scr_enemy_scaled("sanctuary_warden", "Sanctuary Warden", "Warden", "boss", 16, 4, { spd: 8,
+            return scr_enemy_scaled("sanctuary_warden", "Sanctuary Warden", "Warden", "boss", 16, 4, { drops: [{ item: "item_sanctuary_oathblade", chance: 1, once: true }], spd: 8,
                 hp_mult: 1.25, atk_add: 2,
                 phase2_at: 0.5, phase2_buffs: [{ stat: "atk", pct: 0.2, turns: -1 }],
                 phase2_line: "The Warden's plates crack. Two more arms unfold!",
@@ -234,11 +256,23 @@ function scr_get_enemy_data(_enemy_id) {
             return scr_enemy_scaled("barrow_husk", "Barrow Husk", "Barrow Husk", "common", 21, 1, { spd: 6, hp_mult: 1.15, weakness: "holy",
                 actions: [{ skill: "attack", weight: 1 }] });
         case "oath_iron": // common 22 = 193 / 52 / 41 (x1.2 HP, +4 DEF), slow, lightning
-            return scr_enemy_scaled("oath_iron", "Oath Iron", "Oath Iron", "common", 22, 1, { spd: 5, hp_mult: 1.2, def_add: 4, weakness: "lightning",
+            return scr_enemy_scaled("oath_iron", "Oath Iron", "Oath Iron", "common", 22, 1, { drops: [{ item: "item_veil_shard", chance: 0.30 }], spd: 5, hp_mult: 1.2, def_add: 4, weakness: "lightning",
                 actions: [{ skill: "attack", weight: 1 }] });
         case "grave_moth": // common 22 = 129 / 52 / 37 (x0.8 HP), fast, fire
-            return scr_enemy_scaled("grave_moth", "Grave Moth", "Grave Moth", "common", 22, 1, { spd: 14, hp_mult: 0.8, weakness: "fire",
+            return scr_enemy_scaled("grave_moth", "Grave Moth", "Grave Moth", "common", 22, 1, { drops: [{ item: "item_veil_shard", chance: 0.25 }], spd: 14, hp_mult: 0.8, weakness: "fire",
                 actions: [{ skill: "attack", weight: 2 }, { skill: "moth_blind", weight: 1 }, { skill: "moth_sleep", weight: 1 }] });
+        // ---- Emberwake, later: the early boss's creature as an ordinary enemy -----------------
+        // Same bird, no boss framing. It keeps the boss's ice weakness and its feather drop, but
+        // at 10% (the bottom of the 10–35% range) because these are met by the flock, not once.
+        // "ember" is Caelan's fire skill, reused here as the creature's own flame (PLACEHOLDER).
+        case "emberwake": // Chapter 3 Valemere road (band 10–13) = 53 HP / 19 ATK / 15 DEF, frail and fast
+            return scr_enemy_scaled("emberwake", "Emberwake", "Emberwake", "common", 11, 1, { spd: 17, hp_mult: 0.85, max_mp: 12, weakness: "ice",
+                drops: [{ item: "item_emberwake_feather", chance: 0.10 }],
+                actions: [{ skill: "attack", weight: 3 }, { skill: "ember", weight: 2 }] });
+        case "emberwake_late": // Act IV crown barrow (band 21–23) = 137 HP / 49 ATK / 35 DEF
+            return scr_enemy_scaled("emberwake_late", "Emberwake", "Emberwake", "common", 21, 1, { drops: [{ item: "item_ember_core", chance: 0.30 }], spd: 18, hp_mult: 0.9, max_mp: 12, weakness: "ice",
+                drops: [{ item: "item_emberwake_feather", chance: 0.10 }],
+                actions: [{ skill: "attack", weight: 3 }, { skill: "ember", weight: 2 }] });
         case "magistrate_vell": // Chapter 9 boss: 1022 HP (152 x 1.2 x 4, then x1.4), 52 ATK / 38 DEF
             // He yields rather than dies (the Calder pattern); the flag is set by the battle system.
             return scr_enemy_scaled("magistrate_vell", "Magistrate Vell", "Vell", "boss", 21, 4, { spd: 11, hp_mult: 1.4,
@@ -246,7 +280,7 @@ function scr_get_enemy_data(_enemy_id) {
                 actions: [{ skill: "attack", weight: 2 }, { skill: "heavy_strike", weight: 2 }, { skill: "calder_guard", weight: 1 }] });
         case "barrow_warden": // Chapter 10 boss: 1701 HP (161 x 1.2 x 4, then x2.2), 59 ATK / 42 DEF
             // Simulated 98-99% wins in 7.4-9.9 rounds with about half a death; at x1.7 it was 100%.
-            return scr_enemy_scaled("barrow_warden", "Barrow Warden", "Barrow Warden", "boss", 22, 4, { spd: 8, hp_mult: 2.2, atk_add: 4, def_add: 2, weakness: "lightning",
+            return scr_enemy_scaled("barrow_warden", "Barrow Warden", "Barrow Warden", "boss", 22, 4, { drops: [{ item: "item_barrow_kings_blade", chance: 1, once: true }], spd: 8, hp_mult: 2.2, atk_add: 4, def_add: 2, weakness: "lightning",
                 phase2_at: 0.5,
                 phase2_buffs: [{ stat: "def", pct: 0.2, turns: -1 }, { stat: "atk", pct: 0.15, turns: -1 }],
                 phase2_line: "The iron remembers the oath it was given.",
@@ -259,7 +293,7 @@ function scr_get_enemy_data(_enemy_id) {
             // ACT4_OUTLINE.md asks for three phases. Phase 2 is the oath breaking at 60%; phase 3
             // is the oath letting go at 30% — the corpse spends what the oath was holding, hits
             // harder and leans on Heavy Strike. Simulated with tools/balance_sim.py --act4.
-            return scr_enemy_scaled("forgotten_king", "The Forgotten King", "Forg. King", "boss", 23, 4, { spd: 7, hp_mult: 2.1, atk_add: 3, def_add: 3,
+            return scr_enemy_scaled("forgotten_king", "The Forgotten King", "Forg. King", "boss", 23, 4, { drops: [{ item: "item_forgotten_kings_crown", chance: 1, once: true }], spd: 7, hp_mult: 2.1, atk_add: 3, def_add: 3,
                 phase2_at: 0.6,
                 phase2_buffs: [{ stat: "atk", pct: 0.2, turns: -1 }, { stat: "spd", pct: 0.2, turns: -1 }],
                 phase2_line: "The oath breaks. Something underneath it does not.",
@@ -275,7 +309,7 @@ function scr_get_enemy_data(_enemy_id) {
         case "blackwood_matriarch": // PLACEHOLDER boss (proposed, not canon), two phases
             // hp_mult 1.5 (686 -> 1029 HP) is the Act III tuning: as written she was won 100% of the
             // time in 5.0 rounds; at x1.5 it is 91-92% in 6.7-7.6 rounds with about one death.
-            return scr_enemy_scaled("blackwood_matriarch", "Blackwood Matriarch", "Matriarch", "boss", 20, 4, { spd: 13, hp_mult: 1.5, weakness: "holy",
+            return scr_enemy_scaled("blackwood_matriarch", "Blackwood Matriarch", "Matriarch", "boss", 20, 4, { drops: [{ item: "item_matriarch_heartwood", chance: 1, once: true }], spd: 13, hp_mult: 1.5, weakness: "holy",
                 phase2_at: 0.5, phase2_buffs: [{ stat: "atk", pct: 0.25, turns: -1 }, { stat: "spd", pct: 0.2, turns: -1 }],
                 phase2_line: "Her antlers split. Embers wake in the cracks!",
                 actions: [{ skill: "attack", weight: 2 }, { skill: "matriarch_breath", weight: 1 }],
@@ -323,6 +357,8 @@ function scr_enemy_scaled(_id, _name, _short, _role, _level, _party, _extra) {
 /// Battle background area for a batch 7–8 enemy id ("" = decide by room / encounter).
 function scr_enemy_battle_area(_enemy_id) {
     switch (_enemy_id) {
+        // Emberwake (early boss and the later ordinary ones) nests on the roads / in the ashfall.
+        case "emberwake": case "emberwake_boss": case "emberwake_late": return "forest";
         case "dock_thug": case "cutpurse": case "debt_collector": case "debtman": return "lower_city";
         case "ward_sentinel": case "glyph_wisp": case "aethari_automaton": case "sanctuary_warden": return "sanctuary_hall";
         case "garrison_pikeman": case "garrison_field_surgeon": case "garrison_knight": case "commander_hailen": return "garrison_yard";

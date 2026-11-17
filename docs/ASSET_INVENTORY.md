@@ -2,7 +2,7 @@
 
 Measured 2026-11-16. Source art lives under `game/sprites/`, `game/audio/` and `game/tilesets/`; the GameMaker resources under `gamemaker/` are generated from it. Import settings (asset name, frames, origin, mask, fps) are in `game/sprites/IMPORT.md` and `game/sprites/README.md`.
 
-**Totals:** 843 sprite resources and 29 sound resources in `gamemaker/`, 31 rooms, 2 tilesets, 90 scripts. **Nothing here has been compiled or playtested in GameMaker.** All assets are the property of Eastern Goat Forge (see LICENSE).
+**Totals:** 844 sprite resources and 29 sound resources in `gamemaker/`, 34 rooms, 2 tilesets, 95 scripts. **Nothing here has been compiled or playtested in GameMaker.** All assets are the property of Eastern Goat Forge (see LICENSE).
 
 ## Characters
 
@@ -20,7 +20,7 @@ Measured 2026-11-16. Source art lives under `game/sprites/`, `game/audio/` and `
 
 | Asset | Status | Notes |
 |---|---|---|
-| Enemy battle art (31 folders) | In repo | Idle 4 / walk / attack 6 / hurt / death per kind; 32×48, with bosses at 48×64 and two at 96×96. All 42 bestiary entries resolve to art (the Act III and Act IV boss ids reuse the base creature's strips; no Act IV enemy has its own art yet). |
+| Enemy battle art (31 folders) | In repo | Idle 4 / walk / attack 6 / hurt / death per kind; 32×48, with bosses at 48×64 and two at 96×96. All 43 bestiary entries resolve to art (the Act III/IV boss ids and Emberwake reuse a base creature's strips; no Act IV enemy and no Emberwake has its own art yet). |
 | Blackguard | In repo | Three phases plus both transitions in `game/sprites/blackguard/phases/`. |
 | Bandit | In repo | Overworld 16×24 and 32×48 sets, battle strips. The overworld set is not wired (no overworld Bandit object). |
 | Fallen Knight (enemy) | Battle only | 64×48 attack, 48×48 death; **no overworld set**. |
@@ -46,6 +46,7 @@ Measured 2026-11-16. Source art lives under `game/sprites/`, `game/audio/` and `
 |---|---|---|
 | Zone 1 tileset (`ts_zone1.png`) | In repo | 256×800, 16×16 tiles, 16 columns × **50 rows**, no spacing. Import as sprite `spr_ts_zone1`, then tileset `ts_zone1`. |
 | Wrenfield tileset (`ts_wrenfield.png`) | In repo | 256×1040, 16×16 tiles, 16 columns × 65 rows. Also used by the Chapter 3–5 blockout rooms. |
+| Blackwood tileset (`ts_blackwood.png`) | In repo, placeholder | 256×1040, 16×16 tiles. Rows 0–49 are `ts_zone1` unchanged; rows 50–64 (ids 800–1039) are the wood's own dark material: moss floor, black road, charcoal, bog, thorn walls, dead canopy and trunks, kilns and stone. Drawn by `tools/gen_blackwood_tileset.py`. Used by the Chapter 6 rooms. |
 | Tile id map (`game/tilesets/tile_ids.json`) | In repo | Named tile ids used by the room builders. |
 | Map data | In repo | `game/datafiles/overworld/` (400×300 × 5 layers, bin + chunk fallback), `game/maps/chapter2/`, `game/maps/interiors/`, `game/maps/old_watchtower_csv/`, `game/maps/watchtower_basement_csv/`, plus marker JSON. Chapters 3–5 rooms are built from `scr_build_*` arrays. |
 

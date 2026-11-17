@@ -315,6 +315,7 @@ switch (state) {
             rewards_granted = true;
             victory_xp = 0;
             victory_gold = 0;
+            victory_loot = "";
             // Gold is shared and summed over every defeated (or yielded) enemy. XP was banked per
             // living participant at each enemy's killing hit; this only catches anything missed.
             // Enemies still standing when a boss yields withdraw; they still give XP (credited at
@@ -329,6 +330,12 @@ switch (state) {
                     _de.bestiary_marked = true;
                 }
                 victory_gold += _de.gold_reward + _de.stolen_gold; // a beaten cutpurse drops what it stole
+                // Item drops (the Emberwake feather): rolled from this enemy's `drops` data. A
+                // withdrawn or yielding enemy leaves its loot behind.
+                if (!_dw) {
+                    var _dropped = scr_battle_roll_drops(_de);
+                    for (var _dr = 0; _dr < array_length(_dropped); _dr++) victory_loot += "\nFound " + _dropped[_dr] + "!";
+                }
                 victory_xp += _de.xp_reward;
                 if (!_de.xp_credited) {
                     scr_party_credit_enemy_xp(_de.xp_reward);
@@ -352,7 +359,7 @@ switch (state) {
             _yield_line += "\n";
         }
         var _after_victory = (array_length(level_ups) > 0) ? BATTLE_STATE.LEVEL_UP : BATTLE_STATE.EXIT;
-        queue_message(_yield_line + "Victory! Gained " + string(victory_xp) + " XP and " + string(victory_gold) + " gold.", _after_victory);
+        queue_message(_yield_line + "Victory! Gained " + string(victory_xp) + " XP and " + string(victory_gold) + " gold." + victory_loot, _after_victory);
         break;
 
     case BATTLE_STATE.LEVEL_UP:

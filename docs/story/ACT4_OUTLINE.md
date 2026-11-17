@@ -11,7 +11,7 @@ Source of truth: `STORY_BIBLE.md` (Alden Marr, Ending C, Aldric IV, the mark), `
 
 - **The engine does not need to change for this act.** Dialogue, flags, quests, scripted bosses, marker-driven rooms, save schema v3 and the audio set all exist. Act IV is content.
 - **The enemy data now exists** (added 2026-11-16 on the decisions below): seven ids at 21–23, the `crown_barrow` table and `grp_magistrate_vell` / `grp_barrow_warden` / `grp_forgotten_king`, with `PARTY_MAX_LEVEL` raised to 24. The Bestiary goes 35 → 42 entries, and the validator reports 42 entries, 42 distinct names, 42 with art. **No chapter uses any of it yet.**
-- **Rooms:** 31 rooms exist in total, and **every Act IV room is built** — `rm_town`, `rm_barrow_gate`, `rm_barrow_halls`, `rm_barrow_deep`. The validator's remaining unresolved references (`rm_ironspine_*`, `rm_ashlands_*`, `rm_saltreach*`, `rm_shipwreck`, `rm_rimehold`, `rm_flooded_ruins`, `rm_frozen_ruins`) all belong to Acts V–VIII.
+- **Rooms:** 34 rooms exist in total (the Ashlands has three built rooms, `rm_ashlands_breach`, `rm_ashlands_ruins` and `rm_ashlands_depths`), and **every Act IV room is built** — `rm_town`, `rm_barrow_gate`, `rm_barrow_halls`, `rm_barrow_deep`. The validator's remaining unresolved references (`rm_ironspine_*`, `rm_saltreach*`, `rm_shipwreck`, `rm_rimehold`, `rm_flooded_ruins`, `rm_frozen_ruins`) all belong to Acts V–VIII.
 - **Art:** 18 enemy kinds still have no 16×24 overworld set, and the act boss would need battle art, a portrait-scale presence and a bestiary row. Nothing in Act IV can ship visually on existing assets except reused common enemies.
 - **Alden has no sprite at all** (measured in `ASSET_INVENTORY.md`), and this act puts him on screen in three chapters.
 

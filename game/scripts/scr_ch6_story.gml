@@ -6,7 +6,7 @@
 ///
 /// Flags (script): ch6_entered, ch6_deep_seen, ch6_stone_seen, ch6_hollow_met, ch6_tithe_hook,
 ///   ch6_talk_1/2/3, ch6_camp_found, ch6_seal_seen, ch6_hulk_defeated, ch6_boss_started,
-///   ch6_boss_cool, ch6_feed_revealed, chapter6_complete.
+///   ch6_boss_cool, ch6_feed_revealed, ch6_carter_met, chapter6_complete.
 /// Flags (code, bookkeeping): quest stages as quest_<QUEST_ID> = "<STAGE_ID>"
 ///   (scr_ch6_quest_set), the same convention as Chapters 2-5.
 ///
@@ -48,6 +48,11 @@ function scr_ch6_play_script(_sid, _src = noone) {
                     scr_flag_set("ch6_stone_seen");
                 });
             }
+            return true;
+
+        // ---- §2 The carter drawn off the road: the Act V-VI shelf (Mott) ----
+        case "BW_CARTER":
+            scr_ch6_carter_talk();
             return true;
 
         // ---- §3 Cinderhollow: the first sight of the hollow ----
@@ -132,6 +137,27 @@ function scr_ch6_deep_scene() {
     scr_dialogue_play(["BW_DEEP_01", "BW_DEEP_02", "BW_DEEP_03"], function() {
         scr_flag_set("ch6_deep_seen");
     });
+}
+
+// ------------------------------------------------------------------------------------------------
+// §2 The carter: a stranded cart on the road, and the Act V-VI shelf it carries.
+// The stock gating lives in the shop's own stock_by_act rows (scr_story_act); the greeting says
+// which crates are still shut, so the tarp and the shelf always agree.
+
+function scr_ch6_carter_talk() {
+    if (!scr_flag_get("ch6_carter_met")) {
+        scr_dialogue_play(["BW_CARTER_01", "BW_CARTER_02"], function() {
+            scr_flag_set("ch6_carter_met");
+            scr_shop_open("shop_blackwood_carter");
+        });
+        return;
+    }
+    // Before Chapter 5 closes the party is at tier 5, so only the coast stock is open.
+    if (scr_story_act() < 6) {
+        scr_dialogue_play(["BW_CARTER_R1"], function() { scr_shop_open("shop_blackwood_carter"); });
+        return;
+    }
+    scr_dialogue_play(["BW_CARTER_R2"], function() { scr_shop_open("shop_blackwood_carter"); });
 }
 
 // ------------------------------------------------------------------------------------------------

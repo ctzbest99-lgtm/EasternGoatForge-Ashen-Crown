@@ -107,6 +107,14 @@ function scr_ch6_dialogue_node(_id) {
             return { id: "BH_FIGHT_02", speaker: "SYSTEM", lines: ["The Burn-Line Hulk. Boss."] };
         case "CH_END_02":  // PLACEHOLDER (wiring pass, not in the script)
             return { id: "CH_END_02", speaker: "SYSTEM", lines: ["Quest updated: Find out what Cinderhollow pays, and to whom.", "Chapter 6 — The Green Silence — Complete."] };
+        case "BW_CARTER_01":  // PLACEHOLDER (wiring pass, not in the script)
+            return { id: "BW_CARTER_01", speaker: "Mott", lines: ["The cart's been off the road since the spring rain. Wheels are down to the axles in moss, and the horse went before that."] };
+        case "BW_CARTER_02":  // PLACEHOLDER (wiring pass, not in the script)
+            return { id: "BW_CARTER_02", speaker: "Mott", lines: ["So I sell off the tailboard. Coast glass out of Saltreach, mine steel out of Ironspine.", "Both came up the road with me. Neither went back."] };
+        case "BW_CARTER_R1":  // PLACEHOLDER (wiring pass, not in the script)
+            return { id: "BW_CARTER_R1", speaker: "Mott", lines: ["The mine crates stay under the tarp till the garrison road is worth the name. Coast stock's on the tailboard."] };
+        case "BW_CARTER_R2":  // PLACEHOLDER (wiring pass, not in the script)
+            return { id: "BW_CARTER_R2", speaker: "Mott", lines: ["Crates are open. Coast glass, mine steel, and whatever the road left me."] };
     }
     return undefined;
 }

@@ -210,6 +210,17 @@ function scr_dialogue_node(_id) {
             return { id: "CV_END_05", speaker: "SYSTEM", lines: ["Quest updated: Find Mira → Beyond the Veil."] };
         case "CV_END_06":
             return { id: "CV_END_06", speaker: "SYSTEM", lines: ["Chapter 1 — The Night of Ash — Complete."] };
+
+        // AO_TRADER — Sarn's outpost wagon at the Crownveil breach. Act VII has no chapter yet,
+        // so these four wiring-only lines live here rather than in a generated chapter table.
+        case "AO_TRADER_01":
+            return { id: "AO_TRADER_01", speaker: "Sarn", lines: ["Outpost wagon. Ashglass, emberwork, whatever the Ashlands let us bring back.", "You're the first party through the breach in a while. Have a look before the dust settles."] };
+        case "AO_TRADER_02":
+            return { id: "AO_TRADER_02", speaker: "Sarn", lines: ["I sell to the outpost crews, mostly. They buy the heavy stock and never ask what it's for.", "You can pay the same and ask nothing, and we'll get along."] };
+        case "AO_TRADER_R1":
+            return { id: "AO_TRADER_R1", speaker: "Sarn", lines: ["The weapon crates are still strapped shut. The outpost hasn't sent its tally.", "Potions are open. The rest waits for the season."] };
+        case "AO_TRADER_R2":
+            return { id: "AO_TRADER_R2", speaker: "Sarn", lines: ["Crates are open. Ashglass, emberwork, ashfall steel.", "Buy what you need. The next wagon is a season out."] };
     }
     var _ch1x = scr_ch1_extra_dialogue_node(_id); // Chapter 1 script lines (scr_dialogue_data_ch1_extra, generated)
     if (is_struct(_ch1x)) return _ch1x;
@@ -257,6 +268,14 @@ function scr_dialogue_play_script(_script_id, _source = noone) {
     // Chapter 11 (The Forgotten King): the halls, the charter, the King and the seal.
     if (scr_ch11_play_script(_script_id, _source)) return true;
     switch (_script_id) {
+        // Sarn's outpost wagon at the Crownveil breach (rm_ashlands_breach; Act VII has no chapter yet).
+        case "AO_TRADER":
+            scr_ashlands_trader_talk();
+            return true;
+        // Barrow Gate smith (Chapter 10). No bespoke dialogue node: he greets and opens his shelf.
+        case "BG_SMITH_01":
+            scr_shopkeeper_talk("shop_barrow_smith");
+            return true;
         case "GH_ARRIVAL":
             if (scr_flag_get("flag_arrived_greyhaven")) return true;
             scr_dialogue_play(["GH_ARRIVAL_01", "GH_ARRIVAL_02", "GH_ARRIVAL_03"], function() {
@@ -272,7 +291,7 @@ function scr_dialogue_play_script(_script_id, _source = noone) {
                 if (_npc == "pell") {
                     if (scr_flag_get("flag_pendant_found")) {
                         scr_dialogue_play(["GH_SMITH_01_B"], function() {
-                            scr_shop_open("shop_greyhaven_forge");
+                            scr_forge_open("shop_greyhaven_forge");
                         });
                     } else scr_dialogue_play(["GH_TOMAS_R2"]);
                 } else {
