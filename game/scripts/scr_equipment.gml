@@ -128,6 +128,46 @@ function scr_equipment_bonus_text(_data) {
     return _text;
 }
 
+/// @desc One piece's own numbers: { attack, defense }, and zeros for anything that cannot be worn.
+function scr_equipment_piece_stats(_item_id) {
+    var _data = scr_item_data(_item_id);
+    if (is_undefined(_data) || !scr_item_is_equipment(_item_id)) return { attack: 0, defense: 0 };
+    return {
+        attack: variable_struct_exists(_data, "attack") ? _data.attack : 0,
+        defense: variable_struct_exists(_data, "defense") ? _data.defense : 0
+    };
+}
+
+/// @desc What wearing _item_id would change, against what this actor has in that slot now: { attack,
+/// defense }. Only the piece's own slot is replaced, so the delta is the difference between the two pieces
+/// and every other slot is untouched. A swap that costs something reads as a loss before it is confirmed.
+function scr_equipment_compare(_actor, _item_id) {
+    if (!scr_item_is_equipment(_item_id)) return { attack: 0, defense: 0 };
+    var _slot = scr_item_data(_item_id).slot;
+    var _next = scr_equipment_piece_stats(_item_id);
+    var _now = scr_equipment_piece_stats(scr_equipment_worn(_actor, _slot));
+    return { attack: _next.attack - _now.attack, defense: _next.defense - _now.defense };
+}
+
+/// @desc A signed change as text: "+3 ATK", "-2 ATK +3 DEF", or "no change" when the swap is even.
+function scr_equipment_delta_text(_attack, _defense) {
+    var _text = "";
+    if (_attack != 0) _text += ((_attack > 0) ? "+" : "") + string(_attack) + " ATK";
+    if (_defense != 0) {
+        if (_text != "") _text += " ";
+        _text += ((_defense > 0) ? "+" : "") + string(_defense) + " DEF";
+    }
+    if (_text == "") return "no change";
+    return _text;
+}
+
+/// @desc The change one carried piece would make, as text for the equip list.
+function scr_equipment_compare_text(_actor, _item_id) {
+    if (is_undefined(_actor) || !scr_item_is_equipment(_item_id)) return "cannot be worn";
+    var _delta = scr_equipment_compare(_actor, _item_id);
+    return scr_equipment_delta_text(_delta.attack, _delta.defense);
+}
+
 /// @desc One line of worn gear: "Weapon Iron Blade   Shield -   Armour -".
 function scr_equipment_row(_actor) {
     var _slots = scr_equipment_slots();
