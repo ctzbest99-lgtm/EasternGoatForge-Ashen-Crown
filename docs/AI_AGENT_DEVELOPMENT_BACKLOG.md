@@ -1,7 +1,7 @@
 # AI Agent Development Backlog — ASHEN CROWN
 
-**Last reconciled:** 2026-11-15  
-**Updated 2026-11-16:** Acts I–IV are built and unplayed (Chapters 1–11 plus the three standalone Ashlands rooms, 34 rooms, 95 scripts), audio is wired through `scr_audio`, and Act V is approved in outline only. Items below that call any of that data-only, design-only or audio-absent are done — check `docs/CHANGELOG.md` and `docs/DEVELOPMENT_ROADMAP.md` for current state. Also prefer the targeted importers in `tools/` over re-running `gen_gamemaker.py` wholesale, which churns resource UUIDs.  
+**Last reconciled:** 2026-11-17  
+**Updated 2026-11-17:** the gear, merchant and Ashlands work merged to `main` in `8e412618` (PR #31). Acts I–IV are built and unplayed (Chapters 1–11 plus the three standalone Ashlands rooms, 34 rooms, 95 scripts), audio is wired through `scr_audio`, and Act V is approved in outline only. Items below that call any of that data-only, design-only or audio-absent are done — check `docs/CHANGELOG.md` and `docs/DEVELOPMENT_ROADMAP.md` for current state. Also prefer the targeted importers in `tools/` over re-running `gen_gamemaker.py` wholesale, which churns resource UUIDs.  
 **Purpose:** single actionable handoff for Codex or another coding agent. Work top-to-bottom, one item at a time.  
 **Project:** GameMaker / GML. Open `gamemaker/AshenCrown.yyp`; edit human-readable source in `game/` unless a task specifically concerns project metadata.
 
@@ -25,15 +25,15 @@
 - Core combat: menu-driven turn-based battles; four active party members plus one reserve; no automatic enemy level scaling by default.
 - Adventure menu: Items, Equip, Party Order, Status, Bestiary.
 - Save/load: only at save crystals inside a town church or tavern. No save-anywhere and no Save row in the field menu.
-- Chapters 1–11 plus `rm_ashlands_breach`, `rm_ashlands_ruins` and `rm_ashlands_depths`: built in source/project data; README reports 34 rooms. They are not yet verified by an IDE playtest — `docs/PLAYTEST_RUNBOOK.md` is the order to check them in.
+- Chapters 1–11 plus `rm_ashlands_breach`, `rm_ashlands_ruins` and `rm_ashlands_depths`: built, merged to `main` in `8e412618` (PR #31), and README reports 34 rooms. They are not yet verified by an IDE playtest — `docs/PLAYTEST_RUNBOOK.md` is the order to check them in.
 - Act V: outline and approvals only — no chapter script, dialogue, rooms, enemies or code.
-- Acts VI–VIII: titles only.
-- Bestiary: seen/defeated tracking and information pane exist; all 33 descriptions are placeholder prose. The monster sprite is not currently shown in the Bestiary UI, despite being part of the requested feature.
-- Art: ten placeholder sprites remain, including Lyra's overworld and battle strips. Check `game/sprites/IMPORT.md` and `docs/ASSET_INVENTORY.md`.
+- Acts VI–VIII: titles only. The Ashlands (Act VII) has three standalone blockout rooms (`rm_ashlands_breach`, `rm_ashlands_ruins`, `rm_ashlands_depths`) but no chapter, quest, enemy or tileset of its own.
+- Bestiary: 43 entries with seen/defeated tracking, an information pane and a monster illustration (`scr_bestiary_draw_illustration`; black silhouette until seen, `?` plate when an enemy has no art). The 43 descriptions are still placeholder prose.
+- Art: party kits and marker sprites are in repo; 18 enemy kinds still lack 16×24 overworld sets, the Blackwood tileset is a placeholder and the Ashlands has no tileset of its own. Check `game/sprites/IMPORT.md` and `docs/ASSET_INVENTORY.md`.
 - Audio: no authored music or sound effects yet.
 - Controller support: not complete or verified; keyboard is the baseline.
 - Runtime status: **the project has not been compiled or playtested in GameMaker**. CI/validator checks structure only.
-- Open PR #1 is an old debug-menu change and must be reviewed against current code before any merge; do not merge it blindly.
+- Open PRs #1 (debug menu), #22 (validator hardening and source sync) and #25 (controller support) all predate current `main` and must be reviewed and rebuilt against it before any merge; do not merge them blindly. PR #31 (gear, merchants, Ashlands rooms) is merged.
 
 ## Prioritized work
 
@@ -70,37 +70,15 @@ Acceptance:
 
 ### P1 — Finish existing systems and presentation
 
-#### P1.1 — Add monster sprites to the Bestiary
-**Why:** The Bestiary currently has tracking and descriptive data but does not render the requested monster sprite.
+#### P1.1 — Add monster sprites to the Bestiary — **DONE (merged 2026-11-17)**
+`scr_bestiary_draw_illustration` now draws the selected entry's battle idle in the detail pane, with a contact shadow, a black silhouette until the enemy is seen and a `?` plate when it has no art. The remaining check is visual: Phase 8 of `docs/PLAYTEST_RUNBOOK.md` in the IDE.
 
-Tasks:
-- Inspect `game/objects/obj_adventure_menu/Draw_GUI.gml`, `game/scripts/scr_bestiary.gml`, and the enemy sprite/data mapping.
-- Add a stable enemy-ID-to-sprite mapping; do not infer sprite names from arbitrary strings unless validated.
-- Render the selected enemy's sprite in the Bestiary detail pane with correct scaling/origin and no UI overlap.
-- Handle missing sprite mappings gracefully with a clear fallback.
-- Keep list navigation, description, level/role, weakness, area, and stats readable.
-- Update asset/docs and add manual test cases.
-
-Acceptance:
-- Every enemy with an available sprite shows the correct one.
-- Missing art never crashes or draws an unrelated sprite.
-- Selection changes update both details and sprite.
-- Test with mouse not assumed; keyboard navigation works.
-
-#### P1.2 — Replace Lyra placeholder art
-Tasks:
-- Identify the exact placeholder sprite resources and their required frame dimensions/origins/fps from `game/sprites/IMPORT.md`.
-- Create/import approved overworld and battle strips without changing gameplay data.
-- Regenerate the GameMaker project and update the asset inventory.
-
-Acceptance:
-- No flat-color placeholder remains for Lyra in the relevant game states.
-- Idle/walk/battle animations use the correct frames and origins.
-- Structural validation passes; runtime appearance is manually checked when IDE available.
+#### P1.2 — Replace Lyra placeholder art — **DONE (merged 2026-11-17)**
+`docs/ASSET_INVENTORY.md` records a generated party kit for Lyra: 16×24 four-direction idle/walk, 32×48 idle/walk/hurt/defend, 48×48 attack/death and three portraits, wired without gameplay changes. Runtime appearance still needs an IDE check.
 
 #### P1.3 — Audit remaining placeholder art and animation gaps
 Tasks:
-- Review the ten `*_placeholder` sprites, missing Fallen Knight overworld art, Guard pose, and known animation differences in `docs/ASSET_INVENTORY.md`.
+- Review the current gaps in `docs/ASSET_INVENTORY.md`: 18 enemy kinds without 16×24 overworld sets, the placeholder Blackwood tileset, the missing Ashlands tileset, and any Guard-pose or animation differences.
 - Separate required player-facing assets from acceptable temporary placeholders.
 - Prioritize missing assets by visibility and gameplay impact.
 
@@ -110,7 +88,7 @@ Acceptance:
 
 #### P1.4 — Reconcile Bestiary descriptions and enemy data
 Tasks:
-- Review all 33 placeholder descriptions against approved chapter scripts and enemy data.
+- Review all 43 placeholder descriptions against approved chapter scripts and enemy data.
 - Replace placeholder prose only where canon/encounter facts are supported.
 - Flag missing lore rather than inventing it.
 
@@ -143,7 +121,9 @@ Acceptance:
 - Existing keyboard controls still work.
 - No double-trigger/repeat regression in dialogue, menus, battles, or interactions.
 
-#### P2.2 — Add gamepad/controller support
+#### P2.2 — Add gamepad/controller support — **PR #25 in review**
+**Status:** PR #25 adds a first pass (`scr_input.gml`, Xbox-style buttons, D-pad/stick movement, Start to open the menu). It predates current `main`, has not been compiled, and has not been tested with a physical pad.
+
 Tasks:
 - Support D-pad and analog movement with normalized diagonal speed.
 - Support confirm/cancel, menu open/close, party/menu navigation, and battle commands.
@@ -182,21 +162,21 @@ Acceptance:
 
 ### P4 — Content completion
 
-#### P4.1 — Build Chapter 5 from existing enemy/encounter data
+#### P4.1 — Build Act V — The Fallen Knight (Chapters 12–14) — **next content**
+**Why:** Chapter 5 and all of Acts I–IV are built. Act V is the only act with approved decisions and an outline (`docs/story/ACT5_OUTLINE.md`), and its four rooms already exist as stub names.
+
 Tasks:
-- Read approved Chapter 5 design/script sources and existing enemy/encounter tables.
-- Create rooms, markers, map data, dialogue, encounter flow, and boss sequence in small slices.
-- Reuse existing room/story patterns without copying stale assumptions.
-- Do not invent story beats where the source material is incomplete.
+- Write and get owner approval for Chapters 12–14 before building rooms or data.
+- Then build `rm_saltreach`, `rm_saltreach_pier`, `rm_flooded_ruins` and `rm_shipwreck` with their markers, encounters, boss, quest stages and dialogue.
+- Keep the approved region order and the knight's unnamed, yielding rules intact.
 
 Acceptance:
-- Chapter 5 can be entered, completed, and exited without softlocks.
-- All encounters, rewards, flags, and save return paths work.
-- Chapter 5 tests and docs are updated.
+- The four rooms can be entered, completed and exited without softlocks.
+- All encounters, rewards, flags and return paths work; validator and chapter audit pass.
 
 #### P4.2 — Resolve stub overworld entrances as content becomes available
 Tasks:
-- Audit the 12 reported `status: "stub"` entrances and their destination names.
+- Audit the 10 remaining `status: "stub"` entrances: Blackwood doors and deep shrine, Ironspine mine and ruins, Rimehold, frozen ruins, Saltreach, Saltreach pier, flooded ruins and shipwreck. The two Blackwood ones already point at built rooms and should be marked `built`.
 - Keep unfinished exits clearly blocked/labelled until destinations exist.
 - Implement each destination only when its design and story content are approved.
 
@@ -243,12 +223,12 @@ Acceptance:
 
 - `prompts/CODEX_MASTER_PROMPT.md`, `docs/GAME_DESIGN_DOCUMENT.md`, and `docs/DEVELOPMENT_ROADMAP.md` have been updated to point agents to this backlog and reflect current build state.
 - ~~`docs/ASSET_INVENTORY.md` needs reconciliation against the current assets~~ — resolved: the Zone 1 tileset row now says 256×800, matching `game/tilesets/README.md` and the PNG. Keep verifying rows against the import table when art changes.
-- ~~README counts and titles~~ — resolved: both READMEs now report the current 31 rooms / 91 scripts / 843 sprites and the Act I–IV build state.
+- ~~README counts and titles~~ — resolved: both READMEs report the current 34 rooms / 95 scripts / 844 sprites and the Act I–IV build state.
 - ~~Pixel interpolation disagreement~~ — resolved: every platform option file has `interpolate_pixels` set to `false`, and `gen_gamemaker.py` now normalises it (and the product name) on regeneration.
 - Battle-presentation documentation is inconsistent: `docs/story/STORY_BIBLE.md` still calls it open and `docs/DECISIONS_AND_OPEN_QUESTIONS.md` records the dedicated-room prototype assumption. The owner-approved direction from prior planning is hybrid presentation varying by encounter; reconcile the decision log, GDD, story bible and implementation without changing battle behavior silently.
 - The README is the current project snapshot; keep its status synchronized when build/content state changes.
 - ~~Story Bible provenance cites a missing `MASTER_GDD.txt`~~ — resolved: the header now names the chapter scripts and act outlines as its sources and states plainly that the old master document is not in the repository.
-- The old open PR #1 contains a debug-menu change and may reference outdated objects. Review its diff against current source before deciding whether to close, update, or merge it.
+- Open PRs #1 (debug menu), #22 (validator hardening and source sync) and #25 (controller support) all predate current `main` and may reference outdated objects. Review each diff against current source, rebuild or rebase it, and run the validator, chapter audit and IDE checks before deciding whether to close, update or merge.
 - The old generic Windows branding values noted in the audit should be replaced before release packaging.
 - Pixel interpolation settings must be checked against the actual GameMaker options and README; the current project README says interpolation is disabled. Keep generated project options consistent.
 
