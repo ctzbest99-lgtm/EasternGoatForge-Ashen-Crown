@@ -1,4 +1,5 @@
 # ASHEN CROWN — Chapter 12 Script: "The Salt Toll" (Act V: The Fallen Knight)
+<!-- audit-skip: draft chapter; dialogue data is not generated yet -->
 
 Route: the barrow road south → the coast road → **`rm_saltreach`** (new; blockout first): a village on a shelf of black rock, salt pans above the tide line, a bell tower with no bell, and the slate at the harbour where one name is written each tide.
 

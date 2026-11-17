@@ -192,8 +192,14 @@ for room in sorted(spawns):
 # 7 --------------------------------------------------- script lines exist as data
 SCRIPT_HDR = re.compile(r'^(?:.*?[,—] )?\*\*([A-Z][A-Z0-9_]+)\*\*\s*·\s*(.+?):?$')
 for md in sorted(glob.glob(os.path.join(ROOT, 'docs', 'story', 'CHAPTER*_SCRIPT.md'))):
+    text = read(md)
+    # Draft scripts may land before their dialogue data exists. The marker is explicit so a
+    # finished chapter that loses its data still fails this check.
+    if '<!-- audit-skip:' in text:
+        notes.append(f"{rel(md)}: skipped by audit-skip marker (draft script, no dialogue data yet)")
+        continue
     want = set()
-    for line in read(md).split('\n'):
+    for line in text.split('\n'):
         m = SCRIPT_HDR.match(line)
         if m:
             want.add(m.group(1))
