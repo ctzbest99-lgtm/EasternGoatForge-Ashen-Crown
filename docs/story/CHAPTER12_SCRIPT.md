@@ -161,7 +161,8 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 > About whose name goes on the slate.
 
 **SV_ARRIVE_17** · Reeve Fen
-> One a tide. The village agrees on one. I write it.
+> One a tide. One name a season, when the tide turns.
+> The village agrees on one. I write it.
 
 **SV_ARRIVE_18** · Taren
 > And if they can't agree?
@@ -218,11 +219,11 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 
 ### 2.3 The slate — `SV_SLATE` (optional)
 
-[STAGE] The niche in the sea wall: a hand-sized tablet of slate, worn concave in the middle, the stone around it grooved by years of the same hand setting it in. Sets `ch12_slate_seen`.
+[STAGE] The niche in the sea wall: a hand-sized cut in the stone, worn concave in the middle, the stone around it grooved by years of the same hand setting each tablet in. The current tablet is a fresh blank. Sets `ch12_slate_seen`.
 
 **SV_SLATE_01** · NARRATION
-> The tablet is smaller than a plate and worn smooth in the middle, where the names have been written and taken, written and taken.
-> The stone around the niche is grooved from the same hand setting it in, tide after tide.
+> The niche is smaller than a plate and worn smooth in the middle, where the slate has been set and taken, set and taken.
+> The stone around it is grooved by the same hand, season after season.
 
 **SV_SLATE_02** · Caelan
 > There's no record. No list. The names go out with the water.
@@ -264,7 +265,7 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 > You've been writing the names.
 
 **RV_OFFICE_03** · Reeve Fen
-> I weigh salt, I collect the levy, and once a tide I write a name on a slate.
+> I weigh salt, I collect the levy, and once a season, when the tide turns, I write a name on a slate.
 > Two of those are my job.
 
 **RV_OFFICE_04** · Sera
@@ -297,7 +298,7 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 
 **RV_OFFICE_13** · Reeve Fen
 > The tide takes the slate. The boats go out and come back. The village believes one pays for the other.
-> I've buried fishermen. None of them in a year the slate went unwritten. That is not proof. It is enough for them.
+> I've buried fishermen. None of them in a season the slate went unwritten. That is not proof. It is enough for them.
 
 **RV_OFFICE_14** · Lyra
 > And you call it?
@@ -395,6 +396,8 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 
 [STAGE] It does not stop. The village backs away. The reeve does not move. Kael steps between the keeper and the slate.
 
+[STAGE] The keeper reaches around him and takes the tablet from her hands. The hook closes on it. The reeve grabs the hook and is lifted off her feet, then set aside. Kael draws.
+
 **TK_INTRO_15** · Sera
 > It's not listening.
 
@@ -406,7 +409,7 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 
 [STAGE] Fight: `grp_toll_keeper`, level 24, two phases. Boss music and boss bar. The keeper has no dialogue and no name beyond what the village calls it. Its second phase is the data's shift: the water in it goes still, then moves against the tide, and the hook comes up. No stat block is set here; §11 explains why.
 
-[STAGE] On victory: the keeper comes apart into brine and rope, and the tablet falls onto the stones. The tide begins to turn. Sets `ch12_keeper_defeated`, `Q_MF_S2`, `Q_ST_S2`.
+[STAGE] On victory: the keeper comes apart into brine and rope. The tablet falls from the hook onto the stones. The tide begins to turn. Sets `ch12_keeper_defeated`, `Q_MF_S2`, `Q_ST_S2`.
 
 ---
 
@@ -559,7 +562,7 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 > You'd give it a name it's never had.
 
 **TS_CHOICE_05** · Reeve Fen
-> I've started it three times. I just haven't finished it.
+> I started it once. I just haven't finished it.
 
 **TS_CHOICE_06** · Lyra
 > Why?
@@ -596,7 +599,7 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 ### 7.1 If the name is finished — `TS_KEPT`
 
 **TS_KEPT_01** · NARRATION
-> She finishes the cut in three strokes and sets the tablet in the niche. The tide comes up the stones and takes it without a sound.
+> She takes the chisel off the sea wall, finishes the cut in three strokes, and sets the tablet in the niche. The tide comes up the stones and takes it without a sound.
 > The village exhales.
 
 **TS_KEPT_02** · Fisher
@@ -616,7 +619,7 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 ### 7.2 If the slate is broken — `TS_BROKEN`
 
 **TS_BROKEN_01** · NARRATION
-> Kael takes the tablet off the sea wall and breaks it across his knee. The sound is small. It does not carry.
+> Kael takes the tablet from the reeve's hands and breaks it across his knee. The sound is small. It does not carry.
 > The tide comes up into an empty niche.
 
 **TS_BROKEN_02** · Fisher
@@ -636,7 +639,10 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 
 ### 7.3 The reward — both branches
 
+[STAGE] She takes a pouch from her coat and sets it on the sea wall.
+
 **TS_REWARD_01** · Reeve Fen
+> The village will argue about paying you. I'm paying you first, so it's done.
 > The Crown's salt money. It spends the same.
 
 **TS_REWARD_02** · SYSTEM
@@ -661,10 +667,12 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 
 **ADL_LETTER_03** · Alden *(letter)*
 > I have it. I haven't shown it to anyone yet.
-> I keep thinking about what I said in the tomb — that a reason with a name on it is still a reason.
+> I keep thinking about what I said in the tomb — that whoever sits the throne next will need a reason.
+> This is a reason with a name on it.
 
 **ADL_LETTER_04** · Alden *(letter)*
-> I'm in the capital. The city is quiet in the way a held breath is quiet.
+> I took the north road at Coleford. I'm in the capital.
+> The city is quiet in the way a held breath is quiet.
 > I'm not asking you to agree with me. I'm asking you to keep asking.
 
 **ADL_LETTER_05** · Alden *(letter)*
@@ -725,7 +733,7 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 [STAGE] Kael walks out. The knight does not turn until Kael is close enough to hear him.
 
 **KT_PIER_06** · The Knight
-> You're early. She was later than you.
+> You're early. She didn't wait.
 
 **KT_PIER_07** · Kael
 > Who are you?
@@ -758,7 +766,7 @@ Reward: **200 gold**, the same either way — the reeve's pouch of the Crown's s
 > And he's never once blocked the way.
 
 **KT_PIER_16** · Kael
-> He said "she."
+> He said "she" again.
 
 **KT_PIER_17** · Taren
 > He's said a lot of things.
@@ -868,10 +876,12 @@ These are not scripted nodes. `gen_ch12_dialogue.py` carries them in its `EXTRA`
 ### Decisions on the draft (2026-11-17)
 
 - **The reeve is Ilsa Fen.** The outline left her unnamed; the draft names her so the chapter has a person rather than a function. Speaker tags use "Reeve Fen"; her first name is given once, when she introduces herself.
-- **The half-cut name is hers.** The slate choice is to finish Ilsa's name and keep the bargain, or break the slate and end it. The village believes the sea takes the slate and never a person; the script does not say whether that belief is true. This keeps the choice from becoming a menu of villagers and keeps the sacrifice symbolic rather than a hidden execution.
-- **Alden's letter stays conditional and stays a letter.** It exists only on `ch11_seal_alden`; on `ch11_seal_party` there is no letter and no second-hand message. The contents commit him to nothing beyond the capital and the seal. He does not appear, and there is no split.
+- **The half-cut name is hers.** The slate choice is to finish Ilsa's name and keep the bargain, or break the slate and end it. The village believes the sea takes the slate and never a person; the script does not say whether that belief is true. This keeps the choice from becoming a menu of villagers and keeps the sacrifice symbolic rather than a hidden execution. The tablet is single-use: the niche is the worn thing, the current tablet is a fresh blank, and the ritual runs once a season at the turning tide.
+- **Alden's letter stays conditional and stays a letter.** It exists only on `ch11_seal_alden`; on `ch11_seal_party` there is no letter and no second-hand message. The contents commit him to nothing beyond the capital and the seal: he took the north road at Coleford and quotes the tomb line exactly. He does not appear, and there is no split.
 - **Reeve Fen is not a battle.** She yields the office and the ledger; the Toll-Keeper is the chapter's only fight. The outline's "yields rather than dies" is read as the same non-lethal resolution Vell and Calder get, without inventing an unlisted boss. If a human fight is wanted later, it needs an id, a group and a simulation first.
-- **The 200-gold reward is the same on both branches.** No unique item and no journal judgment.
+- **The 200-gold reward is the same on both branches.** The reeve pays it from the Crown's salt money to close the account before the village can argue; no unique item and no journal judgment.
+- **The keeper takes the tablet.** It takes the slate from the reeve before the fight, and the tablet falls from its hook on victory; the break branch takes it from her hands. This gives both branch stagings a clear source.
+- **The knight's pier line is "You're early. She didn't wait."** The outline's original proposed "She was later than you" put Mira behind Kael at the coast and contradicted her being ahead. The replacement keeps the cut without placing her. He is still unnamed, unrecognised and unfought.
 - **The village roles stay roles.** Fisher, Net-mender, Old Salter and Boy are not named; the chapter's named people are Ilsa, the party, Alden (by letter) and the knight (unnamed).
 
 ### Still open

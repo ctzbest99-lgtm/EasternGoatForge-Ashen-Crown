@@ -615,6 +615,8 @@ Open points the approval does not settle are listed in the outline's §10; nothi
 - **Alden's letter stays conditional.** It exists only on `ch11_seal_alden`; on `ch11_seal_party` there is no letter and no second-hand message. He stays off-screen and there is no split.
 - **Reeve Fen is not a battle.** She yields the office and the ledger; the Toll-Keeper is the chapter's only fight. A human fight would need its own enemy id, group and simulation.
 
+A story pass on 2026-11-17 made the slate single-use with a once-a-season ritual, staged the keeper taking the tablet before the fight, replaced the outline's original proposed pier line with "You're early. She didn't wait.", added Alden's north-road transition and exact tomb quote, and gave the 200-gold payment a motive.
+
 The chapter is still not individually approved, built or played. The Toll-Keeper has no stat block until `balance_sim.py --act5` runs, and `PARTY_MAX_LEVEL` is still 24.
 
 ## Chapter-wide audit (2026-11-16)

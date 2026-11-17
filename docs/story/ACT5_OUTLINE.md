@@ -51,7 +51,7 @@ Assigning the coast answers bible question 28's open half for this act alone —
 2. The party arrives to find the tide late, the slate unwritten, and the village arguing about whose name goes on it. **The Crown's salt reeve is not a villain**: she is a clerk enforcing a levy she did not set, in a village whose custom she does not believe in. She yields rather than dies, like Vell and Calder before her (§9.6).
 3. **Beneath the reeve's house is the office**: a ledger of crossings — knights sent across the Crownveil, one line each, most marked *returned*, one page with the name scraped off. It is the act's first fact and its only one this chapter: **the Crown has been sending people across, for a very long time, and it counts the ones who come back.**
 4. The chapter's horror is the toll itself: the party can end it (§6) and the village will not thank them for it. There is no correct answer and the act does not grade it.
-5. **The knight appears on the pier at the end of the chapter** and says one new line **[PROPOSED]**: *"You're early. She was later than you."* He walks out along the pier and is not there when the party follows.
+5. **The knight appears on the pier at the end of the chapter** and says one new line **[PROPOSED]**: *"You're early. She didn't wait."* He walks out along the pier and is not there when the party follows.
 
 **Boss:** **the Toll-Keeper** — level 24, the drowned thing in the bell tower that collects the slate. Two phases. It does not speak and has no name in the script; the village calls it the keeper.
 
