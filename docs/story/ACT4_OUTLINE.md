@@ -126,7 +126,7 @@ The band edges are 3–5 rounds at 77–89% party HP with no deaths, and the Kin
 
 Two mechanical gaps the data exposed:
 
-- **The King has two phases, not three.** `scr_battle` supports one shift (`phase2_at` → `phase_actions[1]`); a third would need engine work. The third beat is scripted dialogue for now, and the outline's §9.6 is honest about it rather than pretending.
+- ~~The King has two phases, not three.~~ **Fixed:** the battle system now supports a second shift (`phase3_at` → `phase_actions[2]`), and the King uses it at 30% — the oath letting go. Simulated at 23 with all three phases: 98% / 93% by party, 79–82% at 21.
 - **Vell's yield flag is `flag_vell_yielded`**, set by the battle system the way Calder's is. No script reads it yet — Chapter 9 will be the first.
 
 **Two constraints worth stating before any numbers are chosen:**

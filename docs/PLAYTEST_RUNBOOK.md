@@ -104,7 +104,7 @@ Do this chapter fully before touching later content: it is the only chapter with
 - Signposts and lore objects show their text; the locked terrace barrier refuses until `flag_wt_upper_unlocked`.
 - **Watch for the restored Chapter 1 lines**: `GH_GATE_SIGN`, the farm/camp/old-road/watchtower signs still render from the marker tables (`struck_lines` formatting intact). If a sign is blank, the marker lost its `lines`/`text`.
 
-### 3.6 The Blackguard (three-phase boss, two mechanical phases)
+### 3.6 The Blackguard (three-phase boss)
 - The fight starts from the Watchtower arena with the boss and its adds.
 - At **60% HP** the shift triggers and the message must read exactly:
   *"His helmet cracks. Ash pours from the seams of his armor."*
@@ -157,7 +157,7 @@ Test each chapter's **gate and its boss**, not every line. The chapter-specific 
 - **Ch 9 Coleford:** Vell yields (`flag_vell_yielded`); Nessa's copy choice; Alden's first scene (he has **no sprite** — expect a placeholder, this is known).
 - `Q_SIDE_LEDGER` completes and sets `ch9_shop_discount`. **Test the discount:** in a shop, a buy price should now be 10% lower than its base (rounded down, minimum 1 gold), and buying should charge that shown price — check the displayed row and the gold actually deducted agree. Before the flag it must charge full price.
 - **Ch 10 barrow gate:** the Warden, the replayable gate, the road.
-- **Ch 11 halls/deep:** the charter names the mark (**Crownveil**); the King fight; **the King has two mechanical phases of the scripted three** — the third beat is dialogue. Known and recorded.
+- **Ch 11 halls/deep:** the charter names the mark (**Crownveil**); the King fight. **Check all three phases:** at 60% the oath breaks (*"The oath breaks. Something underneath it does not."*) and at 30% it lets go (*"The oath lets go. What is left was always a man."*), with heavier attacks from there. Both messages, the boss bar and the phase damage must all hold.
 - **The seal choice**: pick one, confirm `ch11_seal_alden` or `ch11_seal_party` persists through a save/reload. Act IV completes with `flag_act4_complete`.
 
 **Gate 5:** the game is completable from the title screen to the end of Act IV without a softlock.
@@ -224,7 +224,6 @@ For each failure, record: **phase/step number, room name, exact steps, expected,
 |---|---|
 | Every Act III/IV room is a Wrenfield-tileset blockout; Act III–IV enemies borrow strips | Known art debt (18 enemy kinds lack overworld sets) |
 | Alden has no sprite and no battle slot | Known; he appears as a placeholder |
-| The Forgotten King has two mechanical phases of three | Known engine limit (one phase shift) |
 | Twelve overworld entrances are `status: "stub"` (Frostwilds, Ironspine, Ashlands, Rimehold…) | Intentional; they show a placeholder line |
 | Four encounter tables can roll an enemy outside their band (`zone01_old_road`, `zone01_bandit_camp`, `zone01_watchtower`, `zone01_basement_hall`) | Known warnings from the validator; balance pass pending |
 | Nothing after Act IV exists | Acts V–VIII are outline-only; the board ends at `flag_act4_complete` |

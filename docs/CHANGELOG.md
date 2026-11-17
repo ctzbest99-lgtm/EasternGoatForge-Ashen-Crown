@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased — the Forgotten King's third phase runs
+- **The battle system can shift twice.** Generic bosses gained `phase3_at` alongside `phase2_at`: the controller checks the third threshold, applies `phase3_buffs`, shows `phase3_line`, and uses `phase_actions[2]`. A single hit that crosses both thresholds shifts through both (the loop in `finish_phase_shift` already supported it for the Blackguard); the Blackguard's own hard-coded behaviour is untouched.
+- **The King uses it at 30%.** Phase 2 stays the 60% oath-break; phase 3 is the oath letting go — ATK a further +15%, a heavier attack row, and *"The oath lets go. What is left was always a man."* The boss plate now shows P2/P3 for any boss, not just the Blackguard.
+- **Re-simulated with all three phases:** at level 23 the King is **98%** in 8.5 rounds with 1.07 deaths (Kael/Taren/Lyra/Caelan) and **93%** in 9.8 rounds with 0.85 deaths (Sera); at 21 it is **79–82%** in 9.4–10.8 rounds. `tools/balance_sim.py --act4` reproduces the rows.
+- **The recorded deviation is gone.** `CHAPTER11_SCRIPT.md`, `ACT4_OUTLINE.md`, the decisions log, GDD, roadmap and runbook no longer call the third phase narrative; the runbook tells the tester to check both thresholds and messages.
+- **Unverified:** no IDE has compiled or run this. The phase logic is checked by reading the state machine and by simulation only.
+
 ## Unreleased — Options, shop discount and stale docs fixed
 - **Every platform option now has pixel interpolation off and the project's own name.** The option files had drifted back to `interpolate_pixels: true` and `"yyp-template"` on nine platforms, so the art would have scaled soft and the window would have opened under the template's name. Fixed across the tree; Windows also gets the product and company strings.
 - **`gen_gamemaker.py` could never have fixed it.** Its normalising regex only matched letters before `_interpolate_pixels`, so `option_windows_interpolate_pixels` never matched; it also only renamed the Windows display name. The pattern now matches the real keys and covers every platform's display/game name, so a regeneration keeps the fix.

@@ -365,12 +365,19 @@ finish_animating = function() {
             }
         }
     }
-    // Generic two-phase bosses (Sanctuary Warden, Blackwood Matriarch): one shift at phase2_at.
+    // Generic bosses: phase2_at shifts once; a boss with phase3_at shifts a second time
+    // (Act IV's Forgotten King). A single hit may cross both thresholds in one go.
     for (var _g2 = 0; _g2 < array_length(enemies); _g2++) {
         var _ge = enemies[_g2];
-        if (_ge.actor_id == "blackguard" || _ge.phase2_at <= 0 || _ge.phase >= 2 || !is_up("enemy", _g2)) continue;
-        if (_ge.hp <= _ge.max_hp * _ge.phase2_at) {
-            start_phase_shift(_g2, 2);
+        if (_ge.actor_id == "blackguard" || !is_up("enemy", _g2)) continue;
+        var _want = _ge.phase;
+        if (_ge.phase3_at > 0 && _ge.phase < 3 && _ge.hp <= _ge.max_hp * _ge.phase3_at) {
+            _want = 3;
+        } else if (_ge.phase2_at > 0 && _ge.phase < 2 && _ge.hp <= _ge.max_hp * _ge.phase2_at) {
+            _want = 2;
+        }
+        if (_want > _ge.phase) {
+            start_phase_shift(_g2, _want);
             return;
         }
     }
@@ -399,9 +406,10 @@ finish_phase_shift = function() {
     var _generic = (_bg.actor_id != "blackguard");
     if (_generic) {
         _bg.phase = phase_next;
-        for (var _pb = 0; _pb < array_length(_bg.phase2_buffs); _pb++) {
-            var _pbf = _bg.phase2_buffs[_pb];
-            scr_battle_add_buff(_bg, _pbf.stat, _pbf.pct, _pbf.turns, "phase2");
+        var _buffs = (phase_next >= 3) ? _bg.phase3_buffs : _bg.phase2_buffs;
+        for (var _pb = 0; _pb < array_length(_buffs); _pb++) {
+            var _pbf = _buffs[_pb];
+            scr_battle_add_buff(_bg, _pbf.stat, _pbf.pct, _pbf.turns, "phase" + string(phase_next));
         }
     } else {
         scr_blackguard_apply_phase(_bg, phase_next);
@@ -416,7 +424,11 @@ finish_phase_shift = function() {
         return;
     }
     var _line = anim_message;
-    var _pl = _generic ? ((_bg.phase2_line != "") ? _bg.phase2_line : (_bg.name + " changes!")) : scr_blackguard_phase_line(phase_want);
+    var _pl = scr_blackguard_phase_line(phase_want);
+    if (_generic) {
+        _pl = (phase_next >= 3 && _bg.phase3_line != "") ? _bg.phase3_line : _bg.phase2_line;
+        if (_pl == "") _pl = _bg.name + " changes!";
+    }
     if (_pl != "") _line = (_line == "") ? _pl : (_line + "\n" + _pl);
     queue_message(_line, anim_next_state);
 };

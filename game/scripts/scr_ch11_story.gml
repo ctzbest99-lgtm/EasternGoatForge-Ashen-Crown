@@ -13,8 +13,8 @@
 /// follows. The mark's name is [PROPOSED] and lives in one line of the dialogue data.
 ///
 /// Recorded deviations:
-/// - The King has two mechanical phases. The outline's third phase is the §5 beat — the oath
-///   letting go — because scr_battle supports a single shift.
+/// - The King has three mechanical phases (60% and 30%). The engine gained a generic second
+///   shift for it; §5 is the aftermath of the third, not a substitute for it.
 /// - Alden is not in the battle line: there is no ally slot.
 
 function scr_ch11_quest_set(_quest_id, _stage_id) {

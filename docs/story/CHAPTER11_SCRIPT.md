@@ -187,7 +187,7 @@ Source of truth: `STORY_BIBLE.md` and `ACT4_OUTLINE.md` §5, §9, §11. Presenta
 
 ## 4. The keeper — `FK_INTRO`
 
-[STAGE] The Forgotten King: a corpse kept by Crown oath-work, and the oath requires a keeper. He is not a ghost and not a puppet, he does not hate the party, and he does not speak in sentences. Fight: `grp_forgotten_king` (level 23, 1714 HP, 61 ATK, two mechanical phases, ATK/SPD +20% at 60%). Boss music and boss bar. Sets `ch11_king_fight`.
+[STAGE] The Forgotten King: a corpse kept by Crown oath-work, and the oath requires a keeper. He is not a ghost and not a puppet, he does not hate the party, and he does not speak in sentences. Fight: `grp_forgotten_king` (level 23, 1714 HP, 61 ATK, three mechanical phases — ATK/SPD +20% at 60%, another ATK +15% and heavier attacks at 30%). Boss music and boss bar. Sets `ch11_king_fight`.
 
 **FK_INTRO_01** · NARRATION
 > He stands. It takes a long time and none of it is graceful.
@@ -209,7 +209,7 @@ Source of truth: `STORY_BIBLE.md` and `ACT4_OUTLINE.md` §5, §9, §11. Presenta
 **FK_INTRO_06** · Kael
 > No. Form up. Don't touch the seal until he's down.
 
-[STAGE] His second phase is the data's `phase2_at: 0.6` shift: *"The oath breaks. Something underneath it does not."* The outline's third phase is the beat in §5 — the oath letting go — because the battle system supports one shift. Recorded, not hidden.
+[STAGE] His second phase is the data's `phase2_at: 0.6` shift: *"The oath breaks. Something underneath it does not."* The third is `phase3_at: 0.3`: *"The oath lets go. What is left was always a man."* — the corpse spending what the oath was holding, with heavier attacks and a further ATK rise. §5 is what happens when that phase ends.
 
 ---
 
@@ -349,7 +349,7 @@ Source of truth: `STORY_BIBLE.md` and `ACT4_OUTLINE.md` §5, §9, §11. Presenta
 
 | Name | Role | Notes |
 |---|---|---|
-| The Forgotten King | Act boss | A kept corpse, held by Crown oath-work. No language, no hatred, no explanation. Two mechanical phases. |
+| The Forgotten King | Act boss | A kept corpse, held by Crown oath-work. No language, no hatred, no explanation. Three mechanical phases. |
 | The Crownveil | The mark's name | The charter's oldest line. The same word canon already uses for the mark, given as a name and never as a meaning. |
 | Alden Marr | Companion | Asks for the seal once, states his reasoning, accepts either answer. Not framed as a traitor. |
 | Taren Holt | Companion | His first real doubt: one ellipsis, one silence on the walk back. The chapter ends before he says it. |
@@ -365,7 +365,7 @@ Source of truth: `STORY_BIBLE.md` and `ACT4_OUTLINE.md` §5, §9, §11. Presenta
 | `ch11_seal_alden` / `ch11_seal_party` | §6.1 / §6.2 | The act's branch |
 | `chapter11_complete` / `flag_act4_complete` | §6.3 | Chapter and act complete |
 
-- **Boss:** `grp_forgotten_king` — solo `forgotten_king`, level 23, 1714 HP, 61 ATK, 45 DEF, two phases. Simulated at 23: **97% in 8.5 rounds, 0.99 deaths (+Caelan)** and **95% in 9.9 rounds, 0.71 deaths (+Sera)**; at level 21 it is **81–83%**. The outline's third phase is the §5 beat.
+- **Boss:** `grp_forgotten_king` — solo `forgotten_king`, level 23, 1714 HP, 61 ATK, 45 DEF, three phases. Simulated with all three at 23: **98% in 8.5 rounds, 1.07 deaths (+Caelan)** and **93% in 9.8 rounds, 0.85 deaths (+Sera)**; at level 21 it is **79–82%** in 9.4–10.8 rounds. The third phase now exists in data and engine; §5 is its aftermath.
 - **Encounters:** `crown_barrow` in `rm_barrow_halls` only. The deep chamber has no random encounters, so the boss is never walked into tired.
 - **Alden is not in the battle line** (no ally slot exists).
 
@@ -379,4 +379,4 @@ Source of truth: `STORY_BIBLE.md` and `ACT4_OUTLINE.md` §5, §9, §11. Presenta
 6. **Art** — the tomb needs its own tileset and the King his own strips; he borrows `sanctuary_warden`'s. **Not done.**
 7. **Audio** — `dungeon` bed for both rooms; the King needs a boss theme distinct from the Warden's. **Partly done.**
 
-**Deviations, recorded:** the King's third phase is narrative (one-shift battle system), Alden has no battle slot, and the mark's name is a [PROPOSED] choice the owner can reverse in one line.
+**Deviations, recorded:** Alden has no battle slot, and the mark's name is a [PROPOSED] choice the owner can reverse in one line. (The King's third phase was a recorded deviation until the battle system gained a second shift; it now runs.)

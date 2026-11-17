@@ -106,7 +106,7 @@ Built under the standing instruction to keep building the story, with `ACT3_OUTL
 Two things make Act IV different from Act III and worth saying plainly:
 
 - **Its enemies were added before its story, and the simulation changed them.** Seven ids, three of them bosses, were simulated first (`tools/balance_sim.py --act4`) and the first numbers were too soft: every boss was won 100%. The Warden went to ×2.2 HP and +4 ATK, the King to ×2.1 HP and +3 ATK. As shipped the King is 97% at level 23 in 8.6 rounds with about one death, and 81% at 21.
-- **The King has two phases, not three.** The battle system supports one shift, so the approved three-phase fight is two mechanical phases plus scripted third-act dialogue until the engine can shift twice. This is the one approved decision the build does not fully satisfy.
+- **The King now has three phases.** The approved fight originally ran on two, because the battle system supported one shift. It gained a generic `phase3_at` threshold (engine + simulation), and the King uses it at 30%: heavier attacks, ATK +15% more, and the line *"The oath lets go. What is left was always a man."* The approved decision is fully satisfied; no GameMaker build has run it yet.
 - **It is the first act whose story depends on an art asset.** Alden has no sprite at all and appears in every chapter of it. Reusing someone else's silhouette for the game's second most important character would be visible in every scene he is in.
 
 ## Chapter 9 built (2026-11-16)
@@ -138,7 +138,7 @@ Three deviations from the approved outline, recorded:
 
 Recorded deviations:
 
-- **The King has two mechanical phases**, not three. The outline's third beat is the §5 aftermath — the oath letting go — because `scr_battle` supports a single shift.
+- **The King has three mechanical phases** as approved: 60% and 30%. §5 is the aftermath of the third, not a substitute for it.
 - **Alden is not in any battle line** (no ally slot), including the act boss.
 - **The seal branch states no consequence and nothing reads it yet.** `ch11_seal_alden` / `ch11_seal_party` are the whole outcome; Act V owns whatever follows, and Ending C is untouched.
 

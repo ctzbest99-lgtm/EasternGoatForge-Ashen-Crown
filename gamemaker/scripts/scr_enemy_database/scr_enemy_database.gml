@@ -256,18 +256,21 @@ function scr_get_enemy_data(_enemy_id) {
                     [{ skill: "attack", weight: 1 }, { skill: "heavy_strike", weight: 1 }]
                 ] });
         case "forgotten_king": // Act boss: 1714 HP (170 x 1.2 x 4, then x2.1), 61 ATK / 45 DEF
-            // At level 23 simulated 96-97% wins in 8.6-9.9 rounds with about one death; the same
-            // numbers at level 21 are 81-83%, so arriving early is felt. ACT4_OUTLINE.md asks for
-            // three phases, but scr_battle supports ONE shift (phase2_at -> phase_actions[1]);
-            // phase three is narrative until the battle system can shift twice.
+            // ACT4_OUTLINE.md asks for three phases. Phase 2 is the oath breaking at 60%; phase 3
+            // is the oath letting go at 30% — the corpse spends what the oath was holding, hits
+            // harder and leans on Heavy Strike. Simulated with tools/balance_sim.py --act4.
             return scr_enemy_scaled("forgotten_king", "The Forgotten King", "Forg. King", "boss", 23, 4, { spd: 7, hp_mult: 2.1, atk_add: 3, def_add: 3,
                 phase2_at: 0.6,
                 phase2_buffs: [{ stat: "atk", pct: 0.2, turns: -1 }, { stat: "spd", pct: 0.2, turns: -1 }],
                 phase2_line: "The oath breaks. Something underneath it does not.",
+                phase3_at: 0.3,
+                phase3_buffs: [{ stat: "atk", pct: 0.15, turns: -1 }],
+                phase3_line: "The oath lets go. What is left was always a man.",
                 actions: [{ skill: "attack", weight: 2 }, { skill: "heavy_strike", weight: 1 }],
                 phase_actions: [
                     [{ skill: "attack", weight: 2 }, { skill: "heavy_strike", weight: 1 }],
-                    [{ skill: "attack", weight: 1 }, { skill: "heavy_strike", weight: 2 }]
+                    [{ skill: "attack", weight: 1 }, { skill: "heavy_strike", weight: 2 }],
+                    [{ skill: "attack", weight: 1 }, { skill: "heavy_strike", weight: 3 }]
                 ] });
         case "blackwood_matriarch": // PLACEHOLDER boss (proposed, not canon), two phases
             // hp_mult 1.5 (686 -> 1029 HP) is the Act III tuning: as written she was won 100% of the
