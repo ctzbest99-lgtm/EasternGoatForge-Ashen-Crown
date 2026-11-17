@@ -176,7 +176,7 @@ Acceptance:
 
 #### P4.2 — Resolve stub overworld entrances as content becomes available
 Tasks:
-- Audit the 10 remaining `status: "stub"` entrances: Blackwood doors and deep shrine, Ironspine mine and ruins, Rimehold, frozen ruins, Saltreach, Saltreach pier, flooded ruins and shipwreck. The two Blackwood ones already point at built rooms and should be marked `built`.
+- Audit the 8 remaining `status: "stub"` entrances: Ironspine mine and ruins, Rimehold, frozen ruins, Saltreach, Saltreach pier, flooded ruins and shipwreck. The Blackwood doors and deep shrine now point at built rooms and are marked `built`.
 - Keep unfinished exits clearly blocked/labelled until destinations exist.
 - Implement each destination only when its design and story content are approved.
 
