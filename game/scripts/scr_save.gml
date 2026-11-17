@@ -12,13 +12,28 @@
 #macro SAVE_TEMP "ashen_crown_save.tmp"
 
 /// @desc The saved shape of one party member. Anything derivable from level is left out on purpose.
+/// Worn equipment is ids only: the bonus is read from the item table, so a retuned item applies to an
+/// existing save instead of restoring stale numbers.
 function scr_save_actor(_actor) {
     return {
         name: _actor.name,
         level: _actor.level,
         xp: _actor.xp,
-        hp: _actor.hp
+        hp: _actor.hp,
+        equipment: scr_save_equipment(_actor)
     };
+}
+
+/// @desc Worn ids, one per slot, as a plain struct of strings. Empty slots are kept so a load clears them.
+function scr_save_equipment(_actor) {
+    var _worn = scr_equipment_ensure(_actor);
+    var _slots = scr_equipment_slots();
+    var _saved = scr_equipment_create();
+    for (var _i = 0; _i < array_length(_slots); _i++) {
+        var _slot = _slots[_i];
+        _saved[_slot] = variable_struct_exists(_worn, _slot) ? _worn[_slot] : "";
+    }
+    return _saved;
 }
 
 /// @desc Where the player stands, so a load restores the overworld position.
@@ -70,6 +85,20 @@ function scr_save_validate(_data) {
             return { ok: false, reason: "save has a member with an invalid level" };
         }
         if (!variable_struct_exists(_member, "hp")) return { ok: false, reason: "save has a member without HP" };
+        /// equipment is optional: a save written before the party could equip loads bare.
+        if (variable_struct_exists(_member, "equipment")) {
+            if (!is_struct(_member.equipment)) return { ok: false, reason: "save has malformed equipment" };
+            var _slots = scr_equipment_slots();
+            for (var _s = 0; _s < array_length(_slots); _s++) {
+                var _slot = _slots[_s];
+                if (!variable_struct_exists(_member.equipment, _slot)) continue;
+                var _worn = _member.equipment[_slot];
+                if (!is_string(_worn)) return { ok: false, reason: "save equipment is not a name" };
+                if (_worn != "" && !scr_equipment_fits(_slot, _worn)) {
+                    return { ok: false, reason: "save has equipment in the wrong slot" };
+                }
+            }
+        }
     }
     /// flags is optional for the same reason as items: an older save simply has none set.
     if (variable_struct_exists(_data, "flags")) {
@@ -110,6 +139,16 @@ function scr_save_restore_actor(_data) {
     }
     if (variable_struct_exists(_data, "hp")) {
         _actor.hp = clamp(floor(_data.hp), 0, _actor.max_hp);
+    }
+    if (variable_struct_exists(_data, "equipment") && is_struct(_data.equipment)) {
+        var _worn = scr_equipment_ensure(_actor);
+        var _slots = scr_equipment_slots();
+        for (var _i = 0; _i < array_length(_slots); _i++) {
+            var _slot = _slots[_i];
+            if (!variable_struct_exists(_data.equipment, _slot)) continue;
+            /// Only a piece that belongs in that slot comes back, so a damaged save cannot smuggle a bonus.
+            if (scr_equipment_fits(_slot, _data.equipment[_slot])) _worn[_slot] = _data.equipment[_slot];
+        }
     }
     return _actor;
 }

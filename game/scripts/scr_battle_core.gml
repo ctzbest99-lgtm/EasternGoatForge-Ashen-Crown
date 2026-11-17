@@ -170,7 +170,7 @@ function scr_battle_player_command(_battle, _command) {
     if (!scr_battle_is_alive(_battle.player) || !scr_battle_is_alive(_battle.enemy)) return false;
     switch (_command) {
         case BATTLE_COMMAND.ATTACK:
-            var _damage = scr_calculate_damage(_battle.player.attack, _battle.enemy.defense);
+            var _damage = scr_calculate_damage(scr_actor_attack(_battle.player), _battle.enemy.defense);
             _battle.enemy.hp = scr_apply_damage(_battle.enemy.hp, _battle.enemy.max_hp, _damage);
             _battle.last_damage = _damage;
             _battle.state = BATTLE_PHASE.PLAYER_RESULT;
@@ -371,7 +371,7 @@ function scr_battle_enemy_turn(_battle) {
         _battle.message = "The party falls...";
         return true;
     }
-    var _damage = scr_calculate_damage(_battle.enemy.attack, _target.defense);
+    var _damage = scr_calculate_damage(_battle.enemy.attack, scr_actor_defense(_target));
     var _guarded = _target.guarding;
     if (_guarded) _damage = scr_guard_damage(_damage);
     _target.hp = scr_apply_damage(_target.hp, _target.max_hp, _damage);

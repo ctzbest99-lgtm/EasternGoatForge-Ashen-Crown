@@ -31,6 +31,9 @@ function scr_party_make_actor(_name, _level = 1) {
         max_hp: _stats.max_hp,
         attack: _stats.attack,
         defense: _stats.defense,
+        /// Empty slots rather than no field, so the status panel and the equip list have something to read.
+        /// The bonus those slots are worth is read from the item table, never stored here.
+        equipment: scr_equipment_create(),
         guarding: false
     };
 }

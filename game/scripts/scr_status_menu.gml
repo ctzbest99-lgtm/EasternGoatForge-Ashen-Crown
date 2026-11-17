@@ -5,7 +5,8 @@
 
 enum STATUS_VIEW {
     MEMBERS,
-    ITEM
+    ITEM,
+    EQUIP
 }
 
 /// @desc A closed menu on the member view.
@@ -64,7 +65,7 @@ function scr_status_menu_member(_party, _menu) {
 
 /// @desc Open the item list. Refuses with a message when the bag is empty.
 function scr_status_menu_open_items(_menu, _party) {
-    if (!_menu.open || _menu.mode == STATUS_VIEW.ITEM) return false;
+    if (!_menu.open || _menu.mode != STATUS_VIEW.MEMBERS) return false;
     if (array_length(scr_inventory_usable(scr_status_inventory(_party))) == 0) {
         _menu.message = "No items.";
         return false;
@@ -81,6 +82,62 @@ function scr_status_menu_close_items(_menu) {
     _menu.mode = STATUS_VIEW.MEMBERS;
     _menu.message = "";
     return true;
+}
+
+/// @desc Open the equip list for the selected member. Refuses with a message when the bag holds no gear,
+/// rather than opening an empty list that looks broken.
+function scr_status_menu_open_equip(_menu, _party) {
+    if (!_menu.open || _menu.mode != STATUS_VIEW.MEMBERS) return false;
+    if (array_length(scr_inventory_equipment(scr_status_inventory(_party))) == 0) {
+        _menu.message = "Nothing to equip.";
+        return false;
+    }
+    _menu.mode = STATUS_VIEW.EQUIP;
+    _menu.item_cursor = 0;
+    _menu.message = "";
+    return true;
+}
+
+/// @desc Back to the member list.
+function scr_status_menu_close_equip(_menu) {
+    if (_menu.mode != STATUS_VIEW.EQUIP) return false;
+    _menu.mode = STATUS_VIEW.MEMBERS;
+    _menu.message = "";
+    return true;
+}
+
+/// @desc Move the equip selection, wrapping. Does nothing in another view.
+function scr_status_menu_move_equip(_menu, _delta, _count) {
+    if (!_menu.open || _menu.mode != STATUS_VIEW.EQUIP || _count <= 0 || _delta == 0) return false;
+    _menu.item_cursor = (_menu.item_cursor + _delta + _count) mod _count;
+    return true;
+}
+
+/// @desc Put the selected piece on the selected member. A swap is safe: the replaced piece returns to the
+/// bag inside scr_equip, so nothing is ever lost by pressing ENTER twice.
+function scr_status_menu_equip_selected(_menu, _party, _actor) {
+    if (_menu.mode != STATUS_VIEW.EQUIP || is_undefined(_actor)) return false;
+    var _bag = scr_status_inventory(_party);
+    var _carried = scr_inventory_equipment(_bag);
+    if (array_length(_carried) == 0) {
+        var _kept = _menu.message;
+        scr_status_menu_close_equip(_menu);
+        _menu.message = (_kept != "") ? _kept : "Nothing to equip.";
+        return false;
+    }
+    var _index = min(_menu.item_cursor, array_length(_carried) - 1);
+    var _result = scr_equip(_bag, _actor, _carried[_index].id);
+    _menu.message = _result.message;
+    /// Equipping can empty the list (one sword, one slot), and the cursor may point past the end.
+    var _left = array_length(scr_inventory_equipment(_bag));
+    if (_left == 0) {
+        var _line = _menu.message;
+        scr_status_menu_close_equip(_menu);
+        _menu.message = _line;
+    } else {
+        _menu.item_cursor = min(_menu.item_cursor, _left - 1);
+    }
+    return _result.ok;
 }
 
 /// @desc Use the selected item on the selected member. Returns true when something was consumed.
@@ -125,7 +182,8 @@ function scr_status_rows(_party) {
             level_text: "Lv" + string(_actor.level),
             hp_text: scr_hud_hp_line(_actor),
             xp_text: scr_hud_xp_line(_actor),
-            stats_text: "ATK " + string(_actor.attack) + "   DEF " + string(_actor.defense),
+            stats_text: scr_equipment_stat_text(_actor),
+            equipment_text: scr_equipment_row(_actor),
             alive: _actor.hp > 0
         });
     }

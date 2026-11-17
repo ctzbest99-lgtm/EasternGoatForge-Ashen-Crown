@@ -46,6 +46,13 @@ Not implemented yet: a four-character party with populated members, flee, enemy 
 - The panel locks exploration input, remembers exactly which players it locked, and restores them in Destroy through every exit path. UP/DOWN choose, ENTER buys one unit, ESC leaves. Rows show name, price and how many you already carry, and an unaffordable row is drawn dimmed.
 - While a shop is open, enemies do not start encounters and NPCs and the ruin door do not react, so a panel cannot be hidden behind by a battle.
 
+## Equipment
+
+- An item is equipment when its `scr_item_data` entry has a `slot` — `weapon`, `offhand` or `armour`. Three pieces ship: **Iron Blade** (+3 ATK, 80 gold), **Oak Shield** (+3 DEF, 70 gold) and **Warden Mail** (+5 DEF, 140 gold), all sold by the merchant from the same stock list as the potions.
+- A member wears ids only (`scr_equipment`), and the numbers come back from the item table each time, so retuning a piece applies to everyone already wearing it and a save can never carry stale stats. Base attack and defense are never overwritten: `scr_actor_attack`/`scr_actor_defense` add the bonus on top, which is what the battle reads for both your strikes and the enemy's.
+- Equip in the status panel: **C** to open, choose a member, **E** to open the equip list, **ENTER** to wear a piece. A piece that was already there goes back in the bag rather than vanishing, and `scr_unequip` does the same the other way.
+- The item menu now offers only consumables — a Potion list that also sells you a sword is a trap — while the equip list offers only gear. A piece in the wrong slot, or one that has been removed from the game since, contributes no bonus at all.
+
 ## Saves (roadmap step 5, save schema)
 
 - `scr_save` writes `{ version, party: { gold, members, items }, flags, player: { x, y, facing_x, facing_y } }` to `ashen_crown_save.json`.

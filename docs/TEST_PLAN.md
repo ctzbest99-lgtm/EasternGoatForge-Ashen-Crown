@@ -47,6 +47,13 @@ Run tests in GameMaker after integration; static review is not a substitute for 
 - [ ] Holding ENTER buys one unit, not several.
 - [ ] ESC closes the panel and the player can move again; no second shop opens while one is shown, and none during a battle, conversation or the status menu.
 
+## Equipment
+- [ ] The merchant sells Iron Blade, Oak Shield and Warden Mail, and each costs its listed price.
+- [ ] Equipping a blade raises ATK by 3 in the status panel and in the damage dealt; a shield lowers the damage taken by 3.
+- [ ] Equipping over an occupied slot returns the old piece to the bag; nothing is lost by pressing ENTER twice.
+- [ ] A potion cannot be equipped, and a sword does not appear in the item menu.
+- [ ] Saving and loading keeps worn gear; a save edited to put a shield in the weapon slot is refused on load.
+
 ## Battle
 - [ ] Encounter starts once only: walking onto an enemy opens exactly one battle, and a second battle cannot start while one is active.
 - [ ] Victory removes the overworld enemy; after a defeat the player must step off the enemy before it triggers again.

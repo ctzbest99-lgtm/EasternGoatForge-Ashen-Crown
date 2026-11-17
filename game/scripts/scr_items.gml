@@ -13,13 +13,21 @@ function scr_item_data(_item_id) {
         /// Keeping them separate is what stops the healing items from doubling as revives.
         case "ember_draught":
             return { id: "ember_draught", name: "Ember Draught", heal: 0, revive: 0.3, price: 60, description: "Revives a fallen ally with 30% HP." };
+        /// Equipment shares this table so the shop, the bag and the saves have one kind of thing to handle.
+        /// `slot` is what makes an entry wearable, and the numbers are read by scr_equipment, never copied.
+        case "iron_blade":
+            return { id: "iron_blade", name: "Iron Blade", heal: 0, slot: "weapon", attack: 3, defense: 0, price: 80, description: "Weapon. +3 ATK." };
+        case "oak_shield":
+            return { id: "oak_shield", name: "Oak Shield", heal: 0, slot: "offhand", attack: 0, defense: 3, price: 70, description: "Shield. +3 DEF." };
+        case "warden_mail":
+            return { id: "warden_mail", name: "Warden Mail", heal: 0, slot: "armour", attack: 0, defense: 5, price: 140, description: "Armour. +5 DEF." };
     }
     return undefined;
 }
 
 /// @desc Every item id, in menu order.
 function scr_item_ids() {
-    return ["potion", "hi_potion", "ember_draught"];
+    return ["potion", "hi_potion", "ember_draught", "iron_blade", "oak_shield", "warden_mail"];
 }
 
 /// @desc An empty inventory.
@@ -66,12 +74,23 @@ function scr_inventory_remove(_inventory, _item_id, _count = 1) {
     return true;
 }
 
-/// @desc Stacks the menu may show: those with at least one item left.
+/// @desc Stacks the item menu may show: consumables with at least one left. Equipment is deliberately
+/// left out — it is handled by the equip list, and a Potion menu that offers a sword is a trap.
 function scr_inventory_usable(_inventory) {
     var _rows = [];
     var _count = array_length(_inventory);
     for (var _i = 0; _i < _count; _i++) {
-        if (_inventory[_i].count > 0) array_push(_rows, _inventory[_i]);
+        if (_inventory[_i].count > 0 && scr_item_is_consumable(_inventory[_i].id)) array_push(_rows, _inventory[_i]);
+    }
+    return _rows;
+}
+
+/// @desc Stacks the equip list may show: equipment with at least one left, in bag order.
+function scr_inventory_equipment(_inventory) {
+    var _rows = [];
+    var _count = array_length(_inventory);
+    for (var _i = 0; _i < _count; _i++) {
+        if (_inventory[_i].count > 0 && scr_item_is_equipment(_inventory[_i].id)) array_push(_rows, _inventory[_i]);
     }
     return _rows;
 }
@@ -81,6 +100,22 @@ function scr_item_is_revive(_item_id) {
     var _data = scr_item_data(_item_id);
     if (is_undefined(_data)) return false;
     return (variable_struct_exists(_data, "revive") && _data.revive > 0);
+}
+
+/// @desc True for an item with a `slot`, which is what the equip list offers and the item menus refuse.
+function scr_item_is_equipment(_item_id) {
+    var _data = scr_item_data(_item_id);
+    if (is_undefined(_data)) return false;
+    return variable_struct_exists(_data, "slot");
+}
+
+/// @desc True for something eaten, drunk or poured: it heals, or it revives.
+function scr_item_is_consumable(_item_id) {
+    var _data = scr_item_data(_item_id);
+    if (is_undefined(_data)) return false;
+    if (scr_item_is_equipment(_item_id)) return false;
+    if (variable_struct_exists(_data, "heal") && _data.heal > 0) return true;
+    return scr_item_is_revive(_item_id);
 }
 
 /// @desc HP a revive brings the actor back with: a fraction of max HP, at least 1.

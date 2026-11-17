@@ -40,10 +40,21 @@ if (menu.mode == STATUS_VIEW.ITEM) {
     if (_up) scr_status_menu_move_item(menu, -1, _stacks);
     if (_down) scr_status_menu_move_item(menu, 1, _stacks);
     if (_confirm) scr_status_menu_use_item(menu, _party, scr_status_menu_member(_party, menu));
+} else if (menu.mode == STATUS_VIEW.EQUIP) {
+    var _carried = array_length(scr_inventory_equipment(scr_status_inventory(_party)));
+    if (_back) {
+        /// ESC steps back one level: equip list, member list, then the panel.
+        scr_status_menu_close_equip(menu);
+        exit;
+    }
+    if (_up) scr_status_menu_move_equip(menu, -1, _carried);
+    if (_down) scr_status_menu_move_equip(menu, 1, _carried);
+    if (_confirm) scr_status_menu_equip_selected(menu, _party, scr_status_menu_member(_party, menu));
 } else {
     if (_up) scr_status_menu_move(menu, -1, array_length(_party.members));
     if (_down) scr_status_menu_move(menu, 1, array_length(_party.members));
     if (_confirm) scr_status_menu_open_items(menu, _party);
+    if (keyboard_check_pressed(ord("E"))) scr_status_menu_open_equip(menu, _party);
     if (_back) _close_all = true;
 }
 
