@@ -224,7 +224,7 @@ For each failure, record: **phase/step number, room name, exact steps, expected,
 |---|---|
 | Every Act III/IV room is a Wrenfield-tileset blockout; Act III–IV enemies borrow strips | Known art debt (18 enemy kinds lack overworld sets) |
 | Alden has no sprite and no battle slot | Known; he appears as a placeholder |
-| Eleven overworld entrances are `status: "stub"` (Frostwilds, Ironspine, Rimehold…) | Intentional; they show a placeholder line |
+| Eight overworld entrances are `status: "stub"` (Frostwilds, Ironspine, Rimehold…) | Intentional; they show a placeholder line |
 | Four encounter tables can roll an enemy outside their band (`zone01_old_road`, `zone01_bandit_camp`, `zone01_watchtower`, `zone01_basement_hall`) | Known warnings from the validator; balance pass pending |
 | Nothing after Act IV exists | Acts V–VIII are outline-only; the board ends at `flag_act4_complete` (the Ashlands has three standalone rooms: the breach outpost, the ruins beyond it and the undercroft behind the ruin wall) |
 

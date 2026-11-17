@@ -488,8 +488,8 @@
   "y": 2432,
   "target_room": "rm_valemere",
   "region": "Kingdom of Eldoria",
-  "status": "stub",
-  "note": "Capital of Eldoria (about 80,000 residents)."
+  "status": "built",
+  "note": "Capital of Eldoria (about 80,000 residents). Built in Chapter 3 as rm_valemere; the Chapter 3 route reaches it by the east gate from rm_valemere_road."
  },
  {
   "type": "entrance",
@@ -500,7 +500,7 @@
   "y": 2064,
   "target_room": "rm_blackwood_doors",
   "region": "Blackwood",
-  "status": "stub",
+  "status": "built",
   "note": "Ancient stone doors in the cursed forest."
  },
  {
@@ -512,7 +512,7 @@
   "y": 1584,
   "target_room": "rm_blackwood_deep",
   "region": "Blackwood",
-  "status": "stub",
+  "status": "built",
   "note": "Forgotten ruins deep in the Blackwood."
  },
  {
