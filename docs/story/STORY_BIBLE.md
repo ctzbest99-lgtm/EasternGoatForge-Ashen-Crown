@@ -468,7 +468,7 @@ The beats below follow that route. **[O]** The doc doesn't say exactly where the
 | 2 | The Broken Crown | **[C-confirmed]** — recruitment act, four chapters (2–5), all four scripts approved and built. Detail in `ACT2_OUTLINE.md`, summarized below. |
 | 3 | The Blackwood | **[O]** Title canon; the rest is not. A [PROPOSED] outline exists in `ACT3_OUTLINE.md` (three chapters, ten decisions for the owner) |
 | 4 | The Forgotten King | **[O]** Title canon only. A [PROPOSED] outline exists in `ACT4_OUTLINE.md` (three chapters, ten decisions, a proposed answer to question 13) |
-| 5 | The Fallen Knight | **[O]** Title canon; decisions approved 2026-11-16. `ACT5_OUTLINE.md` proposes three chapters, and all ten decisions were approved as recommended; not written or built. |
+| 5 | The Fallen Knight | **[O]** Title canon; decisions approved 2026-11-16. `ACT5_OUTLINE.md` proposes three chapters, and all ten decisions were approved as recommended; Chapter 12 drafted, not built. |
 | 6 | Beneath the Mountains | **[O]** Not yet detailed |
 | 7 | The Ashlands | **[O]** Not yet detailed |
 | 8 | The Truth | **[O]** Not yet detailed |
@@ -492,7 +492,7 @@ Act II is four chapters (Chapters 2–5), each with a recruit and a chapter boss
 
 ### Act V — The Fallen Knight (outline only) **[PROPOSED]**
 
-`ACT5_OUTLINE.md` proposes the act that follows the barrow road south: the **Drowned Coast**, where Saltreach pays the sea one name a tide, a flooded Aethari record room whose list of eleven names has ten scraped off, and the wreck that carried the Crown's last crossing. Its one revelation is an **office, not a man** — "Fallen Knight" is what the Crown calls the knights it sent across the Crownveil and got back — and the knight is fought once, as the act boss, yields at 0 HP, is not named and does not die. Three chapters (12–14) at levels 24–26 **[PROPOSED]**, which needs `PARTY_MAX_LEVEL` raised to 27; the four coast rooms the overworld already references become the act's rooms, `snd_amb_water` gets its first use, and Alden appears only as a letter whose existence depends on Chapter 11's seal choice. Bible question 2 — who he is, and whether he is one of the Fallen Knight enemies — stays open. **All ten decisions were approved as recommended on 2026-11-16**; no chapter is written, nothing is built, and the approved level cap (27) is not applied.
+`ACT5_OUTLINE.md` proposes the act that follows the barrow road south: the **Drowned Coast**, where Saltreach pays the sea one name a tide, a flooded Aethari record room whose list of eleven names has ten scraped off, and the wreck that carried the Crown's last crossing. Its one revelation is an **office, not a man** — "Fallen Knight" is what the Crown calls the knights it sent across the Crownveil and got back — and the knight is fought once, as the act boss, yields at 0 HP, is not named and does not die. Three chapters (12–14) at levels 24–26 **[PROPOSED]**, which needs `PARTY_MAX_LEVEL` raised to 27; the four coast rooms the overworld already references become the act's rooms, `snd_amb_water` gets its first use, and Alden appears only as a letter whose existence depends on Chapter 11's seal choice. Bible question 2 — who he is, and whether he is one of the Fallen Knight enemies — stays open. **All ten decisions were approved as recommended on 2026-11-16**; Chapter 12 is drafted, nothing is built, and the approved level cap (27) is not applied.
 
 ### Act III — The Blackwood (built 2026-11-16, unplayed) **[C-confirmed for Ch 6; PROPOSED for Ch 7–8]**
 

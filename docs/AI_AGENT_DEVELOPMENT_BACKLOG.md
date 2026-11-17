@@ -165,8 +165,10 @@ Acceptance:
 #### P4.1 — Build Act V — The Fallen Knight (Chapters 12–14) — **next content**
 **Why:** Chapter 5 and all of Acts I–IV are built. Act V is the only act with approved decisions and an outline (`docs/story/ACT5_OUTLINE.md`), and its four rooms already exist as stub names.
 
+**Status:** `CHAPTER12_SCRIPT.md` drafts Chapter 12 (2026-11-17); it is not approved, built or generated.
+
 Tasks:
-- Write and get owner approval for Chapters 12–14 before building rooms or data.
+- Review the Chapter 12 draft (`docs/story/CHAPTER12_SCRIPT.md`) and write Chapters 13–14 for owner approval before building rooms or data.
 - Then build `rm_saltreach`, `rm_saltreach_pier`, `rm_flooded_ruins` and `rm_shipwreck` with their markers, encounters, boss, quest stages and dialogue.
 - Keep the approved region order and the knight's unnamed, yielding rules intact.
 

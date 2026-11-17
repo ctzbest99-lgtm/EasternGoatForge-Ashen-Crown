@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased — Chapter 12 draft, and its open points decided
+- **`docs/story/CHAPTER12_SCRIPT.md` drafts "The Salt Toll".** 198 dialogue/UI nodes from the approved Act V outline: the coast road, Saltreach, Ilsa Fen's levy house, the late tide and the Toll-Keeper, the ledger of crossings, the slate choice, Alden's conditional letter, and the knight on the pier. No dialogue data, room, enemy, quest row or code exists; no combat numbers are set.
+- **Four draft points are decided.** The reeve is **Ilsa Fen**; the half-cut name on the slate is hers, with the choice to finish it or break the slate; Alden's letter exists only on `ch11_seal_alden` and stays a letter; Reeve Fen is not a battle, so the Toll-Keeper is the chapter's only fight.
+- **Docs:** `ACT5_OUTLINE.md`, `STORY_BIBLE.md`, `DECISIONS_AND_OPEN_QUESTIONS.md` and the backlog now record the draft without treating it as built. Checks: all 198 node IDs unique; no code or data changed; nothing compiled or played.
+
 ## Unreleased — two Blackwood entrances marked built
 - **`blackwood_stone_doors` and `blackwood_deep_shrine` now report `status: "built"`.** Both markers already targeted existing rooms (`rm_blackwood_doors` and `rm_blackwood_deep`), but their overworld metadata still said stub. `game/maps/ow_markers.json`, the runtime `scr_map_markers_data.gml` and the `gamemaker/` mirror now agree; the eight remaining stubs are the Ironspine mine and ruins, Rimehold, the frozen ruins, Saltreach, its pier, the flooded ruins and the shipwreck.
 - **Checks:** validator `ALL CHECKS PASSED`, chapter audit `No wiring problems found`. Nothing was compiled or played.

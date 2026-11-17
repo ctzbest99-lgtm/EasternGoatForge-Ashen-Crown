@@ -589,7 +589,7 @@ These were chosen so roadmap steps 2–3 could be built. None is a locked design
 - Chapter 1 overworld / Watchtower sign wording is C-confirmed (see CHAPTER1_SCRIPT.md). Battle messages and remaining inspect text (chests, Renn, unbuilt rooms) are still placeholders.
 
 ## Act V outline (decisions approved 2026-11-16)
-`docs/story/ACT5_OUTLINE.md` proposes *The Fallen Knight*: three chapters (12–14) on the **Drowned Coast**, at levels 24–26 with `PARTY_MAX_LEVEL` 27. **All ten of its decisions were approved as recommended on 2026-11-16.** The act is still unbuilt: no chapter, room, enemy, quest row, item or line of dialogue exists, and no number in its §7 has been simulated.
+`docs/story/ACT5_OUTLINE.md` proposes *The Fallen Knight*: three chapters (12–14) on the **Drowned Coast**, at levels 24–26 with `PARTY_MAX_LEVEL` 27. **All ten of its decisions were approved as recommended on 2026-11-16.** The act is still unbuilt: no chapter, room, enemy, quest row or item is built, and no dialogue data exists. No number in its §7 has been simulated. A Chapter 12 draft exists (2026-11-17) but is not approved, generated or played.
 
 What the approval actually fixes:
 - **The region map for the rest of the game.** Act V is the Drowned Coast (`rm_saltreach`, `rm_saltreach_pier`, `rm_flooded_ruins`, `rm_shipwreck`); Act VI *Beneath the Mountains* takes the Ironspine; Act VII *The Ashlands* takes the ash side of the Crownveil; Act VIII *The Truth* takes the Frostwilds (`rm_rimehold`, `rm_frozen_ruins`) and the final questions. Building Act V takes the validator's unresolved references from ten to six.
@@ -607,6 +607,15 @@ Open points the approval does not settle are listed in the outline's §10; nothi
 - **Alden is off-screen**, present only as one letter whose existence depends on Chapter 11's `ch11_seal_alden` / `ch11_seal_party` choice. No split.
 - **`snd_amb_water` finally has a room.** It has been in the project since the audio pass and assigned to nothing.
 - **No numbers are proposed as balanced.** Act IV's lesson was that unsimulated numbers are wrong numbers, so §7 lists ids and roles only, with the simulation work as an explicit build step before any chapter is written.
+
+### Chapter 12 draft (decisions 2026-11-17)
+`docs/story/CHAPTER12_SCRIPT.md` drafts Chapter 12, *The Salt Toll*, from the approved outline. Four open points are decided at draft level:
+- **The reeve is Ilsa Fen.** The outline left her unnamed; the draft names her so the chapter has a person rather than a function. Speaker tags use "Reeve Fen."
+- **The half-cut name is hers.** The slate choice is to finish Ilsa's name and keep the bargain, or break the slate and end it. The village believes the sea takes the slate and never a person; the script does not say whether that belief is true.
+- **Alden's letter stays conditional.** It exists only on `ch11_seal_alden`; on `ch11_seal_party` there is no letter and no second-hand message. He stays off-screen and there is no split.
+- **Reeve Fen is not a battle.** She yields the office and the ledger; the Toll-Keeper is the chapter's only fight. A human fight would need its own enemy id, group and simulation.
+
+The chapter is still not individually approved, built or played. The Toll-Keeper has no stat block until `balance_sim.py --act5` runs, and `PARTY_MAX_LEVEL` is still 24.
 
 ## Chapter-wide audit (2026-11-16)
 `tools/audit_chapters.py` cross-checks the things `validate_gamemaker.py` cannot: story-script line ids against dialogue data, marker hooks against the `scr_*_play_script` dispatchers, every `zone_exit` against the target room's marker names, encounter groups/tables/enemy ids, quest stages, ambience beds, and every `**ID** · Speaker` header in `docs/story/CHAPTER*_SCRIPT.md` against a node. It is read-only, exits non-zero on a problem, and currently reports none.
