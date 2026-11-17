@@ -4,7 +4,7 @@
 /// @desc Everything the merchant sells, in menu order: supplies first, then the gear he keeps under the
 /// counter. Equipment is priced from the same item table, so a piece costs what its data says.
 function scr_shop_stock() {
-    return ["potion", "hi_potion", "ember_draught", "iron_blade", "oak_shield", "warden_mail"];
+    return ["potion", "hi_potion", "ember_draught", "rusted_blade", "iron_blade", "oak_shield", "warden_mail"];
 }
 
 /// @desc Price of one unit, or -1 for something the shop does not sell. Prices come from scr_item_data, so

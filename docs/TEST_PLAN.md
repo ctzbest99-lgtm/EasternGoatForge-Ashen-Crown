@@ -52,6 +52,7 @@ Run tests in GameMaker after integration; static review is not a substitute for 
 - [ ] Equipping a blade raises ATK by 3 in the status panel and in the damage dealt; a shield lowers the damage taken by 3.
 - [ ] Equipping over an occupied slot returns the old piece to the bag; nothing is lost by pressing ENTER twice.
 - [ ] Each equip row shows the change against the piece worn in that slot, reads "no change" for an even swap, and shows a negative number when the swap would cost a stat.
+- [ ] Wearing the Iron Blade and comparing the Rusted Blade shows `-2 ATK`, and confirming it really drops attack by 2.
 - [ ] A potion cannot be equipped, and a sword does not appear in the item menu.
 - [ ] Saving and loading keeps worn gear; a save edited to put a shield in the weapon slot is refused on load.
 

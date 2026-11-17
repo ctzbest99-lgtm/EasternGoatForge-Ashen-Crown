@@ -15,6 +15,10 @@ function scr_item_data(_item_id) {
             return { id: "ember_draught", name: "Ember Draught", heal: 0, revive: 0.3, price: 60, description: "Revives a fallen ally with 30% HP." };
         /// Equipment shares this table so the shop, the bag and the saves have one kind of thing to handle.
         /// `slot` is what makes an entry wearable, and the numbers are read by scr_equipment, never copied.
+        /// The cheap blade exists so the arm has a starting rung and so a downgrade is visible: wearing it
+        /// over the Iron Blade reads -2 ATK in the equip list, which is the comparison earning its keep.
+        case "rusted_blade":
+            return { id: "rusted_blade", name: "Rusted Blade", heal: 0, slot: "weapon", attack: 1, defense: 0, price: 25, description: "Weapon. +1 ATK. Better than bare fists." };
         case "iron_blade":
             return { id: "iron_blade", name: "Iron Blade", heal: 0, slot: "weapon", attack: 3, defense: 0, price: 80, description: "Weapon. +3 ATK." };
         case "oak_shield":
@@ -27,7 +31,7 @@ function scr_item_data(_item_id) {
 
 /// @desc Every item id, in menu order.
 function scr_item_ids() {
-    return ["potion", "hi_potion", "ember_draught", "iron_blade", "oak_shield", "warden_mail"];
+    return ["potion", "hi_potion", "ember_draught", "rusted_blade", "iron_blade", "oak_shield", "warden_mail"];
 }
 
 /// @desc An empty inventory.
