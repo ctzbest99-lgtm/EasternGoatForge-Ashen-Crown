@@ -1,7 +1,8 @@
 # AI Agent Development Backlog — ASHEN CROWN
 
-**Last reconciled:** 2026-11-17  
-**Updated 2026-11-17:** the gear, merchant and Ashlands work merged to `main` in `8e412618` (PR #31). Acts I–IV are built and unplayed (Chapters 1–11 plus the three standalone Ashlands rooms, 34 rooms, 95 scripts), audio is wired through `scr_audio`, and Act V's Chapter 12 is approved, Chapters 13–14 are drafted, and its enemy batch is in data; no Act V room or dialogue is built. Items below that call any of that data-only, design-only or audio-absent are done — check `docs/CHANGELOG.md` and `docs/DEVELOPMENT_ROADMAP.md` for current state. Also prefer the targeted importers in `tools/` over re-running `gen_gamemaker.py` wholesale, which churns resource UUIDs.
+**Last reconciled:** 2026-11-18
+
+**Updated 2026-11-18:** the gear, merchant and Ashlands work merged to `main` in `8e412618` (PR #31). Acts I–IV are built and unplayed (Chapters 1–11 plus the three standalone Ashlands rooms, 34 rooms, 95 scripts), audio is wired through `scr_audio`, and Act V's Chapters 12–14 are approved as story and its enemy batch is in data; no Act V room or dialogue is built. Items below that call any of that data-only, design-only or audio-absent are done — check `docs/CHANGELOG.md` and `docs/DEVELOPMENT_ROADMAP.md` for current state. Also prefer the targeted importers in `tools/` over re-running `gen_gamemaker.py` wholesale, which churns resource UUIDs.
 **Purpose:** single actionable handoff for Codex or another coding agent. Work top-to-bottom, one item at a time.  
 **Project:** GameMaker / GML. Open `gamemaker/AshenCrown.yyp`; edit human-readable source in `game/` unless a task specifically concerns project metadata.
 
@@ -26,7 +27,7 @@
 - Adventure menu: Items, Equip, Party Order, Status, Bestiary.
 - Save/load: only at save crystals inside a town church or tavern. No save-anywhere and no Save row in the field menu.
 - Chapters 1–11 plus `rm_ashlands_breach`, `rm_ashlands_ruins` and `rm_ashlands_depths`: built, merged to `main` in `8e412618` (PR #31), and README reports 34 rooms. They are not yet verified by an IDE playtest — `docs/PLAYTEST_RUNBOOK.md` is the order to check them in.
-- Act V: Chapter 12 approved; seven enemies, `drowned_coast` and three boss groups are data and simulated; no rooms, dialogue, quest rows or story code.
+- Act V: Chapters 12–14 approved as story; seven enemies, `drowned_coast` and three boss groups are data and simulated; no rooms, dialogue, quest rows or story code.
 - Acts VI–VIII: titles only. The Ashlands (Act VII) has three standalone blockout rooms (`rm_ashlands_breach`, `rm_ashlands_ruins`, `rm_ashlands_depths`) but no chapter, quest, enemy or tileset of its own.
 - Bestiary: 43 entries with seen/defeated tracking, an information pane and a monster illustration (`scr_bestiary_draw_illustration`; black silhouette until seen, `?` plate when an enemy has no art). The 43 descriptions are still placeholder prose.
 - Art: party kits and marker sprites are in repo; 18 enemy kinds still lack 16×24 overworld sets, the Blackwood tileset is a placeholder and the Ashlands has no tileset of its own. Check `game/sprites/IMPORT.md` and `docs/ASSET_INVENTORY.md`.
@@ -165,10 +166,10 @@ Acceptance:
 #### P4.1 — Build Act V — The Fallen Knight (Chapters 12–14) — **next content**
 **Why:** Chapter 5 and all of Acts I–IV are built. Act V is the only act with approved decisions and an outline (`docs/story/ACT5_OUTLINE.md`), and its four rooms already exist as stub names.
 
-**Status:** `CHAPTER12_SCRIPT.md` is approved (2026-11-17); `CHAPTER13_SCRIPT.md` and `CHAPTER14_SCRIPT.md` are drafted (2026-11-17) and await owner approval. The seven-enemy batch, `drowned_coast` table and three boss groups are data and simulated with `--act5`. No room, dialogue or quest row is built.
+**Status:** `CHAPTER12_SCRIPT.md` (2026-11-17), `CHAPTER13_SCRIPT.md` and `CHAPTER14_SCRIPT.md` (2026-11-18) are all approved as story. The seven-enemy batch, `drowned_coast` table and three boss groups are data and simulated with `--act5`. No room, dialogue or quest row is built.
 
 Tasks:
-- Review and approve Chapters 13–14 drafts; Chapter 12 is approved.
+- All three chapter scripts are approved; raise `PARTY_MAX_LEVEL` to 27 and confirm the XP curve before the rooms.
 - Then build `rm_saltreach`, `rm_saltreach_pier`, `rm_flooded_ruins` and `rm_shipwreck` with their markers, encounters, boss, quest stages and dialogue.
 - Keep the approved region order and the knight's unnamed, yielding rules intact.
 
@@ -193,7 +194,7 @@ Tasks:
 - Keep Alden Marr's locked ending, **Ending C — The Last Usurper**, intact: he begins seeking to free serfs and rebuild Eldoria, grows into a would-be ruler, claims the throne after King Aldric IV's defeat, and must be stopped by Kael and Taren.
 - Do not treat unimplemented narrative plans as shipped game content.
 
-- Acts III and IV are fully built and unplayed — Chapters 6–11, the Blackwood and barrow rooms, dialogue data, story scripts and quest stages; Chapters 7–8's decisions still await individual approval. Act V's Chapter 12 is approved, Chapters 13–14 are drafted, and its enemy batch is data (`docs/story/ACT5_OUTLINE.md`), with no room, dialogue or quest row built. See `docs/DECISIONS_AND_OPEN_QUESTIONS.md`.
+- Acts III and IV are fully built and unplayed — Chapters 6–11, the Blackwood and barrow rooms, dialogue data, story scripts and quest stages; Chapters 7–8's decisions still await individual approval. Act V's Chapters 12–14 are approved as story and its enemy batch is data (`docs/story/ACT5_OUTLINE.md`), with no room, dialogue or quest row built. See `docs/DECISIONS_AND_OPEN_QUESTIONS.md`.
 
 Acceptance:
 - Each act has owner-approved story beats, party recruitment/roles, locations, bosses, and implementation scope before coding.

@@ -1,15 +1,15 @@
 # ASHEN CROWN — Chapter 13 Script: "What the Tide Kept" (Act V: The Fallen Knight)
-<!-- audit-skip: draft chapter; dialogue data is not generated yet -->
+<!-- audit-skip: approved script; dialogue data is not generated yet -->
 
 Route: **`rm_saltreach`** → **`rm_saltreach_pier`** (new; blockout first) → by boat through the reef → **`rm_flooded_ruins`** (new; blockout first): an Aethari record hall left dry for one hour at low tide, then drowned.
 
-> **Status: DRAFT 2026-11-17 — not approved, not built, not played.**
+> **Status: APPROVED 2026-11-18 — not built, not played.**
 > This is the second chapter script of Act V. No dialogue data, story script, room, marker table or quest row exists; the Act V enemy batch exists as data. The script carries no combat numbers; the Leviathan's stats are in the batch and simulated with `--act5`.
 > **Level band 25** (the approved `PARTY_MAX_LEVEL` rise to 27 is not applied; the cap is still 24). Five in the party, four active; no recruit.
 > **Alden is off-screen.** He has no scene, letter or second-hand message in this chapter.
 > **Not played.** The pier and ruin are blockouts; the Leviathan has no art; the boatman is a placeholder.
 > **This chapter's one job:** find the record of the crossings and learn what the village's toll has been feeding. It does not explain the ten scraped names, the knight, the drowned civilisation or the Crownveil.
-> **Draft decisions 2026-11-17:** the record room is Aethari-built and Crown-used; the legible name is Maelin Orr; the chisel is Crown issue; the leviathan is a beast, not a god. See §13.
+> **Approved decisions 2026-11-18:** the record room is Aethari-built and Crown-used; the Aethari inscription is a record-hall text; the legible name is Maelin Orr; the chisel is Crown issue; the leviathan is a beast, not a god. See §13. The chapter is approved as story; it is not built or played.
 
 Source of truth: `ACT5_OUTLINE.md` §4; `STORY_BIBLE.md` §3 (the Drowned Coast), §5.12 (the Fallen Knight), and the approved `CHAPTER12_SCRIPT.md`. Presentation: FF1-style top-down exploration; menu battles.
 
@@ -30,7 +30,7 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 | Stage | ID | Objective text | Set when |
 |---|---|---|---|
 | 3 | `Q_MF_S3` | "Find the record of the crossings." | Chapter 13 entry |
-| 4 | `Q_MF_S4` | "Reach the wreck the ledger names." | the Leviathan is defeated |
+| 4 | `Q_MF_S4` | "Reach the wreck the ledger names." | the ship's name is read |
 
 `Q_SIDE_TOLL` is already complete from Chapter 12 and has no branch in this chapter.
 
@@ -38,10 +38,10 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 
 ## 1. The outer pier — `FP_DEPART`
 
-[STAGE] Dawn at `rm_saltreach_pier`: a stone arm beyond the village, older than the harbour, one patched boat, and the Fisher at the oars. The village is not on the shingle. The ledger is wrapped in oilcloth in Caelan's pack. The tide is low enough to clear the reef. Room entry sets `ch13_entered`, `ch13_depart`, `Q_MF_S3`; `snd_amb_water` continues from Saltreach.
+[STAGE] Dawn in the boat, clear of `rm_saltreach_pier`: the outer pier is a line of black stones behind them, the village a row of grey roofs along the shore. The ledger is wrapped in oilcloth in Caelan's pack. The reef is ahead, white in the grey light. Room entry sets `ch13_entered`, `ch13_depart`, `Q_MF_S3`; `snd_amb_water` continues from Saltreach.
 
 **FP_DEPART_01** · NARRATION
-> The outer pier is older than the harbour. The stones are black and fitted without mortar, and the water below them is clear all the way down.
+> The outer pier falls behind them, older than the harbour: black stones fitted without mortar, the water below clear all the way down.
 > The boat is the only one left on the coast that will take the reef.
 
 **FP_DEPART_02** · Sera
@@ -51,7 +51,7 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 > Good.
 
 **FP_DEPART_04** · Taren
-> They're watching from the windows.
+> They're awake now. They'll be watching from the windows.
 
 **FP_DEPART_05** · Kael
 > Let them.
@@ -69,7 +69,7 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 > And the boat?
 
 **FP_DEPART_10** · Fisher
-> I wait outside the reef. I don't go in.
+> I wait outside the ruin. I don't go in.
 
 **FP_DEPART_11** · Taren
 > Why not?
@@ -87,7 +87,7 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 > If it's still there.
 
 **FP_DEPART_16** · NARRATION
-> The boat goes out. The village shrinks to a row of grey roofs, then to a line of smoke, then to nothing.
+> The boat turns south. The village shrinks to a row of grey roofs, then to a line of smoke, then to nothing.
 > The reef is white ahead. The water between it and the shore is black.
 
 **FP_DEPART_17** · Fisher
@@ -172,13 +172,13 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 > The inscription runs down the left side, worn but not erased.
 
 **FR_ARRIVE_02** · Caelan
-> "An account. Of those who went and those who returned."
+> "A record of what the water kept."
 
 **FR_ARRIVE_03** · Kael
 > The crossings.
 
 **FR_ARRIVE_04** · Caelan
-> Yes.
+> The bronze is. The stone is older.
 
 **FR_ARRIVE_05** · Sera
 > This isn't a tomb.
@@ -234,7 +234,7 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 
 ## 4. The record hall — `FR_RECORD`
 
-[STAGE] The record hall: stone shelves, bronze plates, a central table, salt in the joints. Most of the tablets are blank or corroded; one bronze plate is clean. A steel chisel lies in a leather roll beside it. Sets `ch13_list_seen`.
+[STAGE] The record hall: stone shelves, bronze plates, a central table, salt in the joints. Most of the tablets are blank or corroded; one bronze plate is clean. A steel chisel lies in a leather roll beside it. Sets `ch13_list_seen`. The water in the lower stair has climbed one step since they came in.
 
 **FR_RECORD_01** · NARRATION
 > The hall is a library for things that were never meant to be read twice.
@@ -302,7 +302,7 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 
 ## 5. The eleven — `FR_ELEVEN`
 
-[STAGE] The eleventh name is legible: **Maelin Orr**, knight-ordinary. No house, no return date. The ten struck lines have no recoverable names. Sets `ch13_name_seen`.
+[STAGE] The eleventh name is legible: **Maelin Orr**, knight-ordinary. No house, no return date. The ten struck lines have no recoverable names. Sets `ch13_name_seen`. The water has climbed another step.
 
 **FR_ELEVEN_01** · NARRATION
 > The last line is untouched. The bronze around it is clean.
@@ -336,7 +336,7 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 > Not my father. Not Mira.
 
 **FR_ELEVEN_11** · Caelan
-> No.
+> I can't read them. I can't tell you that.
 
 **FR_ELEVEN_12** · Sera
 > Why leave this one?
@@ -379,7 +379,7 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 
 ## 6. The chisel — `FR_CHISEL`
 
-[STAGE] A wax note under the chisel, in the Crown's old hand: "Ten returned. Strike the names. Keep the count." The ten returned; the eleventh did not, or was not counted. Caelan cannot tell which. Sets `ch13_chisel_seen`.
+[STAGE] A wax note under the chisel, in the Crown's old hand: "Ten returned. Strike the names. Keep the count." The ten returned; the eleventh did not, or was not counted. Caelan cannot tell which. Sets `ch13_chisel_seen`. The water is at the third step.
 
 **FR_CHISEL_01** · NARRATION
 > There is a strip of wax under the chisel, pressed flat and dry. The hand is Crown, old, small and exact.
@@ -446,7 +446,7 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 
 ## 7. The lower hall — `FR_LOWER`
 
-[STAGE] The lower stair goes into shallow water. The water is warm. The hall below is a midden of slate fragments, hundreds of them, blank or worn. The walls are lined with empty record niches. A dry passage above the waterline leads deeper. Sets `ch13_lower_seen`.
+[STAGE] The lower stair goes into shallow water. The water is warm. The hall below is a midden of slate fragments, hundreds of them, blank or worn. The walls are lined with empty record niches. A dry passage above the waterline leads deeper. Sets `ch13_lower_seen`. The water is at the top of the lower stair.
 
 **FR_LOWER_01** · NARRATION
 > The stairs go down into water. It is warm.
@@ -472,7 +472,7 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 > The names.
 
 **FR_LOWER_08** · Caelan
-> The slates. The names were cut into them. The water took the rest.
+> The slates. The names were cut into them. The tide takes them through the cut and leaves them here. The water took the rest.
 
 **FR_LOWER_09** · Taren
 > It's a midden.
@@ -577,10 +577,22 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 > I came back too.
 
 **KN_DRY_16** · Lyra
-> That's not an answer.
+> That's not a count.
 
 **KN_DRY_17** · The Knight
 > No.
+
+**KN_DRY_COUNT_01** · Caelan
+> Eleven went. Ten came back. You're not the eleventh, and you're not one of the ten.
+
+**KN_DRY_COUNT_02** · The Knight
+> Correct.
+
+**KN_DRY_COUNT_03** · Kael
+> Then what are you?
+
+**KN_DRY_COUNT_04** · The Knight
+> A knight.
 
 **KN_DRY_18** · Kael
 > My father—
@@ -627,6 +639,8 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 
 **KN_DRY_32** · NARRATION
 > The passage is empty. The water is still.
+
+[STAGE] Sets `ch13_knight_gone`.
 
 **KN_DRY_33** · Sera
 > He didn't even get wet.
@@ -675,7 +689,7 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 > It's coming.
 
 **LV_INTRO_03** · Caelan
-> The passage. The knight woke it.
+> The passage. Maybe the knight woke it.
 
 **LV_INTRO_04** · Kael
 > Or it was always awake.
@@ -733,7 +747,7 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 > Its shell cracks. The water goes still.
 > Then the tide inside it turns.
 
-[STAGE] Phase 2: the water goes still, then the Leviathan rises and the room floods faster. It uses `leviathan_tide`. On victory: it sinks; the water pulls back down the stairs; the slates settle. Sets `ch13_leviathan_defeated`, `Q_MF_S4`.
+[STAGE] Phase 2: the water goes still, then the Leviathan rises and the room floods faster. It uses `leviathan_tide`. On victory: it sinks; the water pulls back down the stairs; the slates settle. Sets `ch13_leviathan_defeated`.
 
 **LV_FIGHT_07** · NARRATION
 > It goes down slowly, the way a wave goes down, and does not come back up.
@@ -758,7 +772,7 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 
 ## 11. What the tide kept — `LV_AFTER`
 
-[STAGE] The lower hall drains enough to cross. The slate midden is exposed: hundreds of blank tablets. The party understands what the toll was feeding. Caelan reads the ship's name from the ledger in the dry air. Sets `ch13_after`, `ch13_ship_named`.
+[STAGE] The lower hall drains enough to cross. The slate midden is exposed: hundreds of blank tablets. The party understands what the toll was feeding. Caelan reads the ship's name from the ledger in the dry air. Sets `ch13_after`.
 
 **LV_AFTER_01** · NARRATION
 > The lower hall is a field of slate. The water has pulled back to the far end, and the stones are white where it left them.
@@ -810,13 +824,15 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 > You said it was under the stain.
 
 **LV_AFTER_17** · Caelan
-> It was. The dry air lifted it. **Patient Crown.**
+> It was. The page has dried. **Patient Crown.**
+
+[STAGE] Sets `ch13_ship_named`, `Q_MF_S4`.
 
 **LV_AFTER_18** · Taren
 > The last crossing.
 
 **LV_AFTER_19** · Caelan
-> The last entry. Sent. Not returned.
+> The last entry. Sent. The return column is blank.
 
 **LV_AFTER_20** · Kael
 > Where is it?
@@ -837,10 +853,10 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 > The knight said eleven went.
 
 **LV_AFTER_26** · Caelan
-> The ship is the last entry.
+> The ship is the last crossing.
 
 **LV_AFTER_27** · Lyra
-> And the last entry is the one that didn't come back.
+> And one name on it never came back.
 
 ---
 
@@ -877,13 +893,13 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 > Then we go now.
 
 **CH13_END_10** · Sera
-> The knight said eleven went.
+> The reef will be under in an hour.
 
 **CH13_END_11** · Caelan
-> The ship is the last entry.
+> We can make it.
 
 **CH13_END_12** · Lyra
-> And the last entry is the one that didn't come back.
+> The *Patient Crown* has waited this long.
 
 **CH13_END_13** · NARRATION
 > The boat turns toward the reef. The hull is low and black and patient, and the name on its bow is still legible.
@@ -919,9 +935,9 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 | `ch13_knight_seen` | §8 | The knight met in the dry chamber |
 | `ch13_knight_gone` | §8 | The knight left through the flooded passage |
 | `ch13_leviathan_fight` | §9 | The fight began |
-| `ch13_leviathan_defeated` | §10 | The Leviathan is down; `Q_MF_S4` |
+| `ch13_leviathan_defeated` | §10 | The Leviathan is down |
 | `ch13_after` | §11 | The toll's remains understood |
-| `ch13_ship_named` | §11 | The *Patient Crown* read from the ledger |
+| `ch13_ship_named` | §11 | The *Patient Crown* read from the ledger; `Q_MF_S4` |
 | `chapter13_complete` | §12 | Chapter done |
 
 ### Encounters and balance
@@ -933,33 +949,33 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 
 ### Build plan
 
-1. **This script** — draft, 2026-11-17. Awaiting owner review.
+1. **This script** — approved 2026-11-18.
 2. **Rooms** — `rm_saltreach_pier` and `rm_flooded_ruins`, blockouts first. The pier is a short stone arm with the boat and the Fisher; the ruin has a dry upper hall, a flooded lower hall, the dry chamber and the lower stair. Marker tables and the overworld `saltreach_pier` / `flooded_ruins` stubs flipped to `status: "built"`.
 3. **Dialogue data** — `scr_dialogue_data_ch13` via a new `tools/gen_ch13_dialogue.py`, following the Chapter 10–12 generators. No wiring-only extras are required yet.
 4. **Story script** — `scr_ch13_story`: pier, reef, record hall, list, chisel, lower hall, knight, Leviathan gate with retry, aftermath, ship name, return to the boat.
-5. **Quests** — `Q_MAIN_FALLEN` S3 at entry, S4 on the Leviathan's defeat. `Q_SIDE_TOLL` stays complete from Chapter 12; no new side quest.
+5. **Quests** — `Q_MAIN_FALLEN` S3 at entry, S4 at the ship's name. `Q_SIDE_TOLL` stays complete from Chapter 12; no new side quest.
 6. **Art and audio** — the Leviathan's battle sheet is the act's largest art dependency; the pier and ruin are stone-and-water blockouts until a coast tileset exists. `snd_amb_water` runs through the pier and the upper ruin; the lower hall may use the dungeon bed.
 7. **Playtest** — last, and only in an IDE.
 
-### Decisions on the draft (2026-11-17)
+### Decisions (approved 2026-11-18)
 
 - **The record room is Aethari-built and Crown-used.** Caelan can read the Aethari inscription and the newer bronze; this does not confirm that the drowned civilisation was Aethari. The room is a surviving Aethari structure the Crown found and used at low tide, not a statement about the people who drowned around it.
+- **The Aethari inscription is a record-hall text, not a crossing record.** Caelan translates "A record of what the water kept"; the bronze list is the Crown's crossings. The stone is older than the account cut into the bronze.
 - **The ten names are unrecoverable.** The cuts are too deep; Caelan explicitly cannot read them. The chapter shows the erasure, not the erased.
 - **The legible name is Maelin Orr.** A knight-ordinary, not a known character, not Kael's father, not Mira, not the knight. The name is left by whoever struck the ten; the script does not say why.
 - **The wax note says "Ten returned. Strike the names. Keep the count."** It establishes the ten returned and were erased; it does not say what "returned wrong" means. The eleventh's blank return is not explained.
 - **The chisel is Crown issue.** The cuts match the tomb's in angle and depth; Caelan can say "same order", not "same hand". The script does not name the office that did the erasing.
 - **The Leviathan is a beast.** It is not a god, a construct or a keeper. The village's toll was a custom built around a predator; the predator ate the slate and left the village alone. That is all the chapter confirms.
 - **The knight does not fight here.** He speaks, leaves through water the party cannot follow, and is gone before the Leviathan wakes. His line is the outline's line, unchanged.
-- **The ship is the *Patient Crown*.** Caelan reads the name from the ledger when the dry air lifts the water stain. The name is the hook to Chapter 14; the ledger's last entry is sent, not returned.
+- **The ship is the *Patient Crown*.** Caelan reads the name from the ledger when the page dries. The name is the hook to Chapter 14; the ledger's last entry is sent, not returned.
 - **No new named villagers.** The Fisher is the same role from Chapter 12; the boatman is not a new character.
 
 ### Still open
 
-- **Owner approval of the chapter as a whole** is outstanding.
 - **Playtest.** The Leviathan's numbers are in the enemy batch and the `--act5` simulation; no battle has been compiled or played.
 - **The level cap.** `PARTY_MAX_LEVEL` is still 24; the approved rise to 27 is not applied.
 - **Maelin Orr's place in the larger story** is not decided. The name is a thread for a later act, not an answer here.
-- **The reason the Crown stopped counting** is left for Chapter 14 and beyond; this chapter only shows that it did.
+- **The reason the Crown stopped counting** is left for a later act; this chapter only shows that it did.
 
 ### What this chapter must not do
 
@@ -970,4 +986,4 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 - Say Mira crossed the Crownveil, or that Kael's father did.
 - Explain the Crownveil, the Ash, Lumen or the Crown Engine.
 - Turn the Leviathan into a god, a construct or a willing keeper of a bargain.
-- Grade the Chapter 12 slate choice or revisit it; this chapter does not return to Saltreach.
+- Grade the Chapter 12 slate choice or revisit it; this chapter does not return to the village.

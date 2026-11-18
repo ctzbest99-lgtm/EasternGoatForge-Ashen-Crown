@@ -37,7 +37,7 @@ S3–S6 belong to Chapters 13–14 and should be defined in `scr_quest_data.gml`
 | Stage | ID | Objective text | Set when |
 |---|---|---|---|
 | 3 | `Q_MF_S3` | "Find the record of the crossings." | Chapter 13 entry |
-| 4 | `Q_MF_S4` | "Reach the wreck the ledger names." | the Leviathan is defeated |
+| 4 | `Q_MF_S4` | "Reach the wreck the ledger names." | the ship's name is read |
 | 5 | `Q_MF_S5` | "Face the knight who has been following you." | Chapter 14 entry |
 | 6 | `Q_MF_S6` | "Learn what he leaves you." | the knight yields |
 
@@ -887,7 +887,7 @@ These are not scripted nodes. `gen_ch12_dialogue.py` carries them in its `EXTRA`
 ### Still open
 
 - **Playtest.** The Toll-Keeper's numbers are in the enemy batch and the `--act5` simulation, but no battle has been compiled or played.
-- **The ship's name** in the ledger's last entry is left for Chapter 14.
+- **The ship's name** in the ledger's last entry is left for Chapter 13.
 - **The level cap.** `PARTY_MAX_LEVEL` is still 24; the approved rise to 27 is not applied.
 
 ### What this chapter must not do

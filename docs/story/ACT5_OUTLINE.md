@@ -1,7 +1,7 @@
 # ASHEN CROWN — Act V Outline: "The Fallen Knight"
 
-> **Status: DECISIONS APPROVED 2026-11-16; CHAPTER 12 APPROVED 2026-11-17; CHAPTERS 13–14 DRAFTED 2026-11-17 (NOT APPROVED); the Act V enemy batch and `--act5` simulation exist as data. No chapter is built or played.**
-> **Update 2026-11-17:** `CHAPTER12_SCRIPT.md` is approved from §3; `CHAPTER13_SCRIPT.md` and `CHAPTER14_SCRIPT.md` are drafted and await owner review. The Act V enemy batch (seven ids), the `drowned_coast` table and three boss groups are in `scr_enemy_database.gml` / `scr_encounter_tables.gml`, and `tools/balance_sim.py --act5` prints the tuning. No room, story script, quest row or dialogue data exists. The level cap is still 24 (decision 7 recommends 27 and is not applied), the four coast rooms are still stub entrances, and no chapter has been compiled or played. §9 records the approvals; the alternatives are kept beneath it as the record of what was considered. The act title **The Fallen Knight** is **[C]** (bible §7). Bible question 2 — who the knight is, whether he is one of the Fallen Knight enemies, and whether he is Act V's subject — is answered here only as a proposal, and partly left open on purpose.
+> **Status: DECISIONS APPROVED 2026-11-16; CHAPTERS 12–14 APPROVED AS STORY (12 ON 2026-11-17, 13–14 ON 2026-11-18); the Act V enemy batch and `--act5` simulation exist as data. No chapter is built or played.**
+> **Update 2026-11-18:** `CHAPTER12_SCRIPT.md` (from §3), `CHAPTER13_SCRIPT.md` (from §4) and `CHAPTER14_SCRIPT.md` (from §5) are all approved as story; Chapters 13–14 were revised after review and approved on 2026-11-18. The Act V enemy batch (seven ids), the `drowned_coast` table and three boss groups are in `scr_enemy_database.gml` / `scr_encounter_tables.gml`, and `tools/balance_sim.py --act5` prints the tuning. No room, story script, quest row or dialogue data exists. The level cap is still 24 (decision 7 recommends 27 and is not applied), the four coast rooms are still stub entrances, and no chapter has been compiled or played. §9 records the approvals; the alternatives are kept beneath it as the record of what was considered. The act title **The Fallen Knight** is **[C]** (bible §7). Bible question 2 — who the knight is, whether he is one of the Fallen Knight enemies, and whether he is Act V's subject — is answered here only as a proposal, and partly left open on purpose.
 > **Level band: 24–26 [PROPOSED], blocked on the level cap.** `PARTY_MAX_LEVEL` is 24 and Act IV's band is 21–23, so the party ends Act IV at most two levels into this act's floor. §9.7 recommends 27. Without the raise the act cannot be played at its own band, exactly as Act IV could not before its own cap decision.
 > **No code, room, item or dialogue data exists for this act.** The enemy batch is data only, and every number in it has been simulated, not playtested.
 
@@ -59,15 +59,15 @@ Assigning the coast answers bible question 28's open half for this act alone —
 
 ## 4. Chapter 13 — *What the Tide Kept*
 
-**Script:** `CHAPTER13_SCRIPT.md` (draft 2026-11-17; not approved, not built).
+**Script:** `CHAPTER13_SCRIPT.md` (approved 2026-11-18; not built).
 
 **Room:** `rm_flooded_ruins` (new; blockout first). The tide leaves the upper structure dry for about an hour; the rest is under water and walkable as shallow ruin.
 
 **What happens (all [PROPOSED]):**
-1. The drowned structure is **Aethari work**, and Caelan can read the parts that are above the waterline: not a tomb, not a gate — **a record room**. Lists.
-2. **The list is eleven names.** Ten have been scraped off with the same chisel Act IV's tomb used — the same hand, the same century, the same intent. The eleventh is legible and is not Kael's father's, not Mira's, and not the knight's. **The act does not say whose it is.**
+1. The drowned structure is **Aethari work**, and Caelan can read the parts that are above the waterline: not a tomb, not a gate — **a record room**. The Aethari inscription is a record-hall text; the bronze list is the Crown's crossings. Lists.
+2. **The list is eleven names.** Ten have been scraped off in the same order Act IV's tomb used — the same angle and depth; Caelan cannot say it was the same hand. The eleventh is legible and is not Kael's father's, not Mira's, and not the knight's. **The act does not say whose it is.**
 3. The thing that keeps the ruin is what the toll has been feeding: **the Leviathan**, a beast, not a construct. It is the act's set-piece fight and the reason the toll exists at all. The village has been buying its indifference with names, and the player learns that the day after they may have ended it.
-4. **The knight is waiting in the deepest dry chamber.** He does not fight here. He says one line **[PROPOSED]**: *"Eleven went. Ten came back wrong. I am not the wrong one."* He leaves through water the party cannot follow.
+4. **The knight is waiting in the deepest dry chamber.** He does not fight here. He says one line **[PROPOSED]**: *"Eleven went. Ten came back wrong. I am not the wrong one."* Caelan points out that the knight is neither the eleventh nor one of the ten; the knight does not explain it. He leaves through water the party cannot follow.
 
 **Boss:** **the Saltreach Leviathan** — level 25, two phases, act set-piece. New battle art is required; nothing in the project can stand in for it without reading as a placeholder.
 
@@ -75,7 +75,7 @@ Assigning the coast answers bible question 28's open half for this act alone —
 
 ## 5. Chapter 14 — *The Knight Who Came Back*
 
-**Script:** `CHAPTER14_SCRIPT.md` (draft 2026-11-17; not approved, not built).
+**Script:** `CHAPTER14_SCRIPT.md` (approved 2026-11-18; not built).
 
 **Room:** `rm_shipwreck` (new; blockout first). The hull the ledger names, grounded on a reef at low tide, still holding the fittings of a ship that carried something official.
 
@@ -83,7 +83,7 @@ Assigning the coast answers bible question 28's open half for this act alone —
 1. The wreck is **the last crossing ship**: a Crown vessel fitted to carry knights to the Crownveil and back, its log still in its case. The log is the act's second fact: crossings stopped, all at once, and the reason is not written down.
 2. **The knight is here, and this time he fights** — not to kill Kael, but to find out whether he can cross. At 0 HP **he yields and does not die** (the `yields_if_flag` path Vell uses). The fight is the act boss because the title promises it; the man survives it because his identity is not this act's to spend.
 3. After the fight he speaks, and gives the act its shape: the office, the eleven, the ten who came back wrong, and the one line that keeps Kael's father and Mira exactly where canon leaves them **[PROPOSED]**: *"Your father asked me the same question. She didn't ask at all."* He leaves **a crossing token** — the object the Crown gave a knight going across — and walks inland, north-east, toward the mountains.
-4. The act ends on the reef at low tide, with the token in the party's pack, the log in it, and the Ironspine on the horizon. **No one says what the token is for.** Act VI is the mountains.
+4. The act ends on the reef at low tide, with the token in Kael's hand, the log in Caelan's pack, and the Ironspine on the horizon. **Caelan calls the token a receipt for a crossing; no one says what it opens.** Act VI is the mountains.
 
 **Boss:** **the Fallen Knight** — level 26, two phases, yields at 0 HP, no death, no bestiary kill credit. He is the only enemy in the act whose name the player already knew.
 
@@ -98,7 +98,7 @@ Assigning the coast answers bible question 28's open half for this act alone —
 | `S1` | "Follow the coast road to Saltreach." | Chapter 12 entry |
 | `S2` | "Find out what the village pays the tide." | Saltreach is reached (Chapter 12 §1) |
 | `S3` | "Find the record of the crossings." | Chapter 13 entry |
-| `S4` | "Reach the wreck the ledger names." | the Leviathan defeated |
+| `S4` | "Reach the wreck the ledger names." | the ship's name is read |
 | `S5` | "Face the knight who has been following you." | Chapter 14 entry |
 | `S6` | "Learn what he leaves you." | the knight yields |
 
@@ -137,7 +137,7 @@ Assigning the coast answers bible question 28's open half for this act alone —
 
 ## 9. Decisions for the owner — **APPROVED 2026-11-16, all ten as recommended**
 
-**The owner approved all ten as recommended on 2026-11-16.** The consequences are recorded in `docs/DECISIONS_AND_OPEN_QUESTIONS.md` under "Act V outline (decisions approved 2026-11-16)", including the region map this fixes for Acts V–VIII. Approval is story and scope only: the enemy batch now exists and is simulated, but no room, quest row, tile or line exists yet, and the numbers in §7 are balance placeholders rather than a playtest.
+**The owner approved all ten as recommended on 2026-11-16.** The consequences are recorded in `docs/DECISIONS_AND_OPEN_QUESTIONS.md` under "Act V outline (decisions approved 2026-11-16)", including the region map this fixes for Acts V–VIII. Approval is story and scope only: the enemy batch now exists and is simulated, but no room, quest row, tile or line exists yet, and the numbers in §7 are balance placeholders rather than a playtest. All three chapter scripts are approved as story — Chapter 12 on 2026-11-17, Chapters 13–14 on 2026-11-18 — and none of them is built or played.
 
 1. **Where Act V happens.** *Recommended: the **Drowned Coast** — Saltreach, its pier, the flooded ruins and the wreck.* It is south of Act IV's road, it uses four room names that already exist, and it assigns the region bible question 28 leaves open. Alternative: the **Frostwilds** (Rimehold, frozen ruins), which is canonically northern and late-game and would reorder Acts VI–VIII.
 2. **Three chapters (12–14)?** *Recommended: yes.* No recruit; the length is the village, the ruin and the wreck.

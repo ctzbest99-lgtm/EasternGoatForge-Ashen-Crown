@@ -1,23 +1,23 @@
 # ASHEN CROWN — Chapter 14 Script: "The Knight Who Came Back" (Act V: The Fallen Knight)
-<!-- audit-skip: draft chapter; dialogue data is not generated yet -->
+<!-- audit-skip: approved script; dialogue data is not generated yet -->
 
 Route: **`rm_flooded_ruins`** → the reef at low tide → **`rm_shipwreck`** (new; blockout first): the *Patient Crown*, the hull the ledger names, grounded on the reef with its log still aboard.
 
-> **Status: DRAFT 2026-11-17 — not approved, not built, not played.**
+> **Status: APPROVED 2026-11-18 — not built, not played.**
 > This is the third and final chapter script of Act V. No dialogue data, story script, room, marker table or quest row exists; the Act V enemy batch exists as data. The script carries no combat numbers; the Fallen Knight's stats and yield path are in the batch and simulated with `--act5`.
 > **Level band 26** (the approved `PARTY_MAX_LEVEL` rise to 27 is not applied; the cap is still 24). Five in the party, four active; no recruit.
 > **Alden is off-screen.** He has no scene, letter or second-hand message in this chapter.
 > **Not played.** The wreck is a blockout; the knight reuses the Fallen Knight strip; the crossing token has no icon yet.
 > **This chapter's one job:** reveal the office, not the man; let the knight yield; leave the crossing token and the log in the party's hands. It does not name him, explain the ten, say Kael's father or Mira crossed, or open the Crownveil.
-> **Draft decisions 2026-11-17:** the knight remains unnamed; the fight is a test, not an execution; the log's reason for stopping stays unwritten; the token's function is not explained. See §10.
+> **Approved decisions 2026-11-18:** the knight remains unnamed; the fight is a test, not an execution; the log's reason for stopping stays unwritten; the token has no mechanical function—it is a receipt. See §10. The chapter is approved as story; it is not built or played.
 
-Source of truth: `ACT5_OUTLINE.md` §5; `STORY_BIBLE.md` §5.12 (the Fallen Knight), §2.4 (the Crownveil), and the approved `CHAPTER12_SCRIPT.md` / drafted `CHAPTER13_SCRIPT.md`. Presentation: FF1-style top-down exploration; menu battles.
+Source of truth: `ACT5_OUTLINE.md` §5; `STORY_BIBLE.md` §5.12 (the Fallen Knight), §2.4 (the Crownveil), and the approved `CHAPTER12_SCRIPT.md` / `CHAPTER13_SCRIPT.md`. Presentation: FF1-style top-down exploration; menu battles.
 
 ## How to read this file (for Coder)
 
 - Prefixes: `RK_` for the reef and wreck exterior, `WL_` for the wreck log, `FK_` for the knight, `CT_` for the crossing token, `CH14_` for the chapter's own beats.
 - Format: `**ID** · Speaker`, each `>` line one box line. `NARRATION` = no speaker; `SYSTEM` = UI; `[STAGE]` = direction, not shown.
-- **What this chapter must not do:** name the knight; say whether he is the Fallen Knight enemy type; say Kael's father crossed the Crownveil, or that Mira did, or where she is; explain what happened to the ten; kill the knight; explain the token; open the Crownveil; split Alden from Taren; move Ending C.
+- **What this chapter must not do:** name the knight; say whether he is the Fallen Knight enemy type; say Kael's father crossed the Crownveil, or that Mira did, or where she is; explain what happened to the ten; kill the knight; explain what the token opens; open the Crownveil; split Alden from Taren; move Ending C.
 
 ---
 
@@ -107,7 +107,7 @@ Stages 1–4 were set in Chapters 12–13. This chapter sets stages 5 and 6 and 
 
 ## 2. The hull — `RK_HULL`
 
-[STAGE] The wreck's main deck is above water; the lower decks are flooded. A brass case is visible through the broken cabin door. There are no bodies. Sets `ch14_hull_seen`.
+[STAGE] The wreck's main deck is above water; the lower decks are flooded. A brass case is visible through the broken cabin door. There are no bodies. Sets `ch14_hull_seen`. The tide is at the hull's lower rail.
 
 **RK_HULL_01** · NARRATION
 > The main deck is above the water. The lower decks are not.
@@ -154,7 +154,7 @@ Stages 1–4 were set in Chapters 12–13. This chapter sets stages 5 and 6 and 
 
 ## 3. The log — `WL_LOG`
 
-[STAGE] The captain's cabin. The log is a bound book in a brass case, dry under the wax. It records the crossings: dates, names, returns. The last entry is the *Patient Crown*. The last page says only "No further crossings." No reason, no signature. Sets `ch14_log_seen`, `ch14_log_read`.
+[STAGE] The captain's cabin. The log is a bound book in a brass case, dry under the wax. It records the crossings: dates, names, returns. The last entry is the *Patient Crown*. The last page says only "No further crossings." No reason, no signature. Sets `ch14_log_seen`, `ch14_log_read`. The water is at the cabin door.
 
 **WL_LOG_01** · NARRATION
 > The cabin is dry. The wax held.
@@ -189,9 +189,6 @@ Stages 1–4 were set in Chapters 12–13. This chapter sets stages 5 and 6 and 
 
 **WL_LOG_11** · Sera
 > Then the count is real.
-
-**WL_LOG_12** · Caelan
-> The count is real. The reason isn't here.
 
 **WL_LOG_13** · NARRATION
 > The last page has a single line, in a different hand from the entries. It is not a signature.
@@ -231,7 +228,7 @@ Stages 1–4 were set in Chapters 12–13. This chapter sets stages 5 and 6 and 
 
 ## 4. The knight — `FK_APPEAR`
 
-[STAGE] The main deck. The knight is waiting at the rail, back to the sea, not armed. He has been there long enough for the weed to settle around his boots. Sets `ch14_knight_seen`.
+[STAGE] The main deck. The knight is waiting at the rail, back to the sea, not armed. He has been there long enough for the weed to settle around his boots. Sets `ch14_knight_seen`. The tide is at the deck rail.
 
 **FK_APPEAR_01** · NARRATION
 > He is on the deck when they come up.
@@ -259,10 +256,10 @@ Stages 1–4 were set in Chapters 12–13. This chapter sets stages 5 and 6 and 
 > Why?
 
 **FK_APPEAR_09** · The Knight
-> So the Crown would stop looking.
+> So the Crown would stop looking for it.
 
 **FK_APPEAR_10** · Kael
-> The crossings stopped.
+> The crossings had already stopped.
 
 **FK_APPEAR_11** · The Knight
 > Yes.
@@ -298,7 +295,7 @@ Stages 1–4 were set in Chapters 12–13. This chapter sets stages 5 and 6 and 
 > Then you'll have to take it.
 
 **FK_APPEAR_22** · NARRATION
-> He draws. The blade is plain, old, not the one from the barrows.
+> He draws. The blade is plain and old, and it does not waver.
 > He does not step toward Kael. He waits.
 
 **FK_APPEAR_23** · Sera
@@ -325,6 +322,12 @@ Stages 1–4 were set in Chapters 12–13. This chapter sets stages 5 and 6 and 
 
 **FK_FIGHT_04** · Kael
 > Then stop him.
+
+**FK_FIGHT_TAREN** · Taren
+> He's leaving the others alone. He wants you.
+
+**FK_FIGHT_KAEL** · Kael
+> Then he can have me.
 
 [STAGE] Phase 2 at 50%: he stops holding back. The water on the deck moves with him. He still does not speak. The fight is the act boss; the outcome is a yield, not a death.
 
@@ -383,7 +386,7 @@ Stages 1–4 were set in Chapters 12–13. This chapter sets stages 5 and 6 and 
 
 ## 7. The office — `FK_TALK`
 
-[STAGE] The knight sits on the rail. The tide is coming back around the hull. He talks without being asked. Sets `ch14_office_heard`.
+[STAGE] The knight sits on the rail. The tide is coming back around the hull. He talks without being asked. Sets `ch14_office_heard`. The tide is at his boots.
 
 **FK_TALK_01** · The Knight
 > The Crown has been sending knights across the Crownveil for a hundred years.
@@ -407,10 +410,16 @@ Stages 1–4 were set in Chapters 12–13. This chapter sets stages 5 and 6 and 
 > It's an office.
 
 **FK_TALK_08** · Caelan
-> The enemy type. The ones in the barrows.
+> The Fallen Knights. The ones we've fought.
 
 **FK_TALK_09** · The Knight
 > The same name. I never said it was the same thing.
+
+**FK_TALK_SERA** · Sera
+> They sent knights. Not soldiers. Knights.
+
+**FK_TALK_CAELAN** · Caelan
+> A hundred years of crossings. The archives have nothing.
 
 **FK_TALK_10** · Kael
 > Are you one of them?
@@ -510,11 +519,14 @@ Stages 1–4 were set in Chapters 12–13. This chapter sets stages 5 and 6 and 
 
 ## 8. The token — `CT_TOKEN`
 
-[STAGE] The knight takes a bronze token from his coat and sets it on the rail. It bears the Crown's mark: a crown around a black sun. Sets `ch14_token`.
+[STAGE] The knight takes a bronze token from his coat and sets it on the rail. It bears the Crown's mark: a crown around a black sun. Sets `ch14_token`. The tide is at the rail.
 
 **CT_TOKEN_01** · NARRATION
 > He reaches into his coat and sets something on the rail.
 > A bronze disc, the size of a coin, worn smooth. A crown around a black sun.
+
+**CT_TOKEN_MARK** · NARRATION
+> Kael's hand goes to the pendant at his throat. The knight sees it and says nothing.
 
 **CT_TOKEN_02** · The Knight
 > This is what they gave us.
@@ -583,6 +595,8 @@ Stages 1–4 were set in Chapters 12–13. This chapter sets stages 5 and 6 and 
 **CT_TOKEN_23** · NARRATION
 > He does not look back. The reef is white around him. Then there is only the reef.
 
+[STAGE] Sets `ch14_knight_gone`.
+
 **CT_TOKEN_24** · Sera
 > He's leaving.
 
@@ -616,7 +630,7 @@ Stages 1–4 were set in Chapters 12–13. This chapter sets stages 5 and 6 and 
 > The *Patient Crown* slips off the reef without a sound.
 
 **CH14_END_02** · Fisher
-> You're late.
+> You cut it close.
 
 **CH14_END_03** · Kael
 > We're done.
@@ -701,8 +715,8 @@ Stages 1–4 were set in Chapters 12–13. This chapter sets stages 5 and 6 and 
 
 ### Build plan
 
-1. **This script** — draft, 2026-11-17. Awaiting owner review.
-2. **Room** — `rm_shipwreck`, a blockout first: reef exterior, main deck, cabin, flooded lower deck, the rail where the knight waits. Marker table and the overworld `shipwreck` stub flipped to `status: "built"`.
+1. **This script** — approved 2026-11-18.
+2. **Room** — `rm_shipwreck`, a blockout first: reef exterior, main deck, cabin, the rail where the knight waits. Marker table and the overworld `shipwreck` stub flipped to `status: "built"`.
 3. **Dialogue data** — `scr_dialogue_data_ch14` via a new `tools/gen_ch14_dialogue.py`, following the Chapter 10–13 generators.
 4. **Story script** — `scr_ch14_story`: reef, hull, log, knight, fight, yield, office, token, departure, act end.
 5. **Quests** — `Q_MAIN_FALLEN` S5 at entry, S6 at the yield, complete at the chapter end. `Q_SIDE_TOLL` stays complete; no new side quest.
@@ -710,25 +724,24 @@ Stages 1–4 were set in Chapters 12–13. This chapter sets stages 5 and 6 and 
 7. **Art and audio** — the wreck is a stone-and-water blockout until a coast/wreck tileset exists; the knight reuses the Fallen Knight strip; the crossing token needs an icon or a story-item placeholder. `snd_amb_water` for the reef; the wreck may use the dungeon bed.
 8. **Playtest** — last, and only in an IDE.
 
-### Decisions on the draft (2026-11-17)
+### Decisions (approved 2026-11-18)
 
 - **The knight stays unnamed.** Speaker tag is "The Knight" throughout. No line gives him a name, a house or a rank beyond "knight".
-- **The office is revealed in his words, not a document.** The Crown sent knights across for a century; the ones who came back are called Fallen Knights. The script does not say whether he is the enemy type, which one he is, or what he wants beyond the test.
+- **The office is revealed in his words, not a document.** The Crown sent knights across for a century; the ones who came back are called Fallen Knights. The script does not say whether he is the enemy type, which one he is, whether the Crown sent him, or what he wants beyond the test.
 - **The fight is a test, not an execution.** He yields at 0 HP; the party does not kill him. The engine's `yields` path is used; no death animation and no bestiary kill credit.
 - **The ten stay unexplained.** He says they came back wrong and that the Crown couldn't use them; he refuses to say more. The script does not name them, show them or explain what "wrong" means.
 - **Kael's father and Mira stay where canon leaves them.** The line is the outline's exact line: "Your father asked me the same question. She didn't ask at all." It does not say either crossed.
 - **The log's reason is unwritten.** The last page says "No further crossings" with no reason and no signature. The knight says the count stopped being useful; that is not the same as the reason.
-- **The token has no explained function.** It is a bronze crossing token with the crown-and-black-sun mark. It opens nothing and remembers; the script does not say what it is for.
+- **The token has no mechanical function.** It is a bronze crossing token with the crown-and-black-sun mark. It opens nothing and remembers; Caelan calls it a receipt for a crossing. The script does not say what, if anything, it will open.
 - **The knight leaves inland.** He walks north-east toward the coast road and the mountains. The party lets him go; there is no chase and no disappearance trick.
 - **The wreck is empty of bodies.** The crew's fate is not shown and not explained. The log and the fittings are the evidence; the people are not.
 
 ### Still open
 
-- **Owner approval of the chapter as a whole** is outstanding.
 - **Playtest.** The knight's numbers and yield path are in the enemy batch and the `--act5` simulation; no battle has been compiled or played.
 - **The level cap.** `PARTY_MAX_LEVEL` is still 24; the approved rise to 27 is not applied.
-- **The token's function** is for a later act. The script deliberately does not define it.
-- **The knight's identity, and whether he is the enemy type,** stay open. The act gives him an office and no name.
+- **The token's use, if any,** is for a later act. The script defines what it means, not what it opens.
+- **The knight's identity, whether the Crown sent him, and whether he is the enemy type,** stay open. The act gives him an office and no name.
 - **The reason the Crown stopped crossing** is not written; Chapter 14 only records that it did.
 
 ### What this chapter must not do
@@ -737,6 +750,6 @@ Stages 1–4 were set in Chapters 12–13. This chapter sets stages 5 and 6 and 
 - Kill him, play a death animation, award kill credit, or have the party execute him after the yield.
 - Say Kael's father crossed the Crownveil, or that Mira did, or where Mira is.
 - Explain what happened to the ten, what "wrong" means, or who Maelin Orr was.
-- Explain the token, open the Crownveil, show its far side, or explain the Ash, Lumen or the Crown Engine.
+- Explain what the token opens, open the Crownveil, show its far side, or explain the Ash, Lumen or the Crown Engine.
 - Split Alden from Taren, move Ending C, or bring Alden on screen.
 - Let Caelan explain the Aethari's fate or break Sera's silence about the palace.
