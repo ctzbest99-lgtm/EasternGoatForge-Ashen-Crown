@@ -1,6 +1,7 @@
 /// obj_player : Step
 /// Top-down movement with obj_solid / "Collision" tile layer collision, plus facing-based interaction.
-/// Input is ignored while dialogue, battle, or a room transition is active (scr_input_locked).
+/// Keyboard and controller movement share scr_input; input is ignored while dialogue, battle,
+/// or a room transition is active (scr_input_locked).
 /// Sprite and depth still update while locked so facing and y-sort stay correct.
 if (!input_enabled || scr_input_locked()) {
     scr_player_update_sprite(false);
@@ -11,9 +12,9 @@ if (!input_enabled || scr_input_locked()) {
 var _prev_x = x;
 var _prev_y = y;
 
-// --- Movement (same behaviour as the original prototype; collision targets extended) ---
-var _ix = keyboard_check(vk_right) - keyboard_check(vk_left);
-var _iy = keyboard_check(vk_down) - keyboard_check(vk_up);
+// --- Movement: keyboard, D-pad, or left analog stick ---
+var _ix = scr_input_move_x();
+var _iy = scr_input_move_y();
 if (_ix != 0 || _iy != 0) { facing_x = sign(_ix); facing_y = sign(_iy); }
 if (_ix != 0 && _iy != 0) { _ix *= 0.70710678; _iy *= 0.70710678; }
 var _next_x = x + _ix * move_speed;
