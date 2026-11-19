@@ -9,7 +9,7 @@ Data-driven: reads the repo's own import tables (game/sprites/IMPORT.md,
 game/rooms/ROOM_SETUP.md facts baked in) and game/ source tree.
 Format: GameMaker 2024.x project format.
 """
-import json, os, re, shutil, uuid, random, sys
+import json, os, re, shutil, uuid, sys
 from PIL import Image
 
 ROOT = os.path.abspath(os.path.dirname(__file__))   # repo root
@@ -41,9 +41,23 @@ def write_json(path, obj):
     with open(path, 'w', newline='\n') as f:
         f.write(gm(obj) + "\n")
 
-def rid(): return str(uuid.uuid4())
+_RID_COUNTER = 0
+_INSTANCE_COUNTER = 0
+_UUID_NAMESPACE = uuid.UUID("4d7f1b2a-2c6e-5b8d-9f10-a5e3c0de0001")
+
+def rid():
+    """Return a reproducible UUID for the current deterministic generation order."""
+    global _RID_COUNTER
+    value = uuid.uuid5(_UUID_NAMESPACE, f"resource:{_RID_COUNTER}")
+    _RID_COUNTER += 1
+    return str(value)
+
 def inst_name():
-    return "inst_" + ''.join(random.choice("0123456789ABCDEF") for _ in range(8))
+    """Return a reproducible room-instance name."""
+    global _INSTANCE_COUNTER
+    value = f"inst_{_INSTANCE_COUNTER:08X}"
+    _INSTANCE_COUNTER += 1
+    return value
 
 FOLDERS = ["objects", "rooms", "scripts", "sprites", "tilesets"]
 RESOURCES = []
@@ -109,6 +123,7 @@ OBJ_META = {
     'obj_respawn_point':      ('spr_respawn_point_placeholder', None, False, True),
     'obj_game_controller':    (None, None, True, False),
     'obj_title':              (None, None, False, True),
+    'obj_adventure_menu':     (None, None, False, True),
     'obj_battle_controller':  (None, None, False, True),
     'obj_dialogue_box':       (None, None, False, True),
     'obj_inventory_menu':     (None, None, False, True),
@@ -519,6 +534,11 @@ ROOMS = [
      'scr_build_salt_lamp();', (320, 180, 640, 360)),
     ('rm_warehouse', 416, 288, [('obj_player', 200, 224)],
      'scr_build_warehouse();', (320, 180, 640, 360)),
+    # ---- Chapter 4: Hollow Approach and Hollow Sanctuary ----
+    ('rm_hollow_approach', 384, 320, [('obj_player', 40, 176)],
+     'scr_build_hollow_approach();', (320, 180, 640, 360)),
+    ('rm_hollow_sanctuary', 448, 416, [('obj_player', 216, 384)],
+     'scr_build_hollow_sanctuary();', (320, 180, 640, 360)),
 ]
 
 room_order = []
