@@ -70,7 +70,7 @@
 #macro PARTY_ACTIVE_MAX 4
 #macro PARTY_RESERVE_MAX 1
 #macro PARTY_MAX_SIZE PARTY_ACTIVE_MAX // backward-compatible alias: cap of the active battle party
-#macro PARTY_MAX_LEVEL 24
+#macro PARTY_MAX_LEVEL 27 // Approved Act V progression cap; supports the level 24–26 band.
 #macro KAEL_BASE_HP 30
 #macro KAEL_BASE_ATTACK 6
 #macro KAEL_BASE_DEFENSE 2
