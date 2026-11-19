@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased — Sync workflow documents the `--apply` sprite hazard
+- **`docs/GAMEMAKER_SYNC_WORKFLOW.md` now warns against using `sync_gamemaker.py --apply` for a GML-only edit.** It copies every generated resource in the preview, and the committed sprites carry IDE-assigned frame names while the generator emits its own UUIDs; a single apply for two script fixes in the 2026-11-19 pass touched 135 generated files and broke sprite validation (120 sprite asset files, reverted). The doc says to copy the one changed GML file into its `gamemaker/` resource instead, and notes that `--check` compares GML only, so `validate_gamemaker.py` is the gate that catches sprite drift.
+- Docs only; no code, data or assets changed. Nothing was compiled or played.
+
 ## Unreleased — Stabilization audit; two compile blockers repaired
 - **`scr_wf_markers_data.gml` used a reserved keyword as a struct key.** The Wrenfield marker for `wf_gallows` carried `then: "WF_CALDER_INTRO_01"`; `then` is a GML keyword (`if (x) then { }`), so the file could not compile. The key is now `then_script`. Nothing read the old key by name, so behaviour is unchanged.
 - **`scr_encounter_tables.gml` opened the `grp_reeve_calder` arm with `case "...": {`.** The brace block in that position is rejected by the GML grammar; the braces were removed (the arm returns, so the statements and control flow are identical).
