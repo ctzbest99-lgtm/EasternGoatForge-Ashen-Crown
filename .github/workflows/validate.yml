@@ -34,3 +34,8 @@ jobs:
       # not define, undefined encounter tables/enemies, quest stages, and rooms with no ambience.
       - name: Audit chapter wiring
         run: python3 tools/audit_chapters.py
+
+      # Contract check for the sanitized v1-v4 fixtures and Chapter 1 quest wiring. The
+      # executable GML half (scr_save_migration_test) needs the GameMaker runtime and is NOT run here.
+      - name: Verify save migration fixtures and Chapter 1 quest wiring
+        run: python3 tests/save_migration_test.py

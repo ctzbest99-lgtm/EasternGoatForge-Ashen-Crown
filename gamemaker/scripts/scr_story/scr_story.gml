@@ -84,6 +84,58 @@ function scr_ch1_renn_talk() {
     });
 }
 
+/// Chapter 1 main quest. The approved stages live in CHAPTER1_SCRIPT.md §0; this
+/// function is the single progression point for flags, position and room changes.
+/// It backfills saves made before Q_MAIN_FIND_MIRA existed, then only advances forward.
+function scr_ch1_quest_tick() {
+    if (room == TITLE_ROOM || room == BATTLE_ROOM) return;
+    var _quest = "Q_MAIN_FIND_MIRA";
+    var _stage = scr_quest_stage(_quest);
+    // This runs in Begin Step. Only re-evaluate when the room, area, stage or a Chapter 1
+    // story flag changes, so definition lookups stay off the per-frame path.
+    var _rn = room_get_name(room);
+    var _px = 0;
+    var _py = 0;
+    if (instance_exists(obj_player)) { _px = floor(obj_player.x); _py = floor(obj_player.y); }
+    var _zone = _rn;
+    if (_rn == "rm_overworld") {
+        if (_px >= 2624 && _px <= 2864 && _py >= 2144 && _py <= 2368) _zone = "overworld_camp";
+        else if (_py < 2400) _zone = "overworld_old_road";
+        else if (_py < 2640) _zone = "overworld_farmlands";
+        else _zone = "overworld_greyhaven";
+    }
+    var _key = string(room) + "|" + _zone + "|" + _stage + "|" + string(scr_flag_get("flag_arrived_greyhaven")) + "|" + string(scr_flag_get("flag_met_tomas")) + "|" + string(scr_flag_get("flag_pendant_found")) + "|" + string(scr_flag_get("flag_bg_intro_seen")) + "|" + string(scr_flag_get("blackguard_defeated"));
+    if (variable_global_exists("ch1_quest_key") && global.ch1_quest_key == _key) return;
+    global.ch1_quest_key = _key;
+    if (_stage == "complete") {
+        // The door scene starts Beyond the Veil; a save made at the sealed door can
+        // still lack it, so backfill from the chapter-complete flag.
+        if (scr_flag_get("flag_chapter1_complete")) scr_quest_advance("Q_MAIN_BEYOND_VEIL", "Q_BV_S1");
+        return;
+    }
+
+    // Flag backfill: covers existing saves and a scene that was replayed.
+    if (scr_flag_get("flag_arrived_greyhaven")) scr_quest_advance(_quest, "Q_FM_S1");
+    if (scr_flag_get("flag_met_tomas")) scr_quest_advance(_quest, "Q_FM_S2");
+    if (scr_flag_get("flag_pendant_found")) scr_quest_advance(_quest, "Q_FM_S3");
+
+    // Position stages. Coordinates are the marker-table thresholds: Farmlands top y=2640,
+    // Old Road top y=2400, bandit camp rect [2624,2144]-[2864,2368]. `_zone` is also the
+    // tick cache key, so walking inside one region does not rebuild quest definitions.
+    if (_zone == "overworld_farmlands" || _zone == "overworld_old_road" || _zone == "overworld_camp") {
+        scr_quest_advance(_quest, "Q_FM_S4");
+    }
+    if (_zone == "overworld_old_road" || _zone == "overworld_camp") {
+        scr_quest_advance(_quest, "Q_FM_S5");
+    }
+    if (_zone == "overworld_camp") scr_quest_advance(_quest, "Q_FM_S6");
+    if (_rn == "rm_old_watchtower") scr_quest_advance(_quest, "Q_FM_S7");
+    if (_rn == "rm_watchtower_basement") scr_quest_advance(_quest, "Q_FM_S8");
+    if (scr_flag_get("flag_bg_intro_seen")) scr_quest_advance(_quest, "Q_FM_S9");
+
+    if (scr_flag_get("blackguard_defeated")) scr_quest_set(_quest, "complete");
+}
+
 /// Called from scr_battle_finish. On a Hunter victory, grant the parchment the
 /// first time (`flag_parchment_found` / item_ashbound_parchment) and queue ENC_AH_03–05.
 /// If the flag is already set, the post-fight lines are skipped.
@@ -160,5 +212,6 @@ function scr_blackguard_on_battle_finish(_result, _pending) {
     scr_flag_set("blackguard_defeated");
     scr_inventory_add("item_blackguards_longsword", "Blackguard's Longsword", 1, true);
     scr_inventory_add("item_crownveil_fragment", "Crownveil Fragment", 1, true);
+    scr_quest_set("Q_MAIN_FIND_MIRA", "complete");
     global.game.pending_post_dialogue = ["BG_DEFEAT_01", "BG_DEFEAT_02", "BG_DEFEAT_03", "BG_REWARD_01"];
 }

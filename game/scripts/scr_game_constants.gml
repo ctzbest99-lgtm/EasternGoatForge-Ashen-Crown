@@ -25,6 +25,7 @@
 #macro SAVE_SCHEMA_VERSION 4 // v4 (equipment): seven slots + base maxima. v1/v2/v3 saves are migrated on load.
 #macro SAVE_SLOT_COUNT 3
 #macro DEBUG_SAVE_ANYWHERE false
+#macro DEBUG_SAVE_SELFTEST false // true: F6 runs the v1-v4 save-migration fixtures (test builds only)
 
 // Shop sell rate and item effects. All PLACEHOLDER (no prices in the story docs).
 #macro SHOP_SELL_RATE 0.5

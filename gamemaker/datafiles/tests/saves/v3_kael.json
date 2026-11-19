@@ -1,0 +1,55 @@
+{
+  "save_schema_version": 3,
+  "slot": 2,
+  "playtime_seconds": 10800,
+  "room_name": "rm_watchtower_basement",
+  "player_x": 120,
+  "player_y": 80,
+  "facing_x": 0,
+  "facing_y": 1,
+  "gold": 380,
+  "roster": [
+    {
+      "actor_id": "kael",
+      "name": "Kael",
+      "full_name": "Kael Varyn",
+      "class_name": "Vanguard",
+      "role": "Frontline",
+      "hp": 70,
+      "max_hp": 78,
+      "base_attack": 18,
+      "base_defense": 12,
+      "attack": 22,
+      "defense": 14,
+      "level": 7,
+      "xp": 900,
+      "joined": true,
+      "poisoned": false,
+      "age": 24,
+      "equipment": {
+        "weapon": "",
+        "armor": "",
+        "helm": "",
+        "accessory": ""
+      },
+      "weapon_categories": ["longsword", "greatsword"],
+      "mp": 20,
+      "max_mp": 20,
+      "base_spd": 8,
+      "base_mdef": 3,
+      "skills": [],
+      "passives": ["last_stand"]
+    }
+  ],
+  "party_active": ["kael"],
+  "party_reserve": [],
+  "inventory": [],
+  "flags": {
+    "flag_arrived_greyhaven": true,
+    "flag_met_tomas": true,
+    "flag_pendant_found": true
+  },
+  "bestiary": {
+    "bandit": { "seen": true, "defeated": true }
+  }
+}

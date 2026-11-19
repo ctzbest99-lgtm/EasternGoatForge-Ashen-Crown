@@ -1,0 +1,67 @@
+{
+  "save_schema_version": 4,
+  "slot": 3,
+  "playtime_seconds": 14400,
+  "room_name": "rm_greyhaven",
+  "player_x": 320,
+  "player_y": 480,
+  "facing_x": 0,
+  "facing_y": -1,
+  "gold": 510,
+  "roster": [
+    {
+      "actor_id": "caelan",
+      "name": "Caelan",
+      "full_name": "Caelan Rook",
+      "class_name": "Arcanist",
+      "role": "Elemental magic",
+      "hp": 74,
+      "max_hp": 84,
+      "base_max_hp": 84,
+      "base_attack": 12,
+      "attack": 20,
+      "base_defense": 9,
+      "defense": 15,
+      "base_magic": 26,
+      "magic": 26,
+      "level": 8,
+      "xp": 1400,
+      "joined": true,
+      "poisoned": false,
+      "age": 22,
+      "equipment": {
+        "weapon": "",
+        "armor": "",
+        "helm": "",
+        "accessory": "",
+        "off_hand": "",
+        "legs": "",
+        "accessory_2": ""
+      },
+      "weapon_categories": ["staff", "dagger"],
+      "mp": 24,
+      "max_mp": 24,
+      "base_max_mp": 24,
+      "base_spd": 9,
+      "spd": 9,
+      "base_mdef": 5,
+      "mdef": 5,
+      "skills": ["ember_lance"],
+      "passives": ["ash_touched"]
+    }
+  ],
+  "party_active": ["caelan"],
+  "party_reserve": [],
+  "inventory": [],
+  "flags": {
+    "flag_arrived_greyhaven": true,
+    "flag_met_tomas": true,
+    "flag_pendant_found": true,
+    "flag_bg_intro_seen": true,
+    "blackguard_defeated": true,
+    "flag_chapter1_complete": true
+  },
+  "bestiary": {
+    "blackguard": { "seen": true, "defeated": true }
+  }
+}

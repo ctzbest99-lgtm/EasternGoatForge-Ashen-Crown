@@ -1,0 +1,48 @@
+{
+  "save_schema_version": 2,
+  "slot": 1,
+  "playtime_seconds": 7200,
+  "room_name": "rm_overworld",
+  "player_x": 3192,
+  "player_y": 2720,
+  "facing_x": 0,
+  "facing_y": 1,
+  "gold": 240,
+  "roster": [
+    {
+      "actor_id": "kael",
+      "name": "Kael",
+      "full_name": "Kael Varyn",
+      "class_name": "Vanguard",
+      "role": "Frontline",
+      "hp": 65,
+      "max_hp": 72,
+      "base_attack": 16,
+      "base_defense": 11,
+      "attack": 20,
+      "defense": 13,
+      "level": 6,
+      "xp": 620,
+      "joined": true,
+      "poisoned": false,
+      "age": 24,
+      "equipment": {
+        "weapon": "",
+        "armor": "",
+        "helm": "",
+        "accessory": ""
+      },
+      "weapon_categories": ["longsword", "greatsword"],
+      "mp": 18,
+      "max_mp": 18,
+      "base_spd": 8,
+      "base_mdef": 2,
+      "skills": [],
+      "passives": ["last_stand"]
+    }
+  ],
+  "party_active": ["kael"],
+  "party_reserve": [],
+  "inventory": [],
+  "flags": {}
+}
