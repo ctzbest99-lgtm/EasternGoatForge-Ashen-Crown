@@ -15,7 +15,7 @@ Run from the repository root with Python 3.10+ and Pillow installed:
 python -m pip install pillow
 # Read-only preview; generator runs in a temporary checkout
 python tools/sync_gamemaker.py
-# CI check; non-zero when generated output is stale
+# CI check; verifies source/generated GML parity
 python tools/sync_gamemaker.py --check
 # Apply after reviewing the preview
 python tools/sync_gamemaker.py --apply
@@ -23,7 +23,7 @@ python tools/sync_gamemaker.py --apply
 python validate_gamemaker.py
 ```
 
-The sync tool never runs the generator against the live `gamemaker/` directory. It builds in a temporary checkout, validates the generated project, and compares normalized output. Generated UUIDs, frame filenames, and instance names are normalized for drift checks; the generator now emits deterministic identifiers for future builds. `--apply` is explicit and additive: it copies generated additions and updates into `gamemaker/` without replacing the project directory or deleting live-only resources. Room and sound resources are excluded from generated-file comparison until they have authoritative source inputs.
+The sync tool never runs the generator against the live `gamemaker/` directory. It builds in a temporary checkout, validates the generated project, and compares normalized output. Generated UUIDs, frame filenames, and instance names are normalized for the full dry-run. The CI `--check` gate compares GML source/event files only; `validate_gamemaker.py` separately checks the committed project's resource metadata, references, room structure, and sprite files. Imported binary assets and IDE metadata remain visible in the full dry-run for deliberate review. `--apply` is explicit and additive: it copies generated additions and updates into `gamemaker/` without replacing the project directory or deleting live-only resources. Room and sound resources are excluded from generated-file comparison until they have authoritative source inputs.
 
 ## Recommended change cycle
 
@@ -37,7 +37,7 @@ The sync tool never runs the generator against the live `gamemaker/` directory. 
 
 ## CI guarantees and limits
 
-Pull requests and pushes to `main` run static validation and a regeneration drift check. CI does not claim to compile or launch GameMaker; that still requires a compatible GameMaker installation/runtime. Static checks cover project JSON, referenced paths, sprite/frame/layer files, object event-file parity, source/generated script and datafile parity, room structure, selected room invariants, and statically recognizable GML resource references.
+Pull requests and pushes to `main` run static project validation and a source/generated GML parity check. CI does not claim to compile or launch GameMaker; that still requires a compatible GameMaker installation/runtime. Static checks cover project JSON, referenced paths, sprite/frame/layer files, object event-file parity, source/generated script and datafile parity, room structure, selected room invariants, and statically recognizable GML resource references.
 
 ## Conflict policy
 
