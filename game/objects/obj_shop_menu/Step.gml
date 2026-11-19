@@ -4,6 +4,7 @@ if (!is_struct(shop)) {
     if (!is_struct(shop)) { instance_destroy(); exit; }
 }
 if (buzz_t > 0) buzz_t -= 1;
+if (scr_input_menu_pressed()) { instance_destroy(); exit; }
 
 var _buy_ids = is_array(shop.items) ? shop.items : [];
 var _sell_list = scr_shop_sellable_list();
