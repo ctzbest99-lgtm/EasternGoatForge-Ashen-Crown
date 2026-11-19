@@ -143,6 +143,19 @@ def main() -> int:
         if build.returncode:
             print("ERROR: generator failed; live project untouched.\\n" + build.stdout)
             return build.returncode
+        # Run the additional source-driven asset importers after the base generator.
+        for command in (
+            [sys.executable, "tools/gen_blackwood_tileset.py"],
+            [sys.executable, "tools/import_sprites.py"],
+        ):
+            step = subprocess.run(
+                command, cwd=work, text=True,
+                stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+            )
+            if step.returncode:
+                print("ERROR: asset generation failed; live project untouched.\\n" + step.stdout)
+                return step.returncode
+
         validation = subprocess.run(
             [sys.executable, "validate_gamemaker.py"], cwd=work, text=True,
             stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
