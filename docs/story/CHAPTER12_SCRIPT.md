@@ -5,7 +5,7 @@ Route: the barrow road south → the coast road → **`rm_saltreach`** (new; blo
 
 > **Status: APPROVED 2026-11-17 — not built, not played.**
 > This is the first chapter script of Act V. No dialogue data, story script, room, marker table or quest row exists; the Act V enemy batch now exists as data. The script carries no combat numbers; the Toll-Keeper's stats are in that batch and simulated with `--act5`.
-> **Level band 24** (the approved `PARTY_MAX_LEVEL` rise to 27 is not applied; the cap is still 24). Five in the party, four active; no recruit.
+> **Level band 24** (`PARTY_MAX_LEVEL` 27 is applied). Five in the party, four active; no recruit.
 > **Alden is off-screen for the whole act.** He appears only as one letter, and only if Chapter 11 ended with `ch11_seal_alden`.
 > **Not played.** Saltreach is a Wrenfield blockout until a coast tileset exists, the Toll-Keeper has no art, and every villager is a placeholder.
 > **This chapter's one job:** show the toll, put the ledger of crossings in the party's hands, and end with the knight on the pier. It does not explain the crossings, the knight, Mira, the Crownveil or the drowned civilisation.
@@ -888,7 +888,7 @@ These are not scripted nodes. `gen_ch12_dialogue.py` carries them in its `EXTRA`
 
 - **Playtest.** The Toll-Keeper's numbers are in the enemy batch and the `--act5` simulation, but no battle has been compiled or played.
 - **The ship's name** in the ledger's last entry is left for Chapter 13.
-- **The level cap.** `PARTY_MAX_LEVEL` is still 24; the approved rise to 27 is not applied.
+- **The level cap.** `PARTY_MAX_LEVEL` is 27; the approved Act V cap decision is applied.
 
 ### What this chapter must not do
 
