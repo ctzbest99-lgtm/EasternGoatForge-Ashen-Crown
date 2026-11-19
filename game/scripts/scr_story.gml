@@ -98,7 +98,7 @@ function scr_ch1_quest_tick() {
     var _py = 0;
     if (instance_exists(obj_player)) { _px = floor(obj_player.x); _py = floor(obj_player.y); }
     var _zone = _rn;
-    if (_rn == "rm_overworld") {
+    if (_rn == "rm_overworld" && instance_exists(obj_player)) {
         if (_px >= 2624 && _px <= 2864 && _py >= 2144 && _py <= 2368) _zone = "overworld_camp";
         else if (_py < 2400) _zone = "overworld_old_road";
         else if (_py < 2640) _zone = "overworld_farmlands";
