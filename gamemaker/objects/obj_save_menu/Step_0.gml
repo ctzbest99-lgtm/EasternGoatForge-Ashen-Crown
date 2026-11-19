@@ -1,4 +1,5 @@
 /// obj_save_menu : Step
+if (scr_input_menu_pressed()) { instance_destroy(); exit; }
 if (refresh_slots) {
     slots = [];
     for (var _i = 1; _i <= SAVE_SLOT_COUNT; _i++) array_push(slots, scr_save_slot_info(_i));
