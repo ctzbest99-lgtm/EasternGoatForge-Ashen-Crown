@@ -5,7 +5,7 @@ Route: **`rm_flooded_ruins`** → the reef at low tide → **`rm_shipwreck`** (n
 
 > **Status: APPROVED 2026-11-18 — not built, not played.**
 > This is the third and final chapter script of Act V. No dialogue data, story script, room, marker table or quest row exists; the Act V enemy batch exists as data. The script carries no combat numbers; the Fallen Knight's stats and yield path are in the batch and simulated with `--act5`.
-> **Level band 26** (the approved `PARTY_MAX_LEVEL` rise to 27 is not applied; the cap is still 24). Five in the party, four active; no recruit.
+> **Level band 26** (`PARTY_MAX_LEVEL` 27 is applied). Five in the party, four active; no recruit.
 > **Alden is off-screen.** He has no scene, letter or second-hand message in this chapter.
 > **Not played.** The wreck is a blockout; the knight reuses the Fallen Knight strip; the crossing token has no icon yet.
 > **This chapter's one job:** reveal the office, not the man; let the knight yield; leave the crossing token and the log in the party's hands. It does not name him, explain the ten, say Kael's father or Mira crossed, or open the Crownveil.
@@ -739,7 +739,7 @@ Stages 1–4 were set in Chapters 12–13. This chapter sets stages 5 and 6 and 
 ### Still open
 
 - **Playtest.** The knight's numbers and yield path are in the enemy batch and the `--act5` simulation; no battle has been compiled or played.
-- **The level cap.** `PARTY_MAX_LEVEL` is still 24; the approved rise to 27 is not applied.
+- **The level cap.** `PARTY_MAX_LEVEL` is 27; the approved Act V cap decision is applied.
 - **The token's use, if any,** is for a later act. The script defines what it means, not what it opens.
 - **The knight's identity, whether the Crown sent him, and whether he is the enemy type,** stay open. The act gives him an office and no name.
 - **The reason the Crown stopped crossing** is not written; Chapter 14 only records that it did.
