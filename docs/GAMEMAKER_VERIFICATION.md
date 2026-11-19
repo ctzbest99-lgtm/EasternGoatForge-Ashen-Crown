@@ -1,10 +1,10 @@
 # ASHEN CROWN — GameMaker Verification
 
 **Date:** 2026-11-19
-**Revision:** `b4afeb7f` (PR #40 tip, branch `freebuff/world-art-equipment-pass`)
+**Revision:** `b4afeb7f` (PR #40 tip, branch `freebuff/world-art-equipment-pass`); follow-ups at `5994fae8` (PR #44 tip, branch `freebuff/audit-followups`)
 **Project file:** `gamemaker/AshenCrown.yyp`
-**Audit branches:** `freebuff/audit-save-repair`, `freebuff/audit-ci`, `freebuff/audit-docs`
-**Environment:** Linux cloud workspace; no GameMaker IDE, runtime, licence or display.
+**Audit branches:** `freebuff/audit-save-repair`, `freebuff/audit-ci`, `freebuff/audit-docs`, `freebuff/audit-followups`
+**Environment:** Ubuntu 24.04.5 LTS cloud workspace (x86_64, `DISPLAY` unset); no GameMaker IDE, runtime, account/licence or display. The compile and F6 attempt is logged in §2.9.
 
 ---
 
@@ -17,6 +17,7 @@
 | Did the game launch? | **NOT RUN** |
 | Was any chapter played? | **NOT RUN** |
 | Was a save loaded in-engine? | **NOT RUN** |
+| Was `scr_save_migration_test()` (F6) run? | **NOT RUN** |
 | Was a controller tested physically? | **NOT RUN** |
 | Was audio heard? | **NOT RUN** |
 | Were visuals reviewed? | **NOT RUN** |
@@ -169,6 +170,50 @@ Exit status **0** (no whitespace errors). The working tree contained only the in
 code, mirror and documentation changes; local review renders under `artifacts/` were
 untracked and excluded.
 
+### 2.9 Runtime attempt: IDE compile and F6 self-test (2026-11-19)
+
+The IDE compile and the in-engine save-migration self-test were **attempted** on this
+host, not deferred. The attempt stopped at environment detection: no build was started,
+so there is no executable, build log or first compiler error to quote.
+
+```sh
+command -v igor GameMaker gamemaker   # all: not found
+ls ~/GameMaker* /opt/GameMaker*       # no such files or directories
+echo "DISPLAY=${DISPLAY:-<unset>}"    # <unset>
+command -v wine mono Xvfb             # all: not found
+cat /etc/os-release                   # Ubuntu 24.04.5 LTS
+uname -m                              # x86_64
+```
+
+GameMaker ships an IDE for Windows, macOS and (beta) Ubuntu 24.04, but every route
+requires an interactive account sign-in, a licensed runtime download and a display.
+This workspace has none of the three, and installing the proprietary IDE and runtime
+unattended was neither possible nor authorised. Both F5 (compile) and F6 (self-test)
+run inside that IDE, so neither could be executed.
+
+The static stand-ins were re-run at `5994fae8` instead:
+
+```
+python3 tests/save_migration_test.py
+save migration fixtures and Chapter 1 quest wiring: OK
+runtime GML self-test: NOT RUN (requires GameMaker)
+exit 0
+
+python3 validate_gamemaker.py
+datafiles checked: 90
+ALL CHECKS PASSED (4 encounter-band warnings)
+exit 0
+```
+
+| Check | Result | Evidence |
+|---|---|---|
+| Import `AshenCrown.yyp` and compile (F5) | **NOT RUN** | No IDE, runtime, licence or display; probe above |
+| F6 `scr_save_migration_test()` on v1–v4 fixtures | **NOT RUN** | Same blocker; no GameMaker process started |
+| Build log / first compiler error | **none produced** | No build was started |
+
+**Status unchanged.** §1, §4 and §6 remain the source of truth. The static checks above
+are not a compile and do not prove the in-engine self-test passes.
+
 ---
 
 ## 3. Static checks performed
@@ -197,12 +242,12 @@ untracked and excluded.
 
 | Check | Status | Reason / required environment |
 |---|---|---|
-| Import `AshenCrown.yyp` | NOT RUN | No GameMaker IDE |
-| Compile (Windows VM target) | NOT RUN | No GameMaker runtime/licence |
+| Import `AshenCrown.yyp` | NOT RUN | Attempted 2026-11-19; no GameMaker IDE (§2.9) |
+| Compile (Windows VM target) | NOT RUN | Attempted 2026-11-19; no GameMaker runtime/licence/display (§2.9) |
 | Launch to title | NOT RUN | No runtime/display |
 | New-game Chapter 1 smoke | NOT RUN | No runtime |
 | Load migrated v3 save | NOT RUN | No runtime |
-| Run `scr_save_migration_test()` (F6) | NOT RUN | No GameMaker runtime; Python contract test only |
+| Run `scr_save_migration_test()` (F6) | NOT RUN | Attempted 2026-11-19; blocked with the compile (§2.9); Python contract test only |
 | Battle — attack/skill/item/guard/swap/escape | NOT RUN | No runtime |
 | Boss phase transitions | NOT RUN | No runtime |
 | Shop buy/sell/equipped count | NOT RUN | No runtime |
@@ -218,6 +263,9 @@ untracked and excluded.
 
 **Do not convert any of these to “PASS” based on a validator.** They require a human at
 a GameMaker IDE with a display.
+
+The import, compile and F6 rows were attempted on 2026-11-19; §2.9 records the probe
+output and why the build could not start. No check was skipped for convenience.
 
 ---
 
@@ -305,6 +353,7 @@ When the manual pass is run, append:
 
 ```
 IDE version:
+Attempted on: (host/OS; if not run, the exact blocker)
 Target:
 Commit:
 Compile result: PASS/FAIL (paste first error)
