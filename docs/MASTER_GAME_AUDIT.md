@@ -4,7 +4,7 @@
 **Repository:** `ctzbest99-lgtm/EasternGoatForge-Ashen-Crown`
 **Engine:** GameMaker Studio (GML)
 **Audited revision:** `b4afeb7f5725fcbbb556202868c27fd03cd3136b` — the tip of PR #40, branch `freebuff/world-art-equipment-pass`
-**Audit branch:** `freebuff/master-audit`
+**Audit branches:** `freebuff/audit-save-repair` (code), `freebuff/audit-ci` (validation), `freebuff/audit-docs` (this report)
 **PR #40:** https://github.com/ctzbest99-lgtm/EasternGoatForge-Ashen-Crown/pull/40
 
 ---

@@ -2,7 +2,7 @@
 
 **Audit date:** 2026-11-19
 **Baseline:** `b4afeb7f` (PR #40 tip, branch `freebuff/world-art-equipment-pass`)
-**Audit branch:** `freebuff/master-audit`
+**Repair branch:** `freebuff/audit-save-repair`; audit reports on `freebuff/audit-docs`
 **Runtime status:** not compiled or played. “Revalidated” below means the automated
 validators pass; it does not mean the behavior was observed in GameMaker.
 

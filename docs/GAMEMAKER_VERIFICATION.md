@@ -3,7 +3,7 @@
 **Date:** 2026-11-19
 **Revision:** `b4afeb7f` (PR #40 tip, branch `freebuff/world-art-equipment-pass`)
 **Project file:** `gamemaker/AshenCrown.yyp`
-**Audit branch:** `freebuff/master-audit`
+**Audit branches:** `freebuff/audit-save-repair`, `freebuff/audit-ci`, `freebuff/audit-docs`
 **Environment:** Linux cloud workspace; no GameMaker IDE, runtime, licence or display.
 
 ---
