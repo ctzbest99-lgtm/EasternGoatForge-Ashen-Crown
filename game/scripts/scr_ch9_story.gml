@@ -192,7 +192,8 @@ function scr_ch9_end_scene() {
 }
 
 /// Exit script for the town's south road (obj_zone_entrance calls this before moving rooms).
-/// Chapter 10 does not exist yet, so this returns true — blocking the move — every time.
+/// The first visit after taking the page plays CH9_END; the next bump transitions to
+/// rm_barrow_gate (Chapter 10 is built).
 function scr_ch9_exit_script(_door) {
     if (_door == noone || !instance_exists(_door) || !is_struct(_door.map_marker)) return false;
     var _m = _door.map_marker;
@@ -206,7 +207,7 @@ function scr_ch9_exit_script(_door) {
         scr_ch9_end_scene();
         return true;
     }
-    // Past this point the engine reports that rm_barrow_gate is not built yet — by design.
+    // The chapter-end scene has played; obj_zone_entrance now performs the move.
     return false;
 }
 

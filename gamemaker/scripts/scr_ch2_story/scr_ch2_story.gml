@@ -119,6 +119,33 @@ function scr_ch2_marker_fixups(_markers) {
             npc_id: "taren", speaker: "Taren", script_id: "WF_JOIN_R1", sprite: "spr_taren_ow16_idle_left",
             hostile: false, facing: "left", written_by: "code (placement only; line is canon)" });
     }
+    // Millhaven Road: the scripted patrol marker names the dedicated Crown Patrolman set in
+    // scr_wf_markers_data. The two extra encounters sit in the side clearings, off the road.
+    if (scr_ch2_room_is("rm_millhaven_road")) {
+        var _mr_new = [
+            { type: "encounter", name: "mr_crown_crossbowman", tile_x: 22, tile_y: 34, x: 360, y: 560,
+              enemy_id: "crown_crossbowman", encounter_id: "enc_mr_crown_crossbowman", hostile: true, once: true,
+              sprite: "spr_crown_crossbowman_ow16_idle_left", facing: "left",
+              note: "Optional Crown crossbowman watching the east clearing." },
+            { type: "encounter", name: "mr_bandit_veteran", tile_x: 10, tile_y: 44, x: 168, y: 720,
+              enemy_id: "bandit_veteran", encounter_id: "enc_mr_bandit_veteran", hostile: true, once: true,
+              sprite: "spr_bandit_veteran_ow16_idle_right", facing: "right",
+              note: "Optional bandit veteran in the west clearing." }
+        ];
+        for (var _n = 0; _n < array_length(_mr_new); _n++) {
+            if (!_has(_markers, _mr_new[_n].name)) array_push(_markers, _mr_new[_n]);
+        }
+    }
+    // Wrenfield has no encounter markers in its generated data. Add one occupation soldier by
+    // the north checkpoint while the village is still occupied; the rescue rebuild removes it.
+    if (scr_ch2_room_is("rm_wrenfield") && !scr_flag_get("flag_execution_stopped")) {
+        if (!_has(_markers, "mr_occupation_soldier")) {
+            array_push(_markers, { type: "encounter", name: "mr_occupation_soldier", tile_x: 19, tile_y: 9, x: 312, y: 160,
+                enemy_id: "occupation_soldier", encounter_id: "enc_wf_occupation_soldier", hostile: true, once: true,
+                sprite: "spr_occupation_soldier_ow16_idle_left", facing: "left",
+                note: "Optional occupation soldier by the north checkpoint." });
+        }
+    }
     return _markers;
 }
 

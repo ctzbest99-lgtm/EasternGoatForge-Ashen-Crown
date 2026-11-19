@@ -5,7 +5,7 @@ Route: **`rm_saltreach`** → **`rm_saltreach_pier`** (new; blockout first) → 
 
 > **Status: APPROVED 2026-11-18 — not built, not played.**
 > This is the second chapter script of Act V. No dialogue data, story script, room, marker table or quest row exists; the Act V enemy batch exists as data. The script carries no combat numbers; the Leviathan's stats are in the batch and simulated with `--act5`.
-> **Level band 25** (`PARTY_MAX_LEVEL` 27 is applied). Five in the party, four active; no recruit.
+> **Level band 25** (the approved `PARTY_MAX_LEVEL` of 27 is applied as of 2026-11-18, so the act's band sits under the cap). Five in the party, four active; no recruit.
 > **Alden is off-screen.** He has no scene, letter or second-hand message in this chapter.
 > **Not played.** The pier and ruin are blockouts; the Leviathan has no art; the boatman is a placeholder.
 > **This chapter's one job:** find the record of the crossings and learn what the village's toll has been feeding. It does not explain the ten scraped names, the knight, the drowned civilisation or the Crownveil.
@@ -973,7 +973,7 @@ Stages 1–2 were set in Chapter 12. This chapter sets stages 3 and 4; stages 5�
 ### Still open
 
 - **Playtest.** The Leviathan's numbers are in the enemy batch and the `--act5` simulation; no battle has been compiled or played.
-- **The level cap.** `PARTY_MAX_LEVEL` is 27; the approved Act V cap decision is applied.
+- **The level cap.** `PARTY_MAX_LEVEL` is 27 since 2026-11-18, so this chapter's level 25 sits two levels under the cap. The fight is simulated, not played.
 - **Maelin Orr's place in the larger story** is not decided. The name is a thread for a later act, not an answer here.
 - **The reason the Crown stopped counting** is left for a later act; this chapter only shows that it did.
 

@@ -56,7 +56,7 @@ function scr_shop_get(_shop_id) {
                 name: "General Store",
                 keeper: "Marda",
                 wired: true,
-                items: ["item_minor_potion", "item_antidote"],
+                items: ["item_minor_potion", "item_antidote", "item_travel_leggings", "item_commoners_draught", "item_aether_vial", "item_venomroot_extract", "item_boar_hide"],
                 // Act I material; Act II's Ether joins the shelves later.
                 stock_by_act: [
                     { act: 1, items: ["item_ash_shard"] },
@@ -72,7 +72,7 @@ function scr_shop_get(_shop_id) {
                 keeper: "Pell",
                 wired: true,
                 // PLACEHOLDER stock: Chapter 1 equipment that has art and is not a unique reward.
-                items: ["item_iron_sword", "item_leather_armor", "item_iron_helm"],
+                items: ["item_iron_sword", "item_leather_armor", "item_iron_helm", "item_beggars_edge", "item_hidebound_vest", "item_soldiers_bulwark", "item_wanderers_cowl", "item_initiates_branch", "item_wanderers_pike", "item_wayfarers_breeches"],
                 // The other classes' Act I weapon tier is on the same shelf.
                 stock_by_act: [{ act: 1, items: ["item_apprentices_codex", "item_chapel_blade", "item_yoke_cleaver"] }],
                 lines_buy: ["His tools are mostly fine.", "Iron's tougher than people."],
@@ -90,21 +90,25 @@ function scr_shop_get(_shop_id) {
                 items: ["item_minor_potion", "item_antidote", "item_ether", "item_chain_mail"],
                 // Chapter 2's own tier, unlocked once Act II starts.
                 stock_by_act: [
-                    { act: 2, items: ["item_millhaven_sabre", "item_millhaven_stiletto", "item_millhaven_primer", "item_penitent_blade", "item_patrol_greatsword", "item_wrenfield_coat", "item_patrol_helm", "item_iron_scale"] }
+                    { act: 2, items: ["item_millhaven_sabre", "item_millhaven_stiletto", "item_millhaven_primer", "item_penitent_blade", "item_patrol_greatsword", "item_soldiers_oath", "item_yoke_shield", "item_wrenfield_coat", "item_patrol_helm", "item_iron_scale", "item_ironweave", "item_ironwall", "item_ironbound_greaves", "item_hunters_cover", "item_bloodcleaver", "item_ironfall", "item_steel_ingot"] }
                 ],
                 lines_buy: ["Shelves are the same.", "Prices are the same."],
                 lines_sell: ["Shelves are the same.", "Prices are the same."]
             };
         // ---- Act III-VIII merchants -------------------------------------------------------
         // Stocked by tier so the shelf always matches the act. Valemere, the barrow gate, the
-        // Blackwood carter and the Ashlands outpost wagon are wired (see scr_ch3_story /
-        // scr_ch6_story / scr_ch10_story / scr_dialogue_data); the other three are data until
-        // their regions are built, and are the shops docs/EQUIPMENT_PROGRESSION.md lists as data only.
+        // Blackwood carter, the Ashlands outpost wagon and the Rimehold armoury are wired (see
+        // scr_ch3_story / scr_ch6_story / scr_ch10_story / scr_dialogue_data); Saltreach and
+        // Ironspine are data until their regions are built, and their stock rides on Mott's cart.
         case "shop_valemere_arms":
             return {
                 shop_id: "shop_valemere_arms", name: "Valemere Arms", keeper: "Stallkeeper", act: 3, wired: true,
                 items: ["item_minor_potion", "item_antidote", "item_ether", "item_valemere_steel"],
-                stock_by_act: [{ act: 3, items: ["item_ledger_dirk", "item_valemere_longsword", "item_ledger_codex", "item_saltlight_blade", "item_watchmans_greatsword", "item_salt_lampskin", "item_valemere_helm"] }],
+                stock_by_act: [
+                    { act: 3, items: ["item_ledger_dirk", "item_valemere_longsword", "item_ledger_codex", "item_saltlight_blade", "item_watchmans_greatsword", "item_wardens_steel", "item_salt_lampskin", "item_valemere_helm", "item_valemere_greaves", "item_wardens_plate", "item_crownwatch_helm", "item_oathbound_aegis", "item_silent_thorn", "item_stonebreaker", "item_wardens_greaves"] },
+                    // Act IV relic tier: the capital dealer handles Aethari finds.
+                    { act: 4, items: ["item_heart_of_aether", "item_aetherbound_circlet", "item_elderwood_staff", "item_veilstalkers_hood", "item_dawnveil_robes", "item_aethari_vestments", "item_silver_ore", "item_pure_crystal", "item_ancient_cloth", "item_enchanted_wood"] }
+                ],
                 lines_buy: ["Capital steel, capital prices."], lines_sell: ["I buy what the Ledger doesn't."]
             };
         case "shop_barrow_smith":
@@ -113,7 +117,7 @@ function scr_shop_get(_shop_id) {
                 // tier as base stock; the Act IV row below is legacy shelf space from the first pass.
                 shop_id: "shop_barrow_smith", name: "Barrow Gate Smith", keeper: "Orrin", act: 4, wired: true,
                 items: ["item_minor_potion", "item_ether", "item_barrow_iron", "item_ashlands_edge", "item_emberweave_robe", "item_ash_crown"],
-                stock_by_act: [{ act: 4, items: ["item_oath_breaker", "item_barrow_longsword", "item_tomb_shard_dirk", "item_barrow_codex", "item_vigil_blade", "item_barrow_plate", "item_barrow_helm"] }],
+                stock_by_act: [{ act: 4, items: ["item_oath_breaker", "item_barrow_longsword", "item_tomb_shard_dirk", "item_barrow_codex", "item_vigil_blade", "item_barrow_plate", "item_barrow_helm", "item_barrow_shield"] }],
                 lines_buy: ["Tomb iron's cold work."], lines_sell: ["Tomb iron's cold work."]
             };
         case "shop_blackwood_carter":
@@ -125,8 +129,8 @@ function scr_shop_get(_shop_id) {
                 shop_id: "shop_blackwood_carter", name: "Mott's Cart", keeper: "Mott", act: 6, wired: true,
                 items: ["item_minor_potion", "item_antidote", "item_ether"],
                 stock_by_act: [
-                    { act: 5, items: ["item_tideglass", "item_tidesteel_blade", "item_tideglass_dirk", "item_tidebound_codex", "item_drowned_bell_blade", "item_saltreach_maul", "item_drowned_coat", "item_saltreach_charm"] },
-                    { act: 6, items: ["item_architect_alloy", "item_ironspine_maul", "item_ironspine_longsword", "item_mine_shard_dirk", "item_architect_codex", "item_constructs_bane", "item_mine_plate", "item_architect_ring"] }
+                    { act: 5, items: ["item_tideglass", "item_tidesteel_blade", "item_tideglass_dirk", "item_tidebound_codex", "item_drowned_bell_blade", "item_saltreach_maul", "item_drowned_coat", "item_saltreach_charm", "item_tidesteel_greaves", "item_oathkeeper", "item_crownward_armor", "item_crownward_sabatons", "item_gravekeeper", "item_gravewarden_armor", "item_gold_ore", "item_black_iron", "item_ancient_rune"] },
+                    { act: 6, items: ["item_architect_alloy", "item_ironspine_maul", "item_ironspine_longsword", "item_mine_shard_dirk", "item_architect_codex", "item_constructs_bane", "item_mine_plate", "item_architect_ring", "item_ashen_ward", "item_veilward_charm", "item_ashbound_treads", "item_veilforged_plate", "item_ashen_sigil", "item_ash_crystal", "item_shadow_essence"] }
                 ],
                 lines_buy: ["Coast glass and mine steel. It all came up the road with me."], lines_sell: ["I'll take what the road left you."]
             };
@@ -152,15 +156,19 @@ function scr_shop_get(_shop_id) {
                 // gated on flag_act4_complete until Act VII has a story of its own.
                 shop_id: "shop_ashlands_outpost", name: "Ashlands Outpost", keeper: "Sarn", act: 7, wired: true,
                 items: ["item_minor_potion", "item_ether", "item_ember_core"],
-                stock_by_act: [{ act: 7, items: ["item_ashlands_edge", "item_ashglass_dirk", "item_ember_codex", "item_cinder_vigil", "item_ashfall_greatsword", "item_emberweave_robe", "item_ash_crown"] }],
+                stock_by_act: [{ act: 7, items: ["item_ashlands_edge", "item_ashglass_dirk", "item_ember_codex", "item_cinder_vigil", "item_ashfall_greatsword", "item_emberweave_robe", "item_ash_crown", "item_crownwall_shield"] }],
                 lines_buy: ["Outpost steel. It came a long way to be here."], lines_sell: ["I'll take what the road left you."]
             };
         case "shop_rimehold_armoury":
             return {
-                shop_id: "shop_rimehold_armoury", name: "Rimehold Armoury", keeper: "", act: 8, wired: false,
-                items: ["item_minor_potion", "item_ether", "item_veil_shard"],
-                stock_by_act: [{ act: 8, items: ["item_true_name_blade", "item_rime_sword", "item_veilstep_dirk", "item_rime_codex", "item_winterforge_greatsword", "item_veil_plate", "item_veil_ring"] }],
-                lines_buy: ["Rimehold keeps what Rimehold needs."], lines_sell: ["Rimehold keeps what Rimehold needs."]
+                // Built ahead of Act VIII: rm_rimehold's armoury courtyard. The entrance is gated on
+                // flag_act4_complete (the same provisional lock as the Ashlands), so the tier-VIII shelf
+                // becomes reachable as soon as scr_story_act() reaches 8.
+                shop_id: "shop_rimehold_armoury", name: "Rimehold Armoury", keeper: "Armourer", act: 8, wired: true,
+                items: ["item_minor_potion", "item_ether", "item_veil_shard", "item_elixir_first_flame"],
+                stock_by_act: [{ act: 8, items: ["item_true_name_blade", "item_rime_sword", "item_veilstep_dirk", "item_rime_codex", "item_winterforge_greatsword", "item_veil_plate", "item_veil_ring", "item_veil_greaves"] }],
+                lines_buy: ["Rimehold steel. It will outlast the cold.", "Take what the road south will need."],
+                lines_sell: ["Rimehold keeps what Rimehold needs."]
             };
     }
     return undefined;
@@ -183,7 +191,7 @@ function scr_shop_open(_shop_id) {
     if (_inst != noone && instance_exists(_inst)) {
         _inst.shop_id = _shop.shop_id;
         _inst.shop = _shop;
-        _inst.mode = "root";
+        _inst.mode = "list"; // the shop object has one list/qty flow; "root" had no input branch
         _inst.tab = 0;
         _inst.index = 0;
         _inst.qty = 1;
@@ -269,7 +277,7 @@ function scr_shop_sellable_list() {
         var _it = scr_item_get(_e.item_id);
         var _key = (variable_struct_exists(_e, "key_item") && _e.key_item) || _it.key_item;
         var _price = scr_item_sell_price(_e.item_id);
-        var _can = (!_key && _it.sellable && _price > 0);
+        var _can = (!_key && !_it.unique && _it.sellable && _price > 0);
         array_push(_out, { item_id: _e.item_id, name: _it.name, qty: _e.qty, price: _price, unsellable: !_can, key_item: _key });
     }
     return _out;
@@ -296,7 +304,7 @@ function scr_shop_buy(_item_id, _qty) {
     if (_price <= 0) { scr_audio_sfx("menu_error", 0, 0.8); return "That isn't for sale."; }
     var _total = _price * _n;
     if (global.game.gold < _total) { scr_audio_sfx("menu_error", 0, 0.8); return "Not enough gold."; }
-    if (_it.key_item && scr_inventory_has(_item_id)) { scr_audio_sfx("menu_error", 0, 0.8); return "You already have that."; }
+    if ((_it.key_item || _it.unique) && scr_inventory_has(_item_id)) { scr_audio_sfx("menu_error", 0, 0.8); return "You already have that."; }
     global.game.gold -= _total;
     scr_inventory_add(_it.item_id, _it.name, _n, _it.key_item);
     return "Bought " + _it.name + " x" + string(_n) + ".";
@@ -305,7 +313,7 @@ function scr_shop_buy(_item_id, _qty) {
 function scr_shop_sell(_item_id, _qty) {
     scr_game_state_init();
     var _it = scr_item_get(_item_id);
-    if (_it.key_item || !_it.sellable) { scr_audio_sfx("menu_error", 0, 0.8); return "You can't sell that."; }
+    if (_it.key_item || _it.unique || !_it.sellable) { scr_audio_sfx("menu_error", 0, 0.8); return "You can't sell that."; }
     var _have = scr_inventory_count(_item_id);
     var _n = clamp(floor(_qty), 1, _have);
     if (_n <= 0) { scr_audio_sfx("menu_error", 0, 0.8); return "You don't have that."; }

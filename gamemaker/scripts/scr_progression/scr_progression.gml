@@ -66,6 +66,9 @@ function scr_actor_apply_level_up(_actor) {
     var _def = _gr.def;
     _actor.level += 1;
     _actor.max_hp += _hp;
+    // Keep the un-equipped maximum in step, so equipment HP bonuses never compound.
+    if (variable_struct_exists(_actor, "base_max_hp")) _actor.base_max_hp += _hp;
+    else _actor.base_max_hp = _actor.max_hp;
     if (_actor.hp > 0) _actor.hp = min(_actor.max_hp, _actor.hp + _hp);
     if (!variable_struct_exists(_actor, "base_attack")) _actor.base_attack = _actor.attack;
     if (!variable_struct_exists(_actor, "base_defense")) _actor.base_defense = _actor.defense;
@@ -81,6 +84,7 @@ function scr_actor_apply_level_up(_actor) {
     if (!variable_struct_exists(_actor, "base_spd")) _actor.base_spd = variable_struct_exists(_actor, "spd") ? _actor.spd : 8;
     if (!variable_struct_exists(_actor, "base_mdef")) _actor.base_mdef = variable_struct_exists(_actor, "mdef") ? _actor.mdef : 0;
     _actor.max_mp += _mp;
+    _actor.base_max_mp = (variable_struct_exists(_actor, "base_max_mp") ? _actor.base_max_mp : 0) + _mp;
     if (_actor.hp > 0) _actor.mp = min(_actor.max_mp, _actor.mp + _mp);
     _actor.base_spd += _spd;
     _actor.spd = _actor.base_spd;

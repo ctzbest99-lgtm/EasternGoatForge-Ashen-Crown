@@ -25,10 +25,10 @@ function scr_blackwood_hollow_markers() {
         { type: "player_spawn", name: "from_wood", tile_x: 10, tile_y: 15, x: 168, y: 256, facing: "up", note: "Arrive up the path from rm_blackwood_deep." },
         { type: "zone_exit", name: "to_wood", tile_x: 10, tile_y: 17, x: 168, y: 288, target_room: "rm_blackwood_deep", target_spawn: "from_hollow", w: 2, h: 1, note: "Back south into the wood." },
         { type: "story", name: "ch_arrive", tile_x: 10, tile_y: 12, x: 168, y: 208, trigger: "on_enter_once", script_id: "CH_ARRIVE", story_flag: "flag_ch6_hollow_entered", rect_px: [96, 128, 256, 240], note: "CH_ARRIVE: first sight of Cinderhollow." },
-        { type: "npc", name: "berrin", tile_x: 11, tile_y: 8, x: 184, y: 144, npc_id: "berrin", speaker: "Berrin", script_id: "CH_BERRIN", sprite: "spr_story_npc_placeholder", hostile: false, facing: "down", note: "Berrin. Placeholder NPC sprite: the burners have no art yet. CH_BERRIN, then CH_BERRIN_R1." },
-        { type: "extra", name: "burner_a", tile_x: 7, tile_y: 10, x: 120, y: 176, sprite: "spr_story_npc_placeholder", note: "A burner by the kiln, silent." },
-        { type: "extra", name: "burner_b", tile_x: 15, tile_y: 10, x: 248, y: 176, sprite: "spr_story_npc_placeholder", note: "A burner carrying wet wood, silent." },
-        { type: "extra", name: "burner_child", tile_x: 12, tile_y: 11, x: 200, y: 192, sprite: "spr_story_npc_placeholder", note: "A child at the burn line, silent." },
+        { type: "npc", name: "berrin", tile_x: 11, tile_y: 8, x: 184, y: 144, npc_id: "berrin", speaker: "Berrin", script_id: "CH_BERRIN", sprite: "spr_berrin_ow16_idle_down", hostile: false, facing: "down", note: "Berrin, using his dedicated overworld set. CH_BERRIN, then CH_BERRIN_R1." },
+        { type: "extra", name: "burner_a", tile_x: 7, tile_y: 10, x: 120, y: 176, sprite: "spr_burner_ow16_idle_down", note: "A burner by the kiln, silent." },
+        { type: "extra", name: "burner_b", tile_x: 15, tile_y: 10, x: 248, y: 176, sprite: "spr_burner_wood_ow16_idle_left", note: "A burner carrying wet wood, silent." },
+        { type: "extra", name: "burner_child", tile_x: 12, tile_y: 11, x: 200, y: 192, sprite: "spr_burner_child_ow16_idle_down", note: "A child at the burn line, silent." },
         { type: "lore", name: "kiln_mound", tile_x: 5, tile_y: 9, x: 88, y: 160, lines: ["A kiln mound, warm through the turf.", "Charcoal stacked under a hide, enough to sell."], note: "Inspect text only." },
     ];
 }

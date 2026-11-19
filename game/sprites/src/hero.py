@@ -274,6 +274,15 @@ def attack():
     f.append(frame(dict(st, bx=1, by=1, hand=(20, 29), sword=62, fhand=(12, 30), sway=-1)))
     return f
 
+def defend():
+    """Three-frame guard pose: crouched, sword brought upright across the body."""
+    base = dict(legs=[(-3, 0), (3, 0)], ffoot=(11, 46), nfoot=(19, 46))
+    return [
+        frame(dict(base, by=1, hand=(19, 28), sword=272, fhand=(12, 29), sway=-1)),
+        frame(dict(base, by=2, hand=(19, 29), sword=278, fhand=(12, 30), sway=-1)),
+        frame(dict(base, by=1, hand=(19, 28), sword=272, fhand=(12, 29), sway=-1)),
+    ]
+
 def hurt():
     base = dict(legs=[(-1, 0), (1, 0)], ffoot=(13, 46), nfoot=(17, 46))
     return [
@@ -315,7 +324,7 @@ def death():
 
 if __name__ == '__main__':
     od = '/workspace/sprites/hero'; os.makedirs(od, exist_ok=True)
-    anims = [('idle', idle()), ('walk', walk()), ('attack', attack()), ('hurt', hurt()), ('death', death())]
+    anims = [('idle', idle()), ('walk', walk()), ('attack', attack()), ('defend', defend()), ('hurt', hurt()), ('death', death())]
     rows = []
     for name, fr in anims:
         im = strip(fr)

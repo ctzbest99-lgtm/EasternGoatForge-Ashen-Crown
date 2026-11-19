@@ -32,11 +32,23 @@ The overworld player uses **16×24** Kael sprites on that 16×16 grid (`depth = 
 | `rm_warehouse` | 416×288 | 26×18 | 3 | `scr_build_warehouse();` + `obj_night_overlay` |
 | `rm_hollow_approach` | 384×320 | 24×20 | 4 | `scr_build_hollow_approach();` — the doors and the waystone |
 | `rm_hollow_sanctuary` | 448×416 | 28×26 | 4 | `scr_build_hollow_sanctuary();` — records hall, sealed door, inner door |
+| `rm_blackwood_garrison` | 416×352 | 26×22 | 5 | `scr_build_blackwood_garrison();` — gate, yard, cell block, commander's post |
+| `rm_garrison_keep` | 320×224 | 20×14 | 5 | `scr_build_garrison_keep();` — desk, map table, dispatch chest, ledger |
+| `rm_blackwood_deep` | 544×288 | 34×18 | 6 | `scr_build_blackwood_deep();` — treeline, path, boss ground |
+| `rm_blackwood_hollow` | 352×288 | 22×18 | 6 | `scr_build_blackwood_hollow();` — Cinderhollow, kilns, shrine path |
+| `rm_blackwood_shrine` | 416×320 | 26×20 | 7 | `scr_build_blackwood_shrine();` — shrine and Matriarch's threshold |
+| `rm_blackwood_glade` | 480×320 | 30×20 | 7 | `scr_build_blackwood_glade();` — the Matriarch's glade |
+| `rm_blackwood_doors` | 384×320 | 24×20 | 7 | `scr_build_blackwood_doors();` — the stone doors and the road to Coleford |
+| `rm_town` | 544×320 | 34×20 | 9 | `scr_build_town();` — Coleford: square, levy board, ledger house, inn |
+| `rm_barrow_gate` | 448×320 | 28×20 | 10 | `scr_build_barrow_gate();` — road, gatehouse, iron gate, crown-and-sun |
+| `rm_barrow_halls` | 480×320 | 30×20 | 11 | `scr_build_barrow_halls();` — entry, galleries, King's antechamber |
+| `rm_barrow_deep` | 416×320 | 26×20 | 11 | `scr_build_barrow_deep();` — the last chamber and the King's dais |
 | `rm_ashlands_breach` | 512×320 | 32×20 | — (Act VII region) | `scr_build_ashlands_breach();` — the Crownveil breach, the ash field and Sarn's outpost |
 | `rm_ashlands_ruins` | 640×448 | 40×28 | — (Act VII region) | `scr_build_ashlands_ruins();` — the walled ruin up the black road: gated outer wall, pillared court, two side halls and the north sanctum |
 | `rm_ashlands_depths` | 576×384 | 36×24 | — (Act VII region) | `scr_build_ashlands_depths();` — the undercroft behind the sanctum wall: stair down, pillared hall, four burial niches and the black-sun shrine |
+| `rm_rimehold` | 384×256 | 24×16 | — (Act VIII region) | `scr_build_rimehold();` — the Rimehold armoury courtyard and its tier-VIII shelf |
 
-Chapters 4–5 have no rooms yet: their encounter tables, level bands and boss groups exist in `scr_encounter_tables` / `scr_enemy_database`, but the Hollow Sanctuary and the Blackwood garrison are unbuilt. The 8 overworld entrances still marked `status: "stub"` (Rimehold, Saltreach, the Ironspine and Drowned Coast ruins, …) point at rooms that do not exist and show `[rm_… is not built yet.]`; the Blackwood doors and deep shrine target built rooms and are now marked `built`. `rm_ashlands_breach` and `rm_ashlands_ruins` are built, so the Crownveil and broken-structure entrances open (both after `flag_act4_complete`); `rm_ashlands_depths` has no overworld entrance and is reached through the ruin's sanctum stair.
+Every chapter through Act IV now has built rooms: the Hollow Sanctuary (Chapter 4), the Blackwood garrison, keep, deep wood, Cinderhollow, shrine, glade and doors (Chapters 5–7), Coleford (Chapter 9) and the three barrow rooms (Chapters 10–11), plus the three Ashlands rooms and the Rimehold armoury. The 7 overworld entrances still marked `status: "stub"` (Saltreach, the Ironspine and Drowned Coast ruins, …) point at rooms that do not exist and show `[rm_… is not built yet.]`; the Blackwood doors, deep shrine and Rimehold armoury target built rooms and are marked `built`. `rm_ashlands_breach` and `rm_ashlands_ruins` open after `flag_act4_complete`; `rm_rimehold` opens on the same provisional lock, when tier VIII unlocks. `rm_ashlands_depths` has no overworld entrance and is reached through the ruin's sanctum stair.
 
 ## 0. Title room (`rm_title`) — first in Room Order
 1. Create room `rm_title`. Size 320×180 (or 640×360 if you prefer a 2× room; the menu is drawn in Draw GUI either way). Persistent off. Clear colour black.
@@ -105,7 +117,7 @@ Create each object in the table in `game/README.md` with the listed sprite, flag
 - **obj_night_overlay:** no sprite. Events: Create, Draw ▸ Draw GUI. Do not place in a room; `scr_build_warehouse()` creates it for the Chapter 3 heist-night darkness with lantern pools (PLACEHOLDER lighting until Design's pass). See `game/objects/obj_night_overlay/README.md`.
 
 ## 4. Tileset and Included Files (do this before the rooms)
-1. **Tileset:** follow `game/tilesets/README.md`. You need a Sprite `spr_ts_zone1` (import `game/tilesets/ts_zone1.png`, do not split it) and a Tile Set named exactly **`ts_zone1`**, tile size 16×16, offset 0, separation 0. The Chapter 2–3 rooms need the second tileset, `ts_wrenfield` (section 6c).
+1. **Tileset:** follow `game/tilesets/README.md`. You need a Sprite `spr_ts_zone1` (import `game/tilesets/ts_zone1.png`, do not split it) and a Tile Set named exactly **`ts_zone1`**, tile size 16×16, offset 0, separation 0. The Chapter 2 and Wrenfield rooms need the second tileset, `ts_wrenfield` (section 6c); the Chapter 3 Valemere rooms need `ts_valemere` (see `game/tilesets/README.md`).
 2. **Included Files:** copy `game/datafiles/overworld/` into the project's Included Files so `overworld/ow_ground.bin` (and the other four `.bin` layers, plus `overworld/chunks/` as a fallback) can be found at runtime. See `game/datafiles/README.md`.
 
 ## 5. rm_overworld (6400×4800, 400×300 tiles)
@@ -163,7 +175,7 @@ Data is embedded in the scripts. The source CSVs, marker JSON and renders are un
    - `scr_ch2_story`
    - `scr_wf_tilemaps`, `scr_wf_markers_data`, `scr_wf_overworld_patch`
    - `scr_build_millhaven_road`, `scr_build_wrenfield`, `scr_build_wrenfield_bent_post`, `scr_build_wrenfield_store`
-3. **Rooms.** Create these four rooms. Leave Persistent off. Give each the **same five Tile layers** as the Zone 1 rooms (any tileset; the build script switches them to `ts_wrenfield`), Instances at depth 0 and Viewport 0, and place **1 × `obj_player`**:
+3. **Rooms.** Create these four rooms. Leave Persistent off. Give each the **same five Tile layers** as the Zone 1 rooms (any tileset; the build script switches them to `ts_valemere`), Instances at depth 0 and Viewport 0, and place **1 × `obj_player`**:
    | Room | Size (px) | Creation Code |
    |---|---|---|
    | `rm_millhaven_road` | 512×960 | `scr_build_millhaven_road();` |
@@ -176,10 +188,10 @@ Data is embedded in the scripts. The source CSVs, marker JSON and renders are un
 6. **Optional object:** `obj_story_npc` is used for the gallows scene (Calder, Taren, Bram and the prisoners). `obj_story_trigger` is used for walk-on beats. Both already exist from Zone 1.
 
 ## 6d. Chapter 3 rooms (feature/chapter3)
-Data is embedded in the scripts (generated by `tools/gen_ch3_rooms.py`; markers in `scr_ch3_markers_data.gml`). These are functional blockouts: Design's Valemere art has not landed, so the rooms use `ts_wrenfield` tiles and existing / placeholder sprites. Everything follows the Chapter 2 pattern (`scr_wf_prepare_layers` + `scr_map_build_from_arrays` + `scr_map_spawn_markers`).
+Data is embedded in the scripts (generated by `tools/gen_ch3_rooms.py`; markers in `scr_ch3_markers_data.gml`). These are functional rooms on the `ts_valemere` atlas, with existing / placeholder sprites; Design's own Valemere maps have not landed, so the layouts are still ours. Everything follows the Chapter 2 pattern (`scr_vm_prepare_layers` + `scr_map_build_from_arrays` + `scr_map_spawn_markers`).
 1. **Scripts:** `scr_dialogue_data_ch3` (generated by `tools/gen_ch3_dialogue.py`, 149 nodes), `scr_ch3_story`, `scr_ch3_markers_data`, and the four builders `scr_build_valemere_road`, `scr_build_valemere`, `scr_build_salt_lamp`, `scr_build_warehouse`.
 2. **Object:** `obj_night_overlay` (heist-night lighting, created by `scr_build_warehouse`; draws a dark overlay with lantern pools in the GUI layer).
-3. **Sprites:** Lyra placeholder set (`npcs/lyra/` overworld, `party/lyra/` battle strips; `game/sprites/src/lyra.py`). Rows are in `game/sprites/IMPORT.md`. Replace wholesale when Design's Lyra lands.
+3. **Sprites:** Lyra's generated party kit (`npcs/lyra/` overworld, `party/lyra/` battle strips, `portraits/lyra/`; `game/sprites/src/lyra.py`). Rows are in `game/sprites/IMPORT.md`. The old flat-colour set was replaced in Batch 10.
 4. **Rooms.** Same five Tile layers, Instances at depth 0, Viewport 0, **1 × `obj_player`** each:
    | Room | Size (px) | Creation Code |
    |---|---|---|
@@ -246,7 +258,7 @@ Chosen for this prototype (open question in DECISIONS_AND_OPEN_QUESTIONS.md): a 
    |---|---|---|---|
    | `rm_blackwood_garrison` | 416×352 | `scr_build_blackwood_garrison();` | Road in, notice board, palisade gate, yard (well, cold forge, dispatch chest), cell block (Sera), office alcove, treeline exit |
    | `rm_garrison_keep` | 320×224 | `scr_build_garrison_keep();` | The commander's office: desk, map table, dispatch chest, ledger (the sealed order) |
-3. **Wiring:** `rm_valemere_road` gained an east fork — `to_blackwood_road` at tile 23,11 with the `from_blackwood` spawn at 22,12 — targeting `rm_blackwood_garrison` (`from_road`); the added markers are in the generator source as well, so a future regeneration keeps them. Inside the post, the office door (`to_keep`, tile 17,2) is barred until `flag_hailen_beaten` and the keep returns to `from_keep`. The east exit (`to_blackwood`, tile 25,10) plays BG_HANDOFF and the Fallen Knight sighting, then points at the unbuilt `rm_blackwood_deep`, so afterwards it is an ordinary stub door.
+3. **Wiring:** `rm_valemere_road` gained an east fork — `to_blackwood_road` at tile 23,11 with the `from_blackwood` spawn at 22,12 — targeting `rm_blackwood_garrison` (`from_road`); the added markers are in the generator source as well, so a future regeneration keeps them. Inside the post, the office door (`to_keep`, tile 17,2) is barred until `flag_hailen_beaten` and the keep returns to `from_keep`. The east exit (`to_blackwood`, tile 25,10) plays BG_HANDOFF and the Fallen Knight sighting, then enters the built `rm_blackwood_deep` at `from_garrison` (Chapter 6).
 4. **Walkable geometry:** the gate is the gap in the palisade at x=10 (y 10–12), the cell door is the gap at tile (15,15), and the office door is the gap at (17–18,2) with the tree border opened behind it. All three were checked in the generated arrays (decor 0 / collision 0).
 5. **No encounters and no save crystal:** the post is a story location, so `blackwood_garrison` is not spawned inside it, and the chapter-end prompt is the quiet one (saving stays inside a town's church or tavern).
 6. **Placeholder content:** both rooms are `ts_wrenfield` blockouts and the layout is Design's to replace. Hailen uses his imported overworld set (`spr_commander_hailen_ow16_*`), and his battle strips and portrait already exist, so his fight needs no art work. **Sera has no art at all** (no overworld set, battle strips or portrait), so she uses `spr_prisoner_a_ow16_idle_down` in the cell block and the engine's fallback in battle until her set is drawn.

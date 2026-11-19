@@ -158,7 +158,7 @@ function scr_blackguard_on_battle_finish(_result, _pending) {
         return;
     }
     scr_flag_set("blackguard_defeated");
-    scr_inventory_add("item_blackguard_longsword", "Blackguard's Longsword", 1, true);
+    scr_inventory_add("item_blackguards_longsword", "Blackguard's Longsword", 1, true);
     scr_inventory_add("item_crownveil_fragment", "Crownveil Fragment", 1, true);
     global.game.pending_post_dialogue = ["BG_DEFEAT_01", "BG_DEFEAT_02", "BG_DEFEAT_03", "BG_REWARD_01"];
 }

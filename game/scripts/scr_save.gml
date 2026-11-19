@@ -78,12 +78,15 @@ function scr_save_clone_via_json(_value) {
 function scr_save_member_snapshot(_actor) {
     if (!is_struct(_actor)) return undefined;
     scr_actor_ensure_bases(_actor);
-    var _eq = { weapon: "", armor: "", helm: "", accessory: "" };
+    var _eq = { weapon: "", armor: "", helm: "", accessory: "", off_hand: "", legs: "", accessory_2: "" };
     if (is_struct(_actor.equipment)) {
         if (variable_struct_exists(_actor.equipment, "weapon")) _eq.weapon = string(_actor.equipment.weapon);
         if (variable_struct_exists(_actor.equipment, "armor")) _eq.armor = string(_actor.equipment.armor);
         if (variable_struct_exists(_actor.equipment, "helm")) _eq.helm = string(_actor.equipment.helm);
         if (variable_struct_exists(_actor.equipment, "accessory")) _eq.accessory = string(_actor.equipment.accessory);
+        if (variable_struct_exists(_actor.equipment, "off_hand")) _eq.off_hand = string(_actor.equipment.off_hand);
+        if (variable_struct_exists(_actor.equipment, "legs")) _eq.legs = string(_actor.equipment.legs);
+        if (variable_struct_exists(_actor.equipment, "accessory_2")) _eq.accessory_2 = string(_actor.equipment.accessory_2);
     }
     var _cats = [];
     if (variable_struct_exists(_actor, "weapon_categories") && is_array(_actor.weapon_categories)) {
@@ -109,6 +112,15 @@ function scr_save_member_snapshot(_actor) {
         max_mp: variable_struct_exists(_actor, "max_mp") ? _actor.max_mp : 0,
         base_spd: variable_struct_exists(_actor, "base_spd") ? _actor.base_spd : 8,
         base_mdef: variable_struct_exists(_actor, "base_mdef") ? _actor.base_mdef : 0,
+        // Schema v4 (equipment): base maxima and the derived-stat bases.
+        base_max_hp: variable_struct_exists(_actor, "base_max_hp") ? _actor.base_max_hp : _actor.max_hp,
+        base_max_mp: variable_struct_exists(_actor, "base_max_mp") ? _actor.base_max_mp : (variable_struct_exists(_actor, "max_mp") ? _actor.max_mp : 0),
+        base_magic: variable_struct_exists(_actor, "base_magic") ? _actor.base_magic : 0,
+        base_acc: variable_struct_exists(_actor, "base_acc") ? _actor.base_acc : 85,
+        base_eva: variable_struct_exists(_actor, "base_eva") ? _actor.base_eva : 5,
+        base_crit: variable_struct_exists(_actor, "base_crit") ? _actor.base_crit : 0,
+        armor_profs: (variable_struct_exists(_actor, "armor_profs") && is_array(_actor.armor_profs)) ? scr_save_clone_via_json(_actor.armor_profs) : [],
+        shield_prof: variable_struct_exists(_actor, "shield_prof") ? _actor.shield_prof : false,
         skills: (variable_struct_exists(_actor, "skills") && is_array(_actor.skills)) ? scr_save_clone_via_json(_actor.skills) : [],
         passives: (variable_struct_exists(_actor, "passives") && is_array(_actor.passives)) ? scr_save_clone_via_json(_actor.passives) : [],
         joined: variable_struct_exists(_actor, "joined") ? _actor.joined : false,
@@ -140,7 +152,7 @@ function scr_save_collect(_slot = 1) {
             if (is_struct(_snap)) array_push(_roster, _snap);
         }
     }
-    var _inv = is_array(_g.inventory) ? scr_save_clone_via_json(_g.inventory) : [];
+    var _inv = is_array(_g.inventory) ? scr_save_inventory_snapshot(_g.inventory) : [];
     if (!is_array(_inv)) _inv = [];
     var _flags = is_struct(_g.flags) ? scr_save_clone_via_json(_g.flags) : {};
     if (!is_struct(_flags)) _flags = {};
@@ -432,7 +444,19 @@ function scr_save_apply_member(_actor, _snap) {
         _actor.equipment.armor = variable_struct_exists(_snap.equipment, "armor") ? string(_snap.equipment.armor) : "";
         _actor.equipment.helm = variable_struct_exists(_snap.equipment, "helm") ? string(_snap.equipment.helm) : "";
         _actor.equipment.accessory = variable_struct_exists(_snap.equipment, "accessory") ? string(_snap.equipment.accessory) : "";
+        _actor.equipment.off_hand = variable_struct_exists(_snap.equipment, "off_hand") ? string(_snap.equipment.off_hand) : "";
+        _actor.equipment.legs = variable_struct_exists(_snap.equipment, "legs") ? string(_snap.equipment.legs) : "";
+        _actor.equipment.accessory_2 = variable_struct_exists(_snap.equipment, "accessory_2") ? string(_snap.equipment.accessory_2) : "";
     }
+    // Schema v4: base maxima, derived-stat bases and proficiencies (missing = keep current).
+    if (variable_struct_exists(_snap, "base_max_hp")) _actor.base_max_hp = max(1, _snap.base_max_hp);
+    if (variable_struct_exists(_snap, "base_max_mp")) _actor.base_max_mp = max(0, _snap.base_max_mp);
+    if (variable_struct_exists(_snap, "base_magic")) _actor.base_magic = _snap.base_magic;
+    if (variable_struct_exists(_snap, "base_acc")) _actor.base_acc = _snap.base_acc;
+    if (variable_struct_exists(_snap, "base_eva")) _actor.base_eva = _snap.base_eva;
+    if (variable_struct_exists(_snap, "base_crit")) _actor.base_crit = _snap.base_crit;
+    if (variable_struct_exists(_snap, "armor_profs") && is_array(_snap.armor_profs)) _actor.armor_profs = _snap.armor_profs;
+    if (variable_struct_exists(_snap, "shield_prof")) _actor.shield_prof = _snap.shield_prof;
     // Schema v2 fields. scr_save_migrate() fills these in for v1 saves before we get here;
     // the fallback below also covers a hand-edited file that lacks them.
     if (variable_struct_exists(_snap, "max_mp")) {
@@ -450,6 +474,10 @@ function scr_save_apply_member(_actor, _snap) {
     _actor.is_guarding = false;
     _actor.participated = false;
     _actor.pending_xp = 0;
+    // API-created gear and edited saves must not put an unknown id or a mismatched slot back
+    // into the equipment struct. Ensure the legacy keys first (Iron Helm migration), then check.
+    scr_actor_ensure_bases(_actor);
+    scr_save_sanitize_equipment(_actor);
     scr_actor_refresh_equipment(_actor);
 }
 
@@ -483,14 +511,132 @@ function scr_save_migrate(_data) {
         _data.save_schema_version = 3;
         show_debug_message("[save] migrated a pre-v3 save to v3 (bestiary log).");
     }
+    if (_data.save_schema_version < 4) {
+        // v4 -> seven equipment slots + base maxima. apply_member supplies the missing defaults,
+        // and scr_actor_ensure_bases seeds base_max_hp from the saved max_hp.
+        _data.save_schema_version = 4;
+        show_debug_message("[save] migrated a pre-v4 save to v4 (equipment slots).");
+    }
     return _data;
+}
+
+/// Save side of the standard record: only the stable id and quantity are written. Names and
+/// key/unique flags are resolved from the item database on load, so a renamed item cannot leave a
+/// stale copy in a save file.
+function scr_save_inventory_snapshot(_inventory) {
+    var _out = [];
+    if (!is_array(_inventory)) return _out;
+    for (var _i = 0; _i < array_length(_inventory); _i++) {
+        var _entry = _inventory[_i];
+        if (!is_struct(_entry)) continue;
+        var _id = variable_struct_exists(_entry, "item_id") ? scr_item_id_norm(_entry.item_id) : "";
+        if (_id == "") continue;
+        var _qty = 1;
+        if (variable_struct_exists(_entry, "qty") && is_real(_entry.qty)) _qty = max(1, floor(_entry.qty));
+        array_push(_out, { item_id: _id, qty: _qty });
+    }
+    return _out;
+}
+
+function scr_save_warn(_message) {
+    if (!variable_global_exists("save_load_warnings") || !is_array(global.save_load_warnings)) {
+        global.save_load_warnings = [];
+    }
+    array_push(global.save_load_warnings, string(_message));
+    show_debug_message("[save] " + string(_message));
+}
+
+/// Rebuild a saved inventory from ids + quantities. Unknown ids are dropped with a warning;
+/// stackable items merge into one row, gear keeps one row per copy, and key/unique status is
+/// re-derived from the database instead of trusted from the file.
+function scr_save_sanitize_inventory(_inventory) {
+    var _out = [];
+    if (!is_array(_inventory)) return _out;
+    var _total = {};
+    var _first = [];
+    for (var _i = 0; _i < array_length(_inventory); _i++) {
+        var _entry = _inventory[_i];
+        if (!is_struct(_entry)) { scr_save_warn("dropped a non-struct inventory entry"); continue; }
+        var _id = variable_struct_exists(_entry, "item_id") ? scr_item_id_norm(_entry.item_id) : "";
+        if (_id == "" || !scr_item_exists(_id)) {
+            scr_save_warn("dropped unknown inventory item '" + _id + "'");
+            continue;
+        }
+        var _it = scr_item_get(_id);
+        var _qty = 1;
+        if (variable_struct_exists(_entry, "qty") && is_real(_entry.qty)) _qty = floor(_entry.qty);
+        if (_qty < 1) _qty = 1;
+        if (_it.unique || _it.key_item) {
+            if (_qty > 1) scr_save_warn("clamped " + _id + " to one copy (unique/key item)");
+            _qty = 1;
+        }
+        if (_it.stackable) {
+            if (!variable_struct_exists(_total, _id)) {
+                _total[$ _id] = 0;
+                array_push(_first, _id);
+            }
+            _total[$ _id] = _total[$ _id] + _qty;
+        } else {
+            for (var _c = 0; _c < _qty; _c++) {
+                array_push(_out, { item_id: _id, name: _it.name, qty: 1, key_item: _it.key_item || _it.unique });
+            }
+        }
+    }
+    for (var _f = 0; _f < array_length(_first); _f++) {
+        var _sid = _first[_f];
+        var _sit = scr_item_get(_sid);
+        array_push(_out, { item_id: _sid, name: _sit.name, qty: _total[$ _sid], key_item: _sit.key_item || _sit.unique });
+    }
+    return _out;
+}
+
+/// Clear equipped ids that no longer exist, no longer fit the slot, or conflict with a
+/// two-handed main hand. Runs after scr_actor_ensure_bases() and before the stat refresh.
+function scr_save_sanitize_equipment(_actor) {
+    if (!is_struct(_actor) || !is_struct(_actor.equipment)) return;
+    var _slots = [
+        ["weapon", "main_hand"], ["off_hand", "off_hand"], ["helm", "head"],
+        ["armor", "body"], ["legs", "legs"], ["accessory", "accessory"],
+        ["accessory_2", "accessory"]
+    ];
+    for (var _i = 0; _i < array_length(_slots); _i++) {
+        var _key = _slots[_i][0];
+        var _want = _slots[_i][1];
+        if (!variable_struct_exists(_actor.equipment, _key)) { _actor.equipment[$ _key] = ""; continue; }
+        var _id = _actor.equipment[$ _key];
+        if (!is_string(_id) || _id == "") { _actor.equipment[$ _key] = ""; continue; }
+        _id = scr_item_id_norm(_id);
+        if (!scr_item_exists(_id)) {
+            scr_save_warn("cleared unknown equipped item '" + _id + "' from " + _key);
+            _actor.equipment[$ _key] = "";
+            continue;
+        }
+        var _slot = scr_item_slot(_id);
+        var _fits = scr_item_is_equipment(_id)
+            && ((_want == "accessory") ? (_slot == "accessory") : (_slot == _want));
+        if (!_fits) {
+            scr_save_warn("cleared " + _id + " from " + _key + ": wrong slot");
+            _actor.equipment[$ _key] = "";
+            continue;
+        }
+        _actor.equipment[$ _key] = _id;
+    }
+    var _main = variable_struct_exists(_actor.equipment, "weapon") ? string(_actor.equipment.weapon) : "";
+    var _off = variable_struct_exists(_actor.equipment, "off_hand") ? string(_actor.equipment.off_hand) : "";
+    if (_main != "" && _off != "" && scr_item_get(_main).two_handed) {
+        scr_save_warn("cleared off-hand " + _off + ": " + _main + " is two-handed");
+        _actor.equipment.off_hand = "";
+    }
 }
 
 function scr_save_apply(_data) {
     scr_game_state_reset();
     var _g = global.game;
+    global.save_load_warnings = [];
     if (variable_struct_exists(_data, "gold")) _g.gold = max(0, _data.gold);
-    if (variable_struct_exists(_data, "inventory") && is_array(_data.inventory)) _g.inventory = _data.inventory;
+    if (variable_struct_exists(_data, "inventory") && is_array(_data.inventory)) {
+        _g.inventory = scr_save_sanitize_inventory(_data.inventory);
+    }
     if (variable_struct_exists(_data, "flags") && is_struct(_data.flags)) _g.flags = _data.flags;
     if (variable_struct_exists(_data, "cleared_encounters") && is_struct(_data.cleared_encounters)) {
         _g.cleared_encounters = _data.cleared_encounters;

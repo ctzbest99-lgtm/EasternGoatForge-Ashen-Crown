@@ -22,7 +22,7 @@
 #macro DEBUG_SHOW_TRIGGERS true
 
 // Versioned JSON saves (save1.sav–save3.sav). DEBUG_SAVE_ANYWHERE (F5) is off by default.
-#macro SAVE_SCHEMA_VERSION 3 // v3 (Adventure menu): bestiary seen/defeated log. v1/v2 saves are migrated on load.
+#macro SAVE_SCHEMA_VERSION 4 // v4 (equipment): seven slots + base maxima. v1/v2/v3 saves are migrated on load.
 #macro SAVE_SLOT_COUNT 3
 #macro DEBUG_SAVE_ANYWHERE false
 
@@ -70,7 +70,7 @@
 #macro PARTY_ACTIVE_MAX 4
 #macro PARTY_RESERVE_MAX 1
 #macro PARTY_MAX_SIZE PARTY_ACTIVE_MAX // backward-compatible alias: cap of the active battle party
-#macro PARTY_MAX_LEVEL 27 // Approved Act V progression cap; supports the level 24–26 band.
+#macro PARTY_MAX_LEVEL 27 // raised from 24 on 2026-11-18 for Act V's 24–26 band (ACT5_OUTLINE.md decision 7)
 #macro KAEL_BASE_HP 30
 #macro KAEL_BASE_ATTACK 6
 #macro KAEL_BASE_DEFENSE 2
@@ -112,7 +112,7 @@
 // A reserve member who never took a turn receives none. Gold stays shared.
 #macro XP_REQUIRES_PARTICIPATION true
 // Total XP to reach level L (L>=2): XP_CURVE_QUAD*(L-1)^2 + XP_CURVE_LIN*(L-1).
-// L1=0, L2=30, L3=100, L4=210, L5=360, L10=1710, L20=7410.
+// L1=0, L2=30, L3=100, L4=210, L5=360, L10=1710, L20=7410, L24=10810, L27=13780 (the cap).
 #macro XP_CURVE_QUAD 20
 #macro XP_CURVE_LIN 10
 #macro LEVEL_UP_HP_GROWTH 4
@@ -171,8 +171,8 @@
 #macro BATTLE_BLIND_MISS_CHANCE 0.5      // blind: physical attacks miss this often (PLACEHOLDER, batch 8 moths)
 #macro BATTLE_HEAL_ALLY_THRESHOLD 0.6    // field surgeon heals only when an ally is below this HP fraction (PLACEHOLDER)
 #macro CALDER_ADD_COUNT 2               // occupation_soldier adds in grp_reeve_calder (script says 2–3; Design mockup shows 2)
-#macro BATTLE_BLEED_PCT 0.06            // bleed ticks this fraction of max HP each round; never kills (PLACEHOLDER)
-#macro BATTLE_POISON_PCT 0.05            // poison ticks this fraction of max HP each round; never kills (PLACEHOLDER)
+#macro BATTLE_BLEED_PCT 0.06            // bleed ticks this fraction of max HP each round; can finish a regular combatant (PLACEHOLDER tuning)
+#macro BATTLE_POISON_PCT 0.05            // poison ticks this fraction of max HP each round; can finish a regular combatant (PLACEHOLDER tuning)
 #macro BATTLE_CHEAP_SHOT_PCT 1.5        // Cheap Shot damage multiplier against a guarding target (PLACEHOLDER)
 #macro BATTLE_LAST_STAND_ATK_PCT 1.15    // Last Stand: Kael's ATK below 25% HP (canon: +15%, CHAPTER1_SCRIPT.md §2.1)
 #macro BATTLE_LAST_STAND_DEF_PCT 1.10    // Last Stand: Kael's DEF below 25% HP (canon: +10%, CHAPTER1_SCRIPT.md §2.1)

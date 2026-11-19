@@ -276,6 +276,10 @@ function scr_dialogue_play_script(_script_id, _source = noone) {
         case "BG_SMITH_01":
             scr_shopkeeper_talk("shop_barrow_smith");
             return true;
+        // Rimehold armourer (Act VIII room built ahead of its act). Same generic shelf prompt.
+        case "RIMHOLD_ARMOURER":
+            scr_shopkeeper_talk("shop_rimehold_armoury");
+            return true;
         case "GH_ARRIVAL":
             if (scr_flag_get("flag_arrived_greyhaven")) return true;
             scr_dialogue_play(["GH_ARRIVAL_01", "GH_ARRIVAL_02", "GH_ARRIVAL_03"], function() {

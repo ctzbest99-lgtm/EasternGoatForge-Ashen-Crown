@@ -3,6 +3,7 @@ if (!is_struct(shop)) {
     if (shop_id != "") shop = scr_shop_get(shop_id);
     if (!is_struct(shop)) { instance_destroy(); exit; }
 }
+if (global.game.frame == opened_frame) exit; // the press that opened the shop cannot buy/sell in it
 if (buzz_t > 0) buzz_t -= 1;
 if (scr_input_menu_pressed()) { instance_destroy(); exit; }
 

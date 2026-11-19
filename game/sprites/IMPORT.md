@@ -97,6 +97,7 @@ Folder: `hero/`. All strips face right. The party is drawn with `xscale = -1` so
 | Asset name | File | Frames | Frame size | Origin | Mask (L,T,R,B) | FPS |
 |---|---|---|---|---|---|---|
 | `spr_hero_idle_strip4` | `hero/spr_hero_idle_strip4.png` | 4 | 32×48 | (16, 47) | 8, 16, 23, 47 | 6 |
+| `spr_hero_defend_strip3` | `hero/spr_hero_defend_strip3.png` | 3 | 32×48 | (16, 47) | 8, 16, 23, 47 | 6 |
 | `spr_hero_walk_strip8` | `hero/spr_hero_walk_strip8.png` | 8 | 32×48 | (16, 47) | 8, 16, 23, 47 | 8 |
 | `spr_hero_attack_strip6` | `hero/spr_hero_attack_strip6.png` | 6 | 32×48 | (16, 47) | 8, 16, 23, 47 | 10 |
 | `spr_hero_hurt_strip3` | `hero/spr_hero_hurt_strip3.png` | 3 | 32×48 | (16, 47) | 8, 16, 23, 47 | 10 |
@@ -243,6 +244,7 @@ Code looks up every asset with `asset_get_index`. A missing sprite falls back to
 | `spr_kael_ow_walk_up_strip4` | `hero/overworld/spr_kael_ow_walk_up_strip4.png` | 4 | 32×48 | (16, 47) | full image | 8 |
 | `spr_hero_attack_strip6` | `hero/spr_hero_attack_strip6.png` | 6 | 32×48 | (16, 47) | full image | 10 |
 | `spr_hero_death_strip6` | `hero/spr_hero_death_strip6.png` | 6 | 48×48 | (16, 47) | full image | 10 |
+| `spr_hero_defend_strip3` | `hero/spr_hero_defend_strip3.png` | 3 | 32×48 | (16, 47) | full image | 6 |
 | `spr_hero_hurt_strip3` | `hero/spr_hero_hurt_strip3.png` | 3 | 32×48 | (16, 47) | full image | 10 |
 | `spr_hero_idle_strip4` | `hero/spr_hero_idle_strip4.png` | 4 | 32×48 | (16, 47) | full image | 6 |
 | `spr_hero_walk_strip8` | `hero/spr_hero_walk_strip8.png` | 8 | 32×48 | (16, 47) | full image | 10 |
@@ -710,7 +712,9 @@ Used automatically by area: `lower_city`, `sanctuary_hall`, `garrison_yard`, `bl
 | `spr_item_ashen_longbow` | `items/spr_item_ashen_longbow.png` | 1 | 16×16 | (8, 8) | 0, 0, 15, 15 | 0 |
 | `spr_item_blackened_feather` | `items/spr_item_blackened_feather.png` | 1 | 16×16 | (8, 8) | 0, 0, 15, 15 | 0 |
 | `spr_item_blackguards_longsword` | `items/spr_item_blackguards_longsword.png` | 1 | 16×16 | (8, 8) | 0, 0, 15, 15 | 0 |
+| `spr_item_chain_mail` | `items/spr_item_chain_mail.png` | 1 | 16×16 | (8, 8) | 0, 0, 15, 15 | 0 |
 | `spr_item_crownveil_fragment` | `items/spr_item_crownveil_fragment.png` | 1 | 16×16 | (8, 8) | 0, 0, 15, 15 | 0 |
+| `spr_item_ether` | `items/spr_item_ether.png` | 1 | 16×16 | (8, 8) | 0, 0, 15, 15 | 0 |
 | `spr_item_gold` | `items/spr_item_gold.png` | 1 | 16×16 | (8, 8) | 0, 0, 15, 15 | 0 |
 | `spr_item_hunters_charm` | `items/spr_item_hunters_charm.png` | 1 | 16×16 | (8, 8) | 0, 0, 15, 15 | 0 |
 | `spr_item_hunters_knife` | `items/spr_item_hunters_knife.png` | 1 | 16×16 | (8, 8) | 0, 0, 15, 15 | 0 |
@@ -916,6 +920,7 @@ Nine-slice **must** be turned on for `spr_ui_window`, `spr_ui_window_dim`, and `
 | `spr_ui_select_bar` | `ui/spr_ui_select_bar.png` | 1 | 24×12 | (0, 0) | full image | 0 |
 | `spr_ui_slider_knob` | `ui/spr_ui_slider_knob.png` | 1 | 8×10 | (4, 5) | full image | 0 |
 | `spr_ui_slider_track` | `ui/spr_ui_slider_track.png` | 1 | 12×6 | (0, 0) | full image | 0 |
+| `spr_ui_status_extra_strip2` | `ui/spr_ui_status_extra_strip2.png` | 2 | 10×10 | (5, 5) | full image | 10 |
 | `spr_ui_status_strip12` | `ui/spr_ui_status_strip12.png` | 12 | 10×10 | (5, 5) | full image | 10 |
 | `spr_ui_toggle_strip2` | `ui/spr_ui_toggle_strip2.png` | 2 | 16×10 | (0, 0) | full image | 10 |
 | `spr_ui_window` | `ui/spr_ui_window.png` | 1 | 24×24 | (0, 0) | full image | 0 |
@@ -976,7 +981,7 @@ Windows already listed above (`spr_ui_window*`, nine-slice 8) and `spr_ui_select
 
 Greyed item icons (16×16, origin (8, 8), same names as the colour icons plus `_disabled`). Import every file in `ui/menus/items_disabled/`:
 
-`spr_item_antidote_disabled`, `spr_item_ashbound_parchment_disabled`, `spr_item_ashen_arrow_disabled`, `spr_item_ashen_longbow_disabled`, `spr_item_blackened_feather_disabled`, `spr_item_blackguards_longsword_disabled`, `spr_item_crownveil_fragment_disabled`, `spr_item_gold_disabled`, `spr_item_hunters_charm_disabled`, `spr_item_hunters_knife_disabled`, `spr_item_iron_helm_disabled`, `spr_item_iron_sword_disabled`, `spr_item_kaels_longsword_disabled`, `spr_item_leather_armor_disabled`, `spr_item_minor_potion_disabled`, `spr_item_mira_pendant_disabled`, `spr_item_watchtower_key_disabled`.
+`spr_item_antidote_disabled`, `spr_item_ashbound_parchment_disabled`, `spr_item_ashen_arrow_disabled`, `spr_item_ashen_longbow_disabled`, `spr_item_blackened_feather_disabled`, `spr_item_blackguards_longsword_disabled`, `spr_item_chain_mail_disabled`, `spr_item_crownveil_fragment_disabled`, `spr_item_ether_disabled`, `spr_item_gold_disabled`, `spr_item_hunters_charm_disabled`, `spr_item_hunters_knife_disabled`, `spr_item_iron_helm_disabled`, `spr_item_iron_sword_disabled`, `spr_item_kaels_longsword_disabled`, `spr_item_leather_armor_disabled`, `spr_item_minor_potion_disabled`, `spr_item_mira_pendant_disabled`, `spr_item_watchtower_key_disabled`.
 
 Do not import `menus_parts_preview.png`, the mockups, or the save-point preview GIFs as sprites (reference only).
 
@@ -1130,9 +1135,9 @@ All 16×24, origin (8, 23), mask 0, 8, 15, 23. Walk strips 4 frames at 8 fps. `l
 | `spr_taren_ow16_walk_right_strip4` | `npcs/taren/spr_taren_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
 | `spr_taren_ow16_walk_up_strip4` | `npcs/taren/spr_taren_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
 
-### Lyra (Chapter 3 placeholder, flat colour)
+### Lyra (generated party kit)
 
-Lyra Veyne, generated by `src/lyra.py` — replace wholesale when Design's Lyra lands. Same frame sizes and origins as the Taren set.
+Lyra Veyne, generated by `src/lyra.py` through the shared party renderer. The earlier flat-colour set was replaced in Batch 10; these are the current imported frames. Same frame sizes and origins as the Taren set. Replace only if Design supplies new canon art.
 
 | Asset name | File | Frames | Frame size | Origin | Mask (L,T,R,B) | FPS |
 |---|---|---|---|---|---|---|
@@ -1180,7 +1185,7 @@ Origin **(16, 47)** on every strip (feet; frames are 32 or 48 px wide, as drawn)
 | `spr_taren_skill_rally_strip6` | `party/taren/spr_taren_skill_rally_strip6.png` | 6 | 32×48 | (16, 47) | full image | battle |
 | `spr_taren_walk_strip8` | `party/taren/spr_taren_walk_strip8.png` | 8 | 32×48 | (16, 47) | full image | battle |
 
-### Lyra battle strips (Chapter 3 placeholder, flat colour)
+### Lyra battle strips (generated party kit)
 
 | Asset name | File | Frames | Frame size | Origin | Mask (L,T,R,B) | FPS |
 |---|---|---|---|---|---|---|
@@ -1193,7 +1198,7 @@ Origin **(16, 47)** on every strip (feet; frames are 32 or 48 px wide, as drawn)
 
 ### Batch 9 — Sera, Caelan (full sets) and Lyra (portraits)
 
-Flat-colour sets generated by `src/party_kit.py` through `src/sera.py`, `src/caelan.py` and `src/portraits.py`. Unlike the older PNG-only entries above, these are **already imported**: `tools/import_sprites.py` created the sprite resources (frames, layer, sequence) under `gamemaker/sprites/` and registered them in `AshenCrown.yyp`. Do not re-create them by hand; re-run that tool instead.
+Initial party-kit sets generated by `src/party_kit.py` through `src/sera.py`, `src/caelan.py` and `src/portraits.py`; Lyra's set was redrawn in Batch 10 and is no longer a flat colour. Unlike the older PNG-only entries above, these are **already imported**: `tools/import_sprites.py` created the sprite resources (frames, layer, sequence) under `gamemaker/sprites/` and registered them in `AshenCrown.yyp`. Do not re-create them by hand; re-run that tool instead.
 
 Overworld sets: frame 16×24, origin (8, 23), mask 0, 8, 15, 23, walk 8 fps.
 Battle strips: party faces right, origin (16, 47) on 32- and 48-wide frames, idle/walk loop at `BATTLE_IDLE_FPS`, the rest at `BATTLE_ANIM_FPS`.
@@ -1201,8 +1206,14 @@ Portraits: 48×48, origin (0, 0).
 
 | Asset name | File | Frames | Frame size | Origin |
 |---|---|---|---|---|
-| `spr_sera_ow16_idle_{down,up,left,right}` | `npcs/sera/spr_sera_ow16_idle_*.png` | 1 | 16×24 | (8, 23) |
-| `spr_sera_ow16_walk_{down,up,left,right}_strip4` | `npcs/sera/spr_sera_ow16_walk_*_strip4.png` | 4 | 16×24 | (8, 23) |
+| `spr_sera_ow16_idle_down` | `npcs/sera/spr_sera_ow16_idle_down.png` | 1 | 16×24 | (8, 23) |
+| `spr_sera_ow16_idle_up` | `npcs/sera/spr_sera_ow16_idle_up.png` | 1 | 16×24 | (8, 23) |
+| `spr_sera_ow16_idle_left` | `npcs/sera/spr_sera_ow16_idle_left.png` | 1 | 16×24 | (8, 23) |
+| `spr_sera_ow16_idle_right` | `npcs/sera/spr_sera_ow16_idle_right.png` | 1 | 16×24 | (8, 23) |
+| `spr_sera_ow16_walk_down_strip4` | `npcs/sera/spr_sera_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) |
+| `spr_sera_ow16_walk_up_strip4` | `npcs/sera/spr_sera_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) |
+| `spr_sera_ow16_walk_left_strip4` | `npcs/sera/spr_sera_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) |
+| `spr_sera_ow16_walk_right_strip4` | `npcs/sera/spr_sera_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) |
 | `spr_sera_{idle_strip4,walk_strip8}` | `party/sera/…` | 4 / 8 | 32×48 | (16, 47) |
 | `spr_sera_{hurt_strip3,defend_strip3}` | `party/sera/…` | 3 | 32×48 | (16, 47) |
 | `spr_sera_{attack_strip6,death_strip6}` | `party/sera/…` | 6 | 48×48 | (16, 47) |
@@ -1230,8 +1241,14 @@ figures now share one Taren-derived template, and the battle walk carries a real
 
 | Resources | Source | Frames | Size | Origin |
 |---|---|---|---|---|
-| `spr_lyra_ow16_idle_{down,up,left,right}` | `npcs/lyra/spr_lyra_ow16_idle_*.png` | 1 | 16×24 | (8, 23) |
-| `spr_lyra_ow16_walk_{down,up,left,right}_strip4` | `npcs/lyra/spr_lyra_ow16_walk_*_strip4.png` | 4 | 16×24 | (8, 23) |
+| `spr_lyra_ow16_idle_down` | `npcs/lyra/spr_lyra_ow16_idle_down.png` | 1 | 16×24 | (8, 23) |
+| `spr_lyra_ow16_idle_up` | `npcs/lyra/spr_lyra_ow16_idle_up.png` | 1 | 16×24 | (8, 23) |
+| `spr_lyra_ow16_idle_left` | `npcs/lyra/spr_lyra_ow16_idle_left.png` | 1 | 16×24 | (8, 23) |
+| `spr_lyra_ow16_idle_right` | `npcs/lyra/spr_lyra_ow16_idle_right.png` | 1 | 16×24 | (8, 23) |
+| `spr_lyra_ow16_walk_down_strip4` | `npcs/lyra/spr_lyra_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) |
+| `spr_lyra_ow16_walk_up_strip4` | `npcs/lyra/spr_lyra_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) |
+| `spr_lyra_ow16_walk_left_strip4` | `npcs/lyra/spr_lyra_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) |
+| `spr_lyra_ow16_walk_right_strip4` | `npcs/lyra/spr_lyra_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) |
 | `spr_lyra_{idle_strip4,walk_strip8,hurt_strip3,defend_strip3}` | `party/lyra/…` | 4/8/3/3 | 32×48 | (16, 47) |
 | `spr_lyra_{attack_strip6,death_strip6}` | `party/lyra/…` | 6 | 48×48 | (16, 47) |
 | `spr_portrait_lyra_{neutral,determined,pained}` | `portraits/lyra/…` | 1 | 48×48 | (0, 0) |
@@ -1242,3 +1259,339 @@ figures now share one Taren-derived template, and the battle walk carries a real
 mismatch, so a changed strip layout cannot silently corrupt an existing sprite. A normal run
 (without `--refresh`) still imports new resources and registers them in the yyp; the marker list
 is part of the manifest but only ever refreshed, since all ten already have resources.
+
+## Batch 11 — Alden, Nim and Derry (2026-11-18)
+
+Named speakers that previously borrowed other characters' art. Generated by `src/story_npcs.py`
+and **already imported** with their own resources:
+
+```bash
+python3 tools/import_sprites.py --story-npcs   # 33 new resources: 24 overworld + 9 portraits
+```
+
+Overworld sets: 16×24, origin (8, 23), mask 0, 8, 15, 23, idle 1 frame + walk 4 frames at 8 fps.
+Portraits: 48×48, origin (0, 0), one sprite per expression. There are no battle strips: Alden has
+no battle slot, and Nim and Derry are not party members. Their appearance is new art direction,
+not story canon.
+
+| Asset name | File | Frames | Frame size | Origin |
+|---|---|---|---|---|
+| `spr_alden_ow16_idle_down` | `npcs/alden/spr_alden_ow16_idle_down.png` | 1 | 16×24 | (8, 23) |
+| `spr_alden_ow16_idle_up` | `npcs/alden/spr_alden_ow16_idle_up.png` | 1 | 16×24 | (8, 23) |
+| `spr_alden_ow16_idle_left` | `npcs/alden/spr_alden_ow16_idle_left.png` | 1 | 16×24 | (8, 23) |
+| `spr_alden_ow16_idle_right` | `npcs/alden/spr_alden_ow16_idle_right.png` | 1 | 16×24 | (8, 23) |
+| `spr_alden_ow16_walk_down_strip4` | `npcs/alden/spr_alden_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) |
+| `spr_alden_ow16_walk_up_strip4` | `npcs/alden/spr_alden_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) |
+| `spr_alden_ow16_walk_left_strip4` | `npcs/alden/spr_alden_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) |
+| `spr_alden_ow16_walk_right_strip4` | `npcs/alden/spr_alden_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) |
+| `spr_nim_ow16_idle_*` / `spr_nim_ow16_walk_*_strip4` | `npcs/nim/…` | 1 / 4 | 16×24 | (8, 23) |
+| `spr_derry_ow16_idle_*` / `spr_derry_ow16_walk_*_strip4` | `npcs/derry/…` | 1 / 4 | 16×24 | (8, 23) |
+| `spr_portrait_alden_{neutral,warm,resolved}` | `portraits/alden/…` | 1 | 48×48 | (0, 0) |
+| `spr_portrait_nim_{neutral,wry,wary}` | `portraits/nim/…` | 1 | 48×48 | (0, 0) |
+| `spr_portrait_derry_{neutral,wary,grim}` | `portraits/derry/…` | 1 | 48×48 | (0, 0) |
+
+`scr_ch1_portrait` maps the speakers **Alden**, **Nim** and **Derry** to these sets. `scr_ch3_markers_data`
+and `scr_ch9_markers_data` are generated by their room tools and point at the idle-down frames.
+
+## Batch 12 — Act II enemy map sets (2026-11-18)
+
+Four enemy kinds that had battle strips but no 16×24 map set. Generated by
+`src/act2_enemy_ow.py` and **already imported** with their own resources:
+
+```bash
+python3 tools/import_sprites.py --act2-enemy-ow   # 32 new resources: 4 kinds x 8
+```
+
+Each kind has a 16×24 idle frame and a 4-frame walk strip in all four directions,
+origin (8, 23), mask 0, 8, 15, 23, walk at 8 fps. The battle strips above are unchanged.
+The details are hand-drawn over the shared 16×24 party template: kettle helm, spear and
+shield for the Patrolman; cap, blue sash and crossbow for the Crossbowman; great helm,
+halberd and heavy shield for the Occupation Soldier; fur hood, red scarf and axe for the
+Bandit Veteran. The four sets are wired into visible encounter markers: the Millhaven
+patrol's leader uses the Patrolman, the east and west clearings use the Crossbowman and
+Bandit Veteran, and occupied Wrenfield uses the Occupation Soldier.
+
+| Asset name | File | Frames | Frame size | Origin | Mask (L,T,R,B) | FPS |
+|---|---|---|---|---|---|---|
+| `spr_crown_patrolman_ow16_idle_down` | `enemies/crown_patrolman/overworld/spr_crown_patrolman_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_patrolman_ow16_walk_down_strip4` | `enemies/crown_patrolman/overworld/spr_crown_patrolman_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_crown_patrolman_ow16_idle_up` | `enemies/crown_patrolman/overworld/spr_crown_patrolman_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_patrolman_ow16_walk_up_strip4` | `enemies/crown_patrolman/overworld/spr_crown_patrolman_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_crown_patrolman_ow16_idle_left` | `enemies/crown_patrolman/overworld/spr_crown_patrolman_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_patrolman_ow16_walk_left_strip4` | `enemies/crown_patrolman/overworld/spr_crown_patrolman_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_crown_patrolman_ow16_idle_right` | `enemies/crown_patrolman/overworld/spr_crown_patrolman_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_patrolman_ow16_walk_right_strip4` | `enemies/crown_patrolman/overworld/spr_crown_patrolman_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_crown_crossbowman_ow16_idle_down` | `enemies/crown_crossbowman/overworld/spr_crown_crossbowman_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_crossbowman_ow16_walk_down_strip4` | `enemies/crown_crossbowman/overworld/spr_crown_crossbowman_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_crown_crossbowman_ow16_idle_up` | `enemies/crown_crossbowman/overworld/spr_crown_crossbowman_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_crossbowman_ow16_walk_up_strip4` | `enemies/crown_crossbowman/overworld/spr_crown_crossbowman_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_crown_crossbowman_ow16_idle_left` | `enemies/crown_crossbowman/overworld/spr_crown_crossbowman_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_crossbowman_ow16_walk_left_strip4` | `enemies/crown_crossbowman/overworld/spr_crown_crossbowman_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_crown_crossbowman_ow16_idle_right` | `enemies/crown_crossbowman/overworld/spr_crown_crossbowman_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_crown_crossbowman_ow16_walk_right_strip4` | `enemies/crown_crossbowman/overworld/spr_crown_crossbowman_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_occupation_soldier_ow16_idle_down` | `enemies/occupation_soldier/overworld/spr_occupation_soldier_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_occupation_soldier_ow16_walk_down_strip4` | `enemies/occupation_soldier/overworld/spr_occupation_soldier_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_occupation_soldier_ow16_idle_up` | `enemies/occupation_soldier/overworld/spr_occupation_soldier_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_occupation_soldier_ow16_walk_up_strip4` | `enemies/occupation_soldier/overworld/spr_occupation_soldier_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_occupation_soldier_ow16_idle_left` | `enemies/occupation_soldier/overworld/spr_occupation_soldier_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_occupation_soldier_ow16_walk_left_strip4` | `enemies/occupation_soldier/overworld/spr_occupation_soldier_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_occupation_soldier_ow16_idle_right` | `enemies/occupation_soldier/overworld/spr_occupation_soldier_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_occupation_soldier_ow16_walk_right_strip4` | `enemies/occupation_soldier/overworld/spr_occupation_soldier_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_bandit_veteran_ow16_idle_down` | `enemies/bandit_veteran/overworld/spr_bandit_veteran_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_bandit_veteran_ow16_walk_down_strip4` | `enemies/bandit_veteran/overworld/spr_bandit_veteran_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_bandit_veteran_ow16_idle_up` | `enemies/bandit_veteran/overworld/spr_bandit_veteran_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_bandit_veteran_ow16_walk_up_strip4` | `enemies/bandit_veteran/overworld/spr_bandit_veteran_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_bandit_veteran_ow16_idle_left` | `enemies/bandit_veteran/overworld/spr_bandit_veteran_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_bandit_veteran_ow16_walk_left_strip4` | `enemies/bandit_veteran/overworld/spr_bandit_veteran_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_bandit_veteran_ow16_idle_right` | `enemies/bandit_veteran/overworld/spr_bandit_veteran_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_bandit_veteran_ow16_walk_right_strip4` | `enemies/bandit_veteran/overworld/spr_bandit_veteran_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+
+## Batch 13 — Berrin and the ward sentinels (2026-11-18)
+
+Two Blackwood roles that had been borrowing other characters' map sets. Generated by
+`src/story_extra.py` and **already imported** with their own resources:
+
+```bash
+python3 tools/import_sprites.py --berrin-sentinels   # 16 new resources: 2 sets x 8
+```
+
+Each set is 16×24, origin (8, 23), mask 0, 8, 15, 23, idle 1 frame + walk 4 frames at 8 fps.
+No battle strips or portraits: Berrin has no battle slot, and the sentinels are map-only ward
+posts. Berrin's appearance is new art direction: a dark wool cap, grey beard and worn green coat.
+The sentinels keep the Door Warden's “same make” silhouette but are pale limestone with an amber
+ward-mark and a raised crest, so they read as ward posts rather than as the boss.
+
+| Asset name | File | Frames | Frame size | Origin | Mask (L,T,R,B) | FPS |
+|---|---|---|---|---|---|---|
+| `spr_berrin_ow16_idle_down` | `npcs/berrin/spr_berrin_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_berrin_ow16_idle_up` | `npcs/berrin/spr_berrin_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_berrin_ow16_idle_left` | `npcs/berrin/spr_berrin_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_berrin_ow16_idle_right` | `npcs/berrin/spr_berrin_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_berrin_ow16_walk_down_strip4` | `npcs/berrin/spr_berrin_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_berrin_ow16_walk_up_strip4` | `npcs/berrin/spr_berrin_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_berrin_ow16_walk_left_strip4` | `npcs/berrin/spr_berrin_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_berrin_ow16_walk_right_strip4` | `npcs/berrin/spr_berrin_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_ward_sentinel_ow16_idle_down` | `enemies/ward_sentinel/overworld/spr_ward_sentinel_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_ward_sentinel_ow16_idle_up` | `enemies/ward_sentinel/overworld/spr_ward_sentinel_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_ward_sentinel_ow16_idle_left` | `enemies/ward_sentinel/overworld/spr_ward_sentinel_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_ward_sentinel_ow16_idle_right` | `enemies/ward_sentinel/overworld/spr_ward_sentinel_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_ward_sentinel_ow16_walk_down_strip4` | `enemies/ward_sentinel/overworld/spr_ward_sentinel_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_ward_sentinel_ow16_walk_up_strip4` | `enemies/ward_sentinel/overworld/spr_ward_sentinel_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_ward_sentinel_ow16_walk_left_strip4` | `enemies/ward_sentinel/overworld/spr_ward_sentinel_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_ward_sentinel_ow16_walk_right_strip4` | `enemies/ward_sentinel/overworld/spr_ward_sentinel_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+
+`scr_ch6_markers_data` and `scr_ch7_markers_data` use Berrin's idle-down and idle-left frames;
+`scr_ch8_markers_data` uses the sentinels' inward-facing idle-left and idle-right frames. The
+ward-sentinel set also closes the `ward_sentinel` enemy map-set gap recorded in Batch 12.
+
+## Batch 14 — Cinderhollow burners and the Lost Ones (2026-11-18)
+
+Five dedicated 16×24 sets for the silent Cinderhollow crowd and the shrine's Lost Ones. Generated
+by `src/blackwood_folk.py` and **already imported** with their own resources:
+
+```bash
+python3 tools/import_sprites.py --blackwood-folk   # 40 new resources: 5 sets x 8
+```
+
+Each set is 16×24, origin (8, 23), mask 0, 8, 15, 23, idle 1 frame + walk 4 frames at 8 fps.
+No battle strips or portraits: these are map-only silent figures. The burner adult is soot-dark
+with a charcoal cap; the wood-carrier has a strapped shoulder bundle; the child is a 12×18 figure
+inside the same cell. The Lost Ones are pale, gaunt and leaf-littered, with a boots variant for the
+one recognizable by the patrol camp's boots. Their appearance is art direction, not story canon.
+
+| Asset name | File | Frames | Frame size | Origin | Mask (L,T,R,B) | FPS |
+|---|---|---|---|---|---|---|
+| `spr_burner_ow16_idle_down` | `npcs/burner/spr_burner_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_burner_ow16_walk_down_strip4` | `npcs/burner/spr_burner_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_burner_ow16_idle_up` | `npcs/burner/spr_burner_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_burner_ow16_walk_up_strip4` | `npcs/burner/spr_burner_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_burner_ow16_idle_left` | `npcs/burner/spr_burner_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_burner_ow16_walk_left_strip4` | `npcs/burner/spr_burner_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_burner_ow16_idle_right` | `npcs/burner/spr_burner_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_burner_ow16_walk_right_strip4` | `npcs/burner/spr_burner_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_burner_wood_ow16_idle_down` | `npcs/burner_wood/spr_burner_wood_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_burner_wood_ow16_walk_down_strip4` | `npcs/burner_wood/spr_burner_wood_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_burner_wood_ow16_idle_up` | `npcs/burner_wood/spr_burner_wood_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_burner_wood_ow16_walk_up_strip4` | `npcs/burner_wood/spr_burner_wood_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_burner_wood_ow16_idle_left` | `npcs/burner_wood/spr_burner_wood_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_burner_wood_ow16_walk_left_strip4` | `npcs/burner_wood/spr_burner_wood_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_burner_wood_ow16_idle_right` | `npcs/burner_wood/spr_burner_wood_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_burner_wood_ow16_walk_right_strip4` | `npcs/burner_wood/spr_burner_wood_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_burner_child_ow16_idle_down` | `npcs/burner_child/spr_burner_child_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_burner_child_ow16_walk_down_strip4` | `npcs/burner_child/spr_burner_child_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_burner_child_ow16_idle_up` | `npcs/burner_child/spr_burner_child_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_burner_child_ow16_walk_up_strip4` | `npcs/burner_child/spr_burner_child_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_burner_child_ow16_idle_left` | `npcs/burner_child/spr_burner_child_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_burner_child_ow16_walk_left_strip4` | `npcs/burner_child/spr_burner_child_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_burner_child_ow16_idle_right` | `npcs/burner_child/spr_burner_child_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_burner_child_ow16_walk_right_strip4` | `npcs/burner_child/spr_burner_child_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_lost_one_ow16_idle_down` | `enemies/lost_one/overworld/spr_lost_one_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_lost_one_ow16_walk_down_strip4` | `enemies/lost_one/overworld/spr_lost_one_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_lost_one_ow16_idle_up` | `enemies/lost_one/overworld/spr_lost_one_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_lost_one_ow16_walk_up_strip4` | `enemies/lost_one/overworld/spr_lost_one_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_lost_one_ow16_idle_left` | `enemies/lost_one/overworld/spr_lost_one_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_lost_one_ow16_walk_left_strip4` | `enemies/lost_one/overworld/spr_lost_one_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_lost_one_ow16_idle_right` | `enemies/lost_one/overworld/spr_lost_one_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_lost_one_ow16_walk_right_strip4` | `enemies/lost_one/overworld/spr_lost_one_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_lost_one_boots_ow16_idle_down` | `enemies/lost_one/overworld/spr_lost_one_boots_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_lost_one_boots_ow16_walk_down_strip4` | `enemies/lost_one/overworld/spr_lost_one_boots_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_lost_one_boots_ow16_idle_up` | `enemies/lost_one/overworld/spr_lost_one_boots_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_lost_one_boots_ow16_walk_up_strip4` | `enemies/lost_one/overworld/spr_lost_one_boots_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_lost_one_boots_ow16_idle_left` | `enemies/lost_one/overworld/spr_lost_one_boots_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_lost_one_boots_ow16_walk_left_strip4` | `enemies/lost_one/overworld/spr_lost_one_boots_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_lost_one_boots_ow16_idle_right` | `enemies/lost_one/overworld/spr_lost_one_boots_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_lost_one_boots_ow16_walk_right_strip4` | `enemies/lost_one/overworld/spr_lost_one_boots_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+
+## Batch 15 — Coleford's magistrate and his clerk (2026-11-18)
+
+Two Act IV NPCs that had been standing on the generic story-NPC placeholder. Generated by
+`src/crown_town_folk.py` and **already imported** with their own resources:
+
+```bash
+python3 tools/import_sprites.py --crown-town   # 16 new resources: 2 sets x 8
+```
+
+Each set is 16×24, origin (8, 23), mask 0, 8, 15, 23, idle 1 frame + walk 4 frames at 8 fps.
+No battle strips and no portraits: Vell yields in one scripted fight and neither has a portrait
+slot. Vell reads as a Crown administrator — indigo coat, grey temples, brass seal, ink at the
+cuffs, and the heavy ledger his `VG_FIGHT` kit names. Nessa reads as his clerk — hair tied back,
+linen apron, ink-stained fingers, and the folded page she asks an hour with. Their appearance is
+art direction, not story canon.
+
+| Asset name | File | Frames | Frame size | Origin | Mask (L,T,R,B) | FPS |
+|---|---|---|---|---|---|---|
+| `spr_vell_ow16_idle_down` | `npcs/vell/spr_vell_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_vell_ow16_walk_down_strip4` | `npcs/vell/spr_vell_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_vell_ow16_idle_up` | `npcs/vell/spr_vell_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_vell_ow16_walk_up_strip4` | `npcs/vell/spr_vell_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_vell_ow16_idle_left` | `npcs/vell/spr_vell_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_vell_ow16_walk_left_strip4` | `npcs/vell/spr_vell_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_vell_ow16_idle_right` | `npcs/vell/spr_vell_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_vell_ow16_walk_right_strip4` | `npcs/vell/spr_vell_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_nessa_ow16_idle_down` | `npcs/nessa/spr_nessa_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_nessa_ow16_walk_down_strip4` | `npcs/nessa/spr_nessa_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_nessa_ow16_idle_up` | `npcs/nessa/spr_nessa_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_nessa_ow16_walk_up_strip4` | `npcs/nessa/spr_nessa_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_nessa_ow16_idle_left` | `npcs/nessa/spr_nessa_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_nessa_ow16_walk_left_strip4` | `npcs/nessa/spr_nessa_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_nessa_ow16_idle_right` | `npcs/nessa/spr_nessa_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_nessa_ow16_walk_right_strip4` | `npcs/nessa/spr_nessa_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+
+`scr_ch9_markers_data` names `spr_vell_ow16_idle_down` and `spr_nessa_ow16_idle_down` at the
+ledger house door. Their tile coordinates, `npc_id`, speaker, script id and facing are unchanged.
+
+## Batch 16 — the last twelve enemy map sets (2026-11-19)
+
+Every remaining enemy kind with battle art and no 16×24 set. Generated by
+`src/enemy_ow_remaining.py` and **already imported** with their own resources:
+
+```bash
+python3 tools/import_sprites.py --remaining-enemies   # 96 new resources: 12 sets x 8
+```
+
+Each set is 16×24, origin (8, 23), mask 0, 8, 15, 23, idle 1 frame + walk 4 frames at 8 fps.
+The four humanoids use the shared body template; the hostile Fallen Knight is the story
+sighting's armour darkened, with a drawn greatsword; the Sanctuary Warden is the Door Warden's
+stone with moss and a verdant ward-light; the wraith and the four beasts are hand-drawn grids.
+No battle strip changed, and no marker data had to change: `scr_ch1_bind_enemy_ow` resolves
+`spr_<kind>_ow16_idle_<dir>` by name, so the five Fallen Knight `enemy_spawn` markers now draw
+the hostile set.
+
+| Asset name | File | Frames | Frame size | Origin | Mask (L,T,R,B) | FPS |
+|---|---|---|---|---|---|---|
+| `spr_cutpurse_ow16_idle_down` | `enemies/cutpurse/overworld/spr_cutpurse_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_cutpurse_ow16_idle_up` | `enemies/cutpurse/overworld/spr_cutpurse_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_cutpurse_ow16_idle_left` | `enemies/cutpurse/overworld/spr_cutpurse_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_cutpurse_ow16_idle_right` | `enemies/cutpurse/overworld/spr_cutpurse_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_cutpurse_ow16_walk_down_strip4` | `enemies/cutpurse/overworld/spr_cutpurse_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_cutpurse_ow16_walk_up_strip4` | `enemies/cutpurse/overworld/spr_cutpurse_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_cutpurse_ow16_walk_left_strip4` | `enemies/cutpurse/overworld/spr_cutpurse_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_cutpurse_ow16_walk_right_strip4` | `enemies/cutpurse/overworld/spr_cutpurse_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_dock_thug_ow16_idle_down` | `enemies/dock_thug/overworld/spr_dock_thug_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_dock_thug_ow16_idle_up` | `enemies/dock_thug/overworld/spr_dock_thug_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_dock_thug_ow16_idle_left` | `enemies/dock_thug/overworld/spr_dock_thug_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_dock_thug_ow16_idle_right` | `enemies/dock_thug/overworld/spr_dock_thug_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_dock_thug_ow16_walk_down_strip4` | `enemies/dock_thug/overworld/spr_dock_thug_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_dock_thug_ow16_walk_up_strip4` | `enemies/dock_thug/overworld/spr_dock_thug_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_dock_thug_ow16_walk_left_strip4` | `enemies/dock_thug/overworld/spr_dock_thug_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_dock_thug_ow16_walk_right_strip4` | `enemies/dock_thug/overworld/spr_dock_thug_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_garrison_field_surgeon_ow16_idle_down` | `enemies/garrison_field_surgeon/overworld/spr_garrison_field_surgeon_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_garrison_field_surgeon_ow16_idle_up` | `enemies/garrison_field_surgeon/overworld/spr_garrison_field_surgeon_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_garrison_field_surgeon_ow16_idle_left` | `enemies/garrison_field_surgeon/overworld/spr_garrison_field_surgeon_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_garrison_field_surgeon_ow16_idle_right` | `enemies/garrison_field_surgeon/overworld/spr_garrison_field_surgeon_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_garrison_field_surgeon_ow16_walk_down_strip4` | `enemies/garrison_field_surgeon/overworld/spr_garrison_field_surgeon_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_garrison_field_surgeon_ow16_walk_up_strip4` | `enemies/garrison_field_surgeon/overworld/spr_garrison_field_surgeon_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_garrison_field_surgeon_ow16_walk_left_strip4` | `enemies/garrison_field_surgeon/overworld/spr_garrison_field_surgeon_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_garrison_field_surgeon_ow16_walk_right_strip4` | `enemies/garrison_field_surgeon/overworld/spr_garrison_field_surgeon_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_garrison_pikeman_ow16_idle_down` | `enemies/garrison_pikeman/overworld/spr_garrison_pikeman_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_garrison_pikeman_ow16_idle_up` | `enemies/garrison_pikeman/overworld/spr_garrison_pikeman_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_garrison_pikeman_ow16_idle_left` | `enemies/garrison_pikeman/overworld/spr_garrison_pikeman_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_garrison_pikeman_ow16_idle_right` | `enemies/garrison_pikeman/overworld/spr_garrison_pikeman_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_garrison_pikeman_ow16_walk_down_strip4` | `enemies/garrison_pikeman/overworld/spr_garrison_pikeman_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_garrison_pikeman_ow16_walk_up_strip4` | `enemies/garrison_pikeman/overworld/spr_garrison_pikeman_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_garrison_pikeman_ow16_walk_left_strip4` | `enemies/garrison_pikeman/overworld/spr_garrison_pikeman_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_garrison_pikeman_ow16_walk_right_strip4` | `enemies/garrison_pikeman/overworld/spr_garrison_pikeman_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_fallen_knight_ow16_idle_down` | `enemies/fallen_knight/overworld/spr_fallen_knight_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_fallen_knight_ow16_idle_up` | `enemies/fallen_knight/overworld/spr_fallen_knight_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_fallen_knight_ow16_idle_left` | `enemies/fallen_knight/overworld/spr_fallen_knight_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_fallen_knight_ow16_idle_right` | `enemies/fallen_knight/overworld/spr_fallen_knight_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_fallen_knight_ow16_walk_down_strip4` | `enemies/fallen_knight/overworld/spr_fallen_knight_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_fallen_knight_ow16_walk_up_strip4` | `enemies/fallen_knight/overworld/spr_fallen_knight_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_fallen_knight_ow16_walk_left_strip4` | `enemies/fallen_knight/overworld/spr_fallen_knight_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_fallen_knight_ow16_walk_right_strip4` | `enemies/fallen_knight/overworld/spr_fallen_knight_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_sanctuary_warden_ow16_idle_down` | `enemies/sanctuary_warden/overworld/spr_sanctuary_warden_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_sanctuary_warden_ow16_idle_up` | `enemies/sanctuary_warden/overworld/spr_sanctuary_warden_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_sanctuary_warden_ow16_idle_left` | `enemies/sanctuary_warden/overworld/spr_sanctuary_warden_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_sanctuary_warden_ow16_idle_right` | `enemies/sanctuary_warden/overworld/spr_sanctuary_warden_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_sanctuary_warden_ow16_walk_down_strip4` | `enemies/sanctuary_warden/overworld/spr_sanctuary_warden_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_sanctuary_warden_ow16_walk_up_strip4` | `enemies/sanctuary_warden/overworld/spr_sanctuary_warden_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_sanctuary_warden_ow16_walk_left_strip4` | `enemies/sanctuary_warden/overworld/spr_sanctuary_warden_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_sanctuary_warden_ow16_walk_right_strip4` | `enemies/sanctuary_warden/overworld/spr_sanctuary_warden_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_shade_stalker_ow16_idle_down` | `enemies/shade_stalker/overworld/spr_shade_stalker_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_shade_stalker_ow16_idle_up` | `enemies/shade_stalker/overworld/spr_shade_stalker_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_shade_stalker_ow16_idle_left` | `enemies/shade_stalker/overworld/spr_shade_stalker_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_shade_stalker_ow16_idle_right` | `enemies/shade_stalker/overworld/spr_shade_stalker_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_shade_stalker_ow16_walk_down_strip4` | `enemies/shade_stalker/overworld/spr_shade_stalker_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_shade_stalker_ow16_walk_up_strip4` | `enemies/shade_stalker/overworld/spr_shade_stalker_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_shade_stalker_ow16_walk_left_strip4` | `enemies/shade_stalker/overworld/spr_shade_stalker_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_shade_stalker_ow16_walk_right_strip4` | `enemies/shade_stalker/overworld/spr_shade_stalker_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_briar_hulk_ow16_idle_down` | `enemies/briar_hulk/overworld/spr_briar_hulk_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_briar_hulk_ow16_idle_up` | `enemies/briar_hulk/overworld/spr_briar_hulk_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_briar_hulk_ow16_idle_left` | `enemies/briar_hulk/overworld/spr_briar_hulk_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_briar_hulk_ow16_idle_right` | `enemies/briar_hulk/overworld/spr_briar_hulk_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_briar_hulk_ow16_walk_down_strip4` | `enemies/briar_hulk/overworld/spr_briar_hulk_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_briar_hulk_ow16_walk_up_strip4` | `enemies/briar_hulk/overworld/spr_briar_hulk_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_briar_hulk_ow16_walk_left_strip4` | `enemies/briar_hulk/overworld/spr_briar_hulk_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_briar_hulk_ow16_walk_right_strip4` | `enemies/briar_hulk/overworld/spr_briar_hulk_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_glyph_wisp_ow16_idle_down` | `enemies/glyph_wisp/overworld/spr_glyph_wisp_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_glyph_wisp_ow16_idle_up` | `enemies/glyph_wisp/overworld/spr_glyph_wisp_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_glyph_wisp_ow16_idle_left` | `enemies/glyph_wisp/overworld/spr_glyph_wisp_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_glyph_wisp_ow16_idle_right` | `enemies/glyph_wisp/overworld/spr_glyph_wisp_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_glyph_wisp_ow16_walk_down_strip4` | `enemies/glyph_wisp/overworld/spr_glyph_wisp_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_glyph_wisp_ow16_walk_up_strip4` | `enemies/glyph_wisp/overworld/spr_glyph_wisp_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_glyph_wisp_ow16_walk_left_strip4` | `enemies/glyph_wisp/overworld/spr_glyph_wisp_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_glyph_wisp_ow16_walk_right_strip4` | `enemies/glyph_wisp/overworld/spr_glyph_wisp_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_grey_ash_wolf_ow16_idle_down` | `enemies/grey_ash_wolf/overworld/spr_grey_ash_wolf_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_grey_ash_wolf_ow16_idle_up` | `enemies/grey_ash_wolf/overworld/spr_grey_ash_wolf_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_grey_ash_wolf_ow16_idle_left` | `enemies/grey_ash_wolf/overworld/spr_grey_ash_wolf_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_grey_ash_wolf_ow16_idle_right` | `enemies/grey_ash_wolf/overworld/spr_grey_ash_wolf_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_grey_ash_wolf_ow16_walk_down_strip4` | `enemies/grey_ash_wolf/overworld/spr_grey_ash_wolf_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_grey_ash_wolf_ow16_walk_up_strip4` | `enemies/grey_ash_wolf/overworld/spr_grey_ash_wolf_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_grey_ash_wolf_ow16_walk_left_strip4` | `enemies/grey_ash_wolf/overworld/spr_grey_ash_wolf_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_grey_ash_wolf_ow16_walk_right_strip4` | `enemies/grey_ash_wolf/overworld/spr_grey_ash_wolf_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_night_moth_swarm_ow16_idle_down` | `enemies/night_moth_swarm/overworld/spr_night_moth_swarm_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_night_moth_swarm_ow16_idle_up` | `enemies/night_moth_swarm/overworld/spr_night_moth_swarm_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_night_moth_swarm_ow16_idle_left` | `enemies/night_moth_swarm/overworld/spr_night_moth_swarm_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_night_moth_swarm_ow16_idle_right` | `enemies/night_moth_swarm/overworld/spr_night_moth_swarm_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_night_moth_swarm_ow16_walk_down_strip4` | `enemies/night_moth_swarm/overworld/spr_night_moth_swarm_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_night_moth_swarm_ow16_walk_up_strip4` | `enemies/night_moth_swarm/overworld/spr_night_moth_swarm_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_night_moth_swarm_ow16_walk_left_strip4` | `enemies/night_moth_swarm/overworld/spr_night_moth_swarm_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_night_moth_swarm_ow16_walk_right_strip4` | `enemies/night_moth_swarm/overworld/spr_night_moth_swarm_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_spiderling_ow16_idle_down` | `enemies/spiderling/overworld/spr_spiderling_ow16_idle_down.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_spiderling_ow16_idle_up` | `enemies/spiderling/overworld/spr_spiderling_ow16_idle_up.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_spiderling_ow16_idle_left` | `enemies/spiderling/overworld/spr_spiderling_ow16_idle_left.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_spiderling_ow16_idle_right` | `enemies/spiderling/overworld/spr_spiderling_ow16_idle_right.png` | 1 | 16×24 | (8, 23) | 0, 8, 15, 23 | 0 |
+| `spr_spiderling_ow16_walk_down_strip4` | `enemies/spiderling/overworld/spr_spiderling_ow16_walk_down_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_spiderling_ow16_walk_up_strip4` | `enemies/spiderling/overworld/spr_spiderling_ow16_walk_up_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_spiderling_ow16_walk_left_strip4` | `enemies/spiderling/overworld/spr_spiderling_ow16_walk_left_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |
+| `spr_spiderling_ow16_walk_right_strip4` | `enemies/spiderling/overworld/spr_spiderling_ow16_walk_right_strip4.png` | 4 | 16×24 | (8, 23) | 0, 8, 15, 23 | 8 |

@@ -3,7 +3,7 @@
 Run tests in GameMaker after integration; static review is not a substitute for running the game.
 
 ## Automatic checks (no IDE needed)
-`python3 validate_gamemaker.py` must print `ALL CHECKS PASSED`. Beyond the JSON, path, room, sprite-size and script-mirror checks, it now verifies the Bestiary and fails on any of these:
+`python3 validate_gamemaker.py` must print `ALL CHECKS PASSED`. Beyond the JSON, path, room, sprite-size, script-mirror and object-event-mirror checks, it now verifies the Bestiary and fails on any of these:
 - an id listed by `scr_bestiary_ids()` that `scr_get_enemy_data()` does not define;
 - two enemies whose display names are identical (the list would show two indistinguishable rows);
 - an id that `scr_bestiary_alias()` already maps onto another creature but still has a row of its own;
@@ -23,7 +23,46 @@ It also compares each table with the level band it declares and **lists every ta
 
 An inverted band (`min` above `max`), a band declared for an id that is not a table, and a table enemy whose level cannot be read are errors.
 
+## Story/world static verification (2026-11-18)
+`python3 validate_gamemaker.py` and `python3 tools/audit_chapters.py` both pass. The static pass covers:
+- 10 chapter story scripts and 9 chapter marker tables, all registered in the project;
+- 32 room builders for 32 built rooms (including the overworld), each called from its room's Creation Code;
+- 31 map builders whose tile dimensions match their room's pixel dimensions (the overworld builds from Included Files and was not dimension-checked);
+- one `obj_player` instance per built room;
+- 17 marker functions with 51 exits that resolve to existing rooms and spawn names, 42 marker sprite references that exist, and every marker inside its room's bounds;
+- all dialogue ids, marker `script_id` hooks, encounter groups, quest stages and room ambience cases resolve in `audit_chapters.py`;
+- all 59 object event files are byte-identical between `game/` and `gamemaker/`;
+- all 95 scripts were scanned as a set: 679 function definitions, no duplicate functions or macros, no unbalanced delimiters, and no `scr_` call without a definition (scripts and object events); every script defines at least one function.
+
+This is **not runtime verification**. It does not prove collision, NPC blocking, trigger order, room-transition timing, camera behavior, flag races or visual placement. The chapter sections below remain the runtime gate; no chapter has been compiled or played.
+
 `python3 tools/sim_ch5_flow.py` and `python3 tools/balance_sim.py` cover story reachability and fight maths; neither replaces play.
+
+`python3 tools/equipment_check.py` reads the real item/shop/enemy data and must print
+`schema: 181 records, 0 invalid` and `ALL CHECKS PASSED`. It checks duplicate ids and display names,
+required fields, rarity/act/source, weapon categories, recipes, shop/drop references and the
+per-act class weapon matrix. Deferred bows are excluded from the no-source warning by name.
+
+## Controller support (implemented; physical test NOT RUN)
+There is no controller or GameMaker IDE on the audit machine. Follow `docs/CONTROLLER_SUPPORT.md`.
+- [ ] C1 Connect an Xbox-style pad before launch; title, overworld, dialogue, Adventure menu, inventory, shop and battle all accept it.
+- [ ] C2 D-pad and left stick move Kael; the stick's dead zone does not drift; diagonal speed equals cardinal speed for both devices.
+- [ ] C3 A confirms and interacts, B cancels, Start opens/closes the Adventure menu, LB/RB change tabs, D-pad moves menu rows and battle targets.
+- [ ] C4 Hold A through dialogue: exactly one line advances per press; the button that opens a menu cannot also activate its first row.
+- [ ] C5 Disconnect the pad while walking: Kael stops immediately. Disconnect in a menu: the cursor is not stuck and the keyboard still works.
+- [ ] C6 Reconnect, including at a different device index: control resumes without a restart. Switch keyboard/pad mid-walk with no speed spike.
+- [ ] C7 Shop: buy, change quantity, sell, cancel, exit with the pad. Battle: command, skill, item, target, Guard, Swap, Escape.
+- [ ] C8 Keyboard regression: arrows, Z/X, I/Tab, Q/E, Enter/Space still behave exactly as before.
+
+## Item database, equipment and save compatibility (implemented; runtime NOT RUN)
+- [ ] I1 `scr_item_db_audit()` reports 181 records, 0 invalid, no duplicate ids and no duplicate display names.
+- [ ] I2 The Blackguard's Longsword resolves under both `item_blackguards_longsword` and `item_blackguard_longsword`; an old save with the singular id loads it into the canonical stack and equips it.
+- [ ] I3 Caelan joins with the Spellbook and Sera with the Holy Sword; both show their provisional stats and Sera is not empty-handed.
+- [ ] I4 A magic skill (Ember / Frost Lance / Arc Bolt) uses Caelan's MAG + spellbook MAG against MDEF; a physical skill still uses ATK against DEF.
+- [ ] I5 Bows cannot be equipped by any current member and are not on any merchant shelf. Ashen Arrow and Blackened Feather show as materials with no use action.
+- [ ] I6 Ether and Chain Mail show their new icons in the bag, shop and equip panes; the disabled icon appears when the row is unusable.
+- [ ] I7 Emberwake Feather revives at 25% HP and Ashenheart Plume at 50% HP; their required names and flavour descriptions match across bag, shop, battle and save.
+- [ ] I8 Save/load with equipment in all seven slots, buy/sell, chest loot and enemy drops; no item is lost, duplicated or silently converted.
 
 ## Movement and interaction
 - [ ] Project opens and compiles.
@@ -82,21 +121,34 @@ Setup: place a stretched `obj_encounter_zone` over the wild path in `rm_overworl
 - [ ] R8 Setting `RANDOM_ENCOUNTERS_ENABLED` to false (recompile) or `global.game.random_encounters_enabled = false` in the debugger disables random fights; fixed triggers still work. Setting it back to true re-enables them.
 
 ## Party and progression (roadmap step 4; numbers pending owner approval)
-XP curve: total XP to be level L is `20*(L-1)^2 + 10*(L-1)` (L2=30, L3=100, L4=210). Growth: +4 max HP, +1 ATK, +1 DEF per level. Cap 20. Default party is Kael only (30/6/2 at level 1), with Lyra, Caelan, Sera and Taren Holt on the roster but not joined.
+XP curve: total XP to be level L is `20*(L-1)^2 + 10*(L-1)` (L2=30, L3=100, L4=210). Growth: +4 max HP, +1 ATK, +1 DEF per level. Cap 27. Default party is Kael only (30/6/2 at level 1), with Lyra, Caelan, Sera and Taren Holt on the roster but not joined.
 - [ ] P1 Win fights until Kael reaches 30 XP (five Bandits, or set `party[0].xp = 24` then win one Bandit): after the victory line, a message says "Kael reached level 2! HP +4, ATK +1, DEF +1." Max HP is 34, ATK 7, DEF 3, current HP increased by 4, level 2, XP 30 (or 24+6). Confirming the level-up message then returns to the map.
 - [ ] P2 Rewards and a level-up are each granted once if Z is held. Two threshold crossings in one win (e.g. set XP to 29 and temporarily raise the Bandit reward, or set XP to 99 and grant enough) show one message per level, in order, then exit.
 - [ ] P3 Defeat never lowers `level`. At the exact floor (level 2, XP 30) a defeat takes 0 XP. Below the next threshold, only 10% of the progress is lost (see B15).
 - [ ] P4 Battle HUD shows `Lv` for each member. Command select still walks only living members; cancel still steps back to the previous member's command when more than one member is present.
 - [ ] P5 Multi-member: set `DEBUG_ADD_FULL_ROSTER` (or `DEBUG_ADD_PLACEHOLDER_ALLY`) true and recompile. Active members pick Attack/Guard in party order; the enemy attacks a random *active* living member (name in the message). A KO'd active member is skipped in command select and cannot act. If they are KO'd before the enemy dies, they receive no XP for that enemy (even if they already acted); they keep credit only for enemies that died while they were still standing. If an active member is KO'd and later levels up from earlier credit, they stay at 0 HP. The reserve member does not appear in the command menu or as a target unless swapped in.
 - [ ] P6 Four active members fit the battle HUD (four rows) and command order. `scr_party_add_member` returns false for a fifth *active* member. A fifth *joined* member goes to `global.game.reserve` (`scr_party_join`); a sixth join fails.
-- [ ] P7 At `PARTY_MAX_LEVEL` (24), further XP does not raise the level or stats; XP stays at the level-24 floor (10810).
-- [ ] P8 `global.game.inventory` starts empty. Equipment slots do not affect combat yet. Taren Holt's roster entry has `weapon_categories = ["heavy_sword"]` and `equipment.weapon = "bastard_sword"`; the others have empty weapon stubs and category lists matching their kit (longsword, dagger, spellbook, holy_sword).
+- [ ] P7 At `PARTY_MAX_LEVEL` (27), further XP does not raise the level or stats; XP stays at the level-27 floor (13780). The curve is unchanged below the old cap: total XP is 10810 at 24, 11760 at 25, 12750 at 26 and 13780 at 27, so Act V's 24–26 band is reachable under the cap and the adventure menu reads "XP MAX" at 27.
+- [ ] P8 `global.game.inventory` starts empty. Equipment now affects combat: the seven slots feed ATK / DEF / MAG / MDEF / SPD / ACC / EVA / CRIT / MAX HP / MAX MP, and `scr_actor_refresh_equipment` recomputes them from base stats so a second refresh never stacks a bonus. Taren Holt's roster entry has `weapon_categories = ["heavy_sword", "greatsword", "shield"]`, `armor_profs = ["heavy"]`, `shield_prof = true` and `equipment.weapon = "bastard_sword"`; the others have category lists matching their kit (longsword/greatsword, dagger/shortsword, spellbook/staff, holy_sword/mace).
 - [ ] P9 `DEBUG_ADD_FULL_ROSTER`: active ids are kael, lyra, caelan, sera; reserve is taren. `scr_party_swap_active_reserve(0)` puts Taren in active slot 0 and Kael in reserve; swap again restores the original. `scr_save_state_collect()` reports those id lists and `save_schema_version` 0.
 - [ ] P10 Participation XP and defeat (with `DEBUG_ADD_FULL_ROSTER`): if Taren stays on the bench the whole fight, a victory grants him **no** XP (check `reserve[0].xp`). If the party is wiped, no one receives the banked (or unbanked) XP — including members who had already acted. A defeat does **not** deduct Taren's XP, but does restore his HP if it was not full. If all four active members are KO'd, the battle is lost even if the reserve still has HP. Gold is still shared on a victory (and not granted on a defeat).
 - [ ] P11 Mid-battle Swap (with `DEBUG_ADD_FULL_ROSTER`): while a reserve member is present, the command menu lists Attack, Guard, and Swap. With no reserve (default Kael-only party), Swap is hidden. Choosing Swap plays a swap message, costs that member's turn (they do not also attack), and replaces them with the reserve member in the same slot. The incoming member does not act until a later round (they get a command on the next ROUND_START if still living). After the swap, the outgoing member is not an enemy target; the incoming member can be.
 - [ ] P12 After swapping Taren in and letting him take at least one later-round action (Attack or Guard) **before** the enemy dies, victory grants that enemy's XP to both the outgoing member (if they were still living when the enemy died) and to Taren. If you swap Taren in and the enemy dies later in the *same* round before Taren's first turn, Taren gets no XP; the outgoing member does if they are still living. If a member acts and is then KO'd **before** the enemy dies, they get no XP for that enemy.
 
 
+
+## Seven-slot inventory and equipment (2026-11-18; untested in GameMaker)
+Run in a debug party (`DEBUG_ADD_FULL_ROSTER true`) with a few items granted via `scr_inventory_add`. All numbers are PLACEHOLDER.
+- [ ] Q1 **Seven slots.** The Equip tab shows Main Hand, Off Hand, Head, Body, Legs, Accessory 1, Accessory 2 in two columns. Up/down walks all seven; left/right still cycles members. An empty slot draws its glyph and "(empty)" in the description box; a filled one draws the item icon and "name — description".
+- [ ] Q2 **Two-handed.** Equip `item_oathkeeper` (two-handed) on Taren while a shield is in the off-hand: the shield returns to the bag, Off Hand reads empty, and the sword's bonuses apply once. Equip `item_yoke_shield` over it: the greatsword returns to the bag and the shield equips. Re-equipping never duplicates or deletes a piece.
+- [ ] Q3 **Proficiencies.** Kael can equip longswords and greatswords but not a shield or `item_bastard_sword` (heavy sword). Taren can equip heavy weapons, greatswords and shields, and heavy armour. Lyra cannot equip `item_leather_armor` if it is marked medium; Caelan cannot equip a shield. A refusal says "Can't equip." and changes nothing.
+- [ ] Q4 **Stats.** Select a weapon in the Equip tab: the description line lists ATK/DEF/MAG/MDEF/SPD/ACC/EVA/CRIT/HP/MP deltas with + and -, plus any resistance changes (e.g. Dawnbringer shows HOLY +20%, SHADOW +10%). Equipping it moves the status pane by the same amounts. Reopening the menu shows the same numbers (no stacking).
+- [ ] Q5 **Accessories.** Two accessories can be worn at once; a third replaces Accessory 1 and returns the old one to the bag. Both contribute in the totals.
+- [ ] Q6 **Consumables.** Emberwake Feather revives a fallen member at 25% max HP, Ashenheart Plume at 50%. Using one on a standing member says they are still standing and does not consume it. In battle the Item command offers both only when someone has fallen and targets that member directly.
+- [ ] Q7 **Bag categories.** Items / Equip / Key / Materials are the four tabs. Materials lists Ash Shard, Iron Scale, Valemere Steel, Barrow Iron, Tideglass, Architect Alloy, Ember Core and Veil Shard; Items lists consumables and gear but never materials; Key lists only key items. Each tab is sorted by name.
+- [ ] Q8 **Buy / sell / drop / chest.** A named item bought from Pell or Len appears in the bag with its exact name, stacks only where stackable, and sells at 50% (key items and unique gear are not sellable). A chest or enemy drop that names one of the ten handoff items resolves to the same row.
+- [ ] Q9 **Key items.** Key items cannot be sold, dropped or used from the bag. `scr_inventory_remove` refuses them without `_allow_key`.
+- [ ] Q10 **Save / load (schema 4).** Equip a two-handed weapon, a shield-swapped off-hand, legs and both accessories, save, reload: all seven slots, the bag, quantities and gold match. Loading a v3 save leaves equipment intact, seeds `base_max_hp` / `base_max_mp` from the saved maxima, and recomputes stats once.
 
 ## Enemy batches 7–8 (feature/enemy-batches-7-8; untested in GameMaker)
 Start fights from the overworld with `scr_encounter_start(<id, group id, or array>, "test_x")`.
@@ -197,7 +249,7 @@ Create `rm_title`, import sprites from `game/sprites/IMPORT.md` (Chapter 1 secti
 - [ ] A2 Title: parallax layers drift at 0 / −0.05 / −0.1 / −0.2, the ember loop plays at 12 fps, the logo fades in, and "Press any key" advances to the menu. Options: New Game, Continue (disabled with no `save1.sav`–`save3.sav`, skipped by the cursor), Options (placeholder panel), Quit.
 - [ ] A3 New Game enters `rm_overworld`. Kael, NPCs, and chests use the imported 16×24 / chest sprites and y-sort (`depth = -y`). Tomas uses the pallet lying loop and switches to `lying_awake` while his dialogue is open.
 - [ ] A4 Talking to Tomas, Pell, Renn, Hob, Ilse, Marda, Wenna, Dov, Corwin, and the Fallen Knight story NPC shows the correct overworld sprite. Dialogue with Kael / Tomas / Pell / Renn / Fallen Knight shows the 48×48 portrait. Other speakers have no portrait and still render text.
-- [ ] A5 I / Tab opens the field inventory (dither, Items/Equip/Key tabs, party pane, gold). Q/E (or left/right on Items/Key) cycle tabs. Z on a Minor Potion opens the target picker (PLACEHOLDER 15 HP). The Equip tab shows Weapon / Armor / Helm / Accessory; Iron Helm uses Helm. Key items use the key icon and cannot be used or sold. X / I closes the menu. Input stays locked while it is open. Marda and Hob portraits appear in their dialogue (and Marda / Pell in the shop header).
+- [ ] A5 I / Tab opens the field inventory (dither, Items/Equip/Key/Materials tabs, party pane, gold). Q/E (or left/right on Items/Key/Materials) cycle tabs. Z on a Minor Potion opens the target picker (15 HP). The Equip tab shows all seven slots (Main Hand, Off Hand, Head, Body, Legs, Accessory 1, Accessory 2) in two columns; Iron Helm uses Head. Key items use the key icon and cannot be used or sold. X / I closes the menu. Input stays locked while it is open. Marda and Hob portraits appear in their dialogue (and Marda / Pell in the shop header).
 - [ ] A6 Overworld chests use wood sprites; Watchtower / basement chests use iron. Opening plays the 3-frame strip once and grants the listed loot (or stays a placeholder if the loot is flagged as such).
 - [ ] A7 Encounter triggers and the Watchtower Hunter show the matching overworld enemy (or Blackguard) sprite when imported. A missing sprite still starts the fight.
 - [ ] A8 Battle: area background (Greyhaven / forest / bandit camp / Watchtower / Blackguard arena), party on the right flipped (`xscale = -1`), enemies on the left facing right, nine-slice command / HP windows, gauntlet cursor, bitmap font, HP bars (colour shifts under 50% / 25%), Guard status icon, floating damage digits. Z still skips clips. Missing strips fall back to rectangles and do not stall `ANIMATING`.
@@ -276,7 +328,7 @@ Set up the rooms with `game/rooms/ROOM_SETUP.md` §6c and import the art with `g
 - [ ] D8 **Heist.** Enter the warehouse: LC_HEIST_01–03 play once. The room is dark (night overlay, lantern pools). The side door and the notes desk talk. Taking the notes adds the Scholar's Notes, sets `flag_scholar_notes` (repeat: LC_NOTE_R1/R2).
 - [ ] D9 **Debtman break.** Leave the warehouse with the notes: LC_BREAK_01–05, then the fight. Leaving without the notes (or after the fight) is a plain exit.
 - [ ] D10 **The fight.** Lyra joins at the fight start (3rd slot, Kael's level, twin daggers equipped; DM_SYS_01 notes it). The Debtman's kit: knife, Hook Reel, Collect (drain), bind (Slow). When both toughs fall he plays DM_PHASE2_01 and hits harder and faster. At 0 HP he **yields** (DM_DEFEAT_01, held alive); `flag_debtman_yielded` and `flag_debtman_beaten` are set and the adds withdraw.
-- [ ] D11 **Join talk.** After the win: DM_DEFEAT_02–05, DM_REWARD_01, LY_JOIN_01–08, then `flag_lyra_recruited` and Q_BV_S5. Lyra fights with the placeholder battle strips (idle/walk/attack/hurt/defend/death).
+- [ ] D11 **Join talk.** After the win: DM_DEFEAT_02–05, DM_REWARD_01, LY_JOIN_01–08, then `flag_lyra_recruited` and Q_BV_S5. Lyra fights with her generated party-kit battle strips (idle/walk/attack/hurt/defend/death).
 - [ ] D12 **Item command.** In any battle: select Item — usable items list; use a heal item on an ally (consumes), an MP item, and an item with none left. Greyed-out entries cannot be chosen. Items used in battle are gone after the fight.
 - [ ] D13 **Chapter end.** The west gate before Lyra: VM_HANDOFF_GATE blocks. With Lyra and the notes: VM_HANDOFF_01–05, `flag_chapter3_complete`, save prompt. Leaving is a no-op (Chapter 4 has no room). The gate stays open afterwards.
 
@@ -314,7 +366,7 @@ Setup: a save at the end of Chapter 4 (`flag_chapter4_complete`, Q_BV_S6 active)
 - [ ] F11 **Records.** Inside `rm_garrison_keep`, the desk trigger plays BW_LEAD_01–11 once and sets `flag_blackwood_lead`; the ledger, map table and dispatch chest give their inspect text. SR_STAKE_01–09 play once on the walk back and set `flag_sera_stake_done`; repeat is SR_STAKE_R1.
 - [ ] F12 **Sera joins.** Leaving the keep after the stake plays SR_JOIN_01–09 and SR_SYS_01–04 on the doorstep, then moves to the yard. She is the fifth roster member (four active, one reserve), joins at Kael's level, has the Holy Sword equipped, and the cell-block NPC is gone. Party Order can swap her into the active line.
 - [ ] F13 **Sera's kit.** In battle her Skill menu lists Mend, Aegis and Smite. Mend heals the most-hurt ally, Aegis raises one ally's DEF for 3 turns, and Smite deals holy damage (×1.5 against Shade Stalker and Lost One). All three spend MP and their numbers are PLACEHOLDER.
-- [ ] F14 **Treeline handoff.** The east exit (`to_blackwood`, tile 25,10) before the join only says CH5_HANDOFF_LOCKED. After the join it plays BG_HANDOFF_01–08 then FK4_01–05 once, sets `flag_fk_seen_4`, `flag_chapter5_complete` and `flag_act2_complete`, moves the quest to Q_BV_S7 and offers the quiet save prompt. Afterwards the same door is the unbuilt `rm_blackwood_deep` stub. No Mira sighting, no forest.
+- [ ] F14 **Treeline handoff.** The east exit (`to_blackwood`, tile 25,10) before the join only says CH5_HANDOFF_LOCKED. After the join it plays BG_HANDOFF_01–08 then FK4_01–05 once, sets `flag_fk_seen_4`, `flag_chapter5_complete` and `flag_act2_complete`, moves the quest to Q_BV_S7 and offers the quiet save prompt. Step off and back on to enter the built `rm_blackwood_deep` at `from_garrison` (Chapter 6). No Mira sighting.
 - [ ] F15 **Journal.** After F14 the Quests page reads stage 7 / 7 for Beyond the Veil, objective "Follow the trail into the Blackwood."
 
 Record GameMaker version, date, result, and reproducible failures.
@@ -335,7 +387,7 @@ Setup: a save at the end of Chapter 5 (`flag_chapter5_complete`, `flag_sera_recr
 - [ ] F26 **The share.** Returning to Cinderhollow plays CH_FEED_01–06, CH_END_01 and CH_END_02 once — Berrin's *"We don't pay it. We feed it."* — sets `ch6_feed_revealed` and `chapter6_complete`, and shows **no act-complete card**. Re-entry plays nothing.
 - [ ] F27 **Journal.** The Quests page shows Beyond the Veil complete (7 / 7) and What the Forest Keeps at stage 1 before the Hulk, stage 2 after it, objective "Find out what Cinderhollow pays, and to whom."
 - [ ] F28 **Audio and saves.** The deep room plays `snd_amb_forest`, the hollow `snd_amb_fire`, both under the overworld theme; the chapter offers no save prompt of its own (it contains no save room), and saving at the garrison after the Hulk is not possible either — the save crystals are in town.
-- Not covered here: Berrin and the burners use `spr_story_npc_placeholder`, so F20–F26 are visually wrong until the Blackwood art exists.
+- Not covered here: the burners and Berrin now have dedicated sets, but F20–F26 remain unplayed; the kiln crowd is three authored figures, not a full eight-or-nine-burner crowd.
 
 Record GameMaker version, date, result, and reproducible failures.
 
@@ -355,7 +407,7 @@ Setup: a save from the end of Chapter 6 (`chapter6_complete`, `ch6_hulk_defeated
 - [ ] G11 **Chapter 7 ends.** Walking to the north-east far edge after victory plays CH7_END_01–02, sets `ch7_glade_crossed` and `chapter7_complete`. The `to_doors` exit refuses with CH7_LOCKED_DOORS before the Matriarch dies and works after.
 - [ ] G12 **The Warden.** DW_ARRIVE_01–05 play once on entry (Q_MBW_S5); the sentinel lore plays DW_SENT_01–03 then DW_SENT_R1; crossing y < 144 plays DW_INTRO_01–05 and starts `grp_door_warden_boss` (Warden + 2 level-20 Sentinels) with boss music.
 - [ ] G13 **The pendant.** After the Warden dies, walking to the threshold plays PD_SCENE_01–11 then ACT3_END_01–03: the mark matches the pendant, the pendant warms, the seam lights, one sound answers, silence, and the door is still shut. `ch8_pendant_answered`, `chapter8_complete`, `flag_act3_complete` are set and Q_MBW_S6 is active. No Fallen Knight appears anywhere in the chapter.
-- Not covered: the Lost Ones, sentinels and Berrin use `spr_story_npc_placeholder`, and the doors themselves are two stone tiles — G6, G12 and G13 will look wrong until the Blackwood art exists.
+- Not covered: G6 and G13 remain unplayed. The Lost Ones now have dedicated sets (one boots variant), as do the sentinels and Berrin.
 
 ### Chapter 9 — The Crown's Ledger (Act IV)
 
@@ -367,13 +419,13 @@ Setup: a save from the end of Chapter 6 (`chapter6_complete`, `ch6_hulk_defeated
 - [ ] H6 **Defeat retry.** Losing does not set `ch9_page_taken`; talking to Vell again goes straight to VG_FIGHT_01–05 and the fight, without replaying the ledger scene.
 - [ ] H7 **The page.** On victory, VG_YIELD_01–03 and VG_PAGE_01–11 play; `ch9_vell_yielded`, `ch9_page_taken`, `Q_MC_S2` and `Q_SL_S1` are set. Talking to him again plays `VG_MEET_R1`.
 - [ ] H8 **Nessa gating.** Before the page she plays CL_WAIT_01–02; afterwards her scene CL_CHOICE_01–04 leads to the choice; once the side quest is complete she plays `CL_CHOICE_R1`.
-- [ ] H9 **Copy branch.** Choosing "Copy it. An hour." plays CL_COPY_01–04, sets `ch9_page_copied` and `ch9_shop_discount`, and completes `Q_SIDE_LEDGER`. The discount is **not** applied by the shop yet — expected.
+- [ ] H9 **Copy branch.** Choosing "Copy it. An hour." plays CL_COPY_01–04, sets `ch9_page_copied` and `ch9_shop_discount`, and completes `Q_SIDE_LEDGER`. The shop then charges 10% less at every merchant (rounded down, minimum 1); the row shown and the gold deducted agree, and the discount is absent on the keep branch.
 - [ ] H10 **Keep branch.** Choosing "No. The page doesn't leave our hands." plays CL_TAKE_01–04, sets `ch9_page_kept` and completes `Q_SIDE_LEDGER`, with no reward.
 - [ ] H11 **Alden gating.** Before the page Alden plays AL_WAIT_01–02; afterwards AL_MEET_01–21 set `ch9_alden_met` and `ch9_alden_pact`; talking again plays `AL_MEET_R1`. Nothing in the scene frames him as a traitor, and Taren answers before Kael.
-- [ ] H12 **The road south.** Before the page, stepping on the south exit plays CH9_ROAD_01–03 and refuses. With the page it plays CH9_END_01–09 and sets `chapter9_complete`; stepping on it again lets the engine report that `rm_barrow_gate` is not built yet.
+- [ ] H12 **The road south.** Before the page, stepping on the south exit plays CH9_ROAD_01–03 and refuses. With the page it plays CH9_END_01–09 and sets `chapter9_complete`; step off and back on to enter `rm_barrow_gate` at `from_town`.
 - [ ] H13 **Encounters.** The `crown_barrow` zone covers the southern outskirts only; the square and the ledger house are safe, and the boss is scripted rather than walked into.
 - [ ] H14 **Quests.** The journal lists *The King Who Was Forgotten* at S1→S2 and *The Page Nobody Asked For* at S1→complete, and *What the Forest Keeps* as Complete.
-- Not covered: Vell, Nessa and Alden are all `spr_story_npc_placeholder` (Alden has no sprite), Coleford is a Wrenfield blockout with no town tileset, and nothing here has been compiled or played. H5's yield, H7's post-battle queue and H12's exit gating are the three behaviours most likely to need a real IDE pass.
+- Not covered: Vell's and Nessa's new dedicated sets have not been seen in an IDE (Alden now has a dedicated set and portrait too), Coleford now builds on `ts_coleford` (unseen in an IDE), and nothing here has been compiled or played. H5's yield, H7's post-battle queue and H12's exit gating are the three behaviours most likely to need a real IDE pass.
 
 ### Chapter 10 — The Barrow Road (Act IV)
 
@@ -385,11 +437,11 @@ Setup: a save from the end of Chapter 6 (`chapter6_complete`, `ch6_hulk_defeated
 - [ ] I6 **Two phases.** At 50% HP the Warden shifts: DEF +20% / ATK +15%, and the phase line "The iron remembers the oath it was given." shows.
 - [ ] I7 **Defeat retry.** Losing sets `ch10_boss_cool`; walking back south of y > 240 re-arms, and the next approach plays `BW_RETRY_01` + BW_INTRO_04–06 before the fight.
 - [ ] I8 **Victory.** BW_AFTER_01–08 play, `ch10_warden_defeated` and `Q_MC_S4` are set, and the gate stands open.
-- [ ] I9 **The steps.** With the Warden alive the north exit plays `CH10_LOCKED` and refuses. After victory it plays CH10_END_01–09 and sets `chapter10_complete`; stepping on it again lets the engine report `rm_barrow_halls` is not built yet.
+- [ ] I9 **The steps.** With the Warden alive the north exit plays `CH10_LOCKED` and refuses. After victory it plays CH10_END_01–09 and sets `chapter10_complete`; step off and back on to enter `rm_barrow_halls` at `from_gate`.
 - [ ] I10 **Encounters.** The `crown_barrow` zone covers the road approach only; the forecourt and the arch are safe, so the Warden is never walked into tired.
 - [ ] I11 **Alden.** He is present in the arrival, the gate scene and the aftermath, holds the outer gate during the fight, and does **not** appear in the battle line. Nothing in the chapter frames him as a traitor.
 - [ ] I12 **Quests.** The journal lists *The King Who Was Forgotten* at S3→S4 with S5–S6 visible in the definition (the journal shows the current stage only), and no other quest changes.
-- Not covered: the Warden reuses `sanctuary_warden`'s strips, Alden is a placeholder sprite, the gatehouse is a Wrenfield blockout, and nothing has been compiled or played. I5–I7 (the y-threshold gate, the shift and the retry) are the behaviours most likely to need a real IDE pass.
+- Not covered: the Warden reuses `sanctuary_warden`'s strips, Alden has a dedicated overworld set and portrait but no battle strips, the gatehouse now builds on the `ts_barrow` crypt atlas (unseen in an IDE), and nothing has been compiled or played. I5–I7 (the y-threshold gate, the shift and the retry) are the behaviours most likely to need a real IDE pass.
 
 ### Chapter 11 — The Forgotten King (Act IV)
 
@@ -408,7 +460,7 @@ Setup: a save from the end of Chapter 6 (`chapter6_complete`, `ch6_hulk_defeated
 - [ ] J13 **The act card.** Either branch plays ACT4_END_01–06, completes `Q_MAIN_CROWN`, and sets `chapter11_complete` and `flag_act4_complete`.
 - [ ] J14 **Re-entry.** A save that leaves and re-enters the last chamber after the fight still gets the seal choice exactly once; after it, nothing replays.
 - [ ] J15 **What must not happen.** The King never speaks in sentences, never names Mira, the Fallen Knight or Alden; the Fallen Knight never appears; the mark is given the name *the Crownveil* and never defined, and *the Ashen Crown* is not used for it.
-- Not covered: both rooms are Wrenfield blockouts, the King reuses `sanctuary_warden`'s strips, and the placeholder standing in for him on the dais is `spr_story_npc_placeholder`. Nothing has been compiled or played. J6–J10 (the charter gate, the shift, the queued aftermath and the choice race guard) are the behaviours most likely to need a real IDE pass.
+- Not covered: both rooms now build on the `ts_barrow` crypt atlas (unseen in an IDE), the King reuses `sanctuary_warden`'s strips, and the placeholder standing in for him on the dais is `spr_story_npc_placeholder`. Nothing has been compiled or played. J6–J10 (the charter gate, the shift, the queued aftermath and the choice race guard) are the behaviours most likely to need a real IDE pass.
 
 Record GameMaker version, date, result, and reproducible failures.
 
@@ -420,18 +472,19 @@ Setup: fresh save; walk the farm path to the guaranteed Bandit trigger (overworl
 - [ ] T4 After the win, FL_TUTORIAL_04-05 play on the map; random encounters now roll.
 - [ ] T5 If Kael guards and the Bandit uses Cheap Shot, damage is higher than a normal hit on a guarding target (x1.5); on a non-guarding target it is a normal hit.
 - [ ] T6 With Kael below 25% HP, FL_TUTORIAL_SYS_05 shows once and his damage taken / dealt reflects ATK +15% / DEF +10%.
-- [ ] T7 A Grave Spider's Venom Bite can poison ("Pn" tag); poison ticks at round start for ~5% max HP (never kills); an Antidote used in battle (Item command) removes it.
+- [ ] T7 A Grave Spider's Venom Bite can poison ("Pn" tag); poison ticks at round start for ~5% max HP and can reduce a regular combatant to 0; an Antidote used in battle (Item command) removes it.
 - [ ] T8 An old save with the tutorial already won still rolls random encounters (cleared-encounters fallback).
+- [ ] T9 A bleed or poison tick that kills the last enemy goes straight to the victory screen, with XP/gold/drops granted once; a tick that kills the last active party member goes to defeat. A dead combatant does not tick again or repeat its "falls" line on later rounds.
 
 ## Adventure menu, Bestiary, Escape
 Setup: fresh save, overworld. `DEBUG_ADD_FULL_ROSTER` on if the party rows should show more than Kael.
 - [ ] M1 I or Tab opens the Adventure menu (not the inventory directly); I / Tab / X / Backspace closes it, and the overworld does not move while it is open.
 - [ ] M2 Items and Equip open the inventory on the right tab; closing the inventory does not reopen the Adventure menu and does not leave `menu_open` stuck.
-- [ ] M3 Status: the five roster members cycle with left/right (active first, then the reserve); class, role, level, XP to next level, HP/MP, ATK/DEF/MAG/MDF/SPD, the four equipment slots and the skill list match the debugger. A member with no skills shows "(none)".
+- [ ] M3 Status: the five roster members cycle with left/right (active first, then the reserve); class, role, level, XP to next level, HP/MP, ATK/DEF/MAG/MDF/SPD, all seven equipment slots and the skill list match the debugger. A member with no skills shows "(none)".
 - [ ] M4 Party Order: left/right moves the highlighted member within slots 1–4, and the next battle's command / turn order follows the new order; Z on a slot swaps in the reserve member and the message names both. With no reserve, Z says "No one is in reserve." With one active member, left/right does nothing.
-- [ ] M5 Bestiary counter starts at 0/33 on a fresh save; every enemy on the field is marked seen at battle start; `???` entries show "No record yet."
+- [ ] M5 Bestiary counter starts at 0/43 on a fresh save; every enemy on the field is marked seen at battle start; `???` entries show "No record yet."
 - [ ] M6 Beat an enemy: its defeated count goes to 1 and it stays 1 after a second battle where it is only met (seen) and not killed. Kill the same enemy twice in one battle (two adds): count goes up by 2.
-- [ ] M7 Save at a save point, reload: the Bestiary log (seen + defeated counts) is restored. Load a save made before this change (schema v1/v2): it loads, the log is empty, and `[save] migrated a pre-v3 save to v3` appears in the debug log.
+- [ ] M7 Save at a save point, reload: the Bestiary log (seen + defeated counts) is restored. Load a save made before schema v4: it loads, the log is empty where it predates the log, and the migration warning names the old version.
 - [ ] M8 Escape: an ordinary field fight offers Escape as the last command. Success ("The party breaks away from the fight.") returns to the pre-battle position with no XP/gold change and the encounter not cleared (walking back onto a fixed trigger starts the fight again). Failure ("Couldn't get away!") spends that member's turn and the enemies act.
 - [ ] M9 Escape is absent against a boss (e.g. Blackguard), in a scripted story fight, and in the tutorial Bandit fight.
 - [ ] M10 All four save crystals open the slot panel and write the file: Greyhaven Chapel (tile 10,7), Greyhaven Tavern (tile 10,6), the Bent Post (Wrenfield, tile 4,9) and the Salt Lamp (Valemere, tile 4,6). Each crystal stands on open floor and can be reached from the room's door. In the Bent Post, check it in both the closed and open states — the crystal must not be buried in the chairs-up patch and its tile must stay walkable. A crystal placed by hand in a road room (e.g. `rm_millhaven_road`) opens "No shrine, no hearth. Save only at a crystal inside a town's church or tavern." instead.
@@ -448,7 +501,7 @@ Setup: fresh save, overworld. `DEBUG_ADD_FULL_ROSTER` on if the party rows shoul
 ## Audio (generated assets; untested in GameMaker)
 - [ ] A1 Sounds → `sounds` lists all 29 resources and each one plays from the Sound editor without an "unsupported format" error.
 - [ ] A2 Enter the overworld from the title: "The Ashen Road" starts, loops without a click at the 40 s seam, and does not restart when walking through a door back into the same room.
-- [ ] A3 Ambience matches the room: wind outdoors (`rm_overworld`, `rm_millhaven_road`, `rm_valemere`), forest in Wrenfield and the Blackwood garrison, dungeon in the watchtower basement / warehouse / Hollow sanctuary / chapel, fire in the tavern, blacksmith, Bent Post, Salt Lamp and keep.
+- [ ] A3 Ambience matches the room: wind outdoors (`rm_overworld`, `rm_millhaven_road`, `rm_valemere`), forest in Wrenfield and the Blackwood garrison, dungeon in the watchtower basement / warehouse / Hollow sanctuary / chapel, fire in the tavern, blacksmith, Bent Post, Salt Lamp and keep, night in the Blackwood shrine and glade. Water is mapped to the Saltreach pier, shipwreck and flooded ruins, but those rooms are not built yet.
 - [ ] A4 An ordinary encounter switches to "Steel and Ash"; the Blackguard (or any fight with `boss_index >= 0`) switches to "Crown of Black Sun"; leaving the battle restores the field track and the ambience bed.
 - [ ] A5 Battle cues: Attack plays a swing then a hit; a crit plays the sharper crit hit; Guard clanks; a heal chimes; a status skill plays the cast rise; a victory with a level-up plays the level-up fanfare once, not once per level.
 - [ ] A6 Adventure menu: moving the cursor blips, confirm chirps, cancel drops a step — one sound per press, no double-trigger when holding the key.
@@ -458,6 +511,7 @@ Setup: fresh save, overworld. `DEBUG_ADD_FULL_ROSTER` on if the party rows shoul
 - [ ] A11 Ranged cue: the Ashbound Hunter's attack plays `arrow` instead of a sword swing, and the Crown Crossbowman's Bolt does the same. A normal Bandit or Fallen Knight attack still plays `attack_swing`.
 - [ ] A12 `enemy_fall` plays when a regular enemy's death clip starts, but not when a boss yields; `party_hurt` plays when a party member is hit and not when an enemy is. Both land on the hit frame, with the damage numbers, not on the command.
 - [ ] A13 `menu_open` plays once when the Adventure menu opens (not on every cursor move), and `menu_error` plays when a shop refuses for gold, for a key item, or for having nothing to sell.
+- [ ] A14 Blind and Sleep draw the new 10×10 icons in battle, not the old "Bl" / "Sl" text, and the icons do not overlap the HP/MP numbers.
 - [ ] A10 No crackle or gap at any loop point after 10 minutes on the overworld theme (listens for the 40 s seam and the ambience crossfade).
 
 ## Bestiary monster illustrations (untested in GameMaker)
@@ -465,7 +519,7 @@ Setup: fresh save, overworld. `DEBUG_ADD_FULL_ROSTER` on if the party rows shoul
 - [ ] B2 Win a fight against a Bandit, then open the Bestiary: its plate shows the bandit idle frame on the lighter background, upright and centred, with the contact shadow under its feet and nothing clipped by the pane border.
 - [ ] B3 Check the large-art entries — Blackwood Matriarch and Sanctuary Warden (96x96 sheets) and Blackguard / Reeve Calder / Debtman / Commander Hailen (48x64): each is scaled to fit inside the 60x64 plate without touching the frame.
 - [ ] B4 Move the cursor down the list: the plate follows the selection on every row, including rows reached by scrolling, and stays in step with the name and stats.
-- [ ] B5 Every one of the 42 entries shows art — the "?" plate should never appear for a shipped enemy, only for an enemy added without a battle sheet.
+- [ ] B5 Every one of the 43 entries shows art — the "?" plate should never appear for a shipped enemy, only for an enemy added without a battle sheet.
 - [ ] B6 Descriptions never run into the "Weak" row: check the longest ones (Bandit, Reeve Calder, Fallen Knight, Blackwood Matriarch). Temporarily lengthen one past 72 characters and confirm `scr_bestiary_desc_fit` cuts at a word and adds "..." instead of overlapping.
 - [ ] B7 Weak / Found / the six stats are still readable on the narrow columns (x192 and x244) with four-digit values (e.g. the Matriarch's HP).
 - [ ] B8 `burn_line_hulk` and `door_warden_boss` (listed as **The Door Warden**) appear after `briar_hulk` and `door_warden` with descriptions, at 33 → 35 entries. Beating a `ward_sentinel_late` marks the **Ward Sentinel** row rather than adding one, and no two rows share a name.

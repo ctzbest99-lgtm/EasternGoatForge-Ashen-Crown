@@ -81,6 +81,8 @@ for (_i = 0; _i < array_length(enemies); _i++) {
     if (scr_battle_has_buff_sign(_me, "atk", 1)) { scr_ui_status_icon(_ix, _by + 1, 6); _ix += 10; }
     if (scr_battle_has_buff_sign(_me, "def", 1) || _me.is_guarding) { scr_ui_status_icon(_ix, _by + 1, 11); _ix += 10; }
     if (scr_battle_has_buff_sign(_me, "def", -1)) { scr_ui_status_icon(_ix, _by + 1, 5); _ix += 10; }
+    if (scr_battle_status_has(_me, "blind")) { scr_ui_status_icon_extra(_ix, _by + 1, 0); _ix += 10; }
+    else if (scr_battle_status_has(_me, "sleep")) { scr_ui_status_icon_extra(_ix, _by + 1, 1); _ix += 10; }
 }
 
 // Boss name plate (top-left), as in Chapter 1.
@@ -219,8 +221,12 @@ if (_choosing) {
             else if (scr_battle_has_buff_sign(_hud, "def", -1)) _icon = 5;
             else if (scr_battle_has_buff_sign(_hud, "spd", 1)) _icon = 8;
             else if (scr_battle_has_buff_sign(_hud, "spd", -1)) _icon = 9;
+            var _status_icon = -1;
+            if (scr_battle_status_has(_hud, "blind")) _status_icon = 0;
+            else if (scr_battle_status_has(_hud, "sleep")) _status_icon = 1;
             var _tags = scr_battle_status_tags(_hud);
-            if (_tags != "") scr_ui_text(303, _hy, string_copy(_tags, 1, 2), make_color_rgb(186, 140, 220)); // blind / sleep (no icon frames yet)
+            if (_status_icon != -1) scr_ui_status_icon_extra(303, _hy + 5, _status_icon);
+            else if (_tags != "") scr_ui_text(303, _hy, string_copy(_tags, 1, 2), make_color_rgb(186, 140, 220));
             else if (_icon != -1) scr_ui_status_icon(309, _hy + 5, _icon);
         }
     }

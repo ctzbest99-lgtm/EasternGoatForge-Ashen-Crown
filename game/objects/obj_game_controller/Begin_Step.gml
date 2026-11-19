@@ -10,12 +10,12 @@ scr_ch5_tick(); // Chapter 5 (no per-frame beats yet)
 scr_ch6_tick(); // Chapter 6 (the burn-line boss gate)
 scr_ch7_tick(); // Chapter 7 (the Matriarch gate, the chapter handoff)
 scr_ch8_tick(); // Chapter 8 (the Warden gate, the pendant scene)
-scr_ch10_tick(); // Chapter 10 (the Barrow Warden gate)
-scr_ch11_tick(); // Chapter 11 (the King's gate, the seal)
+scr_ch10_tick(); // Chapter 10 (the Barrow Warden gate and retry)
+scr_ch11_tick(); // Chapter 11 (the King gate and the seal choice)
 
 
-// Adventure menu overlay (I / Tab / controller Start). Opening is blocked while dialogue / battle / a menu
-// is already up; closing is handled here so the same input works while menu_open is true.
+// Adventure menu overlay (I or Tab). Opening is blocked while dialogue / battle / a menu is
+// already up; closing is handled here so I still works while menu_open is true.
 var _title = asset_get_index("rm_title");
 var _on_title = (_title != -1 && room == _title);
 if (!_on_title && room != BATTLE_ROOM && scr_input_menu_pressed()) {
@@ -30,10 +30,7 @@ if (!_on_title && room != BATTLE_ROOM && scr_input_menu_pressed()) {
         instance_destroy(_adv);
     } else if (!_other_menu && !scr_input_locked()) {
         // The Adventure menu is the field-menu shell: Items / Equip / Party Order / Status / Bestiary.
-        if (_adv != -1) {
-            var _new_adv = instance_create_depth(0, 0, -100000, _adv);
-            if (_new_adv != noone) _new_adv.opened_frame = global.game.frame;
-        }
+        if (_adv != -1) instance_create_depth(0, 0, -100000, _adv);
     }
 }
 

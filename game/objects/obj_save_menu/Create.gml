@@ -2,6 +2,7 @@
 scr_game_state_init();
 scr_ui_init();
 global.game.menu_open = true;
+opened_frame = global.game.frame;
 mode = "save";        // "save" | "load"
 need_prompt = false;  // mockups go straight to the slot list
 prompt_index = 1;     // overwrite defaults to No

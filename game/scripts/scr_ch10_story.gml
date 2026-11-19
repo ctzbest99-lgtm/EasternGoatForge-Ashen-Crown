@@ -14,8 +14,8 @@
 /// - Alden does not occupy a battle slot; the engine has no ally slot. His part is scripted.
 /// - The outline's "physical resistance in phase two" ships as a DEF buff, because the battle
 ///   system has no damage-type resistance.
-/// - The north exit targets `rm_barrow_halls`, which Chapter 11 will build. The exit script plays
-///   the chapter's end scene and then lets the engine report the room is not built yet.
+/// - The north exit targets `rm_barrow_halls`, which Chapter 11 built. The exit script plays
+///   the chapter's end scene, then the next bump transitions into the halls.
 
 function scr_ch10_quest_set(_quest_id, _stage_id) {
     scr_flag_set("quest_" + _quest_id, _stage_id);
@@ -125,7 +125,7 @@ function scr_ch10_exit_script(_door) {
         scr_ch10_end_scene();
         return true;
     }
-    // Past this point the engine reports that rm_barrow_halls is not built yet — by design.
+    // The chapter-end scene has played; obj_zone_entrance now performs the move.
     return false;
 }
 

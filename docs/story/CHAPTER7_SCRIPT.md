@@ -3,7 +3,7 @@
 Route: the burn line's far side → `rm_blackwood_shrine` (the shrine under the roots, the basin, the Lost Ones) → `rm_blackwood_glade` (the Matriarch's clearing) → the far edge of the glade, where the doors show through the trees.
 
 > **Status: BUILT 2026-11-16 from the approved Act III outline, decisions as recommended — not yet individually approved, not played.** Built under the standing instruction to keep building the acts and chapters. The outline's §9 decisions 4–8 are implemented as recommended: the tithe stays unresolved, the Matriarch holds the glade, the door is not opened here, the Fallen Knight does not appear, and the side quest offers both choices with no correct answer.
-> **Not played.** `rm_blackwood_shrine` and `rm_blackwood_glade` are Wrenfield blockouts, the Lost Ones use the placeholder NPC sprite, and nothing has been compiled.
+> **Not played.** `rm_blackwood_shrine` and `rm_blackwood_glade` now build on the placeholder `ts_blackwood` atlas, the Lost Ones have dedicated overworld sets, and nothing has been compiled.
 > Levels: **19–20** **[PLACEHOLDER]** — the top of the act's band (`blackwood`, 18–20).
 
 Source of truth: `STORY_BIBLE.md` and `ACT3_OUTLINE.md` §4. Presentation: FF1-style top-down exploration; menu battles.
@@ -299,8 +299,8 @@ Opens in §2 and closes in the same scene. Reward on the second choice: 120 Gold
 
 1. **Dialogue data** — `scr_dialogue_data_ch7`, nodes as above. **Done.**
 2. **Story script** — `scr_ch7_story`: entry, basin, the tithe choice and its two branches, the Lost Ones, the glade and the Matriarch gate. **Done.**
-3. **Rooms** — `rm_blackwood_shrine` and `rm_blackwood_glade`, Wrenfield blockouts, plus the marker tables. **Done.**
-4. **Art** — Blackwood tileset, the Lost Ones' overworld set, the Matriarch's overworld set, the doors as scenery. **Not done** (unchanged art debt).
+3. **Rooms** — `rm_blackwood_shrine` and `rm_blackwood_glade` on `ts_blackwood`, plus the marker tables. **Done.**
+4. **Art** — Blackwood tileset, the Matriarch's overworld set, the doors as scenery. The Lost Ones' overworld set is done; the rest is unchanged art debt.
 5. **Audio** — `snd_amb_night` assigned to the shrine and glade. **Done.**
 6. **Docs/tests** — CHANGELOG, TEST_PLAN, DECISIONS, outline status. **Done.**
 

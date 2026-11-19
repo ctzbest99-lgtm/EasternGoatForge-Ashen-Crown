@@ -74,6 +74,26 @@ for fn in os.listdir(os.path.join(SRC, 'scripts')):
     b = open(os.path.join(OUT,'scripts',fn[:-4],fn[:-4]+'.gml')).read()
     if a != b: errors.append(f"script {fn} differs")
 
+# object events byte-identical. The script check above does not see object code, which is where
+# the Chapter 9–11 controller hooks drifted once; keep the source and mirror in lockstep.
+EVENT_FILES = {
+    'Create': 'Create_0', 'Step': 'Step_0', 'Begin_Step': 'Step_1',
+    'End_Step': 'Step_2', 'Room_Start': 'Other_2', 'Clean_Up': 'CleanUp_0',
+    'Draw': 'Draw_0', 'Draw_GUI': 'Draw_64', 'Draw_64': 'Draw_64'
+}
+for obj in sorted(os.listdir(os.path.join(SRC, 'objects'))):
+    src_dir = os.path.join(SRC, 'objects', obj)
+    out_dir = os.path.join(OUT, 'objects', obj)
+    if not os.path.isdir(src_dir): continue
+    for fn in sorted(os.listdir(src_dir)):
+        if not fn.endswith('.gml'): continue
+        out_name = EVENT_FILES.get(fn[:-4], fn[:-4]) + '.gml'
+        out_path = os.path.join(out_dir, out_name)
+        if not os.path.exists(out_path):
+            errors.append(f"object event {obj}/{fn} has no mirror {out_name}")
+        elif open(os.path.join(src_dir, fn),'rb').read() != open(out_path,'rb').read():
+            errors.append(f"object event {obj}/{fn} differs from {out_name}")
+
 # datafiles identical
 n = 0
 for root, dirs, files in os.walk(os.path.join(SRC,'datafiles')):

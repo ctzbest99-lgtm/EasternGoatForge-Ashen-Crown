@@ -88,13 +88,17 @@ if (mode == "status") {
         scr_menu_text_right(_col_val, _sty, string(_stat_vals[_st]), MENU_COL_W);
     }
 
-    var _eq_slots = ["weapon", "armor", "helm", "accessory"];
-    var _eq_labels = ["WPN", "ARM", "HLM", "ACC"];
-    for (var _eqi = 0; _eqi < 4; _eqi++) {
-        var _eqy = 104 + 14 * _eqi;
+    // Seven slots in two columns: main/off/head/body left, legs + both accessories right.
+    var _eq_slots = scr_equipment_slots();
+    var _eq_labels = ["WPN", "OFF", "HD", "BD", "LG", "A1", "A2"];
+    for (var _eqi = 0; _eqi < array_length(_eq_slots); _eqi++) {
+        var _eqc = (_eqi < 4) ? 0 : 1;
+        var _eqr = (_eqi < 4) ? _eqi : _eqi - 4;
+        var _eqx = _col_x + _eqc * 70;
+        var _eqy = 104 + 14 * _eqr;
         var _eqid = scr_actor_equipped_in_slot(_sa, _eq_slots[_eqi]);
-        scr_menu_text(_col_x, _eqy, _eq_labels[_eqi], MENU_COL_G);
-        scr_menu_text_right(MENU_ADV_FULL_X + MENU_ADV_FULL_W - 8, _eqy, (_eqid != "") ? scr_item_get(_eqid).name : "-", (_eqid != "") ? MENU_COL_W : MENU_COL_A);
+        scr_menu_text(_eqx, _eqy, _eq_labels[_eqi], MENU_COL_G);
+        scr_menu_text_right(_eqx + 66, _eqy, (_eqid != "") ? string_copy(scr_item_get(_eqid).name, 1, 9) : "-", (_eqid != "") ? MENU_COL_W : MENU_COL_A);
     }
 
     // Skills across the bottom.

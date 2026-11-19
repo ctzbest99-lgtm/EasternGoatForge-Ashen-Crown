@@ -13,6 +13,10 @@ function scr_actor_create(_actor_id, _name, _max_hp, _attack, _defense, _spd = 8
         defense: _defense,
         base_attack: _attack,
         base_defense: _defense,
+        // MAG starts at the actor's ATK so existing magic users keep their damage curve;
+        // equipment MAG is added on top by scr_actor_refresh_equipment().
+        magic: _attack,
+        base_magic: _attack,
         // Battle upgrade: SPD (turn order), MDEF (magic defense), MP / max MP, skills.
         // `spd` / `mdef` are the current values; `base_spd` / `base_mdef` are before gear (gear has none yet).
         spd: _spd,
@@ -24,7 +28,8 @@ function scr_actor_create(_actor_id, _name, _max_hp, _attack, _defense, _spd = 8
         skills: [],          // active skill ids (scr_skill_get); shown under the Skill command
         passives: [],        // passive skill ids (e.g. "unbowed"); never shown in the Skill menu
         buffs: [],           // battle-only [{ stat, pct, turns, source }]; cleared at battle start / end
-        statuses: [],        // battle-only status ids (e.g. "fear", "stun"); none are inflicted yet
+        statuses: [],        // battle-only [{ id, turns }] statuses (bleed, poison, blind, sleep, slow, ...)
+        dot_down: false,     // set by scr_battle_tick_statuses when a DoT tick reaches 0 HP
         weakness: "",        // element id; enemies only for now
         is_guarding: false,
         participated: false, // set if they took a turn in the current battle
@@ -34,7 +39,7 @@ function scr_actor_create(_actor_id, _name, _max_hp, _attack, _defense, _spd = 8
         class_name: "",
         role: "",
         joined: false,
-        poisoned: false,     // overworld status; battle poison is not implemented yet
+        poisoned: false,     // overworld/save flag; battle poison lives in `statuses`
         weapon_categories: [],
         equipment: { weapon: "", armor: "", helm: "", accessory: "" }
     };

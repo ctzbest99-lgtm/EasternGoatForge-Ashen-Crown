@@ -6,6 +6,8 @@ if (refresh_slots) {
     refresh_slots = false;
 }
 
+if (global.game.frame == opened_frame) exit; // the press that opened the panel cannot pick a slot in it
+
 if (confirming_overwrite) {
     if (scr_input_up_pressed() || scr_input_down_pressed() || scr_input_left_pressed() || scr_input_right_pressed()) {
         prompt_index = 1 - prompt_index;

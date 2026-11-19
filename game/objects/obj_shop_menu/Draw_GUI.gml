@@ -99,21 +99,14 @@ if (_sel_id != "") {
                 scr_menu_text(232, _y + 2, "Can't use", MENU_COL_A);
             } else {
                 scr_actor_ensure_bases(_a);
-                var _b = scr_item_equip_bonuses(_sel_id);
-                var _slots = ["weapon", "armor", "helm", "accessory"];
-                var _it = _detail;
-                var _atk0 = _a.base_attack;
-                var _def0 = _a.base_defense;
-                var _atk_other = 0;
-                var _def_other = 0;
-                for (var _s = 0; _s < 4; _s++) {
-                    if (_slots[_s] == _it.slot) continue;
-                    var _ob = scr_item_equip_bonuses(scr_actor_equipped_in_slot(_a, _slots[_s]));
-                    _atk_other += _ob.atk;
-                    _def_other += _ob.def;
+                // Same totals the equip pane uses, so shop previews match the bag preview.
+                var _slot = scr_item_slot(_sel_id);
+                if (_slot == "accessory") {
+                    _slot = (scr_actor_equipped_in_slot(_a, "accessory_1") == "") ? "accessory_1" : "accessory_2";
                 }
-                var _atk_new = _atk0 + _atk_other + _b.atk;
-                var _def_new = _def0 + _def_other + _b.def;
+                var _tot = scr_actor_equip_totals(_a, _slot, _sel_id);
+                var _atk_new = _tot.atk;
+                var _def_new = _tot.def;
                 var _atk_dir = (_atk_new > _a.attack) ? 0 : ((_atk_new < _a.attack) ? 1 : 2);
                 var _def_dir = (_def_new > _a.defense) ? 0 : ((_def_new < _a.defense) ? 1 : 2);
                 scr_menu_text_right(256, _y + 2, string(_atk_new), MENU_COL_W);

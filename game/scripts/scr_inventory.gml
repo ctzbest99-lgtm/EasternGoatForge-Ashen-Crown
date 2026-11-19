@@ -2,9 +2,10 @@
 
 function scr_inventory_find(_item_id) {
     scr_game_state_init();
+    var _id = scr_item_id_norm(_item_id);
     var _inv = global.game.inventory;
     for (var _i = 0; _i < array_length(_inv); _i++) {
-        if (is_struct(_inv[_i]) && _inv[_i].item_id == _item_id) return _i;
+        if (is_struct(_inv[_i]) && _inv[_i].item_id == _id) return _i;
     }
     return -1;
 }
@@ -15,23 +16,35 @@ function scr_inventory_has(_item_id) {
 
 /// Add an item. Key items and unique equipment are one-per-party: a second add does nothing
 /// and returns false. Unique equipment is stored key-like so it cannot be sold by accident.
+/// Stackability comes from the item record: consumables/materials merge, gear keeps one row per
+/// copy, so `qty` on a non-stackable row is always 1.
 function scr_inventory_add(_item_id, _name, _qty = 1, _key_item = false) {
     scr_game_state_init();
     var _inv = global.game.inventory;
-    var _it = scr_item_get(_item_id);
-    var _unique = _key_item || _it.key_item || _it.unique;
-    var _index = scr_inventory_find(_item_id);
-    if (_index != -1) {
-        if (_inv[_index].key_item || _unique) return false;
-        _inv[_index].qty += max(1, _qty);
+    var _id = scr_item_id_norm(_item_id);
+    var _known = scr_item_exists(_id);
+    var _it = _known ? scr_item_get(_id) : undefined;
+    var _name_final = _known ? _it.name : _name;
+    var _unique = _key_item || (_known && (_it.key_item || _it.unique));
+    var _stackable = _known ? _it.stackable : true;
+    var _n = max(1, floor(_qty));
+    if (_unique) {
+        if (scr_inventory_count(_id) > 0) return false;
+        _n = 1;
+    }
+    if (!_stackable) {
+        for (var _c = 0; _c < _n; _c++) {
+            array_push(_inv, { item_id: _id, name: _name_final, qty: 1, key_item: _unique });
+        }
         return true;
     }
-    array_push(_inv, {
-        item_id: _item_id,
-        name: _name,
-        qty: max(1, _qty),
-        key_item: _unique
-    });
+    var _index = scr_inventory_find(_id);
+    if (_index != -1) {
+        if (_inv[_index].key_item || _unique) return false;
+        _inv[_index].qty += _n;
+        return true;
+    }
+    array_push(_inv, { item_id: _id, name: _name_final, qty: _n, key_item: _unique });
     return true;
 }
 
@@ -52,9 +65,7 @@ function scr_loot_is_placeholder(_loot) {
 function scr_loot_grant(_loot = undefined, _item_id = "", _item_name = "") {
     scr_game_state_init();
     if (_item_id != "") {
-        var _key = (_item_id == "item_mira_pendant" || _item_id == "item_watchtower_key"
-            || _item_id == "item_ashbound_parchment" || _item_id == "item_crownveil_fragment"
-            || _item_id == "item_blackguard_longsword");
+        var _key = scr_item_exists(_item_id) && scr_item_get(_item_id).key_item;
         var _nm = _item_name;
         if (_nm == "") _nm = scr_item_display_name(_item_id);
         scr_inventory_add(_item_id, _nm, 1, _key);
@@ -68,25 +79,47 @@ function scr_loot_grant(_loot = undefined, _item_id = "", _item_name = "") {
 }
 
 function scr_inventory_count(_item_id) {
-    var _index = scr_inventory_find(_item_id);
-    if (_index == -1) return 0;
-    var _e = global.game.inventory[_index];
-    return (is_struct(_e) && variable_struct_exists(_e, "qty")) ? _e.qty : 0;
+    scr_game_state_init();
+    var _id = scr_item_id_norm(_item_id);
+    var _inv = global.game.inventory;
+    var _total = 0;
+    for (var _i = 0; _i < array_length(_inv); _i++) {
+        var _e = _inv[_i];
+        if (!is_struct(_e) || _e.item_id != _id) continue;
+        _total += variable_struct_exists(_e, "qty") ? max(0, _e.qty) : 0;
+    }
+    return _total;
 }
 
 /// Remove `_qty` of a stack. Key items refuse unless `_allow_key` is true (internal unequip only).
+/// Non-stackable gear can live in several rows, so removal walks every matching row.
 function scr_inventory_remove(_item_id, _qty = 1, _allow_key = false) {
     scr_game_state_init();
-    var _index = scr_inventory_find(_item_id);
-    if (_index == -1) return false;
-    var _e = global.game.inventory[_index];
-    if (!is_struct(_e)) return false;
-    if (_e.key_item && !_allow_key) return false;
+    var _id = scr_item_id_norm(_item_id);
+    var _inv = global.game.inventory;
     var _n = max(1, floor(_qty));
-    if (_e.qty < _n) return false;
-    _e.qty -= _n;
-    if (_e.qty <= 0) array_delete(global.game.inventory, _index, 1);
-    return true;
+    if (scr_inventory_count(_id) < _n) return false;
+    // Check key protection before mutating anything.
+    for (var _k = 0; _k < array_length(_inv); _k++) {
+        var _ke = _inv[_k];
+        if (is_struct(_ke) && _ke.item_id == _id && _ke.key_item && !_allow_key) return false;
+    }
+    var _remaining = _n;
+    var _guard = 0;
+    while (_remaining > 0 && _guard < 1000) {
+        _guard++;
+        var _index = -1;
+        for (var _i = 0; _i < array_length(_inv); _i++) {
+            if (is_struct(_inv[_i]) && _inv[_i].item_id == _id) { _index = _i; break; }
+        }
+        if (_index == -1) return false;
+        var _e = _inv[_index];
+        var _take = min(_remaining, max(1, _e.qty));
+        _e.qty -= _take;
+        _remaining -= _take;
+        if (_e.qty <= 0) array_delete(_inv, _index, 1);
+    }
+    return _remaining <= 0;
 }
 
 function scr_item_display_name(_item_id) {
@@ -136,19 +169,26 @@ function scr_loot_grant_entry(_text) {
     }
     var _id = "";
     var _key = false;
-    switch (string_lower(_name)) {
-        case "minor potion": _id = "item_minor_potion"; break;
-        case "antidote": _id = "item_antidote"; break;
-        case "iron sword": _id = "item_iron_sword"; break;
-        case "watchtower key": _id = "item_watchtower_key"; _key = true; break;
-        case "mira's wooden pendant":
-        case "mira's pendant": _id = "item_mira_pendant"; _key = true; break;
-        default:
-            // Prefer the item DB's display name so chest loot can name any item (gear included).
-            _id = scr_item_id_for_name(_name);
-            if (_id == "") _id = "item_" + string_replace_all(string_lower(_name), " ", "_");
-            break;
+    // A loot entry may be a stable item id (preferred) or a display name. Both resolve through
+    // the same database, so chests, drops and shops never carry an independent item definition.
+    if (string_copy(_name, 1, 5) == "item_" && scr_item_exists(_name)) {
+        _id = scr_item_id_norm(_name);
+    } else {
+        switch (string_lower(_name)) {
+            case "minor potion": _id = "item_minor_potion"; break;
+            case "antidote": _id = "item_antidote"; break;
+            case "iron sword": _id = "item_iron_sword"; break;
+            case "watchtower key": _id = "item_watchtower_key"; _key = true; break;
+            case "mira's wooden pendant":
+            case "mira's pendant": _id = "item_mira_pendant"; _key = true; break;
+            default:
+                // Prefer the item DB's display name so chest loot can name any item (gear included).
+                _id = scr_item_id_for_name(_name);
+                if (_id == "") _id = "item_" + string_replace_all(string_lower(_name), " ", "_");
+                break;
+        }
     }
+    if (_id != "" && scr_item_exists(_id)) _key = scr_item_get(_id).key_item;
     scr_inventory_add(_id, _name, _qty, _key);
     scr_audio_sfx("item_get", 0.02);
 }

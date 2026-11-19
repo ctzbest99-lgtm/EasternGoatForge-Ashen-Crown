@@ -316,7 +316,7 @@ function scr_ch5_exit_script(_door) {
         scr_dialogue_play(["CH5_HANDOFF_LOCKED"]);
         return true;
     }
-    if (scr_flag_get("flag_chapter5_complete")) return false; // afterwards it is a plain stub door
+    if (scr_flag_get("flag_chapter5_complete")) return false; // afterwards it enters rm_blackwood_deep
     scr_dialogue_play(["BG_HANDOFF_01", "BG_HANDOFF_02", "BG_HANDOFF_03", "BG_HANDOFF_04",
         "BG_HANDOFF_05", "BG_HANDOFF_06", "BG_HANDOFF_07", "BG_HANDOFF_08",
         "FK4_01", "FK4_02", "FK4_03", "FK4_04", "FK4_05"], function() {

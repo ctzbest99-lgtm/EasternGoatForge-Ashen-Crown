@@ -547,9 +547,11 @@
   "x": 1944,
   "y": 464,
   "target_room": "rm_rimehold",
+  "target_spawn": "from_overworld",
   "region": "Frostwilds",
-  "status": "stub",
-  "note": "Rimehold, snow-covered settlement of the Frostwilds."
+  "status": "built",
+  "requires_flag": "flag_act4_complete",
+  "note": "Rimehold's armoury courtyard (rm_rimehold). Provisional Act VIII lock: opens after Chapter 11, when tier VIII unlocks, until the act has a story."
  },
  {
   "type": "entrance",

@@ -1,4 +1,5 @@
 /// obj_inventory_menu : Step
+if (global.game.frame == opened_frame) exit; // the press that opened the menu cannot act in it
 var _close = scr_input_menu_pressed();
 
 if (mode == "target" || mode == "pick") {
@@ -12,7 +13,7 @@ if (mode == "target" || mode == "pick") {
     exit;
 }
 
-// Q/E always cycle tabs. Left/right cycle tabs on Items/Key; on Equip they switch member.
+// Q/E always cycle tabs. Left/right cycle tabs on Items/Key/Materials; on Equip they switch member.
 var _tabdir = 0;
 if (scr_input_tab_prev_pressed()) _tabdir = -1;
 if (scr_input_tab_next_pressed()) _tabdir = 1;
@@ -21,7 +22,7 @@ if (mode == "list" && tab != 1) {
     if (scr_input_right_pressed()) _tabdir = 1;
 }
 if (_tabdir != 0 && mode != "target" && mode != "pick") {
-    tab = (tab + _tabdir + 3) mod 3;
+    tab = (tab + _tabdir + 4) mod 4;
     index = 0;
     scroll = 0;
     slot_index = 0;
@@ -50,9 +51,12 @@ if (tab != 1 && mode == "list") {
             mode = "slots";
             message = "";
             // Prefer the slot this item would fill, and highlight it as a candidate if possible.
-            var _it = scr_item_get(_id);
-            var _slot_names = ["weapon", "armor", "helm", "accessory"];
-            for (var _s = 0; _s < 4; _s++) if (_slot_names[_s] == _it.slot) slot_index = _s;
+            var _item_slot = scr_item_slot(_id);
+            var _slot_names = scr_equipment_slots();
+            for (var _s = 0; _s < array_length(_slot_names); _s++) {
+                if (_slot_names[_s] == _item_slot) slot_index = _s;
+                if (_item_slot == "accessory" && _slot_names[_s] == "accessory_1") slot_index = _s;
+            }
         }
     }
 }
@@ -82,8 +86,8 @@ if (tab == 1) {
     if (mode == "slots") {
         if (scr_input_left_pressed()) member_index = (member_index - 1 + _pn) mod _pn;
         if (scr_input_right_pressed()) member_index = (member_index + 1) mod _pn;
-        if (scr_input_up_pressed()) slot_index = (slot_index - 1 + 4) mod 4;
-        if (scr_input_down_pressed()) slot_index = (slot_index + 1) mod 4;
+        if (scr_input_up_pressed()) slot_index = (slot_index - 1 + 7) mod 7;
+        if (scr_input_down_pressed()) slot_index = (slot_index + 1) mod 7;
         if (scr_input_confirm_pressed()) {
             var _cands = scr_menu_inv_candidates(_party[member_index], slot_index);
             if (array_length(_cands) == 0) {

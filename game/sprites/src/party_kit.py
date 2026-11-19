@@ -177,6 +177,15 @@ def _ow_rows(P, dirn, phase):
         for x in (2, 3, 12, 13):
             rows[10][x] = 'N'
             rows[11][x] = 'N' if x in (3, 12) else rows[11][x]
+    if P.get('cloak'):
+        # A short shoulder mantle: widens the silhouette without hiding the legs.
+        for y in (10, 11):
+            for x in range(1, 15):
+                if rows[y][x] not in ' .':
+                    rows[y][x] = 'B' if x in (1, 14) else 'A'
+        if dirn != 'up':
+            rows[12][3] = 'B'
+            rows[12][12] = 'B'
 
     # walk: swing the two leg groups in opposite directions, feet only
     dx = (0, 1, 0, -1)[phase % 4]
@@ -224,6 +233,75 @@ def ow_figure(P, dirn, phase=0, weapon='sword'):
             px(im, 4, 14, P['metal']); px(im, 11, 14, P['metal'])
         if dirn == 'left':
             px(im, 10, 15, P['metal'])
+
+    # ---- character-defining civilian details (never weapons: these three do not fight)
+    if P.get('satchel'):
+        leather = P.get('leather', P['wood'])
+        for sx, sy in ((10, 11), (9, 12), (8, 13), (7, 14), (6, 15)):
+            px(im, sx, sy, leather)
+        rect(im, 3, 15, 5, 15, _lift(leather, 0.16))
+        rect(im, 4, 16, 5, 17, leather)
+        px(im, 4, 16, P['metal'])
+    if P.get('cap'):
+        cap = P['cap']
+        cap2 = _shade(cap, 0.74)
+        if dirn == 'up':
+            rect(im, 5, 1, 10, 3, cap)
+            rect(im, 4, 4, 11, 4, cap2)
+            px(im, 5, 1, _shade(cap, 0.82))
+        elif dirn == 'left':
+            rect(im, 5, 1, 10, 3, cap)
+            rect(im, 2, 4, 8, 4, cap2)
+            px(im, 2, 4, _shade(cap, 0.58))
+        else:
+            rect(im, 5, 1, 10, 3, cap)
+            rect(im, 3, 4, 11, 4, cap2)
+            px(im, 4, 4, _shade(cap, 0.58))
+        px(im, 8, 1, _lift(cap, 0.16))
+    if P.get('hood'):
+        hood = P.get('hood_color', P['coat2'])
+        hood2 = _shade(hood, 0.74)
+        dark = _shade(hood, 0.58)
+        if dirn == 'up':
+            rect(im, 6, 0, 9, 1, hood)
+            rect(im, 4, 1, 11, 4, hood)
+            rect(im, 4, 5, 11, 8, hood)
+            rect(im, 5, 2, 10, 5, hood2)
+            rect(im, 5, 8, 10, 9, dark)
+            px(im, 7, 0, dark); px(im, 8, 0, dark)
+            px(im, 4, 5, dark); px(im, 11, 5, dark)
+        elif dirn == 'left':
+            rect(im, 6, 0, 9, 1, hood)
+            rect(im, 4, 1, 11, 4, hood)
+            rect(im, 8, 2, 12, 8, hood)
+            rect(im, 4, 5, 5, 9, hood2)
+            rect(im, 4, 4, 10, 4, dark)
+            px(im, 7, 0, dark); px(im, 9, 2, dark)
+        else:
+            rect(im, 6, 0, 9, 1, hood)
+            rect(im, 4, 1, 11, 4, hood)
+            rect(im, 3, 4, 4, 9, hood2)
+            rect(im, 11, 4, 12, 9, hood)
+            rect(im, 5, 4, 10, 4, dark)
+            px(im, 7, 0, dark); px(im, 8, 0, dark)
+            px(im, 4, 6, dark); px(im, 11, 6, dark)
+    if P.get('scarf'):
+        scarf = P['scarf']
+        if dirn == 'up':
+            rect(im, 4, 9, 11, 10, scarf)
+            rect(im, 5, 11, 6, 12, _shade(scarf, 0.8))
+        elif dirn == 'left':
+            rect(im, 4, 9, 10, 9, scarf)
+            px(im, 4, 10, _shade(scarf, 0.8))
+        else:
+            rect(im, 4, 9, 11, 9, scarf)
+            px(im, 5, 10, _shade(scarf, 0.8))
+            px(im, 5, 11, _shade(scarf, 0.8))
+    if P.get('beard') and dirn != 'up':
+        for bx, by in ((5, 8), (6, 8), (9, 8), (10, 8), (6, 9), (7, 9), (8, 9), (9, 9)):
+            if dirn == 'left' and bx > 8:
+                continue
+            px(im, bx, by, P['hair2'])
     return im
 
 
@@ -342,7 +420,7 @@ EXPRESSIONS = ('neutral', 'determined', 'pained')
 
 
 def portrait(P, expr='neutral'):
-    """48x48 bust: head, hair (short / long / tied), three expressions."""
+    """48x48 bust: head, hair (short / long / tied), cap / hood / beard, expressions."""
     im = canvas(48, 48)
     hair, hair2, skin, skin2 = P['hair'], P.get('hair2', P['hair']), P['skin'], P['skin2']
 
@@ -363,17 +441,42 @@ def portrait(P, expr='neutral'):
 
     # brows and eyes, per expression
     for ex, ey in ((18, 21), (28, 21)):
+        outer = ex + (3 if ex < 24 else 0)
         if expr == 'neutral':
             rect(im, ex, 18, ex + 3, 18, hair2)
             rect(im, ex, ey + 1, ex + 3, ey + 2, P['out'])
-        elif expr == 'determined':
+        elif expr in ('determined', 'resolved'):
             rect(im, ex, 18, ex + 3, 18, hair2)
-            px(im, ex + (3 if ex < 24 else 0), 17, hair2)
+            px(im, outer, 17, hair2)
             rect(im, ex, ey + 1, ex + 3, ey + 2, P['out'])
             px(im, ex + 1, ey, skin2)
+        elif expr == 'warm':
+            rect(im, ex, 18, ex + 3, 18, hair2)
+            px(im, ex + (0 if ex < 24 else 3), 17, hair2)
+            rect(im, ex, ey + 1, ex + 3, ey + 2, P['out'])
+            px(im, ex + 1, ey + 3, skin2)
+        elif expr == 'wry':
+            if ex < 24:
+                rect(im, ex, 17, ex + 3, 17, hair2)
+                rect(im, ex, ey + 1, ex + 3, ey + 2, P['out'])
+            else:
+                rect(im, ex, 19, ex + 3, 19, hair2)
+                rect(im, ex, ey + 2, ex + 3, ey + 2, P['out'])
+                px(im, ex + 2, ey + 1, P['out'])
+        elif expr == 'wary':
+            rect(im, ex, 19, ex + 3, 19, hair2)
+            rect(im, ex, ey, ex + 3, ey, hair2)
+            rect(im, ex, ey + 1, ex + 3, ey + 2, P['out'])
+            px(im, ex + 1, ey + 3, skin2)
+        elif expr == 'grim':
+            rect(im, ex, 19, ex + 3, 19, hair2)
+            px(im, outer, 18, hair2)
+            rect(im, ex, ey, ex + 3, ey, hair2)
+            rect(im, ex, ey + 1, ex + 3, ey + 2, P['out'])
+            px(im, ex + 1, ey + 3, skin2)
         else:
             rect(im, ex, 17, ex + 3, 17, hair2)
-            px(im, ex + (3 if ex < 24 else 0), 18, hair2)
+            px(im, outer, 18, hair2)
             rect(im, ex, ey + 2, ex + 3, ey + 2, P['out'])
             px(im, ex + 2, ey + 1, P['out'])
     # nose
@@ -382,9 +485,20 @@ def portrait(P, expr='neutral'):
     # mouth
     if expr == 'neutral':
         rect(im, 21, 30, 26, 30, hair2)
-    elif expr == 'determined':
+    elif expr in ('determined', 'resolved'):
         rect(im, 21, 30, 26, 30, hair2)
         px(im, 21, 31, hair2); px(im, 26, 31, hair2)
+    elif expr == 'warm':
+        rect(im, 21, 30, 26, 30, hair2)
+        px(im, 20, 29, hair2); px(im, 27, 29, hair2)
+    elif expr == 'wry':
+        rect(im, 21, 30, 25, 30, hair2)
+        px(im, 26, 29, hair2)
+    elif expr == 'wary':
+        rect(im, 22, 30, 25, 30, hair2)
+    elif expr == 'grim':
+        rect(im, 22, 31, 25, 31, hair2)
+        px(im, 21, 32, hair2); px(im, 26, 32, hair2)
     else:
         rect(im, 21, 29, 26, 32, _shade(P['out'], 1.0))
         rect(im, 22, 31, 25, 31, _lift(P['out'], 0.25))
@@ -407,6 +521,62 @@ def portrait(P, expr='neutral'):
     if not P.get('long_hair') and not P.get('ponytail'):
         rect(im, 10, 12, 13, 21, hair)                 # short sides
         rect(im, 34, 12, 37, 21, hair)
+
+    # ---- optional headwear and facial hair, drawn over the hair
+    if P.get('beard'):
+        rect(im, 19, 32, 28, 32, hair2)                # jaw and chin, shaped
+        rect(im, 17, 33, 30, 33, hair2)
+        rect(im, 17, 34, 30, 35, hair2)
+        rect(im, 19, 36, 28, 36, hair2)
+        rect(im, 20, 28, 27, 29, hair2)                # moustache, mouth stays visible
+        px(im, 19, 29, hair2); px(im, 28, 29, hair2)
+        rect(im, 22, 30, 25, 30, _shade(P['out'], 1.0))
+        px(im, 19, 34, hair); px(im, 26, 34, hair); px(im, 22, 35, hair)
+        px(im, 19, 37, hair2); px(im, 28, 37, hair2)
+    if P.get('stubble'):
+        rect(im, 17, 32, 30, 32, hair2)
+        for sx in range(18, 31, 2):
+            px(im, sx, 33, hair2)
+            px(im, sx + 1, 34, hair2)
+        rect(im, 20, 35, 27, 35, hair2)
+        px(im, 18, 35, hair2); px(im, 29, 35, hair2)
+    if P.get('part'):
+        for i in range(8):
+            px(im, 22 - i // 2, 5 + i, hair2)
+    if P.get('earring'):
+        px(im, 37, 28, P['trim'])
+        px(im, 37, 29, _shade(P['trim'], 0.7))
+    if P.get('satchel'):
+        leather = P.get('leather', P['wood'])
+        for i in range(18):
+            x = 12 + i
+            y = 40 + i // 3
+            px(im, x, y, leather)
+            px(im, x + 1, y, _shade(leather, 0.72))
+        px(im, 29, 46, P['metal'])
+    if P.get('cap'):
+        cap = P['cap']
+        rect(im, 12, 4, 35, 9, cap)
+        rect(im, 9, 5, 38, 9, cap)
+        rect(im, 7, 10, 40, 12, _shade(cap, 0.74))     # brim
+        rect(im, 13, 4, 34, 5, _lift(cap, 0.12))
+        rect(im, 24, 4, 24, 9, _shade(cap, 0.62))      # seam
+        px(im, 10, 10, _shade(cap, 0.58))
+    if P.get('hood'):
+        hood = P.get('hood_color', P['coat2'])
+        dark = _shade(hood, 0.7)
+        rect(im, 13, 1, 34, 3, hood)
+        rect(im, 9, 3, 38, 6, hood)
+        rect(im, 7, 6, 40, 10, hood)
+        rect(im, 6, 10, 9, 30, hood)
+        rect(im, 38, 10, 41, 30, hood)
+        rect(im, 7, 31, 10, 39, _shade(hood, 0.84))
+        rect(im, 37, 31, 40, 39, _shade(hood, 0.84))
+        rect(im, 11, 8, 36, 10, dark)                  # brow shadow
+        rect(im, 9, 11, 11, 34, _shade(hood, 0.82))
+        rect(im, 36, 11, 38, 34, _shade(hood, 0.82))
+        px(im, 13, 4, _shade(hood, 0.55)); px(im, 14, 5, _shade(hood, 0.55))
+        px(im, 33, 4, _shade(hood, 0.55)); px(im, 32, 5, _shade(hood, 0.55))
 
     return _outline(im, P['out'])
 
@@ -448,9 +618,9 @@ def save_battle(P, stem, weapon='sword', folder='party'):
     return pd
 
 
-def save_portraits(P, stem):
+def save_portraits(P, stem, expressions=EXPRESSIONS):
     od = os.path.join(SPR, 'portraits', stem)
     os.makedirs(od, exist_ok=True)
-    for expr in EXPRESSIONS:
+    for expr in expressions:
         portrait(P, expr).save(f'{od}/spr_portrait_{stem}_{expr}.png')
     return od

@@ -31,7 +31,7 @@ The project's `MetaData.IDEVersion` is **2024.14.4.222** (`gamemaker/AshenCrown.
 Record the exact IDE/runtime pair. This is the value that makes every later bug report reproducible.
 
 ### 1.2 Project loads without resource errors
-Open `gamemaker/AshenCrown.yyp`. The resource tree should show **34 rooms, 844 sprites, 95 scripts, 22 objects, 29 sounds**, with `rm_title` first in the room order.
+Open `gamemaker/AshenCrown.yyp`. The resource tree should show **35 rooms, 1083 sprites, 97 scripts, 22 objects, 29 sounds**, with `rm_title` first in the room order.
 
 Most likely failures here, in order:
 
@@ -66,6 +66,7 @@ If the compiler names a **script that exists but is "not defined"**, the script 
 2. **Options** — Music / Ambience / SFX adjust and **Mute** works. Change a value, quit, relaunch: it must persist (`ashen_settings.ini` is written next to the executable). This is unverified in engine.
 3. **Continue** is disabled or empty with no save file. No crash on selecting it.
 4. **New Game** starts. Expected: `rm_overworld`, camera at 320×180 shown 2×, Kael at the south-road `player_start` (tile 199,186).
+5. **Controller check (NOT RUN on the audit machine).** Follow `docs/CONTROLLER_SUPPORT.md`: connect a pad, walk with D-pad and left stick, open/close the Adventure menu with Start, advance dialogue with A, cancel with B, change tabs with LB/RB, and repeat a shop purchase and a battle command. Then disconnect and reconnect mid-map; the player must stop and control must resume. Record the pad model and connection type.
 5. **Look at the pixels and the title bar.** Every platform option file now has `interpolate_pixels` set to **false** and the product name set to **"Ashen Crown"**, so scaled art should be crisp and the window should not say "yyp-template". If either is wrong, the options tree has drifted again — re-run the options block of `gen_gamemaker.py` rather than fixing sprites one by one.
 
 **Gate 2:** New Game reaches the overworld and the player moves.
@@ -154,7 +155,7 @@ Test each chapter's **gate and its boss**, not every line. The chapter-specific 
 
 ## Phase 6 — Act IV (Coleford to the King) (1.5 h)
 
-- **Ch 9 Coleford:** Vell yields (`flag_vell_yielded`); Nessa's copy choice; Alden's first scene (he has **no sprite** — expect a placeholder, this is known).
+- **Ch 9 Coleford:** Vell yields (`flag_vell_yielded`); Nessa's copy choice; Alden's first scene (he now has a dedicated overworld set and portrait; Vell and Nessa now have dedicated sets too).
 - `Q_SIDE_LEDGER` completes and sets `ch9_shop_discount`. **Test the discount:** in a shop, a buy price should now be 10% lower than its base (rounded down, minimum 1 gold), and buying should charge that shown price — check the displayed row and the gold actually deducted agree. Before the flag it must charge full price.
 - **Ch 10 barrow gate:** the Warden, the replayable gate, the road.
 - **Ch 11 halls/deep:** the charter names the mark (**Crownveil**); the King fight. **Check all three phases:** at 60% the oath breaks (*"The oath breaks. Something underneath it does not."*) and at 30% it lets go (*"The oath lets go. What is left was always a man."*), with heavier attacks from there. Both messages, the boss bar and the phase damage must all hold.
@@ -175,16 +176,16 @@ Run these inside ordinary battles; each is a distinct code path.
 - **Steal** returns an item and reports failure honestly.
 - **Passives:** Last Stand below 25% HP (Attack +15%, Defense +10%); Cheap Shot from behind/ambush.
 - **Party Order:** rearrange, confirm front/back changes targeting and damage.
-- **Levels:** cap is 24; XP at cap does not overflow or wrap.
+- **Levels:** cap is 27 (Act V's band is 24–26); XP at cap does not overflow or wrap.
 
 ---
 
 ## Phase 8 — Menus, saves, Bestiary, quests (30 min)
 
 - Items, Equip, Party Order, Status all mutate the right state and survive a reload.
-- **Bestiary:** 42 entries, all with art, weakest row readable, long descriptions truncate instead of overlapping, burn_line_hulk/door_warden_boss rows present.
+- **Bestiary:** 43 entries, all with art, weakest row readable, long descriptions truncate instead of overlapping, burn_line_hulk/door_warden_boss rows present.
 - **Quests:** six quests, including `Q_SIDE_RENN` and `Q_SIDE_LEDGER`; stage text matches `scr_quest_data.gml`; completed quests read complete.
-- **Save schema v3:** three slots, overwrite confirmation, corrupt/empty slot handled, load from any slot shows the right chapter.
+- **Save schema v4:** three slots, overwrite confirmation, corrupt/empty slot handled, load from any slot shows the right chapter and all seven equipment slots.
 - Audio settings persist across relaunch.
 
 ---
@@ -222,8 +223,8 @@ For each failure, record: **phase/step number, room name, exact steps, expected,
 
 | Issue | Status |
 |---|---|
-| Every Act III/IV room is a Wrenfield-tileset blockout; Act III–IV enemies borrow strips | Known art debt (18 enemy kinds lack overworld sets) |
-| Alden has no sprite and no battle slot | Known; he appears as a placeholder |
+| The environment pass is done: Valemere, the Salt Lamp and the warehouse use `ts_valemere`; Coleford uses `ts_coleford`; both garrisons use `ts_garrison`; the Blackwood rooms use the placeholder `ts_blackwood`; the barrow rooms use `ts_barrow`. None of it has been seen in an IDE, and Act III–IV enemies borrow strips | Known art debt (the Blackwood atlas is a placeholder; the Ashlands and a coast have no tileset) |
+| Alden has no battle slot | Known; Alden now has a dedicated overworld set and portrait, but his Act IV fighting is scripted. Vell and Nessa have overworld sets but no portraits or battle slots. |
 | Eight overworld entrances are `status: "stub"` (Frostwilds, Ironspine, Rimehold…) | Intentional; they show a placeholder line |
 | Four encounter tables can roll an enemy outside their band (`zone01_old_road`, `zone01_bandit_camp`, `zone01_watchtower`, `zone01_basement_hall`) | Known warnings from the validator; balance pass pending |
 | Nothing after Act IV exists | Acts V–VIII are outline-only; the board ends at `flag_act4_complete` (the Ashlands has three standalone rooms: the breach outpost, the ruins beyond it and the undercroft behind the ruin wall) |

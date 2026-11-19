@@ -10,6 +10,14 @@
 - No automatic enemy level scaling by default.
 - Planned menu: equipment, party order, items, save/load, status, Bestiary.
 
+## Controller and item reconciliation (implemented 2026-11-18; UNVERIFIED)
+- **Controller support is centralized in `scr_input`.** Keyboard and an Xbox-style pad share one action layer: A confirm, B cancel, Start field menu, LB/RB tabs, D-pad or left stick movement, radial dead zone, pressed/held/released states. Device selection is cached per frame and re-scanned after disconnect/reconnect. Menus record `opened_frame` and block the closing press so one input cannot act twice. Physical-controller testing is **NOT RUN**; see `docs/CONTROLLER_SUPPORT.md`.
+- **The Blackguard duplicate id is resolved.** `item_blackguards_longsword` (plural) is canonical; `item_blackguard_longsword` is an alias in `scr_item_id_norm`, so old saves and equipment references still load. The duplicate record was removed (item count 182 → 181) and the story grant now uses the canonical id.
+- **Caelan's Spellbook and Sera's Holy Sword have provisional combat stats.** Spellbook ATK +1 / MAG +3 / MDEF +1; Holy Sword ATK +4 / MAG +1 / MDEF +1. Sera's roster entry now starts with the Holy Sword instead of an empty hand. These values are proposed for owner review, not new canon.
+- **MAG now drives magic damage.** `scr_battle_skill_damage` uses MAG vs MDEF for `dmg_type == "mag"`; `scr_actor_create` seeds MAG from ATK so existing enemies keep their previous damage curve. This is a mechanical fix, not a class change.
+- **Bows remain future content.** No current class gained bow proficiency. Woodsman's Bow, Swiftwind, King's Longshot, Aethari Longbow and Wyrmbane are marked as reserved and removed from merchant stock; Ashen Longbow stays a cache curiosity. Assigning a bow user is an owner decision.
+- **Ashen Arrow and Blackened Feather are materials, not fake consumables.** Their use actions remain unimplemented, and their descriptions say so. The two resurrection items keep their required names and effects: Emberwake Feather (25% HP) and Ashenheart Plume (50% HP).
+
 ## Adventure menu / Bestiary / Escape (implemented 2026-11-15)
 Implements the "planned menu: equipment, party order, items, save/load, status, Bestiary" line above. Open points for the owner:
 - The field menu is `obj_adventure_menu` (Items, Equip, Party Order, Status, Bestiary, Close). **Save / Load are deliberately not rows in it**: saving stays at `obj_save_point` and the post-battle prompt, per the existing save-point decision. Adding a Save row would make the menu save-anywhere and is not done without approval.
@@ -35,8 +43,8 @@ Implements the "planned menu: equipment, party order, items, save/load, status, 
 | Reeve Calder | 10 | Top of 8–10, where the Calder fight is tuned to land |
 
 Crown Sergeant (9), and every Chapter 3+ enemy, already had a level from the `scr_enemy_scaled` template. If the Chapter 1–2 levels later conflict with a per-zone recommendation, change the `level` field only — it cannot move damage or rewards. A successful escape grants no XP or gold, does not mark the encounter cleared, and does not count as a defeat (no penalty).
-- Bestiary: `global.game.bestiary` counts `seen` and `defeated` per enemy. A **yielded boss counts as defeated** (the fight is over for it) and story enemies that withdraw after a yield are not counted. All 33 descriptions are PLACEHOLDER prose written for this feature, deliberately free of new canon; the owner should review or replace them.
-- Save schema is now **v3** (bestiary field). v1/v2 saves migrate on load with an empty log, so an existing save starts with nothing recorded.
+- Bestiary: `global.game.bestiary` counts `seen` and `defeated` per enemy. A **yielded boss counts as defeated** (the fight is over for it) and story enemies that withdraw after a yield are not counted. All 43 descriptions were reviewed against the story docs on 2026-11-18: they restate established facts and observable detail, use **Architects** in Bestiary text, and fit the pane's 72-character budget. Act IV rows describe the built Chapter 9–11 text and the approved outline; Act IV remains **PROPOSED** as story. No new lore was added.
+- Save schema is **v4** (bestiary, seven equipment slots and base stats). Older saves migrate on load; a pre-v3 save starts with an empty Bestiary log.
 
 ## Owner-decided (2026-11-14)
 - Defeat: when the party loses a battle, they wake up back in town with HP fully restored. Until a town room exists, the respawn target is `TOWN_RESPAWN_ROOM` (currently `rm_overworld`), at `obj_respawn_point` if one is placed (the overworld builder drops one at Greyhaven `town_square`), otherwise at `TOWN_RESPAWN_X` / `TOWN_RESPAWN_Y` (3192, 2832). A short placeholder wake-up dialogue is shown through the existing dialogue box and reports the gold and XP lost.
@@ -81,7 +89,7 @@ The owner approved all eight decisions in §10 of `docs/story/CHAPTER6_SCRIPT.md
 Implementation choices made while building it, none of which changes a story decision:
 
 - **The boss gate is `scr_ch6_tick`, not a story trigger.** `obj_story_trigger` latches after one attempt, and §5 has to be replayable after a defeat (the Chapter 4 lesson). The check fires when the player crosses into the burnt ground at x = 400 px (tile 25), so the road before it stays quiet as §1 asks. A defeat sets `ch6_boss_cool`, cleared when the party walks back west of x = 320.
-- **The rooms are blockouts on `ts_blackwood`**, the wood's own placeholder atlas (rows 0–49 are `ts_zone1`, rows 50–64 the dark material, built by `tools/gen_blackwood_tileset.py`); Design's real Blackwood tileset does not exist yet. Cinderhollow's burners use `spr_story_npc_placeholder`; the act's largest art debt is unchanged and is now visible in-game rather than only in the plan.
+- **The rooms are blockouts on `ts_blackwood`**, the wood's own placeholder atlas (rows 0–49 are `ts_zone1`, rows 50–64 the dark material, built by `tools/gen_blackwood_tileset.py`); Design's real Blackwood tileset does not exist yet. Cinderhollow's burners and the Lost Ones now have dedicated overworld sets; the act's largest remaining art debt is the tileset and the other creature map sets.
 - **`Q_MBW_S2`'s objective is not reworded at the chapter's end.** §6 says the stage stays active with "Find the shrine under the roots."; the journal's stage text is fixed data (`scr_quest_definitions`), so that objective belongs to Chapter 7's stage instead. Recorded rather than silently resolved.
 - **`Q_MAIN_BEYOND_VEIL` is set to `complete`**, keeping Q_BV_S7 as its last stage, rather than gaining an eighth stage — the §0 intent ("the Act II quest closes").
 - **The duplicate-trigger rule was applied to repeat talk**: Berrin's campaign line plays once (`ch6_hollow_met`), then `CH_TALK_01/02/03` one per visit in order, then `CH_BERRIN_R1`. The camp and the hollow arrival each latch on their own flag.
@@ -96,18 +104,23 @@ Built under the standing instruction to keep building the story, with `ACT3_OUTL
 - **The Fallen Knight is absent** (decision 7), and nothing in Chapters 7–8 names or implies him.
 - **The Lost Ones are never explained** (decisions 4 and 11). They stand, they are recognized by their boots, and killing the Matriarch frees none of them; the script says so out loud rather than implying a rescue.
 - **The tithe choice has no correct answer** (decision 8). Refusing costs the hollow Berrin's household with no mechanical gain; paying buys the year with a stranger's name for 120 Gold and an accessory. With no named villager in the hamlet, the "loses a Cinderhollow NPC" consequence is dialogue and a flag only — recorded, not implemented.
-- **The level cap was raised to 24** (2026-11-16, with the Act IV decisions). Chapters 6–8 are still written at 18–20; Act IV's band is 21–23 and now reachable. The Act III outline's recommendation and the Act IV decision were the same call, made once.
-- **Rooms** (decision 10): all five Blackwood rooms exist. Three are Wrenfield blockouts and the act's art debt is unchanged.
+- **The level cap was raised to 24** (2026-11-16, with the Act IV decisions). Chapters 6–8 are still written at 18–20; Act IV's band is 21–23 and now reachable. The Act III outline's recommendation and the Act IV decision were the same call, made once. It was raised again to 27 on 2026-11-18 with Act V (see "Act V outline" below).
+- **Rooms** (decision 10): all five Blackwood rooms exist. All five Blackwood rooms now use the placeholder `ts_blackwood` atlas (the shrine and glade moved off Wrenfield); the three Chapter 10–11 barrow rooms use `ts_barrow`. The burners, Lost Ones, Berrin and ward sentinels now have dedicated map sets; the tileset debt is unchanged.
 
 ## Act IV outline (PROPOSED 2026-11-16)
 
-`docs/story/ACT4_OUTLINE.md` proposes the act after the doors. **All ten of its decisions were approved as recommended on 2026-11-16**, and the enemy half of the act is now in the data: seven ids at 21–23, the `crown_barrow` table and three boss groups. No chapter, room or line of dialogue exists yet, so the act itself is still unbuilt. Its ten decisions are its §9; the load-bearing ones are **where the act happens** (recommended: the Crown heartland), **who the Forgotten King is** (recommended: the king before the Crown's line, his name chiselled off on purpose), **Alden on screen in all three chapters without a split** (recommended, and it needs his sprite, which does not exist), and **level band 21–23 with `PARTY_MAX_LEVEL` raised to 24** (recommended, and it is a hard blocker — the cap is 20).
+`docs/story/ACT4_OUTLINE.md` proposes the act after the doors. **All ten of its decisions were approved as recommended on 2026-11-16**, and the enemy half of the act is now in the data: seven ids at 21–23, the `crown_barrow` table and three boss groups. No chapter, room or line of dialogue exists yet, so the act itself is still unbuilt. Its ten decisions are its §9; the load-bearing ones are **where the act happens** (recommended: the Crown heartland), **who the Forgotten King is** (recommended: the king before the Crown's line, his name chiselled off on purpose), **Alden on screen in all three chapters without a split** (recommended; his dedicated set and portraits now exist, added 2026-11-18), and **level band 21–23 with `PARTY_MAX_LEVEL` raised to 24** (recommended; it was a hard blocker at approval time, when the cap was 20 — the cap is 27 now).
 
 Two things make Act IV different from Act III and worth saying plainly:
 
 - **Its enemies were added before its story, and the simulation changed them.** Seven ids, three of them bosses, were simulated first (`tools/balance_sim.py --act4`) and the first numbers were too soft: every boss was won 100%. The Warden went to ×2.2 HP and +4 ATK, the King to ×2.1 HP and +3 ATK. As shipped the King is 97% at level 23 in 8.6 rounds with about one death, and 81% at 21.
 - **The King now has three phases.** The approved fight originally ran on two, because the battle system supported one shift. It gained a generic `phase3_at` threshold (engine + simulation), and the King uses it at 30%: heavier attacks, ATK +15% more, and the line *"The oath lets go. What is left was always a man."* The approved decision is fully satisfied; no GameMaker build has run it yet.
-- **It is the first act whose story depends on an art asset.** Alden has no sprite at all and appears in every chapter of it. Reusing someone else's silhouette for the game's second most important character would be visible in every scene he is in.
+- **It was the first act whose story depended on an art asset.** Alden appears in every chapter of it; reusing someone else's silhouette for the game's second most important character would have been visible in every scene. He now has a dedicated overworld set and portraits (2026-11-18).
+
+## Named-speaker art: Alden, Nim and Derry (implemented 2026-11-18; UNVERIFIED)
+- **The three named speakers now have dedicated art.** Each has a 16×24 four-direction idle + walk4 set and three 48×48 portraits, generated by `game/sprites/src/story_npcs.py` and imported by `tools/import_sprites.py --story-npcs`. The Chapter 3 and Chapter 9 marker tables point at the new sets, and `scr_ch1_portrait` resolves all three speakers.
+- **These designs are [PROPOSED] art direction, not story canon.** The scripts fix their roles, dialogue and locations, not their faces; the designs use only those cues. They can be redrawn or replaced without changing a line, flag or quest.
+- **No battle art.** None of the three has a battle slot or battle strips. Alden's Act IV fighting remains scripted.
 
 ## Chapter 9 built (2026-11-16)
 
@@ -115,8 +128,8 @@ Two things make Act IV different from Act III and worth saying plainly:
 
 Recorded gaps, not hidden:
 
-- **Every NPC is a placeholder.** Alden has no sprite anywhere, and Vell and Nessa use `spr_story_npc_placeholder`.
-- **The copy branch's shop discount is a flag only** (`ch9_shop_discount`); the shop does not read it.
+- **The Act IV placeholder NPCs are drawn.** Vell and Nessa now have dedicated 16×24 sets (2026-11-18), alongside Alden's dedicated set and portrait. None of the three has a portrait or battle slot beyond Alden's three portraits.
+- **The copy branch's shop discount is implemented.** `scr_shop_buy_price` reads `ch9_shop_discount` and takes 10% off every shop (rounded down, minimum 1); the row shown, the affordability check and the purchase use the same price. The percentage is [PROPOSED].
 - **The town has no encounters in its square** — the `crown_barrow` zone covers the southern outskirts only — and the ledger fight is scripted, so the boss is never walked into tired.
 - **The chapter is unplayed and uncompiled.** `validate_gamemaker.py` passes and every referenced line id and quest stage resolves, but no battle, room or conversation has been run in an IDE.
 
@@ -149,9 +162,9 @@ GameMaker version; room resolution and whether 640×360 stays (height is not a m
 These were chosen so roadmap step 4 could be built. None is a locked design decision.
 - Party roster (coder note from STORY_BIBLE.md, confirmed 2026-11-14): five permanent members — Kael (Vanguard), Lyra (Rogue), Caelan (Arcanist), Sera (Warden), Taren Holt (Rebel Captain, Broken Yoke). Four fight at a time; one reserve slot. Array order of `global.game.party` is battle command and turn order. Default run: Kael only has joined; the other four exist on `global.game.roster` but are not in a slot. `DEBUG_ADD_FULL_ROSTER` puts Kael/Lyra/Caelan/Sera in active and Taren in reserve.
 - Defeat *check* and the defeat gold/XP *penalty* apply to active members only (assumption). Reserve HP is still restored on a defeat. Battle XP is owner-decided (see above): participation only.
-- Placeholder roster stats (pending approval, not canon): Lyra 24/7/1, Caelan 22/8/1, Sera 28/4/4, Taren Holt 36/8/3 (warrior-leaning). Taren's `weapon_categories` is `["heavy_sword"]` and his equipment stub starts with `bastard_sword` (PLACEHOLDER ATK +3, applied to `attack` via `scr_actor_refresh_equipment`). Skills are placeholders.
+- Placeholder roster stats (pending approval, not canon): Lyra 24/7/1, Caelan 22/8/1, Sera 28/4/4, Taren Holt 36/8/3 (warrior-leaning). Taren's `weapon_categories` is `["heavy_sword", "greatsword", "shield"]`, `armor_profs` is `["heavy"]`, `shield_prof` is true, and he starts with the Bastard Sword (ATK +3) and Travel Brigandine (DEF +2, not sellable). These values are provisional; the item records are complete but their numbers are not canon.
 - Each member has their own `level` and `xp`. Gold is still a shared party total. `global.game.xp` mirrors Kael's (`party[0]`) XP for the debugger.
-- XP curve (total XP to *be* level L): `20*(L-1)^2 + 10*(L-1)`. L1=0, L2=30, L3=100, L4=210, L5=360, L10=1710, L20=7410 (cap 20).
+- XP curve (total XP to *be* level L): `20*(L-1)^2 + 10*(L-1)`. L1=0, L2=30, L3=100, L4=210, L5=360, L10=1710, L20=7410, L24=10810, L25=11760, L26=12750, L27=13780. The cap was 20 when this line was written and is 27 since 2026-11-18; the curve is unchanged below the cap.
 - On level-up: +4 max HP, +1 ATK, +1 DEF (placeholder). Living members also gain the HP increment as current HP; KO'd members stay at 0 HP.
 - When an enemy dies, its XP is banked to members who have already taken a turn and are still living. A KO'd member does not receive that enemy's XP, even if they acted earlier; they keep any credit from enemies that died before they fell. A reserve member who swapped in and has taken a turn is eligible for later kills only. Banked XP is applied at victory (level-up messages still play). A defeat grants no XP. Gold is still shared among the party.
 - Equipment slots (`weapon`, `armor`, `accessory`) are live: equipped bonuses add to `base_attack` / `base_defense`. The I / Tab inventory can use consumables and equip gear. Status, party-order and Bestiary menus were unbuilt when this was written; all three now live in `obj_adventure_menu`, together with Quests (2026-11-15).
@@ -165,7 +178,7 @@ These were chosen so roadmap step 5 (menus/saves) could start. None is a locked 
 - Title Continue is enabled when any slot exists and shows location, lead level, playtime, and gold. New Game resets `global.game`.
 - Shops are data-driven (`scr_shop_data`). `shop_greyhaven_store` (Marda) sells Minor Potion and Antidote (confirmed stock). `shop_greyhaven_forge` (Pell, after `flag_pendant_found`) sells Iron Sword, Leather Armor, and Iron Helm — PLACEHOLDER stock from Chapter 1 item art, not unique rewards. Talking plays the confirmed lines, then the menu opens. Buy / Sell / Exit, icons, prices, quantity, gold, owned count, and equipment preview (who can equip it, ATK/DEF change) are implemented. Sell is 50% of buy price (PLACEHOLDER, floored, minimum 1). Key items cannot be sold. Input is locked while the shop is open.
 - PLACEHOLDER prices: Minor Potion 15g (heals 15 HP), Antidote 20g, Iron Sword 80g (ATK +3, longsword), Leather Armor 60g (DEF +2), Iron Helm 40g (accessory, DEF +1). No prices appear in CHAPTER1_SCRIPT.md or STORY_BIBLE.md.
-- Inventory (I / Tab): use Minor Potion; Antidote cures an overworld `poisoned` flag (battle poison does not exist yet, so it usually reports no effect). Equipment can be worn from this menu. Dedicated shop / save / inventory art will land later in `/workspace/sprites/ui/menus/`; menus look up those sprite names first and fall back to the nine-slice windows, font, cursor, and item icons. Layout constants are centralized in `scr_menu_layout.gml`.
+- Inventory (I / Tab): use Minor Potion; Antidote cures both the battle `poison` status and the overworld `poisoned` flag. Battle poison is implemented in `actor.statuses` and ticks at round start; the overworld flag has no current inflictor. Equipment can be worn from this menu. Dedicated shop / save / inventory art will land later in `/workspace/sprites/ui/menus/`; menus look up those sprite names first and fall back to the nine-slice windows, font, cursor, and item icons. Layout constants are centralized in `scr_menu_layout.gml`.
 
 ## Chapter 2 wiring (feature/chapter2; pending owner approval)
 All of `docs/story/CHAPTER2_SCRIPT.md` (approved at cc8faff) is wired. That is 116 line ids, generated verbatim into `scr_dialogue_data_ch2` by `tools/gen_ch2_dialogue.py`. The flow is in `scr_ch2_story`. The rooms are Design's `/workspace/wrenfield` pipeline, copied unchanged except for the repo edits listed below.
@@ -226,7 +239,7 @@ All of `docs/story/CHAPTER2_SCRIPT.md` (approved at cc8faff) is wired. That is 1
 ## Chapter 3 wiring (feature/chapter3; pending owner approval)
 Canon is `docs/story/CHAPTER3_SCRIPT.md` (approved by Kevin Nov 14 2026, 3:53 PM ET). Where the script is silent the following are **placeholders**:
 
-- **Rooms:** Design's Valemere art has not landed anywhere in the repo, so all four rooms (`rm_valemere_road`, `rm_valemere`, `rm_salt_lamp`, `rm_warehouse`) are functional blockouts: `ts_wrenfield` tiles, existing NPC sprites for the Valemere crowd, flat layouts. Generated by `tools/gen_ch3_rooms.py`; swap the data when Design's maps arrive.
+- **Rooms:** Design's Valemere art has not landed anywhere in the repo, so all four rooms (`rm_valemere_road`, `rm_valemere`, `rm_salt_lamp`, `rm_warehouse`) are functional rooms on the `ts_valemere` atlas: existing NPC sprites for the Valemere crowd, flat layouts. Generated by `tools/gen_ch3_rooms.py`; swap the data when Design's maps arrive.
 - **Lyra:** ~~flat-colour placeholder sprite set~~ **replaced 2026-11-16.** She is now drawn by `party_kit.py` with the rest of the party (16×24 overworld, battle strips and three portraits) and has a `daggers` weapon mode.
 - **Lyra kit numbers** (Twin Cut 2 hits × 0.7, Open Vein × 0.9 + Bleed 3 turns at 80%, Cutthroat +15% crit) are the script's suggested levels tuned to feel right, not canon percentages. Same for the Debtman's stats (level 12 boss template).
 - **Night lighting:** `obj_night_overlay` is a placeholder (dark overlay + lantern pools drawn in the GUI layer). No tint on the Valemere city yet.
@@ -241,12 +254,12 @@ Canon sources: CHAPTER1_SCRIPT.md §2.1 (C-confirmed). Everything else is a PLAC
 - **FL_TUTORIAL is wired.** Pre-battle FL_TUTORIAL_01–03 (marker `script_chain` on `first_bandit`, played by the encounter-prelude path), SYS_01–04 as battle messages at the intro (new `queue_messages` multi-line support in obj_battle_controller), SYS_05 the first time Kael drops below 25% HP (checked at ROUND_START), post-battle 04–05 via `pending_post_dialogue` (`scr_ch1_on_battle_finish`). **`flag_tutorial_done`** is set on the win and gates random encounters (`scr_random_encounter_tick`); an old save with the tutorial already cleared keeps its random encounters (cleared-encounters fallback).
 - **Cheap Shot (canon):** Bandit action, ×1.5 vs a guarding target instead of the Guard reduction (`anti_guard` flag on the skill; multiplier PLACEHOLDER). Weight 1 in 4 PLACEHOLDER.
 - **Last Stand (canon):** Kael passive; below 25% HP, ATK +15% / DEF +10% (canon values), applied in `scr_battle_stat` before buffs.
-- **Battle poison:** "poison" status ticks at ROUND_START like bleed (5% max HP, never kills — PLACEHOLDER rule, same as bleed), HUD tag "Pn". **The Grave Spider's Venom Bite is the PLACEHOLDER inflictor** (0.8 power, 40% chance, 3 rounds — all PLACEHOLDER); Kevin may reassign it. Antidote now cures it in battle (and the overworld `poisoned` flag as before).
+- **Battle poison:** "poison" status ticks at ROUND_START like bleed (5% max HP), HUD tag "Pn". A tick can reduce a regular combatant to 0; the controller plays the death/yield, credits the kill once, and checks victory/defeat before commands resume. **The Grave Spider's Venom Bite is the PLACEHOLDER inflictor** (0.8 power, 40% chance, 3 rounds — all PLACEHOLDER); Kevin may reassign it. Antidote now cures it in battle (and the overworld `poisoned` flag as before).
 - **Stale claims corrected in this file:** the Blackguard entry already carries the canon 450 HP / 250 XP / 100 Gold; the terrace stairs are enforced (barrier marker on `flag_wt_upper_unlocked`); `rm_watchtower_basement` and `rm_valemere` are built; the in-battle Item command exists (Chapter 3); ash_wolf / ashen_wretch / grave_spider / hollow_soldier battle strips exist in the repo (batches landed after the old note).
 ## Enemy batches 7–8 (feature/enemy-batches-7-8; pending owner approval)
 Design batch 7 (Wrenfield elite, Lower City, Hollow Sanctuary, Blackwood Road Garrison) and batch 8 (Act III, the Blackwood) are in the enemy database with sprites and encounter tables. No rooms or story beats use them yet. **Everything below is a PLACEHOLDER.**
 - **Stats come from a template** (`scr_enemy_scaled(id, …, role, level, party, extra)`), anchored so a level-9 common matches the balance-pass Chapter 2 regulars. **Rebalanced after the Chapter 4–5 simulation (2026-11-15):** HP now grows **+9 per level** and ATK **+3 per level** (was +7 / +2), because the old curve fell behind the tiered party growth — random fights cost almost nothing and bosses could not kill anyone. A boss now takes its length from **HP × 1.2 × expected party size** and its threat from **+3 ATK / DEF**; elites are unchanged (×2 HP, +2 ATK / DEF, ×2.5 XP). Per-enemy tweaks: Cutpurse ×0.8 HP; Wisp ×0.75 HP; Surgeon ×0.8 HP; Briar Hulk ×1.4 HP; Moths ×0.7 HP; Ward Sentinel and Door Warden +3 DEF; **Commander Hailen** ×1.5 HP and +14 ATK, **Garrison Pikeman** +4 ATK, **Warden** ×1.25 HP and +2 ATK. **Act III (2026-11-16, tuned by the simulation and applied):** `burn_line_hulk` ×2.1 HP and +12 ATK (the Hulk's ×1.4 and the boss ×1.2 × 4), `blackwood_matriarch` ×1.5 HP, `door_warden_boss` ×2.0 HP, and `ward_sentinel_late` as the level-20 Sentinel the Chapter 8 adds need. SPD is set per enemy. XP and gold were left alone — see the open item at the end of this section.
-- **Levels** use ACT2_OUTLINE's bands, approved Nov 15 2026: Lower City (Ch 3) 10–13, Hollow Sanctuary (Ch 4) 13–16, Garrison (Ch 5) 16–18. The Blackwood (Act III) is 18–20, which is my placeholder. **Resolved 2026-11-16:** `PARTY_MAX_LEVEL` is 24, so Act IV's 21–23 band is reachable; Act III never needed more than 20.
+- **Levels** use ACT2_OUTLINE's bands, approved Nov 15 2026: Lower City (Ch 3) 10–13, Hollow Sanctuary (Ch 4) 13–16, Garrison (Ch 5) 16–18. The Blackwood (Act III) is 18–20, which is my placeholder. **Resolved 2026-11-16:** `PARTY_MAX_LEVEL` was raised to 24, so Act IV's 21–23 band became reachable; Act III never needed more than 20. It was raised again to 27 on 2026-11-18 for Act V.
 - **Expected party sizes for bosses:** Debtman 3 (after Lyra); Sanctuary Warden, Commander Hailen and the Matriarch 4.
 - **Template check** (Kael at the enemy's level, still in Chapter 2 gear, so later gear makes these easier):
 
@@ -272,7 +285,7 @@ Before the rebalance the same rows read 58–114 HP commons, 8–16 damage a hit
   - **Heal ally** (Field Surgeon): 30 HP to the most-hurt ally, only while some ally is below 60% HP.
   - **Buffer elite** (Crown Sergeant Rally): +20% ATK to his side for 3 rounds, only with allies.
   - **Two-phase bosses** (Sanctuary Warden, Blackwood Matriarch): the shift happens at 50% HP and plays `trans`, then `idle_p2` / `attack_p2`. Warden +20% ATK; Matriarch +25% ATK and +20% SPD. Their phase lines are mine.
-  - **Yield-or-death** (Commander Hailen): he yields only if `flag_hailen_yields` is set (no story sets it yet). Otherwise he dies. A yield sets `flag_hailen_yielded`.
+  - **Yield-or-death** (Commander Hailen): Chapter 5's pre-battle choice sets or clears `flag_hailen_yields`; he yields only while it is set. Otherwise he dies. A yield sets `flag_hailen_yielded` through the `yield_flag` data, not a direct story-script call.
   - **Blind** (70%, 3 rounds): physical attacks miss 50% of the time.
   - **Sleep** (50%, 2 rounds): the turn is skipped, any damage wakes, and sleeping does not count as taking a turn for XP.
   - Moth dust and the wisp mote fly on cast frame 3. Blind and sleep show as "Bl" / "Sl" in the party window, because the status strip has no frames for them.
@@ -284,13 +297,17 @@ Before the rebalance the same rows read 58–114 HP commons, 8–16 damage a hit
 - **Open:** Design still needs status icons for blind and sleep.
 
 ## Balance pass (feature/balance-pass; pending owner approval)
+> **2026-11-18:** the equipment tiers changed the expected loadout at every story act. The current
+> retune is **"Eight-act gear-tier retune"** below; the tables in this section are the original
+> 2026-11-15 pass and are kept as history.
+
 Every number here is a PLACEHOLDER chosen with `tools/balance_sim.py` (run `python3 tools/balance_sim.py`; it mirrors the GML damage formula, Guard, buffs, SPD order, and enemy AI weights). Targets from the brief: Act II winnable at levels 8–10, Reeve Calder ≈ 8–15 party turns, Occupation Soldiers ≈ 3–5 hits, Chapter 1 unchanged.
 - **Party growth is tiered.** Level-ups into levels 2–7 keep the Chapter 1 numbers (+4 HP, +1 ATK, +1 DEF, +2 MP, +1 SPD, +1 MDEF). Level-ups into level 8 and above give +10 HP, +2 ATK, +2 DEF, +3 MP, +1 SPD, +1 MDEF (`LEVEL_UP_TIER_LEVEL`, `LEVEL_UP_*_GROWTH_HIGH`). Chapter 1 is levels 1–7, so its numbers and the Blackguard fight are unchanged. Old saves keep their stored HP / ATK / DEF; their MP / SPD / MDEF use the tiered totals.
 - **Gear curve.** End of Chapter 1: Kael ATK +5 (Blackguard's Longsword), DEF +3 (Leather Armor + Iron Helm). Taren joins with the Bastard Sword (ATK +3) and a new **Travel Brigandine** (DEF +2, not sellable). Len sells **Chain Mail** (DEF +4, 220 g) as the Chapter 2 mid-tier item, after the rescue, so the Calder fight does not depend on it.
 - **Taren joins at Kael's level** (`scr_actor_raise_to_level`, used by the Chapter 2 wiring). The sim assumes both are the same level.
 - **Act II enemies, lowered from Design's suggestions** (HP / ATK / DEF): Crown Patrolman 44 / 13 / 12 (was 90 / 16 / 12), Crown Crossbowman 36 / 14 / 8 (70 / 18 / 8), Occupation Soldier 50 / 12 / 14 (120 / 17 / 16), Bandit Veteran 42 / 13 / 10 (95 / 18 / 11), Grey Ash Wolf 36 / 13 / 8 (80 / 20 / 8), Reeve Calder 130 / 15 / 16 (320 / 24 / 18). SPD, MDEF, XP and gold are unchanged. Calder's stance (+25% ATK, +15% DEF) is unchanged.
 - **Millhaven Road groups stop at 2**, because Kael walks it alone (Taren joins at the Calder fight). The 3-enemy Crown group was replaced by a single Crossbowman. The Wrenfield table keeps its groups but is never rolled (no random battles in the village).
-- **No in-battle healing exists** (no Item command yet), so every fight is balanced to be survivable on HP alone. **Open:** add an in-battle Item command, which would make the level-8 Calder fight easier.
+- **In-battle healing now exists** (the Chapter 3 Item command), but the Chapter 2 Calder fight was balanced without it; using items makes that fight easier than the measured table. The table is not rebalanced for item use.
 - **MP recovery:** +2 MP after each win (kept). **Ether** restores 10 MP (60 g; Len's shop and a Millhaven Road chest). The **Wrenfield inn** (The Bent Post, Perrin) costs **30 g** and restores HP and MP for the active party and reserve. All placeholders.
 - **Calder's yield (placeholder rule):** if Calder yields while soldiers still stand, they withdraw, but their XP is credited at the moment of the yield to the members who took a turn and are standing, and their gold is added at victory.
 
@@ -324,6 +341,8 @@ Simulated results, 4,000 runs per row. Policy: Taren opens with Rallying Cry, Cl
 Reading: at level 8 the Calder fight is hard (about 25% for this naive policy); at 9 it is about 94%; at 10 it is reliable. Calder takes about 10–14 party turns, inside the 8–15 target. Occupation Soldiers take 4–5 Kael hits at levels 8–10. Kael alone clears every Millhaven Road group from level 8.
 
 ## Chapter 3 balance check (`feature/chapter3`; PLACEHOLDER)
+**Historical (2026-11-15).** The tier-III gear now exists and the Debtman was retuned on 2026-11-18;
+see "Eight-act gear-tier retune" above. The rows below are the pre-tier record.
 `python3 tools/balance_sim.py` now also prints these rows (the `c3_tables()` block at the end of the run; the Chapter 2 tables above are unchanged). The sim models the current battle code: criticals (5% base, Cutthroat +15%, ×1.5), Kael's Last Stand below 25% HP, bleed at 6% max HP per round, the Debtman's Bind (Slow, SPD ×0.5, 70% for 2 rounds), Collect drain, his stance when the adds fall (+30% ATK / +30% SPD) and his yield at 0 HP ending the fight with adds still standing (same rule as Calder).
 
 **Assumptions (mine; change freely):**
@@ -367,6 +386,8 @@ Reading: at level 8 the Calder fight is hard (about 25% for this naive policy); 
 - Still unverified in the engine: these are simulation numbers only. The Debtman fight has never been played, and the heist's night-lighting and dialogue timing are untested.
 
 ## Chapter 4–5 balance check (Hollow Sanctuary, Blackwood Road Garrison; PLACEHOLDER)
+**Historical (2026-11-15).** Tiers IV and V now exist and the Warden and Hailen were retuned on
+2026-11-18; see "Eight-act gear-tier retune" above. The rows below are the pre-tier record.
 `python3 tools/balance_sim.py` prints these rows too (`ch45_tables()` and `ch4_prejoin_table()`), using the same extended model plus magic damage (ATK vs **MDEF** instead of DEF), the two-phase boss shift at 50% HP, the Field Surgeon's 30 HP heal when an ally is below 60% HP, and Caelan's approved elemental kit (magic 1.2× / 1.35×, ×1.5 on a matching weakness).
 
 **Assumptions (mine; change freely):**
@@ -449,8 +470,66 @@ Reading: at level 8 the Calder fight is hard (about 25% for this naive policy); 
 - **Caelan is no longer dead weight.** Magic damage (Arc Bolt 1.35×, Frost Lance / Ember 1.2×) plus ×1.5 on the Sentinel, Automaton, Pikeman and Knight lightning weakness is why both bosses needed tuning at all.
 - Simulation only: the Chapter 5 garrison rooms and script are still unwritten, and **nothing in Chapter 4 or 5 has been played in GameMaker**. These are model numbers.
 
+## Eight-act gear-tier retune (2026-11-18; applied to data, not playtested)
+The equipment pass added a weapon and armour tier for every class, and `scr_story_act()` unlocks
+them by chapter: story Act III (Chapters 6–8, levels 18–20) starts at **tier VI**, Act IV (9–11,
+21–23) at **tier VII**, and Act V (12–14, 24–26) at **tier VIII**. The Act III–V bosses had been
+tuned against Chapter 5 or tier V gear, so the new tiers moved every later band. Tier VIII's only
+shop, `shop_rimehold_armoury`, is now wired in the built `rm_rimehold` armoury courtyard; its
+overworld entrance opens after `flag_act4_complete`, the same provisional lock as the Ashlands, so
+the Act V band can actually buy the tier. The Act V rows below therefore use tier VIII.
+`tools/balance_sim.py` now models the best non-legendary tier set per class, including its MDEF /
+SPD / HP bonuses, and prints a one-screen `--summary` table. All rows below are simulation, not
+playtest: the repo has no GameMaker IDE result.
+
+| Story act | Boss | Lv | Tier | Old HP / ATK | New HP / ATK | Caelan W / R / HP | Sera W / R / HP |
+|---|---|---|---|---|---|---|---|
+| II | Reeve Calder (Ch2) | 10 | II | 130 / 15 | 156 / 18 | 100% / 6.0 / 76% | — |
+| II | The Debtman (Ch3) | 12 | III | 256 / 25 | 410 / 35 | 100% / 5.6 / 48% | — |
+| II | Sanctuary Warden (Ch4) | 15 | IV | 643 / 39 | 900 / 55 | 96% / 6.2 / 28% | 93% / 7.3 / 30% |
+| II | Commander Hailen (Ch5) | 17 | V | 900 / 57 | 1620 / 74 | 80% / 8.4 / 20% | 82% / 9.7 / 31% |
+| III | Burn-Line Hulk (Ch6) | 18 | VI | 1260 / 55 | 1890 / 74 | 99% / 7.6 / 42% | 99% / 9.6 / 44% |
+| III | Blackwood Matriarch (Ch7) | 19 | VI | 1029 / 49 | 1544 / 64 | 93% / 7.2 / 27% | 91% / 7.9 / 28% |
+| III | The Door Warden (Ch8) | 20 | VI | 1286 / 46 | 2315 / 74 | 96% / 8.3 / 25% | 95% / 10.5 / 33% |
+| IV | Magistrate Vell (Ch9) | 21 | VII | 1022 / 52 | 1840 / 73 | 100% / 7.5 / 37% | 100% / 9.0 / 49% |
+| IV | Barrow Warden (Ch10) | 22 | VII | 1701 / 59 | 2381 / 71 | 99% / 7.4 / 43% | 96% / 9.7 / 40% |
+| IV | The Forgotten King (Ch11) | 23 | VII | 1714 / 61 | 2228 / 70 | 98% / 8.0 / 36% | 98% / 9.3 / 39% |
+| V | The Toll-Keeper (Ch12) | 24 | VIII | 1804 / 64 | 2165 / 77 | 100% / 7.3 / 44% | 99% / 8.5 / 45% |
+| V | Saltreach Leviathan (Ch13) | 25 | VIII | 1895 / 67 | 2150 / 72 | 91% / 7.2 / 22% | 77% / 8.3 / 19% |
+| V | The Fallen Knight (Ch14) | 26 | VIII | 2052 / 70 | 2772 / 80 | 98% / 8.4 / 37% | 97% / 9.7 / 41% |
+
+`Caelan` and `Sera` are the two four-member parties; `W / R / HP` is win rate / rounds / party HP
+left. The Caelan party is the current damage ceiling; the Sera party is the healing control.
+Rates are stochastic: a fixed-seed rerun moves about ±1–2 points, so the GML comments may show a
+neighbouring run by a point.
+Act V's tier-VIII shelf is in `rm_rimehold`; the entrance opens after Chapter 11. The tier-VIII
+rows are the balance target for Chapters 12–14.
+
+**Encounter tables.** With tier VI–VIII gear the old two-enemy groups in `blackwood`, `crown_barrow`
+and `drowned_coast` fell in two to three rounds at 91–98% party HP. Every regular group in those
+three tables now fields **three** enemies (`BATTLE_MAX_REGULAR_ENEMIES`), which brings the measured
+common bands to roughly 3–5 rounds and 81–95% party HP. Weights are unchanged; only group shape is.
+
+**Act I–II trash and the Blackguard.** Act I's Blackguard is unchanged (canon 450 HP / scripted
+phases); the simulator has never modelled those phases, so it is not reported as a balance pass.
+Act II's random tables were already within their published bands and were not resized; only the
+Chapter 2–5 bosses took the tier retune above.
+
+**Acts VI–VIII are not simulated.** They have titles and gear rows but no enemy ids, room bands,
+encounter tables or bosses. `balance_sim.py --summary` prints them as `no authored enemies`; no
+band was invented for them.
+
+**Checks run:** `python3 validate_gamemaker.py` → `ALL CHECKS PASSED` (the four known Act I
+out-of-band warnings remain); `python3 tools/equipment_check.py` → `ALL CHECKS PASSED (5 static
+balance flags)` — its boss table now parses the scaled `hp_mult` / `atk_add`, but its verdict
+ignores skills, buffs and healing; `python3 tools/balance_sim.py --summary` → the table above. No GameMaker compile or
+playtest was possible here.
+
 ## Act III balance check (Blackwood, Chapters 6–8; PROPOSED numbers)
-`python3 tools/balance_sim.py` prints these rows too (`ch6_tables()`), on the same model plus the Blackwood kits as coded: Fade (attacks miss until the next round), Blinding Dust (70%, 50% physical miss for three rounds), Drowsy Dust (50%, two turns skipped), the Matriarch's two phases with Ash Breath (0.8× to the whole party, doubled weight in phase 2), and Sera's Mend (+30, 4 MP) and Smite (1.3× holy, ×1.5 on a holy-weak target). The party is Kael / Taren / Lyra with Caelan, and again with Sera, in Chapter 5 gear — there are no Act III weapons or armour in the item data. Sera joins at 28 HP / 4 ATK / 4 DEF with the Holy Sword, which carries `atk_bonus: 0`.
+**Historical (2026-11-16).** The rows in this section were measured before the tier-VI weapon and
+armour data existed. They are kept as the record of the pre-tier pass; the current numbers are in
+"Eight-act gear-tier retune" above.
+`python3 tools/balance_sim.py` prints these rows too (`ch6_tables()`), on the same model plus the Blackwood kits as coded: Fade (attacks miss until the next round), Blinding Dust (70%, 50% physical miss for three rounds), Drowsy Dust (50%, two turns skipped), the Matriarch's two phases with Ash Breath (0.8× to the whole party, doubled weight in phase 2), and Sera's Mend (+30, 4 MP) and Smite (1.3× holy, ×1.5 on a holy-weak target). At the time, the party was Kael / Taren / Lyra with Caelan, and again with Sera, in Chapter 5 gear — the Act III weapons and armour did not exist yet. Sera joined at 28 HP / 4 ATK / 4 DEF with the Holy Sword, which then carried `atk_bonus: 0`.
 
 Enemy stats are exactly `scr_enemy_scaled`: level 18 = 125 / 40 / 29 / MDEF 15, 19 = 134 / 43 / 31 / 16, 20 = 143 / 46 / 33 / 17. The Act III bosses are those entries re-scaled as bosses (the data change the outline proposes), plus the Matriarch as it is already written.
 
@@ -564,8 +643,8 @@ These were chosen so Design's map and art could be wired into the existing proto
 - Battle playback: idle 6 fps, attack/hurt/death 10 fps, drawn in Draw GUI at `BATTLE_SPRITE_SCALE` 2. Damage is applied at about 60% through the attack clip; a KO plays death instead of hurt and holds the last frame. Confirm skips the clip. There is no Guard pose in the art.
 - Camera view 320×180, optionally displayed at 2× (640×360 window). `CAMERA_FOLLOW_PLAYER` is on. `scr_camera_follow_player` is defined once in `scr_map_tilemaps.gml` and called from `obj_game_controller` End Step. Overhead tiles use depth -10000 so they stay above a player that y-sorts with `depth = -y`.
 - Greyhaven is safe (no encounter zone, no room-wide table). Other areas use the existing `obj_encounter_zone` API with tables `zone01_farmlands`, `zone01_old_road`, `zone01_bandit_camp`, `zone01_watchtower`. Only Bandit Camp and Watchtower opt into the `zone01_path` fallback (which includes Fallen Knights). Farmlands and the Old Road do not.
-- Blackguard placeholder stats: 80 HP, 12 ATK, 8 DEF, 50 XP, 30 gold. Not balanced.
-- Entrances to rooms that are not built yet (`rm_rimehold`, `rm_saltreach`, `rm_blackwood_doors`, `rm_flooded_ruins`, and others) only show a placeholder dialogue line. `rm_ashlands_breach`, `rm_ashlands_ruins` and `rm_ashlands_depths` are the Ashlands rooms built ahead of their act. Built rooms (`rm_old_watchtower`, `rm_watchtower_basement`, the Greyhaven interiors, and the Chapter 2–3 rooms and roads) open normally.
+- Blackguard carries its canon 450 HP / 12 ATK / 8 DEF / 250 XP / 100 Gold, with three phases. This replaced the old 80 HP / 50 XP / 30 gold prototype line.
+- Entrances to rooms that are not built yet (`rm_saltreach`, `rm_blackwood_doors`, `rm_flooded_ruins`, and others) only show a placeholder dialogue line. `rm_ashlands_breach`, `rm_ashlands_ruins` and `rm_ashlands_depths` are the Ashlands rooms built ahead of their act; `rm_rimehold` is the armoury courtyard built ahead of Act VIII. Built rooms (`rm_old_watchtower`, `rm_watchtower_basement`, the Greyhaven interiors, and the Chapter 2–3 rooms and roads) open normally.
 - A story-flag system and key-item inventory helpers exist (`scr_flag_get` / `scr_inventory_add`). The Tomas scene (`GH_TOMAS`, inside the Blacksmith), Mira's pendant (`GH_HOUSE_03`–`05` inside Varyn House, actually added to inventory), banner clue (`WT_BANNER`), Fallen Knight beats (`FK_01` / `FK_02`), arrival (`GH_ARRIVAL`), survivor talk (Hob, Ilse, Marda, Wenna, Dov, Corwin), `WB_CARVING`, `BG_INTRO` / `BG_DEFEAT`, and `CV_END` (after `blackguard_defeated`) are wired from Chapter 1 confirmed lines. Chapter 2 `[PROPOSED]` lines are not wired. Marda's store and Pell's forge (after the pendant) open a Buy / Sell / Exit shop overlay. The locked terrace stairs are blocked from below by a barrier marker on `flag_wt_upper_unlocked` (set by the Basement stairs; the old `watchtower_basement_cleared` name is retired).
 - The guaranteed Ashbound Hunter fight (`enc_ashbound_hunter_wt`) is spawned in `rm_old_watchtower` on walkable tile (33, 33), on the way to `old_royal_banner` (41, 25). Interactables are fitted to one 16×16 tile so a 32×32 placeholder cannot cover the trigger. Rare Hunter rolls are allowed on `zone01_old_road`, `zone01_bandit_camp`, and `zone01_watchtower` (short ids `old_road` / `bandit_camp` / `watchtower` still work).
 - Bandit overworld sheets are in the repo but not used by any object yet. There is no Fallen Knight overworld sheet. Battle assets are named `spr_hero_*`; overworld Kael is `spr_kael_ow*`.
@@ -575,7 +654,7 @@ These were chosen so Design's map and art could be wired into the existing proto
 - Whether the new `royal_banner` / `carving_crown_sun` tiles and `spr_item_mira_pendant` match the confirmed crown-ringing-a-black-sun design (the tiles are in the Design drop; they have not been visually approved in GameMaker).
 - Several chest loots (`hidden_grove_chest`, `watchtower_chest_2`, `watchtower_chest_3`).
 - What lies past the Crownveil breach (`CV_END` is still a stub).
-- PLACEHOLDER combat stats (not approved) exist for **ash_wolf**, **ashen_wretch**, **grave_spider**, and **hollow_soldier**, plus the Ashbound Hunter entry. Blackguard carries its canon 450 HP / three phases / 250 XP / 100 Gold. Battle strips for the new enemies exist (batch art); FL_TUTORIAL system lines are wired (systems pass). Chest loot marked `placeholder` is not invented. Official shop prices, Pell's final stock, and the 50% sell rate are PLACEHOLDER (open). Save-point tiles in the chapel and tavern are temporary (open). Battle poison is implemented (systems pass; inflictor and tick rule are PLACEHOLDERS).
+- PLACEHOLDER combat stats (not approved) exist for **ash_wolf**, **ashen_wretch**, **grave_spider**, and **hollow_soldier**, plus the Ashbound Hunter entry. Blackguard carries its canon 450 HP / three phases / 250 XP / 100 Gold. Battle strips for the new enemies exist (batch art); FL_TUTORIAL system lines are wired (systems pass). Chest loot marked `placeholder` is not invented. Official shop prices, Pell's final stock, and the 50% sell rate are PLACEHOLDER (open). Save-point tiles in the chapel and tavern are temporary (open). Battle poison is implemented (systems pass; inflictor and tick percentages are PLACEHOLDERS).
 
 ## Prototype assumptions (exploration + battle prototype; pending owner approval)
 These were chosen so roadmap steps 2–3 could be built. None is a locked design decision.
@@ -592,10 +671,10 @@ These were chosen so roadmap steps 2–3 could be built. None is a locked design
 `docs/story/ACT5_OUTLINE.md` proposes *The Fallen Knight*: three chapters (12–14) on the **Drowned Coast**, at levels 24–26 with `PARTY_MAX_LEVEL` 27. **All ten of its decisions were approved as recommended on 2026-11-16.** Chapters 12–14 are approved as story (Chapter 12 on 2026-11-17; Chapters 13–14 on 2026-11-18). The act is still unbuilt: no room, quest row, story script or dialogue data exists. The seven-enemy batch, the `drowned_coast` table and three boss groups are data only, and `--act5` has simulated them; nothing has been compiled or played.
 
 What the approval actually fixes:
-- **The region map for the rest of the game.** Act V is the Drowned Coast (`rm_saltreach`, `rm_saltreach_pier`, `rm_flooded_ruins`, `rm_shipwreck`); Act VI *Beneath the Mountains* takes the Ironspine; Act VII *The Ashlands* takes the ash side of the Crownveil; Act VIII *The Truth* takes the Frostwilds (`rm_rimehold`, `rm_frozen_ruins`) and the final questions. Building Act V takes the validator's unresolved references from ten to six.
+- **The region map for the rest of the game.** Act V is the Drowned Coast (`rm_saltreach`, `rm_saltreach_pier`, `rm_flooded_ruins`, `rm_shipwreck`); Act VI *Beneath the Mountains* takes the Ironspine; Act VII *The Ashlands* takes the ash side of the Crownveil; Act VIII *The Truth* takes the Frostwilds (`rm_rimehold` — armoury courtyard built, the rest of the settlement not — and `rm_frozen_ruins`) and the final questions. Building Act V takes the validator's unresolved references from ten to six.
 - **The knight is the act's subject and is fought once, yielding.** He is never named, never killed, and gets no bestiary kill credit; the act's revelation is the office, not the man.
 - **The Drowned Coast gets Saltreach, the toll and the leviathan**, so the region the bible named in 2026 has content for the first time — as a proposal, not canon story.
-- **The level cap is 27** for Act V. The approved decision has been applied in `game/scripts/scr_game_constants.gml` and the generated GameMaker constants; the existing XP curve reaches level 27 at 13,780 XP.
+- **The level cap moved to 27 (applied 2026-11-18).** `PARTY_MAX_LEVEL` was 24; it is now 27, so Act V's 24–26 band sits two levels under the ceiling. The XP curve needed no change: it reads 10810 / 11760 / 12750 / 13780 at levels 24–27 and never depended on the cap below it, so Acts I–IV are untouched. The numbers are still simulation, not play.
 - **Alden stays off-screen**, reachable only through a letter gated on Chapter 11's seal flags. No split, and Ending C is untouched.
 
 Open points the approval does not settle are listed in the outline's §10; nothing there was approved by implication.
@@ -617,7 +696,7 @@ Open points the approval does not settle are listed in the outline's §10; nothi
 
 A story pass on 2026-11-17 made the slate single-use with a once-a-season ritual, staged the keeper taking the tablet before the fight, replaced the outline's original proposed pier line with "You're early. She didn't wait.", added Alden's north-road transition and exact tomb quote, and gave the 200-gold payment a motive.
 
-The chapter is approved as story; it is not built or played. The Toll-Keeper's stat block is in the Act V batch and simulated, and `PARTY_MAX_LEVEL` is still 24.
+The chapter is approved as story; it is not built or played. The Toll-Keeper's stat block is in the Act V batch and simulated, and `PARTY_MAX_LEVEL` is 27 since 2026-11-18.
 
 ### Chapters 13–14 (approved 2026-11-18)
 `docs/story/CHAPTER13_SCRIPT.md` is *What the Tide Kept* (approved 2026-11-18): the outer pier, the reef, an Aethari-built record room the Crown used, a bronze list of eleven crossings with ten names chiselled away, the legible name **Maelin Orr**, the slate midden below, the knight's second line ("Eleven went. Ten came back wrong. I am not the wrong one."), the Saltreach Leviathan, and the *Patient Crown* on the reef. `docs/story/CHAPTER14_SCRIPT.md` is *The Knight Who Came Back* (approved 2026-11-18): the wreck, the log that stops at "No further crossings" with no reason, the knight's test, his yield at 0 HP, the office reveal, the crossing token, and the act end toward the Ironspine.
@@ -627,6 +706,9 @@ The scripts leave the ten unexplained, the knight unnamed and unclassified, Kael
 A review pass on 2026-11-18 fixed the Chapter 13 departure so it no longer re-plays Chapter 12's ending; had Caelan point out that the knight fits neither the eleven nor the ten; stopped Caelan confirming scraped names he cannot read; added the missing `ch13_knight_gone` / `ch14_knight_gone` flags; removed the orphaned barrows-blade reference; moved `Q_MF_S4` to the ship's name; clarified the tide path, the Fisher's staging and the ship/eleventh distinction; and made the token a receipt with no mechanical function. It also synced the chisel to "same order, not same hand", made the Aethari inscription a record-hall text, and recorded that the Crown "couldn't use" the ten as the draft's implication. Chapters 13 and 14 were approved as story on 2026-11-18; neither is built or played.
 
 ### Act V enemy batch and simulation (2026-11-17)
+**Historical (2026-11-17).** The Act V batch was tuned against the old tier-V Tidesteel / Drowned
+Coat loadout. It was retuned on 2026-11-18 against tier VIII; Rimehold's armoury is now built. See
+"Eight-act gear-tier retune" above. The numbers below are the pre-tier record.
 Seven ids are in `game/scripts/scr_enemy_database.gml`: `drowned_husk`, `salt_wretch`, `tide_crawler`, `wreck_shade`, `toll_keeper`, `salt_leviathan` and `fallen_knight_last`. `scr_encounter_tables.gml` has the `drowned_coast` table (five two-enemy groups, band 24–25) and the three solo boss groups. `leviathan_tide` is the act's one new boss skill, an all-party 0.8 tide surge; the Leviathan drops **The Drowned Crown** once.
 
 The simulator uses the Act V tier (Tidesteel Blade / Drowned Coat), reachable from Mott's cart:
@@ -635,7 +717,7 @@ The simulator uses the Act V tier (Tidesteel Blade / Drowned Coat), reachable fr
 - **Leviathan:** 91% Caelan / 73% Sera at L25, 7.2–8.4 rounds, 18–21% HP, about one death; 79% / 52% at L24.
 - **Fallen Knight:** 99% Caelan / 98% Sera at L24, 8.0–9.5 rounds, 39–41% HP; 100% at L26, 7.3–8.6 rounds, 51% HP. It yields.
 
-Without the Act V tier the commons still clear, but the Leviathan falls to 33–34% wins at 13% HP — the tier is the expected path, not optional polish. All of this is simulation; no battle has been compiled or played. The cap is now 27; the Act V tier and encounter balance still require in-engine verification.
+Without the Act V tier the commons still clear, but the Leviathan falls to 33–34% wins at 13% HP — the tier is the expected path, not optional polish. All of this is simulation; no battle has been compiled or played, and the cap is 27.
 
 ## Chapter-wide audit (2026-11-16)
 `tools/audit_chapters.py` cross-checks the things `validate_gamemaker.py` cannot: story-script line ids against dialogue data, marker hooks against the `scr_*_play_script` dispatchers, every `zone_exit` against the target room's marker names, encounter groups/tables/enemy ids, quest stages, ambience beds, and every `**ID** · Speaker` header in `docs/story/CHAPTER*_SCRIPT.md` against a node. It is read-only, exits non-zero on a problem, and currently reports none.

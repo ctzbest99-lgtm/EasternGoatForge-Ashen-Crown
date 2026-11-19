@@ -2,7 +2,8 @@
 scr_game_state_init();
 scr_ui_init();
 global.game.menu_open = true;
-tab = 0;            // 0 Items, 1 Equip, 2 Key
+opened_frame = global.game.frame;
+tab = 0;            // 0 Items, 1 Equip, 2 Key, 3 Materials
 mode = "list";      // "list" | "target" | "slots" | "pick"
 index = 0;
 scroll = 0;

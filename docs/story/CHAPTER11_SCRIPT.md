@@ -5,7 +5,7 @@ Route: the steps below `rm_barrow_gate` → **`rm_barrow_halls`** (30×20), a ro
 > **Status: BUILT 2026-11-16 from the approved Act IV outline — not individually approved, not played.**
 > Built: `scr_dialogue_data_ch11` (81 nodes: 77 scripted + 4 wiring-only), `scr_ch11_story` (halls entry, the two optional lore scenes, the charter, the King gate with retry, the aftermath, the seal choice, the act card), `rm_barrow_halls` (30×20) and `rm_barrow_deep` (26×20) with `scr_build_barrow_halls`, `scr_build_barrow_deep` and `scr_ch11_markers_data`, `Q_MAIN_CROWN` S5–S6, and the wiring into the dialogue chain, the battle-finish hook, the controller's step and room-start hooks and the audio set. **All of Act IV's room references now resolve** — what is left on the validator's list belongs to Acts V–VIII.
 > **The mark is named, not explained.** §3.4 reveals that the Crown's oldest hand calls the mark **the Crownveil** — the phrase the bible and Chapter 1 already use for it (*"a Crownveil symbol"*). The charter gives the name and nothing more: no meaning, no origin, no answer to why the royal banner bears it. **The Ashen Crown stays reserved for the finale** (bible, ending table) and is deliberately not used for the mark.
-> **Not played.** The tomb is a Wrenfield blockout, the King reuses the sanctuary warden's strips, and every NPC is a placeholder. Level band **23**; this is the act boss.
+> **Not played.** The tomb now builds on the `ts_barrow` crypt atlas (unseen in an IDE), the King reuses the sanctuary warden's strips, and every NPC is a placeholder. Level band **23**; this is the act boss.
 
 Source of truth: `STORY_BIBLE.md` and `ACT4_OUTLINE.md` §5, §9, §11. Presentation: FF1-style top-down exploration; menu battles.
 

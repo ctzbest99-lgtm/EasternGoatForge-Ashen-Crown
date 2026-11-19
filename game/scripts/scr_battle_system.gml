@@ -20,6 +20,7 @@ function scr_battle_stat(_actor, _stat) {
     var _base = 0;
     switch (_stat) {
         case "atk": _base = _actor.attack; break;
+        case "mag": _base = variable_struct_exists(_actor, "magic") ? _actor.magic : 0; break;
         case "def": _base = _actor.defense; break;
         case "mdef": _base = variable_struct_exists(_actor, "mdef") ? _actor.mdef : 0; break;
         case "spd":
@@ -111,6 +112,9 @@ function scr_battle_status_has(_actor, _status) {
 function scr_battle_try_add_status(_actor, _status, _turns = 2) {
     if (!is_struct(_actor)) return false;
     if (scr_battle_status_resisted(_actor, _status)) return false;
+    // Equipment status resistance: a percentage chance to shrug the status off outright.
+    var _sres = scr_actor_status_resist(_actor, _status);
+    if (_sres > 0 && random(100) < _sres) return false;
     if (!variable_struct_exists(_actor, "statuses") || !is_array(_actor.statuses)) _actor.statuses = [];
     if (scr_battle_status_has(_actor, _status)) return false;
     array_push(_actor.statuses, { id: _status, turns: max(1, _turns) });
@@ -125,22 +129,29 @@ function scr_battle_remove_status(_actor, _status) {
     }
 }
 
+/// Tick bleed and poison at ROUND_START. A regular combatant can be reduced to 0; `dot_down`
+/// tells obj_battle_controller to resolve the death/yield before commands resume.
 function scr_battle_tick_statuses(_actor) {
-    if (!is_struct(_actor) || !variable_struct_exists(_actor, "statuses") || !is_array(_actor.statuses)) return;
+    if (!is_struct(_actor)) return;
+    _actor.dot_down = false;
+    if (_actor.hp <= 0 || !variable_struct_exists(_actor, "statuses") || !is_array(_actor.statuses)) return;
     for (var _i = array_length(_actor.statuses) - 1; _i >= 0; _i--) {
         var _st = _actor.statuses[_i];
         if (!is_struct(_st)) { array_delete(_actor.statuses, _i, 1); continue; }
-        // Bleed (Open Vein) and poison tick at ROUND_START: damage over time that
-        // never kills (PLACEHOLDER rule, same as bleed).
-        if (_st.id == "bleed" && _actor.hp > 1) {
-            var _b = max(1, floor(_actor.max_hp * BATTLE_BLEED_PCT));
-            _actor.hp = max(1, _actor.hp - _b);
+        // Bleed (Open Vein) and poison tick at ROUND_START. Damage-over-time can
+        // finish a regular combatant; the controller handles the death/yield and
+        // checks the battle outcome before normal commands resume.
+        if (_st.id == "bleed") {
+            var _b = min(_actor.hp, max(1, floor(_actor.max_hp * BATTLE_BLEED_PCT)));
+            _actor.hp = max(0, _actor.hp - _b);
             _actor.bleed_last = _b;
+            if (_actor.hp <= 0) _actor.dot_down = true;
         }
-        if (_st.id == "poison" && _actor.hp > 1) {
-            var _p = max(1, floor(_actor.max_hp * BATTLE_POISON_PCT));
-            _actor.hp = max(1, _actor.hp - _p);
+        if (_st.id == "poison") {
+            var _p = min(_actor.hp, max(1, floor(_actor.max_hp * BATTLE_POISON_PCT)));
+            _actor.hp = max(0, _actor.hp - _p);
             _actor.poison_last = _p;
+            if (_actor.hp <= 0) _actor.dot_down = true;
         }
         _st.turns -= 1;
         if (_st.turns <= 0) array_delete(_actor.statuses, _i, 1);
@@ -148,7 +159,8 @@ function scr_battle_tick_statuses(_actor) {
 }
 
 /// One actor's damage-over-time report for the round-start message
-/// ("X bleeds for 3. Y is sickened for 2."), then clears the tick counters.
+/// ("X bleeds for 3. Y is sickened for 2."), then clears the tick counters and `dot_down`.
+/// A tick that ended the combatant adds "falls" (or "yields" for a boss).
 function scr_battle_dot_report(_actor) {
     if (!is_struct(_actor)) return "";
     var _t = "";
@@ -160,10 +172,16 @@ function scr_battle_dot_report(_actor) {
         _t += _actor.name + " is sickened for " + string(_actor.poison_last) + ". ";
         _actor.poison_last = 0;
     }
+    if (variable_struct_exists(_actor, "dot_down") && _actor.dot_down) {
+        if (_actor.hp <= 0) _t += _actor.name + " falls. ";
+        else if (variable_struct_exists(_actor, "yielded") && _actor.yielded) _t += _actor.name + " yields. ";
+    }
+    _actor.dot_down = false;
     return _t;
 }
 
-/// Critical hit chance for `_actor`: the base rate plus Cutthroat (Lyra's passive).
+/// Critical hit chance for `_actor`: base + Cutthroat (passive) + equipment CRIT.
+/// CRIT is a bonus fraction on the actor (0.06 = +6%); the base lives in the macro.
 function scr_battle_crit_chance(_actor) {
     var _c = BATTLE_CRIT_BASE;
     if (is_struct(_actor) && variable_struct_exists(_actor, "passives") && is_array(_actor.passives)) {
@@ -171,7 +189,24 @@ function scr_battle_crit_chance(_actor) {
             if (_actor.passives[_i] == "cutthroat") _c += BATTLE_CUTTHROAT_CRIT_BONUS;
         }
     }
-    return _c;
+    if (is_struct(_actor) && variable_struct_exists(_actor, "crit")) _c += _actor.crit;
+    return clamp(_c, 0, 0.95);
+}
+
+/// Elemental resistance in percent (equipment only). Negative values are a weakness.
+/// Clamped to -100..75 so no build can become immune or take double damage from gear alone.
+function scr_actor_element_resist(_actor, _element) {
+    if (!is_struct(_actor) || _element == "" || _element == "none") return 0;
+    if (!variable_struct_exists(_actor, "elem_res") || !is_struct(_actor.elem_res)) return 0;
+    if (!variable_struct_exists(_actor.elem_res, _element)) return 0;
+    return clamp(_actor.elem_res[$ _element], -100, 75);
+}
+
+/// Status resistance in percent (equipment only), clamped -100..100.
+function scr_actor_status_resist(_actor, _status) {
+    if (!is_struct(_actor) || !variable_struct_exists(_actor, "status_res") || !is_struct(_actor.status_res)) return 0;
+    if (!variable_struct_exists(_actor.status_res, _status)) return 0;
+    return clamp(_actor.status_res[$ _status], -100, 100);
 }
 
 /// Short tags for the HUD ("Bl", "Sl", "Vl", "Bd", "Pn", "Sw").
@@ -187,10 +222,14 @@ function scr_battle_status_tags(_actor) {
 }
 
 /// Damage of `_skill` (a scr_skill_get struct) from `_user` to `_target`, before Guard.
-/// Physical uses ATK vs DEF, magic uses ATK vs MDEF; power scales the normal Attack formula.
+/// Physical uses ATK vs DEF, magic uses MAG vs MDEF; power scales the normal Attack formula.
 /// A matching `weakness` multiplies by BATTLE_WEAKNESS_MULTIPLIER. Returns { damage, weak }.
 function scr_battle_skill_damage(_user, _target, _skill) {
     var _atk = scr_battle_stat(_user, "atk");
+    if (_skill.dmg_type == "mag") {
+        _atk = scr_battle_stat(_user, "mag");
+        if (_atk <= 0) _atk = scr_battle_stat(_user, "atk"); // incomplete old record: keep the hit useful
+    }
     var _def = (_skill.dmg_type == "mag") ? scr_battle_stat(_target, "mdef") : scr_battle_stat(_target, "def");
     var _dmg = scr_calculate_damage(_atk, _def);
     if (_skill.power != 1) _dmg = max(1, floor(_dmg * _skill.power));
@@ -200,6 +239,10 @@ function scr_battle_skill_damage(_user, _target, _skill) {
         _dmg = max(1, floor(_dmg * BATTLE_WEAKNESS_MULTIPLIER));
         _weak = true;
     }
+    // Equipment elemental resistance reduces the hit before Guard. Enemies carry no
+    // elem_res, so this only ever applies to party members.
+    var _res = scr_actor_element_resist(_target, _skill.element);
+    if (_res != 0) _dmg = max(1, floor(_dmg * (100 - _res) / 100));
     return { damage: _dmg, weak: _weak };
 }
 
@@ -315,7 +358,7 @@ function scr_battle_intro_text(_enemies, _boss_index) {
 }
 
 /// End-of-battle cleanup for every roster member: clear battle buffs / statuses and Guard.
-/// After a victory, living active members regain BATTLE_VICTORY_MP_REGEN MP (PLACEHOLDER).
+/// After a victory, living active members regain BATTLE_VICTORY_MP_REGEN MP (provisional value).
 function scr_battle_clear_party_battle_state(_victory) {
     scr_game_state_init();
     var _lists = [global.game.roster, global.game.party, global.game.reserve];

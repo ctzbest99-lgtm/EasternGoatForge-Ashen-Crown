@@ -208,6 +208,7 @@ function scr_audio_room_enter(_room) {
         case "rm_ashlands_breach":  _amb = "wind"; break; // the dead side of the Veil
         case "rm_ashlands_ruins":   _amb = "wind"; break; // the ruin beyond it, same dead air
         case "rm_ashlands_depths":  _amb = "dungeon"; break; // the undercroft behind the sanctum wall
+        case "rm_rimehold":         _amb = "wind"; break; // the armoury courtyard in the Frostwilds
         case "rm_barrow_halls":     _amb = "dungeon"; break; // Act IV's tomb
         case "rm_barrow_deep":      _amb = "dungeon"; break;
         case "rm_old_watchtower":   _amb = "wind"; break;
@@ -222,6 +223,9 @@ function scr_audio_room_enter(_room) {
         case "rm_wrenfield_bent_post": _amb = "fire"; break;
         case "rm_wrenfield_store":  _amb = "fire"; break; // Len's store, one lamp and a stove
         case "rm_salt_lamp":        _amb = "fire"; break;
+        case "rm_saltreach_pier":   _amb = "water"; break;
+        case "rm_shipwreck":        _amb = "water"; break;
+        case "rm_flooded_ruins":    _amb = "water"; break;
         case "rm_garrison_keep":    _amb = "fire"; break;
         default:                    _amb = "";
     }

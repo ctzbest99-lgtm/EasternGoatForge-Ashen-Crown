@@ -129,30 +129,37 @@ function scr_get_encounter_table(_table_id) {
                 { group: ["garrison_knight", "garrison_field_surgeon"], weight: 1 }
             ];
         case "blackwood": // Act III
+            // Three-enemy groups after the 2026-11-18 tier-VI retune: with tier-VI gear the old
+            // two-enemy groups died in two rounds at 93-97% party HP. Every regular group now
+            // fields three (BATTLE_MAX_REGULAR_ENEMIES).
             return [
-                { group: ["lost_one", "briar_hulk"], weight: 2 },
-                { group: ["shade_stalker", "lost_one"], weight: 2 },
+                { group: ["lost_one", "briar_hulk", "night_moth_swarm"], weight: 2 },
+                { group: ["shade_stalker", "lost_one", "night_moth_swarm"], weight: 2 },
                 { group: ["lost_one", "briar_hulk", "shade_stalker"], weight: 2 },
-                { group: ["night_moth_swarm", "lost_one"], weight: 2 },
-                { group: ["door_warden", "night_moth_swarm"], weight: 1 }
+                { group: ["night_moth_swarm", "lost_one", "shade_stalker"], weight: 2 },
+                { group: ["door_warden", "night_moth_swarm", "lost_one"], weight: 1 }
             ];
         case "crown_barrow": // Act IV (ACT4_OUTLINE.md §7, decisions approved 2026-11-16)
+            // Three-enemy groups after the 2026-11-18 tier-VII retune: tier VII cut the old
+            // two-enemy groups to three rounds at 88-93% party HP.
             return [
-                { group: ["crown_guard_elite", "barrow_husk"], weight: 2 },
-                { group: ["crown_guard_elite", "oath_iron"], weight: 2 },
+                { group: ["crown_guard_elite", "barrow_husk", "grave_moth"], weight: 2 },
+                { group: ["crown_guard_elite", "oath_iron", "barrow_husk"], weight: 2 },
                 { group: ["barrow_husk", "barrow_husk", "grave_moth"], weight: 2 },
-                { group: ["oath_iron", "barrow_husk"], weight: 1 },
+                { group: ["oath_iron", "barrow_husk", "grave_moth"], weight: 1 },
                 { group: ["grave_moth", "grave_moth", "crown_guard_elite"], weight: 1 },
                 // Emberwake again, at the barrow road's scale (Act IV).
                 { enemy_id: "emberwake_late", weight: 1 }
             ];
         case "drowned_coast": // Act V (ACT5_OUTLINE.md §7; Chapter 12 approved 2026-11-17)
+            // Three-enemy groups after the 2026-11-18 tier-VIII retune: tier VIII made the old
+            // two-enemy groups three-round fights at 91-93% party HP.
             return [
-                { group: ["drowned_husk", "salt_wretch"], weight: 2 },
-                { group: ["drowned_husk", "tide_crawler"], weight: 2 },
-                { group: ["salt_wretch", "wreck_shade"], weight: 2 },
-                { group: ["tide_crawler", "wreck_shade"], weight: 1 },
-                { group: ["drowned_husk", "wreck_shade"], weight: 1 }
+                { group: ["drowned_husk", "salt_wretch", "tide_crawler"], weight: 2 },
+                { group: ["drowned_husk", "tide_crawler", "wreck_shade"], weight: 2 },
+                { group: ["salt_wretch", "wreck_shade", "drowned_husk"], weight: 2 },
+                { group: ["tide_crawler", "wreck_shade", "salt_wretch"], weight: 1 },
+                { group: ["drowned_husk", "wreck_shade", "tide_crawler"], weight: 1 }
             ];
     }
     return undefined;

@@ -1,7 +1,7 @@
 # ASHEN CROWN — Act IV Outline: "The Forgotten King"
 
-> **Status: DECISIONS APPROVED 2026-11-16 (all ten as recommended); the chapters themselves are not written and the act is not built.** The seven Act IV enemies, the `crown_barrow` encounter table, the three boss groups, the sprite fallbacks and the matching bestiary rows are in the data, and `PARTY_MAX_LEVEL` is now 24. Act IV is still PROPOSED as story: nothing here is canon. This is the outline Act IV needs before a chapter script can be written, in the same shape as `ACT3_OUTLINE.md`. §9 lists ten decisions for the owner; each has a recommendation. The act title **The Forgotten King** is **[O]** canon (bible §7 gives the title and nothing else), and bible question 13 — *who is the Forgotten King?* — is answered here only as a proposal.
-> **Level band: 21–23 [PROPOSED], and it is blocked.** `PARTY_MAX_LEVEL` is 20. Act IV cannot be played at its own band until the cap moves; §9.8 recommends 24, which is the same decision Act III's outline already asked for.
+> **Status: DECISIONS APPROVED 2026-11-16 (all ten as recommended); all three chapters are written and built (2026-11-16 to 11-18), but not individually approved, compiled or played.** The seven Act IV enemies, the `crown_barrow` encounter table, the three boss groups, the sprite fallbacks and the matching bestiary rows are in the data, and `PARTY_MAX_LEVEL` is 27. Act IV is still PROPOSED as story: nothing here is canon. This is the outline Act IV was written from, in the same shape as `ACT3_OUTLINE.md`. §9 lists ten decisions for the owner; each has a recommendation. The act title **The Forgotten King** is **[O]** canon (bible §7 gives the title and nothing else), and bible question 13 — *who is the Forgotten King?* — is answered here only as a proposal.
+> **Level band: 21–23 [PROPOSED].** `PARTY_MAX_LEVEL` is 27; the band remains the approved design target for the act, not a cap on the party.
 
 Source of truth: `STORY_BIBLE.md` (Alden Marr, Ending C, Aldric IV, the mark), `ACT3_OUTLINE.md` §5 (where Act III leaves the party), and the built state of the game. Where canon is silent this outline says so and lists the choice.
 
@@ -9,11 +9,11 @@ Source of truth: `STORY_BIBLE.md` (Alden Marr, Ending C, Aldric IV, the mark), `
 
 ## 0. What is already in the build
 
-- **The engine does not need to change for this act.** Dialogue, flags, quests, scripted bosses, marker-driven rooms, save schema v3 and the audio set all exist. Act IV is content.
-- **The enemy data now exists** (added 2026-11-16 on the decisions below): seven ids at 21–23, the `crown_barrow` table and `grp_magistrate_vell` / `grp_barrow_warden` / `grp_forgotten_king`, with `PARTY_MAX_LEVEL` raised to 24. The Bestiary goes 35 → 42 entries, and the validator reports 42 entries, 42 distinct names, 42 with art. **No chapter uses any of it yet.**
-- **Rooms:** 34 rooms exist in total (the Ashlands has three built rooms, `rm_ashlands_breach`, `rm_ashlands_ruins` and `rm_ashlands_depths`), and **every Act IV room is built** — `rm_town`, `rm_barrow_gate`, `rm_barrow_halls`, `rm_barrow_deep`. The validator's remaining unresolved references (`rm_ironspine_*`, `rm_saltreach*`, `rm_shipwreck`, `rm_rimehold`, `rm_flooded_ruins`, `rm_frozen_ruins`) all belong to Acts V–VIII.
-- **Art:** 18 enemy kinds still have no 16×24 overworld set, and the act boss would need battle art, a portrait-scale presence and a bestiary row. Nothing in Act IV can ship visually on existing assets except reused common enemies.
-- **Alden has no sprite at all** (measured in `ASSET_INVENTORY.md`), and this act puts him on screen in three chapters.
+- **The engine does not need to change for this act.** Dialogue, flags, quests, scripted bosses, marker-driven rooms, save schema v4 and the audio set all exist. Act IV is content.
+- **The enemy data now exists** (added 2026-11-16 on the decisions below): seven ids at 21–23, the `crown_barrow` table and `grp_magistrate_vell` / `grp_barrow_warden` / `grp_forgotten_king`, with `PARTY_MAX_LEVEL` raised to 24. The Bestiary goes 35 → 42 entries, and the validator reports 43 entries, 43 distinct names, 43 with art. **All three Act IV chapters now use it.**
+- **Rooms:** 35 rooms exist in total (the Ashlands has three built rooms, `rm_ashlands_breach`, `rm_ashlands_ruins` and `rm_ashlands_depths`, and Rimehold's armoury courtyard `rm_rimehold` is built ahead of Act VIII), and **every Act IV room is built** — `rm_town`, `rm_barrow_gate`, `rm_barrow_halls`, `rm_barrow_deep`. The validator's remaining unresolved references (`rm_ironspine_*`, `rm_saltreach*`, `rm_shipwreck`, `rm_flooded_ruins`, `rm_frozen_ruins`) all belong to Acts V–VIII.
+- **Art:** every enemy kind with battle art now has a 16×24 map set (2026-11-19), but the act boss would need battle art, a portrait-scale presence and a bestiary row. Nothing in Act IV can ship visually on existing assets except reused common enemies.
+- **Alden's art debt is closed** (2026-11-18): he has a dedicated 16×24 set and portraits, so this act no longer puts a borrowed silhouette on screen in three chapters. Vell and Nessa now have dedicated overworld sets (2026-11-18).
 
 ## 1. Canon anchors this act must satisfy
 
@@ -52,7 +52,7 @@ A fourth chapter would have to invent a recruit or a subplot the bible does not 
 
 ## 4. Chapter 10 — The Barrow Road
 
-**Script: [CHAPTER10_SCRIPT.md](CHAPTER10_SCRIPT.md)** — **built 2026-11-16**: `rm_barrow_gate`, `scr_dialogue_data_ch10` (48 nodes), `scr_ch10_story`, quest stages S3–S4 and the wiring. Not played; Alden has no battle slot and no sprite, and the gatehouse is a blockout.
+**Script: [CHAPTER10_SCRIPT.md](CHAPTER10_SCRIPT.md)** — **built 2026-11-16**: `rm_barrow_gate`, `scr_dialogue_data_ch10` (48 nodes), `scr_ch10_story`, quest stages S3–S4 and the wiring. Not played; Alden has no battle slot (his fighting is scripted) but now has a dedicated set and portraits, and the gatehouse is a blockout.
 
 **Room:** `rm_barrow_gate` (28×20 blockout, built).
 

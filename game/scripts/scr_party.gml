@@ -3,12 +3,14 @@
 /// Placeholder stats and join times are pending owner approval. Kael is the only
 /// default joined member.
 
-function scr_roster_member_create(_actor_id, _name, _full_name, _class_name, _role, _max_hp, _attack, _defense, _weapon_categories, _starting_weapon = "") {
+function scr_roster_member_create(_actor_id, _name, _full_name, _class_name, _role, _max_hp, _attack, _defense, _weapon_categories, _starting_weapon = "", _armor_profs = [], _shield_prof = false) {
     var _actor = scr_actor_create(_actor_id, _name, _max_hp, _attack, _defense);
     _actor.full_name = _full_name;
     _actor.class_name = _class_name;
     _actor.role = _role;
     _actor.weapon_categories = is_array(_weapon_categories) ? _weapon_categories : [];
+    _actor.armor_profs = is_array(_armor_profs) ? _armor_profs : [];
+    _actor.shield_prof = _shield_prof;
     _actor.equipment.weapon = _starting_weapon;
     _actor.joined = false;
     _actor.age = -1; // -1 = not specified
@@ -18,13 +20,15 @@ function scr_roster_member_create(_actor_id, _name, _full_name, _class_name, _ro
 /// The five permanent members. None are joined except as set by scr_party_state_create().
 function scr_roster_create() {
     var _roster = [
-        scr_roster_member_create("kael", "Kael", "Kael Varyn", "Vanguard", "Frontline", KAEL_BASE_HP, KAEL_BASE_ATTACK, KAEL_BASE_DEFENSE, ["longsword"], ""),
-        scr_roster_member_create("lyra", "Lyra", "Lyra Veyne", "Rogue", "Crits / speed", LYRA_BASE_HP, LYRA_BASE_ATTACK, LYRA_BASE_DEFENSE, ["dagger"], "item_twin_daggers"),
-        scr_roster_member_create("caelan", "Caelan", "Caelan Rook", "Arcanist", "Elemental magic", CAELAN_BASE_HP, CAELAN_BASE_ATTACK, CAELAN_BASE_DEFENSE, ["spellbook"], "item_spellbook"),
-        scr_roster_member_create("sera", "Sera", "Seraphine Thorn", "Warden", "Healing / holy", SERA_BASE_HP, SERA_BASE_ATTACK, SERA_BASE_DEFENSE, ["holy_sword"], ""),
+        // Proficiencies (2026-11-18): Kael swords + selected greatswords, medium/heavy armour;
+        // Taren heavy weapons + shields + heavy armour; the rest follow their established class.
+        scr_roster_member_create("kael", "Kael", "Kael Varyn", "Vanguard", "Frontline", KAEL_BASE_HP, KAEL_BASE_ATTACK, KAEL_BASE_DEFENSE, ["longsword", "greatsword"], "", ["medium", "heavy"], false),
+        scr_roster_member_create("lyra", "Lyra", "Lyra Veyne", "Rogue", "Crits / speed", LYRA_BASE_HP, LYRA_BASE_ATTACK, LYRA_BASE_DEFENSE, ["dagger", "shortsword"], "item_twin_daggers", ["light"], false),
+        scr_roster_member_create("caelan", "Caelan", "Caelan Rook", "Arcanist", "Elemental magic", CAELAN_BASE_HP, CAELAN_BASE_ATTACK, CAELAN_BASE_DEFENSE, ["spellbook", "staff"], "item_spellbook", ["light"], false),
+        scr_roster_member_create("sera", "Sera", "Seraphine Thorn", "Warden", "Healing / holy", SERA_BASE_HP, SERA_BASE_ATTACK, SERA_BASE_DEFENSE, ["holy_sword", "mace"], "item_holy_sword", ["medium"], false),
         // Taren Holt: warrior / frontline, heavy swords; starting weapon stub is a bastard sword.
         // Skills are placeholders; class is Rebel Captain of the Broken Yoke (STORY_BIBLE.md §5.5).
-        scr_roster_member_create("taren", "Taren", "Taren Holt", "Rebel Captain", "Frontline warrior", TAREN_BASE_HP, TAREN_BASE_ATTACK, TAREN_BASE_DEFENSE, ["heavy_sword"], "bastard_sword")
+        scr_roster_member_create("taren", "Taren", "Taren Holt", "Rebel Captain", "Frontline warrior", TAREN_BASE_HP, TAREN_BASE_ATTACK, TAREN_BASE_DEFENSE, ["heavy_sword", "greatsword", "shield"], "bastard_sword", ["heavy"], true)
     ];
     for (var _r = 0; _r < array_length(_roster); _r++) scr_actor_apply_battle_defaults(_roster[_r]);
     var _kael = scr_roster_find(_roster, "kael");
@@ -32,7 +36,7 @@ function scr_roster_create() {
     var _taren = scr_roster_find(_roster, "taren");
     if (is_struct(_taren)) {
         _taren.age = 27;
-        _taren.equipment.armor = "item_travel_brigandine"; // PLACEHOLDER starting armour (balance pass)
+        _taren.equipment.armor = "item_travel_brigandine"; // starting armour: Travel Brigandine, DEF +2 (provisional value)
     }
     return _roster;
 }
@@ -69,6 +73,8 @@ function scr_actor_apply_battle_defaults(_actor) {
     _actor.mdef = _actor.base_mdef;
     _actor.max_mp = _d.mp + _gt.mp;
     _actor.mp = _actor.max_mp;
+    _actor.base_max_mp = _actor.max_mp;
+    if (!variable_struct_exists(_actor, "base_max_hp")) _actor.base_max_hp = _actor.max_hp;
     _actor.skills = _d.skills;
     _actor.passives = _d.passives;
     _actor.buffs = [];
@@ -233,9 +239,13 @@ function scr_party_battle_items() {
     for (var _i = 0; _i < array_length(_inv); _i++) {
         var _slot = _inv[_i];
         if (!is_struct(_slot) || !variable_struct_exists(_slot, "item_id") || _slot.qty <= 0) continue;
-        var _it = scr_item_get(_slot.item_id);
-        if (_it.kind != "consumable") continue;
-        if (_it.heal <= 0 && _it.mp_restore <= 0 && !_it.cures_poison) continue;
+        if (scr_item_category(_slot.item_id) != "consumable") continue;
+        // Standard effect list, not the legacy flat fields: a new consumable effect type only
+        // needs a row in scr_item_effect_schema() and a use branch.
+        if (!scr_item_has_effect(_slot.item_id, "healing")
+                && !scr_item_has_effect(_slot.item_id, "mp_restore")
+                && !scr_item_has_effect(_slot.item_id, "status_recovery", "status", "poison")
+                && !scr_item_has_effect(_slot.item_id, "revival")) continue;
         array_push(_out, _slot.item_id);
     }
     return _out;

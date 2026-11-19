@@ -29,12 +29,13 @@
 - Chapters 1–11 plus `rm_ashlands_breach`, `rm_ashlands_ruins` and `rm_ashlands_depths`: built, merged to `main` in `8e412618` (PR #31), and README reports 34 rooms. They are not yet verified by an IDE playtest — `docs/PLAYTEST_RUNBOOK.md` is the order to check them in.
 - Act V: Chapters 12–14 approved as story; seven enemies, `drowned_coast` and three boss groups are data and simulated; no rooms, dialogue, quest rows or story code.
 - Acts VI–VIII: titles only. The Ashlands (Act VII) has three standalone blockout rooms (`rm_ashlands_breach`, `rm_ashlands_ruins`, `rm_ashlands_depths`) but no chapter, quest, enemy or tileset of its own.
-- Bestiary: 43 entries with seen/defeated tracking, an information pane and a monster illustration (`scr_bestiary_draw_illustration`; black silhouette until seen, `?` plate when an enemy has no art). The 43 descriptions are still placeholder prose.
-- Art: party kits and marker sprites are in repo; 18 enemy kinds still lack 16×24 overworld sets, the Blackwood tileset is a placeholder and the Ashlands has no tileset of its own. Check `game/sprites/IMPORT.md` and `docs/ASSET_INVENTORY.md`.
-- Audio: no authored music or sound effects yet.
-- Controller support: not complete or verified; keyboard is the baseline.
+- Bestiary: 43 entries with seen/defeated tracking, an information pane and a monster illustration (`scr_bestiary_draw_illustration`; black silhouette until seen, `?` plate when an enemy has no art). The 43 descriptions were canon-reviewed on 2026-11-18: they use established facts and observable detail, keep **Architects** in UI text, and fit the 72-character pane. Act IV rows describe the built Act IV text, which remains **PROPOSED** as story.
+- Art: party kits, marker sprites and the Alden/Nim/Derry, Berrin, ward-sentinel, burner and Lost One sets are in repo; every enemy kind with battle art now has a 16×24 overworld set (2026-11-19), the Blackwood tileset is a placeholder and the Ashlands has no tileset of its own. Vell and Nessa now have dedicated sets (2026-11-18). Check `game/sprites/IMPORT.md` and `docs/ASSET_INVENTORY.md`.
+- Audio: 29 authored resources (3 music loops, 6 ambience beds, 20 effects) play through `scr_audio`; ambience is room-mapped, and the four effects once listed as unhooked are wired. `step` is deliberately unused. Actual listening in GameMaker remains **NOT RUN**.
+- Controller support: implemented in `scr_input` (keyboard + Xbox-style pad, D-pad/left stick, A/B/Start/LB/RB, dead zone, disconnect/reconnect). Physical-controller testing remains **NOT RUN**; see `docs/CONTROLLER_SUPPORT.md`.
+- Open PR #25 (“Add initial controller support”) is still open and unmerged; its incomplete approach was rebuilt on `main` in `scr_input`, so do not merge it blindly. PR #30 is closed and unmerged.
 - Runtime status: **the project has not been compiled or playtested in GameMaker**. CI/validator checks structure only.
-- Open PRs #1 (debug menu), #22 (validator hardening and source sync) and #25 (controller support) all predate current `main` and must be reviewed and rebuilt against it before any merge; do not merge them blindly. PR #31 (gear, merchants, Ashlands rooms) is merged.
+- Open PRs #1 (debug menu), #22 (validator hardening and source sync) and #25 (controller support) all predate current `main` and must be reviewed and rebuilt against it before any merge; do not merge them blindly. PR #31 (gear, merchants, Ashlands rooms) is merged. Controller support has since been rebuilt on `main`; see `docs/CONTROLLER_SUPPORT.md`.
 
 ## Prioritized work
 
@@ -78,8 +79,8 @@ Acceptance:
 `docs/ASSET_INVENTORY.md` records a generated party kit for Lyra: 16×24 four-direction idle/walk, 32×48 idle/walk/hurt/defend, 48×48 attack/death and three portraits, wired without gameplay changes. Runtime appearance still needs an IDE check.
 
 #### P1.3 — Audit remaining placeholder art and animation gaps
-Tasks:
-- Review the current gaps in `docs/ASSET_INVENTORY.md`: 18 enemy kinds without 16×24 overworld sets, the placeholder Blackwood tileset, the missing Ashlands tileset, and any Guard-pose or animation differences.
+**Done in this pass:** Kael has a Guard battle pose (`spr_hero_defend_strip3`), Blind/Sleep have dedicated icons (`spr_ui_status_extra_strip2`), and Ether/Chain Mail have enabled+disabled item icons. Remaining tasks:
+- Review the current gaps in `docs/ASSET_INVENTORY.md`: the placeholder Blackwood tileset, the missing Ashlands tileset, and any animation differences.
 - Separate required player-facing assets from acceptable temporary placeholders.
 - Prioritize missing assets by visibility and gameplay impact.
 
@@ -99,7 +100,7 @@ Acceptance:
 
 #### P1.5 — Verify save/load, migration, and party edge cases
 Tasks:
-- Test schema v3 and v1/v2 migration behavior.
+- Test schema v4 and older-save migration behavior.
 - Verify only save crystals in church/tavern interiors open the slot panel.
 - Test full party, reserve swap, defeated party, missing/corrupt slots, and title-screen Continue.
 - Preserve the save-only-at-crystal rule.
@@ -110,8 +111,8 @@ Acceptance:
 
 ### P2 — Input and accessibility
 
-#### P2.1 — Centralize input handling
-Tasks:
+#### P2.1 — Centralize input handling — **DONE**
+`scr_input` now owns all gameplay input; `obj_player`, title, menus, dialogue and battle call the action functions. The only direct keyboard read left is the F5 debug shortcut. Tasks kept for the record:
 - Inspect `game/scripts/scr_input.gml` and all direct keyboard reads, especially player movement and menu/battle objects.
 - Introduce a shared action layer for up/down/left/right/confirm/cancel/menu.
 - Preserve current keyboard defaults (arrows; Z/Enter/Space confirm; X/Backspace cancel; I/Tab menu where currently used).
@@ -122,19 +123,10 @@ Acceptance:
 - Existing keyboard controls still work.
 - No double-trigger/repeat regression in dialogue, menus, battles, or interactions.
 
-#### P2.2 — Add gamepad/controller support — **PR #25 in review**
-**Status:** PR #25 adds a first pass (`scr_input.gml`, Xbox-style buttons, D-pad/stick movement, Start to open the menu). It predates current `main`, has not been compiled, and has not been tested with a physical pad.
+#### P2.2 — Add gamepad/controller support — **DONE in source; physical test NOT RUN**
+**Status:** the incomplete PR #25 approach was rebuilt on `main` in `scr_input.gml`: cached gamepad selection, Xbox-style A/B/Start/LB/RB, D-pad and left stick, radial dead zone, normalized diagonals, pressed/held/released actions, disconnect/reconnect/index-change handling, menu `opened_frame` guards and close-frame input blocks. It has not been compiled or tested with a physical pad; `docs/CONTROLLER_SUPPORT.md` is the checklist.
 
-Tasks:
-- Support D-pad and analog movement with normalized diagonal speed.
-- Support confirm/cancel, menu open/close, party/menu navigation, and battle commands.
-- Handle controller disconnect/reconnect and controller index changes safely.
-- Show or document the active control scheme; do not hard-code Xbox-only assumptions.
-
-Acceptance:
-- Keyboard and controller can be used interchangeably.
-- No stuck input or duplicate actions on reconnect.
-- Manual test plan includes controller cases.
+Acceptance met in source: keyboard and controller share one action layer; no stuck input is possible after disconnect; the manual test plan includes controller cases. Runtime acceptance is still **NOT RUN**.
 
 ### P3 — Audio and polish
 
@@ -169,7 +161,7 @@ Acceptance:
 **Status:** `CHAPTER12_SCRIPT.md` (2026-11-17), `CHAPTER13_SCRIPT.md` and `CHAPTER14_SCRIPT.md` (2026-11-18) are all approved as story. The seven-enemy batch, `drowned_coast` table and three boss groups are data and simulated with `--act5`. No room, dialogue or quest row is built.
 
 Tasks:
-- All three chapter scripts are approved; raise `PARTY_MAX_LEVEL` to 27 and confirm the XP curve before the rooms.
+- All three chapter scripts are approved, and `PARTY_MAX_LEVEL` is 27 (2026-11-18) with the XP curve landing 24–26 under it; the rooms are next.
 - Then build `rm_saltreach`, `rm_saltreach_pier`, `rm_flooded_ruins` and `rm_shipwreck` with their markers, encounters, boss, quest stages and dialogue.
 - Keep the approved region order and the knight's unnamed, yielding rules intact.
 
@@ -226,7 +218,7 @@ Acceptance:
 
 - `prompts/CODEX_MASTER_PROMPT.md`, `docs/GAME_DESIGN_DOCUMENT.md`, and `docs/DEVELOPMENT_ROADMAP.md` have been updated to point agents to this backlog and reflect current build state.
 - ~~`docs/ASSET_INVENTORY.md` needs reconciliation against the current assets~~ — resolved: the Zone 1 tileset row now says 256×800, matching `game/tilesets/README.md` and the PNG. Keep verifying rows against the import table when art changes.
-- ~~README counts and titles~~ — resolved: both READMEs report the current 34 rooms / 95 scripts / 844 sprites and the Act I–IV build state.
+- ~~README counts and titles~~ — resolved: both READMEs report the current rooms, scripts and sprite counts and the Act I–IV build state.
 - ~~Pixel interpolation disagreement~~ — resolved: every platform option file has `interpolate_pixels` set to `false`, and `gen_gamemaker.py` now normalises it (and the product name) on regeneration.
 - Battle-presentation documentation is inconsistent: `docs/story/STORY_BIBLE.md` still calls it open and `docs/DECISIONS_AND_OPEN_QUESTIONS.md` records the dedicated-room prototype assumption. The owner-approved direction from prior planning is hybrid presentation varying by encounter; reconcile the decision log, GDD, story bible and implementation without changing battle behavior silently.
 - The README is the current project snapshot; keep its status synchronized when build/content state changes.
@@ -237,4 +229,4 @@ Acceptance:
 
 ## Recommended first task
 
-Start with **P0.1 — Open and compile the current GameMaker project**. Do not begin controller support, audio, or new chapter content until the IDE build result is known. If you cannot access GameMaker, perform the repository validator and source-level audit, clearly mark the IDE checks **NOT RUN**, and ask the owner to run the supplied manual steps.
+Start with **P0.1 — Open and compile the current GameMaker project**. Controller support, audio and the art pass are now source-complete, but none of them is runtime-verified; the IDE build result is still the gate. If you cannot access GameMaker, perform the repository validator and source-level audit, clearly mark the IDE checks **NOT RUN**, and ask the owner to run the supplied manual steps.

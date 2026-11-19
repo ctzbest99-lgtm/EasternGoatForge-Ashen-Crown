@@ -97,6 +97,14 @@ function scr_ui_status_icon(_x, _y, _index) {
     draw_sprite(_spr, _index, _x, _y);
 }
 
+/// Blind (0) and Sleep (1) live in their own 2-frame strip so the original 12-frame
+/// status strip keeps every existing index.
+function scr_ui_status_icon_extra(_x, _y, _index) {
+    var _spr = scr_sprite_index("spr_ui_status_extra_strip2");
+    if (!scr_sprite_is_valid(_spr)) return;
+    draw_sprite(_spr, _index, _x, _y);
+}
+
 /// Draw a floating integer with the 7×9 digit strips (6px advance). _kind: "dmg" | "heal" | "crit"
 function scr_ui_draw_digits(_x, _y, _value, _kind = "dmg", _alpha = 1) {
     var _name = "spr_ui_dmg_digits_strip10";

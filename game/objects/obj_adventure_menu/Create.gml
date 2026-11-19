@@ -5,7 +5,7 @@
 scr_game_state_init();
 scr_ui_init();
 global.game.menu_open = true;
-opened_frame = -1; // opening input must not close this menu in the same frame
+opened_frame = global.game.frame;
 scr_audio_sfx("menu_open", 0, 0.8); // the field menu opening
 
 mode = "list";        // "list" | "status" | "party" | "bestiary" | "quests"

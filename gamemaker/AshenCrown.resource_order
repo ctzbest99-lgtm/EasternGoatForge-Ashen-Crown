@@ -4674,56 +4674,126 @@
       "name":"ts_blackwood",
       "order":928,
       "path":"tilesets/ts_blackwood/ts_blackwood.yy",
-    },    {
-      "name":"scr_bestiary",
+    },
+    {
+      "name":"spr_item_ether",
       "order":929,
+      "path":"sprites/spr_item_ether/spr_item_ether.yy",
+    },
+    {
+      "name":"spr_item_chain_mail",
+      "order":930,
+      "path":"sprites/spr_item_chain_mail/spr_item_chain_mail.yy",
+    },
+    {
+      "name":"spr_item_ether_disabled",
+      "order":931,
+      "path":"sprites/spr_item_ether_disabled/spr_item_ether_disabled.yy",
+    },
+    {
+      "name":"spr_item_chain_mail_disabled",
+      "order":932,
+      "path":"sprites/spr_item_chain_mail_disabled/spr_item_chain_mail_disabled.yy",
+    },
+    {
+      "name":"spr_hero_defend_strip3",
+      "order":933,
+      "path":"sprites/spr_hero_defend_strip3/spr_hero_defend_strip3.yy",
+    },
+    {
+      "name":"spr_ui_status_extra_strip2",
+      "order":934,
+      "path":"sprites/spr_ui_status_extra_strip2/spr_ui_status_extra_strip2.yy",
+    },
+    {
+      "name":"spr_ts_barrow",
+      "order":935,
+      "path":"sprites/spr_ts_barrow/spr_ts_barrow.yy",
+    },
+    {
+      "name":"ts_barrow",
+      "order":936,
+      "path":"tilesets/ts_barrow/ts_barrow.yy",
+    },
+    {
+      "name":"spr_ts_valemere",
+      "order":937,
+      "path":"sprites/spr_ts_valemere/spr_ts_valemere.yy",
+    },
+    {
+      "name":"ts_valemere",
+      "order":938,
+      "path":"tilesets/ts_valemere/ts_valemere.yy",
+    },
+    {
+      "name":"spr_ts_coleford",
+      "order":939,
+      "path":"sprites/spr_ts_coleford/spr_ts_coleford.yy",
+    },
+    {
+      "name":"ts_coleford",
+      "order":940,
+      "path":"tilesets/ts_coleford/ts_coleford.yy",
+    },
+    {
+      "name":"spr_ts_garrison",
+      "order":941,
+      "path":"sprites/spr_ts_garrison/spr_ts_garrison.yy",
+    },
+    {
+      "name":"ts_garrison",
+      "order":942,
+      "path":"tilesets/ts_garrison/ts_garrison.yy",
+    },
+    {
+      "name":"scr_bestiary",
+      "order":943,
       "path":"scripts/scr_bestiary/scr_bestiary.yy",
     },
     {
       "name":"scr_quest_data",
-      "order":930,
+      "order":944,
       "path":"scripts/scr_quest_data/scr_quest_data.yy",
     },
     {
       "name":"obj_adventure_menu",
-      "order":931,
+      "order":945,
       "path":"objects/obj_adventure_menu/obj_adventure_menu.yy",
     },
     {
       "name":"scr_ch4_story",
-      "order":932,
+      "order":946,
       "path":"scripts/scr_ch4_story/scr_ch4_story.yy",
     },
     {
       "name":"scr_dialogue_data_ch4",
-      "order":933,
+      "order":947,
       "path":"scripts/scr_dialogue_data_ch4/scr_dialogue_data_ch4.yy",
     },
     {
       "name":"scr_ch4_markers_data",
-      "order":934,
+      "order":948,
       "path":"scripts/scr_ch4_markers_data/scr_ch4_markers_data.yy",
     },
     {
       "name":"scr_build_hollow_approach",
-      "order":935,
+      "order":949,
       "path":"scripts/scr_build_hollow_approach/scr_build_hollow_approach.yy",
     },
     {
       "name":"scr_build_hollow_sanctuary",
-      "order":936,
+      "order":950,
       "path":"scripts/scr_build_hollow_sanctuary/scr_build_hollow_sanctuary.yy",
     },
     {
       "name":"rm_hollow_approach",
-      "order":937,
+      "order":951,
       "path":"rooms/rm_hollow_approach/rm_hollow_approach.yy",
     },
     {
       "name":"rm_hollow_sanctuary",
-      "order":938,
+      "order":952,
       "path":"rooms/rm_hollow_sanctuary/rm_hollow_sanctuary.yy",
     },
-
 ],
 }

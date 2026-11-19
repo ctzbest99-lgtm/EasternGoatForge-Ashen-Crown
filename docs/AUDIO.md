@@ -51,8 +51,8 @@ bar-aligned in practice.
 | `snd_amb_forest` | 11.50 s | Wrenfield, Blackwood garrison |
 | `snd_amb_dungeon` | 11.50 s | Watchtower basement, warehouse, Hollow sanctuary, Greyhaven chapel |
 | `snd_amb_fire` | 9.60 s | Greyhaven tavern, blacksmith, Varyn's house, the Bent Post, the Salt Lamp, garrison keep |
-| `snd_amb_water` | 9.60 s | *Unused for now* — for the flooded ruins and the Saltreach pier |
-| `snd_amb_night` | 11.50 s | *Unused for now* — for night-time scenes (crickets) |
+| `snd_amb_water` | 9.60 s | `rm_saltreach_pier`, `rm_shipwreck`, `rm_flooded_ruins` (the last three are unresolved room references; the assignment is ready, but those rooms do not exist yet) |
+| `snd_amb_night` | 11.50 s | Blackwood shrine and glade (Chapters 7) |
 
 The beds are rendered 0.4–0.5 s longer than their loop length, then the tail is crossfaded
 into the head, so they can sit under a room indefinitely without a seam.
@@ -68,8 +68,8 @@ into the head, so they can sit under a room indefinitely without a seam.
 | `snd_sfx_cast` | 0.55 s | Status / buff / non-damaging skill resolves |
 | `snd_sfx_heal` | 0.80 s | A healing skill resolves |
 | `snd_sfx_arrow` | 0.20 s | A ranged release: the Ashbound Hunter attacks, or any `crossbow_bolt` resolves (`scr_audio_skill_cue`, actor id passed from `run_skill`) |
-| `snd_sfx_enemy_fall` | 0.60 s | A non-yielding enemy's death clip starts (`apply_pending_hit`) |
-| `snd_sfx_party_hurt` | 0.22 s | A party member takes damage (`apply_pending_hit`) |
+| `snd_sfx_enemy_fall` | 0.60 s | A non-yielding enemy's death clip starts (`apply_pending_hit`); wired |
+| `snd_sfx_party_hurt` | 0.22 s | A party member takes damage (`apply_pending_hit`); wired |
 | `snd_sfx_level_up` | 1.10 s | A victory that produced at least one level-up |
 | `snd_sfx_step` | 0.08 s | Generated, deliberately **not** hooked (a footstep tick every tile is fatiguing) |
 
@@ -78,6 +78,7 @@ into the head, so they can sit under a room indefinitely without a seam.
 | Asset | Length | Plays when |
 |---|---|---|
 | `snd_sfx_menu_move` | 0.06 s | Adventure menu cursor move |
+| `snd_sfx_menu_open` | 0.18 s | `obj_adventure_menu` Create; wired |
 | `snd_sfx_menu_confirm` | 0.22 s | Confirm press in the Adventure menu |
 | `snd_sfx_menu_cancel` | 0.20 s | Cancel press in the Adventure menu |
 | `snd_sfx_menu_open` | 0.32 s | The Adventure menu opens (`obj_adventure_menu` Create, gain 0.8) |
@@ -149,8 +150,9 @@ stays the source of truth for names and durations.
   a minor key with a flat fifth, so it is recognisably "the bad one".
 - Music is mono and 22.05 kHz. That is a deliberate 16-bit-console choice, not a placeholder,
   but if the project later wants orchestral audio it should be re-authored, not resampled.
-- `snd_amb_water` and `snd_amb_night` are finished and imported but not yet assigned to a room
-  (`rm_flooded_ruins`, `rm_saltreach_pier` and night scenes do not exist yet).
+- `snd_amb_water` is assigned to `rm_saltreach_pier`, `rm_shipwreck` and `rm_flooded_ruins`; those
+  rooms are still unresolved references, so the mapping is ready but cannot play yet.
+  `snd_amb_night` is assigned to the two built Blackwood night rooms.
 - Every effect is hooked except `step`, which stays unused on purpose (a tick every tile is
   fatiguing). `arrow` is keyed off the attacking actor and skill rather than added as a new bow
   skill, so no balance data changed to make the sound play.

@@ -6,16 +6,16 @@ var _party = scr_menu_inv_party();
 if (member_index >= array_length(_party)) member_index = 0;
 var _items = scr_menu_inv_list(tab);
 
-// Main list window, then Items/Equip/Key tabs on its top border.
+// Main list window, then Items/Equip/Key/Materials tabs on its top border.
 scr_menu_draw_window(MENU_INV_MAIN_X, MENU_INV_MAIN_Y, MENU_INV_MAIN_W, MENU_INV_MAIN_H, "normal");
-scr_menu_draw_tabs(["items", "equip", "key"], tab, MENU_INV_TAB0_X, MENU_INV_TAB_Y, MENU_INV_TAB_DX);
+scr_menu_draw_tabs(["items", "equip", "key", "materials"], tab, MENU_INV_TAB0_X, MENU_INV_TAB_Y, MENU_INV_TAB_DX);
 
 var _desc = "";
 
 if (tab != 1) {
     var _n = array_length(_items);
     if (_n == 0) {
-        scr_menu_text(12, MENU_INV_LIST_ROW0 + 4, (tab == 2) ? "(no key items)" : "(empty)", MENU_COL_G);
+        scr_menu_text(12, MENU_INV_LIST_ROW0 + 4, (tab == 2) ? "(no key items)" : ((tab == 3) ? "(no materials)" : "(empty)"), MENU_COL_G);
     } else {
         var _shown = 0;
         for (var _i = scroll; _i < _n && _shown < MENU_INV_LIST_ROWS; _i++) {
@@ -54,26 +54,30 @@ if (tab != 1) {
         var _class = variable_struct_exists(_actor, "class_name") ? _actor.class_name : "";
         if (_class != "") scr_menu_text_right(196, 25, _class, MENU_COL_G);
 
-        var _slot_ids = ["weapon", "armor", "helm", "accessory"];
-        var _slot_spr = ["spr_ui_slot_weapon", "spr_ui_slot_armor", "spr_ui_slot_helm", "spr_ui_slot_accessory"];
-        for (var _s = 0; _s < 4; _s++) {
-            var _sy = 40 + 16 * _s;
+        // Seven slots in two columns: 4 left, 3 right. The item icon shows what is worn;
+        // the selected slot's name and description fill the description box.
+        var _slot_ids = scr_equipment_slots();
+        var _slot_short = ["Main", "Off", "Head", "Body", "Legs", "Acc 1", "Acc 2"];
+        var _slot_spr = ["spr_ui_slot_weapon", "spr_ui_slot_weapon", "spr_ui_slot_helm",
+                         "spr_ui_slot_armor", "spr_ui_slot_armor", "spr_ui_slot_accessory", "spr_ui_slot_accessory"];
+        for (var _s = 0; _s < array_length(_slot_ids); _s++) {
+            var _col = (_s < 4) ? 0 : 1;
+            var _row = (_s < 4) ? _s : _s - 4;
+            var _sx = 12 + _col * 92;
+            var _sy = 40 + 16 * _row;
             var _eq = scr_actor_equipped_in_slot(_actor, _slot_ids[_s]);
             if (mode == "slots" && _s == slot_index) {
-                scr_menu_draw_row_select(22, _sy, 172, false);
-                scr_menu_draw_cursor_tip(21, _sy + 8);
+                scr_menu_draw_row_select(_sx, _sy, 88, false);
+                scr_menu_draw_cursor_tip(_sx - 1, _sy + 8);
             }
-            if (_eq != "") scr_menu_draw_item_icon(_eq, 26, _sy, false);
+            if (_eq != "") scr_menu_draw_item_icon(_eq, _sx + 4, _sy, false);
             else {
                 var _glyph = scr_sprite_index(_slot_spr[_s]);
-                if (scr_sprite_is_valid(_glyph)) scr_menu_draw_tl(_glyph, 0, 26, _sy);
+                if (scr_sprite_is_valid(_glyph)) scr_menu_draw_tl(_glyph, 0, _sx + 4, _sy);
             }
-            scr_menu_text(46, _sy + 4, scr_menu_slot_label(_s), MENU_COL_G);
-            if (_eq != "") {
-                scr_menu_text(104, _sy + 4, scr_item_get(_eq).name, MENU_COL_W);
-                if (mode == "slots" && _s == slot_index) _desc = scr_item_get(_eq).desc;
-            } else {
-                scr_menu_text(104, _sy + 4, "-", MENU_COL_A);
+            scr_menu_text(_sx + 22, _sy + 4, _slot_short[_s], MENU_COL_G);
+            if (mode == "slots" && _s == slot_index) {
+                _desc = (_eq != "") ? (scr_item_get(_eq).name + " \u2014 " + scr_item_get(_eq).desc) : "(empty)";
             }
         }
 
@@ -93,7 +97,7 @@ if (tab != 1) {
             scr_menu_draw_item_icon(_cid, 26, _cy, false);
             scr_menu_text(46, _cy + 4, scr_item_get(_cid).name, _csel ? MENU_COL_Y : MENU_COL_W);
             scr_menu_text_right(194, _cy + 4, "x" + string(scr_inventory_count(_cid)), MENU_COL_DESC);
-            if (_csel) _desc = scr_item_get(_cid).desc;
+            if (_csel) _desc = scr_item_preview_line(_actor, _cid);
             _shown_c += 1;
         }
     }
@@ -135,9 +139,10 @@ if (tab != 1) {
             var _cands3 = scr_menu_inv_candidates(_actor2, slot_index);
             if (cand_index >= 0 && cand_index < array_length(_cands3)) _preview_id = _cands3[cand_index];
         }
-        var _stats = ["HP", "MP", "ATK", "DEF", "MAG", "MDF", "SPD"];
-        for (var _si = 0; _si < 7; _si++) {
-            var _sy2 = 28 + 13 * _si;
+        // All ten derived stats; the last four are the new equipment-facing ones.
+        var _stats = ["HP", "MP", "ATK", "DEF", "MAG", "MDF", "SPD", "ACC", "EVA", "CRIT"];
+        for (var _si = 0; _si < array_length(_stats); _si++) {
+            var _sy2 = 28 + 11 * _si;
             var _st = _stats[_si];
             var _cur = scr_menu_actor_stat(_actor2, _st);
             var _label = _st;
@@ -147,13 +152,16 @@ if (tab != 1) {
                 var _maxmp = variable_struct_exists(_actor2, "max_mp") ? _actor2.max_mp : 0;
                 _cur_s = string(_cur) + "/" + string(_maxmp);
             }
+            if (_st == "CRIT") _cur_s += "%";
             scr_menu_text(214, _sy2, _label, MENU_COL_G);
             scr_menu_text_right(270, _sy2, _cur_s, MENU_COL_W);
-            if (_preview_id != "" && (_st == "ATK" || _st == "DEF")) {
+            // HP/MP previews would be max-side changes, so only the other eight preview here.
+            if (_preview_id != "" && _st != "HP" && _st != "MP") {
                 var _nw = scr_menu_actor_stat_new(_actor2, _st, _preview_id);
                 scr_menu_text(276, _sy2, ">", MENU_COL_G);
                 var _ncol = (_nw > _cur) ? MENU_COL_Y : MENU_COL_W;
-                scr_menu_text_right(300, _sy2, string(_nw), _ncol);
+                var _nw_s = string(_nw) + ((_st == "CRIT") ? "%" : "");
+                scr_menu_text_right(300, _sy2, _nw_s, _ncol);
                 var _dir = (_nw > _cur) ? 0 : ((_nw < _cur) ? 1 : 2);
                 scr_menu_draw_stat_arrow(_dir, 302, _sy2 + 1);
             }

@@ -175,6 +175,8 @@ function scr_ch1_item_sprite(_item_id) {
         case "crownveil_fragment": return scr_sprite_index("spr_item_crownveil_fragment");
         case "minor_potion": return scr_sprite_index("spr_item_minor_potion");
         case "antidote": return scr_sprite_index("spr_item_antidote");
+        case "ether": return scr_sprite_index("spr_item_ether");
+        case "chain_mail": return scr_sprite_index("spr_item_chain_mail");
         case "iron_sword": return scr_sprite_index("spr_item_iron_sword");
         case "kaels_longsword": return scr_sprite_index("spr_item_kaels_longsword");
         case "hunters_knife": return scr_sprite_index("spr_item_hunters_knife");
@@ -213,6 +215,10 @@ function scr_ch1_portrait(_speaker, _expr = "neutral") {
     else if (_who == "lyra" || _who == "lyra veyne") _stem = "lyra";
     else if (_who == "caelan" || _who == "caelan rook") _stem = "caelan";
     else if (_who == "sera" || _who == "seraphine thorn" || _who == "sera thorn") _stem = "sera";
+    // Named speakers that had no dedicated art before the 2026-11-18 NPC pass.
+    else if (_who == "alden" || _who == "alden marr") _stem = "alden";
+    else if (_who == "nim") _stem = "nim";
+    else if (_who == "derry") _stem = "derry";
     if (_stem == "") return -1;
     var _spr = scr_sprite_index("spr_portrait_" + _stem + "_" + _expr);
     if (!scr_sprite_is_valid(_spr)) _spr = scr_sprite_index("spr_portrait_" + _stem + "_neutral");

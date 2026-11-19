@@ -24,9 +24,16 @@ _ns = {'__file__': os.path.join(ROOT, 'tools', 'gen_act3_rooms.py'), '__name__':
 exec(compile(_helpers, 'gen_act3_rooms.py', 'exec'), _ns)
 T = _ns['T']; Grid = _ns['Grid']; emit_room = _ns['emit_room']
 emit_markers = _ns['emit_markers']; marker_room_yy = _ns['marker_room_yy']
-GRASS = _ns['GRASS']; ROAD = _ns['ROAD']; DIRT = _ns['DIRT']; TREE = _ns['TREE']
-PILLAR = _ns['PILLAR']; STONE = _ns['STONE']
-WALLTOP = _ns['WALLTOP']; WALLFACE = _ns['WALLFACE']
+# ts_barrow material band (ids 800-895): the field is dead turf, the road is cracked
+# flagging, and the gatehouse is cold stone. Same shapes as the Wrenfield blockout.
+GRASS = [800, 801, 802, 803]
+ROAD = [816, 817, 818, 819]
+DIRT = [832, 833, 834, 835]
+TREE = 79          # repainted in ts_barrow as a dead tree
+PILLAR = 527       # repainted in ts_barrow as a standing stone
+STONE = [848, 849, 850, 851, 862, 863]
+WALLTOP = [848, 849]
+WALLFACE = [864, 865, 866, 867]
 
 random.seed(20261124)
 
@@ -91,7 +98,7 @@ markers = [
      'x': T(13, 2)[0], 'y': T(13, 2)[1], 'target_room': 'rm_barrow_halls',
      'target_spawn': 'from_gate', 'w': 2, 'h': 1, 'script_id': 'CH10_EXIT',
      'lines': ['The steps go down into the hill. The Warden is still between the party and them.'],
-     'note': 'Chapter 11 is not built: scr_ch10_exit_script gates this and plays CH10_END once.'},
+     'note': 'First visit plays CH10_END; the next bump enters rm_barrow_halls (Chapter 11 is built).'},
     {'type': 'npc', 'name': 'barrow_smith', 'tile_x': 17, 'tile_y': 10,
      'x': T(17, 10)[0], 'y': T(17, 10)[1], 'npc_id': 'villager', 'speaker': 'Orrin',
      'script_id': 'BG_SMITH_01', 'sprite': 'spr_traveler_ow16_idle_left', 'hostile': False,
@@ -121,7 +128,8 @@ markers = [
 
 files = {
     'scr_build_barrow_gate.gml': emit_room('scr_build_barrow_gate', W, H, g, d, o, c,
-        'The barrow gatehouse: the maintained road, the towers, the iron gate and the hillside. Chapter 10.'),
+        'The barrow gatehouse: the maintained road, the towers, the iron gate and the hillside. Chapter 10.',
+        barrow=True),
     'scr_ch10_markers_data.gml': emit_markers('scr_barrow_gate_markers', W, H, markers,
         'Barrow gate markers (Chapter 10).'),
 }

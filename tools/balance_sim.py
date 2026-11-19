@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Ashen Crown balance sim (feature/balance-pass, extended through Act III). Mirrors the GML
+"""Ashen Crown balance sim (feature/balance-pass, extended through Act V and an eight-act summary). Mirrors the GML
 battle formulas: damage = max(1, ATK - floor(DEF/2)); magic uses MDEF instead of DEF; skill power
 floors; Guard halves the next hit (enemy) or all hits until next round (party); buffs tick at round
 start; SPD order with a <1 tiebreak. The extended rows also model criticals (Cutthroat), Kael's
@@ -16,13 +16,38 @@ LOW = dict(hp=4, atk=1, df=1, mdef=1, mp=2, spd=1)      # level-ups to L2..L7 (C
 HIGH = dict(hp=10, atk=2, df=2, mdef=1, mp=3, spd=1)    # level-ups to L8+ (LEVEL_UP_*_GROWTH_HIGH)
 TIER_LEVEL = 8
 
-def member(mid, level, weapon, armor):
+# Story-act gear tiers. `scr_story_act()` returns the tier whose level band the party has reached:
+# Act II starts at II, Chapter 3 at III, Chapter 4 at IV, Chapter 5 at V, Act III at VI,
+# Act IV at VII and Act V at VIII. Each tuple is (weapon ATK, armour DEF, armour MDEF, SPD, HP)
+# for the best non-legendary piece a class can wear at that tier; tools/equipment_check.py is the
+# source of truth for the item data. These replace the old "no Chapter 4/5/Act III/IV tier" maps.
+GEAR_TIER = {
+    1: {"kael": (3, 4, 2, 0, 4), "taren": (4, 4, 2, 0, 4), "lyra": (2, 4, 2, 0, 4),
+        "caelan": (2, 4, 2, 0, 4), "sera": (4, 4, 2, 0, 4)},
+    2: {"kael": (6, 9, 3, 0, 6), "taren": (8, 9, 3, 0, 6), "lyra": (4, 9, 3, 0, 6),
+        "caelan": (4, 9, 3, 0, 6), "sera": (5, 9, 3, 0, 6)},
+    3: {"kael": (7, 13, 5, 0, 0), "taren": (10, 13, 5, 0, 0), "lyra": (8, 13, 5, 0, 0),
+        "caelan": (6, 12, 6, 0, 0), "sera": (9, 12, 6, 0, 0)},
+    4: {"kael": (10, 15, 10, 0, 8), "taren": (11, 15, 10, 0, 8), "lyra": (8, 15, 10, 0, 8),
+        "caelan": (8, 15, 10, 0, 8), "sera": (9, 15, 10, 0, 8)},
+    5: {"kael": (12, 21, 9, 1, 0), "taren": (15, 21, 9, 1, 0), "lyra": (11, 21, 9, 1, 0),
+        "caelan": (11, 21, 9, 1, 0), "sera": (12, 21, 9, 1, 0)},
+    6: {"kael": (14, 23, 12, 0, 0), "taren": (15, 23, 12, 0, 0), "lyra": (12, 23, 12, 0, 0),
+        "caelan": (12, 23, 12, 0, 0), "sera": (13, 23, 12, 0, 0)},
+    7: {"kael": (16, 24, 17, 0, 0), "taren": (17, 24, 17, 0, 0), "lyra": (14, 24, 17, 0, 0),
+        "caelan": (14, 20, 21, 0, 0), "sera": (15, 20, 21, 0, 0)},
+    8: {"kael": (19, 27, 20, 2, 0), "taren": (20, 27, 20, 2, 0), "lyra": (16, 27, 20, 2, 0),
+        "caelan": (16, 23, 24, 2, 0), "sera": (16, 23, 24, 2, 0)},
+}
+
+def member(mid, level, weapon, armor, mdef=0, spd=0, hp=0):
     b = BASE[mid]; s = dict(b)
     for L in range(2, level + 1):
         g = HIGH if L >= TIER_LEVEL else LOW
         s["hp"] += g["hp"]; s["atk"] += g["atk"]; s["df"] += g["df"]; s["mp"] += g["mp"]; s["spd"] += g["spd"]
         s["mdef"] += g["mdef"]
     s["atk"] += weapon; s["df"] += armor
+    s["mdef"] += mdef; s["spd"] += spd; s["hp"] += hp
     return dict(id=mid, name=mid.title(), max_hp=s["hp"], hp=s["hp"], atk=s["atk"], df=s["df"],
                 mdef=s["mdef"], spd=s["spd"], mp=s["mp"], buffs=[], guard=False, side="party")
 
@@ -33,7 +58,7 @@ E = {
  "occupation_soldier":dict(hp=50, atk=12, df=14, spd=8,  ai=[("attack",2),("slash",2),("guard",1)]),
  "bandit_veteran":    dict(hp=42, atk=13, df=10, spd=14, ai=[("attack",1)]),
  "grey_ash_wolf":     dict(hp=36, atk=13, df=8,  spd=20, ai=[("attack",4),("flavor",1)]),
- "reeve_calder":      dict(hp=130, atk=15, df=16, spd=10, mp=20, boss=True,
+ "reeve_calder":      dict(hp=156, atk=18, df=16, spd=10, mp=20, boss=True,
                            ai=[("heavy",3),("guard",1),("shout",2)], alone=[("heavy",3),("guard",1)]),
  # Chapter 1 reference (unchanged)
  "blackguard":        dict(hp=450, atk=12, df=8, spd=9, boss=True, ai=[("attack",1)]),
@@ -146,15 +171,15 @@ def run(label, level, members, eids, n=4000, gear=None):
                 rounds=avg(lambda r: r["rounds"]), pturns=avg(lambda r: r["party_turns"]),
                 boss=avg(lambda r: r["turns_on"][0]), hp=avg(lambda r: r["hp_left"]))
 
-# Gear at the start of Chapter 2 (end of Chapter 1): Blackguard's Longsword +5 (Kael),
-# Leather Armor +2 and Iron Helm +1 (Kael). Taren: Bastard Sword +3, Traveller's Brigandine +2 (new Ch2 starting armour, PLACEHOLDER).
-GEAR = {"kael": (5, 3), "taren": (3, 2)}
+# Chapter 2 starts at level 8, so Len's tier-II stock is the expected loadout. The old table
+# used the Chapter 1 sword and leather; the new tiers move this band by +1 ATK / +6 DEF.
+GEAR = GEAR_TIER[2]
 
 def hits_to_kill(level, mid, eid):
     m = member(mid, level, *GEAR[mid]); e = E[eid]
     return math.ceil(e["hp"] / dmg(m["atk"], e["df"]))
 
-if __name__ == "__main__" and "--act4" not in sys.argv and "--act5" not in sys.argv:
+if __name__ == "__main__" and "--act4" not in sys.argv and "--act5" not in sys.argv and "--summary" not in sys.argv:
     random.seed(7)
     rows = []
     for L in (8, 9, 10):
@@ -191,17 +216,22 @@ E.update({
 # Enemies mirror scr_enemy_scaled (dock_thug common 11, debt_collector elite 12, debtman boss 12
 # for a party of 3) and their kits in scr_skill_data.
 BASE["lyra"] = dict(hp=24, atk=7, df=1, mdef=2, spd=14, mp=6)     # Chapter 3
-BASE["caelan"] = dict(hp=22, atk=8, df=1, mdef=5, spd=9, mp=16)    # Chapter 4, no weapon, no skills
+BASE["caelan"] = dict(hp=22, atk=8, df=1, mdef=5, spd=9, mp=16)    # Chapter 4; the Spellbook's +1 ATK is not in this historical table
 E.update({
  "bandit":         dict(hp=18,  atk=5,  df=1,  spd=8,  ai=[("attack", 1)]),
  "dock_thug":      dict(hp=62,  atk=19, df=15, spd=9,  ai=[("attack", 1)]),
  "debt_collector": dict(hp=142, atk=24, df=19, spd=10, ai=[("attack", 1)]),
- "debtman":        dict(hp=256, atk=25, df=20, spd=12, boss=True, yields=True,
+ "debtman":        dict(hp=410, atk=35, df=20, spd=12, boss=True, yields=True,
                         ai=[("attack", 3), ("reel", 2), ("collect", 2), ("bind", 1)]),
 })
 POWER.update({"reel": 1.25, "collect": 0.8})
-GEAR_CH3 = {"kael": (5, 5), "taren": (3, 4), "lyra": (2, 0)}
-GEAR_LATE = dict(GEAR_CH3, caelan=(0, 0))   # no Chapter 4/5 gear upgrades exist yet
+GEAR_CH3 = GEAR_TIER[3]
+GEAR_CH4 = GEAR_TIER[4]
+GEAR_CH5 = GEAR_TIER[5]
+GEAR_ACT3 = GEAR_TIER[6]
+GEAR_ACT4 = GEAR_TIER[7]
+GEAR_ACT5 = GEAR_TIER[8]
+GEAR_LATE = GEAR_CH5   # historical alias; new tables should name their tier
 
 # Chapter 4 (Hollow Sanctuary) and Chapter 5 (Blackwood Road Garrison) enemies. scr_enemy_scaled:
 # common 14 = 79 / 23 / 21; elite 15 = 172 / 27 / 25; boss 16 for 4 = 558 HP; common 16 = 93/27/25;
@@ -210,14 +240,14 @@ E.update({
  "ward_sentinel":     dict(hp=89,  atk=28, df=24, mdef=11, spd=7,  weak="lightning", ai=[("attack", 1)]),
  "glyph_wisp":        dict(hp=67,  atk=28, df=21, mdef=11, spd=15, ai=[("attack", 1), ("mote", 2)]),
  "aethari_automaton": dict(hp=196, atk=33, df=25, mdef=12, spd=9,  weak="lightning", ai=[("attack", 1)]),
- "sanctuary_warden":  dict(hp=643, atk=39, df=28, mdef=13, spd=8, boss=True,   # 514 base x1.25, atk_add 2
+ "sanctuary_warden":  dict(hp=900, atk=55, df=28, mdef=13, spd=8, boss=True,   # 514 base x1.75, atk_add 18
                            ai=[("attack", 2), ("ring", 1)],
                            phase_ai={2: [("attack", 2), ("ring", 2)]},
                            phase2_at=0.5, phase2_atk=0.20),
  "garrison_pikeman":  dict(hp=107, atk=38, df=25, mdef=13, spd=10, ai=[("attack", 2), ("pike", 2)]),
  "garrison_field_surgeon": dict(hp=86, atk=34, df=25, mdef=13, spd=12, ai=[("attack", 2), ("heal", 3)]),
  "garrison_knight":   dict(hp=232, atk=39, df=29, mdef=14, spd=9,  ai=[("attack", 3), ("guard", 1)]),
- "commander_hailen":  dict(hp=900, atk=57, df=32, mdef=15, spd=12, boss=True,   # 600 base x1.5, atk_add 14
+ "commander_hailen":  dict(hp=1620, atk=74, df=32, mdef=15, spd=12, boss=True,  # 600 base x2.7, atk_add 31
                            ai=[("attack", 3), ("glint", 2)]),
 })
 POWER.update({"pike": 1.2, "glint": 1.4})
@@ -478,7 +508,8 @@ def ch45_tables():
     print()
     for title, band, fights in (("Hollow Sanctuary (Chapter 4)", (13, 14, 15), SANCTUARY),
                                 ("Blackwood Road Garrison (Chapter 5)", (16, 17, 18), GARRISON)):
-        rows = [run_ext(label, L, PARTY, eids, gear=GEAR_LATE, boss_focus=False)
+        gear = GEAR_CH4 if "Sanctuary" in title else GEAR_CH5
+        rows = [run_ext(label, L, PARTY, eids, gear=gear, boss_focus=False)
                 for L in band for label, eids in fights]
         print(f"**{title}** — {'/'.join(PARTY)}")
         print()
@@ -492,7 +523,8 @@ def ch45_tables():
     print("| Level | Kael ATK/DEF/HP | Taren ATK/DEF/HP | Lyra ATK/DEF/HP | Caelan ATK/DEF/HP | Hits to kill Warden (K/T/L/C) | Hits to kill Hailen (K/T/L/C) |")
     print("|---|---|---|---|---|---|---|")
     for L in (13, 14, 15, 16, 17, 18):
-        ms = {m: member(m, L, *GEAR_LATE[m]) for m in PARTY}
+        g = GEAR_CH4 if L <= 15 else GEAR_CH5
+        ms = {m: member(m, L, *g[m]) for m in PARTY}
         def kh(eid):
             e = E[eid]
             return "/".join(str(math.ceil(e["hp"] / max(1, ms[m]["atk"] - e["df"] // 2))) for m in PARTY)
@@ -523,10 +555,9 @@ def ch4_prejoin_table():
 
 # ---- Act III: the Blackwood (Chapters 6–8, docs/story/ACT3_OUTLINE.md, PROPOSED) ----------
 # Party data mirrors scr_party: Sera joins for Act III (28 HP / 4 ATK / 4 DEF, MDEF 5, SPD 8,
-# MP 12) carrying the Holy Sword, which has no stats yet (atk_bonus 0). Gear is unchanged from
-# Chapter 5 — there are no Act III weapons or armour in the item data.
+# MP 12) carrying the Holy Sword. Story Act III starts at tier VI, so every member — Sera
+# included — wears the tier-VI best-in-slot set from GEAR_TIER[6].
 BASE["sera"] = dict(hp=28, atk=4, df=4, mdef=5, spd=8, mp=12)
-GEAR_LATE["sera"] = (0, 0)
 # scr_enemy_scaled: level 18 = 125 / 40 / 29 / MDEF 15; 19 = 134 / 43 / 31 / 16; 20 = 143 / 46 /
 # 33 / 17. Role (elite x2 HP, boss x1.2 x party size) then hp_mult / def_add applied.
 E.update({
@@ -537,18 +568,17 @@ E.update({
  "night_moth_swarm":dict(hp=94,  atk=43, df=31, mdef=16, spd=16, weak="fire",
                          ai=[("attack", 2), ("blind", 2), ("sleep", 1)]),
  # The Act III bosses as they are now in scr_enemy_database (ACT3_OUTLINE.md §7, tuned here):
- # burn_line_hulk = briar_hulk at boss scale, hp_mult 2.1 (the Hulk's x1.4 and the boss x1.2 x 4)
- # and atk_add 12; door_warden_boss = the elite at boss scale with hp_mult 2.0 and +3 DEF;
- # blackwood_matriarch carries hp_mult 1.5. ward_sentinel_late is the level-20 Sentinel the
+ # 2026-11-18: burn_line_hulk = 600 x 3.15 / 74 ATK; door_warden_boss = 643 x 3.6 / 74 ATK;
+ # blackwood_matriarch = 686 x 2.25 / 64 ATK. ward_sentinel_late is the level-20 Sentinel the
  # Chapter 8 adds need (the level-14 one dies in a single hit at 20).
- "burn_line_hulk":  dict(hp=1260, atk=55, df=32,  mdef=15, spd=5,  weak="fire", boss=True,
+ "burn_line_hulk":  dict(hp=1890, atk=74, df=32,  mdef=15, spd=5,  weak="fire", boss=True,
                          ai=[("attack", 1)]),
- "blackwood_matriarch": dict(hp=1029, atk=49, df=36, mdef=17, spd=13, weak="holy", boss=True,
+ "blackwood_matriarch": dict(hp=1544, atk=64, df=36, mdef=17, spd=13, weak="holy", boss=True,
                          ai=[("attack", 2), ("breath", 1)],
                          phase_ai={2: [("attack", 2), ("breath", 2)]},
                          phase2_at=0.5, phase2_atk=0.25),
  "door_warden":     dict(hp=268, atk=45, df=36, mdef=16, spd=6, weak="lightning", ai=[("attack", 1)]),
- "door_warden_boss":dict(hp=1286, atk=46, df=37, mdef=16, spd=6, weak="lightning", boss=True,
+ "door_warden_boss":dict(hp=2315, atk=74, df=37, mdef=16, spd=6, weak="lightning", boss=True,
                          ai=[("attack", 1)]),
  "ward_sentinel_late": dict(hp=143, atk=46, df=36, mdef=17, spd=7, weak="lightning", ai=[("attack", 1)]),
 })
@@ -578,7 +608,7 @@ def ch6_tables():
     print("| Fight | Win % | Rounds | Party turns | Party HP left |")
     print("|---|---|---|---|---|")
     for label, eids in BAND:
-        r = run_ext(label, 18, WITH_CAELAN, eids, gear=GEAR_LATE, boss_focus=False)
+        r = run_ext(label, 18, WITH_CAELAN, eids, gear=GEAR_ACT3, boss_focus=False)
         print(f"| {r['label']} | {r['win']*100:.0f}% | {r['rounds']:.1f} | {r['pturns']:.1f} | {r['hp']*100:.0f}% |")
     print()
     print("**Act III bosses** — win % and rounds. \"Hits on boss\" counts party hits, so Lyra's")
@@ -590,14 +620,14 @@ def ch6_tables():
     for label, eids in BOSSES:
         for L in sorted({CHAPTER_LEVEL[label.split(":")[0]], 20}):
             for members in (WITH_CAELAN, WITH_SERA):
-                r = run_ext(label, L, members, eids, gear=GEAR_LATE, boss_focus=True)
+                r = run_ext(label, L, members, eids, gear=GEAR_ACT3, boss_focus=True)
                 print(f"| {r['label']} | {L} | {r['members']} | {r['win']*100:.0f}% | {r['rounds']:.1f} | "
                       f"{r['pturns']:.1f} | {r['boss']:.1f} | {r['deaths']:.2f} | {r['hp']*100:.0f}% |")
     print()
     print("| Level | Kael ATK/DEF/HP | Taren ATK/DEF/HP | Lyra ATK/DEF/HP | Caelan ATK/DEF/HP | Sera ATK/DEF/HP | Hits to kill Hulk (K/T/L) | Matriarch (K/T) | Door Warden (K/T/L) |")
     print("|---|---|---|---|---|---|---|---|---|")
     for L in (18, 19, 20):
-        ms = {m: member(m, L, *GEAR_LATE[m]) for m in ("kael", "taren", "lyra", "caelan", "sera")}
+        ms = {m: member(m, L, *GEAR_ACT3[m]) for m in ("kael", "taren", "lyra", "caelan", "sera")}
         def kh(eid, who):
             e = E[eid]
             return "/".join(str(math.ceil(e["hp"] / max(1, ms[m]["atk"] - e["df"] // 2))) for m in who)
@@ -617,7 +647,7 @@ def ch6_tables():
                                ("Ch 7: Matriarch + Stalker", 19, BOSSES[1][1]),
                                ("Ch 8: Warden + 2 Sentinels", 20, BOSSES[2][1])):
         for mult in (1.0, 1.25, 1.5):
-            r = run_ext(label, level, WITH_CAELAN, eids, gear=GEAR_LATE, boss_focus=True,
+            r = run_ext(label, level, WITH_CAELAN, eids, gear=GEAR_ACT3, boss_focus=True,
                         n=2000, boss_hp_mult=mult)
             print(f"| {r['label']} | {level} | {mult:.1f} | {r['win']*100:.0f}% | {r['rounds']:.1f} | "
                   f"{r['deaths']:.2f} | {r['hp']*100:.0f}% |")
@@ -645,7 +675,7 @@ def template_table():
 # ---- Act IV: The Forgotten King (docs/story/ACT4_OUTLINE.md §7; decisions approved 2026-11-16) --
 # scr_enemy_scaled bases: level 21 = 152 / 49 / 35 / MDEF 18, 22 = 161 / 52 / 37 / 19,
 # 23 = 170 / 55 / 39 / 20. The values below are the shipped stats after hp_mult / def_add.
-# The party wears Chapter 5 gear: there is still no Act IV equipment tier.
+# The party wears the tier-VII gear that unlocks with story Act IV.
 E.update({
  "crown_guard_elite": dict(hp=152, atk=49, df=37, mdef=18, spd=9,
                            ai=[("attack", 2), ("slash", 1), ("guard", 1)]),
@@ -653,12 +683,12 @@ E.update({
  "oath_iron":         dict(hp=193, atk=52, df=41, mdef=19, spd=5, weak="lightning", ai=[("attack", 1)]),
  "grave_moth":        dict(hp=129, atk=52, df=37, mdef=19, spd=14, weak="fire",
                           ai=[("attack", 2), ("blind", 1), ("sleep", 1)]),
- "magistrate_vell":   dict(hp=1022, atk=52, df=38, mdef=18, spd=11, boss=True, yields=True,
+ "magistrate_vell":   dict(hp=1840, atk=73, df=38, mdef=18, spd=11, boss=True, yields=True,
                            ai=[("attack", 2), ("heavy", 2), ("guard", 1)]),
- "barrow_warden":     dict(hp=1701, atk=59, df=42, mdef=19, spd=8, weak="lightning", boss=True,
+ "barrow_warden":     dict(hp=2381, atk=71, df=42, mdef=19, spd=8, weak="lightning", boss=True,
                            ai=[("attack", 2), ("heavy", 1)],
                            phase_ai={2: [("attack", 1), ("heavy", 1)]}, phase2_at=0.5, phase2_atk=0.15),
- "forgotten_king":    dict(hp=1714, atk=61, df=45, mdef=20, spd=7, boss=True,
+ "forgotten_king":    dict(hp=2228, atk=70, df=45, mdef=20, spd=7, boss=True,
                            ai=[("attack", 2), ("heavy", 1)],
                            phase_ai={2: [("attack", 1), ("heavy", 2)], 3: [("attack", 1), ("heavy", 3)]},
                            phase2_at=0.6, phase2_atk=0.20, phase3_at=0.3, phase3_atk=0.15),
@@ -687,7 +717,7 @@ def act4_tables():
     print("|---|---|---|---|---|---|")
     for label, eids in BAND:
         for members in (WITH_CAELAN, WITH_SERA):
-            r = run_ext(label, 21, members, eids, gear=GEAR_LATE, boss_focus=False)
+            r = run_ext(label, 21, members, eids, gear=GEAR_ACT4, boss_focus=False)
             print(f"| {r['label']} | {r['members']} | {r['win']*100:.0f}% | {r['rounds']:.1f} | "
                   f"{r['pturns']:.1f} | {r['hp']*100:.0f}% |")
     print()
@@ -700,14 +730,14 @@ def act4_tables():
         own = CHAPTER_LEVEL[label.split(":")[0]]
         for L in sorted({own, 23}):
             for members in (WITH_CAELAN, WITH_SERA):
-                r = run_ext(label, L, members, eids, gear=GEAR_LATE, boss_focus=True)
+                r = run_ext(label, L, members, eids, gear=GEAR_ACT4, boss_focus=True)
                 print(f"| {r['label']} | {L} | {r['members']} | {r['win']*100:.0f}% | {r['rounds']:.1f} | "
                       f"{r['pturns']:.1f} | {r['boss']:.1f} | {r['deaths']:.2f} | {r['hp']*100:.0f}% |")
     print()
     print("| Level | Kael ATK/DEF/HP | Taren ATK/DEF/HP | Lyra ATK/DEF/HP | Caelan ATK/DEF/HP | Sera ATK/DEF/HP | Hits to kill Guard Elite (K/T/L) | Warden (K/T/L) | King (K/T/L) |")
     print("|---|---|---|---|---|---|---|---|---|---|")
     for L in (21, 22, 23):
-        ms = {m: member(m, L, *GEAR_LATE[m]) for m in ("kael", "taren", "lyra", "caelan", "sera")}
+        ms = {m: member(m, L, *GEAR_ACT4[m]) for m in ("kael", "taren", "lyra", "caelan", "sera")}
         def kh(eid, who):
             e = E[eid]
             return "/".join(str(math.ceil(e["hp"] / max(1, ms[m]["atk"] - e["df"] // 2))) for m in who)
@@ -718,26 +748,24 @@ def act4_tables():
     print()
 
 # ---- Act V: The Fallen Knight (docs/story/ACT5_OUTLINE.md §7; Chapter 12 approved 2026-11-17) ----
-# The party is assumed to carry the Act V tier (Tidesteel Blade / Drowned Coat), which Mott's cart
-# makes reachable before the coast. Accessories and helms are not modelled; this is conservative on
-# DEF/MDEF. The no-tier rows below are the warning the outline asks for: without that tier the
-# leviathan is a wall.
-GEAR_ACT5 = {"kael": (12, 11), "taren": (13, 11), "lyra": (11, 11),
-             "caelan": (11, 11), "sera": (12, 11)}
+# Story Act V unlocks tier VIII; Rimehold's armoury is now a built room, so the party carries the
+# full tier-VIII set (True-Name Blade / Veil Plate), not the old tier-V Tidesteel / Drowned Coat
+# loadout. The no-tier rows below use tier VII from Orrin: without Rimehold the leviathan is the
+# fight that suffers first.
 E.update({
  "drowned_husk": dict(hp=340, atk=60, df=41, mdef=21, spd=6, weak="holy", ai=[("attack", 1)]),
  "salt_wretch": dict(hp=281, atk=61, df=39, mdef=19, spd=7, weak="fire", ai=[("attack", 1)]),
  "tide_crawler": dict(hp=340, atk=62, df=46, mdef=22, spd=7, weak="lightning", ai=[("attack", 2), ("brace", 1)]),
  "wreck_shade": dict(hp=301, atk=63, df=43, mdef=22, spd=12, weak="holy", ai=[("attack", 3), ("fade", 1)]),
- "toll_keeper": dict(hp=1804, atk=64, df=45, mdef=21, spd=8, boss=True,
+ "toll_keeper": dict(hp=2165, atk=77, df=45, mdef=21, spd=8, boss=True,
                      ai=[("attack", 2), ("heavy", 1)],
                      phase_ai={2: [("attack", 1), ("heavy", 2)]},
                      phase2_at=0.5, phase2_atk=0.15),
- "salt_leviathan": dict(hp=1895, atk=67, df=48, mdef=22, spd=9, boss=True,
+ "salt_leviathan": dict(hp=2150, atk=72, df=48, mdef=22, spd=9, boss=True,
                         ai=[("attack", 2), ("breath", 1)],
                         phase_ai={2: [("attack", 1), ("breath", 2)]},
                         phase2_at=0.5, phase2_atk=0.20),
- "fallen_knight_last": dict(hp=2052, atk=70, df=50, mdef=23, spd=11, boss=True, yields=True,
+ "fallen_knight_last": dict(hp=2772, atk=80, df=50, mdef=23, spd=11, boss=True, yields=True,
                             ai=[("attack", 2), ("heavy", 1)],
                             phase_ai={2: [("attack", 1), ("heavy", 2)]},
                             phase2_at=0.5, phase2_atk=0.15),
@@ -761,7 +789,7 @@ def act5_tables():
         ("Ch 14: Fallen Knight", ["fallen_knight_last"], 26),
     ]
     print()
-    print("**Drowned Coast band sanity (Chapter 12, level 24)** — Act V tier (Tidesteel Blade / Drowned Coat)")
+    print("**Drowned Coast band sanity (Chapter 12, level 24)** — tier VIII (True-Name Blade / Veil Plate)")
     print()
     print("| Fight | Party | Win % | Rounds | Party turns | Party HP left | Deaths |")
     print("|---|---|---|---|---|---|---|")
@@ -794,8 +822,9 @@ def act5_tables():
               + f" | {kh('drowned_husk', ('kael','taren','lyra'))} | {kh('salt_leviathan', ('kael','taren','lyra'))}"
               + f" | {kh('fallen_knight_last', ('kael','taren','lyra'))} |")
     print()
-    print("**No Act V tier** — the same fights with Chapter 5 gear. The coast commons still clear;")
-    print("the leviathan does not. This is why the Act V tier is the expected path, not optional polish.")
+    print("**No tier VIII** — the same fights with tier VII, the previous story act's gear.")
+    print("The coast commons still clear; the leviathan drops (see the rows below), especially with")
+    print("Sera. This is why the Rimehold shelf is the expected path.")
     print()
     print("| Fight | Lv | Party | Win % | Rounds | Party HP left | Deaths |")
     print("|---|---|---|---|---|---|---|")
@@ -804,10 +833,61 @@ def act5_tables():
                              ("Ch 13: Saltreach Leviathan", ["salt_leviathan"], 25),
                              ("Ch 14: Fallen Knight", ["fallen_knight_last"], 26)):
         for members in (WITH_CAELAN, WITH_SERA):
-            r = run_ext(label, own, members, eids, gear=GEAR_LATE,
+            r = run_ext(label, own, members, eids, gear=GEAR_TIER[7],
                         boss_focus=(label != "Coast: Husk + Wretch"))
             print(f"| {r['label']} | {own} | {r['members']} | {r['win']*100:.0f}% | {r['rounds']:.1f} | "
                   f"{r['hp']*100:.0f}% | {r['deaths']:.2f} |")
+    print()
+
+# ---- Eight-act summary: authored bands vs the story-act gear tiers -----------------------
+def eight_act_summary():
+    """One row per authored boss band, plus an explicit no-data row for Acts VI-VIII."""
+    random.seed(61)
+    P2 = ["kael", "taren"]
+    P3 = ["kael", "taren", "lyra"]
+    P4 = ["kael", "taren", "lyra", "caelan"]
+    P4S = ["kael", "taren", "lyra", "sera"]
+    rows = [
+        ("II", "Ch2: Reeve Calder", 10, "II", P2, ["reeve_calder", "occupation_soldier", "occupation_soldier"]),
+        ("II", "Ch3: The Debtman", 12, "III", P3, ["debtman", "dock_thug", "debt_collector"]),
+        ("II", "Ch4: Sanctuary Warden", 15, "IV", P4, ["sanctuary_warden", "ward_sentinel"]),
+        ("II", "Ch5: Commander Hailen", 17, "V", P4, ["commander_hailen", "garrison_pikeman"]),
+        ("III", "Ch6: Burn-Line Hulk", 18, "VI", P4, ["burn_line_hulk", "shade_stalker"]),
+        ("III", "Ch7: Blackwood Matriarch", 19, "VI", P4, ["blackwood_matriarch", "shade_stalker"]),
+        ("III", "Ch8: The Door Warden", 20, "VI", P4, ["door_warden_boss", "ward_sentinel_late", "ward_sentinel_late"]),
+        ("IV", "Ch9: Magistrate Vell", 21, "VII", P4, ["magistrate_vell", "crown_guard_elite", "crown_guard_elite"]),
+        ("IV", "Ch10: Barrow Warden", 22, "VII", P4, ["barrow_warden"]),
+        ("IV", "Ch11: The Forgotten King", 23, "VII", P4, ["forgotten_king"]),
+        ("V", "Ch12: The Toll-Keeper", 24, "VIII", P4, ["toll_keeper"]),
+        ("V", "Ch13: Saltreach Leviathan", 25, "VIII", P4, ["salt_leviathan"]),
+        ("V", "Ch14: The Fallen Knight", 26, "VIII", P4, ["fallen_knight_last"]),
+    ]
+    def cell(members, level, tier, eids):
+        r = run_ext("x", level, members, eids, gear=GEAR_TIER[tier], boss_focus=True, n=3000)
+        return f"{r['win']*100:.0f}% / {r['rounds']:.1f}r / {r['hp']*100:.0f}%"
+
+    print("## Eight-act simulation with the story-act gear tiers")
+    print()
+    print("Act I's only boss, the Blackguard, has canon scripted phases and is not modelled by this")
+    print("single-target harness; it is reported as unauthored for balance, not as a pass.")
+    print()
+    print("| Act | Chapter / boss | Lv | Tier | Caelan party (win / rounds / HP) | Sera party (win / rounds / HP) |")
+    print("|---|---|---|---|---|---|")
+    print("| I | Ch1: Blackguard (scripted) | 6 | I | phases not modelled | phases not modelled |")
+    for act, label, level, tier, members, eids in rows:
+        t = {"II": 2, "III": 3, "IV": 4, "V": 5, "VI": 6, "VII": 7, "VIII": 8}[tier]
+        c = cell(members, level, t, eids)
+        s = cell(P4S, level, t, eids) if len(members) == 4 else "—"
+        print(f"| {act} | {label} | {level} | {tier} | {c} | {s} |")
+    print("| VI | *Beneath the Mountains* | — | VI | no authored enemies | no authored enemies |")
+    print("| VII | *The Ashlands* | — | VII | no authored enemies | no authored enemies |")
+    print("| VIII | *The Truth* | — | VIII | no authored enemies | no authored enemies |")
+    print()
+    print("Act V is reported at tier VIII; Rimehold's armoury (`rm_rimehold`) is built and its")
+    print("entrance opens after Chapter 11, when `scr_story_act()` reaches 8.")
+    print()
+    print("Acts VI-VIII are title/planning only: no enemy ids, room bands, encounter tables or bosses")
+    print("exist, so there is no band to simulate or retune. The table does not invent one.")
     print()
 
 if __name__ == "__main__" and "--templates" in sys.argv:
@@ -821,7 +901,12 @@ if __name__ == "__main__" and "--act5" in sys.argv:
     act5_tables()
     sys.exit(0)
 
+if __name__ == "__main__" and "--summary" in sys.argv:
+    eight_act_summary()
+    sys.exit(0)
+
 if __name__ == "__main__":
+    eight_act_summary()
     c3_tables()
     ch45_tables()
     ch4_prejoin_table()

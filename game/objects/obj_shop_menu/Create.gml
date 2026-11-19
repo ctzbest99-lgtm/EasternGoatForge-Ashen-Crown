@@ -2,6 +2,7 @@
 scr_game_state_init();
 scr_ui_init();
 global.game.menu_open = true;
+opened_frame = global.game.frame;
 shop_id = "";
 shop = undefined;
 mode = "list";   // "list" | "qty"

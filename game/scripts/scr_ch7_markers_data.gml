@@ -9,13 +9,13 @@ function scr_blackwood_shrine_markers() {
         { type: "zone_exit", name: "to_wood", tile_x: 25, tile_y: 10, x: 408, y: 176, target_room: "rm_blackwood_deep", target_spawn: "from_shrine", w: 1, h: 3, note: "Back east into the deep wood." },
         { type: "zone_exit", name: "to_glade", tile_x: 12, tile_y: 0, x: 200, y: 16, target_room: "rm_blackwood_glade", target_spawn: "from_shrine", w: 3, h: 1, script_id: "CH7_TO_GLADE", note: "North to the glade. Held back until the tithe scene has played (scr_ch7_exit_script)." },
         { type: "lore", name: "basin", tile_x: 12, tile_y: 8, x: 200, y: 144, script_id: "SH_BASIN", lines: ["The basin is dry, and the stone under the lip is worn smooth."], note: "SH_BASIN: inspect text plus the party scene. Optional, never required." },
-        { type: "npc", name: "berrin", tile_x: 20, tile_y: 10, x: 328, y: 176, npc_id: "berrin", speaker: "Berrin", script_id: "TT_MEET", sprite: "spr_story_npc_placeholder", hostile: false, facing: "left", note: "Berrin at the trees: the tithe scene and the side-quest choice. Placeholder sprite." },
-        { type: "extra", name: "lost_a", tile_x: 8, tile_y: 12, sprite: "spr_story_npc_placeholder", x: 136, y: 208 },
-        { type: "extra", name: "lost_b", tile_x: 10, tile_y: 13, sprite: "spr_story_npc_placeholder", x: 168, y: 224 },
-        { type: "extra", name: "lost_c", tile_x: 15, tile_y: 12, sprite: "spr_story_npc_placeholder", x: 248, y: 208 },
-        { type: "extra", name: "lost_d", tile_x: 17, tile_y: 14, sprite: "spr_story_npc_placeholder", x: 280, y: 240 },
-        { type: "extra", name: "lost_e", tile_x: 9, tile_y: 15, sprite: "spr_story_npc_placeholder", x: 152, y: 256 },
-        { type: "extra", name: "lost_f", tile_x: 16, tile_y: 16, sprite: "spr_story_npc_placeholder", x: 264, y: 272 },
+        { type: "npc", name: "berrin", tile_x: 20, tile_y: 10, x: 328, y: 176, npc_id: "berrin", speaker: "Berrin", script_id: "TT_MEET", sprite: "spr_berrin_ow16_idle_left", hostile: false, facing: "left", note: "Berrin at the trees: the tithe scene and the side-quest choice. Dedicated Berrin set." },
+        { type: "extra", name: "lost_a", tile_x: 8, tile_y: 12, sprite: "spr_lost_one_ow16_idle_up", x: 136, y: 208 },
+        { type: "extra", name: "lost_b", tile_x: 10, tile_y: 13, sprite: "spr_lost_one_ow16_idle_up", x: 168, y: 224 },
+        { type: "extra", name: "lost_c", tile_x: 15, tile_y: 12, sprite: "spr_lost_one_boots_ow16_idle_up", x: 248, y: 208 },
+        { type: "extra", name: "lost_d", tile_x: 17, tile_y: 14, sprite: "spr_lost_one_ow16_idle_up", x: 280, y: 240 },
+        { type: "extra", name: "lost_e", tile_x: 9, tile_y: 15, sprite: "spr_lost_one_ow16_idle_up", x: 152, y: 256 },
+        { type: "extra", name: "lost_f", tile_x: 16, tile_y: 16, sprite: "spr_lost_one_ow16_idle_up", x: 264, y: 272 },
     ];
 }
 

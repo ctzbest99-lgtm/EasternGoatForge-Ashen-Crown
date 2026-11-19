@@ -10,8 +10,9 @@
 /// (yield replaces death), stance_on_adds_fall / stance_buffs (one-time stance when every add falls).
 ///
 /// Chapter 1 SPD / MDEF / MP are PLACEHOLDER defaults chosen so Kael (SPD 10, +1 per level) still
-/// usually acts first in Zone 1, and every Chapter 1 kit keeps its old odds (specials stay visual
-/// only, except Shield Wall, which still guards the next hit). Act II stats are Design's
+/// usually acts first in Zone 1, and every Chapter 1 kit keeps its old odds (specials are
+/// deliberately visual/message-only, except Shield Wall, which still guards the next hit).
+/// Functional enemy kits begin in Act II. Act II stats are Design's
 /// suggestions (2026-11-14) and are not approved.
 function scr_get_enemy_data(_enemy_id) {
     switch (_enemy_id) {
@@ -20,7 +21,7 @@ function scr_get_enemy_data(_enemy_id) {
             // FL_TUTORIAL_SYS_03): hits harder against a defending target. Weight PLACEHOLDER.
             // Level 1: the Farmlands is the level 1–2 band and the tutorial fight is level 1.
             return { id: "bandit", level: 1, name: "Bandit", max_hp: 18, attack: 5, defense: 1, mdef: 1, spd: 8, max_mp: 0, xp_reward: 6, gold_reward: 4,
-                drops: [{ item: "item_ash_shard", chance: 0.30 }],
+                drops: [{ item: "item_ash_shard", chance: 0.30 }, { item: "item_copper_ore", chance: 0.30 }],
                 actions: [{ skill: "attack", weight: 3 }, { skill: "cheap_shot", weight: 1 }] };
         case "fallen_knight":
             // Level 3: first appears in the Bandit Camp (3–4) and the Watchtower (4–7).
@@ -53,7 +54,7 @@ function scr_get_enemy_data(_enemy_id) {
         case "ash_wolf":
             // PLACEHOLDER. Design: Farmlands / Old Road, Lv 1–2 / 2–3. Howl stays visual only (1 in 5).
             return { id: "ash_wolf", level: 2, name: "Ash Wolf", max_hp: 16, attack: 6, defense: 1, mdef: 0, spd: 9, max_mp: 0, xp_reward: 7, gold_reward: 3, weakness: "fire", placeholder: true,
-                drops: [{ item: "item_ash_shard", chance: 0.20 }],
+                drops: [{ item: "item_ash_shard", chance: 0.20 }, { item: "item_wolf_pelt", chance: 0.50 }],
                 actions: [{ skill: "attack", weight: 4 }, { skill: "wolf_howl", weight: 1 }] };
         case "ashen_wretch":
             // PLACEHOLDER. Design: Old Road / Bandit Camp, Lv 2–4. Scream stays visual only (1 in 5).
@@ -114,15 +115,16 @@ function scr_get_enemy_data(_enemy_id) {
             // Same kit as the ash wolf. MDEF and gold were not in Design's list: PLACEHOLDER 4 and 10–16.
             return { id: "grey_ash_wolf", level: 8, name: "Grey Ash Wolf", short_name: "Grey Wolf", max_hp: 36, attack: 13, defense: 8, mdef: 4, spd: 20, max_mp: 0,
                 xp_reward: 28, gold_min: 10, gold_max: 16, gold_reward: 13, weakness: "fire", placeholder: true,
-                drops: [{ item: "item_ash_shard", chance: 0.20 }],
+                drops: [{ item: "item_ash_shard", chance: 0.20 }, { item: "item_wolf_pelt", chance: 0.50 }],
                 actions: [{ skill: "attack", weight: 4 }, { skill: "wolf_howl", weight: 1 }] };
         case "reeve_calder":
             // Chapter 2 boss (CHAPTER2_SCRIPT.md §7). Kit is canon: Guard; a shout that buffs his
             // soldiers; a heavy strike; a harder stance when the detachment falls; he yields and lives.
-            // Numbers are Design's suggestions. Stance (+25% ATK, +15% DEF for the rest of the
+            // Numbers are the 2026-11-18 tier-II retune: 156 HP / 18 ATK, simulated 100% wins,
+            // 6.0 rounds, 76% party HP at level 10. Stance (+25% ATK, +15% DEF for the rest of the
             // battle) is PLACEHOLDER. Fought as group "grp_reeve_calder" with occupation_soldier adds.
             // Level 10: the top of the 8–10 band, where the Calder fight is meant to land.
-            return { id: "reeve_calder", level: 10, name: "Reeve Calder", short_name: "Reeve Calder", max_hp: 130, attack: 15, defense: 16, mdef: 12, spd: 10, max_mp: 20,
+            return { id: "reeve_calder", level: 10, name: "Reeve Calder", short_name: "Reeve Calder", max_hp: 156, attack: 18, defense: 16, mdef: 12, spd: 10, max_mp: 20,
                 xp_reward: 220, gold_min: 80, gold_max: 120, gold_reward: 100, placeholder: true,
                 is_boss: true, yields: true, yield_flag: "flag_reeve_calder_yielded",
                 stance_on_adds_fall: true,
@@ -167,8 +169,9 @@ function scr_get_enemy_data(_enemy_id) {
             // (a small HP drain); a bind that Slows one target. When the toughs fall he
             // fights meaner and faster (the stance). He is beaten and withdraws alive
             // (Decision 3): yield replaces death, like Reeve Calder. Not Ash-corrupted.
-            // Numbers are PLACEHOLDER (suggested levels 10-13).
-            return scr_enemy_scaled("debtman", "The Debtman", "Debtman", "boss", 12, 3, { drops: [{ item: "item_debtmans_chain", chance: 1, once: true }], spd: 12,
+            // Numbers are the 2026-11-18 tier-III retune: 410 HP / 35 ATK, simulated 100% wins,
+            // 5.6 rounds, 48% party HP at level 12.
+            return scr_enemy_scaled("debtman", "The Debtman", "Debtman", "boss", 12, 3, { drops: [{ item: "item_debtmans_chain", chance: 1, once: true }], spd: 12, hp_mult: 1.6, atk_add: 10,
                 is_boss: true, yields: true, yield_flag: "flag_debtman_yielded",
                 stance_on_adds_fall: true, stance_line_node: "DM_PHASE2_01",
                 stance_buffs: [{ stat: "atk", pct: 0.30, turns: -1 }, { stat: "spd", pct: 0.30, turns: -1 }],
@@ -184,10 +187,10 @@ function scr_get_enemy_data(_enemy_id) {
             return scr_enemy_scaled("aethari_automaton", "Aethari Automaton", "Automaton", "elite", 15, 1, { drops: [{ item: "item_architect_alloy", chance: 0.35 }], spd: 9, weakness: "lightning",
                 actions: [{ skill: "attack", weight: 1 }] });
         case "sanctuary_warden": // Ch 4 boss (working name), two phases
-            // hp_mult 1.25 / atk_add 2 compensate for Caelan's approved elemental kit (Chapter 4
-            // balance pass 2026-11-15; PLACEHOLDER, 35/71/94% wins at party levels 13/14/15).
+            // 2026-11-18 tier-IV retune: 900 HP / 55 ATK, simulated 95/93% wins, 6.2/7.3
+            // rounds and 28/31% party HP with Caelan/Sera at level 15.
             return scr_enemy_scaled("sanctuary_warden", "Sanctuary Warden", "Warden", "boss", 16, 4, { drops: [{ item: "item_sanctuary_oathblade", chance: 1, once: true }], spd: 8,
-                hp_mult: 1.25, atk_add: 2,
+                hp_mult: 1.75, atk_add: 18,
                 phase2_at: 0.5, phase2_buffs: [{ stat: "atk", pct: 0.2, turns: -1 }],
                 phase2_line: "The Warden's plates crack. Two more arms unfold!",
                 actions: [{ skill: "attack", weight: 2 }, { skill: "warden_ring", weight: 1 }],
@@ -207,10 +210,9 @@ function scr_get_enemy_data(_enemy_id) {
             return scr_enemy_scaled("garrison_knight", "Garrison Knight", "Knight", "elite", 17, 1, { spd: 9, weakness: "lightning",
                 actions: [{ skill: "attack", weight: 3 }, { skill: "soldier_guard", weight: 1 }] });
         case "commander_hailen": // Ch 5 boss: yields if the story flag is set, otherwise falls
-            // Chapter 5 balance pass (2026-11-15): Caelan's kit made him 97/100/100% at 16/17/18,
-            // so he took length (hp_mult 1.5) rather than more ATK alone. PLACEHOLDER:
-            // ~51/81/96% wins, 9.1/8.6/8.1 rounds, 15/22/30% party HP left.
-            return scr_enemy_scaled("commander_hailen", "Commander Hailen", "Hailen", "boss", 18, 4, { spd: 12, hp_mult: 1.5, atk_add: 14,
+            // 2026-11-18 tier-V retune: 1620 HP / 74 ATK, simulated 78/82% wins,
+            // 8.4/9.7 rounds and 20/30% party HP with Caelan/Sera at level 17.
+            return scr_enemy_scaled("commander_hailen", "Commander Hailen", "Hailen", "boss", 18, 4, { spd: 12, hp_mult: 2.7, atk_add: 31,
                 yields_if_flag: "flag_hailen_yields", yield_flag: "flag_hailen_yielded",
                 actions: [{ skill: "attack", weight: 3 }, { skill: "hailen_glint", weight: 2 }] });
         case "shade_stalker":
@@ -220,11 +222,10 @@ function scr_get_enemy_data(_enemy_id) {
             return scr_enemy_scaled("briar_hulk", "Briar Hulk", "Briar Hulk", "common", 18, 1, { spd: 5, hp_mult: 1.4, weakness: "fire",
                 actions: [{ skill: "attack", weight: 1 }] });
         case "burn_line_hulk": // ACT3_OUTLINE.md §7: the briar_hulk at boss scale (Chapter 6 boss).
-            // Tuned by the Act III simulation: 1260 HP (600 x 2.1, i.e. the Hulk's own x1.4 and the
-            // boss x1.2 x party of 4) and 55 ATK, with one Shade Stalker in grp_burn_line_hulk.
-            // Simulated 100% wins, 7.6 rounds, 0.42 deaths, 42% party HP at level 18. A second
-            // Stalker drops that to 89% at 8.4 rounds, which is the Act IV escalation.
-            return scr_enemy_scaled("burn_line_hulk", "Burn-Line Hulk", "Burn-Line Hulk", "boss", 18, 4, { spd: 5, hp_mult: 2.1, atk_add: 12, weakness: "fire",
+            // 2026-11-18 tier-VI retune: 1890 HP (600 x 3.15) / 74 ATK, with one Shade Stalker
+            // in grp_burn_line_hulk. Simulated 99/99% wins, 7.6/9.6 rounds and 42/44% party HP
+            // with Caelan/Sera at level 18.
+            return scr_enemy_scaled("burn_line_hulk", "Burn-Line Hulk", "Burn-Line Hulk", "boss", 18, 4, { spd: 5, hp_mult: 3.15, atk_add: 31, weakness: "fire",
                 actions: [{ skill: "attack", weight: 1 }] });
         case "lost_one": // id and concept may be revised (DECISIONS)
             return scr_enemy_scaled("lost_one", "Lost One", "Lost One", "common", 18, 1, { spd: 8, weakness: "holy",
@@ -236,10 +237,10 @@ function scr_get_enemy_data(_enemy_id) {
             return scr_enemy_scaled("door_warden", "Door Warden", "Door Warden", "elite", 19, 1, { spd: 6, def_add: 3, weakness: "lightning",
                 actions: [{ skill: "attack", weight: 1 }] });
         case "door_warden_boss": // ACT3_OUTLINE.md §7: the Door Warden at boss scale (Chapter 8 boss).
-            // 1286 HP (134 x 1.2 x 4, then x2.0) / 46 ATK / 37 DEF, with two level-20 Sentinels.
-            // Simulated 96-99% wins, 8.2-10.3 rounds, ~1 death. The elite door_warden stays in the
-            // blackwood random table; this is the fight at the doors.
-            return scr_enemy_scaled("door_warden_boss", "The Door Warden", "Door Warden", "boss", 19, 4, { spd: 6, hp_mult: 2.0, def_add: 3, weakness: "lightning",
+            // 2026-11-18 tier-VI retune: 2315 HP (643 x 3.6) / 74 ATK / 37 DEF, with two
+            // level-20 Sentinels. Simulated 96/96% wins, 8.3/10.5 rounds and 25/33% party HP
+            // with Caelan/Sera at level 20. The elite door_warden stays in the random table.
+            return scr_enemy_scaled("door_warden_boss", "The Door Warden", "Door Warden", "boss", 19, 4, { spd: 6, hp_mult: 3.6, atk_add: 28, def_add: 3, weakness: "lightning",
                 actions: [{ skill: "attack", weight: 1 }] });
         case "ward_sentinel_late": // ACT3_OUTLINE.md §7: the Sentinel that guards the doors at 19-20.
             // common 20 = 143 / 46 / 33, +3 DEF. The level-14 ward_sentinel dies in one hit at 20.
@@ -248,7 +249,7 @@ function scr_get_enemy_data(_enemy_id) {
         // ---- Act IV: The Forgotten King (docs/story/ACT4_OUTLINE.md §7; decisions approved 2026-11-16) ----
         // scr_enemy_scaled bases: level 21 = 152 / 49 / 35 / MDEF 18, 22 = 161 / 52 / 37 / 19,
         // 23 = 170 / 55 / 39 / 20. hp_mult and def_add apply after the role multiplier.
-        // There is still no Act IV equipment tier, so these are tuned against Chapter 5 gear.
+        // Retuned 2026-11-18 against the tier-VII gear that unlocks with story Act IV.
         case "crown_guard_elite": // common 21 = 152 / 49 / 37 (+2 DEF)
             return scr_enemy_scaled("crown_guard_elite", "Crown Guard Elite", "Guard Elite", "common", 21, 1, { spd: 9, def_add: 2,
                 actions: [{ skill: "attack", weight: 2 }, { skill: "slash", weight: 1 }, { skill: "soldier_guard", weight: 1 }] });
@@ -273,14 +274,15 @@ function scr_get_enemy_data(_enemy_id) {
             return scr_enemy_scaled("emberwake_late", "Emberwake", "Emberwake", "common", 21, 1, { drops: [{ item: "item_ember_core", chance: 0.30 }], spd: 18, hp_mult: 0.9, max_mp: 12, weakness: "ice",
                 drops: [{ item: "item_emberwake_feather", chance: 0.10 }],
                 actions: [{ skill: "attack", weight: 3 }, { skill: "ember", weight: 2 }] });
-        case "magistrate_vell": // Chapter 9 boss: 1022 HP (152 x 1.2 x 4, then x1.4), 52 ATK / 38 DEF
+        case "magistrate_vell": // 2026-11-18 tier-VII retune: 1840 HP / 73 ATK / 38 DEF
+            // Simulated 99/100% wins and 7.5/9.0 rounds with Caelan/Sera at level 21.
             // He yields rather than dies (the Calder pattern); the flag is set by the battle system.
-            return scr_enemy_scaled("magistrate_vell", "Magistrate Vell", "Vell", "boss", 21, 4, { spd: 11, hp_mult: 1.4,
+            return scr_enemy_scaled("magistrate_vell", "Magistrate Vell", "Vell", "boss", 21, 4, { spd: 11, hp_mult: 2.52, atk_add: 21,
                 yields: true, yield_flag: "flag_vell_yielded",
                 actions: [{ skill: "attack", weight: 2 }, { skill: "heavy_strike", weight: 2 }, { skill: "calder_guard", weight: 1 }] });
-        case "barrow_warden": // Chapter 10 boss: 1701 HP (161 x 1.2 x 4, then x2.2), 59 ATK / 42 DEF
-            // Simulated 98-99% wins in 7.4-9.9 rounds with about half a death; at x1.7 it was 100%.
-            return scr_enemy_scaled("barrow_warden", "Barrow Warden", "Barrow Warden", "boss", 22, 4, { drops: [{ item: "item_barrow_kings_blade", chance: 1, once: true }], spd: 8, hp_mult: 2.2, atk_add: 4, def_add: 2, weakness: "lightning",
+        case "barrow_warden": // 2026-11-18 tier-VII retune: 2381 HP / 71 ATK / 42 DEF
+            // Simulated 99/97% wins, 7.4/9.8 rounds and 43/40% party HP with Caelan/Sera at 22.
+            return scr_enemy_scaled("barrow_warden", "Barrow Warden", "Barrow Warden", "boss", 22, 4, { drops: [{ item: "item_barrow_kings_blade", chance: 1, once: true }], spd: 8, hp_mult: 3.08, atk_add: 16, def_add: 2, weakness: "lightning",
                 phase2_at: 0.5,
                 phase2_buffs: [{ stat: "def", pct: 0.2, turns: -1 }, { stat: "atk", pct: 0.15, turns: -1 }],
                 phase2_line: "The iron remembers the oath it was given.",
@@ -289,11 +291,12 @@ function scr_get_enemy_data(_enemy_id) {
                     [{ skill: "attack", weight: 2 }, { skill: "heavy_strike", weight: 1 }],
                     [{ skill: "attack", weight: 1 }, { skill: "heavy_strike", weight: 1 }]
                 ] });
-        case "forgotten_king": // Act boss: 1714 HP (170 x 1.2 x 4, then x2.1), 61 ATK / 45 DEF
+        case "forgotten_king": // 2026-11-18 tier-VII retune: 2228 HP / 70 ATK / 45 DEF
+            // Simulated 98/96% wins, 8.0/9.3 rounds and 36/39% party HP with Caelan/Sera at 23.
             // ACT4_OUTLINE.md asks for three phases. Phase 2 is the oath breaking at 60%; phase 3
             // is the oath letting go at 30% — the corpse spends what the oath was holding, hits
             // harder and leans on Heavy Strike. Simulated with tools/balance_sim.py --act4.
-            return scr_enemy_scaled("forgotten_king", "The Forgotten King", "Forg. King", "boss", 23, 4, { drops: [{ item: "item_forgotten_kings_crown", chance: 1, once: true }], spd: 7, hp_mult: 2.1, atk_add: 3, def_add: 3,
+            return scr_enemy_scaled("forgotten_king", "The Forgotten King", "Forg. King", "boss", 23, 4, { drops: [{ item: "item_forgotten_kings_crown", chance: 1, once: true }], spd: 7, hp_mult: 2.73, atk_add: 12, def_add: 3,
                 phase2_at: 0.6,
                 phase2_buffs: [{ stat: "atk", pct: 0.2, turns: -1 }, { stat: "spd", pct: 0.2, turns: -1 }],
                 phase2_line: "The oath breaks. Something underneath it does not.",
@@ -307,9 +310,9 @@ function scr_get_enemy_data(_enemy_id) {
                     [{ skill: "attack", weight: 1 }, { skill: "heavy_strike", weight: 3 }]
                 ] });
         case "blackwood_matriarch": // PLACEHOLDER boss (proposed, not canon), two phases
-            // hp_mult 1.5 (686 -> 1029 HP) is the Act III tuning: as written she was won 100% of the
-            // time in 5.0 rounds; at x1.5 it is 91-92% in 6.7-7.6 rounds with about one death.
-            return scr_enemy_scaled("blackwood_matriarch", "Blackwood Matriarch", "Matriarch", "boss", 20, 4, { drops: [{ item: "item_matriarch_heartwood", chance: 1, once: true }], spd: 13, hp_mult: 1.5, weakness: "holy",
+            // 2026-11-18 tier-VI retune: 1544 HP (686 x 2.25) / 64 ATK, simulated 94/91% wins,
+            // 7.2/7.9 rounds and 27/28% party HP with Caelan/Sera at level 19.
+            return scr_enemy_scaled("blackwood_matriarch", "Blackwood Matriarch", "Matriarch", "boss", 20, 4, { drops: [{ item: "item_matriarch_heartwood", chance: 1, once: true }], spd: 13, hp_mult: 2.25, atk_add: 15, weakness: "holy",
                 phase2_at: 0.5, phase2_buffs: [{ stat: "atk", pct: 0.25, turns: -1 }, { stat: "spd", pct: 0.2, turns: -1 }],
                 phase2_line: "Her antlers split. Embers wake in the cracks!",
                 actions: [{ skill: "attack", weight: 2 }, { skill: "matriarch_breath", weight: 1 }],
@@ -320,8 +323,8 @@ function scr_get_enemy_data(_enemy_id) {
 
         // ---- Act V: The Fallen Knight (docs/story/ACT5_OUTLINE.md §7; Chapter 12 approved 2026-11-17) ----
         // scr_enemy_scaled bases: level 24 = 179 / 58 / 41 / MDEF 21, 25 = 188 / 61 / 43 / 22,
-        // 26 = 197 / 64 / 45 / 23. Tuned with `tools/balance_sim.py --act5` against the Act V tier
-        // (Tidesteel Blade / Drowned Coat), which Mott's cart makes reachable before the coast.
+        // 26 = 197 / 64 / 45 / 23. Retuned 2026-11-18 against tier VIII: Rimehold's armoury is now
+        // a built room, so the tier the story unlocks is actually reachable.
         case "drowned_husk": // common 24 = 340 / 60 / 41, slow, holy
             return scr_enemy_scaled("drowned_husk", "Drowned Husk", "Drowned Husk", "common", 24, 1, { spd: 6, hp_mult: 1.9, atk_add: 2, weakness: "holy",
                 actions: [{ skill: "attack", weight: 1 }] });
@@ -334,9 +337,10 @@ function scr_get_enemy_data(_enemy_id) {
         case "wreck_shade": // common 25 = 301 / 63 / 43, fast, holy
             return scr_enemy_scaled("wreck_shade", "Wreck Shade", "Wreck Shade", "common", 25, 1, { spd: 12, hp_mult: 1.6, atk_add: 2, weakness: "holy",
                 actions: [{ skill: "attack", weight: 3 }, { skill: "shade_fade", weight: 1 }] });
-        case "toll_keeper": // Chapter 12 boss: 1804 HP (179 x 1.2 x 4, then x2.1), 64 ATK / 45 DEF
+        case "toll_keeper": // 2026-11-18 tier-VIII retune: 2165 HP / 77 ATK / 45 DEF
+            // Simulated 100/99% wins, 7.3/8.5 rounds and 44/45% party HP with Caelan/Sera at 24.
             // Silent, two phases; the shift is the water going still and the hook coming up.
-            return scr_enemy_scaled("toll_keeper", "The Toll-Keeper", "Toll-Keeper", "boss", 24, 4, { spd: 8, hp_mult: 2.1, atk_add: 3, def_add: 1,
+            return scr_enemy_scaled("toll_keeper", "The Toll-Keeper", "Toll-Keeper", "boss", 24, 4, { spd: 8, hp_mult: 2.52, atk_add: 16, def_add: 1,
                 phase2_at: 0.5,
                 phase2_buffs: [{ stat: "atk", pct: 0.15, turns: -1 }],
                 actions: [{ skill: "attack", weight: 2 }, { skill: "heavy_strike", weight: 1 }],
@@ -344,9 +348,10 @@ function scr_get_enemy_data(_enemy_id) {
                     [{ skill: "attack", weight: 2 }, { skill: "heavy_strike", weight: 1 }],
                     [{ skill: "attack", weight: 1 }, { skill: "heavy_strike", weight: 2 }]
                 ] });
-        case "salt_leviathan": // Chapter 13 boss: 1895 HP (188 x 1.2 x 4, then x2.1), 67 ATK / 48 DEF
+        case "salt_leviathan": // 2026-11-18 tier-VIII retune: 2150 HP / 72 ATK / 48 DEF
+            // Simulated 91/77% wins, 7.2/8.3 rounds and 22/19% party HP with Caelan/Sera at 25.
             // The set-piece; the tide surge hits the whole party. Two phases. Drops the Act V legendary.
-            return scr_enemy_scaled("salt_leviathan", "Saltreach Leviathan", "Leviathan", "boss", 25, 4, { drops: [{ item: "item_drowned_crown", chance: 1, once: true }], spd: 9, hp_mult: 2.1, atk_add: 3, def_add: 2,
+            return scr_enemy_scaled("salt_leviathan", "Saltreach Leviathan", "Leviathan", "boss", 25, 4, { drops: [{ item: "item_drowned_crown", chance: 1, once: true }], spd: 9, hp_mult: 2.384, atk_add: 8, def_add: 2,
                 phase2_at: 0.5,
                 phase2_buffs: [{ stat: "atk", pct: 0.20, turns: -1 }, { stat: "spd", pct: 0.10, turns: -1 }],
                 actions: [{ skill: "attack", weight: 2 }, { skill: "leviathan_tide", weight: 1 }],
@@ -354,9 +359,10 @@ function scr_get_enemy_data(_enemy_id) {
                     [{ skill: "attack", weight: 2 }, { skill: "leviathan_tide", weight: 1 }],
                     [{ skill: "attack", weight: 1 }, { skill: "leviathan_tide", weight: 2 }]
                 ] });
-        case "fallen_knight_last": // Chapter 14 act boss: 2052 HP (197 x 1.2 x 4, then x2.17), 70 ATK / 50 DEF
+        case "fallen_knight_last": // 2026-11-18 tier-VIII retune: 2772 HP / 80 ATK / 50 DEF
+            // Simulated 98/97% wins, 8.4/9.7 rounds and 37/41% party HP with Caelan/Sera at 26.
             // He yields; no death and no bestiary kill credit. Two phases.
-            return scr_enemy_scaled("fallen_knight_last", "The Fallen Knight", "Fallen Kn.", "boss", 26, 4, { spd: 11, hp_mult: 2.17, atk_add: 3, def_add: 2,
+            return scr_enemy_scaled("fallen_knight_last", "The Fallen Knight", "Fallen Kn.", "boss", 26, 4, { spd: 11, hp_mult: 2.93, atk_add: 13, def_add: 2,
                 yields: true, yield_flag: "flag_fallen_knight_last_yielded",
                 phase2_at: 0.5,
                 phase2_buffs: [{ stat: "atk", pct: 0.15, turns: -1 }, { stat: "spd", pct: 0.10, turns: -1 }],

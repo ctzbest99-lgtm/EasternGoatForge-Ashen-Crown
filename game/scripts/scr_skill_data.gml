@@ -156,7 +156,8 @@ function scr_skill_build(_skill_id) {
             _s.desc = "Passive: Lyra's critical hits come more often.";
             return _s;
 
-        // ---- Chapter 1 enemy kits (keep Chapter 1 behaviour: specials are visual only) -----
+        // ---- Chapter 1 enemy kits (deliberate: specials are visual/message-only in Chapter 1;
+        //      Shield Wall still guards. Functional enemy kits begin in Act II.) -----
         case "wolf_howl":
             return scr_skill_make("wolf_howl", "Howl", 0, "self", "flavor", 0, "howl", "howls!");
         case "wretch_scream":

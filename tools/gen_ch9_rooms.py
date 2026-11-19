@@ -116,7 +116,7 @@ town_markers = [
      'x': T(16, 19)[0], 'y': T(16, 19)[1], 'target_room': 'rm_barrow_gate',
      'target_spawn': 'from_town', 'w': 2, 'h': 1, 'script_id': 'CH9_ROAD', 'lines':
      ['The track south is mud with a direction. The survey says keep going.'],
-     'note': 'Chapter 10 is not built: scr_ch9_exit_script gates this and plays CH9_END once.'},
+     'note': 'First visit plays CH9_END; the next bump enters rm_barrow_gate (Chapter 10 is built).'},
     {'type': 'lore', 'name': 'levy_board', 'tile_x': 13, 'tile_y': 7,
      'x': T(13, 7)[0], 'y': T(13, 7)[1], 'script_id': 'TN_BOARD',
      'lines': ['A levy board with this quarter\'s grain price on it, and a line for survey.'],
@@ -126,12 +126,12 @@ town_markers = [
      'lines': ['The square is swept and the well is in the way. Two children are playing at swords.',
                'Nobody here has heard of the Blackwood, and the ones who have do not believe it.'],
      'note': 'Look text.'},
-    npc('vell', 6, 7, 'vell', 'Vell', 'VG_MEET', 'spr_story_npc_placeholder', 'down',
+    npc('vell', 6, 7, 'vell', 'Vell', 'VG_MEET', 'spr_vell_ow16_idle_down', 'down',
         {'note': 'Magistrate Vell at the ledger house door: the ledger scene and the yielding boss.'}),
-    npc('nessa', 8, 7, 'nessa', 'Nessa', 'CL_CHOICE', 'spr_story_npc_placeholder', 'down',
-        {'note': 'Vell\'s clerk. The side quest and its one choice. Placeholder sprite.'}),
-    npc('alden', 27, 7, 'alden', 'Alden', 'AL_MEET', 'spr_story_npc_placeholder', 'down',
-        {'note': 'Alden Marr at the inn. No sprite exists for him; this is a placeholder.'}),
+    npc('nessa', 8, 7, 'nessa', 'Nessa', 'CL_CHOICE', 'spr_nessa_ow16_idle_down', 'down',
+        {'note': 'Vell\'s clerk. The side quest and its one choice.'}),
+    npc('alden', 27, 7, 'alden', 'Alden', 'AL_MEET', 'spr_alden_ow16_idle_down', 'down',
+        {'note': 'Alden Marr at the inn, at his back table.'}),
     {'type': 'encounter_zone', 'name': 'town_outskirts', 'tile_x': 10, 'tile_y': 15,
      'x': T(10, 15)[0], 'y': T(10, 15)[1], 'table_id': 'crown_barrow',
      'fallback_table_id': 'crown_barrow', 'levels': '21-23',
@@ -147,7 +147,8 @@ town_markers = [
 
 files = {
     'scr_build_town.gml': emit_room('scr_build_town', W, H, g, d, o, c,
-        'Coleford: the square, the magistrate\'s house, the inn and the road out. Chapter 9.'),
+        'Coleford: the square, the magistrate\'s house, the inn and the road out. Chapter 9.',
+        tileset='ts_coleford', prepare='scr_cf_prepare_layers'),
     'scr_ch9_markers_data.gml': emit_markers('scr_town_markers', W, H, town_markers,
         'Coleford markers (Chapter 9).'),
 }

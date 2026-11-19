@@ -59,6 +59,46 @@ switch (state) {
         }
         for (_r = 0; _r < array_length(party); _r++) { scr_battle_tick_buffs(party[_r]); scr_battle_tick_statuses(party[_r]); }
         for (_r = 0; _r < array_length(enemies); _r++) { scr_battle_tick_buffs(enemies[_r]); scr_battle_tick_statuses(enemies[_r]); }
+
+        // A damage-over-time tick can finish a combatant. Resolve the death/yield and its
+        // bookkeeping before the report, then let the report clear the dot_down flags.
+        for (_r = 0; _r < array_length(party); _r++) {
+            var _dot_party = party[_r];
+            if (is_struct(_dot_party) && variable_struct_exists(_dot_party, "dot_down") && _dot_party.dot_down) {
+                var _dot_party_vis = party_vis[_r];
+                if (is_struct(_dot_party_vis)) scr_battle_vis_play(_dot_party_vis, "death");
+            }
+        }
+        for (_r = 0; _r < array_length(enemies); _r++) {
+            var _dot_enemy = enemies[_r];
+            if (!is_struct(_dot_enemy) || !variable_struct_exists(_dot_enemy, "dot_down") || !_dot_enemy.dot_down) continue;
+            var _dot_enemy_vis = enemy_vis[_r];
+            var _dot_enemy_yield = _dot_enemy.yields || (_dot_enemy.yields_if_flag != "" && scr_flag_get(_dot_enemy.yields_if_flag));
+            if (_dot_enemy_yield) {
+                _dot_enemy.yielded = true;
+                _dot_enemy.hp = 1; // he lives; battle_outcome treats a yielded boss as out of the fight
+                if (is_string(_dot_enemy.yield_flag) && _dot_enemy.yield_flag != "") scr_flag_set(_dot_enemy.yield_flag, true);
+                if (is_struct(_dot_enemy_vis)) scr_battle_vis_play(_dot_enemy_vis, "yield");
+                for (var _dot_w = 0; _dot_w < array_length(enemies); _dot_w++) {
+                    var _dot_add = enemies[_dot_w];
+                    if (_dot_add == _dot_enemy || _dot_add.hp <= 0 || _dot_add.yielded) continue;
+                    _dot_add.withdrawn = true;
+                    if (!_dot_add.xp_credited) { scr_party_credit_enemy_xp(_dot_add.xp_reward); _dot_add.xp_credited = true; }
+                }
+            } else {
+                if (is_struct(_dot_enemy_vis)) {
+                    if (_dot_enemy_vis.kind == "blackguard") _dot_enemy_vis.phase = 3;
+                    scr_battle_vis_play(_dot_enemy_vis, "death");
+                }
+                scr_audio_sfx("enemy_fall", 0.05, 0.8);
+            }
+            if (!variable_struct_exists(_dot_enemy, "bestiary_marked") || !_dot_enemy.bestiary_marked) {
+                scr_bestiary_mark_defeated(_dot_enemy.actor_id);
+                _dot_enemy.bestiary_marked = true;
+            }
+            if (!_dot_enemy.xp_credited) { scr_party_credit_enemy_xp(_dot_enemy.xp_reward); _dot_enemy.xp_credited = true; }
+        }
+
         // Bleed (Open Vein) and poison report their ticks before commands resume.
         var _dot_txt = "";
         for (_r = 0; _r < array_length(party); _r++) {
@@ -76,7 +116,24 @@ switch (state) {
             _dot_txt += scr_dialogue_node_text("FL_TUTORIAL_SYS_05");
         }
         if (_dot_txt != "") {
-            queue_message(_dot_txt, BATTLE_STATE.COMMAND_SELECT);
+            // If a tick ended the fight, do not ask for another command first. Otherwise start a
+            // clean command round: a stale actor_index could point at the member the tick killed.
+            var _dot_out = battle_outcome();
+            var _dot_next = BATTLE_STATE.COMMAND_SELECT;
+            if (_dot_out == "victory") {
+                _dot_next = BATTLE_STATE.VICTORY;
+            } else if (_dot_out == "defeat") {
+                _dot_next = BATTLE_STATE.DEFEAT;
+            } else {
+                queued_actions = [];
+                turn_order = [];
+                turn_pos = 0;
+                command_index = 0;
+                pending_command = "";
+                pending_skill = "";
+                actor_index = scr_party_next_living_index(party, 0);
+            }
+            queue_message(_dot_txt, _dot_next);
             break;
         }
         queued_actions = [];
@@ -165,9 +222,23 @@ switch (state) {
         if (scr_input_down_pressed()) item_index = (item_index + 1) mod _in;
         if (scr_input_cancel_pressed()) { state = BATTLE_STATE.COMMAND_SELECT; break; }
         if (scr_input_confirm_pressed()) {
+            var _iid = item_list[item_index];
             pending_command = "Item";
-            pending_skill = item_list[item_index]; // the item id rides the pending skill slot
-            begin_target_select("party");
+            pending_skill = _iid; // the item id rides the pending skill slot
+            // Revive items target a fallen member directly; the normal party cursor skips the dead.
+            if (scr_item_effect_total(_iid, "revival") > 0) {
+                var _ko = -1;
+                for (var _m = 0; _m < array_length(party); _m++) {
+                    if (!scr_actor_is_alive(party[_m])) { _ko = _m; break; }
+                }
+                if (_ko < 0) {
+                    queue_message("No one has fallen.", BATTLE_STATE.ITEM_SELECT);
+                } else {
+                    commit_action({ actor_index: actor_index, command: "Item", skill_id: _iid, target_side: "party", target_index: _ko });
+                }
+            } else {
+                begin_target_select("party");
+            }
         }
         break;
 
@@ -324,7 +395,7 @@ switch (state) {
                 var _de = enemies[_ve];
                 var _dw = variable_struct_exists(_de, "withdrawn") && _de.withdrawn;
                 if (_de.hp > 0 && !_de.yielded && !_dw) continue;
-                // Bestiary safety net for kills the death branch did not see (e.g. damage over time).
+                // Bestiary safety net for any kill path that did not mark the entry itself.
                 if (!_dw && (!variable_struct_exists(_de, "bestiary_marked") || !_de.bestiary_marked)) {
                     scr_bestiary_mark_defeated(_de.actor_id);
                     _de.bestiary_marked = true;

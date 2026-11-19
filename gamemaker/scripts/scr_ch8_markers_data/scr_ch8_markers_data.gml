@@ -10,8 +10,8 @@ function scr_blackwood_doors_markers() {
         { type: "zone_exit", name: "to_town", tile_x: 23, tile_y: 18, x: 376, y: 304, target_room: "rm_town", target_spawn: "from_wood", w: 1, h: 2, note: "East and south out of the wood, towards Coleford." },
         { type: "lore", name: "ward_sentinel", tile_x: 8, tile_y: 8, x: 136, y: 144, script_id: "DW_SENT", lines: ["A sentinel stands in the leaf litter, upright and untouched by weather."], note: "DW_SENT: the sentinels. Inspect only; they do not become NPCs." },
         { type: "lore", name: "the_door", tile_x: 11, tile_y: 5, x: 184, y: 96, lines: ["The opening is a door's height. Past it, two stones and a seam.", "The seam is dark in a way the shade is not."], note: "Look text before the Warden. The pendant scene is scr_ch8_tick at the threshold." },
-        { type: "extra", name: "sentinel_a", tile_x: 8, tile_y: 8, sprite: "spr_story_npc_placeholder", x: 136, y: 144 },
-        { type: "extra", name: "sentinel_b", tile_x: 15, tile_y: 8, sprite: "spr_story_npc_placeholder", x: 248, y: 144 },
-        { type: "extra", name: "sentinel_c", tile_x: 18, tile_y: 12, sprite: "spr_story_npc_placeholder", x: 296, y: 208 },
+        { type: "extra", name: "sentinel_a", tile_x: 8, tile_y: 8, sprite: "spr_ward_sentinel_ow16_idle_right", x: 136, y: 144, note: "Aethari ward sentinel; dedicated ward set, same make as the Door Warden." },
+        { type: "extra", name: "sentinel_b", tile_x: 15, tile_y: 8, sprite: "spr_ward_sentinel_ow16_idle_left", x: 248, y: 144, note: "Aethari ward sentinel; dedicated ward set, same make as the Door Warden." },
+        { type: "extra", name: "sentinel_c", tile_x: 18, tile_y: 12, sprite: "spr_ward_sentinel_ow16_idle_left", x: 296, y: 208, note: "Aethari ward sentinel; dedicated ward set, same make as the Door Warden." },
     ];
 }

@@ -57,7 +57,7 @@ src/                              tiles_wf.py (imports zone1/src/tiles.py), buil
 - rm_wrenfield: the north exit goes back to the road. `west_road_to_valemere` (x0, y27) targets `rm_valemere_road` / `from_wrenfield` (built in Chapter 3). Its `fallback_room`/`fallback_spawn` = `rm_overworld` / `from_wrenfield_west`, kept only as a safety net if that room ever goes missing. It plays WF_HANDOFF and sets `flag_chapter2_complete`. The barrier `west_road_closed` blocks it until `flag_taren_recruited`.
 
 ## Room notes
-**rm_millhaven_road.** A winding dirt road north->south through forest edges. On it: the signpost (18,4), the weathered Crown notice (12,16), which also sets `flag_hook_taren` as the script's backup hook, the traveler (14,10, MR_HOOK chain), the Architect stones (around 9-12, 27-30, MR_STONE_01/02), and the Crown patrol (17,41: `crown_patrolman` plus the unwilling soldier as an extra; avoidable, MR_PATROL chain). The encounter zone is Lv 8-10 (crown_patrolman, crown_crossbowman, bandit, ash_wolf); adjust it in the marker.
+**rm_millhaven_road.** A winding dirt road north->south through forest edges. On it: the signpost (18,4), the weathered Crown notice (12,16), which also sets `flag_hook_taren` as the script's backup hook, the traveler (14,10, MR_HOOK chain), the Architect stones (around 9-12, 27-30, MR_STONE_01/02), and the Crown patrol (17,41: `crown_patrolman`, drawn with `spr_crown_patrolman_ow16_idle_up`, plus the unwilling soldier as an extra; avoidable, MR_PATROL chain). The encounter zone is Lv 8-10 (crown_patrolman, crown_crossbowman, bandit, ash_wolf); adjust it in the marker.
 
 **rm_wrenfield.** Layout:
 - The north checkpoint (palisade, barricades, boom, Crown banners, tent, posted list).

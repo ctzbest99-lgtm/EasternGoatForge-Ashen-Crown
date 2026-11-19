@@ -3,7 +3,7 @@
 Route: the glade's far edge → `rm_blackwood_doors` (the clearing, the sentinels, the Door Warden) → the doors themselves, and the one thing the act must deliver.
 
 > **Status: BUILT 2026-11-16 from the approved Act III outline, decisions as recommended — not yet individually approved, not played.** Built under the standing instruction to keep building the story. Outline §9 decisions 6, 7 and 9 are implemented as recommended: **the door does not open**, the **Fallen Knight does not appear**, and the act ends at the doors with the act-complete card.
-> **Not played.** The clearing is a Wrenfield blockout, the sentinels use the placeholder NPC sprite, and nothing has been compiled.
+> **Not played.** The clearing is dressed on the placeholder `ts_blackwood` atlas, the sentinels have their own dedicated overworld set, and nothing has been compiled.
 > Levels: **20** **[PLACEHOLDER]** — the act's ceiling. This is the chapter the level cap decision is about; see §8.
 
 Source of truth: `STORY_BIBLE.md` and `ACT3_OUTLINE.md` §5. Presentation: FF1-style top-down exploration; menu battles.
@@ -212,7 +212,7 @@ The quest stays open at S6. Act IV's opening stage replaces it; nothing here mar
 
 1. **Dialogue data** — `scr_dialogue_data_ch8`. **Done.**
 2. **Story script** — `scr_ch8_story`: entry, the sentinels, the Warden gate, the pendant scene and the act card. **Done.**
-3. **Rooms** — `rm_blackwood_doors`, a Wrenfield blockout with its marker table. **Done** — this also closes the last Blackwood room reference the validator was reporting.
+3. **Rooms** — `rm_blackwood_doors`, on the placeholder `ts_blackwood` atlas, with its marker table. **Done** — this also closes the last Blackwood room reference the validator was reporting.
 4. **Art** — Blackwood tileset, the doors as scenery (the act's single most important piece of environment art), the Warden's overworld scale. **Not done.**
 5. **Audio** — boss music through the existing battle path; the pendant scene has no cue of its own and should get one. **Partly done.**
 6. **Docs/tests** — CHANGELOG, TEST_PLAN, DECISIONS, outline and bible status. **Done.**

@@ -10,7 +10,7 @@ logo_y = lerp(logo_y, logo_y_target, 0.2);
 if (mode == "menu") options_alpha = min(1, options_alpha + 1 / 18);
 
 if (mode == "press") {
-    if (keyboard_check_pressed(vk_anykey) || scr_input_confirm_pressed()) {
+    if (scr_input_any_pressed()) {
         mode = "menu";
         logo_y_target = 6 * _s;
         options_alpha = 0;

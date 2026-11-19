@@ -24,8 +24,13 @@ _ns = {'__file__': os.path.join(ROOT, 'tools', 'gen_act3_rooms.py'), '__name__':
 exec(compile(_helpers, 'gen_act3_rooms.py', 'exec'), _ns)
 T = _ns['T']; Grid = _ns['Grid']; emit_room = _ns['emit_room']
 emit_markers = _ns['emit_markers']; marker_room_yy = _ns['marker_room_yy']
-ROAD = _ns['ROAD']; PILLAR = _ns['PILLAR']; STONE = _ns['STONE']
-WALLTOP = _ns['WALLTOP']; WALLFACE = _ns['WALLFACE']
+# ts_barrow material band (ids 800-895): cold flagstone floors, rubble, wall courses
+# and a carved pillar. Same room shapes as the Wrenfield blockout.
+ROAD = [820, 821, 822, 823]
+PILLAR = 880
+STONE = [816, 817, 818, 819, 820, 821]
+WALLTOP = [848, 849]
+WALLFACE = [864, 865, 866, 867]
 
 random.seed(20261126)
 
@@ -150,9 +155,11 @@ deep_markers = [
 
 files = {
     'scr_build_barrow_halls.gml': emit_room('scr_build_barrow_halls', W, H, g, d, o, c,
-        'The barrow halls: pillars, niches, the struck names and the way down. Chapter 11.'),
+        'The barrow halls: pillars, niches, the struck names and the way down. Chapter 11.',
+        barrow=True),
     'scr_build_barrow_deep.gml': emit_room('scr_build_barrow_deep', W2, H2, g2, d2, o2, c2,
-        'The last chamber: dais, lectern, seal stand and the Forgotten King. Chapter 11.'),
+        'The last chamber: dais, lectern, seal stand and the Forgotten King. Chapter 11.',
+        barrow=True),
     'scr_ch11_markers_data.gml': (
         emit_markers('scr_barrow_halls_markers', W, H, halls_markers, 'Barrow halls markers (Chapter 11).')
         + '\n' + emit_markers('scr_barrow_deep_markers', W2, H2, deep_markers, 'Last chamber markers (Chapter 11).')),

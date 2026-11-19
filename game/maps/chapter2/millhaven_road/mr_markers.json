@@ -156,9 +156,10 @@
    "MR_PATROL_02",
    "MR_PATROL_03"
   ],
-  "sprite": "spr_crown_soldier_firm_ow16_idle_up",
+  "sprite": "spr_crown_patrolman_ow16_idle_up",
+  "facing": "up",
   "escort_sprite": "spr_crown_soldier_unwilling_ow16_idle_up",
-  "note": "Optional scripted patrol on the road (two Crown soldiers: one firm, one unwilling). Can be walked around through the grass or fought (enc_crown_patrol). Human soldiers, not Ash-corrupted."
+  "note": "Optional scripted patrol on the road. The leader uses the dedicated Crown Patrolman set; the escort is the unwilling Crown soldier. Can be walked around through the grass or fought (enc_crown_patrol). Human soldiers, not Ash-corrupted."
  },
  {
   "type": "extra",

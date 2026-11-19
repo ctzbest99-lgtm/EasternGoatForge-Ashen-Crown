@@ -518,6 +518,8 @@ function scr_menu_inv_party() {
 }
 
 /// Item ids for the Items (0) or Key (2) tab.
+/// Item ids for one bag tab: 0 Items (consumables + gear), 2 Key, 3 Crafting Materials.
+/// Tab 1 is the Equip pane. Sorted by display name so the bag order never matters.
 function scr_menu_inv_list(_tab) {
     scr_game_state_init();
     var _out = [];
@@ -527,23 +529,39 @@ function scr_menu_inv_list(_tab) {
         var _e = _inv[_i];
         if (!is_struct(_e)) continue;
         var _key = (variable_struct_exists(_e, "key_item") && _e.key_item) || scr_item_is_key(_e.item_id);
-        if (_tab == 2 && _key) array_push(_out, _e.item_id);
-        if (_tab == 0 && !_key) array_push(_out, _e.item_id);
+        var _cat = scr_item_category(_e.item_id);
+        if (_tab == 2) {
+            if (_key) array_push(_out, _e.item_id);
+        } else if (_tab == 3) {
+            if (!_key && _cat == "material") array_push(_out, _e.item_id);
+        } else if (_tab == 0) {
+            if (!_key && _cat != "material") array_push(_out, _e.item_id);
+        }
+    }
+    // Insertion sort by name: stable, allocation-free, and tiny for a 40-slot bag.
+    for (var _a = 1; _a < array_length(_out); _a++) {
+        var _v = _out[_a];
+        var _j = _a - 1;
+        var _vn = string_lower(scr_item_get(_v).name);
+        while (_j >= 0 && string_lower(scr_item_get(_out[_j]).name) > _vn) {
+            _out[_j + 1] = _out[_j];
+            _j -= 1;
+        }
+        _out[_j + 1] = _v;
     }
     return _out;
 }
 
 function scr_menu_slot_name(_i) {
-    var _names = ["weapon", "armor", "helm", "accessory"];
-    return _names[clamp(_i, 0, 3)];
+    var _names = scr_equipment_slots();
+    return _names[clamp(_i, 0, array_length(_names) - 1)];
 }
 
 function scr_menu_slot_label(_i) {
-    var _labels = ["Weapon", "Armor", "Helm", "Accessory"];
-    return _labels[clamp(_i, 0, 3)];
+    return scr_equipment_slot_label(scr_menu_slot_name(_i));
 }
 
-/// Inventory items that this member can put in the given slot.
+/// Inventory items that this member can put in the given slot (accessory 1 and 2 share a pool).
 function scr_menu_inv_candidates(_actor, _slot_index) {
     var _slot = scr_menu_slot_name(_slot_index);
     var _out = [];
@@ -552,8 +570,10 @@ function scr_menu_inv_candidates(_actor, _slot_index) {
     for (var _i = 0; _i < array_length(_inv); _i++) {
         var _e = _inv[_i];
         if (!is_struct(_e)) continue;
-        var _it = scr_item_get(_e.item_id);
-        if (_it.slot != _slot) continue;
+        var _is = scr_item_slot(_e.item_id);
+        var _match = (_is == _slot);
+        if (_slot == "accessory_1" || _slot == "accessory_2") _match = (_is == "accessory");
+        if (!_match) continue;
         if (!scr_item_can_equip(_actor, _e.item_id)) continue;
         array_push(_out, _e.item_id);
     }
@@ -565,31 +585,39 @@ function scr_menu_actor_stat(_actor, _stat) {
     switch (_stat) {
         case "HP": return _actor.hp;
         case "MP": return variable_struct_exists(_actor, "mp") ? _actor.mp : 0;
+        case "MAX HP": return _actor.max_hp;
+        case "MAX MP": return variable_struct_exists(_actor, "max_mp") ? _actor.max_mp : 0;
         case "ATK": return _actor.attack;
         case "DEF": return _actor.defense;
         case "MAG": return variable_struct_exists(_actor, "magic") ? _actor.magic : 0;
-        case "MDF": return variable_struct_exists(_actor, "magic_defense") ? _actor.magic_defense : 0;
-        case "SPD": return variable_struct_exists(_actor, "speed") ? _actor.speed : 0;
+        case "MDF": return variable_struct_exists(_actor, "mdef") ? _actor.mdef : 0;
+        case "SPD": return variable_struct_exists(_actor, "spd") ? _actor.spd : 0;
+        case "ACC": return variable_struct_exists(_actor, "accuracy") ? _actor.accuracy : 0;
+        case "EVA": return variable_struct_exists(_actor, "evasion") ? _actor.evasion : 0;
+        case "CRIT": return round((variable_struct_exists(_actor, "crit") ? _actor.crit : 0) * 100);
     }
     return 0;
 }
 
+/// Preview of `_stat` if `_item_id` replaced the slot being edited. Uses the same totals as
+/// the comparison line, so the pane and the description can never disagree.
 function scr_menu_actor_stat_new(_actor, _stat, _item_id) {
     var _cur = scr_menu_actor_stat(_actor, _stat);
     if (_item_id == "" || !is_struct(_actor)) return _cur;
-    if (_stat != "ATK" && _stat != "DEF") return _cur;
-    var _it = scr_item_get(_item_id);
-    var _b = scr_item_equip_bonuses(_item_id);
-    scr_actor_ensure_bases(_actor);
-    var _slots = ["weapon", "armor", "helm", "accessory"];
-    var _atk_other = 0;
-    var _def_other = 0;
-    for (var _i = 0; _i < 4; _i++) {
-        if (_slots[_i] == _it.slot) continue;
-        var _ob = scr_item_equip_bonuses(scr_actor_equipped_in_slot(_actor, _slots[_i]));
-        _atk_other += _ob.atk;
-        _def_other += _ob.def;
+    var _slot = scr_item_slot(_item_id);
+    if (variable_instance_exists(id, "slot_index")) _slot = scr_menu_slot_name(slot_index);
+    var _t = scr_actor_equip_totals(_actor, _slot, _item_id);
+    switch (_stat) {
+        case "MAX HP": return _t.max_hp;
+        case "MAX MP": return _t.max_mp;
+        case "ATK": return _t.atk;
+        case "DEF": return _t.def;
+        case "MAG": return _t.mag;
+        case "MDF": return _t.mdef;
+        case "SPD": return _t.spd;
+        case "ACC": return _t.acc;
+        case "EVA": return _t.eva;
+        case "CRIT": return round(_t.crit * 100);
     }
-    if (_stat == "ATK") return _actor.base_attack + _atk_other + _b.atk;
-    return _actor.base_defense + _def_other + _b.def;
+    return _cur;
 }

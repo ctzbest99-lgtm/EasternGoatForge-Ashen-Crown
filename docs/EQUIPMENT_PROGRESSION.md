@@ -1,6 +1,7 @@
 # Equipment progression, Acts I–VIII
 
-Status: **built, wired for tiers I–VII, data-only for Act VIII, not playtested.**
+Status: **built, wired for tiers I–VIII, not playtested.**
+Boss and encounter bands were retuned against tiers VI–VIII on 2026-11-18 (see the end of this doc).
 Every stat, price and drop chance here is PLACEHOLDER until a balance pass is approved.
 Run `python3 tools/equipment_check.py` for the live tables and the boss balance check.
 
@@ -40,6 +41,8 @@ and dropped once per save by their boss.
 ## Tiers at a glance
 
 Every act has a weapon for all five classes, plus armour, a helm or accessory, and a boss legendary.
+Bows sit outside the matrix: no current class has bow proficiency, so the six bow records are marked
+reserved and are not stocked. Assigning a bow user is an owner decision, not an equipment fix.
 
 | Act | Levels | Armour / accessory tier | Weapons (one per class) | Legendary |
 |---|---|---|---|---|
@@ -74,6 +77,15 @@ MDEF, dagger trades 1–3 ATK for SPD, spellbook trades 1–3 ATK for the bigges
 member now carries a tier-appropriate weapon, party damage stays close to one weapon's worth per
 person instead of one carry weapon plus four starters.
 
+Starting weapons: Kael's Longsword ATK +3, Taren's Bastard Sword ATK +3, Lyra's Twin Daggers ATK +2,
+Caelan's Spellbook ATK +1 / MAG +3 / MDEF +1, and Sera's Holy Sword ATK +4 / MAG +1 / MDEF +1. The
+last two are provisional values proposed in this pass; they sit slightly above the Act I shop tier so
+joining with the character's own weapon is not a downgrade. Sera's roster entry now starts with the
+Holy Sword instead of an empty hand.
+
+MAG is not cosmetic: magic skills use MAG vs MDEF in `scr_battle_skill_damage`, and base MAG is seeded
+from ATK so enemies and old saves keep their previous magic damage curve.
+
 ### Weapon prices and sources
 
 | Act | Items (class — price — source) |
@@ -90,7 +102,8 @@ person instead of one carry weapon plus four starters.
 Act I and II are on shelves that exist today (Pell, Len), Act III is on the Valemere stall, Acts V and
 VI ride on the Blackwood carter's cart, and Act VII is split across the Barrow Gate Smith (Ashlands
 Edge, Emberweave Robe, Ash Crown) and Sarn's outpost wagon in the Ashlands breach outpost (the four
-class weapons and Ember Core). Only Rimehold's Act VIII tier still sits in a shop with no room or NPC.
+class weapons and Ember Core). Rimehold's Act VIII tier is now wired in `rm_rimehold`; Saltreach's and
+Ironspine's shops remain data only, with their stock carried by Mott.
 
 ## Wired merchants
 
@@ -100,13 +113,19 @@ class weapons and Ember Core). Only Rimehold's Act VIII tier still sits in a sho
 | Orrin, Barrow Gate Smith (new NPC, `BG_SMITH_01`) | `rm_barrow_gate`, forecourt at (17,10) | `shop_barrow_smith` | IV row + VII base stock | On entering the barrow gate |
 | Mott, Blackwood carter (new NPC, `BW_CARTER`) | `rm_blackwood_deep`, roadside beside the carved stone at (10,6) | `shop_blackwood_carter` | V + VI | V row once Act II closes (`flag_chapter4_complete`); VI row when Chapter 5 closes (`flag_chapter5_complete`) |
 | Sarn, Ashlands outpost trader (new NPC, `AO_TRADER`) | `rm_ashlands_breach`, the breach outpost at (8,12) | `shop_ashlands_outpost` | VII | The breach entrance opens after `flag_act4_complete` (provisional, until Act VII exists); the Act VII row unlocks at `scr_story_act()` 7, before that potions, Ether and Ember Core only |
+| Rimehold Armourer (generic NPC, `RIMHOLD_ARMOURER`) | `rm_rimehold`, the armoury courtyard at (12,6) | `shop_rimehold_armoury` | VIII | The armoury entrance opens after `flag_act4_complete` (provisional, until Act VIII exists); the tier-VIII row unlocks at `scr_story_act()` 8, so the Chapter 12–14 band can buy it |
 
-All four use the same flow: talk, then the shelf. Valemere plays its existing dialogue node and opens
-the shop on finish; Orrin has no bespoke node and uses `scr_shopkeeper_talk()`; Mott plays his own
-greeting node (`BW_CARTER_01/02`) and opens the cart on finish, and his repeat line is act-aware
-(`BW_CARTER_R1` while the mine crates are still shut, `BW_CARTER_R2` after). Sarn does the same in the
-Ashlands breach outpost (`AO_TRADER_01/02`, then `AO_TRADER_R1` while the weapon crates are sealed and
-`R2` after).
+All five use the same flow: talk, then the shelf. Valemere plays its existing dialogue node and opens
+the shop on finish; Orrin, the Rimehold armourer and the generic shopkeeper path use
+`scr_shopkeeper_talk()`; Mott plays his own greeting node (`BW_CARTER_01/02`) and opens the cart on
+finish, and his repeat line is act-aware (`BW_CARTER_R1` while the mine crates are still shut,
+`BW_CARTER_R2` after). Sarn does the same in the Ashlands breach outpost (`AO_TRADER_01/02`, then
+`AO_TRADER_R1` while the weapon crates are sealed and `R2` after).
+
+Rimehold is the Act VIII stopgap: the armoury courtyard `rm_rimehold` is built ahead of the act,
+entered from the overworld's existing `rimehold` marker and gated on `flag_act4_complete`. It is the
+only wired source for the whole tier-VIII shelf, and it is why the Act V band can now be simulated at
+the tier the story unlocks rather than the tier below it.
 
 Mott is why tiers V and VI are reachable at all: Saltreach and Ironspine have no room of their own,
 so their armoury stock is stocked on the cart that came up the road with it. The Act V row carries
@@ -165,23 +184,23 @@ Act VII has a story, the same stopgap shape as Mott's cart covering Saltreach an
 | VII | Ash Crown | helm | DEF +8, MDEF +5 | rare | any | 2200 | Barrow gate smith; Ashlands outpost; forge | Yes — barrow smith |
 | VII | Ember Core | material | — | common | — | 160 | Late Emberwakes | Drops yes / shop data only |
 | VII | Barrow King's Blade | weapon (holy) | ATK +16 | legendary | Sera | — | The Barrow Warden, once | Yes (boss drop) |
-| VIII | True-Name Blade | weapon (longsword) | ATK +19 | rare | Kael | 3200 | Rimehold armoury; forge | Data only |
-| VIII | Rime Sword | weapon (holy) | ATK +16 | rare | Sera | 3000 | Rimehold armoury | Data only |
-| VIII | Veil Plate | armor | DEF +16 | rare | any | 3100 | Rimehold armoury | Data only |
-| VIII | Veil Ring | accessory | DEF +5, MDEF +9, SPD +2 | rare | any | 2900 | Rimehold armoury; forge | Data only |
-| VIII | Veil Shard | material | — | common | — | 220 | Grave Moths, Oath Iron | Drops yes / shop data only |
+| VIII | True-Name Blade | weapon (longsword) | ATK +19 | rare | Kael | 3200 | Rimehold armoury; forge | Yes — Rimehold |
+| VIII | Rime Sword | weapon (holy) | ATK +16 | rare | Sera | 3000 | Rimehold armoury | Yes — Rimehold |
+| VIII | Veil Plate | armor | DEF +16 | rare | any | 3100 | Rimehold armoury | Yes — Rimehold |
+| VIII | Veil Ring | accessory | DEF +5, MDEF +9, SPD +2 | rare | any | 2900 | Rimehold armoury; forge | Yes — Rimehold |
+| VIII | Veil Shard | material | — | common | — | 220 | Grave Moths, Oath Iron | Drops yes; Rimehold shop |
 | VIII | The Forgotten King's Crown | helm | DEF +10, MDEF +9 | legendary | any | — | The Forgotten King, once | Yes (boss drop) |
 
 "Data only" means the item, its price and its source are defined and checked, but the Act's room,
-merchant or boss does not exist yet, so nothing can currently hand it to the player. Four shops are
+merchant or boss does not exist yet, so nothing can currently hand it to the player. Five shops are
 exceptions and are wired (see below): Valemere Arms, the Barrow Gate Smith, Mott's cart on the
-Blackwood road and Sarn's outpost wagon at the Crownveil breach.
+Blackwood road, Sarn's outpost wagon at the Crownveil breach and Rimehold's armoury.
 
 ## Legendary sources (wired today)
 
 | Item | Boss | Chapter | Behaviour |
 |---|---|---|---|
-| Blackguard's Longsword | Blackguard | 1 | guaranteed, once per save |
+| Blackguard's Longsword | Blackguard | 1 | guaranteed, once per save; canonical id `item_blackguards_longsword` (the singular id is an old-save alias) |
 | Calder's Greatsword | Reeve Calder | 2 | guaranteed, once per save |
 | Debtman's Chain | The Debtman | 3 | guaranteed, once per save |
 | Sanctuary Oathblade | Sanctuary Warden | 4 | guaranteed, once per save |
@@ -289,13 +308,15 @@ the six regional shops plus the Blackwood carter's cart (`shop_blackwood_carter`
   one-per-save legendary on each of the seven built bosses.
 * Unique items: one per party, unsellable, never duplicated by chests or repeated bosses.
 * Chest loot can name any DB item; four placeholder chests now hold tier-appropriate rewards.
-* **Four tier merchants wired**: Valemere Arms through the existing stallkeeper's dialogue; Orrin
+* **Five tier merchants wired**: Valemere Arms through the existing stallkeeper's dialogue; Orrin
   the Barrow Gate Smith on a marker in `rm_barrow_gate` (`tools/gen_ch10_rooms.py` regenerates it);
   Sarn the Ashlands outpost trader on a marker in `rm_ashlands_breach` (`tools/gen_ashlands_room.py`
-  regenerates the room and marker); and Mott the Blackwood carter on a new marker in
+  regenerates the room and marker); Mott the Blackwood carter on a new marker in
   `rm_blackwood_deep` (`tools/gen_ch6_rooms.py` regenerates it; his lines come from
-  `tools/gen_ch6_dialogue.py`). The checker now reports 49 gear items sold by a wired merchant;
-  the remaining 7 are the whole Act VIII tier.
+  `tools/gen_ch6_dialogue.py`); and the Rimehold armourer in `rm_rimehold`
+  (`tools/gen_rimehold_room.py` regenerates it). The checker now reports **100 gear items sold by a
+  wired merchant** and **0 items defined only for unbuilt Act III–VIII shops**; Saltreach and
+  Ironspine remain data-only shops, with their stock riding on Mott.
 * `tools/equipment_check.py` (data integrity, progression, reachability, boss balance) and this doc.
 
 **Already existed (reused, not replaced)**
@@ -307,13 +328,66 @@ the six regional shops plus the Blackwood carter's cart (`shop_blackwood_carter`
 
 **Incomplete / not done**
 
-* The rest of Acts III–VIII is unbuilt: Saltreach, Ironspine and Rimehold have stock data but no room
-  of their own, and the Ashlands has one room (the breach outpost) but no act. Mott's cart covers the
-  V and VI gear and Sarn's wagon covers VII, so those three tiers are reachable, but their regions, their enemies and The First Forge boss do not exist (the Drowned Coast has enemy data but no rooms). The whole Act
-  VIII tier is data only.
+* The rest of Acts III–VIII is unbuilt: Saltreach and Ironspine have stock data but no room of their
+  own, and the Ashlands has three rooms but no act. Mott's cart covers the V and VI gear and Sarn's
+  wagon covers VII, so those tiers are reachable; Rimehold's armoury is built ahead of Act VIII, so
+  tier VIII is reachable after Chapter 11. Their regions, their enemies and The First Forge boss do
+  not exist (the Drowned Coast has enemy data but no rooms).
 * Chapters 2–5 have no treasure markers, so their chest loot is unwired.
 * No gear icons; menus fall back to the generic row. No rarity colouring in the shop.
 * The weapon tiers are bought, not looted: none of the 30 new weapons is in a chest or a boss drop,
   so a player who skips the shops (or reaches an act whose merchant does not exist yet) sees no
   upgrade. Crafting has one recipe per act and covers no dagger or spellbook.
 * Nothing here has been compiled or played: all checks are static (validator, audit, checker).
+
+## Balance retune with the new tiers (2026-11-18)
+
+`scr_story_act()` is a **tier** gate, not a story-act count. The mapping that matters is:
+
+| Story act | Chapters | Levels | Tier unlocked at the act start |
+|---|---|---|---|
+| I | 1 | 1–7 | I |
+| II | 2–5 | 8–18 | II at Ch2, III at Ch3, IV at Ch4, V at Ch5 |
+| III | 6–8 | 18–20 | VI |
+| IV | 9–11 | 21–23 | VII |
+| V | 12–14 | 24–26 | VIII (Rimehold armoury; entrance after Chapter 11) |
+
+Acts VI–VIII have titles and gear rows but **no enemies, rooms, encounter tables or bosses**. There is
+no authored band to simulate; none was invented. Act V's tier-VIII shop is now built in
+`rm_rimehold`, gated on `flag_act4_complete`; the Act V retune below therefore uses tier VIII, the
+set the story unlocks.
+
+
+`tools/balance_sim.py` now carries the best non-legendary set for each class at each tier, including
+armour MDEF / SPD / HP, and prints an eight-act `--summary`. The retune raised the boss entries that
+had been measured against the old Chapter 5 or tier-V loadout:
+
+| Boss | Lv | Tier | Old HP / ATK | New HP / ATK | Simulated win / rounds / party HP (Caelan / Sera) |
+|---|---|---|---|---|---|
+| Reeve Calder | 10 | II | 130 / 15 | 156 / 18 | 100% / 6.0 / 76% (solo party) |
+| The Debtman | 12 | III | 256 / 25 | 410 / 35 | 100% / 5.6 / 48% (trio) |
+| Sanctuary Warden | 15 | IV | 643 / 39 | 900 / 55 | 96% / 6.2 / 28% — 93% / 7.3 / 30% |
+| Commander Hailen | 17 | V | 900 / 57 | 1620 / 74 | 80% / 8.4 / 20% — 82% / 9.7 / 31% |
+| Burn-Line Hulk | 18 | VI | 1260 / 55 | 1890 / 74 | 99% / 7.6 / 42% — 99% / 9.6 / 44% |
+| Blackwood Matriarch | 19 | VI | 1029 / 49 | 1544 / 64 | 93% / 7.2 / 27% — 91% / 7.9 / 28% |
+| The Door Warden | 20 | VI | 1286 / 46 | 2315 / 74 | 96% / 8.3 / 25% — 95% / 10.5 / 33% |
+| Magistrate Vell | 21 | VII | 1022 / 52 | 1840 / 73 | 100% / 7.5 / 37% — 100% / 9.0 / 49% |
+| Barrow Warden | 22 | VII | 1701 / 59 | 2381 / 71 | 99% / 7.4 / 43% — 96% / 9.7 / 40% |
+| The Forgotten King | 23 | VII | 1714 / 61 | 2228 / 70 | 98% / 8.0 / 36% — 98% / 9.3 / 39% |
+| The Toll-Keeper | 24 | VIII | 1804 / 64 | 2165 / 77 | 100% / 7.3 / 44% — 99% / 8.5 / 45% |
+| Saltreach Leviathan | 25 | VIII | 1895 / 67 | 2150 / 72 | 91% / 7.2 / 22% — 77% / 8.3 / 19% |
+| The Fallen Knight | 26 | VIII | 2052 / 70 | 2772 / 80 | 98% / 8.4 / 37% — 97% / 9.7 / 41% |
+
+Act V's tier-VIII shelf is in `rm_rimehold`; the entrance opens after Chapter 11. Rates are
+stochastic: a fixed-seed rerun moves about ±1–2 points, so the GML comments may show a neighbouring
+run by a point.
+
+`blackwood`, `crown_barrow` and `drowned_coast` now field three regular enemies per group instead
+of two, because the new tiers made the old two-enemy draws two-to-three-round fights at 91–98% party
+HP. Weights are unchanged; group shape is the only encounter-table change.
+
+`python3 validate_gamemaker.py` passes with the four known Act I out-of-band warnings;
+`python3 tools/equipment_check.py` passes with five **static** flags (two TRIVIAL and three
+party-wipes-first rows; its table now parses scaled-boss HP but deliberately ignores skills, buffs
+and healing); `python3 tools/balance_sim.py --summary` produced the table above. Simulation only: no GameMaker compile, playtest or visual check
+was possible here.

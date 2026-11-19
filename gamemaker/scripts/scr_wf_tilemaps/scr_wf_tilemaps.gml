@@ -3,8 +3,9 @@
 /// so every Zone 1 tile index means the same tile in both sets.
 
 /// Create the five map layers (or reuse the Room Editor ones) and point them at a tileset before
-/// any tile is set. Defaults to ts_wrenfield; Chapter 6 passes ts_blackwood (scr_bw_prepare_layers),
-/// whose rows 0-49 are ts_zone1 too, so shared tile ids keep their meaning.
+/// any tile is set. Defaults to ts_wrenfield; the Chapter 6 Blackwood rooms and the Aethari
+/// doors clearing pass ts_blackwood (scr_bw_prepare_layers), whose rows 0-49 are ts_zone1 too,
+/// so shared tile ids keep their meaning.
 function scr_wf_prepare_layers(_w, _h, _tileset = ts_wrenfield) {
     var _defs = scr_map_layer_defs();
     for (var _i = 0; _i < array_length(_defs); _i++) {
@@ -13,10 +14,34 @@ function scr_wf_prepare_layers(_w, _h, _tileset = ts_wrenfield) {
     }
 }
 
-/// The Blackwood's own atlas (Chapter 6 rooms): ts_blackwood, rows 0-49 == ts_zone1 plus the
+/// The Blackwood's own atlas (Chapter 6 rooms and the Aethari doors clearing): ts_blackwood, rows 0-49 == ts_zone1 plus the
 /// dark wood's own material in rows 50-64 (ids 800-1039, see game/tilesets/README.md).
 function scr_bw_prepare_layers(_w, _h) {
     scr_wf_prepare_layers(_w, _h, ts_blackwood);
+}
+
+/// The barrow crypt's atlas (Chapters 10-11): ts_barrow, rows 0-49 == ts_zone1 plus
+/// dead turf, flagstone, rubble, wall courses and crypt props in rows 50-55 (ids 800-895).
+function scr_br_prepare_layers(_w, _h) {
+    scr_wf_prepare_layers(_w, _h, ts_barrow);
+}
+
+/// Valemere's harbour-town atlas (Chapter 3): ts_valemere, Wrenfield ids repainted as
+/// cobbles, pale plaster and slate. Used by rm_valemere_road, rm_valemere, rm_salt_lamp, rm_warehouse.
+function scr_vm_prepare_layers(_w, _h) {
+    scr_wf_prepare_layers(_w, _h, ts_valemere);
+}
+
+/// Coleford's inland-town atlas (Chapter 9): ts_coleford, Wrenfield ids repainted as
+/// mud roads, cream plaster, thatch and warm oak. Used by rm_town.
+function scr_cf_prepare_layers(_w, _h) {
+    scr_wf_prepare_layers(_w, _h, ts_coleford);
+}
+
+/// The garrison atlas (Chapter 5): ts_garrison, Wrenfield ids repainted as dressed
+/// stone, courtyard paving and dark planks. Used by rm_blackwood_garrison and rm_garrison_keep.
+function scr_gr_prepare_layers(_w, _h) {
+    scr_wf_prepare_layers(_w, _h, ts_garrison);
 }
 
 /// _patch = array of [layer key, x, y, tile] (layer key as in scr_map_layer_defs: ground/decor/overhead/collision/markers).
