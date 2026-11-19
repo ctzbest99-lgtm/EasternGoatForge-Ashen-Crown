@@ -670,9 +670,31 @@ def emit_resources(atlas):
         last_order += 1
         block = ('    {\n      "name":"%s",\n      "order":%d,\n      "path":"%s",\n    },\n'
                  % (name, last_order, path))
-        marker = '\n],\n}'
-        assert marker in order
-        order = order.replace(marker, '\n' + block.rstrip('\n') + marker, 1)
+        # The generator and IDE have emitted different indentation around the
+        # final ResourceOrderSettings array; insert before its closing bracket.
+        closers = list(re.finditer(r'(?m)^\\s*\\],?\\s*
+    open(order_path, 'w', encoding='utf-8', newline='\n').write(order)
+    print('registered spr_ts_blackwood and ts_blackwood in the yyp and resource_order')
+
+
+def main():
+    atlas = build_atlas()
+    print('wrote', os.path.relpath(ATLAS, ROOT), atlas.size)
+    print('wrote', os.path.relpath(build_preview(atlas), ROOT))
+    emit_resources(atlas)
+    print('ts_blackwood tile ids:')
+    for index in (800, 816, 832, 848, 864, 880, 896, 904, 907, 909, 913, 928, 929, 944):
+        print(f'  {index:4d}  {names_for(index)}')
+    return 0
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())
+, order))
+        if not closers:
+            raise SystemExit('ResourceOrderSettings closing bracket not found')
+        close = closers[-1]
+        order = order[:close.start()] + block + order[close.start():]
     open(order_path, 'w', encoding='utf-8', newline='\n').write(order)
     print('registered spr_ts_blackwood and ts_blackwood in the yyp and resource_order')
 
