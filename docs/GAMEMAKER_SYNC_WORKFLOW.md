@@ -23,6 +23,18 @@ python tools/sync_gamemaker.py --apply
 python validate_gamemaker.py
 ```
 
+> **Do not use `--apply` to publish a GML-only edit.** It copies every generated
+> resource in the preview, not just the file you changed. The committed sprites
+> carry IDE-assigned frame names, while the generator emits its own UUIDs, so an
+> apply rewrites sprite `.yy` metadata and frame PNGs across the project. In the
+> 2026-11-19 stabilization pass a single apply for two script fixes touched 135
+> generated files and left `validate_gamemaker.py` failing on a missing frame
+> PNG (120 sprite asset files); it was reverted. For a script or event change,
+> copy the source file into the matching `gamemaker/` resource and re-run
+> `validate_gamemaker.py` and `sync_gamemaker.py --check` instead. `--check`
+> compares GML only, so it will not warn you about sprite drift afterwards —
+> `validate_gamemaker.py` is the gate that catches it.
+
 The sync tool never runs the generator against the live `gamemaker/` directory. It builds in a temporary checkout, validates the generated project, and compares normalized output. Generated UUIDs, frame filenames, and instance names are normalized for the full dry-run. The CI `--check` gate compares GML source/event files only; `validate_gamemaker.py` separately checks the committed project's resource metadata, references, room structure, and sprite files. Imported binary assets and IDE metadata remain visible in the full dry-run for deliberate review. `--apply` is explicit and additive: it copies generated additions and updates into `gamemaker/` without replacing the project directory or deleting live-only resources. Room and sound resources are excluded from generated-file comparison until they have authoritative source inputs.
 
 ## Recommended change cycle
@@ -30,7 +42,7 @@ The sync tool never runs the generator against the live `gamemaker/` directory. 
 1. Make changes in `game/` and the appropriate source asset/import table.
 2. Run `python validate_gamemaker.py` against the current project.
 3. Run `python tools/sync_gamemaker.py` and inspect the proposed file list.
-4. Review the preview, then run `python tools/sync_gamemaker.py --apply` to copy only generated additions and updates. Live-only resources are retained.
+4. Review the preview, then run `python tools/sync_gamemaker.py --apply` to copy only generated additions and updates. Live-only resources are retained. If the preview contains only the GML file you edited, copy that one file across by hand instead of applying the whole preview — see the warning above about sprite metadata.
 5. Run `python validate_gamemaker.py` again.
 6. Open `gamemaker/AshenCrown.yyp` in GameMaker and compile/playtest.
 7. Commit source and generated output together.

@@ -90,7 +90,7 @@ de-indentation: same statements, same control flow, no fallthrough risk.
 | H-1 | HIGH (latent) | 8 zone-exit targets have no room: `rm_flooded_ruins`, `rm_frozen_ruins`, `rm_ironspine_mine`, `rm_ironspine_ruins`, `rm_rimehold`, `rm_saltreach`, `rm_saltreach_pier`, `rm_shipwreck`. All are `status: "stub"` Act V+ entrances in `scr_map_markers_data.gml`. Every transition site guards with `room_exists()` (checked in `scr_ch2_story`, `scr_ch3_story`, `scr_ch4_story`, `scr_ch5_story`, `scr_encounter`), so they cannot crash — the player simply does not move. |
 | M-1 | MEDIUM | 4 encounter tables roll enemies outside their declared level band: `zone01_old_road` (2–3 → bandit L1), `zone01_bandit_camp` (3–4 → bandit L1), `zone01_watchtower` (4–7 → fallen_knight L3), `zone01_basement_hall` (4–7 → fallen_knight L3). Reported by `validate_gamemaker.py` as warnings; not repaired because it is a balance decision, not a defect. |
 | L-1 | LOW | 52 dialogue nodes are defined but never referenced (72 audit notes total, including 3 draft Act V chapter scripts skipped by marker). Dead copy, not dead code paths. |
-| L-2 | LOW | `sync_gamemaker.py --apply` rewrites IDE-owned sprite metadata (frame UUIDs/PNG names) if used for a GML-only change; running it wholesale desynchronised 120 sprite asset files in this session. Reverted; the two repaired GML files were copied directly instead. Worth documenting as a footgun in `docs/GAMEMAKER_SYNC_WORKFLOW.md`. |
+| L-2 | LOW | `sync_gamemaker.py --apply` rewrites IDE-owned sprite metadata (frame UUIDs/PNG names) if used for a GML-only change; running it wholesale desynchronised 120 sprite asset files in this session. Reverted; the two repaired GML files were copied directly instead. Documented in `docs/GAMEMAKER_SYNC_WORKFLOW.md` (warning under Commands and a note in the change cycle). |
 
 ---
 
@@ -199,8 +199,9 @@ runtime testing — are unmet, so no percentage above can certify the milestone.
    areas are built.
 6. Art: 18 enemy kinds still lack 16×24 overworld sets; Alden has no sprite.
 7. Balance: resolve the 4 out-of-band encounter tables (M-1) after playtest data.
-8. Housekeeping: reference or retire the 52 orphan dialogue nodes; document the
-   `sync_gamemaker.py --apply` sprite-metadata side effect (L-2).
+8. Housekeeping: reference or retire the 52 orphan dialogue nodes. (The
+   `sync_gamemaker.py --apply` sprite-metadata side effect, L-2, is now
+   documented in `docs/GAMEMAKER_SYNC_WORKFLOW.md`.)
 
 ---
 
