@@ -78,6 +78,10 @@ def inventory(root: Path) -> dict[str, tuple[Path, bytes]]:
         if not path.is_file():
             continue
         relative = path.relative_to(root)
+        # Rooms and sounds contain IDE-authored content and binary assets that the
+        # source generator does not own. Preserve them; do not compare or replace them.
+        if relative.parts and relative.parts[0] in {"rooms", "sounds"}:
+            continue
         key = relative.as_posix()
         data = path.read_bytes()
         if path.suffix.lower() == ".png" and relative.parts and relative.parts[0] == "sprites":
@@ -109,7 +113,9 @@ def inventory(root: Path) -> dict[str, tuple[Path, bytes]]:
 def compare(current: Path, built: Path):
     old, new = inventory(current), inventory(built)
     added = sorted(new.keys() - old.keys())
-    removed = sorted(old.keys() - new.keys())
+    # Generator output is additive/update-only. Live-only files are preserved because
+    # they may be authored in the IDE or supplied by an asset pipeline.
+    removed: list[str] = []
     changed = sorted(
         name for name in old.keys() & new.keys()
         if old[name][1] != new[name][1]
@@ -168,7 +174,7 @@ def main() -> int:
         added, removed, changed = compare(live, generated)
         total = len(added) + len(removed) + len(changed)
         if not args.quiet:
-            print(f"Generated project validated. Semantic file changes: {total}")
+            print(f"Generated project validated. Managed file changes: {total}")
             for label, names in (("ADD", added), ("REMOVE", removed), ("UPDATE", changed)):
                 for name in names:
                     print(f" {label:6} gamemaker/{name}")
@@ -182,28 +188,15 @@ def main() -> int:
             print("DRY RUN ONLY: no files changed. Review the list, then use --apply.")
             return 0
 
-        stage = Path(tempfile.mkdtemp(prefix=".gamemaker-stage-", dir=ROOT))
-        shutil.rmtree(stage)
-        backup = ROOT / ".gamemaker-sync-backup"
-        try:
-            shutil.copytree(generated, stage)
-            if backup.exists():
-                print(f"ERROR: backup path already exists: {backup}", file=sys.stderr)
-                return 2
-            os.replace(live, backup)
-            try:
-                os.replace(stage, live)
-            except Exception:
-                os.replace(backup, live)
-                raise
-            shutil.rmtree(backup)
-        except Exception:
-            if backup.exists() and not live.exists():
-                os.replace(backup, live)
-            if stage.exists():
-                shutil.rmtree(stage, ignore_errors=True)
-            raise
-        print(f"SYNC APPLIED: replaced gamemaker/ ({total} semantic file changes).")
+        # Apply only generated additions and updates. Never replace the whole project
+        # tree and never delete live-only resources: IDE-authored rooms, sounds, and
+        # other assets may not have a source-side representation yet.
+        for name in added + changed:
+            source = generated / name
+            destination = live / name
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, destination)
+        print(f"SYNC APPLIED: added/updated {total} generated files; preserved all live-only resources.")
         return 0
 
 
