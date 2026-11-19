@@ -449,8 +449,30 @@ function scr_save_apply_member(_actor, _snap) {
         _actor.equipment.accessory_2 = variable_struct_exists(_snap.equipment, "accessory_2") ? string(_snap.equipment.accessory_2) : "";
     }
     // Schema v4: base maxima, derived-stat bases and proficiencies (missing = keep current).
-    if (variable_struct_exists(_snap, "base_max_hp")) _actor.base_max_hp = max(1, _snap.base_max_hp);
-    if (variable_struct_exists(_snap, "base_max_mp")) _actor.base_max_mp = max(0, _snap.base_max_mp);
+    // Pre-v4 saves have no base_max_hp / base_max_mp. Their saved max_hp / max_mp were the
+    // un-equipped values (v1-v3 gear had no HP/MP bonuses), so seed the v4 bases from them.
+    // Without this, scr_actor_refresh_equipment() rebuilt max HP/MP from the fresh level-1
+    // roster and a migrated save lost all level growth.
+    if (variable_struct_exists(_snap, "base_max_hp")) {
+        _actor.base_max_hp = max(1, _snap.base_max_hp);
+    } else if (variable_struct_exists(_snap, "max_hp")) {
+        _actor.base_max_hp = max(1, _snap.max_hp);
+    }
+    if (variable_struct_exists(_snap, "base_max_mp")) {
+        _actor.base_max_mp = max(0, _snap.base_max_mp);
+    } else if (variable_struct_exists(_snap, "max_mp")) {
+        _actor.base_max_mp = max(0, _snap.max_mp);
+    }
+    // v1-v3 had no MAG: magic skills resolved off final ATK, gear included. Carry that saved
+    // ATK into the new base MAG so a migrated caster keeps the damage curve they had before
+    // schema v4. Fall back to base_attack for a hand-edited snapshot without `attack`.
+    if (!variable_struct_exists(_snap, "base_magic")) {
+        if (variable_struct_exists(_snap, "attack")) {
+            _actor.base_magic = _snap.attack;
+        } else if (variable_struct_exists(_snap, "base_attack")) {
+            _actor.base_magic = _snap.base_attack;
+        }
+    }
     if (variable_struct_exists(_snap, "base_magic")) _actor.base_magic = _snap.base_magic;
     if (variable_struct_exists(_snap, "base_acc")) _actor.base_acc = _snap.base_acc;
     if (variable_struct_exists(_snap, "base_eva")) _actor.base_eva = _snap.base_eva;
