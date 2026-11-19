@@ -162,6 +162,62 @@ version and press F5. Report the build log verbatim.
 NOT VERIFIED. No launch, no frame, no input, no save file was produced. The 22
 runtime rows in D remain BLOCKED until someone runs the IDE build and the runbook.
 
+### F1. Build and runtime record (to be filled in on a machine with GameMaker)
+
+**Status: empty.** Every field below is `NOT RUN` deliberately: no build has been
+attempted, so there is nothing to record yet. Do not mark the milestone, and do
+not raise the score, until the build log, the launch evidence and the runbook
+rows here are real and quoted verbatim.
+
+Build:
+
+| Field | Value |
+|---|---|
+| Date and time | NOT RUN |
+| GameMaker version and runtime | NOT RUN |
+| Target (VM or YYC) | NOT RUN |
+| Result | NOT RUN |
+| Errors | NOT RUN |
+| Warnings | NOT RUN |
+| Log excerpt (verbatim, not paraphrased) | NOT RUN |
+
+Launch and session:
+
+| Check | Result | Evidence |
+|---|---|---|
+| Project opens in the IDE | NOT RUN | — |
+| Compiles with no errors | NOT RUN | — |
+| Game launches to the title | NOT RUN | — |
+| New game starts and Kael moves | NOT RUN | — |
+| Controller responds | NOT RUN | — |
+| A save is written and reloaded | NOT RUN | save file path: — |
+
+Runbook: record the 22 rows of section D here in the order
+`docs/PLAYTEST_RUNBOOK.md` gives them, each as PASS, FAIL or BLOCKED, with a note
+of what was actually seen. A row nobody watched stays NOT RUN; a row that failed
+stays FAIL in the table and is added to section H, not quietly dropped.
+
+#### How the score is recalculated
+
+28.0 points are withheld in this report for one reason: nothing has run. They are
+released only after the compile gate passes.
+
+| Category | Withheld | Released by |
+|---|---|---|
+| Core engine and stability | 5.0 | a clean compile and a launch |
+| Gameplay systems | 7.0 | the exploration, menu, inventory and save rows in D |
+| Battle and character systems | 5.0 | the battle, reward, XP and transition rows in D |
+| Existing zones and environments | 4.0 | the room-transition and per-act traversal rows |
+| Story and quests | 5.0 | the dialogue, quest and chapter-progression rows |
+| Art, audio and UI | 2.0 | the visual and audio rows |
+| Documentation and project integrity | 0.0 | already awarded |
+
+Rule: no withheld point is released until the build compiles. After that, each
+category's withheld points are awarded in proportion to its rows that PASS —
+unrun rows award nothing, and a FAIL'd feature keeps its points withheld until it
+is fixed and re-tested. Record the arithmetic beside the new total so the number
+stays auditable rather than asserted.
+
 ---
 
 ## G. Completion report (verified-only weighting)
@@ -183,6 +239,9 @@ runtime result, and unverified work is not counted as complete.
 Conclusion: **the 75% milestone is NOT reached.** The number is 72%, and more
 importantly the brief's mandatory gates — successful GameMaker compilation and
 runtime testing — are unmet, so no percentage above can certify the milestone.
+The 28.0 withheld points are itemised in F1, which also states the rule for
+releasing them; this total changes only when that record is filled with real
+build and runtime evidence.
 
 ---
 
