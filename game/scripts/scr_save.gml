@@ -791,10 +791,10 @@ function scr_save_test_load_json(_relative_path) {
 /// This is NOT a substitute for a full save/load playtest in GameMaker (not available in CI).
 function scr_save_migration_test() {
     var _cases = [
-        { file: "tests/saves/v1_kael.json", actor: "kael", pre_v4: true },
-        { file: "tests/saves/v2_kael.json", actor: "kael", pre_v4: true },
-        { file: "tests/saves/v3_kael.json", actor: "kael", pre_v4: true },
-        { file: "tests/saves/v4_caelan.json", actor: "caelan", pre_v4: false }
+        { file: "tests/saves/v1_kael.json", actor: "kael", weapon: "item_iron_sword", pre_v4: true },
+        { file: "tests/saves/v2_kael.json", actor: "kael", weapon: "item_iron_sword", pre_v4: true },
+        { file: "tests/saves/v3_kael.json", actor: "kael", weapon: "item_iron_sword", pre_v4: true },
+        { file: "tests/saves/v4_caelan.json", actor: "caelan", weapon: "item_spellbook", pre_v4: false }
     ];
     var _failures = [];
     var _lines = [];
@@ -853,6 +853,18 @@ function scr_save_migration_test() {
         }
         if (_actor.level != _snap.level) {
             array_push(_failures, _case.file + ": level changed");
+        }
+        if (_actor.xp != _snap.xp) {
+            array_push(_failures, _case.file + ": xp changed");
+        }
+        if (_actor.equipment.weapon != _case.weapon) {
+            array_push(_failures, _case.file + ": weapon slot " + string(_actor.equipment.weapon) + " != " + string(_case.weapon));
+        }
+        var _inv = scr_save_sanitize_inventory(variable_struct_exists(_migrated, "inventory") ? _migrated.inventory : []);
+        if (array_length(_inv) != 1) {
+            array_push(_failures, _case.file + ": inventory did not survive sanitization");
+        } else if (_inv[0].qty != 3) {
+            array_push(_failures, _case.file + ": inventory quantity changed");
         }
         show_debug_message("[save-test] " + _case.file + " v" + string(_before) + " -> v" + string(_migrated.save_schema_version) + " checked");
     }

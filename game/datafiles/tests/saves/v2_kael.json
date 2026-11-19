@@ -27,7 +27,7 @@
       "poisoned": false,
       "age": 24,
       "equipment": {
-        "weapon": "",
+        "weapon": "item_iron_sword",
         "armor": "",
         "helm": "",
         "accessory": ""
@@ -43,6 +43,8 @@
   ],
   "party_active": ["kael"],
   "party_reserve": [],
-  "inventory": [],
+  "inventory": [
+    { "item_id": "item_minor_potion", "qty": 3 }
+  ],
   "flags": {}
 }

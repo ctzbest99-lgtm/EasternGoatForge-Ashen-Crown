@@ -35,12 +35,12 @@ def load_fixture(name: str) -> dict:
 
 def check_fixtures() -> None:
     cases = [
-        ("v1_kael.json", 1, "kael"),
-        ("v2_kael.json", 2, "kael"),
-        ("v3_kael.json", 3, "kael"),
-        ("v4_caelan.json", 4, "caelan"),
+        ("v1_kael.json", 1, "kael", "item_iron_sword"),
+        ("v2_kael.json", 2, "kael", "item_iron_sword"),
+        ("v3_kael.json", 3, "kael", "item_iron_sword"),
+        ("v4_caelan.json", 4, "caelan", "item_spellbook"),
     ]
-    for name, version, actor_id in cases:
+    for name, version, actor_id, weapon in cases:
         data = load_fixture(name)
         if data.get("save_schema_version") != version:
             fail(f"{name}: save_schema_version must be {version}")
@@ -50,9 +50,15 @@ def check_fixtures() -> None:
         snap = roster[0]
         if snap.get("actor_id") != actor_id:
             fail(f"{name}: expected actor {actor_id!r}")
-        for key in ("max_hp", "attack", "base_attack", "level"):
+        for key in ("max_hp", "attack", "base_attack", "level", "xp"):
             if key not in snap:
                 fail(f"{name}: missing {key}")
+        equipment = snap.get("equipment")
+        if not isinstance(equipment, dict) or equipment.get("weapon") != weapon:
+            fail(f"{name}: weapon fixture must be {weapon}")
+        inventory = data.get("inventory")
+        if not isinstance(inventory, list) or inventory != [{"item_id": "item_minor_potion", "qty": 3}]:
+            fail(f"{name}: expected the sanitized minor-potion inventory fixture")
         if version < 4:
             # These are exactly the fields the old-save repair must synthesize.
             for key in ("base_max_hp", "base_max_mp", "base_magic"):
@@ -95,12 +101,7 @@ def check_gml_wiring() -> None:
         fail("scr_save_apply_member must honor an explicit base_magic")
     if '_actor.base_magic = _snap.attack' not in save:
         fail("scr_save_apply_member must fall back to saved attack for pre-v4 MAG")
-    for name, _, _ in [
-        ("v1_kael.json", 1, "kael"),
-        ("v2_kael.json", 2, "kael"),
-        ("v3_kael.json", 3, "kael"),
-        ("v4_caelan.json", 4, "caelan"),
-    ]:
+    for name in ("v1_kael.json", "v2_kael.json", "v3_kael.json", "v4_caelan.json"):
         if f"tests/saves/{name}" not in save:
             fail(f"scr_save_migration_test does not reference {name}")
         if f"tests/saves/{name}" not in yyp:

@@ -30,7 +30,7 @@
       "poisoned": false,
       "age": 22,
       "equipment": {
-        "weapon": "",
+        "weapon": "item_spellbook",
         "armor": "",
         "helm": "",
         "accessory": "",
@@ -38,7 +38,7 @@
         "legs": "",
         "accessory_2": ""
       },
-      "weapon_categories": ["staff", "dagger"],
+      "weapon_categories": ["spellbook", "staff"],
       "mp": 24,
       "max_mp": 24,
       "base_max_mp": 24,
@@ -52,7 +52,9 @@
   ],
   "party_active": ["caelan"],
   "party_reserve": [],
-  "inventory": [],
+  "inventory": [
+    { "item_id": "item_minor_potion", "qty": 3 }
+  ],
   "flags": {
     "flag_arrived_greyhaven": true,
     "flag_met_tomas": true,
