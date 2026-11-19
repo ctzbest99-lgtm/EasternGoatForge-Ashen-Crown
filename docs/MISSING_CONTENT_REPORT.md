@@ -43,13 +43,14 @@ nodes.
 
 Missing or incomplete:
 
-- **`Q_MAIN_FIND_MIRA` is not in `scr_quest_definitions()`.** The approved stages
-  `Q_FM_S1`–`Q_FM_S9` exist in `docs/story/CHAPTER1_SCRIPT.md`, but no runtime code
-  writes those stage flags. The marker fields that look like they should (`quest_start`,
-  `quest_advance`) are never read. The quest therefore has no journal entry and no
-  tracked progression.
-- The chapter script's opening quest transition and the “Beyond the Veil” hand-off are
-  not driven by the missing quest state.
+- **`Q_MAIN_FIND_MIRA` is now implemented in source by PR #44, but not runtime-tested.**
+  The approved S1–S9 definition is in `scr_quest_definitions()`, and the existing
+  `GH_ARRIVAL`, `GH_TOMAS`, Varyn House pendant, `BG_INTRO` and `CV_END` callbacks drive
+  it. `scr_ch1_quest_tick()` backfills older saves. The journal has not been opened in
+  GameMaker; runtime status remains **NOT RUN**.
+- The marker fields that look like quest authority (`quest_start`, `quest_advance`) are
+  still unread. Chapter 1 deliberately uses the same story-function pattern as Chapters
+  2–11; remove or document the dead marker fields separately.
 - The existing eight-act tracker lists unresolved story closure around Elira, Tomas,
   the parchment/Crownveil Fragment payoff and the Blackguard's identity. Those are story
   decisions, not code repairs; they are not invented here.
@@ -244,7 +245,7 @@ Missing Bestiary content:
 
 | Quest | Status |
 |---|---|
-| `Q_MAIN_FIND_MIRA` | **Missing definition and stage wiring** (Chapter 1). |
+| `Q_MAIN_FIND_MIRA` | **Definition and stage wiring added in source** (PR #44); journal runtime check **NOT RUN**. |
 | `Q_MAIN_BEYOND_VEIL` | Defined; advanced by Chapters 2–6 story code. |
 | `Q_MAIN_BLACKWOOD` | Defined; advanced by Chapters 6–9 story code. |
 | `Q_MAIN_CROWN` | Defined; advanced by Chapters 9–11 story code. |

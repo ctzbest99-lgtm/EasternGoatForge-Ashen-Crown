@@ -13,9 +13,9 @@ GameMaker compile and a Chapter 1–11 playtest.
 | ID | Debt | Risk | Effort | Priority |
 |---|---|---|---|---|
 | TD-01 | No GameMaker compile or runtime test in CI/audit | High | Medium | P0 before merge |
-| TD-02 | Save schema has no fixture-based migration tests | High | Medium | P0 |
+| TD-02 | Save schema migration tests (fixtures added; GML run still NOT RUN) | High | Medium | P0 |
 | TD-03 | Save writes are not atomic | Medium | Small | P1 |
-| TD-04 | Quest metadata and Chapter 1 quest are disconnected | High (content correctness) | Medium | P1 |
+| TD-04 | Dead marker quest metadata (Chapter 1 now uses story functions) | Medium (misleading data) | Small | P1 |
 | TD-05 | Source/generated dual tree plus generator churn | Medium | Medium | P1 |
 | TD-06 | Structural validators cannot see runtime/UI/input behavior | Medium | Large | P1 ongoing |
 | TD-07 | Room tile layers are placeholders switched at runtime | Medium | Medium | P2 |
@@ -50,23 +50,25 @@ revision in CI.
 
 ---
 
-## 3. TD-02 — Save migrations are untested
+## 3. TD-02 — Save migrations are untested at runtime
 
 **Evidence.** `scr_save.gml` supports schema v1–v4 and several migrations. The audit
 found a real v3→v4 regression (BUG-001) by reading the field sets, not by loading a
-fixture. There are no committed v1/v2/v3 save fixtures and no test that asserts
-`max_hp`/`max_mp`/`magic` after migration.
+fixture. Follow-up PR #44 now commits sanitized v1–v4 fixtures under
+`game/datafiles/tests/saves/`, a Python fixture/wiring contract test, and
+`scr_save_migration_test()`, which calls the real `scr_save_migrate()` and
+`scr_save_apply_member()` path against each fixture.
 
-**Risk.** Future schema changes can silently reset progression again. The repair is
-correct by inspection, but a regression test would make it durable.
+**Risk.** Future schema changes can silently reset progression again. The GML self-test
+has not been executed because this environment has no GameMaker runtime, so the repair
+is still verified by inspection + static contract only.
 
-**Mitigation.** Add small sanitized JSON fixtures for v1, v2, v3 and v4 under
-`tests/fixtures/saves/`, with expected base/derived stats for one warrior and one caster.
-Add a Python or GML harness that applies the migration and asserts:
-`level`, `xp`, `base_max_hp`, `base_max_mp`, `base_magic`, `max_hp`, `max_mp`, `magic`,
-equipment and inventory contents. Do not use real player saves.
+**Remaining work.** Run `scr_save_migration_test()` with `DEBUG_SAVE_SELFTEST` enabled
+(F6) in a debug GameMaker build and record the result. Then load a real v3 save through
+the title-screen Continue path. Do not use real player saves as committed fixtures.
 
-This is assigned as P0.3 in `docs/AI_AGENT_DEVELOPMENT_BACKLOG.md`.
+This is assigned as P0.3 in `docs/AI_AGENT_DEVELOPMENT_BACKLOG.md`; the source half is
+done in PR #44.
 
 ---
 
@@ -79,29 +81,22 @@ repair and needs an in-engine file test.
 
 ---
 
-## 5. TD-04 — Quest metadata is disconnected
+## 5. TD-04 — Dead marker quest metadata remains
 
 **Evidence.** `quest_start`, `quest_advance`, `quest_turn_in` and marker `reward` exist in
-`scr_map_markers_data.gml` / `scr_wf_markers_data.gml` but are read nowhere.
-`Q_MAIN_FIND_MIRA` is started by a marker field but has no quest definition. The quest
-journal therefore cannot show Chapter 1's main objective.
+`scr_map_markers_data.gml` / `scr_wf_markers_data.gml` but are read nowhere. PR #44
+resolved `Q_MAIN_FIND_MIRA` through explicit story callbacks and `scr_ch1_quest_tick()`,
+following the Chapters 2–11 pattern (option B).
 
-**Risk.** The data looks authoritative, so a future writer can add a quest marker that
-never fires. Chapter 1 is the onboarding chapter; an invisible main quest is a
-first-hour content failure.
+**Risk.** The marker fields still look authoritative, so a future writer can add a quest
+marker that never fires. Chapter 1 no longer depends on them, but the misleading data
+remains.
 
-**Options.**
-
-- **A. Implement generic marker quest actions.** Teach the marker trigger to call
-  `scr_quest_start()` / `scr_quest_advance()` / `scr_quest_complete()`, then add the
-  missing `Q_MAIN_FIND_MIRA` definition and the S1/S4–S7 stage calls that have no marker
-  today.
-- **B. Remove the dead fields.** Keep quest transitions in chapter story code, as
-  Chapters 2–11 do, and delete the misleading metadata.
-
-Option A matches the existing marker data and is the smaller content edit, but it needs
-a deliberate decision about duplicate starts, rewards and turn-in authority. Do not
-implement both mechanisms.
+**Decision.** Do not implement a second, generic marker quest mechanism. The existing
+story-function pattern is the single authority. Remaining work is to remove
+`quest_start` / `quest_advance` / `quest_turn_in` / marker `reward` from the marker
+tables and documentation, or give them one documented consumer in a deliberate future
+change.
 
 ---
 

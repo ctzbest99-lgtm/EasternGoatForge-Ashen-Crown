@@ -189,7 +189,7 @@ untracked and excluded.
 | Encounter → enemy data | 114 table refs | 0 unknown IDs |
 | Boss groups | 13 | 0 non-boss entries in boss slots |
 | Equipment records | 181 | 0 invalid |
-| Save schema | v1–v4 | migration reviewed; no fixture test |
+| Save schema | v1–v4 | migration reviewed; sanitized fixtures + GML self-test added in PR #44; self-test NOT RUN |
 
 ---
 
@@ -202,6 +202,7 @@ untracked and excluded.
 | Launch to title | NOT RUN | No runtime/display |
 | New-game Chapter 1 smoke | NOT RUN | No runtime |
 | Load migrated v3 save | NOT RUN | No runtime |
+| Run `scr_save_migration_test()` (F6) | NOT RUN | No GameMaker runtime; Python contract test only |
 | Battle — attack/skill/item/guard/swap/escape | NOT RUN | No runtime |
 | Boss phase transitions | NOT RUN | No runtime |
 | Shop buy/sell/equipped count | NOT RUN | No runtime |
@@ -241,8 +242,10 @@ revision verified.
 3. Move with WASD/arrows and the left stick; confirm no wall clipping and no stuck
    spawn.
 4. Talk to Tomas, accept the find-Mira objective, and open the journal.
-   **Expected after the content repair:** `Q_MAIN_FIND_MIRA` appears and advances.
-   **Current tree:** the quest is absent; record the failure, do not mark it fixed.
+   **Expected after PR #44:** `Q_MAIN_FIND_MIRA` appears and advances through S1–S9,
+   then switches to `Q_MAIN_BEYOND_VEIL` at the Crownveil door.
+   **Current verification state:** implemented in source but not observed in GameMaker;
+   record the actual result, do not mark it fixed from the source diff alone.
 5. Pick up the pendant, leave north, cross the Farmlands and Old Road, enter the Bandit
    Camp, the Watchtower and the Basement.
 6. Defeat the Blackguard; confirm the Fallen Knight scene and the Chapter 2 hand-off.

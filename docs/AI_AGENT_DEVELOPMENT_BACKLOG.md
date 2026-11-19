@@ -31,7 +31,7 @@
 - Chapters 1–11 plus `rm_ashlands_breach`, `rm_ashlands_ruins`, `rm_ashlands_depths` and `rm_rimehold`: built on the audited PR #40 tree — **35 rooms, 97 scripts**. They are not verified by an IDE playtest; `docs/PLAYTEST_RUNBOOK.md` is the order to check them in. `main` currently has the older 34-room/95-script state because PR #40 is unmerged.
 - Act V: Chapters 12–14 approved as story; seven enemies, `drowned_coast` and three boss groups are data and simulated; no rooms, dialogue, quest rows or story code.
 - Acts VI–VIII: titles/outlines only. The Ashlands (Act VII) has three standalone blockout rooms (`rm_ashlands_breach`, `rm_ashlands_ruins`, `rm_ashlands_depths`) but no chapter, quest, enemy or tileset of its own. Act VIII has only the `rm_rimehold` armoury room.
-- Chapter 1 quest gap: `Q_MAIN_FIND_MIRA` is not defined and its marker quest fields are unread, so the opening main quest is not in the journal. Do not describe it as implemented.
+- Chapter 1 quest: `Q_MAIN_FIND_MIRA` is now defined and wired in source (PR #44) using the same story-function pattern as Chapters 2–11. It has not been compiled or seen in the journal; runtime status is **NOT RUN**. Marker quest fields remain unread and are scheduled for cleanup (TD-04).
 - Bestiary: 43 entries with seen/defeated tracking, an information pane and a monster illustration (`scr_bestiary_draw_illustration`; black silhouette until seen, `?` plate when an enemy has no art). The 43 descriptions were canon-reviewed on 2026-11-18: they use established facts and observable detail, keep **Architects** in UI text, and fit the 72-character pane. Act IV rows describe the built Act IV text, which remains **PROPOSED** as story.
 - Art: party kits, marker sprites and the Alden/Nim/Derry, Berrin, ward-sentinel, burner and Lost One sets are in repo; every enemy kind with battle art now has a 16×24 overworld set (2026-11-19), the Blackwood tileset is a placeholder and the Ashlands has no tileset of its own. Vell and Nessa now have dedicated sets (2026-11-18). Check `game/sprites/IMPORT.md` and `docs/ASSET_INVENTORY.md`.
 - Audio: 29 authored resources (3 music loops, 6 ambience beds, 20 effects) play through `scr_audio`; ambience is room-mapped, and the four effects once listed as unhooked are wired. `step` is deliberately unused. Actual listening in GameMaker remains **NOT RUN**.
@@ -73,7 +73,7 @@ Acceptance:
 - Every test is marked pass/fail/not run with evidence/notes.
 - Critical progression blockers and softlocks are fixed before adding new content.
 
-#### P0.3 — Add save-migration fixtures and a regression test
+#### P0.3 — Add save-migration fixtures and a regression test — **SOURCE DONE (PR #44); GML RUN NOT RUN**
 **Why:** the audit found a real v3→v4 regression where a migrated save lost level-gained HP/MP and caster MAG. The repair is correct by inspection but has no fixture test.
 
 Tasks:
@@ -82,12 +82,21 @@ Tasks:
 - Cover one warrior and one caster; assert max HP/MP never fall below the saved values.
 - Document the expected values and how to add a new schema version.
 
-Acceptance:
-- A failed migration is caught without opening GameMaker.
-- The test does not weaken or bypass save sanitization.
+**Implemented in PR #44:** fixtures live in `game/datafiles/tests/saves/` (mirrored into
+`gamemaker/datafiles/tests/saves/` and registered as Included Files).
+`python3 tests/save_migration_test.py` checks fixture integrity, `.yyp` registration and
+quest wiring in CI. `scr_save_migration_test()` runs the real GML
+`scr_save_migrate()` → `scr_save_apply_member()` path on all four fixtures; enable
+`DEBUG_SAVE_SELFTEST` and press F6, or call it from the IDE. The GML execution is
+**NOT RUN** because this environment has no GameMaker runtime.
 
-#### P0.4 — Implement Chapter 1's main quest (`Q_MAIN_FIND_MIRA`)
-**Why:** Chapter 1's main quest has no journal definition or stage wiring, so the opening objective is invisible. `Q_FM_S1`–`Q_FM_S9` are approved in `docs/story/CHAPTER1_SCRIPT.md`.
+Acceptance:
+- A failed migration is caught without opening GameMaker (Python contract + GML harness).
+- The test does not weaken or bypass save sanitization.
+- Remaining acceptance: record a passing in-engine F6 run.
+
+#### P0.4 — Implement Chapter 1's main quest (`Q_MAIN_FIND_MIRA`) — **SOURCE DONE (PR #44); RUNTIME NOT RUN**
+**Why:** Chapter 1's main quest had no journal definition or stage wiring, so the opening objective was invisible. `Q_FM_S1`–`Q_FM_S9` are approved in `docs/story/CHAPTER1_SCRIPT.md`.
 
 Tasks:
 - Decide whether marker `quest_start`/`quest_advance` fields are the intended mechanism (TD-04) or whether Chapter 1 should follow the story-function pattern used by Chapters 2–11. Do not implement both.
@@ -95,10 +104,18 @@ Tasks:
 - Wire start, S1–S9 and completion through the Tomas scene, pendant pickup, north gate, Farmlands, Old Road, Bandit Camp, Watchtower, Basement, arena and Blackguard victory.
 - Preserve the approved canon and the Chapter 2 hand-off; do not invent alternate outcomes.
 
+**Implemented in PR #44:** decision is option B (story functions, not marker fields).
+`GH_ARRIVAL` starts S1; `GH_TOMAS` advances S2; the pendant advances S3; the
+Farmlands/Old Road/Bandit Camp thresholds and Watchtower room ticks advance S4–S7; the
+Basement advances S8; `BG_INTRO` advances S9; the Blackguard victory completes the quest;
+the Crownveil door starts `Q_MAIN_BEYOND_VEIL`. `scr_quest_advance()` prevents stage
+regression, and `scr_ch1_quest_tick()` backfills older saves. No in-engine journal test
+has been run.
+
 Acceptance:
-- The journal shows the quest and its current stage from Chapter 1 start to completion.
-- Stage flags advance exactly once and survive save/load.
-- `tools/audit_chapters.py` still reports no wiring problems.
+- The journal shows the quest and its current stage from Chapter 1 start to completion. **Runtime NOT RUN.**
+- Stage flags advance exactly once and survive save/load. **Source invariant + static checks only.**
+- `tools/audit_chapters.py` still reports no wiring problems. **PASS.**
 
 ### P1 — Finish existing systems and presentation
 

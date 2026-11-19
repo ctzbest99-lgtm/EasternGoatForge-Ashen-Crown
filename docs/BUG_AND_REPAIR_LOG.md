@@ -56,7 +56,10 @@ weaker caster damage. This is a save-breaking regression, not a cosmetic issue.
 
 **Verification.** `python3 validate_gamemaker.py` passes; `tools/sync_gamemaker.py
 --check` reports zero managed changes; the mirrored GML is byte-identical. **An actual
-v3 save was not loaded in GameMaker — that test remains NOT RUN.**
+v3 save was not loaded in GameMaker — that test remains NOT RUN.** Follow-up PR #44 adds
+sanitized v1–v4 fixtures, a Python fixture/wiring contract test, and
+`scr_save_migration_test()` for the real GML migration path; the GML test has not been
+executed because this environment has no GameMaker runtime.
 
 ---
 
@@ -151,10 +154,11 @@ not executed on GitHub from this environment; the PR run is the remaining eviden
 
 ---
 
-## 2. Open content and system defects
+## 2. Content and system defects
 
-These are confirmed by source/data inspection but are **not** patched here. Some require
-a design decision; others are content work.
+These were confirmed by source/data inspection. CONTENT-001 has since been implemented
+in source by follow-up PR #44; the remaining items are not patched here and some require
+a design decision or content work.
 
 ### CONTENT-001 — Chapter 1 main quest is absent from the journal and has no stage wiring
 
@@ -180,13 +184,20 @@ a design decision; others are content work.
 quest because there is no definition. Chapter 1's main objective is not shown, and its
 stage transitions do not run. Chapters 2–11 use `scr_ch*_quest_set()` and are unaffected.
 
-**Why it was not patched.** Completing it means adding a nine-stage definition and
-wiring starts/advances across the arrival, Tomas scene, pendant pickup, north gate,
-Farmlands, Old Road, Bandit Camp, Watchtower, Basement, arena and Blackguard victory.
-That is story-system implementation, not a smallest safe correction. It is assigned in
-the updated backlog.
+**Why it was not patched in the audit.** Completing it meant adding a nine-stage
+definition and wiring starts/advances across the arrival, Tomas scene, pendant pickup,
+north gate, Farmlands, Old Road, Bandit Camp, Watchtower, Basement, arena and Blackguard
+victory. That is story-system implementation, not a smallest safe audit correction.
 
-**Status:** OPEN — CONTENT.
+**Follow-up implementation (PR #44, `freebuff/audit-followups`).** `scr_quest_definitions()`
+now contains the approved nine-stage quest. Starts are wired in the existing `GH_ARRIVAL`,
+`GH_TOMAS`, Varyn House pendant, `BG_INTRO` and `CV_END` callbacks. `scr_quest_advance()`
+adds ordered, non-regressing stage writes, and `scr_ch1_quest_tick()` backfills existing
+saves from flags plus the Farmlands/Old Road/Bandit Camp rectangles and the Watchtower
+rooms. The Blackguard victory completes Find Mira; the Crownveil door starts Beyond the
+Veil. The Python fixture test and `tools/audit_chapters.py` pass.
+
+**Status:** FIXED IN SOURCE — PR #44; in-engine journal check **NOT RUN**.
 
 ---
 
@@ -203,10 +214,12 @@ the updated backlog.
 `reward` do not appear outside marker data at all.
 
 **Consequence.** Writers can add quest metadata that looks functional but does nothing.
-This is how CONTENT-001 remained hidden. Either implement the generic marker fields or
-remove them and document that quest transitions live in chapter story code.
+This is how CONTENT-001 remained hidden. PR #44 resolves Chapter 1 through the existing
+story-function pattern (option B), not through these marker fields, so the dead metadata
+is still misleading. Remove it or give it a single documented consumer in a separate
+change; do not add a second quest mechanism.
 
-**Status:** OPEN — technical debt / design decision.
+**Status:** OPEN — technical debt / cleanup after the PR #44 decision.
 
 ---
 

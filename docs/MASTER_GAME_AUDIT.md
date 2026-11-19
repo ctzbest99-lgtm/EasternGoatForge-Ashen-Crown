@@ -60,14 +60,17 @@ Three gameplay defects were repaired and revalidated:
 A stale Bestiary comment (“12/35” → “12/43”) and a CI validation gap (equipment audit and
 Python syntax were not run) were also corrected. Those are not gameplay changes.
 
-Two content/system gaps remain open and are **not** patched in this audit:
+One content/system gap remains open, and one follow-up implementation is in review:
 
-- **Chapter 1's main quest, `Q_MAIN_FIND_MIRA`, has no quest definition and no stage
-  wiring.** It is started/advanced only by marker fields that no runtime code reads, so
-  it cannot appear in the journal. Chapters 2–11 use story functions and are unaffected.
+- **Chapter 1's main quest, `Q_MAIN_FIND_MIRA`, was absent from the journal and had no
+  stage wiring.** This is implemented in source by follow-up PR #44 (`freebuff/audit-followups`):
+  the approved S1–S9 definition, ordered stage writes, save/flag/room backfill and the
+  Crownveil hand-off are wired through the existing story functions. It has **not** been
+  compiled or played, so runtime acceptance is still **NOT RUN**.
 - **Map-marker quest metadata (`quest_start`, `quest_advance`, `quest_turn_in`,
-  `reward`) is dead data.** This is the mechanism the Chapter 1 quest depends on. It is
-  recorded as a design decision to make, not silently invented here.
+  `reward`) remains dead data.** Chapter 1 deliberately follows the Chapter 2–11
+  story-function pattern (TD-04 option B), so this metadata is still misleading and
+  should be removed or given a consumer in a separate change.
 
 The remaining acts are content work, not repair work: Act V has approved scripts and
 enemy data but zero rooms/dialogue; Acts VI–VIII and the finale are titles/outlines only.
@@ -79,13 +82,13 @@ enemy data but zero rooms/dialogue; Acts VI–VIII and the finale are titles/out
 | Metric | Count |
 |---|---:|
 | Human-readable GML files under `game/` | 156 |
-| GML source lines under `game/` | 23,756 |
+| GML source lines under `game/` | 23,983 (23,756 audit baseline + 230 added − 3 removed by PR #44) |
 | Script files under `game/scripts/` | 97 |
 | Objects / object event files | 22 / 59 |
-| Function definitions | 686 |
+| Function definitions | 692 (686 baseline + 6 added by PR #44) |
 | Generated GML files under `gamemaker/` (includes 33 room creation-code files) | 189 |
 | GameMaker JSON files parsed by the validator | 1,289 |
-| Included datafiles | 86 |
+| Included datafiles | 90 (86 + 4 save fixtures) |
 | Rooms | 35 |
 | Sprite resources | 1,087 |
 | Sound resources | 29 |
@@ -170,10 +173,10 @@ partial; **MISSING** = absent; **BLOCKED** = needs an external dependency/decisi
 | Inventory | IMPLEMENTED | 181 item records; stackable/unique/key handling; bag tabs; item use removes one on effect. No runtime test. |
 | Equipment | IMPLEMENTED | Seven slots (`main_hand`, `off_hand`, `head`, `body`, `legs`, `accessory_1`, `accessory_2`); proficiency, two-handed conflicts, stat/resistance recomputation. Display count repaired. No runtime test. |
 | Shops / forge | IMPLEMENTED | Buy/sell, discount, stock-by-act, 20 recipes; equipment checker reports 136 equipment items and full act coverage. No runtime test. |
-| Save/load | IMPLEMENTED | Three slots, JSON, schema v4, v1→v4 migration, corruption-safe reads, inventory/equipment sanitization. Legacy base-max migration repaired. No runtime test with real fixtures. |
+| Save/load | IMPLEMENTED | Three slots, JSON, schema v4, v1→v4 migration, corruption-safe reads, inventory/equipment sanitization. Legacy base-max migration repaired; sanitized v1–v4 fixtures and an in-engine migration self-test were added by PR #44. The self-test has **NOT RUN** (no GameMaker runtime). |
 | Input / controller | IMPLEMENTED | One input layer; Xbox A/B/Start/LB/RB and D-pad mappings; left-stick movement with radial dead zone; disconnect/reconnect scan. Physical controller test **NOT RUN**. |
 | Bestiary | COMPLETE (data) | 43 rows, 43 distinct names, 43 with art, 6 aliases; seen/defeated tracking and illustration pane. In-engine pane not viewed. |
-| Quests | INCOMPLETE | Chapters 2–11 write quest flags from story code. Chapter 1 main quest is absent from definitions and has no stage wiring; marker quest fields are unconsumed. |
+| Quests | IMPLEMENTED (source) | Chapters 2–11 write quest flags from story code. Chapter 1's `Q_MAIN_FIND_MIRA` definition and S1–S9 wiring were added by PR #44 using the same story-function pattern; marker quest fields remain unconsumed. No runtime journal check. |
 | Dialogue | IMPLEMENTED | 1,027 IDs; 958 referenced; 69 unreferenced nodes reported as notes. No runtime text/layout test. |
 | World / maps | IMPLEMENTED | 35 rooms; seven missing room targets are deliberate stubs. No runtime collision, spawn or transition test. |
 | Audio | IMPLEMENTED | 29 resources (3 music, 6 ambience, 20 effects) wired through `scr_audio`. Nothing listened to in GameMaker. |
@@ -195,8 +198,8 @@ Full detail and evidence are in `docs/BUG_AND_REPAIR_LOG.md`.
 | BUG-001 | HIGH | REPAIRED | v1–v3 saves lost level-gained max HP/MP and caster MAG during v4 migration. |
 | BUG-002 | LOW | REPAIRED | Shop “Equipped” count ignored off-hand, legs and accessory 2. |
 | BUG-003 | LOW | REPAIRED | A unique drop refused by the bag was still announced as found. |
-| CONTENT-001 | HIGH | OPEN | Chapter 1 main quest `Q_MAIN_FIND_MIRA` has no journal definition or stage wiring. |
-| DEBT-001 | MEDIUM | OPEN | Marker quest metadata is dead data; the intended Chapter 1 quest mechanism never runs. |
+| CONTENT-001 | HIGH | FIXED IN SOURCE (runtime NOT RUN) | Chapter 1 main quest `Q_MAIN_FIND_MIRA` definition and S1–S9 stage wiring were added by PR #44. |
+| DEBT-001 | MEDIUM | OPEN | Marker quest metadata is dead data. Chapter 1 now uses story functions, so the fields remain misleading but no longer block the quest. |
 | DEBT-002 | MEDIUM | OPEN | Save writes are not atomic; a crash during `buffer_save` can truncate a slot. |
 | DEBT-003 | LOW | OPEN | Equipment sanitization clears an invalid equipped item instead of returning it to the bag. |
 | DEBT-004 | LOW | OPEN | `scr_craft_make` ignores a failed inventory add when consuming materials. No current recipe is unique, so the path is latent. |
@@ -227,6 +230,10 @@ keyboard read outside the input layer is the debug F5 save shortcut.
 | Encounter table IDs absent from enemy data | 0 |
 | Encounter groups naming a non-boss in the boss slot | 0 |
 | Equipment schema invalid records | 0 |
+
+Function/call-site counts above are the pre-PR-#44 audit baseline. PR #44 adds six
+GML functions (692 total) in existing scripts and no new script resource, so the
+97-script and 156-file counts are unchanged.
 
 The seven deliberate missing rooms are `rm_flooded_ruins`, `rm_frozen_ruins`,
 `rm_ironspine_mine`, `rm_ironspine_ruins`, `rm_saltreach`, `rm_saltreach_pier` and
@@ -282,15 +289,18 @@ revision. They do not rewrite story canon.
 1. Open `gamemaker/AshenCrown.yyp` in the supported GameMaker IDE and record the first
    compile result. Do not add features until the project boots.
 2. Play the Chapter 1 smoke path with a fresh save and one migrated v3/v4 fixture. The
-   save migration fix needs a real in-engine load test.
-3. Implement the Chapter 1 main quest using the approved `CHAPTER1_SCRIPT.md` stages.
-   Decide whether the generic marker quest fields are the intended mechanism before
-   wiring them.
-4. Play through Chapters 1–11 against `docs/PLAYTEST_RUNBOOK.md`; record failures with
+   save migration repair and fixtures are in source (PR #44), but no fixture has been
+   loaded in GameMaker.
+3. Run `scr_save_migration_test()` with `DEBUG_SAVE_SELFTEST` enabled (F6) in the IDE.
+   It executes the real migration path against the four sanitized fixtures; the Python
+   contract test does not replace it.
+4. Confirm the `Q_MAIN_FIND_MIRA` journal appears and advances through S1–S9, then
+   switches to `Q_MAIN_BEYOND_VEIL` at the Crownveil door.
+5. Play through Chapters 1–11 against `docs/PLAYTEST_RUNBOOK.md`; record failures with
    room, steps and logs.
-5. Build Act V rooms/dialogue (Chapters 12–14) only after the existing eleven chapters
+6. Build Act V rooms/dialogue (Chapters 12–14) only after the existing eleven chapters
    are stable.
-6. Replace the Blackwood placeholder atlas and add the Ashlands/coast environment sets
+7. Replace the Blackwood placeholder atlas and add the Ashlands/coast environment sets
    when those acts enter production.
 
 The project should not be rewritten. The existing systems are coherent; the highest-value
