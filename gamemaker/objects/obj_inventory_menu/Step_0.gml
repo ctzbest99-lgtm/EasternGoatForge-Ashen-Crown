@@ -1,5 +1,5 @@
 /// obj_inventory_menu : Step
-var _close = keyboard_check_pressed(ord("I")) || keyboard_check_pressed(vk_tab);
+var _close = scr_input_menu_pressed();
 
 if (mode == "target" || mode == "pick") {
     if (scr_input_cancel_pressed() || _close) {
