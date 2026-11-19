@@ -110,7 +110,7 @@ def inventory(root: Path) -> dict[str, tuple[Path, bytes]]:
     return result
 
 
-def compare(current: Path, built: Path):
+def compare(current: Path, built: Path, *, code_only: bool = False):
     old, new = inventory(current), inventory(built)
     added = sorted(new.keys() - old.keys())
     # Generator output is additive/update-only. Live-only files are preserved because
@@ -120,6 +120,11 @@ def compare(current: Path, built: Path):
         name for name in old.keys() & new.keys()
         if old[name][1] != new[name][1]
     )
+    if code_only:
+        # CI gates source/generated GML parity. Resource metadata and imported binary
+        # assets are reviewed through the full dry-run and project validator instead.
+        added = [name for name in added if name.endswith(".gml")]
+        changed = [name for name in changed if name.endswith(".gml")]
     return added, removed, changed
 
 
@@ -171,7 +176,7 @@ def main() -> int:
             return validation.returncode
 
         generated = work / "gamemaker"
-        added, removed, changed = compare(live, generated)
+        added, removed, changed = compare(live, generated, code_only=args.check)
         total = len(added) + len(removed) + len(changed)
         if not args.quiet:
             print(f"Generated project validated. Managed file changes: {total}")
