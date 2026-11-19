@@ -318,7 +318,7 @@ function scr_item_database() {
     }));
     _add(_db, scr_item_make("item_drowned_crown", "The Drowned Crown", "helm", 0, {
         def_bonus: 8, mdef_bonus: 6, rarity: "legendary", act: 5, unique: true, sellable: false,
-        acquisition: "The Drowned Crown boss, Saltreach deep (guaranteed, once).",
+        acquisition: "The Saltreach Leviathan, Saltreach deep (guaranteed, once).",
         desc: "A coral-crusted crown, worn as a helm. DEF +8, MDEF +6. Cannot be sold. (PLACEHOLDER.)"
     }));
 

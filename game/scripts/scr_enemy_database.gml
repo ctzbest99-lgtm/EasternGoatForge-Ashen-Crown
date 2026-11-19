@@ -317,6 +317,54 @@ function scr_get_enemy_data(_enemy_id) {
                     [{ skill: "attack", weight: 2 }, { skill: "matriarch_breath", weight: 1 }],
                     [{ skill: "attack", weight: 2 }, { skill: "matriarch_breath", weight: 2 }]
                 ] });
+
+        // ---- Act V: The Fallen Knight (docs/story/ACT5_OUTLINE.md §7; Chapter 12 approved 2026-11-17) ----
+        // scr_enemy_scaled bases: level 24 = 179 / 58 / 41 / MDEF 21, 25 = 188 / 61 / 43 / 22,
+        // 26 = 197 / 64 / 45 / 23. Tuned with `tools/balance_sim.py --act5` against the Act V tier
+        // (Tidesteel Blade / Drowned Coat), which Mott's cart makes reachable before the coast.
+        case "drowned_husk": // common 24 = 340 / 60 / 41, slow, holy
+            return scr_enemy_scaled("drowned_husk", "Drowned Husk", "Drowned Husk", "common", 24, 1, { spd: 6, hp_mult: 1.9, atk_add: 2, weakness: "holy",
+                actions: [{ skill: "attack", weight: 1 }] });
+        case "salt_wretch": // common 24 = 281 / 61 / 39, frail, fire
+            return scr_enemy_scaled("salt_wretch", "Salt Wretch", "Salt Wretch", "common", 24, 1, { spd: 7, hp_mult: 1.57, atk_add: 3, def_add: -2, mdef: 19, weakness: "fire",
+                actions: [{ skill: "attack", weight: 1 }] });
+        case "tide_crawler": // common 25 = 340 / 62 / 46, braced, lightning
+            return scr_enemy_scaled("tide_crawler", "Tide Crawler", "Tide Crawler", "common", 25, 1, { spd: 7, hp_mult: 1.81, atk_add: 1, def_add: 3, weakness: "lightning",
+                actions: [{ skill: "attack", weight: 2 }, { skill: "brace", weight: 1 }] });
+        case "wreck_shade": // common 25 = 301 / 63 / 43, fast, holy
+            return scr_enemy_scaled("wreck_shade", "Wreck Shade", "Wreck Shade", "common", 25, 1, { spd: 12, hp_mult: 1.6, atk_add: 2, weakness: "holy",
+                actions: [{ skill: "attack", weight: 3 }, { skill: "shade_fade", weight: 1 }] });
+        case "toll_keeper": // Chapter 12 boss: 1804 HP (179 x 1.2 x 4, then x2.1), 64 ATK / 45 DEF
+            // Silent, two phases; the shift is the water going still and the hook coming up.
+            return scr_enemy_scaled("toll_keeper", "The Toll-Keeper", "Toll-Keeper", "boss", 24, 4, { spd: 8, hp_mult: 2.1, atk_add: 3, def_add: 1,
+                phase2_at: 0.5,
+                phase2_buffs: [{ stat: "atk", pct: 0.15, turns: -1 }],
+                actions: [{ skill: "attack", weight: 2 }, { skill: "heavy_strike", weight: 1 }],
+                phase_actions: [
+                    [{ skill: "attack", weight: 2 }, { skill: "heavy_strike", weight: 1 }],
+                    [{ skill: "attack", weight: 1 }, { skill: "heavy_strike", weight: 2 }]
+                ] });
+        case "salt_leviathan": // Chapter 13 boss: 1895 HP (188 x 1.2 x 4, then x2.1), 67 ATK / 48 DEF
+            // The set-piece; the tide surge hits the whole party. Two phases. Drops the Act V legendary.
+            return scr_enemy_scaled("salt_leviathan", "Saltreach Leviathan", "Leviathan", "boss", 25, 4, { drops: [{ item: "item_drowned_crown", chance: 1, once: true }], spd: 9, hp_mult: 2.1, atk_add: 3, def_add: 2,
+                phase2_at: 0.5,
+                phase2_buffs: [{ stat: "atk", pct: 0.20, turns: -1 }, { stat: "spd", pct: 0.10, turns: -1 }],
+                actions: [{ skill: "attack", weight: 2 }, { skill: "leviathan_tide", weight: 1 }],
+                phase_actions: [
+                    [{ skill: "attack", weight: 2 }, { skill: "leviathan_tide", weight: 1 }],
+                    [{ skill: "attack", weight: 1 }, { skill: "leviathan_tide", weight: 2 }]
+                ] });
+        case "fallen_knight_last": // Chapter 14 act boss: 2052 HP (197 x 1.2 x 4, then x2.17), 70 ATK / 50 DEF
+            // He yields; no death and no bestiary kill credit. Two phases.
+            return scr_enemy_scaled("fallen_knight_last", "The Fallen Knight", "Fallen Kn.", "boss", 26, 4, { spd: 11, hp_mult: 2.17, atk_add: 3, def_add: 2,
+                yields: true, yield_flag: "flag_fallen_knight_last_yielded",
+                phase2_at: 0.5,
+                phase2_buffs: [{ stat: "atk", pct: 0.15, turns: -1 }, { stat: "spd", pct: 0.10, turns: -1 }],
+                actions: [{ skill: "attack", weight: 2 }, { skill: "heavy_strike", weight: 1 }],
+                phase_actions: [
+                    [{ skill: "attack", weight: 2 }, { skill: "heavy_strike", weight: 1 }],
+                    [{ skill: "attack", weight: 1 }, { skill: "heavy_strike", weight: 2 }]
+                ] });
     }
     return undefined;
 }

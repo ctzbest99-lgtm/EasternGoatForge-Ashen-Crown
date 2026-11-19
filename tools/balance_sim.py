@@ -154,7 +154,7 @@ def hits_to_kill(level, mid, eid):
     m = member(mid, level, *GEAR[mid]); e = E[eid]
     return math.ceil(e["hp"] / dmg(m["atk"], e["df"]))
 
-if __name__ == "__main__":
+if __name__ == "__main__" and "--act4" not in sys.argv and "--act5" not in sys.argv:
     random.seed(7)
     rows = []
     for L in (8, 9, 10):
@@ -717,11 +717,109 @@ def act4_tables():
               + f" | {kh('forgotten_king', ('kael','taren','lyra'))} |")
     print()
 
+# ---- Act V: The Fallen Knight (docs/story/ACT5_OUTLINE.md §7; Chapter 12 approved 2026-11-17) ----
+# The party is assumed to carry the Act V tier (Tidesteel Blade / Drowned Coat), which Mott's cart
+# makes reachable before the coast. Accessories and helms are not modelled; this is conservative on
+# DEF/MDEF. The no-tier rows below are the warning the outline asks for: without that tier the
+# leviathan is a wall.
+GEAR_ACT5 = {"kael": (12, 11), "taren": (13, 11), "lyra": (11, 11),
+             "caelan": (11, 11), "sera": (12, 11)}
+E.update({
+ "drowned_husk": dict(hp=340, atk=60, df=41, mdef=21, spd=6, weak="holy", ai=[("attack", 1)]),
+ "salt_wretch": dict(hp=281, atk=61, df=39, mdef=19, spd=7, weak="fire", ai=[("attack", 1)]),
+ "tide_crawler": dict(hp=340, atk=62, df=46, mdef=22, spd=7, weak="lightning", ai=[("attack", 2), ("brace", 1)]),
+ "wreck_shade": dict(hp=301, atk=63, df=43, mdef=22, spd=12, weak="holy", ai=[("attack", 3), ("fade", 1)]),
+ "toll_keeper": dict(hp=1804, atk=64, df=45, mdef=21, spd=8, boss=True,
+                     ai=[("attack", 2), ("heavy", 1)],
+                     phase_ai={2: [("attack", 1), ("heavy", 2)]},
+                     phase2_at=0.5, phase2_atk=0.15),
+ "salt_leviathan": dict(hp=1895, atk=67, df=48, mdef=22, spd=9, boss=True,
+                        ai=[("attack", 2), ("breath", 1)],
+                        phase_ai={2: [("attack", 1), ("breath", 2)]},
+                        phase2_at=0.5, phase2_atk=0.20),
+ "fallen_knight_last": dict(hp=2052, atk=70, df=50, mdef=23, spd=11, boss=True, yields=True,
+                            ai=[("attack", 2), ("heavy", 1)],
+                            phase_ai={2: [("attack", 1), ("heavy", 2)]},
+                            phase2_at=0.5, phase2_atk=0.15),
+})
+
+def act5_tables():
+    """Act V (Chapters 12-14, the Drowned Coast). PROPOSED numbers, §7, tuned here."""
+    random.seed(53)
+    WITH_CAELAN = ["kael", "taren", "lyra", "caelan"]
+    WITH_SERA = ["kael", "taren", "lyra", "sera"]
+    BAND = [
+        ("Coast: Husk + Wretch", ["drowned_husk", "salt_wretch"]),
+        ("Coast: Husk + Crawler", ["drowned_husk", "tide_crawler"]),
+        ("Coast: Wretch + Shade", ["salt_wretch", "wreck_shade"]),
+        ("Coast: Crawler + Shade", ["tide_crawler", "wreck_shade"]),
+        ("Coast: Husk + Shade", ["drowned_husk", "wreck_shade"]),
+    ]
+    BOSSES = [
+        ("Ch 12: Toll-Keeper", ["toll_keeper"], 24),
+        ("Ch 13: Saltreach Leviathan", ["salt_leviathan"], 25),
+        ("Ch 14: Fallen Knight", ["fallen_knight_last"], 26),
+    ]
+    print()
+    print("**Drowned Coast band sanity (Chapter 12, level 24)** — Act V tier (Tidesteel Blade / Drowned Coat)")
+    print()
+    print("| Fight | Party | Win % | Rounds | Party turns | Party HP left | Deaths |")
+    print("|---|---|---|---|---|---|---|")
+    for label, eids in BAND:
+        for members in (WITH_CAELAN, WITH_SERA):
+            r = run_ext(label, 24, members, eids, gear=GEAR_ACT5, boss_focus=False)
+            print(f"| {r['label']} | {r['members']} | {r['win']*100:.0f}% | {r['rounds']:.1f} | "
+                  f"{r['pturns']:.1f} | {r['hp']*100:.0f}% | {r['deaths']:.2f} |")
+    print()
+    print("**Act V bosses** — own band and the level-24 floor. The Fallen Knight yields.")
+    print()
+    print("| Fight | Lv | Party | Win % | Rounds | Party turns | Hits on boss | Deaths | Party HP left |")
+    print("|---|---|---|---|---|---|---|---|---|")
+    for label, eids, own in BOSSES:
+        for L in sorted({own, 24}):
+            for members in (WITH_CAELAN, WITH_SERA):
+                r = run_ext(label, L, members, eids, gear=GEAR_ACT5, boss_focus=True)
+                print(f"| {r['label']} | {L} | {r['members']} | {r['win']*100:.0f}% | {r['rounds']:.1f} | "
+                      f"{r['pturns']:.1f} | {r['boss']:.1f} | {r['deaths']:.2f} | {r['hp']*100:.0f}% |")
+    print()
+    print("| Level | Kael ATK/DEF/HP | Taren ATK/DEF/HP | Lyra ATK/DEF/HP | Caelan ATK/DEF/HP | Sera ATK/DEF/HP | Hits to kill Husk (K/T/L) | Leviathan (K/T/L) | Knight (K/T/L) |")
+    print("|---|---|---|---|---|---|---|---|---|")
+    for L in (24, 25, 26):
+        ms = {m: member(m, L, *GEAR_ACT5[m]) for m in ("kael", "taren", "lyra", "caelan", "sera")}
+        def kh(eid, who):
+            e = E[eid]
+            return "/".join(str(math.ceil(e["hp"] / max(1, ms[m]["atk"] - e["df"] // 2))) for m in who)
+        print(f"| {L} | " + " | ".join(f"{ms[m]['atk']} / {ms[m]['df']} / {ms[m]['max_hp']}"
+                                       for m in ("kael", "taren", "lyra", "caelan", "sera"))
+              + f" | {kh('drowned_husk', ('kael','taren','lyra'))} | {kh('salt_leviathan', ('kael','taren','lyra'))}"
+              + f" | {kh('fallen_knight_last', ('kael','taren','lyra'))} |")
+    print()
+    print("**No Act V tier** — the same fights with Chapter 5 gear. The coast commons still clear;")
+    print("the leviathan does not. This is why the Act V tier is the expected path, not optional polish.")
+    print()
+    print("| Fight | Lv | Party | Win % | Rounds | Party HP left | Deaths |")
+    print("|---|---|---|---|---|---|---|")
+    for label, eids, own in (("Coast: Husk + Wretch", ["drowned_husk", "salt_wretch"], 24),
+                             ("Ch 12: Toll-Keeper", ["toll_keeper"], 24),
+                             ("Ch 13: Saltreach Leviathan", ["salt_leviathan"], 25),
+                             ("Ch 14: Fallen Knight", ["fallen_knight_last"], 26)):
+        for members in (WITH_CAELAN, WITH_SERA):
+            r = run_ext(label, own, members, eids, gear=GEAR_LATE,
+                        boss_focus=(label != "Coast: Husk + Wretch"))
+            print(f"| {r['label']} | {own} | {r['members']} | {r['win']*100:.0f}% | {r['rounds']:.1f} | "
+                  f"{r['hp']*100:.0f}% | {r['deaths']:.2f} |")
+    print()
+
 if __name__ == "__main__" and "--templates" in sys.argv:
     template_table()
 
 if __name__ == "__main__" and "--act4" in sys.argv:
     act4_tables()
+    sys.exit(0)
+
+if __name__ == "__main__" and "--act5" in sys.argv:
+    act5_tables()
+    sys.exit(0)
 
 if __name__ == "__main__":
     c3_tables()
@@ -729,3 +827,4 @@ if __name__ == "__main__":
     ch4_prejoin_table()
     ch6_tables()
     act4_tables()
+    act5_tables()

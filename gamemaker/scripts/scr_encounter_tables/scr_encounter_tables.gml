@@ -146,6 +146,14 @@ function scr_get_encounter_table(_table_id) {
                 // Emberwake again, at the barrow road's scale (Act IV).
                 { enemy_id: "emberwake_late", weight: 1 }
             ];
+        case "drowned_coast": // Act V (ACT5_OUTLINE.md §7; Chapter 12 approved 2026-11-17)
+            return [
+                { group: ["drowned_husk", "salt_wretch"], weight: 2 },
+                { group: ["drowned_husk", "tide_crawler"], weight: 2 },
+                { group: ["salt_wretch", "wreck_shade"], weight: 2 },
+                { group: ["tide_crawler", "wreck_shade"], weight: 1 },
+                { group: ["drowned_husk", "wreck_shade"], weight: 1 }
+            ];
     }
     return undefined;
 }
@@ -167,6 +175,7 @@ function scr_encounter_table_level_band(_table_id) {
         case "blackwood_garrison": return { min: 16, max: 18 };
         case "blackwood": return { min: 18, max: 20 };
         case "crown_barrow": return { min: 21, max: 23 };
+        case "drowned_coast": return { min: 24, max: 25 };
     }
     return undefined;
 }
@@ -193,6 +202,10 @@ function scr_get_encounter_group(_group_id) {
         case "grp_magistrate_vell": return { boss: "magistrate_vell", adds: ["crown_guard_elite", "crown_guard_elite"] };
         case "grp_barrow_warden": return { boss: "barrow_warden", adds: [] };
         case "grp_forgotten_king": return { boss: "forgotten_king", adds: [] };
+        // Act V boss groups (ACT5_OUTLINE.md §7; Chapter 12 approved 2026-11-17). All three are solo.
+        case "grp_toll_keeper": return { boss: "toll_keeper", adds: [] };
+        case "grp_salt_leviathan": return { boss: "salt_leviathan", adds: [] };
+        case "grp_fallen_knight_last": return { boss: "fallen_knight_last", adds: [] };
         case "grp_blackwood_matriarch": return { boss: "blackwood_matriarch", adds: ["shade_stalker"] };
         // Act III bosses (ACT3_OUTLINE.md §7; the numbers come from the balance simulation).
         // One Stalker, not two: with two the act's first boss was harder than its second (89% wins,

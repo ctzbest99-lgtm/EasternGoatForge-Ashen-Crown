@@ -291,6 +291,8 @@ function scr_skill_build(_skill_id) {
             return _s;
         case "matriarch_breath": // blackwood_matriarch: ash-breath / bellow, hits everyone
             return scr_skill_make("matriarch_breath", "Ash Breath", 0, "all", "damage", 0.8, "special", "");
+        case "leviathan_tide": // salt_leviathan: a surge that hits everyone
+            return scr_skill_make("leviathan_tide", "Tide Surge", 0, "all", "damage", 0.8, "special", "");
     }
     show_debug_message("[skill] Unknown skill id '" + string(_skill_id) + "'; using Attack.");
     return scr_skill_build("attack");

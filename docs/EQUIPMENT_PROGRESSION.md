@@ -154,7 +154,7 @@ Act VII has a story, the same stopgap shape as Mott's cart covering Saltreach an
 | V | Drowned Coat | armor | DEF +11, MDEF +4 | rare | any | 1300 | Mott's cart, Blackwood road | Yes — Mott's cart |
 | V | Saltreach Charm | accessory | DEF +2, MDEF +5, SPD +1 | rare | any | 1200 | Mott's cart, Blackwood road; forge | Yes — Mott's cart |
 | V | Tideglass | material | — | common | — | 90 | Mott's cart, Blackwood road | Yes — Mott's cart (still no drowned enemies) |
-| V | The Drowned Crown | helm | DEF +8, MDEF +6 | legendary | any | — | The Drowned Crown boss | **No boss yet** |
+| V | The Drowned Crown | helm | DEF +8, MDEF +6 | legendary | any | — | Saltreach Leviathan (Ch 13) | **Yes (boss drop)** |
 | VI | Ironspine Maul | weapon (heavy) | ATK +15 | rare | Taren | 2000 | Mott's cart, Blackwood road; forge | Yes — Mott's cart |
 | VI | Mine Plate | armor | DEF +13 | rare | any | 1900 | Mott's cart, Blackwood road | Yes — Mott's cart |
 | VI | Architect Ring | accessory | DEF +2, MDEF +6 | rare | any | 1700 | Mott's cart, Blackwood road; forge | Yes — Mott's cart |
@@ -188,9 +188,10 @@ Blackwood road and Sarn's outpost wagon at the Crownveil breach.
 | Matriarch's Heartwood | Blackwood Matriarch | 7 | guaranteed, once per save |
 | Barrow King's Blade | Barrow Warden | 10 | guaranteed, once per save |
 | Forgotten King's Crown | The Forgotten King | 11 | guaranteed, once per save |
+| The Drowned Crown | Saltreach Leviathan | 13 | guaranteed, once per save |
 
-The Drowned Crown and The First Forge have no boss in `scr_enemy_database.gml` yet (Acts V–VI are not
-built), so they exist as data and are reported as incomplete.
+The First Forge still has no boss in `scr_enemy_database.gml` (Act VI is not built), so it exists as
+data and is reported as incomplete.
 
 ## Crafting (forge counter, Pell in Greyhaven)
 
@@ -308,8 +309,7 @@ the six regional shops plus the Blackwood carter's cart (`shop_blackwood_carter`
 
 * The rest of Acts III–VIII is unbuilt: Saltreach, Ironspine and Rimehold have stock data but no room
   of their own, and the Ashlands has one room (the breach outpost) but no act. Mott's cart covers the
-  V and VI gear and Sarn's wagon covers VII, so those three tiers are reachable, but their regions,
-  their enemies and their bosses (The Drowned Crown, The First Forge) do not exist. The whole Act
+  V and VI gear and Sarn's wagon covers VII, so those three tiers are reachable, but their regions, their enemies and The First Forge boss do not exist (the Drowned Coast has enemy data but no rooms). The whole Act
   VIII tier is data only.
 * Chapters 2–5 have no treasure markers, so their chest loot is unwired.
 * No gear icons; menus fall back to the generic row. No rarity colouring in the shop.
