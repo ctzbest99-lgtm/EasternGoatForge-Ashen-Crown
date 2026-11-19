@@ -185,14 +185,15 @@ function scr_encounter_table_level_band(_table_id) {
 function scr_get_encounter_group(_group_id) {
     if (!is_string(_group_id)) return undefined;
     switch (_group_id) {
-        case "grp_reeve_calder": {
+        case "grp_reeve_calder":
             // CHAPTER2_SCRIPT.md §7: Reeve Calder plus a small detachment (2–3). CALDER_ADD_COUNT
             // (PLACEHOLDER 2, matching Design's mockup) picks the size.
+            // No brace block after the case label: keep the switch arms uniform so the
+            // GML grammar never has to decide whether a block is a statement here.
             var _adds = [];
             var _n = clamp(CALDER_ADD_COUNT, 0, BATTLE_MAX_ADDS);
             for (var _i = 0; _i < _n; _i++) array_push(_adds, "occupation_soldier");
             return { boss: "reeve_calder", adds: _adds };
-        }
         // Batch 7–8 boss groups (adds follow Design's mockups; PLACEHOLDER).
         // CHAPTER3_SCRIPT.md §6: the Debtman plus 1-2 Lower City toughs (PLACEHOLDER 2).
         case "grp_debtman": return { boss: "debtman", adds: ["dock_thug", "debt_collector"] };

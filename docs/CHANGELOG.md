@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased — Stabilization audit; two compile blockers repaired
+- **`scr_wf_markers_data.gml` used a reserved keyword as a struct key.** The Wrenfield marker for `wf_gallows` carried `then: "WF_CALDER_INTRO_01"`; `then` is a GML keyword (`if (x) then { }`), so the file could not compile. The key is now `then_script`. Nothing read the old key by name, so behaviour is unchanged.
+- **`scr_encounter_tables.gml` opened the `grp_reeve_calder` arm with `case "...": {`.** The brace block in that position is rejected by the GML grammar; the braces were removed (the arm returns, so the statements and control flow are identical).
+- Both fixes were made in `game/` and copied into the generated `gamemaker/` scripts; `sync_gamemaker.py --check` reports parity. No stats, copy, rooms or assets changed.
+- **New `docs/STABILIZATION_AUDIT_2026-11-19.md`** records the repo audit, the critical error report, the gameplay verification matrix, the build/runtime verdicts and the weighted completion estimate (72%, below the 75% target).
+- **Checks:** grammar parse of all 154 source GML files reports 0 syntax errors (was 2 files failing); `validate_gamemaker.py` `ALL CHECKS PASSED`; `sync_gamemaker.py --check` clean; `audit_chapters.py` "No wiring problems found". Nothing was compiled or played in GameMaker — compilation and every runtime row remain UNVERIFIED.
+
 ## Unreleased — Chapters 13–14 approved
 - **Chapters 13 and 14 are approved as story (2026-11-18).** `docs/story/CHAPTER13_SCRIPT.md` ("What the Tide Kept", 256 nodes) and `docs/story/CHAPTER14_SCRIPT.md` ("The Knight Who Came Back", 189 nodes) are approved from the revised drafts, and their `audit-skip` markers now read "approved script". No dialogue data, story script, room, marker, quest row, art or audio exists for either; neither has been compiled or played.
 - **Docs:** `ACT5_OUTLINE.md`, `STORY_BIBLE.md`, `DECISIONS_AND_OPEN_QUESTIONS.md`, `GAME_DESIGN_DOCUMENT.md`, the backlog, `README.md` and the Codex prompt now record all three Act V chapters as approved as story and none built. `PARTY_MAX_LEVEL` remains 24; the approved rise to 27 is not applied.
