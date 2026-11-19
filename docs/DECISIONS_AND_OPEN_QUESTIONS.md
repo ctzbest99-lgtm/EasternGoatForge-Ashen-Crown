@@ -595,7 +595,7 @@ What the approval actually fixes:
 - **The region map for the rest of the game.** Act V is the Drowned Coast (`rm_saltreach`, `rm_saltreach_pier`, `rm_flooded_ruins`, `rm_shipwreck`); Act VI *Beneath the Mountains* takes the Ironspine; Act VII *The Ashlands* takes the ash side of the Crownveil; Act VIII *The Truth* takes the Frostwilds (`rm_rimehold`, `rm_frozen_ruins`) and the final questions. Building Act V takes the validator's unresolved references from ten to six.
 - **The knight is the act's subject and is fought once, yielding.** He is never named, never killed, and gets no bestiary kill credit; the act's revelation is the office, not the man.
 - **The Drowned Coast gets Saltreach, the toll and the leviathan**, so the region the bible named in 2026 has content for the first time — as a proposal, not canon story.
-- **The level cap must move to 27** before Act V can be played at its band. This is approved in scope but **not applied**: `PARTY_MAX_LEVEL` is still 24.
+- **The level cap is 27** for Act V. The approved decision has been applied in `game/scripts/scr_game_constants.gml` and the generated GameMaker constants; the existing XP curve reaches level 27 at 13,780 XP.
 - **Alden stays off-screen**, reachable only through a letter gated on Chapter 11's seal flags. No split, and Ending C is untouched.
 
 Open points the approval does not settle are listed in the outline's §10; nothing there was approved by implication.
@@ -635,7 +635,7 @@ The simulator uses the Act V tier (Tidesteel Blade / Drowned Coat), reachable fr
 - **Leviathan:** 91% Caelan / 73% Sera at L25, 7.2–8.4 rounds, 18–21% HP, about one death; 79% / 52% at L24.
 - **Fallen Knight:** 99% Caelan / 98% Sera at L24, 8.0–9.5 rounds, 39–41% HP; 100% at L26, 7.3–8.6 rounds, 51% HP. It yields.
 
-Without the Act V tier the commons still clear, but the Leviathan falls to 33–34% wins at 13% HP — the tier is the expected path, not optional polish. All of this is simulation; no battle has been compiled or played, and the cap is still 24.
+Without the Act V tier the commons still clear, but the Leviathan falls to 33–34% wins at 13% HP — the tier is the expected path, not optional polish. All of this is simulation; no battle has been compiled or played. The cap is now 27; the Act V tier and encounter balance still require in-engine verification.
 
 ## Chapter-wide audit (2026-11-16)
 `tools/audit_chapters.py` cross-checks the things `validate_gamemaker.py` cannot: story-script line ids against dialogue data, marker hooks against the `scr_*_play_script` dispatchers, every `zone_exit` against the target room's marker names, encounter groups/tables/enemy ids, quest stages, ambience beds, and every `**ID** · Speaker` header in `docs/story/CHAPTER*_SCRIPT.md` against a node. It is read-only, exits non-zero on a problem, and currently reports none.
