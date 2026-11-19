@@ -670,9 +670,11 @@ def emit_resources(atlas):
         last_order += 1
         block = ('    {\n      "name":"%s",\n      "order":%d,\n      "path":"%s",\n    },\n'
                  % (name, last_order, path))
-        marker = '\n],\n}'
-        assert marker in order
-        order = order.replace(marker, '\n' + block.rstrip('\n') + marker, 1)
+        # Insert before the final ResourceOrderSettings array close.
+        close_index = order.rfind("]", 0, order.rfind("}"))
+        if close_index < 0:
+            raise SystemExit('ResourceOrderSettings closing bracket not found')
+        order = order[:close_index] + block + order[close_index:]
     open(order_path, 'w', encoding='utf-8', newline='\n').write(order)
     print('registered spr_ts_blackwood and ts_blackwood in the yyp and resource_order')
 

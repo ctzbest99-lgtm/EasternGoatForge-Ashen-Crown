@@ -63,3 +63,6 @@ scr_ch5_on_room_start();
 scr_ch6_on_room_start();
 scr_ch7_on_room_start();
 scr_ch8_on_room_start();
+scr_ch9_on_room_start(); // Chapter 9 (Coleford's opening scene)
+scr_ch10_on_room_start(); // Chapter 10 (the barrow road's opening scene)
+scr_ch11_on_room_start(); // Chapter 11 (the halls and the last chamber)
