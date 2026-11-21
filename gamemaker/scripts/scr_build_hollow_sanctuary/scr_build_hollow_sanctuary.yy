@@ -2,7 +2,7 @@
   "$GMScript": "v1",
   "%Name": "scr_build_hollow_sanctuary",
   "isCompatibility": false,
-  "isDnd": false,
+  "isDnD": false,
   "name": "scr_build_hollow_sanctuary",
   "parent": {
     "name": "scripts",

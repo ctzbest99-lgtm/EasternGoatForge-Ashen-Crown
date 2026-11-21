@@ -448,15 +448,17 @@ TILE_LAYERS = [("Ground", 400, True), ("Decoration", 300, True),
 def gmr_tile_layer(name, depth, visible, tileset="ts_zone1"):
     return {
         "$GMRTileLayer": "", "%Name": name, "depth": depth,
+        "effectEnabled": True, "effectType": None,
         "gridX": 16, "gridY": 16, "hierarchyFrozen": False,
         "inheritLayerDepth": False, "inheritLayerSettings": False,
         "inheritSubLayers": True, "inheritVisibility": True,
         "layers": [], "name": name,
         "properties": [], "resourceType": "GMRTileLayer", "resourceVersion": "2.0",
-        "spriteId": None, "tilesetId":
+        "tiles": {"SerialiseHeight": 0, "SerialiseWidth": 0,
+                  "TileCompressedData": [], "TileDataFormat": 1},
+        "tilesetId":
             {"name": tileset, "path": f"tilesets/{tileset}/{tileset}.yy"},
         "userdefinedDepth": False, "visible": visible, "x": 0, "y": 0,
-        "tiles": {"SerialiseHeight": 0, "SerialiseWidth": 0, "TileSerialiseData": []},
     }
 
 def gmr_instance_layer(instances):
@@ -594,6 +596,7 @@ for name, w, h, instances, creation_code, view0 in ROOMS:
 for name, *_ in ROOMS:
     p = os.path.join(OUT, 'rooms', name, name + '.yy')
     s = open(p).read()
+    s = s.replace('"path":"PLACEHOLDER"', f'"path":"rooms/{name}/{name}.yy"')
     s = s.replace('"path": "PLACEHOLDER"', f'"path": "rooms/{name}/{name}.yy"')
     open(p, 'w').write(s)
 

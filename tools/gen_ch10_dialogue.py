@@ -86,7 +86,7 @@ def build(script, name, label, extra):
         f.write(text)
     with open(os.path.join(gdir, name + '.yy'), 'w', encoding='utf-8', newline='\n') as f:
         json.dump({
-            "$GMScript": "v1", "%Name": name, "isCompatibility": False, "isDnd": False,
+            "$GMScript": "v1", "%Name": name, "isCompatibility": False, "isDnD": False,
             "name": name, "parent": {"name": "scripts", "path": "folders/scripts.yy"},
             "resourceType": "GMScript", "resourceVersion": "2.0",
         }, f, indent=2)

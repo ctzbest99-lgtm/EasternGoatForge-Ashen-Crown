@@ -2,7 +2,7 @@
   "$GMScript": "v1",
   "%Name": "scr_audio",
   "isCompatibility": false,
-  "isDnd": false,
+  "isDnD": false,
   "name": "scr_audio",
   "parent": {
     "name": "scripts",

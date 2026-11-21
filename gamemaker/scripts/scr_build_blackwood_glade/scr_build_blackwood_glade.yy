@@ -2,7 +2,7 @@
   "$GMScript": "v1",
   "%Name": "scr_build_blackwood_glade",
   "isCompatibility": false,
-  "isDnd": false,
+  "isDnD": false,
   "name": "scr_build_blackwood_glade",
   "parent": {
     "name": "scripts",

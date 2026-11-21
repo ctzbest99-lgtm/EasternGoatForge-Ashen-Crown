@@ -155,14 +155,16 @@ def marker_room_yy(name, w, h, spawn_tx, spawn_ty):
                 "resourceVersion": "2.0", "userdefinedDepth": False, "visible": True,
             }
         return {
-            "$GMRTileLayer": "", "%Name": lname, "depth": depth, "gridX": 16, "gridY": 16,
+            "$GMRTileLayer": "", "%Name": lname, "depth": depth,
+            "effectEnabled": True, "effectType": None,
+            "gridX": 16, "gridY": 16,
             "hierarchyFrozen": False, "inheritLayerDepth": False, "inheritLayerSettings": False,
             "inheritSubLayers": True, "inheritVisibility": True, "layers": [], "name": lname,
             "properties": [], "resourceType": "GMRTileLayer", "resourceVersion": "2.0",
-            "spriteId": None,
+            "tiles": {"SerialiseHeight": 0, "SerialiseWidth": 0,
+                      "TileCompressedData": [], "TileDataFormat": 1},
             "tilesetId": {"name": "ts_zone1", "path": "tilesets/ts_zone1/ts_zone1.yy"},
             "userdefinedDepth": False, "visible": visible, "x": 0, "y": 0,
-            "tiles": {"SerialiseHeight": 0, "SerialiseWidth": 0, "TileSerialiseData": []},
         }
 
     view = {"hborder": 32, "hport": 360, "hspeed": -1, "hview": 180, "inherit": False,
@@ -174,7 +176,7 @@ def marker_room_yy(name, w, h, spawn_tx, spawn_ty):
         "$GMRoom": "v1", "%Name": name,
         "creationCodeFile": "${project_dir}/rooms/" + name + "/RoomCreationCode.gml",
         "inheritCode": False, "inheritCreationOrder": False, "inheritLayers": False,
-        "instanceCreationOrder": [{"name": "inst_player", "path": "PLACEHOLDER"}],
+        "instanceCreationOrder": [{"name": "inst_player", "path": "rooms/" + name + "/" + name + ".yy"}],
         "isDnd": False,
         "layers": [
             layer("Instances", 0, "instance"),
@@ -431,7 +433,7 @@ def mirror_script(fn):
         f.write(open(os.path.join(SCR, fn), encoding='utf-8').read())
     with open(os.path.join(gdir, fn[:-4] + '.yy'), 'w', newline='\n') as f:
         json.dump({
-            "$GMScript": "v1", "%Name": fn[:-4], "isCompatibility": False, "isDnd": False,
+            "$GMScript": "v1", "%Name": fn[:-4], "isCompatibility": False, "isDnD": False,
             "name": fn[:-4], "parent": {"name": "scripts", "path": "folders/scripts.yy"},
             "resourceType": "GMScript", "resourceVersion": "2.0",
         }, f, indent=2)

@@ -102,7 +102,7 @@ with open(os.path.join(gdir, NAME + ".gml"), "w", encoding="utf-8", newline="\n"
     f.write(text)
 with open(os.path.join(gdir, NAME + ".yy"), "w", encoding="utf-8", newline="\n") as f:
     json.dump({
-        "$GMScript": "v1", "%Name": NAME, "isCompatibility": False, "isDnd": False,
+        "$GMScript": "v1", "%Name": NAME, "isCompatibility": False, "isDnD": False,
         "name": NAME, "parent": {"name": "scripts", "path": "folders/scripts.yy"},
         "resourceType": "GMScript", "resourceVersion": "2.0",
     }, f, indent=2)

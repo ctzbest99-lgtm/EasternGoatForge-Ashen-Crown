@@ -195,7 +195,7 @@ def mirror_script(fn):
         f.write(open(os.path.join(SCR, fn), encoding='utf-8').read())
     with open(os.path.join(gdir, fn[:-4] + '.yy'), 'w', encoding='utf-8', newline='\n') as f:
         json.dump({
-            "$GMScript": "v1", "%Name": fn[:-4], "isCompatibility": False, "isDnd": False,
+            "$GMScript": "v1", "%Name": fn[:-4], "isCompatibility": False, "isDnD": False,
             "name": fn[:-4], "parent": {"name": "scripts", "path": "folders/scripts.yy"},
             "resourceType": "GMScript", "resourceVersion": "2.0",
         }, f, indent=2)
