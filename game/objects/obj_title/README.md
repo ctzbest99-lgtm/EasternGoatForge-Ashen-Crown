@@ -9,7 +9,7 @@ The room opens **directly on the main menu** — there is no press-any-key gate.
 | Entry | Behaviour |
 |---|---|
 | New Game | Asks for confirmation (default **No**), then resets `global.game` once and starts at Greyhaven. Existing save files are not deleted; current unsaved progress is lost. |
-| Continue | Loads the **newest valid** save by file write time. Disabled when there is no readable, compatible save. |
+| Continue | Loads the **newest valid** save by numeric save time. Disabled when there is no readable, compatible save. |
 | Load Game | Opens the three save slots, with location, lead level/name, party, playtime and gold. Empty and damaged slots are shown safely and cannot crash the loader. |
 | Settings | The audio settings the project actually supports: Music, Ambience, Sound effects and Mute, saved immediately to `ashen_settings.ini`. The fixed keyboard controls are shown as information, not as a fake remapping screen. |
 | Exit Game | Calls `game_end()`. |
@@ -22,6 +22,6 @@ Keyboard: arrows move/change, `Z` / `Enter` / `Space` confirm, `X` / `Backspace`
 
 ## Save safety
 
-`scr_save_any_valid()` counts only compatible saves for Continue. `scr_save_latest_slot()` uses `file_datetime()` and returns 0 when nothing is valid. `scr_save_slot_info()` marks missing, corrupt and incompatible files without throwing, and `scr_save_load()` re-checks compatibility before applying anything.
+`scr_save_any_valid()` counts only compatible saves for Continue. `scr_save_latest_slot()` uses the numeric `saved_at_epoch` written by current saves; older saves without it fall back to the highest valid slot. It returns 0 when nothing is valid. `scr_save_slot_info()` marks missing, corrupt and incompatible files without throwing, and `scr_save_load()` re-checks compatibility before applying anything.
 
 See `docs/MAIN_MENU.md` for the implementation and test record, and `game/rooms/ROOM_SETUP.md` section 0 for room setup.

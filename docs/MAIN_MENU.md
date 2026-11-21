@@ -30,7 +30,7 @@ The background, parallax layers, embers and logo are the existing title assets. 
 ### Continue
 
 - `scr_save_any_valid()` checks all three slots for a readable, schema-compatible save.
-- `scr_save_latest_slot()` chooses the valid save with the newest file write time (ties go to the higher slot) and `scr_save_load()` loads it directly.
+- `scr_save_latest_slot()` chooses the valid save with the newest numeric `saved_at_epoch` (ties go to the higher slot) and `scr_save_load()` loads it directly. Saves written before that field existed fall back to the highest valid slot, so an existing save library still gives Continue a target.
 - The entry is disabled when no valid save exists. A present but corrupt/incompatible file does not enable it.
 - A failed load leaves the title usable and prints a message; it never crashes.
 
@@ -62,13 +62,13 @@ The background, parallax layers, embers and logo are the existing title assets. 
 - `game/objects/obj_title/Create.gml`
 - `game/objects/obj_title/Step.gml`
 - `game/objects/obj_title/Draw_GUI.gml`
-- `game/scripts/scr_save.gml` — `scr_save_any_valid()`, `scr_save_latest_slot()`, `modified_at` on slot info, `scr_new_game_start()`
+- `game/scripts/scr_save.gml` — `scr_save_any_valid()`, `scr_save_latest_slot()`, `saved_at_epoch` on new saves/slot info, `scr_new_game_start()`
 - `game/scripts/scr_input.gml` — current mainline controller-aware input used by the menu
 - `game/rooms/ROOM_SETUP.md` — title-room setup text
 - generated mirrors under `gamemaker/objects/obj_title/`, `gamemaker/scripts/scr_save/` and `gamemaker/scripts/scr_input/`
 - this document and `game/objects/obj_title/README.md`
 
-No new assets, objects, rooms, scripts, dependencies or save-schema changes.
+No new assets, objects, rooms, scripts, dependencies or save-schema version changes. New saves add `saved_at_epoch`; older saves load unchanged and fall back to the highest valid slot for Continue.
 
 ## Tests performed (actual)
 
