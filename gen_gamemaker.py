@@ -657,7 +657,7 @@ write_json(os.path.join(OUT, 'AshenCrown.yyp'), {
     "ForcedPrefabProjectReferences": [],
     "IncludedFiles": included,
     "isEcma": False, "LibraryEmitters": [],
-    "MetaData": {"IDEVersion": "2024.14.4.222"},
+    "MetaData": {},
     "name": "AshenCrown", "resources": RESOURCES,
     "resourceType": "GMProject", "resourceVersion": "2.0",
     "RoomOrderNodes": room_order, "templateType": "game",

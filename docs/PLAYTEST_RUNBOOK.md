@@ -23,7 +23,7 @@ Every step has a **gate**: if it fails, stop, fix, and re-run from the top of th
 ## Phase 1 — Opening the project (this is where it breaks first)
 
 ### 1.1 Version gate — the single most likely failure
-The project's `MetaData.IDEVersion` is **2024.14.4.222** (`gamemaker/AshenCrown.yyp`, line ~849). Use an IDE at **2024.14 or newer**.
+The generated project does not pin a `MetaData.IDEVersion`; GameMaker records its own version when the project is opened and saved. Use IDE **2026.1.0.27** with runtime **2026.1.0.28**.
 
 - If your IDE is older, it offers to **upgrade/convert** the project. **Cancel.** Update the IDE first. Conversion is one-way and rewrites every `.yy`, which will bury any real bug under thousands of formatting diffs.
 - If your IDE is much newer, expect a quieter save-time rewrite of resource versions. That is fine, but note it in the test plan.
