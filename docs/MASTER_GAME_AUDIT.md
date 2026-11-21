@@ -272,7 +272,16 @@ revision. They do not rewrite story canon.
 - Chapter 5 state-machine flow and its guard conditions.
 - Balance model output (a simulation, not the game).
 
-**Not verified**
+**Owner-reported (2026-11-19; not independently verified)**
+
+The project owner reports that the game launches and that keyboard input, player
+movement, combat, inventory, equipment, party management, leveling and stat upgrades
+work. Area transitions and entering areas, NPC interactions and dialogue, save/load
+reliability, consumable use outside combat, controller support and full GameMaker IDE
+compile confirmation remain outstanding. No build log or commit-specific evidence was
+supplied with this report. It does not upgrade any tool-verified claim above.
+
+**Not independently verified**
 
 - GameMaker IDE import or compilation.
 - Runtime rendering, collision, camera, menus, battle flow, save/load, audio.
@@ -280,7 +289,8 @@ revision. They do not rewrite story canon.
 - Any visual review of maps, UI, portraits or animations.
 - Act V–VIII content, because it is not built.
 
-`docs/GAMEMAKER_VERIFICATION.md` records every check and every `NOT RUN` item.
+`docs/GAMEMAKER_VERIFICATION.md` records every check, the owner report in §1.1, and
+every `NOT RUN` item.
 
 ---
 

@@ -1,7 +1,7 @@
 # ASHEN CROWN — GameMaker Verification
 
 **Date:** 2026-11-19
-**Revision:** `b4afeb7f` (PR #40 tip, branch `freebuff/world-art-equipment-pass`); follow-ups at `5994fae8` (PR #44 tip, branch `freebuff/audit-followups`)
+**Revision:** `main` after merging `freebuff/audit-save-repair`, `freebuff/audit-ci`, `freebuff/audit-followups` and `freebuff/audit-docs` (2026-11-19)
 **Project file:** `gamemaker/AshenCrown.yyp`
 **Audit branches:** `freebuff/audit-save-repair`, `freebuff/audit-ci`, `freebuff/audit-docs`, `freebuff/audit-followups`
 **Environment:** Ubuntu 24.04.5 LTS cloud workspace (x86_64, `DISPLAY` unset); no GameMaker IDE, runtime, account/licence or display. The compile and F6 attempt is logged in §2.9.
@@ -14,7 +14,8 @@
 |---|---|
 | Did the GameMaker project import? | **NOT RUN** |
 | Did it compile? | **NOT RUN** |
-| Did the game launch? | **NOT RUN** |
+| Did the game launch? | **OWNER-REPORTED YES** |
+| Did the owner complete a partial gameplay pass? | **OWNER-REPORTED YES** (see §1.1) |
 | Was any chapter played? | **NOT RUN** |
 | Was a save loaded in-engine? | **NOT RUN** |
 | Was `scr_save_migration_test()` (F6) run? | **NOT RUN** |
@@ -25,14 +26,47 @@
 | Did source/generated synchronization pass? | **YES** |
 | Did chapter wiring and item audits pass? | **YES** |
 
-Do not describe this revision as “compiles”, “runs”, “playable” or “tested”. The only
-verified claims are structural, static and model-based.
+The static checks here do not establish compilation. The project owner separately
+reports a launch and a partial gameplay pass in §1.1; that report was not independently
+reproduced and no build log was supplied. Do not describe this revision as “compiles”
+or “fully playable”, and do not upgrade a `NOT RUN` row without reproducible evidence.
+
+### 1.1 Owner-reported manual testing (2026-11-19)
+
+Source: the project owner. This report was not produced or reproduced in this workspace;
+no executable, build log, IDE/runtime version or commit hash was supplied with it.
+
+**Reported working**
+
+- The game launches.
+- Keyboard input.
+- Player movement.
+- Combat.
+- Inventory.
+- Equipment.
+- Party management.
+- Leveling and stat upgrades.
+
+**Reported outstanding or not yet confirmed**
+
+- Area transitions and entering areas.
+- NPC interactions and dialogue.
+- Save/load reliability.
+- Consumable item use outside combat.
+- Controller support.
+- Full GameMaker IDE compile confirmation.
+
+These are owner reports, not checks performed in this workspace. They do not change the
+automated results below, and no check is upgraded from `NOT RUN` on the strength of this
+report alone.
 
 ---
 
 ## 2. Automated results
 
-All commands were run from the repository root after the repairs.
+All commands were run from the repository root after the repairs. Sections 2.1–2.9
+record the audit-branch snapshot; §2.10 records the rerun after all four branches were
+merged into `main`.
 
 ### 2.1 Structural validator
 
@@ -211,8 +245,38 @@ exit 0
 | F6 `scr_save_migration_test()` on v1–v4 fixtures | **NOT RUN** | Same blocker; no GameMaker process started |
 | Build log / first compiler error | **none produced** | No build was started |
 
-**Status unchanged.** §1, §4 and §6 remain the source of truth. The static checks above
-are not a compile and do not prove the in-engine self-test passes.
+**Status unchanged for this workspace.** The owner's later partial pass is recorded in
+§1.1; it is not a build log or an F6 result. §1, §4 and §6 remain the source of truth
+for the checks run here.
+
+### 2.10 Post-merge rerun on main (2026-11-19)
+
+After the four audit branches were merged in dependency order, the static gates were
+rerun on the merged tree:
+
+```
+python3 validate_gamemaker.py
+  parsed 1290 json files; datafiles checked: 90
+  ALL CHECKS PASSED (same four pre-existing Act I band warnings)
+python3 tools/sync_gamemaker.py --check
+  Managed file changes: 0; SYNC OK
+python3 tools/audit_chapters.py
+  No wiring problems found
+python3 tools/equipment_check.py
+  no errors; ALL CHECKS PASSED (5 balance flags)
+python3 tests/save_migration_test.py
+  save migration fixtures and Chapter 1 quest wiring: OK
+  runtime GML self-test: NOT RUN (requires GameMaker)
+python3 tools/sim_ch5_flow.py
+  ALL CHECKS PASSED; yield and kill branches complete
+python3 -m py_compile gen_gamemaker.py validate_gamemaker.py tools/*.py
+  exit 0
+git diff --check
+  clean
+```
+
+These are static/contract checks only. The owner's separate manual report is in §1.1;
+the GameMaker compile and in-engine rows in §4 remain unverified.
 
 ---
 
@@ -262,7 +326,11 @@ are not a compile and do not prove the in-engine self-test passes.
 | Visual review of maps/art | NOT RUN | No display |
 
 **Do not convert any of these to “PASS” based on a validator.** They require a human at
-a GameMaker IDE with a display.
+a GameMaker IDE with a display. The owner's §1.1 report covers launch, keyboard input,
+movement, combat, inventory, equipment, party management, leveling and stat upgrades;
+those items remain owner-reported rather than independently verified. The report does
+not cover save/load reliability, dialogue, room transitions, consumables outside
+combat, controller support or audio.
 
 The import, compile and F6 rows were attempted on 2026-11-19; §2.9 records the probe
 output and why the build could not start. No check was skipped for convenience.
@@ -367,5 +435,6 @@ Visual: PASS/FAIL
 Known failures:
 ```
 
-Only then may `docs/GAMEMAKER_VERIFICATION.md` change a `NOT RUN` row to a real result.
+Owner-reported items in §1.1 are recorded as owner reports, not PASS. Only a
+reproducible build log or playtest may change a §4 row to a real result.
 
