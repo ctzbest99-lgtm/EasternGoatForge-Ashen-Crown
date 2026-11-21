@@ -87,6 +87,19 @@ def emit_room(fn_name, w, h, ground, decor, overhead, coll, note):
     return '\n'.join(body) + '\n'
 
 
+def gml_value(value):
+    """Serialize a marker value as GML, including nested enemy_table structs."""
+    if isinstance(value, str):
+        return '"' + value.replace('\\', '\\\\').replace('"', '\\"') + '"'
+    if isinstance(value, bool):
+        return 'true' if value else 'false'
+    if isinstance(value, list):
+        return '[' + ', '.join(gml_value(item) for item in value) + ']'
+    if isinstance(value, dict):
+        return '{ ' + ', '.join(f'{key}: {gml_value(item)}' for key, item in value.items()) + ' }'
+    return str(value)
+
+
 def emit_markers(fn, w, h, markers, note):
     body = []
     body.append(f'/// {fn}() -> array of marker structs ({w}x{h} tiles). {note}')
@@ -96,20 +109,7 @@ def emit_markers(fn, w, h, markers, note):
     for m in markers:
         parts = []
         for k, v in m.items():
-            if isinstance(v, str):
-                parts.append(f'{k}: "{v}"')
-            elif isinstance(v, bool):
-                parts.append(f'{k}: {"true" if v else "false"}')
-            elif isinstance(v, list):
-                items = []
-                for x in v:
-                    if isinstance(x, str):
-                        items.append(f'"{x}"')
-                    else:
-                        items.append(str(x))
-                parts.append(f'{k}: [{", ".join(items)}]')
-            else:
-                parts.append(f'{k}: {v}')
+            parts.append(f'{k}: {gml_value(v)}')
         body.append('        { ' + ', '.join(parts) + ' },')
     body.append('    ];')
     body.append('}')
