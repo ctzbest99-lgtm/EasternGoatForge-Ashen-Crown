@@ -29,6 +29,15 @@ jobs:
       - name: Verify source-to-GameMaker synchronization
         run: python3 tools/sync_gamemaker.py --check
 
+      - name: Check Python tool syntax
+        run: python3 -m py_compile gen_gamemaker.py validate_gamemaker.py tools/*.py
+
+      # Item/equipment schema, progression tiers and merchant coverage. This was a manual
+      # check before; wiring it here catches data regressions that the structural validator
+      # does not read.
+      - name: Audit equipment and item progression
+        run: python3 tools/equipment_check.py
+
       # Catches the wiring validate_gamemaker.py cannot see: scripted lines with no dialogue
       # node, marker hooks with no dispatcher, zone exits naming a spawn the target room does
       # not define, undefined encounter tables/enemies, quest stages, and rooms with no ambience.
