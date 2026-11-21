@@ -64,11 +64,13 @@ The background, parallax layers, embers and logo are the existing title assets. 
 - `game/objects/obj_title/Draw_GUI.gml`
 - `game/scripts/scr_save.gml` — `scr_save_any_valid()`, `scr_save_latest_slot()`, `saved_at_epoch` on new saves/slot info, `scr_new_game_start()`
 - `game/scripts/scr_input.gml` — current mainline controller-aware input used by the menu
+- `game/scripts/scr_options.gml` — shared audio settings model used by the title and Adventure menu
+- `gamemaker/AshenCrown.yyp` — register the `scr_options` script resource
 - `game/rooms/ROOM_SETUP.md` — title-room setup text
-- generated mirrors under `gamemaker/objects/obj_title/`, `gamemaker/scripts/scr_save/` and `gamemaker/scripts/scr_input/`
+- generated mirrors under `gamemaker/objects/obj_title/`, `gamemaker/scripts/scr_save/`, `gamemaker/scripts/scr_input/` and `gamemaker/scripts/scr_options/`
 - this document and `game/objects/obj_title/README.md`
 
-No new assets, objects, rooms, scripts, dependencies or save-schema version changes. New saves add `saved_at_epoch`; older saves load unchanged and fall back to the highest valid slot for Continue.
+No new sprites, objects, rooms or external dependencies. The settings work needed the existing `scr_options` model added as a real script resource. New saves add `saved_at_epoch`; older saves load unchanged and fall back to the highest valid slot for Continue.
 
 ## Tests performed (actual)
 
