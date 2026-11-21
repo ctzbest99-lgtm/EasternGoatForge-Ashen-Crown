@@ -14,6 +14,37 @@ function scr_save_any_exists() {
     return false;
 }
 
+/// True when at least one slot has a readable, compatible save. A corrupt file is not
+/// a valid Continue target, but it still appears in Load Game as a damaged slot.
+function scr_save_any_valid() {
+    for (var _i = 1; _i <= SAVE_SLOT_COUNT; _i++) {
+        var _info = scr_save_slot_info(_i);
+        if (_info.ok) return true;
+    }
+    return false;
+}
+
+/// The newest valid slot, or 0 when there is none. New saves carry the numeric
+/// `saved_at_epoch`; saves written before that field existed have 0 and fall back to
+/// the highest valid slot so Continue still works for an existing library. Ties prefer
+/// the higher slot number.
+function scr_save_latest_slot() {
+    var _best = 0;
+    var _best_time = 0;
+    var _fallback = 0;
+    for (var _i = 1; _i <= SAVE_SLOT_COUNT; _i++) {
+        var _info = scr_save_slot_info(_i);
+        if (!_info.ok) continue;
+        _fallback = _i;
+        var _t = variable_struct_exists(_info, "saved_at_epoch") ? _info.saved_at_epoch : 0;
+        if (is_real(_t) && _t > 0 && _t >= _best_time) {
+            _best_time = _t;
+            _best = _i;
+        }
+    }
+    return (_best != 0) ? _best : _fallback;
+}
+
 function scr_save_playtime_seconds() {
     scr_game_state_init();
     var _frames = variable_struct_exists(global.game, "playtime_frames") ? global.game.playtime_frames : 0;
@@ -161,6 +192,7 @@ function scr_save_collect(_slot = 1) {
         slot: clamp(floor(_slot), 1, SAVE_SLOT_COUNT),
         playtime_seconds: scr_save_playtime_seconds(),
         saved_at: date_datetime_string(date_current_datetime()),
+        saved_at_epoch: date_current_datetime(), // numeric, used to pick the latest valid Continue slot
         room_name: _room_name,
         location_name: scr_save_location_name(_room_name, _px, _py),
         player_x: _px,
@@ -357,6 +389,7 @@ function scr_save_slot_info(_slot) {
         ok: false,
         empty: !file_exists(scr_save_filename(_slot)),
         corrupt: false,
+        saved_at_epoch: 0,             // numeric save time; 0 when absent (older saves)
         location_name: "",
         lead_level: 1,
         lead_id: "",
@@ -395,6 +428,7 @@ function scr_save_slot_info(_slot) {
             }
         }
     }
+    _info.saved_at_epoch = (variable_struct_exists(_data, "saved_at_epoch") && is_real(_data.saved_at_epoch)) ? _data.saved_at_epoch : 0;
     _info.playtime_seconds = variable_struct_exists(_data, "playtime_seconds") ? _data.playtime_seconds : 0;
     _info.gold = variable_struct_exists(_data, "gold") ? _data.gold : 0;
     _info.room_name = variable_struct_exists(_data, "room_name") ? string(_data.room_name) : "";
@@ -407,6 +441,22 @@ function scr_game_state_reset() {
     global.game = undefined;
     scr_game_state_init();
     if (variable_global_exists("map_spawn_name")) global.map_spawn_name = "";
+}
+
+/// Entry point for New Game. One reset, one starting-equipment pass; the title's
+/// double-click guard sits in front of this. Starting flags / quests intentionally
+/// stay empty: the overworld arrival marker starts Q_MAIN_FIND_MIRA and sets its flags.
+function scr_new_game_start() {
+    scr_game_state_reset();
+    var _g = global.game;
+    var _kael = scr_roster_find(_g.roster, "kael");
+    if (is_struct(_kael)) {
+        _kael.equipment.weapon = "item_kaels_longsword";
+        scr_actor_refresh_equipment(_kael);
+    }
+    _g.playtime_frames = 0;
+    _g.gold = 0;
+    return _g;
 }
 
 function scr_save_apply_member(_actor, _snap) {
