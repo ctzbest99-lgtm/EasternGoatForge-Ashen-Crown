@@ -1,5 +1,21 @@
 # Changelog
 
+## Unreleased — Build and runtime record scaffold in the audit
+- **`docs/STABILIZATION_AUDIT_2026-11-19.md` gains section F1**, the place to record the GameMaker build log and the `docs/PLAYTEST_RUNBOOK.md` results. Every field is `NOT RUN` because no build has been attempted; the section states that the milestone and the score stay put until real output is quoted there.
+- **The 28.0 withheld points are itemised** (core 5, gameplay 7, battle 5, zones 4, story 5, art 2, docs 0) together with the release rule: nothing is released until the build compiles, then each category is awarded in proportion to the rows that PASS, with unrun rows awarding nothing and failed features staying withheld until fixed and retested.
+- Docs only; no code, data or assets changed, and no completion number was altered. Nothing was compiled or played.
+
+## Unreleased — Sync workflow documents the `--apply` sprite hazard
+- **`docs/GAMEMAKER_SYNC_WORKFLOW.md` now warns against using `sync_gamemaker.py --apply` for a GML-only edit.** It copies every generated resource in the preview, and the committed sprites carry IDE-assigned frame names while the generator emits its own UUIDs; a single apply for two script fixes in the 2026-11-19 pass touched 135 generated files and broke sprite validation (120 sprite asset files, reverted). The doc says to copy the one changed GML file into its `gamemaker/` resource instead, and notes that `--check` compares GML only, so `validate_gamemaker.py` is the gate that catches sprite drift.
+- Docs only; no code, data or assets changed. Nothing was compiled or played.
+
+## Unreleased — Stabilization audit; two compile blockers repaired
+- **`scr_wf_markers_data.gml` used a reserved keyword as a struct key.** The Wrenfield marker for `wf_gallows` carried `then: "WF_CALDER_INTRO_01"`; `then` is a GML keyword (`if (x) then { }`), so the file could not compile. The key is now `then_script`. Nothing read the old key by name, so behaviour is unchanged.
+- **`scr_encounter_tables.gml` opened the `grp_reeve_calder` arm with `case "...": {`.** The brace block in that position is rejected by the GML grammar; the braces were removed (the arm returns, so the statements and control flow are identical).
+- Both fixes were made in `game/` and copied into the generated `gamemaker/` scripts; `sync_gamemaker.py --check` reports parity. No stats, copy, rooms or assets changed.
+- **New `docs/STABILIZATION_AUDIT_2026-11-19.md`** records the repo audit, the critical error report, the gameplay verification matrix, the build/runtime verdicts and the weighted completion estimate (72%, below the 75% target).
+- **Checks:** grammar parse of all 154 source GML files reports 0 syntax errors (was 2 files failing); `validate_gamemaker.py` `ALL CHECKS PASSED`; `sync_gamemaker.py --check` clean; `audit_chapters.py` "No wiring problems found". Nothing was compiled or played in GameMaker — compilation and every runtime row remain UNVERIFIED.
+
 ## Unreleased — Valemere, Coleford, the garrison and the Blackwood shrine leave the blockout (2026-11-19)
 - **Four more regions get their own material.** `ts_valemere` dresses `rm_valemere_road`, `rm_valemere`, `rm_salt_lamp` and `rm_warehouse` as a harbour town (grey-blue cobbles, pale plaster and timber, slate, oak, brass lamp, well, crates and barrels); `ts_coleford` dresses `rm_town` as an inland market town (mud roads with ruts, cream plaster, thatch, warm oak); `ts_garrison` dresses `rm_blackwood_garrison` and `rm_garrison_keep` as a military post (courtyard paving, dressed stone, dark planks). All three are built by `tools/gen_region_tilesets.py`, which repaints the Wrenfield ids the builders already address — so the rooms only switched their prepare call to `scr_vm_prepare_layers`, `scr_cf_prepare_layers` or `scr_gr_prepare_layers`, and every layout, marker, collision box and dialogue id is untouched.
 - **The Blackwood shrine and glade are now Blackwood.** Both rooms build on `ts_blackwood`: their ground is the moss band (ids 800–807) and their tree line the blocking thorn band (864) instead of Wrenfield grass and a green tree, while the Aethari stone face keeps its zone1 stone. The doors clearing shares the same constants, so its edges pick up the thorn too.
