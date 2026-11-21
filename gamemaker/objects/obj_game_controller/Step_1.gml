@@ -3,6 +3,7 @@
 global.game.frame += 1;
 scr_save_tick_playtime();
 scr_dialogue_try_advance_queue();
+scr_ch1_quest_tick(); // Chapter 1 Find Mira stages (flag backfill, position, room)
 scr_ch2_tick(); // Chapter 2 wake-up at the Crownveil door (CV_WAKE)
 scr_ch3_tick(); // Chapter 3 (no per-frame beats yet)
 scr_ch4_tick(); // Chapter 4 (no per-frame beats yet)
@@ -37,4 +38,10 @@ if (!_on_title && room != BATTLE_ROOM && scr_input_menu_pressed()) {
 // Debug: F5 opens the save panel from the overworld. Off unless DEBUG_SAVE_ANYWHERE is true.
 if (DEBUG_SAVE_ANYWHERE && !_on_title && room != BATTLE_ROOM && keyboard_check_pressed(vk_f5)) {
     if (!scr_input_locked()) scr_save_menu_open("save", false);
+}
+
+// Debug: F6 runs the sanitized v1-v4 save-migration regression. Off unless DEBUG_SAVE_SELFTEST is true.
+if (DEBUG_SAVE_SELFTEST && !_on_title && room != BATTLE_ROOM && keyboard_check_pressed(vk_f6)) {
+    var _save_test = scr_save_migration_test();
+    if (!scr_input_locked()) scr_dialogue_open(_save_test.lines, "SYSTEM");
 }
