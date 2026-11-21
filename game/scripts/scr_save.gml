@@ -14,6 +14,33 @@ function scr_save_any_exists() {
     return false;
 }
 
+/// True when at least one slot has a readable, compatible save. A corrupt file is not
+/// a valid Continue target, but it still appears in Load Game as a damaged slot.
+function scr_save_any_valid() {
+    for (var _i = 1; _i <= SAVE_SLOT_COUNT; _i++) {
+        var _info = scr_save_slot_info(_i);
+        if (_info.ok) return true;
+    }
+    return false;
+}
+
+/// The newest valid slot (by file write time), or 0 when there is none. Ties prefer
+/// the higher slot number so the result is deterministic.
+function scr_save_latest_slot() {
+    var _best = 0;
+    var _best_time = -1;
+    for (var _i = 1; _i <= SAVE_SLOT_COUNT; _i++) {
+        var _info = scr_save_slot_info(_i);
+        if (!_info.ok) continue;
+        var _t = variable_struct_exists(_info, "modified_at") ? _info.modified_at : 0;
+        if (_t >= _best_time) {
+            _best_time = _t;
+            _best = _i;
+        }
+    }
+    return _best;
+}
+
 function scr_save_playtime_seconds() {
     scr_game_state_init();
     var _frames = variable_struct_exists(global.game, "playtime_frames") ? global.game.playtime_frames : 0;
@@ -357,6 +384,7 @@ function scr_save_slot_info(_slot) {
         ok: false,
         empty: !file_exists(scr_save_filename(_slot)),
         corrupt: false,
+        modified_at: 0,                // file write time, used by Continue (latest valid save)
         location_name: "",
         lead_level: 1,
         lead_id: "",
@@ -367,6 +395,7 @@ function scr_save_slot_info(_slot) {
         room_name: ""
     };
     if (!_info.exists) return _info;
+    _info.modified_at = file_datetime(scr_save_filename(_slot));
     var _data = scr_save_read_raw(_slot);
     if (!is_struct(_data) || !scr_save_is_compatible(_data)) {
         _info.corrupt = true;
@@ -407,6 +436,22 @@ function scr_game_state_reset() {
     global.game = undefined;
     scr_game_state_init();
     if (variable_global_exists("map_spawn_name")) global.map_spawn_name = "";
+}
+
+/// Entry point for New Game. One reset, one starting-equipment pass; the title's
+/// double-click guard sits in front of this. Starting flags / quests intentionally
+/// stay empty: the overworld arrival marker starts Q_MAIN_FIND_MIRA and sets its flags.
+function scr_new_game_start() {
+    scr_game_state_reset();
+    var _g = global.game;
+    var _kael = scr_roster_find(_g.roster, "kael");
+    if (is_struct(_kael)) {
+        _kael.equipment.weapon = "item_kaels_longsword";
+        scr_actor_refresh_equipment(_kael);
+    }
+    _g.playtime_frames = 0;
+    _g.gold = 0;
+    return _g;
 }
 
 function scr_save_apply_member(_actor, _snap) {
