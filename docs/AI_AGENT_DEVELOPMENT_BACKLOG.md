@@ -1,8 +1,10 @@
 # AI Agent Development Backlog — ASHEN CROWN
 
-**Last reconciled:** 2026-11-18
+**Last reconciled:** 2026-11-19
 
-**Updated 2026-11-18:** the gear, merchant and Ashlands work merged to `main` in `8e412618` (PR #31). Acts I–IV are built and unplayed (Chapters 1–11 plus the three standalone Ashlands rooms, 34 rooms, 95 scripts), audio is wired through `scr_audio`, and Act V's Chapters 12–14 are approved as story and its enemy batch is in data; no Act V room or dialogue is built. Items below that call any of that data-only, design-only or audio-absent are done — check `docs/CHANGELOG.md` and `docs/DEVELOPMENT_ROADMAP.md` for current state. Also prefer the targeted importers in `tools/` over re-running `gen_gamemaker.py` wholesale, which churns resource UUIDs.
+**Audit baseline (2026-11-19):** PR #40 (`freebuff/world-art-equipment-pass`, `b4afeb7f`) is the audited revision. It adds the regional art, seven-slot equipment, centralized input and `rm_rimehold`; `main` is still `56eabe45` and does not contain PR #40. Measured on the PR #40 tree: 35 rooms, 97 scripts, 1,087 sprite resources, 29 sounds. Acts I–IV (Chapters 1–11) are built and unplayed; Act V's Chapters 12–14 are approved as story and its enemy batch is in data, with no Act V room or dialogue built. Three defects were repaired in the audit (legacy save maxima/MAG, seven-slot equipped count, refused unique drop message); the full evidence is in `docs/MASTER_GAME_AUDIT.md` and `docs/BUG_AND_REPAIR_LOG.md`. Prefer the targeted importers in `tools/` over re-running `gen_gamemaker.py` wholesale, which churns resource UUIDs.
+
+**Earlier state (2026-11-18):** the gear, merchant and Ashlands work merged to `main` in `8e412618` (PR #31), reporting 34 rooms and 95 scripts. That is the pre-PR #40 `main` state, not the audited tree.
 **Purpose:** single actionable handoff for Codex or another coding agent. Work top-to-bottom, one item at a time.  
 **Project:** GameMaker / GML. Open `gamemaker/AshenCrown.yyp`; edit human-readable source in `game/` unless a task specifically concerns project metadata.
 
@@ -26,16 +28,17 @@
 - Core combat: menu-driven turn-based battles; four active party members plus one reserve; no automatic enemy level scaling by default.
 - Adventure menu: Items, Equip, Party Order, Status, Bestiary.
 - Save/load: only at save crystals inside a town church or tavern. No save-anywhere and no Save row in the field menu.
-- Chapters 1–11 plus `rm_ashlands_breach`, `rm_ashlands_ruins` and `rm_ashlands_depths`: built, merged to `main` in `8e412618` (PR #31), and README reports 34 rooms. They are not yet verified by an IDE playtest — `docs/PLAYTEST_RUNBOOK.md` is the order to check them in.
+- Chapters 1–11 plus `rm_ashlands_breach`, `rm_ashlands_ruins`, `rm_ashlands_depths` and `rm_rimehold`: built on the audited PR #40 tree — **35 rooms, 97 scripts**. They are not verified by an IDE playtest; `docs/PLAYTEST_RUNBOOK.md` is the order to check them in. `main` currently has the older 34-room/95-script state because PR #40 is unmerged.
 - Act V: Chapters 12–14 approved as story; seven enemies, `drowned_coast` and three boss groups are data and simulated; no rooms, dialogue, quest rows or story code.
-- Acts VI–VIII: titles only. The Ashlands (Act VII) has three standalone blockout rooms (`rm_ashlands_breach`, `rm_ashlands_ruins`, `rm_ashlands_depths`) but no chapter, quest, enemy or tileset of its own.
+- Acts VI–VIII: titles/outlines only. The Ashlands (Act VII) has three standalone blockout rooms (`rm_ashlands_breach`, `rm_ashlands_ruins`, `rm_ashlands_depths`) but no chapter, quest, enemy or tileset of its own. Act VIII has only the `rm_rimehold` armoury room.
+- Chapter 1 quest: `Q_MAIN_FIND_MIRA` is now defined and wired in source (PR #44) using the same story-function pattern as Chapters 2–11. It has not been compiled or seen in the journal; runtime status is **NOT RUN**. Marker quest fields remain unread and are scheduled for cleanup (TD-04).
 - Bestiary: 43 entries with seen/defeated tracking, an information pane and a monster illustration (`scr_bestiary_draw_illustration`; black silhouette until seen, `?` plate when an enemy has no art). The 43 descriptions were canon-reviewed on 2026-11-18: they use established facts and observable detail, keep **Architects** in UI text, and fit the 72-character pane. Act IV rows describe the built Act IV text, which remains **PROPOSED** as story.
 - Art: party kits, marker sprites and the Alden/Nim/Derry, Berrin, ward-sentinel, burner and Lost One sets are in repo; every enemy kind with battle art now has a 16×24 overworld set (2026-11-19), the Blackwood tileset is a placeholder and the Ashlands has no tileset of its own. Vell and Nessa now have dedicated sets (2026-11-18). Check `game/sprites/IMPORT.md` and `docs/ASSET_INVENTORY.md`.
 - Audio: 29 authored resources (3 music loops, 6 ambience beds, 20 effects) play through `scr_audio`; ambience is room-mapped, and the four effects once listed as unhooked are wired. `step` is deliberately unused. Actual listening in GameMaker remains **NOT RUN**.
 - Controller support: implemented in `scr_input` (keyboard + Xbox-style pad, D-pad/left stick, A/B/Start/LB/RB, dead zone, disconnect/reconnect). Physical-controller testing remains **NOT RUN**; see `docs/CONTROLLER_SUPPORT.md`.
 - Open PR #25 (“Add initial controller support”) is still open and unmerged; its incomplete approach was rebuilt on `main` in `scr_input`, so do not merge it blindly. PR #30 is closed and unmerged.
 - Runtime status: **the project has not been compiled or playtested in GameMaker**. CI/validator checks structure only.
-- Open PRs #1 (debug menu), #22 (validator hardening and source sync) and #25 (controller support) all predate current `main` and must be reviewed and rebuilt against it before any merge; do not merge them blindly. PR #31 (gear, merchants, Ashlands rooms) is merged. Controller support has since been rebuilt on `main`; see `docs/CONTROLLER_SUPPORT.md`.
+- Open PR #40 (`freebuff/world-art-equipment-pass`) contains the audited art/equipment/input work and is **unmerged**. Open PRs #1 (debug menu), #22 (validator hardening and source sync) and #25 (controller support) all predate the audited tree and must be reviewed and rebuilt against it before any merge; do not merge them blindly. PR #31 (gear, merchants, Ashlands rooms) is merged. Controller support has since been rebuilt in `scr_input`; see `docs/CONTROLLER_SUPPORT.md`.
 
 ## Prioritized work
 
@@ -58,17 +61,61 @@ Acceptance:
 - IDE/runtime version and test result are recorded in `docs/TEST_PLAN.md` and changelog.
 - If the IDE is unavailable, mark compile/run **NOT RUN**; do not call the build verified.
 
-#### P0.2 — Complete a smoke playthrough of existing Chapters 1–4
+#### P0.2 — Complete a smoke playthrough of existing Chapters 1–11
 **Why:** Existing content is substantial but unverified in runtime.
 
 Tasks:
-- Follow `docs/TEST_PLAN.md` from title/new game through movement, dialogue, battles, rewards, menus, shops, save/load, defeat/respawn, and chapter transitions.
-- Test a fresh save and a migrated older save if fixtures are available.
+- Follow `docs/PLAYTEST_RUNBOOK.md` from title/new game through movement, dialogue, battles, rewards, menus, shops, save/load, defeat/respawn, and chapter transitions.
+- Test a fresh save and a migrated older save.
 - Record reproducible failures with room, steps, expected result, actual result, and logs.
 
 Acceptance:
 - Every test is marked pass/fail/not run with evidence/notes.
 - Critical progression blockers and softlocks are fixed before adding new content.
+
+#### P0.3 — Add save-migration fixtures and a regression test — **SOURCE DONE (PR #44); GML RUN NOT RUN**
+**Why:** the audit found a real v3→v4 regression where a migrated save lost level-gained HP/MP and caster MAG. The repair is correct by inspection but has no fixture test.
+
+Tasks:
+- Add sanitized v1, v2, v3 and v4 JSON fixtures under a test fixture directory; use invented character names and no real player data.
+- Assert `level`, `xp`, `base_max_hp`, `base_max_mp`, `base_magic`, `max_hp`, `max_mp`, `magic`, equipment and inventory after migration.
+- Cover one warrior and one caster; assert max HP/MP never fall below the saved values.
+- Document the expected values and how to add a new schema version.
+
+**Implemented in PR #44:** fixtures live in `game/datafiles/tests/saves/` (mirrored into
+`gamemaker/datafiles/tests/saves/` and registered as Included Files).
+`python3 tests/save_migration_test.py` checks fixture integrity, `.yyp` registration and
+quest wiring in CI. `scr_save_migration_test()` runs the real GML
+`scr_save_migrate()` → `scr_save_apply_member()` path on all four fixtures; enable
+`DEBUG_SAVE_SELFTEST` and press F6, or call it from the IDE. The GML execution is
+**NOT RUN** because this environment has no GameMaker runtime.
+
+Acceptance:
+- A failed migration is caught without opening GameMaker (Python contract + GML harness).
+- The test does not weaken or bypass save sanitization.
+- Remaining acceptance: record a passing in-engine F6 run.
+
+#### P0.4 — Implement Chapter 1's main quest (`Q_MAIN_FIND_MIRA`) — **SOURCE DONE (PR #44); RUNTIME NOT RUN**
+**Why:** Chapter 1's main quest had no journal definition or stage wiring, so the opening objective was invisible. `Q_FM_S1`–`Q_FM_S9` are approved in `docs/story/CHAPTER1_SCRIPT.md`.
+
+Tasks:
+- Decide whether marker `quest_start`/`quest_advance` fields are the intended mechanism (TD-04) or whether Chapter 1 should follow the story-function pattern used by Chapters 2–11. Do not implement both.
+- Add the `Q_MAIN_FIND_MIRA` definition, stages and journal text from the approved script.
+- Wire start, S1–S9 and completion through the Tomas scene, pendant pickup, north gate, Farmlands, Old Road, Bandit Camp, Watchtower, Basement, arena and Blackguard victory.
+- Preserve the approved canon and the Chapter 2 hand-off; do not invent alternate outcomes.
+
+**Implemented in PR #44:** decision is option B (story functions, not marker fields).
+`GH_ARRIVAL` starts S1; `GH_TOMAS` advances S2; the pendant advances S3; the
+Farmlands/Old Road/Bandit Camp thresholds and Watchtower room ticks advance S4–S7; the
+Basement advances S8; `BG_INTRO` advances S9; the Blackguard victory completes the quest;
+the Crownveil door starts `Q_MAIN_BEYOND_VEIL`. `scr_quest_advance()` prevents stage
+regression, and `scr_ch1_quest_tick()` backfills older saves. No in-engine journal test
+has been run.
+
+Acceptance:
+- The journal shows the quest and its current stage from Chapter 1 start to completion. **Runtime NOT RUN.**
+- Stage flags advance exactly once and survive save/load. **Source invariant + static checks only.**
+- `tools/audit_chapters.py` still reports no wiring problems. **PASS.**
 
 ### P1 — Finish existing systems and presentation
 
@@ -99,6 +146,8 @@ Acceptance:
 - Unresolved lore remains explicitly marked for owner review.
 
 #### P1.5 — Verify save/load, migration, and party edge cases
+**Status:** the v1–v3 base-max/MAG migration was repaired in the 2026-11-19 audit (BUG-001), but the repaired path has not been loaded in GameMaker. Add the fixtures in P0.3, then run this in-engine check.
+
 Tasks:
 - Test schema v4 and older-save migration behavior.
 - Verify only save crystals in church/tavern interiors open the slot panel.
@@ -171,7 +220,7 @@ Acceptance:
 
 #### P4.2 — Resolve stub overworld entrances as content becomes available
 Tasks:
-- Audit the 8 remaining `status: "stub"` entrances: Ironspine mine and ruins, Rimehold, frozen ruins, Saltreach, Saltreach pier, flooded ruins and shipwreck. The Blackwood doors and deep shrine now point at built rooms and are marked `built`.
+- Audit the 7 remaining `status: "stub"` entrances: Ironspine mine and ruins, frozen ruins, Saltreach, Saltreach pier, flooded ruins and shipwreck. `rm_rimehold` is now built; the Blackwood doors and deep shrine already point at built rooms and are marked `built`.
 - Keep unfinished exits clearly blocked/labelled until destinations exist.
 - Implement each destination only when its design and story content are approved.
 
