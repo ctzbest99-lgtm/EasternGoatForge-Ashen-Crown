@@ -63,8 +63,9 @@ The background, parallax layers, embers and logo are the existing title assets. 
 - `game/objects/obj_title/Step.gml`
 - `game/objects/obj_title/Draw_GUI.gml`
 - `game/scripts/scr_save.gml` — `scr_save_any_valid()`, `scr_save_latest_slot()`, `modified_at` on slot info, `scr_new_game_start()`
+- `game/scripts/scr_input.gml` — current mainline controller-aware input used by the menu
 - `game/rooms/ROOM_SETUP.md` — title-room setup text
-- generated mirrors under `gamemaker/objects/obj_title/` and `gamemaker/scripts/scr_save/`
+- generated mirrors under `gamemaker/objects/obj_title/`, `gamemaker/scripts/scr_save/` and `gamemaker/scripts/scr_input/`
 - this document and `game/objects/obj_title/README.md`
 
 No new assets, objects, rooms, scripts, dependencies or save-schema changes.
