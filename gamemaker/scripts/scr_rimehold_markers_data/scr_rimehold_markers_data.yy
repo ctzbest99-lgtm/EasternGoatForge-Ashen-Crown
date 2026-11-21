@@ -2,7 +2,7 @@
   "$GMScript": "v1",
   "%Name": "scr_rimehold_markers_data",
   "isCompatibility": false,
-  "isDnd": false,
+  "isDnD": false,
   "name": "scr_rimehold_markers_data",
   "parent": {
     "name": "scripts",

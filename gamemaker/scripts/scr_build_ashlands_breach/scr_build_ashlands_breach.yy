@@ -2,7 +2,7 @@
   "$GMScript": "v1",
   "%Name": "scr_build_ashlands_breach",
   "isCompatibility": false,
-  "isDnd": false,
+  "isDnD": false,
   "name": "scr_build_ashlands_breach",
   "parent": {
     "name": "scripts",

@@ -2,7 +2,7 @@
   "$GMScript": "v1",
   "%Name": "scr_ch6_story",
   "isCompatibility": false,
-  "isDnd": false,
+  "isDnD": false,
   "name": "scr_ch6_story",
   "parent": {
     "name": "scripts",

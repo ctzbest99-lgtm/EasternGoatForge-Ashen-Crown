@@ -28,10 +28,25 @@ def check_refs(obj, base):
         for v in obj: check_refs(v, base)
 
 yyp = load(os.path.join(OUT,'AshenCrown.yyp'))
+if yyp.get('$GMProject') != 'v1':
+    errors.append("AshenCrown.yyp: $GMProject must be v1 for GameMaker 2026")
 check_refs(yyp, 'yyp')
 for root, dirs, files in os.walk(OUT):
     for fn in files:
-        if fn.endswith('.yy'): check_refs(load(os.path.join(root,fn)), fn)
+        if fn.endswith('.yy'):
+            check_refs(load(os.path.join(root,fn)), fn)
+
+# Script resources use the 2026 key spelling. The lower-case form loads as a
+# missing field and makes the project fail after the project header is valid.
+for root, dirs, files in os.walk(os.path.join(OUT, 'scripts')):
+    for fn in files:
+        if fn.endswith('.yy'):
+            rel = os.path.relpath(os.path.join(root, fn), OUT)
+            obj = load(os.path.join(root, fn))
+            if 'isDnd' in obj:
+                errors.append(f"{rel}: old isDnd key; GameMaker 2026 requires isDnD")
+            if 'isDnD' not in obj:
+                errors.append(f"{rel}: missing isDnD")
 
 names = {r['id']['name'] for r in yyp['resources']}
 paths = {r['id']['path'] for r in yyp['resources']}
@@ -119,8 +134,17 @@ for name, rm in rooms.items():
     lnames = [l['name'] for l in rm['layers']]
     for want in ('Instances','Ground','Decoration','Overhead','Collision','Markers'):
         if want not in lnames: errors.append(f"{name}: layer {want} missing")
+    for entry in rm.get('instanceCreationOrder', []):
+        if entry.get('path') == 'PLACEHOLDER':
+            errors.append(f"{name}: placeholder instanceCreationOrder path")
     for l in rm['layers']:
         if l['resourceType'] == 'GMRTileLayer':
+            for key in ('effectEnabled', 'effectType', 'tiles', 'tilesetId'):
+                if key not in l: errors.append(f"{name}/{l['name']}: missing {key}")
+            if 'spriteId' in l: errors.append(f"{name}/{l['name']}: invalid spriteId")
+            tiles = l.get('tiles', {})
+            for key in ('SerialiseHeight', 'SerialiseWidth', 'TileCompressedData', 'TileDataFormat'):
+                if key not in tiles: errors.append(f"{name}/{l['name']}: tiles missing {key}")
             if l['tilesetId']['name'] != 'ts_zone1': errors.append(f"{name}: wrong tileset")
         if l['resourceType'] == 'GMRInstanceLayer':
             for i in l['instances']:

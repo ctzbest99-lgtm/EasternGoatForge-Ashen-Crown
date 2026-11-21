@@ -36,9 +36,9 @@ def normalize_json(data: bytes) -> bytes:
         if isinstance(item, dict):
             normalized = {}
             for key, child in item.items():
-                # GameMaker has emitted both spellings for the same DnD flag.
-                canonical_key = "isDnD" if key in {"isDnD", "isDnd"} else key
-                normalized[canonical_key] = visit(child)
+                # Keep metadata keys case-sensitive: GameMaker 2026 rejects the old
+                # lowercase script key, so normalizing it here would hide real drift.
+                normalized[key] = visit(child)
             # These arrays are IDE resource listings, not runtime room order.
             if isinstance(normalized.get("resources"), list):
                 normalized["resources"].sort(key=lambda entry: entry.get("id", {}).get("name", ""))

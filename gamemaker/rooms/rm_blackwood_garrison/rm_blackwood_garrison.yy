@@ -8,7 +8,7 @@
   "instanceCreationOrder": [
     {
       "name": "inst_player",
-      "path": "PLACEHOLDER"
+      "path": "rooms/rm_blackwood_garrison/rm_blackwood_garrison.yy"
     }
   ],
   "isDnd": false,
@@ -67,6 +67,8 @@
       "$GMRTileLayer": "",
       "%Name": "Ground",
       "depth": 400,
+      "effectEnabled": true,
+      "effectType": null,
       "gridX": 16,
       "gridY": 16,
       "hierarchyFrozen": false,
@@ -79,25 +81,27 @@
       "properties": [],
       "resourceType": "GMRTileLayer",
       "resourceVersion": "2.0",
-      "spriteId": null,
+      "tiles": {
+        "SerialiseHeight": 0,
+        "SerialiseWidth": 0,
+        "TileCompressedData": [],
+        "TileDataFormat": 1,
+      },
       "tilesetId": {
         "name": "ts_zone1",
-        "path": "tilesets/ts_zone1/ts_zone1.yy"
+        "path": "tilesets/ts_zone1/ts_zone1.yy",
       },
       "userdefinedDepth": false,
       "visible": true,
       "x": 0,
       "y": 0,
-      "tiles": {
-        "SerialiseHeight": 0,
-        "SerialiseWidth": 0,
-        "TileSerialiseData": []
-      }
     },
     {
       "$GMRTileLayer": "",
       "%Name": "Decoration",
       "depth": 300,
+      "effectEnabled": true,
+      "effectType": null,
       "gridX": 16,
       "gridY": 16,
       "hierarchyFrozen": false,
@@ -110,25 +114,27 @@
       "properties": [],
       "resourceType": "GMRTileLayer",
       "resourceVersion": "2.0",
-      "spriteId": null,
+      "tiles": {
+        "SerialiseHeight": 0,
+        "SerialiseWidth": 0,
+        "TileCompressedData": [],
+        "TileDataFormat": 1,
+      },
       "tilesetId": {
         "name": "ts_zone1",
-        "path": "tilesets/ts_zone1/ts_zone1.yy"
+        "path": "tilesets/ts_zone1/ts_zone1.yy",
       },
       "userdefinedDepth": false,
       "visible": true,
       "x": 0,
       "y": 0,
-      "tiles": {
-        "SerialiseHeight": 0,
-        "SerialiseWidth": 0,
-        "TileSerialiseData": []
-      }
     },
     {
       "$GMRTileLayer": "",
       "%Name": "Overhead",
       "depth": -10000,
+      "effectEnabled": true,
+      "effectType": null,
       "gridX": 16,
       "gridY": 16,
       "hierarchyFrozen": false,
@@ -141,25 +147,27 @@
       "properties": [],
       "resourceType": "GMRTileLayer",
       "resourceVersion": "2.0",
-      "spriteId": null,
+      "tiles": {
+        "SerialiseHeight": 0,
+        "SerialiseWidth": 0,
+        "TileCompressedData": [],
+        "TileDataFormat": 1,
+      },
       "tilesetId": {
         "name": "ts_zone1",
-        "path": "tilesets/ts_zone1/ts_zone1.yy"
+        "path": "tilesets/ts_zone1/ts_zone1.yy",
       },
       "userdefinedDepth": false,
       "visible": true,
       "x": 0,
       "y": 0,
-      "tiles": {
-        "SerialiseHeight": 0,
-        "SerialiseWidth": 0,
-        "TileSerialiseData": []
-      }
     },
     {
       "$GMRTileLayer": "",
       "%Name": "Collision",
       "depth": 500,
+      "effectEnabled": true,
+      "effectType": null,
       "gridX": 16,
       "gridY": 16,
       "hierarchyFrozen": false,
@@ -172,25 +180,27 @@
       "properties": [],
       "resourceType": "GMRTileLayer",
       "resourceVersion": "2.0",
-      "spriteId": null,
+      "tiles": {
+        "SerialiseHeight": 0,
+        "SerialiseWidth": 0,
+        "TileCompressedData": [],
+        "TileDataFormat": 1,
+      },
       "tilesetId": {
         "name": "ts_zone1",
-        "path": "tilesets/ts_zone1/ts_zone1.yy"
+        "path": "tilesets/ts_zone1/ts_zone1.yy",
       },
       "userdefinedDepth": false,
       "visible": false,
       "x": 0,
       "y": 0,
-      "tiles": {
-        "SerialiseHeight": 0,
-        "SerialiseWidth": 0,
-        "TileSerialiseData": []
-      }
     },
     {
       "$GMRTileLayer": "",
       "%Name": "Markers",
       "depth": 600,
+      "effectEnabled": true,
+      "effectType": null,
       "gridX": 16,
       "gridY": 16,
       "hierarchyFrozen": false,
@@ -203,20 +213,20 @@
       "properties": [],
       "resourceType": "GMRTileLayer",
       "resourceVersion": "2.0",
-      "spriteId": null,
+      "tiles": {
+        "SerialiseHeight": 0,
+        "SerialiseWidth": 0,
+        "TileCompressedData": [],
+        "TileDataFormat": 1,
+      },
       "tilesetId": {
         "name": "ts_zone1",
-        "path": "tilesets/ts_zone1/ts_zone1.yy"
+        "path": "tilesets/ts_zone1/ts_zone1.yy",
       },
       "userdefinedDepth": false,
       "visible": false,
       "x": 0,
       "y": 0,
-      "tiles": {
-        "SerialiseHeight": 0,
-        "SerialiseWidth": 0,
-        "TileSerialiseData": []
-      }
     },
     {
       "$GMRBackgroundLayer": "",

@@ -2,7 +2,7 @@
   "$GMScript": "v1",
   "%Name": "scr_quest_data",
   "isCompatibility": false,
-  "isDnd": false,
+  "isDnD": false,
   "name": "scr_quest_data",
   "parent": {
     "name": "scripts",

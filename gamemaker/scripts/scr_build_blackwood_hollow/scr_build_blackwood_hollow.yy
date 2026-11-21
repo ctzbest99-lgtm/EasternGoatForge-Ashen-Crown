@@ -2,7 +2,7 @@
   "$GMScript": "v1",
   "%Name": "scr_build_blackwood_hollow",
   "isCompatibility": false,
-  "isDnd": false,
+  "isDnD": false,
   "name": "scr_build_blackwood_hollow",
   "parent": {
     "name": "scripts",

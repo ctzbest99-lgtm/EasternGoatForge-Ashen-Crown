@@ -2,7 +2,7 @@
   "$GMScript": "v1",
   "%Name": "scr_build_barrow_gate",
   "isCompatibility": false,
-  "isDnd": false,
+  "isDnD": false,
   "name": "scr_build_barrow_gate",
   "parent": {
     "name": "scripts",

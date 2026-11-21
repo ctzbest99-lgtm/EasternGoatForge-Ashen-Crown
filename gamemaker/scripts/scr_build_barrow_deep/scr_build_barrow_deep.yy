@@ -2,7 +2,7 @@
   "$GMScript": "v1",
   "%Name": "scr_build_barrow_deep",
   "isCompatibility": false,
-  "isDnd": false,
+  "isDnD": false,
   "name": "scr_build_barrow_deep",
   "parent": {
     "name": "scripts",

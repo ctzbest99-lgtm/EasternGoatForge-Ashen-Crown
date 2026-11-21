@@ -2,7 +2,7 @@
   "$GMScript": "v1",
   "%Name": "scr_encounter",
   "isCompatibility": false,
-  "isDnd": false,
+  "isDnD": false,
   "name": "scr_encounter",
   "parent": {
     "name": "scripts",
