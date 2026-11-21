@@ -44,7 +44,7 @@ Chapters 4–5 have no rooms yet: their encounter tables, level bands and boss g
 6. Uncheck **Game Options ▸ Graphics ▸ Interpolate colours between pixels**.
 7. Import the 320 title sprites (and the UI font / nine-slice windows) from `game/sprites/IMPORT.md`. The 640 ember strip needs its own Texture Group (see IMPORT.md); otherwise skip it and the 320 strip is used.
 8. `#macro TITLE_ROOM rm_title` is in `scr_game_constants.gml`. The project will not compile until this room exists.
-9. New Game resets `global.game` once and goes to `rm_overworld`; existing save files are kept. Continue loads the newest valid save; Load Game opens the slot panel. A damaged file is listed as such and will not crash. Settings opens the live audio panel (`scr_options`, not the baked placeholder art). The title menu also accepts mouse clicks; there is no controller input system yet.
+9. New Game resets `global.game` once and goes to `rm_overworld`; existing save files are kept. Continue loads the newest valid save; Load Game opens the slot panel. A damaged file is listed as such and will not crash. Settings opens the live audio panel (`scr_options`, not the baked placeholder art). The title menu also accepts mouse clicks and the shared gamepad input (D-pad, A/B) from `scr_input`.
 
 The Design README called this room `rm_main_menu`. This project uses **`rm_title`**.
 

@@ -45,8 +45,7 @@ The background, parallax layers, embers and logo are the existing title assets. 
 
 - Reuses `scr_options_rows()` / `scr_options_labels()` and the existing `scr_audio` gain/mute API.
 - Music, Ambience, Sound effects adjust in 5% steps; Mute toggles. Every change writes `ashen_settings.ini` immediately via `scr_audio_settings_save()`.
-- No fake controls settings: keyboard mapping and controller remapping are not implemented in the project. The panel shows the fixed keys as information only.
-- There is no controller navigation because no gamepad input system exists in the codebase.
+- No fake remapping screen: key remapping is not implemented in the project, so the panel shows the fixed keyboard controls as information only. Controller navigation uses the existing standard gamepad mapping in `scr_input` (D-pad/left stick, A/B).
 
 ### Exit Game
 
@@ -56,7 +55,7 @@ The background, parallax layers, embers and logo are the existing title assets. 
 
 - Keyboard: arrows, `Z` / `Enter` / `Space` confirm, `X` / `Backspace` cancel.
 - Mouse: hover selects only when the pointer moves (so a resting cursor does not fight the keyboard); click activates menu rows, settings rows, save slots and confirmation buttons.
-- No gamepad support is claimed or added.
+- Gamepad: D-pad moves/changes, A confirms, B cancels, using the shared controller-aware `scr_input` layer from current mainline. No new controller system was added.
 
 ## Files changed
 
@@ -82,7 +81,7 @@ No new assets, objects, rooms, scripts, dependencies or save-schema changes.
 | source and generated GameMaker copies of the touched scripts/events are identical | checked with `cmp` |
 | New Game / Continue / Load / Settings / Exit paths | **not executed**; no GameMaker runtime or IDE in this workspace |
 | Missing/corrupt-save behaviour | code paths inspected; **not executed** against real `.sav` files in-engine |
-| Keyboard, mouse, controller and window-close behaviour | **not executed**; controller is not implemented by the project |
+| Keyboard, mouse, controller and window-close behaviour | **not executed**; controller navigation is wired through `scr_input`, but no gamepad was available to test |
 | Visual layout at runtime | **not viewed in-engine** |
 
 The test checklist in `docs/TEST_PLAN.md` (A2 and M17) remains the manual in-engine check. The static validator does not parse every GML expression, so a compile in the IDE is still required before calling this feature verified.

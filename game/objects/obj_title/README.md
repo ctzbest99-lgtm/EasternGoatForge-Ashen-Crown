@@ -14,7 +14,7 @@ The room opens **directly on the main menu** — there is no press-any-key gate.
 | Settings | The audio settings the project actually supports: Music, Ambience, Sound effects and Mute, saved immediately to `ashen_settings.ini`. The fixed keyboard controls are shown as information, not as a fake remapping screen. |
 | Exit Game | Calls `game_end()`. |
 
-Keyboard: arrows move/change, `Z` / `Enter` / `Space` confirm, `X` / `Backspace` cancel. Mouse: hover and click rows, save slots and confirmation buttons. There is no gamepad support in the project yet, so the menu does not claim one.
+Keyboard: arrows move/change, `Z` / `Enter` / `Space` confirm, `X` / `Backspace` cancel. Gamepad: D-pad/left stick move/change, A confirms, B cancels (through the shared `scr_input` layer). Mouse: hover and click rows, save slots and confirmation buttons.
 
 ## New Game initial state
 
