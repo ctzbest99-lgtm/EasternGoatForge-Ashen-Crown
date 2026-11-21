@@ -487,9 +487,11 @@ function scr_menu_equipped_count(_item_id) {
     for (var _i = 0; _i < array_length(_list); _i++) {
         var _a = _list[_i];
         if (!is_struct(_a) || !is_struct(_a.equipment)) continue;
-        var _slots = ["weapon", "armor", "helm", "accessory"];
-        for (var _s = 0; _s < 4; _s++) {
-            var _eq = _a.equipment[$ _slots[_s]];
+        // Seven slots: the four legacy storage keys plus off_hand, legs and accessory_2.
+        var _slots = scr_equipment_slots();
+        for (var _s = 0; _s < array_length(_slots); _s++) {
+            var _key = scr_equipment_storage_key(_slots[_s]);
+            var _eq = _a.equipment[$ _key];
             if (is_string(_eq) && _eq != "" && scr_item_id_norm(_eq) == _want) _n += 1;
         }
     }

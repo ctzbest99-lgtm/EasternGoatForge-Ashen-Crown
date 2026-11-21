@@ -94,7 +94,7 @@ function scr_bestiary_defeated_count(_enemy_id) {
     return max(0, _r.defeated);
 }
 
-/// How many entries have been encountered (the "12/35" counter).
+/// How many entries have been encountered (the "12/43" counter).
 function scr_bestiary_seen_total() {
     var _ids = scr_bestiary_ids();
     var _n = 0;

@@ -499,8 +499,30 @@ function scr_save_apply_member(_actor, _snap) {
         _actor.equipment.accessory_2 = variable_struct_exists(_snap.equipment, "accessory_2") ? string(_snap.equipment.accessory_2) : "";
     }
     // Schema v4: base maxima, derived-stat bases and proficiencies (missing = keep current).
-    if (variable_struct_exists(_snap, "base_max_hp")) _actor.base_max_hp = max(1, _snap.base_max_hp);
-    if (variable_struct_exists(_snap, "base_max_mp")) _actor.base_max_mp = max(0, _snap.base_max_mp);
+    // Pre-v4 saves have no base_max_hp / base_max_mp. Their saved max_hp / max_mp were the
+    // un-equipped values (v1-v3 gear had no HP/MP bonuses), so seed the v4 bases from them.
+    // Without this, scr_actor_refresh_equipment() rebuilt max HP/MP from the fresh level-1
+    // roster and a migrated save lost all level growth.
+    if (variable_struct_exists(_snap, "base_max_hp")) {
+        _actor.base_max_hp = max(1, _snap.base_max_hp);
+    } else if (variable_struct_exists(_snap, "max_hp")) {
+        _actor.base_max_hp = max(1, _snap.max_hp);
+    }
+    if (variable_struct_exists(_snap, "base_max_mp")) {
+        _actor.base_max_mp = max(0, _snap.base_max_mp);
+    } else if (variable_struct_exists(_snap, "max_mp")) {
+        _actor.base_max_mp = max(0, _snap.max_mp);
+    }
+    // v1-v3 had no MAG: magic skills resolved off final ATK, gear included. Carry that saved
+    // ATK into the new base MAG so a migrated caster keeps the damage curve they had before
+    // schema v4. Fall back to base_attack for a hand-edited snapshot without `attack`.
+    if (!variable_struct_exists(_snap, "base_magic")) {
+        if (variable_struct_exists(_snap, "attack")) {
+            _actor.base_magic = _snap.attack;
+        } else if (variable_struct_exists(_snap, "base_attack")) {
+            _actor.base_magic = _snap.base_attack;
+        }
+    }
     if (variable_struct_exists(_snap, "base_magic")) _actor.base_magic = _snap.base_magic;
     if (variable_struct_exists(_snap, "base_acc")) _actor.base_acc = _snap.base_acc;
     if (variable_struct_exists(_snap, "base_eva")) _actor.base_eva = _snap.base_eva;
@@ -788,6 +810,121 @@ function scr_save_load(_slot) {
     if (!is_struct(_data) || !scr_save_is_compatible(_data)) return false;
     _data = scr_save_migrate(_data);
     return scr_save_apply(_data);
+}
+
+/// Load one sanitized migration fixture from Included Files. Development-only helper for
+/// scr_save_migration_test(); never reads a player save or anything outside tests/saves.
+function scr_save_test_load_json(_relative_path) {
+    if (!file_exists(_relative_path)) {
+        show_debug_message("[save-test] missing fixture: " + _relative_path);
+        return undefined;
+    }
+    var _buf = buffer_load(_relative_path);
+    if (_buf == -1) {
+        show_debug_message("[save-test] could not load fixture: " + _relative_path);
+        return undefined;
+    }
+    buffer_seek(_buf, buffer_seek_start, 0);
+    var _text = buffer_read(_buf, buffer_string);
+    buffer_delete(_buf);
+    try {
+        return json_parse(_text);
+    } catch (_e) {
+        show_debug_message("[save-test] invalid JSON in " + _relative_path + ": " + string(_e));
+        return undefined;
+    }
+}
+
+/// In-engine regression test for the v1-v4 save contract. Run it from a debug build with
+/// DEBUG_SAVE_SELFTEST (F6) or call it directly from the IDE. It uses the real migrate and
+/// apply functions on sanitized fixtures, so it exercises the code shipped to players.
+/// This is NOT a substitute for a full save/load playtest in GameMaker (not available in CI).
+function scr_save_migration_test() {
+    var _cases = [
+        { file: "tests/saves/v1_kael.json", actor: "kael", weapon: "item_iron_sword", pre_v4: true },
+        { file: "tests/saves/v2_kael.json", actor: "kael", weapon: "item_iron_sword", pre_v4: true },
+        { file: "tests/saves/v3_kael.json", actor: "kael", weapon: "item_iron_sword", pre_v4: true },
+        { file: "tests/saves/v4_caelan.json", actor: "caelan", weapon: "item_spellbook", pre_v4: false }
+    ];
+    var _failures = [];
+    var _lines = [];
+    for (var _i = 0; _i < array_length(_cases); _i++) {
+        var _case = _cases[_i];
+        var _data = scr_save_test_load_json(_case.file);
+        if (!is_struct(_data)) {
+            array_push(_failures, _case.file + ": could not load");
+            continue;
+        }
+        var _before = variable_struct_exists(_data, "save_schema_version") ? _data.save_schema_version : -1;
+        var _migrated = scr_save_migrate(_data);
+        if (!is_struct(_migrated) || _migrated.save_schema_version != SAVE_SCHEMA_VERSION) {
+            array_push(_failures, _case.file + ": migrated schema is not " + string(SAVE_SCHEMA_VERSION));
+            continue;
+        }
+        if (!variable_struct_exists(_migrated, "roster") || !is_array(_migrated.roster) || array_length(_migrated.roster) == 0) {
+            array_push(_failures, _case.file + ": migrated roster is empty");
+            continue;
+        }
+        var _snap = _migrated.roster[0];
+        if (!is_struct(_snap) || _snap.actor_id != _case.actor) {
+            array_push(_failures, _case.file + ": unexpected roster actor");
+            continue;
+        }
+        var _want_hp = variable_struct_exists(_snap, "max_hp") ? _snap.max_hp : 0;
+        var _want_mp = variable_struct_exists(_snap, "max_mp") ? _snap.max_mp : 0;
+        var _want_magic = 0;
+        if (_case.pre_v4) {
+            _want_magic = variable_struct_exists(_snap, "attack") ? _snap.attack : _snap.base_attack;
+        } else {
+            _want_magic = variable_struct_exists(_snap, "base_magic") ? _snap.base_magic : 0;
+        }
+
+        var _roster = scr_roster_create();
+        var _actor = scr_roster_find(_roster, _case.actor);
+        if (!is_struct(_actor)) {
+            array_push(_failures, _case.file + ": actor not found in fresh roster");
+            continue;
+        }
+        scr_save_apply_member(_actor, _snap);
+        if (_actor.base_max_hp != _want_hp) {
+            array_push(_failures, _case.file + ": base_max_hp " + string(_actor.base_max_hp) + " != " + string(_want_hp));
+        }
+        if (_actor.base_max_mp != _want_mp) {
+            array_push(_failures, _case.file + ": base_max_mp " + string(_actor.base_max_mp) + " != " + string(_want_mp));
+        }
+        if (_actor.base_magic != _want_magic) {
+            array_push(_failures, _case.file + ": base_magic " + string(_actor.base_magic) + " != " + string(_want_magic));
+        }
+        if (_actor.max_hp < _want_hp) {
+            array_push(_failures, _case.file + ": lost max_hp (" + string(_actor.max_hp) + " < " + string(_want_hp) + ")");
+        }
+        if (_actor.max_mp < _want_mp) {
+            array_push(_failures, _case.file + ": lost max_mp (" + string(_actor.max_mp) + " < " + string(_want_mp) + ")");
+        }
+        if (_actor.level != _snap.level) {
+            array_push(_failures, _case.file + ": level changed");
+        }
+        if (_actor.xp != _snap.xp) {
+            array_push(_failures, _case.file + ": xp changed");
+        }
+        if (_actor.equipment.weapon != _case.weapon) {
+            array_push(_failures, _case.file + ": weapon slot " + string(_actor.equipment.weapon) + " != " + string(_case.weapon));
+        }
+        var _inv = scr_save_sanitize_inventory(variable_struct_exists(_migrated, "inventory") ? _migrated.inventory : []);
+        if (array_length(_inv) != 1) {
+            array_push(_failures, _case.file + ": inventory did not survive sanitization");
+        } else if (_inv[0].qty != 3) {
+            array_push(_failures, _case.file + ": inventory quantity changed");
+        }
+        show_debug_message("[save-test] " + _case.file + " v" + string(_before) + " -> v" + string(_migrated.save_schema_version) + " checked");
+    }
+
+    var _failed = array_length(_failures);
+    array_push(_lines, "Save migration selftest: " + string(_failed == 0 ? "PASS" : "FAIL") + " (" + string(array_length(_cases) - _failed) + "/" + string(array_length(_cases)) + " fixtures).");
+    for (var _f = 0; _f < _failed; _f++) array_push(_lines, "FAIL: " + _failures[_f]);
+    if (_failed == 0) array_push(_lines, "v1-v4 base HP/MP/MAG and level were preserved by the real migration path.");
+    for (var _l = 0; _l < array_length(_lines); _l++) show_debug_message("[save-test] " + _lines[_l]);
+    return { passed: (_failed == 0), failed: _failed, lines: _lines };
 }
 
 /// Open the save / load panel. `_quiet` suppresses the "no shrine, no hearth" line for the

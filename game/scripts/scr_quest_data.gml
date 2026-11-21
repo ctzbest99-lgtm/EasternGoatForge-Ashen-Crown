@@ -2,12 +2,29 @@
 /// Titles and the main-quest stage text come from ACT2_OUTLINE.md §4 and the chapter scripts;
 /// side-quest objective wording is PLACEHOLDER journal text, because the scripts never printed it.
 /// Stage state lives in the flags as quest_<QUEST_ID> = "<STAGE_ID>" or "complete", written by
-/// scr_ch2_quest_set / scr_ch3_quest_set / scr_ch4_quest_set. Flags are saved (scr_save.gml),
-/// so the journal survives a load without new save fields.
+/// scr_quest_advance from the chapter callbacks/ticks. Flags are saved (scr_save.gml), so the
+/// journal survives a load without new save fields.
 
 /// All known quests, in journal order. Each stage is { id, text }.
 function scr_quest_definitions() {
     return [
+        {
+            id: "Q_MAIN_FIND_MIRA",
+            title: "Find Mira",
+            kind: "Main quest",
+            // CHAPTER1_SCRIPT.md §0. The stage text is the approved script text.
+            stages: [
+                { id: "Q_FM_S1", text: "Find Father among the survivors." },
+                { id: "Q_FM_S2", text: "Search the ruins of Varyn House." },
+                { id: "Q_FM_S3", text: "Leave Greyhaven by the North Gate." },
+                { id: "Q_FM_S4", text: "Cross the Farmlands toward the Old Road." },
+                { id: "Q_FM_S5", text: "Follow the Old Road north." },
+                { id: "Q_FM_S6", text: "Search the Abandoned Bandit Camp." },
+                { id: "Q_FM_S7", text: "Explore the Old Watchtower." },
+                { id: "Q_FM_S8", text: "Find what lies beneath the Watchtower." },
+                { id: "Q_FM_S9", text: "Defeat the Blackguard." }
+            ]
+        },
         {
             id: "Q_MAIN_BEYOND_VEIL",
             title: "Beyond the Veil",
@@ -102,6 +119,45 @@ function scr_quest_definitions() {
 function scr_quest_stage(_quest_id) {
     var _v = scr_flag_get("quest_" + string(_quest_id));
     return is_string(_v) ? _v : "";
+}
+
+/// Write a quest stage without ordering rules. Prefer scr_quest_advance() for
+/// progression; use this for a deliberate reset or the initial stage.
+function scr_quest_set(_quest_id, _stage_id) {
+    scr_flag_set("quest_" + string(_quest_id), string(_stage_id));
+}
+
+/// Index of a stage in its quest definition, or -1 when the id is unknown.
+function scr_quest_stage_index(_quest_id, _stage_id) {
+    var _q = scr_quest_definition(_quest_id);
+    if (!is_struct(_q)) return -1;
+    for (var _i = 0; _i < array_length(_q.stages); _i++) {
+        if (_q.stages[_i].id == _stage_id) return _i;
+    }
+    return -1;
+}
+
+/// Advance a quest only forward. Backtracking, replayed scenes and duplicate
+/// triggers cannot move the journal backwards. Returns true when the stage changed.
+function scr_quest_advance(_quest_id, _stage_id) {
+    var _cur = scr_quest_stage(_quest_id);
+    if (_cur == "complete") return false;
+    if (_stage_id == "complete") {
+        scr_quest_set(_quest_id, "complete");
+        return true;
+    }
+    var _new_idx = scr_quest_stage_index(_quest_id, _stage_id);
+    if (_new_idx < 0) return false;
+    if (_cur == "") {
+        scr_quest_set(_quest_id, _stage_id);
+        return true;
+    }
+    var _old_idx = scr_quest_stage_index(_quest_id, _cur);
+    if (_old_idx < 0 || _new_idx > _old_idx) {
+        scr_quest_set(_quest_id, _stage_id);
+        return true;
+    }
+    return false;
 }
 
 function scr_quest_is_started(_quest_id) {

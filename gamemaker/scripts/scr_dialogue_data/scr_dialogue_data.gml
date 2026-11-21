@@ -284,6 +284,7 @@ function scr_dialogue_play_script(_script_id, _source = noone) {
             if (scr_flag_get("flag_arrived_greyhaven")) return true;
             scr_dialogue_play(["GH_ARRIVAL_01", "GH_ARRIVAL_02", "GH_ARRIVAL_03"], function() {
                 scr_flag_set("flag_arrived_greyhaven");
+                scr_quest_advance("Q_MAIN_FIND_MIRA", "Q_FM_S1");
             });
             return true;
         case "GH_TOMAS":
@@ -304,7 +305,10 @@ function scr_dialogue_play_script(_script_id, _source = noone) {
             } else {
                 scr_dialogue_play(
                     ["GH_TOMAS_01", "GH_TOMAS_02", "GH_TOMAS_03", "GH_TOMAS_04", "GH_TOMAS_05", "GH_TOMAS_06", "GH_TOMAS_07", "GH_TOMAS_08"],
-                    function() { scr_flag_set("flag_met_tomas"); }
+                    function() {
+                        scr_flag_set("flag_met_tomas");
+                        scr_quest_advance("Q_MAIN_FIND_MIRA", "Q_FM_S2");
+                    }
                 );
             }
             return true;
@@ -320,6 +324,7 @@ function scr_dialogue_play_script(_script_id, _source = noone) {
             scr_dialogue_play(["GH_HOUSE_03", "GH_HOUSE_04", "GH_HOUSE_05"], method({ src: _item_src }, function() {
                 scr_inventory_add("item_mira_pendant", "Mira's Wooden Pendant", 1, true);
                 scr_flag_set("flag_pendant_found");
+                scr_quest_advance("Q_MAIN_FIND_MIRA", "Q_FM_S3");
                 if (src != noone && instance_exists(src)) instance_destroy(src);
             }));
             return true;
@@ -414,6 +419,7 @@ function scr_dialogue_play_script(_script_id, _source = noone) {
             var _bg = _source;
             scr_dialogue_play(["BG_INTRO_01", "BG_INTRO_02", "BG_INTRO_03", "BG_INTRO_04", "BG_INTRO_05"], method({ src: _bg }, function() {
                 scr_flag_set("flag_bg_intro_seen");
+                scr_quest_advance("Q_MAIN_FIND_MIRA", "Q_FM_S9");
                 if (src != noone && instance_exists(src)) instance_destroy(src);
                 // The script goes from the intro straight into the boss fight.
                 if (!variable_struct_exists(global.game.cleared_encounters, "zone01_boss_blackguard")) {
@@ -437,6 +443,7 @@ function scr_dialogue_play_script(_script_id, _source = noone) {
             }
             scr_dialogue_play(["CV_END_01", "CV_END_02", "CV_END_03", "CV_END_04", "CV_END_05", "CV_END_06"], function() {
                 scr_flag_set("flag_chapter1_complete");
+                scr_quest_advance("Q_MAIN_BEYOND_VEIL", "Q_BV_S1");
                 // Quiet: saving only exists inside a town's church or tavern (owner decision
                 // 2026-11-15). The Crownveil door is not one, so there is no save prompt here.
                 scr_save_menu_open("save", false, true);
