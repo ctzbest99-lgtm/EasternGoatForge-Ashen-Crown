@@ -1092,6 +1092,12 @@
     },
     {
       "id":{
+        "name":"scr_options",
+        "path":"scripts/scr_options/scr_options.yy",
+      },
+    },
+    {
+      "id":{
         "name":"scr_party",
         "path":"scripts/scr_party/scr_party.yy",
       },
