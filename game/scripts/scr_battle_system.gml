@@ -404,9 +404,14 @@ function scr_battle_roll_drops(_enemy) {
         if (random(1) >= _chance) continue;
         var _qty = variable_struct_exists(_d, "qty") ? max(1, floor(_d.qty)) : 1;
         var _it = scr_item_get(_id);
-        if (scr_inventory_add(_it.item_id, _it.name, _qty, _it.key_item) || _it.unique) {
+        // Only announce a drop that actually entered the bag. A unique item already in the
+        // bag is refused by scr_inventory_add(); reporting "Found X!" then would be wrong.
+        // Once-only flags still latch so the roll stops.
+        if (!scr_inventory_add(_it.item_id, _it.name, _qty, _it.key_item)) {
             if (_once) scr_flag_set(_flag);
+            continue;
         }
+        if (_once) scr_flag_set(_flag);
         array_push(_found, _qty > 1 ? _it.name + " x" + string(_qty) : _it.name);
         scr_audio_sfx("item_get", 0.02);
     }
