@@ -641,7 +641,7 @@ for root, dirs, files in os.walk(src_df):
 
 # ---------------------------------------------------------------- .yyp
 write_json(os.path.join(OUT, 'AshenCrown.yyp'), {
-    "$GMProject": "", "%Name": "AshenCrown",
+    "$GMProject": "v1", "%Name": "AshenCrown",
     "AudioGroups": [{"$GMAudioGroup": "v1", "%Name": "audiogroup_default",
                      "exportDir": "", "name": "audiogroup_default",
                      "resourceType": "GMAudioGroup", "resourceVersion": "2.0",
